@@ -1,0 +1,50 @@
+---
+import Analytics from '../components/Analytics.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+
+const { title, description, region, doctor = {}, cfToken, socials = [] } = Astro.props;
+const doctorName = doctor?.name || 'Никитина Марина Георгиевна';
+---
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title>
+  <meta name="description" content={description}/>
+  <meta name="geo.region" content="RU-NIZHNOV"/>
+  <meta name="geo.placename" content={region || "Нижний Новгород"}/>
+  <meta name="ICBM" content="56.3269,44.0060"/>
+  <link rel="canonical" href={`https://ortopednn.ru${Astro.url.pathname}`}/>
+  <Analytics ymId="YOUR_METRIKA_ID" gaId="YOUR_GA_ID" cfToken={cfToken}/>
+</head>
+<body>
+  <a href="#main" class="skip-link">Перейти к контенту</a>
+  <header>
+    <slot name="header"/>
+  </header>
+  <main id="main">
+    <slot/>
+  </main>
+  <footer class="site-footer">
+    <p>© {new Date().getFullYear()} {doctorName}</p>
+    <SocialLinks socials={socials}/>
+  </footer>
+</body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #0284c7;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+</style>

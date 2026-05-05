@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import UnifiedTrustBlock from '../../components/UnifiedTrustBlock.astro';
+
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+export async function getStaticPaths() {
+  const d = await getCollection('districts');
+  return d.map(i => ({params: {slug: i.data.slug}, props: {district: i}}));
+}
+
+const { district } = Astro.props;
+---
+
+<BaseLayout 
+  title={district.data.title} 
+  description={district.data.description} 
+  doctor={doctor} 
+  cfToken="YOUR_CF_TOKEN" 
+  socials={socials}
+>
+  <article class="p">
+    <h1>{district.data.title}</h1>
+    <div set:html={district.render().Content}></div>
+    <UnifiedTrustBlock doctor={doctor}/>
+  </article>
+</BaseLayout>
+
+<style>
+.p {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+</style>

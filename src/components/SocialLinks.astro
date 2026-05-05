@@ -1,0 +1,26 @@
+---
+const socials = Astro.props.socials || [];
+const s = socials.filter(x => x.enabled).sort((a, b) => a.priority - b.priority);
+---
+
+<nav class="soc">
+  <ul>
+    {s.map(i => (
+      <li><a href={i.url} target="_blank">{i.icon} {i.name}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+.soc ul {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+.soc a {
+  color: #0284c7;
+  text-decoration: none;
+}
+</style>

@@ -1,0 +1,59 @@
+---
+const doctor = Astro.props.doctor;
+---
+
+<div class="cta-wrap">
+  <a href={`tel:${doctor.contacts.phone}`} class="btn-pulse">📞 Позвонить доктору</a>
+  
+  <form action="https://leads.ortopednn.ru" method="POST" class="form">
+    <input type="hidden" name="bot-check" style="display:none">
+    <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+    <label>
+      <input type="checkbox" name="consent_pd" required>
+      {doctor.legal.consent_text}
+    </label>
+    <button type="submit" id="subBtn" disabled>Записаться</button>
+  </form>
+</div>
+
+<script>
+  function enableSub() {
+    document.getElementById('subBtn').disabled = false;
+  }
+</script>
+
+<style>
+  .cta-wrap {
+    max-width: 320px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+  .btn-pulse {
+    display: block;
+    background: #2563eb;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(37,99,235,0); }
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+  }
+  .form input, .form button {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+  }
+</style>

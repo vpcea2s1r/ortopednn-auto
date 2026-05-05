@@ -1,0 +1,35 @@
+---
+const doctor = Astro.props.doctor;
+---
+
+<div class="trust">
+  <div class="card">
+    <h4>📋 Условия</h4>
+    <p>Цены от 6 060 ₽. Оплата: наличные/карта/рассрочка. График: Пн-Пт 09-20</p>
+  </div>
+  <div class="card">
+    <h4>🎓 Экспертиза</h4>
+    <p>{doctor.name} | {doctor.experience}</p>
+  </div>
+</div>
+
+<p class="disc">{doctor.legal.disclaimer}</p>
+
+<style>
+  .trust {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .card {
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  .disc {
+    font-size: 0.8rem;
+    color: #64748b;
+  }
+</style>

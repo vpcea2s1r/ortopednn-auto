@@ -1,0 +1,30 @@
+---
+const doctor = Astro.props.doctor;
+---
+
+<div class="why">
+  <img src={doctor.photo || "/assets/doctor-placeholder.webp"} alt={doctor.name} loading="lazy" width="120" height="120" class="p">
+  <h2>Почему выбирают меня</h2>
+  <ul>
+    {doctor.utp.map(i => <li>✓ {i}</li>)}
+  </ul>
+</div>
+
+<style>
+  .why {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  .p {
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    padding: 0.4rem 0;
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SmartCTA from '../components/SmartCTA.astro';
+import WhyMeStatic from '../components/WhyMeStatic.astro';
+import UnifiedTrustBlock from '../components/UnifiedTrustBlock.astro';
+import CostQuiz from '../components/CostQuiz.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+
+import doctor from '../../data/doctor.json';
+import pricing from '../../data/pricing.json';
+import socials from '../../data/socials.json';
+---
+
+<BaseLayout 
+  title={`Ортопед НН | ${doctor.name}`} 
+  description="Протезирование в Нижнем Новгороде. Честные цены, прямая запись." 
+  region="Нижний Новгород" 
+  doctor={doctor} 
+  cfToken="YOUR_CF_TOKEN" 
+  socials={socials}
+>
+  <header class="hero">
+    <h1>Верну уверенность улыбаться</h1>
+    <p>{doctor.experience} | {doctor.location.display}</p>
+    <SmartCTA doctor={doctor}/>
+  </header>
+  
+  <main>
+    <WhyMeStatic doctor={doctor}/>
+    
+    <section class="srv">
+      <h2>Услуги</h2>
+      <ul>
+        {pricing.slice(0, 3).map(p => (
+          <li>🦷 {p.name} — от {new Intl.NumberFormat('ru', {style: 'currency', currency: 'RUB'}).format(p.price)}</li>
+        ))}
+      </ul>
+    </section>
+    
+    <CostQuiz pricing={pricing}/>
+    <UnifiedTrustBlock doctor={doctor}/>
+  </main>
+</BaseLayout>
+
+<style>
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+}
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+.srv {
+  padding: 2rem 1rem;
+  background: #f8fafc;
+  text-align: center;
+}
+</style>

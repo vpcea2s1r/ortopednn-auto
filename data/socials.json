@@ -1,0 +1,18 @@
+[
+  {
+    "id": "telegram",
+    "name": "Telegram",
+    "url": "https://t.me/nikitina_ortoped",
+    "icon": "✈️",
+    "enabled": true,
+    "priority": 1
+  },
+  {
+    "id": "whatsapp",
+    "name": "WhatsApp",
+    "url": "https://wa.me/79202537317",
+    "icon": "📱",
+    "enabled": true,
+    "priority": 2
+  }
+]

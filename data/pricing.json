@@ -1,0 +1,20 @@
+[
+  {
+    "code": "О.1.4",
+    "name": "Коронка на оксиде циркония",
+    "category": "fixed",
+    "price": 27000
+  },
+  {
+    "code": "О.1.5",
+    "name": "Винир E-MAX",
+    "category": "fixed",
+    "price": 30000
+  },
+  {
+    "code": "О.2.1.1",
+    "name": "Частичный съёмный протез",
+    "category": "removable",
+    "price": 24400
+  }
+]

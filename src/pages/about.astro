@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import doctor from '../../data/doctor.json';
+import socials from '../../data/socials.json';
+---
+
+<BaseLayout 
+  title={`Обо мне | ${doctor.name}`} 
+  doctor={doctor} 
+  cfToken="YOUR_CF_TOKEN" 
+  socials={socials}
+>
+  <article class="p">
+    <h1>{doctor.name}</h1>
+    <p>{doctor.experience} практики.</p>
+    
+    <h2>Образование</h2>
+    <ul>
+      <li>НГМА</li>
+      <li>Сертификаты по ортопедии</li>
+    </ul>
+  </article>
+</BaseLayout>
+
+<style>
+.p {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+</style>

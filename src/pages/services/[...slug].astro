@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+export async function getStaticPaths() {
+  const s = await getCollection('services');
+  return s.map(i => ({params: {slug: i.data.slug}, props: {service: i}}));
+}
+
+const { service } = Astro.props;
+---
+
+<BaseLayout 
+  title={service.data.title} 
+  description={service.data.title} 
+  doctor={doctor} 
+  cfToken="YOUR_CF_TOKEN" 
+  socials={socials}
+>
+  <article class="p">
+    <h1>{service.data.title}</h1>
+    <p>Цена: {new Intl.NumberFormat('ru', {style: 'currency', currency: 'RUB'}).format(service.data.price)}</p>
+    <div set:html={service.render().Content}></div>
+  </article>
+</BaseLayout>
+
+<style>
+.p {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+</style>
