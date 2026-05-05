@@ -2,34 +2,94 @@
 const doctor = Astro.props.doctor;
 ---
 
-<div class="trust">
-  <div class="card">
-    <h4>📋 Условия</h4>
-    <p>Цены от 6 060 ₽. Оплата: наличные/карта/рассрочка. График: Пн-Пт 09-20</p>
+<section class="trust">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="icon">💳</div>
+        <h4>Оплата</h4>
+        <p>Наличные • Карта • Рассрочка 0%</p>
+      </div>
+      <div class="trust-card">
+        <div class="icon">📍</div>
+        <h4>Локация</h4>
+        <p>Центр НН, 3 мин от м. Московская</p>
+      </div>
+      <div class="trust-card">
+        <div class="icon">🕐</div>
+        <h4>График</h4>
+        <p>Пн-Пт: 09:00 - 20:00</p>
+      </div>
+      <div class="trust-card">
+        <div class="icon">⭐</div>
+        <h4>Рейтинг</h4>
+        <p>4.9 на Яндекс.Картах</p>
+      </div>
+    </div>
+    <p class="disc">{doctor.legal.disclaimer}</p>
   </div>
-  <div class="card">
-    <h4>🎓 Экспертиза</h4>
-    <p>{doctor.name} | {doctor.experience}</p>
-  </div>
-</div>
-
-<p class="disc">{doctor.legal.disclaimer}</p>
+</section>
 
 <style>
-  .trust {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 2rem 0;
+.trust {
+  padding: 64px 0;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .card {
-    padding: 1rem;
-    background: #f8fafc;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-  }
-  .disc {
-    font-size: 0.8rem;
-    color: #64748b;
-  }
+}
+
+.trust-card {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.trust-card:hover {
+  border-color: #0ea5e9;
+  transform: translateY(-2px);
+}
+
+.icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.trust-card h4 {
+  font-size: 1rem;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.trust-card p {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.disc {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0 auto;
+}
 </style>
