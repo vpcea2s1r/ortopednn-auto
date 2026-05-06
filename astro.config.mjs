@@ -5,9 +5,8 @@ import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   site: 'https://ortopednn.ru',
-  output: 'static',
+  output: 'server',
   adapter: cloudflare({
-    platform: 'pages',
     imageService: 'cloudflare'
   }),
   integrations: [
