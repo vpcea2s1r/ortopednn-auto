@@ -1,0 +1,90 @@
+---
+const specializations = [
+  { title: "Коронки", desc: "Металлокерамика, цирконий, цельно-литые", link: "/services/metallokeramicheskaya-koronka" },
+  { title: "Виниры", desc: "E-MAX, керамические накладки", link: "/services/viniry-emaks" },
+  { title: "Вкладки", desc: "Врачебные и лабораторные", link: "/services/vradecheskaya-vkladka" },
+  { title: "Съемные протезы", desc: "Акрил, нейлон, AcryFree", link: "/services/chastichny-sjemny-protez" },
+  { title: "Бюгельные", desc: "На кламмерах и замках", link: "/services/byugelnyj-klammery" },
+];
+---
+
+<section class="specializations">
+  <div class="container">
+    <h2>Моя специализация</h2>
+    <div class="grid">
+      {specializations.map(item => (
+        <a href={item.link} class="card">
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.specializations {
+  padding: 64px 0;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.specializations h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #1e3a5f;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px 16px;
+  box-shadow: 0 4px 20px rgba(30, 58, 95, 0.08);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: block;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(30, 58, 95, 0.15);
+}
+
+.card h3 {
+  color: #2e6ab3;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #5a7a9a;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

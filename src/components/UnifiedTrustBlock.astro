@@ -8,32 +8,27 @@ const doctor = Astro.props.doctor;
       <div class="trust-card">
         <div class="icon">💳</div>
         <h4>Оплата</h4>
-        <p>Наличные • Карта • Рассрочка 0%</p>
+        <p>Наличные • Карта</p>
       </div>
       <div class="trust-card">
         <div class="icon">📍</div>
         <h4>Локация</h4>
-        <p>Центр НН, 3 мин от м. Московская</p>
+        <p>Центр НН</p>
       </div>
       <div class="trust-card">
         <div class="icon">🕐</div>
         <h4>График</h4>
         <p>Пн-Пт: 09:00 - 20:00</p>
       </div>
-      <div class="trust-card">
-        <div class="icon">⭐</div>
-        <h4>Рейтинг</h4>
-        <p>4.9 на Яндекс.Картах</p>
-      </div>
     </div>
-    <p class="disc">{doctor.legal.disclaimer}</p>
+    <p class="disc">Информация носит ознакомительный характер</p>
   </div>
 </section>
 
 <style>
 .trust {
-  padding: 64px 0;
-  background: white;
+  padding: 48px 0;
+  background: #f8fafc;
 }
 
 .container {
@@ -44,44 +39,32 @@ const doctor = Astro.props.doctor;
 
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 32px;
-}
-
-@media (max-width: 768px) {
-  .trust-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .trust-card {
-  background: #f8fafc;
-  border-radius: 16px;
-  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
   text-align: center;
   border: 1px solid #e2e8f0;
-  transition: all 0.2s;
-}
-
-.trust-card:hover {
-  border-color: #0ea5e9;
-  transform: translateY(-2px);
 }
 
 .icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.trust-card h4 {
-  font-size: 1rem;
-  color: #1e293b;
+  font-size: 24px;
   margin-bottom: 8px;
 }
 
-.trust-card p {
+.trust-card h4 {
   font-size: 0.875rem;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.trust-card p {
+  font-size: 0.75rem;
   color: #64748b;
 }
 
@@ -89,7 +72,11 @@ const doctor = Astro.props.doctor;
   text-align: center;
   font-size: 0.75rem;
   color: #94a3b8;
-  max-width: 600px;
-  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

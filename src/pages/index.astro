@@ -1,210 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SmartCTA from '../components/SmartCTA.astro';
-import WhyMeStatic from '../components/WhyMeStatic.astro';
-import UnifiedTrustBlock from '../components/UnifiedTrustBlock.astro';
-import CostQuiz from '../components/CostQuiz.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Specializations from '../components/Specializations.astro';
+import PriceList from '../components/PriceList.astro';
 
 import doctor from '../../data/doctor.json';
-import pricing from '../../data/pricing.json';
 import socials from '../../data/socials.json';
 ---
 
 <BaseLayout 
-  title={`Ортопед НН | ${doctor.name}`} 
-  description="Протезирование в Нижнем Новгороде. Честные цены, прямая запись." 
-  region="Нижний Новгород" 
-  doctor={doctor} 
-  cfToken="YOUR_CF_TOKEN" 
+  title="Никитина Марина Георгиевна | Стоматолог-ортопед в Нижнем Новгороде"
+  description="Стоматолог-ортопед Никитина М.Г. в Нижнем Новгороде. Протезирование зубов: металлокерамика, цирконий, виниры E-MAX, съемные и бюгельные протезы."
+  region="Нижний Новгород"
+  doctor={doctor}
+  cfToken="YOUR_CF_TOKEN"
   socials={socials}
 >
-  <section class="hero">
-    <div class="hero-content">
-      <span class="badge">Стоматолог-ортопед</span>
-      <h1>Верну уверенность<br/>вашей улыбке</h1>
-      <p class="subtitle">{doctor.experience} • {doctor.location.display}</p>
-      <div class="hero-cta">
-        <SmartCTA doctor={doctor}/>
-      </div>
-    </div>
-    <div class="hero-decoration">
-      <div class="circle"></div>
-      <div class="circle-2"></div>
-    </div>
-  </section>
-  
-  <main>
-    <WhyMeStatic doctor={doctor}/>
-    
-    <section class="services">
-      <div class="container">
-        <h2>Популярные услуги</h2>
-        <div class="services-grid">
-          {pricing.map(p => (
-            <a href={`/services/${p.code}`} class="service-card">
-              <span class="service-icon">🦷</span>
-              <h3>{p.name}</h3>
-              <p class="price">от {new Intl.NumberFormat('ru', {style: 'currency', currency: 'RUB', maximumFractionDigits: 0}).format(p.price)}</p>
-            </a>
-          ))}
-        </div>
-        <a href="/services" class="all-services">Все услуги →</a>
-      </div>
-    </section>
-    
-    <section class="quiz-section">
-      <div class="container">
-        <h2>Рассчитайте стоимость</h2>
-        <CostQuiz pricing={pricing}/>
-      </div>
-    </section>
-    
-    <UnifiedTrustBlock doctor={doctor}/>
-  </main>
+  <Navbar />
+  <HeroSection doctor={doctor}/>
+  <Specializations />
+  <PriceList />
+  <footer class="site-footer">
+    <p>© {new Date().getFullYear()} Никитина Марина Георгиевна</p>
+  </footer>
 </BaseLayout>
 
 <style>
-.hero {
-  position: relative;
-  padding: 80px 24px 100px;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  overflow: hidden;
+.site-footer {
   text-align: center;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(14, 165, 233, 0.2);
-  color: #0ea5e9;
-  padding: 8px 16px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 24px;
-  border: 1px solid rgba(14, 165, 233, 0.3);
-}
-
-.hero h1 {
-  color: white;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 16px;
-  line-height: 1.1;
-}
-
-.hero .subtitle {
-  color: rgba(255,255,255,0.7);
-  font-size: 18px;
-  margin-bottom: 32px;
-}
-
-.hero-decoration {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.circle {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  top: -100px;
-  right: -100px;
-}
-
-.circle-2 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  bottom: -50px;
-  left: -50px;
-}
-
-.services {
-  padding: 80px 0;
-  background: white;
-}
-
-.services h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 48px;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-bottom: 32px;
-}
-
-.service-card {
+  padding: 24px;
+  color: #5a7a9a;
+  font-size: 0.875rem;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 32px 24px;
-  text-align: center;
-  transition: all 0.3s;
-  display: block;
-}
-
-.service-card:hover {
-  transform: translateY(-4px);
-  border-color: #0ea5e9;
-  box-shadow: 0 12px 24px -8px rgba(14, 165, 233, 0.2);
-}
-
-.service-icon {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 16px;
-}
-
-.service-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  color: #1e293b;
-}
-
-.service-card .price {
-  color: #0ea5e9;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.all-services {
-  display: block;
-  text-align: center;
-  font-weight: 500;
-  color: #0ea5e9;
-  margin-top: 16px;
-}
-
-.quiz-section {
-  padding: 80px 0;
-  background: #f8fafc;
-}
-
-.quiz-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 32px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
 }
 </style>

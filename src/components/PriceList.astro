@@ -1,0 +1,186 @@
+---
+const pricing = [
+  {
+    category: "Несъемное протезирование",
+    items: [
+      { code: "О.1.1", name: "Врачебная вкладка", price: "3 180 ₽", link: "/services/vradecheskaya-vkladka" },
+      { code: "О.1.2", name: "Лабораторная вкладка", price: "5 040 ₽", link: "/services/laboratornaya-vkladka" },
+      { code: "О.1.4", name: "Безметалловая коронка на оксиде циркония", price: "27 000 ₽", link: "/services/cirkonievaya-koronka" },
+      { code: "О.1.5", name: "Винир E-MAX", price: "30 000 ₽", link: "/services/viniry-emaks" },
+      { code: "О.1.7", name: "Металлокерамическая коронка", price: "9 000 ₽", link: "/services/metallokeramicheskaya-koronka" },
+      { code: "О.1.10", name: "Цельнолитая коронка (кобальт)", price: "6 060 ₽", link: "/services/celnolitaya-koronka" },
+    ]
+  },
+  {
+    category: "Съемное протезирование",
+    items: [
+      { code: "О.2.1.1", name: "Частичный съемный протез", price: "24 400 ₽", link: "/services/chastichny-sjemny-protez" },
+      { code: "О.2.1.2", name: "Полный съемный протез", price: "27 360 ₽", link: "/services/polny-sjemny-protez" },
+      { code: "О.2.2.1", name: "Протез «AcryFree»", price: "41 400 ₽", link: "/services/acryfree" },
+      { code: "О.2.2.4", name: "Нейлоновый протез", price: "41 400 ₽", link: "/services/nejlonovyj-protez" },
+    ]
+  },
+  {
+    category: "Бюгельное протезирование",
+    items: [
+      { code: "О.2.3.1", name: "Бюгельный протез (2 кламмера)", price: "60 700 ₽", link: "/services/byugelnyj-klammery" },
+      { code: "О.2.3.2", name: "Бюгельный протез (3 кламмера)", price: "62 400 ₽", link: "/services/byugelnyj-klammery" },
+      { code: "О.2.3.3", name: "Бюгельный протез (замки)", price: "83 200 ₽", link: "/services/byugelnyj-zamki" },
+    ]
+  },
+];
+
+const doctor = {
+  address: "Нижний Новгород, ул. Октябрьской Революции, д. 43, оф. 316",
+  phone: "+79202537317"
+};
+---
+
+<section class="price-section" id="price">
+  <div class="container">
+    <h2>Прайс-лист</h2>
+    <div class="price-list">
+      {pricing.map(section => (
+        <div class="price-category">
+          <h3>{section.category}</h3>
+          <table>
+            <tbody>
+              {section.items.map(item => (
+                <tr>
+                  <td class="code">{item.code}</td>
+                  <td class="name">
+                    <a href={item.link}>{item.name}</a>
+                  </td>
+                  <td class="price">{item.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="contacts" id="contacts">
+  <h2>Запишитесь на приём</h2>
+  <p>{doctor.address}</p>
+  <a href={`tel:${doctor.phone}`} class="btn-primary">
+    Позвонить
+  </a>
+</section>
+
+<style>
+.price-section {
+  padding: 64px 0;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.price-section h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #1e3a5f;
+  margin-bottom: 32px;
+}
+
+.price-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.price-category {
+  margin-bottom: 32px;
+}
+
+.price-category h3 {
+  font-size: 1rem;
+  color: #4a90d9;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #4a90d9;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0ebf5;
+}
+
+.code {
+  color: #7a9ab8;
+  font-size: 0.75rem;
+  width: 60px;
+}
+
+.name {
+  flex: 1;
+  text-align: left;
+}
+
+.name a {
+  color: #1e3a5f;
+  text-decoration: none;
+  border-bottom: 1px dashed #1e3a5f;
+}
+
+.name a:hover {
+  color: #4a90d9;
+}
+
+.price {
+  color: #2e6ab3;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: right;
+  width: 90px;
+}
+
+.contacts {
+  text-align: center;
+  padding: 64px 16px;
+  background: linear-gradient(to bottom, white, #e8f4fd);
+}
+
+.contacts h2 {
+  font-size: 1.5rem;
+  color: #1e3a5f;
+  margin-bottom: 16px;
+}
+
+.contacts p {
+  color: #5a7a9a;
+  margin-bottom: 24px;
+}
+
+.contacts .btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #4a90d9 0%, #2e6ab3 100%);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.125rem;
+  box-shadow: 0 4px 15px rgba(74, 144, 217, 0.3);
+}
+
+@media (max-width: 640px) {
+  tr {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .code { width: 100%; }
+  .price { text-align: left; }
+}
+</style>
