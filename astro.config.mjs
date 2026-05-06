@@ -7,17 +7,11 @@ export default defineConfig({
   site: 'https://ortopednn.ru',
   output: 'static',
   adapter: cloudflare({
+    platform: 'pages',
     imageService: 'cloudflare'
   }),
-  prefetch: {
-    prefetchAll: false,
-    hover: true
-  },
   integrations: [
     sitemap(),
     tailwind()
-  ],
-  image: {
-    domains: ['ortopednn.ru']
-  }
+  ]
 });
