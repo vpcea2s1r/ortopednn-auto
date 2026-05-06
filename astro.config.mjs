@@ -5,12 +5,31 @@ import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   site: 'https://ortopednn.ru',
-  output: 'server',
+  output: 'static',
   adapter: cloudflare({
-    imageService: 'cloudflare'
+    imageService: 'cloudflare',
   }),
+  prefetch: {
+    prefetchAll: false,
+    hover: true
+  },
   integrations: [
     sitemap(),
     tailwind()
-  ]
+  ],
+  image: {
+    domains: ['ortopednn.ru']
+  },
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            alpine: ['alpinejs']
+          }
+        }
+      }
+    }
+  }
 });
