@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://ortopednn.ru',
   output: 'static',
   adapter: cloudflare({
-    imageService: 'cloudflare',
+    imageService: 'cloudflare'
   }),
   prefetch: {
     prefetchAll: false,
@@ -19,17 +19,5 @@ export default defineConfig({
   ],
   image: {
     domains: ['ortopednn.ru']
-  },
-  vite: {
-    build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            alpine: ['alpinejs']
-          }
-        }
-      }
-    }
   }
 });
