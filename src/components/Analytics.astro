@@ -31,7 +31,7 @@ const { ymId, gaId, cfToken } = Astro.props;
     const b = document.createElement('div');
     b.id = 'cookie-banner';
     b.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#fff;padding:1rem;z-index:9999;display:flex;gap:1rem;align-items:center;';
-    b.innerHTML = `<p>🍪 Cookie для анализа. <a href="/privacy" style="color:#0284c7">Политика</a></p><button id="accept" style="background:#0284c7;color:#fff;border:none;padding:0.5rem 1rem;border-radius:6px;cursor:pointer">Принять</button>`;
+    b.innerHTML = `<p>🍪 Cookie для анализа (Яндекс Метрика, Google Analytics, Cloudflare)</p><button id="accept" style="background:#0284c7;color:#fff;border:none;padding:0.5rem 1rem;border-radius:6px;cursor:pointer">Принять</button>`;
     document.body.appendChild(b);
     
     document.getElementById('accept').onclick = () => {
