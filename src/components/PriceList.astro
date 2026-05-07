@@ -1,34 +1,5 @@
 ---
-const pricing = [
-  {
-    category: "Несъемное протезирование",
-    items: [
-      { code: "О.1.1", name: "Врачебная вкладка", price: "3 180 ₽", link: "/services/vradecheskaya-vkladka" },
-      { code: "О.1.2", name: "Лабораторная вкладка", price: "5 040 ₽", link: "/services/laboratornaya-vkladka" },
-      { code: "О.1.4", name: "Безметалловая коронка на оксиде циркония", price: "27 000 ₽", link: "/services/cirkonievaya-koronka" },
-      { code: "О.1.5", name: "Винир E-MAX", price: "30 000 ₽", link: "/services/viniry-emaks" },
-      { code: "О.1.7", name: "Металлокерамическая коронка", price: "9 000 ₽", link: "/services/metallokeramicheskaya-koronka" },
-      { code: "О.1.10", name: "Цельнолитая коронка (кобальт)", price: "6 060 ₽", link: "/services/celnolitaya-koronka" },
-    ]
-  },
-  {
-    category: "Съемное протезирование",
-    items: [
-      { code: "О.2.1.1", name: "Частичный съемный протез", price: "24 400 ₽", link: "/services/chastichny-sjemny-protez" },
-      { code: "О.2.1.2", name: "Полный съемный протез", price: "27 360 ₽", link: "/services/polny-sjemny-protez" },
-      { code: "О.2.2.1", name: "Протез «AcryFree»", price: "41 400 ₽", link: "/services/acryfree" },
-      { code: "О.2.2.4", name: "Нейлоновый протез", price: "41 400 ₽", link: "/services/nejlonovyj-protez" },
-    ]
-  },
-  {
-    category: "Бюгельное протезирование",
-    items: [
-      { code: "О.2.3.1", name: "Бюгельный протез (2 кламмера)", price: "60 700 ₽", link: "/services/byugelnyj-klammery" },
-      { code: "О.2.3.2", name: "Бюгельный протез (3 кламмера)", price: "62 400 ₽", link: "/services/byugelnyj-klammery" },
-      { code: "О.2.3.3", name: "Бюгельный протез (замки)", price: "83 200 ₽", link: "/services/byugelnyj-zamki" },
-    ]
-  },
-];
+import pricing from '../../data/pricing.json';
 
 const doctor = {
   address: "Работаю в компании ООО Улыбка по адресу: Нижний Новгород, ул. Октябрьской Революции, д. 43, оф. 316.",
@@ -47,7 +18,7 @@ const doctor = {
             <tbody>
               {section.items.map(item => (
                 <tr>
-                  <td class="code">{item.code}</td>
+                  <td class="code">{item.codeShort}</td>
                   <td class="name">
                     <a href={item.link}>{item.name}</a>
                   </td>
@@ -59,6 +30,7 @@ const doctor = {
         </div>
       ))}
     </div>
+    <p class="price-note">* Окончательная стоимость определяется после консультации</p>
   </div>
 </section>
 
@@ -120,7 +92,7 @@ tr {
 .code {
   color: #7a9ab8;
   font-size: 0.75rem;
-  width: 60px;
+  width: 70px;
 }
 
 .name {
@@ -131,7 +103,6 @@ tr {
 .name a {
   color: #1e3a5f;
   text-decoration: none;
-  border-bottom: 1px dashed #1e3a5f;
 }
 
 .name a:hover {
@@ -144,6 +115,13 @@ tr {
   font-size: 0.95rem;
   text-align: right;
   width: 90px;
+}
+
+.price-note {
+  text-align: center;
+  color: #7a9ab8;
+  font-size: 0.875rem;
+  margin-top: 24px;
 }
 
 .contacts {
