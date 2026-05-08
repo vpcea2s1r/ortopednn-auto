@@ -1,23 +1,27 @@
 ---
 const services = [
-  { title: "Коронки", desc: "Цирконий, металлокерамика, E-MAX", icon: "🦷", link: "/services/metallokeramika", popular: true },
-  { title: "Виниры", desc: "Эстетика улыбки", icon: "✨", link: "/services/viniry-emaks", popular: true },
-  { title: "Съёмные протезы", desc: "Акрил, AcryFree, нейлон", icon: "🫄", link: "/services/sjemny-protez" },
-  { title: "Бюгельные", desc: "На замках и кламмерах", icon: "🔩", link: "/services/byugelnyj" },
-  { title: "Ремонт", desc: "Коррекция, починка", icon: "🔧", link: "/services/korrekciya" },
+  { title: "Коронки", desc: "Цирконий, металлокерамика, E-MAX", link: "/services/metallokeramika" },
+  { title: "Виниры", desc: "Эстетика улыбки", link: "/services/viniry-emaks" },
+  { title: "Съёмные протезы", desc: "Акрил, AcryFree, нейлон", link: "/services/sjemny-protez" },
+  { title: "Бюгельные", desc: "На замках и кламмерах", link: "/services/byugelnyj" },
+  { title: "Ремонт", desc: "Коррекция, починка", link: "/services/korrekciya" },
 ];
 ---
 
 <section class="services-section">
   <div class="container">
-    <h2>Основные услуги</h2>
+    <h2>Услуги</h2>
     <div class="grid">
       {services.map(item => (
-        <a href={item.link} class={`card ${item.popular ? 'popular' : ''}`}>
-          <span class="icon">{item.icon}</span>
+        <a href={item.link} class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
           <h3>{item.title}</h3>
           <p>{item.desc}</p>
-          {item.popular && <span class="badge-popular">Популярное</span>}
+          <span class="arrow">→</span>
         </a>
       ))}
     </div>
@@ -26,21 +30,23 @@ const services = [
 
 <style>
 .services-section {
-  padding: 48px 0;
+  padding: 64px 24px;
   background: white;
 }
 
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 16px;
 }
 
 .services-section h2 {
   text-align: center;
-  font-size: 1.5rem;
-  color: #1e3a5f;
-  margin-bottom: 24px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
 }
 
 .grid {
@@ -50,56 +56,63 @@ const services = [
 }
 
 .card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px 16px;
-  text-align: center;
+  background: #faf5ff;
+  border-radius: 16px;
+  padding: 24px;
   text-decoration: none;
   transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(30, 58, 95, 0.08);
-  border: 2px solid transparent;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
+  align-items: flex-start;
+  border: 1px solid #ede9fe;
 }
 
 .card:hover {
+  background: white;
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(30, 58, 95, 0.15);
-  border-color: #4a90d9;
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.1);
+  border-color: #7c3aed;
 }
 
-.card.popular {
-  border-color: #22c55e;
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
-.card .icon {
-  font-size: 2rem;
-  margin-bottom: 8px;
+.card-icon svg {
+  color: white;
 }
 
 .card h3 {
-  color: #1e3a5f;
-  font-size: 1rem;
-  margin-bottom: 4px;
+  color: #1e1b4b;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .card p {
-  color: #5a7a9a;
-  font-size: 0.8rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
-.badge-popular {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #22c55e;
-  color: white;
-  font-size: 0.65rem;
-  padding: 2px 8px;
-  border-radius: 100px;
-  font-weight: 600;
+.arrow {
+  color: #7c3aed;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-top: auto;
+}
+
+.card:hover .arrow {
+  transform: translateX(4px);
+  display: inline-block;
 }
 
 @media (max-width: 640px) {
