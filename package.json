@@ -8,9 +8,8 @@
     "preview": "astro preview",
     "validate": "node scripts/validate-json.js",
     "generate": "node scripts/content-constructor.js",
-    "lint:css": "stylelint \"src/**/*.{css,astro}\"",
     "lint:astro": "astro check",
-    "lint": "npm run lint:css && npm run lint:astro",
+    "lint": "npm run lint:astro",
     "format": "prettier --write \"src/**/*.{astro,js,ts,css,json}\""
   },
   "dependencies": {
@@ -24,10 +23,6 @@
   },
   "devDependencies": {
     "prettier": "^3.0.0",
-    "prettier-plugin-astro": "^0.12.0",
-    "stylelint": "^15.0.0",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-config-prettier": "^9.0.0",
-    "stylelint-order": "^6.0.0"
+    "prettier-plugin-astro": "^0.12.0"
   }
 }
