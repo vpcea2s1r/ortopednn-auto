@@ -1,10 +1,16 @@
 ---
 const specializations = [
-  { title: "Коронки", desc: "Металлокерамика, цирконий, цельно-литые", link: "/services/metallokeramicheskaya-koronka" },
+  { title: "Коронки", desc: "Металлокерамика, цирконий, цельно-литые", link: "/services/metallokeramika" },
   { title: "Виниры", desc: "E-MAX, керамические накладки", link: "/services/viniry-emaks" },
-  { title: "Вкладки", desc: "Врачебные и лабораторные", link: "/services/vradecheskaya-vkladka" },
-  { title: "Съемные протезы", desc: "Акрил, нейлон, AcryFree", link: "/services/chastichny-sjemny-protez" },
-  { title: "Бюгельные", desc: "На кламмерах и замках", link: "/services/byugelnyj-klammery" },
+  { title: "Вкладки", desc: "Врачебные и лабораторные", link: "/services/vkladka" },
+  { title: "Съемные протезы", desc: "Акрил, нейлон, AcryFree", link: "/services/sjemny-protez" },
+  { title: "Бюгельные", desc: "На кламмерах и замках", link: "/services/byugelnyj" },
+];
+const infoLinks = [
+  { title: "Материалы коронок", desc: "Цирконий vs металлокерамика vs E-MAX", link: "/materials" },
+  { title: "Имплант или протез?", desc: "Сравнение вариантов", link: "/compare" },
+  { title: "Нужна консультация?", desc: "Проверьте себя", link: "/checkup" },
+  { title: "Блог", desc: "Статьи об уходе", link: "/blog" },
 ];
 ---
 
@@ -22,10 +28,27 @@ const specializations = [
   </div>
 </section>
 
+<section class="info-links">
+  <div class="container">
+    <div class="grid">
+      {infoLinks.map(item => (
+        <a href={item.link} class="card info">
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
 <style>
-.specializations {
-  padding: 64px 0;
+.specializations, .info-links {
+  padding: 48px 0;
   background: white;
+}
+
+.info-links {
+  background: #f8fafc;
 }
 
 .container {
@@ -34,16 +57,16 @@ const specializations = [
   padding: 0 16px;
 }
 
-.specializations h2 {
+.specializations h2, .info-links h2 {
   text-align: center;
   font-size: 1.5rem;
   color: #1e3a5f;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   max-width: 1000px;
   margin: 0 auto;
@@ -76,10 +99,12 @@ const specializations = [
   font-size: 0.875rem;
 }
 
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.card.info {
+  background: linear-gradient(135deg, #e8f4fd, #f0f8ff);
+}
+
+.card.info h3 {
+  color: #4a90d9;
 }
 
 @media (max-width: 640px) {

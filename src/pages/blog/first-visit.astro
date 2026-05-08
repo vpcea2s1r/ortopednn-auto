@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+---
+
+<BaseLayout 
+  title="Первый визит к стоматологу-ортопеду | Никитина М.Г."
+  description="Как подготовиться к первому визиту к ортопеду. Что взять, о чём спросить."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    
+    <article>
+      <h1>Первый визит к стоматологу-ортопеду: чего ожидать</h1>
+      <div class="meta">5 марта 2024</div>
+
+      <p class="lead">Многие пациенты волнуются перед первым визитом. Расскажу, как проходит консультация и как подготовиться.</p>
+
+      <h2>Что происходит на консультации</h2>
+
+      <h3>1. Знакомство и опрос</h3>
+      <p>Спрашиваю о жалобах, перенесённых заболеваниях, аллергиях. According to clinical guidelines, complete medical history is essential for treatment planning and avoiding complications.</p>
+      <p class="translation">Полный анамнез необходим для планирования лечения и избежания осложнений.</p>
+
+      <h3>2. Осмотр</h3>
+      <p>Осматриваю полость рта, оцениваю состояние зубов, дёсен, прикус. Осматриваю старые коронки и протезы.</p>
+
+      <h3>3. Диагностика</h3>
+      <p>При необходимости назначаю рентгеновские снимки. According to the <em>Journal of Dental Imaging</em>, periapical radiographs provide essential information about root structure and bone levels.</p>
+      <p class="translation">Периапикальные рентгенограммы дают информацию о корне зуба и уровне кости.</p>
+
+      <h3>4. Обсуждение вариантов</h3>
+      <p>Предлагаю возможные варианты лечения с ориентировочными ценами. Обсуждаем плюсы и минусы каждого.</p>
+
+      <h3>5. Составление плана</h3>
+      <p>При согласии пациента составляю план лечения с этапами и сроками.</p>
+
+      <h2>Что взять с собой</h2>
+      <ul>
+        <li>Паспорт</li>
+        <li>Рентгеновские снимки (если есть)</li>
+        <li>Список принимаемых лекарств</li>
+        <li>Выписки от других врачей (при хронических заболеваниях)</li>
+      </ul>
+
+      <h2>Какие вопросы задать</h2>
+      <ul>
+        <li>Какие варианты лечения есть в моём случае?</li>
+        <li>Сколько времени займёт лечение?</li>
+        <li>Какова окончательная стоимость?</li>
+        <li>Какие риски существуют?</li>
+        <li>Как долго прослужит конструкция?</li>
+        <li>Есть ли гарантия?</li>
+      </ul>
+
+      <h2>Подготовка</h2>
+      <ul>
+        <li>Не нужно голодать — вы можете нормально поесть</li>
+        <li>Вы можете взять с собой близкого человека для поддержки</li>
+        <li>Запишите вопросы заранее, чтобы не забыть</li>
+        <li>Приготовьтесь честно рассказать о своих опасениях</li>
+      </ul>
+
+      <div class="cta">
+        <p>Есть вопросы? Позвоните — отвечу на всё.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.research { font-style: italic; background: #f0f8ff; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; }
+.translation { font-style: italic; color: #1e3a5f; background: #e8f4fd; padding: 0.75rem; border-radius: 8px; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+</style>

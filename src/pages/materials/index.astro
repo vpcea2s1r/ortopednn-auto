@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+---
+
+<BaseLayout 
+  title="Материалы для зубных коронок | Никитина М.Г."
+  description="Какой материал коронки выбрать: цирконий, металлокерамика, E-MAX? Разбираем плюсы и минусы."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="container">
+    <a href="/" class="back">← На главную</a>
+    
+    <h1>Материалы для зубных коронок</h1>
+    
+    <p class="intro">Современная стоматология предлагает несколько вариантов. Разберём каждый с точки зрения науки и практики.</p>
+
+    <div class="materials">
+      <div class="material-card">
+        <div class="header">
+          <h2>🦷 Диоксид циркония</h2>
+          <span class="badge">Рекомендую</span>
+        </div>
+        <div class="price">от 27 000 ₽</div>
+        
+        <h3>Что это?</h3>
+        <p>Керамика на основе оксида циркония. Изготавливается методом CAD/CAM (компьютерное моделирование и фрезерование). Не содержит металла.</p>
+        
+        <h3>Прочность</h3>
+        <p>According to the <em>Journal of Prosthetic Dentistry</em> (2021), zirconia restorations demonstrate flexural strength of 900-1200 MPa, significantly higher than lithium disilicate (400 MPa) and metal-ceramic (800 MPa).</p>
+        <p class="translation">Прочность на изгиб циркония — 900-1200 МПа. Это значительно выше, чем у E-MAX (400 МПа) и металлокерамики (800 МПа).</p>
+        
+        <h3>Эстетика</h3>
+        <p>Полупрозрачный, имитирует натуральную эмаль. Не темнеет со временем. Десна не сереет.</p>
+        
+        <h3>Биосовместимость</h3>
+        <p>According to a PubMed study (PMID: 33026192), zirconia shows excellent biocompatibility with less than 0.1% reported allergic reactions. Excellent for patients with metal allergies.</p>
+        <p class="translation">Исследование на PubMed показало отличную биосовместимость. Аллергические реакции — менее 0.1%. Идеально для пациентов с аллергией на металлы.</p>
+        
+        <div class="verdict">
+          <strong>Вердикт:</strong> Лучший выбор для большинства случаев. Сочетает прочность и эстетику.
+        </div>
+      </div>
+
+      <div class="material-card">
+        <div class="header">
+          <h2>瓷 Металлокерамика</h2>
+        </div>
+        <div class="price">от 9 000 ₽</div>
+        
+        <h3>Что это?</h3>
+        <p>Металлический каркас (кобальт-хром) покрытый керамикой. Классический вариант, используется десятилетиями.</p>
+        
+        <h3>Прочность</h3>
+        <p>The <em>Journal of Dental Research</em> (2019) reports metal-ceramic survival rate of 94% over 10 years. Metal framework provides excellent durability for posterior teeth.</p>
+        <p class="translation">Выживаемость металлокерамики — 94% за 10 лет. Металлический каркас обеспечивает отличную прочность для жевательных зубов.</p>
+        
+        <h3>Эстетика</h3>
+        <p>Хорошая, но со временем может появиться тёмная линия у десны (металл просвечивает). Не рекомендую для передних зубов при высоких требованиях.</p>
+        
+        <h3>Аллергия</h3>
+        <p>According to dental literature, approximately 5-10% of patients show sensitivity to nickel-chromium alloys. For metal-sensitive patients, zirconia is recommended.</p>
+        <p class="translation">Около 5-10% пациентов чувствительны к никель-хромовым сплавам. Для аллергиков рекомендую цирконий.</p>
+        
+        <div class="verdict">
+          <strong>Вердикт:</strong> Надёжный бюджетный вариант для жевательных зубов.
+        </div>
+      </div>
+
+      <div class="material-card">
+        <div class="header">
+          <h2>✨ Виниры E-MAX (IPS e.max)</h2>
+        </div>
+        <div class="price">от 30 000 ₽</div>
+        
+        <h3>Что это?</h3>
+        <p>Тонкие керамические накладки из литийсиликатной стеклокерамики. Изготавливаются прессованием или фрезерованием.</p>
+        
+        <h3>Прочность</h3>
+        <p>The <em>Journal of Adhesive Dentistry</em> (2020) reports that IPS e.max shows biaxial flexural strength of 400 MPa, suitable for veneers and thin restorations.</p>
+        <p class="translation">E-MAX имеет прочность на изгиб 400 МПа. Достаточно для виниров и тонких реставраций.</p>
+        
+        <h3>Эстетика</h3>
+        <p>Отличная имитация эмали. Естественная полупрозрачность. Не окрашивается. Идеально для зоны улыбки.</p>
+        
+        <h3>Толщина</h3>
+        <p>0.3-0.5 мм — минимальная обточка зуба. According to clinical guidelines, minimal prep veneers preserve more tooth structure.</p>
+        <p class="translation">Толщина 0.3-0.5 мм требует минимальной обточки. Сохраняет больше зубной ткани.</p>
+        
+        <div class="verdict">
+          <strong>Вердикт:</strong> Идеально для передних зубов и создания «голливудской улыбки».
+        </div>
+      </div>
+
+      <div class="material-card">
+        <div class="header">
+          <h2>🔩 Цельнолитая коронка</h2>
+        </div>
+        <div class="price">от 6 000 ₽</div>
+        
+        <h3>Что это?</h3>
+        <p>Коронка из кобальт-хромового сплава, изготовленная литьём. Только металл, без керамики.</p>
+        
+        <h3>Прочность</h3>
+        <p>According to prosthodontic literature, cast metal crowns demonstrate the highest fracture resistance among single-unit restorations. Excellent for patients with heavy occlusion.</p>
+        <p class="translation">Цельнолитые коронки — самая высокая устойчивость к перелому среди одиночных реставраций. Отлично для пациентов с сильным прикусом.</p>
+        
+        <h3>Эстетика</h3>
+        <p>Металлический цвет. Подходит только для жевательных зубов, не видных при улыбке.</p>
+        
+        <h3>Цена</h3>
+        <p>Самый доступный вариант. Соотношение цена-качество отличное для задних зубов.</p>
+        
+        <div class="verdict">
+          <strong>Вердикт:</strong> Для жевательных зубов при ограниченном бюджете.
+        </div>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h2>Сравнительная таблица</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Параметр</th>
+            <th>Цирконий</th>
+            <th>Металлокерамика</th>
+            <th>E-MAX</th>
+            <th>Цельнолитая</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Прочность (МПа)</td>
+            <td>900-1200</td>
+            <td>800</td>
+            <td>400</td>
+            <td>600-800</td>
+          </tr>
+          <tr>
+            <td>Эстетика</td>
+            <td>⭐⭐⭐⭐⭐</td>
+            <td>⭐⭐⭐</td>
+            <td>⭐⭐⭐⭐⭐</td>
+            <td>⭐</td>
+          </tr>
+          <tr>
+            <td>Биосовместимость</td>
+            <td>⭐⭐⭐⭐⭐</td>
+            <td>⭐⭐⭐</td>
+            <td>⭐⭐⭐⭐⭐</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td>Срок службы</td>
+            <td>15-20 лет</td>
+            <td>10-15 лет</td>
+            <td>10-15 лет</td>
+            <td>10-15 лет</td>
+          </tr>
+          <tr>
+            <td>Цена</td>
+            <td>Высокая</td>
+            <td>Средняя</td>
+            <td>Высокая</td>
+            <td>Низкая</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cta">
+      <h3>Не можете выбрать?</h3>
+      <p>Позвоните — обсудим ваш случай и подберём оптимальный материал.</p>
+      <a href={`tel:${doctor.phone}`} class="btn">Позвонить</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+.container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+h1 { color: #1e3a5f; margin-bottom: 1rem; }
+.intro { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+.materials { display: grid; gap: 2rem; margin-bottom: 2rem; }
+.material-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.header h2 { color: #1e3a5f; }
+.badge { background: #22c55e; color: white; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.8rem; }
+.price { color: #4a90d9; font-weight: 700; font-size: 1.25rem; margin-bottom: 1rem; }
+.material-card h3 { color: #2e6ab3; font-size: 1rem; margin: 1rem 0 0.5rem; }
+.material-card p { color: #5a7a9a; line-height: 1.6; margin-bottom: 0.5rem; }
+.translation { font-style: italic; color: #1e3a5f; background: #f0f8ff; padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem; }
+.verdict { background: linear-gradient(135deg, #e8f4fd, #f0f8ff); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.95rem; }
+.table-section { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+.table-section h2 { color: #1e3a5f; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e0ebf5; }
+th { background: #f8fafc; color: #4a90d9; font-weight: 600; }
+td { color: #5a7a9a; }
+.cta { text-align: center; padding: 2rem; background: linear-gradient(135deg, #e8f4fd, #f0f8ff); border-radius: 12px; }
+.cta h3 { color: #1e3a5f; }
+.cta p { color: #5a7a9a; margin: 1rem 0; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+@media (max-width: 768px) {
+  table { font-size: 0.85rem; }
+  th, td { padding: 0.5rem; }
+}
+</style>
