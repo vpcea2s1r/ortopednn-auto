@@ -29,7 +29,7 @@ import socials from '../../data/socials.json';
         <p>Стоматолог-ортопед</p>
       </div>
       <div class="footer-info">
-        <p>Нижний Новгород, ул. Октябрьской Революции, д. 43, оф. 316</p>
+        <p class="visually-hidden">Нижний Новгород, ул. Октябрьской Революции, д. 43, оф. 316</p>
         <p class="copy">© {new Date().getFullYear()} Все права защищены</p>
       </div>
     </div>
@@ -73,6 +73,18 @@ import socials from '../../data/socials.json';
 .footer-info .copy {
   color: rgba(255,255,255,0.4);
   font-size: 0.8rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (max-width: 640px) {
