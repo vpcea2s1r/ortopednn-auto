@@ -1,10 +1,8 @@
 ---
 const navLinks = [
   { href: "/services", label: "Услуги" },
-  { href: "/blog", label: "Блог" },
-  { href: "/materials", label: "Материалы" },
-  { href: "/compare", label: "Сравнение" },
   { href: "#price", label: "Цены" },
+  { href: "/checkup", label: "Самопроверка" },
 ];
 ---
 
@@ -16,13 +14,14 @@ const navLinks = [
         <a href={link.href}>{link.label}</a>
       ))}
     </div>
+    <a href={`tel:+79202537317`} class="phone-btn">Позвонить</a>
   </div>
 </nav>
 
 <style>
 .navbar {
   background: white;
-  padding: 16px 24px;
+  padding: 12px 24px;
   box-shadow: 0 2px 10px rgba(30,58,95,0.08);
   position: sticky;
   top: 0;
@@ -38,7 +37,7 @@ const navLinks = [
 }
 
 .logo {
-  font-weight: 600;
+  font-weight: 700;
   color: #1e3a5f;
   font-size: 1.125rem;
   text-decoration: none;
@@ -46,25 +45,54 @@ const navLinks = [
 
 .nav-links {
   display: flex;
-  gap: 16px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
 .nav-links a {
-  color: #4a90d9;
+  color: #5a7a9a;
   font-weight: 500;
   transition: color 0.2s;
   text-decoration: none;
+  font-size: 0.95rem;
 }
 
 .nav-links a:hover {
-  color: #2e6ab3;
+  color: #4a90d9;
 }
 
-@media (max-width: 640px) {
+.phone-btn {
+  background: linear-gradient(135deg, #4a90d9 0%, #2e6ab3 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 10px rgba(74, 144, 217, 0.3);
+}
+
+.phone-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(74, 144, 217, 0.4);
+}
+
+@media (max-width: 768px) {
   .nav-links {
-    gap: 12px;
+    display: none;
+  }
+  .nav-container {
+    justify-content: space-between;
+  }
+  .phone-btn {
     font-size: 0.8rem;
+    padding: 6px 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .phone-btn::before {
+    content: "📞 ";
   }
 }
 </style>

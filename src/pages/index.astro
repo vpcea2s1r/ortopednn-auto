@@ -11,7 +11,7 @@ import socials from '../../data/socials.json';
 
 <BaseLayout 
   title="Никитина Марина Георгиевна | Стоматолог-ортопед в Нижнем Новгороде"
-  description="Стоматолог-ортопед Никитина М.Г. в Нижнем Новгороде. Протезирование зубов: металлокерамика, цирконий, виниры E-MAX, съемные и бюгельные протезы."
+  description="Стоматолог-ортопед Никитина М.Г. Протезирование зубов: металлокерамика, цирконий, виниры E-MAX, съёмные и бюгельные протезы."
   region="Нижний Новгород"
   doctor={doctor}
   cfToken="YOUR_CF_TOKEN"
@@ -23,6 +23,7 @@ import socials from '../../data/socials.json';
   <PriceList />
   <footer class="site-footer">
     <p>© {new Date().getFullYear()} Никитина Марина Георгиевна</p>
+    <p class="address">Работаю в компании ООО Улыбка | Нижний Новгород, ул. Октябрьской Революции, д. 43, оф. 316</p>
   </footer>
 </BaseLayout>
 
@@ -32,6 +33,14 @@ import socials from '../../data/socials.json';
   padding: 24px;
   color: #5a7a9a;
   font-size: 0.875rem;
-  background: #f8fafc;
+  background: #1e3a5f;
+  color: white;
+}
+.site-footer p {
+  margin-bottom: 8px;
+}
+.site-footer .address {
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 </style>

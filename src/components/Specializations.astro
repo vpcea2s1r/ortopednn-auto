@@ -1,40 +1,23 @@
 ---
-const specializations = [
-  { title: "Коронки", desc: "Металлокерамика, цирконий, цельно-литые", link: "/services/metallokeramika" },
-  { title: "Виниры", desc: "E-MAX, керамические накладки", link: "/services/viniry-emaks" },
-  { title: "Вкладки", desc: "Врачебные и лабораторные", link: "/services/vkladka" },
-  { title: "Съемные протезы", desc: "Акрил, нейлон, AcryFree", link: "/services/sjemny-protez" },
-  { title: "Бюгельные", desc: "На кламмерах и замках", link: "/services/byugelnyj" },
-];
-const infoLinks = [
-  { title: "Материалы коронок", desc: "Цирконий vs металлокерамика vs E-MAX", link: "/materials" },
-  { title: "Имплант или протез?", desc: "Сравнение вариантов", link: "/compare" },
-  { title: "Нужна консультация?", desc: "Проверьте себя", link: "/checkup" },
-  { title: "Блог", desc: "Статьи об уходе", link: "/blog" },
+const services = [
+  { title: "Коронки", desc: "Цирконий, металлокерамика, E-MAX", icon: "🦷", link: "/services/metallokeramika", popular: true },
+  { title: "Виниры", desc: "Эстетика улыбки", icon: "✨", link: "/services/viniry-emaks", popular: true },
+  { title: "Съёмные протезы", desc: "Акрил, AcryFree, нейлон", icon: "🫄", link: "/services/sjemny-protez" },
+  { title: "Бюгельные", desc: "На замках и кламмерах", icon: "🔩", link: "/services/byugelnyj" },
+  { title: "Ремонт", desc: "Коррекция, починка", icon: "🔧", link: "/services/korrekciya" },
 ];
 ---
 
-<section class="specializations">
+<section class="services-section">
   <div class="container">
-    <h2>Моя специализация</h2>
+    <h2>Основные услуги</h2>
     <div class="grid">
-      {specializations.map(item => (
-        <a href={item.link} class="card">
+      {services.map(item => (
+        <a href={item.link} class={`card ${item.popular ? 'popular' : ''}`}>
+          <span class="icon">{item.icon}</span>
           <h3>{item.title}</h3>
           <p>{item.desc}</p>
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
-
-<section class="info-links">
-  <div class="container">
-    <div class="grid">
-      {infoLinks.map(item => (
-        <a href={item.link} class="card info">
-          <h3>{item.title}</h3>
-          <p>{item.desc}</p>
+          {item.popular && <span class="badge-popular">Популярное</span>}
         </a>
       ))}
     </div>
@@ -42,22 +25,18 @@ const infoLinks = [
 </section>
 
 <style>
-.specializations, .info-links {
+.services-section {
   padding: 48px 0;
   background: white;
 }
 
-.info-links {
-  background: #f8fafc;
-}
-
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-.specializations h2, .info-links h2 {
+.services-section h2 {
   text-align: center;
   font-size: 1.5rem;
   color: #1e3a5f;
@@ -66,50 +45,66 @@ const infoLinks = [
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 .card {
   background: white;
   border-radius: 12px;
   padding: 24px 16px;
-  box-shadow: 0 4px 20px rgba(30, 58, 95, 0.08);
   text-align: center;
   text-decoration: none;
   transition: all 0.3s;
-  display: block;
+  box-shadow: 0 4px 20px rgba(30, 58, 95, 0.08);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 30px rgba(30, 58, 95, 0.15);
+  border-color: #4a90d9;
+}
+
+.card.popular {
+  border-color: #22c55e;
+}
+
+.card .icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
 }
 
 .card h3 {
-  color: #2e6ab3;
+  color: #1e3a5f;
   font-size: 1rem;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .card p {
   color: #5a7a9a;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 }
 
-.card.info {
-  background: linear-gradient(135deg, #e8f4fd, #f0f8ff);
-}
-
-.card.info h3 {
-  color: #4a90d9;
+.badge-popular {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #22c55e;
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
