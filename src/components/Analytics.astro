@@ -2,7 +2,19 @@
 const { ymId, gaId, cfToken } = Astro.props;
 ---
 
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfToken}"}`}></script>
+<script is:inline>
+(function(){
+  var cfToken = '{cfToken}';
+  if (!cfToken || cfToken === 'YOUR_CF_TOKEN') return;
+  
+  var script = document.createElement('script');
+  script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  script.setAttribute('data-cf-beacon', '{"token": "' + cfToken + '"}');
+  script.defer = true;
+  script.onerror = function() { console.log('Cloudflare Insights blocked'); };
+  document.head.appendChild(script);
+})();
+</script>
 
 <script is:inline>
 (function(){
