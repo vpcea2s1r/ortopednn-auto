@@ -10,15 +10,41 @@ import socials from '../../data/socials.json';
 ---
 
 <BaseLayout 
-  title="Никитина Марина Георгиевна | Стоматолог-ортопед в Нижнем Новгороде"
-  description="Стоматолог-ортопед Никитина Марина Георгиевна. Протезирование зубов: металлокерамика, цирконий, виниры E-MAX, съёмные и бюгельные протезы."
+  title="Протезирование зубов в Нижнем Новгороде | Цены на коронки, виниры, протезы | Никитина М.Г."
+  description="Протезирование зубов в Нижнем Новгороде. Стоматолог-ортопед Никитина Марина Георгиевна. Металлокерамика от 9000 ₽, цирконий, виниры E-MAX, съёмные и бюгельные протезы. Цены без скрытых платежей."
   region="Нижний Новгород"
   doctor={doctor}
   socials={socials}
 >
   <Navbar />
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <div class="container">
+      <a href="/">Главная</a>
+    </div>
+  </nav>
   <main>
     <HeroSection doctor={doctor}/>
+    <section class="about-doctor">
+      <div class="container">
+        <h2>О враче</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>Никитина Марина Георгиевна — стоматолог-ортопед с высшим медицинским образованием. Специализируется на протезировании зубов: коронки, виниры, съёмные и бюгельные протезы.</p>
+            <p>Использует современные методики и материалы. Работаю с пациентами индивидуально, подбираю оптимальное решение для каждого случая.</p>
+          </div>
+          <div class="about-services">
+            <h3>Основные направления:</h3>
+            <ul>
+              <li>Металлокерамические коронки</li>
+              <li>Циркониевые коронки</li>
+              <li>Виниры E-MAX</li>
+              <li>Съёмные протезы (акрил, AcryFree, нейлон)</li>
+              <li>Бюгельные протезы</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
     <Specializations />
     <PriceList />
   </main>
@@ -92,5 +118,76 @@ import socials from '../../data/socials.json';
     flex-direction: column;
     text-align: center;
   }
+}
+
+.about-doctor {
+  padding: 64px 24px;
+  background: white;
+}
+
+.about-doctor h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  margin-bottom: 32px;
+}
+
+.about-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.about-text p {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.about-services h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #7c3aed;
+  margin-bottom: 16px;
+}
+
+.about-services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-services li {
+  color: #374151;
+  font-size: 0.95rem;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3e8ff;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.breadcrumbs {
+  padding: 12px 24px;
+  background: white;
+  border-bottom: 1px solid #f3e8ff;
+}
+
+.breadcrumbs .container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.breadcrumbs a {
+  color: #7c3aed;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 </style>

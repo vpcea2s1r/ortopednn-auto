@@ -16,6 +16,25 @@ const doctorName = doctor?.name || 'Никитина Марина Георгие
   <meta name="geo.placename" content={region || "Нижний Новгород"}/>
   <meta name="ICBM" content="56.294,43.936"/>
   <link rel="canonical" href={`https://ortopednn.ru${Astro.url.pathname}`}/>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Никитина Марина Георгиевна",
+    "jobTitle": "Стоматолог-ортопед",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Октябрьской Революции, д. 43, оф. 316",
+      "addressLocality": "Нижний Новгород",
+      "addressRegion": "Нижегородская область",
+      "postalCode": "603000",
+      "addressCountry": "RU"
+    },
+    "telephone": "+79202537317",
+    "priceRange": "₽₽",
+    "openingHours": "Mo-Fr 09:00-19:00",
+    "areaServed": "Нижний Новгород",
+    "medicalSpecialty": "Prosthodontics"
+  })}/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
