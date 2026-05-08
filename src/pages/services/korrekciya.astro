@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Коррекция зубных протезов — Никитина М.Г."
+  description="Коррекция зубных протезов в Нижнем Новгороде. Исправление натирания, регулировка, ремонт протезов. Цена от 1500 рублей."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <a href="/services">Услуги</a>
+        <span>/</span>
+        <span>Коррекция протезов</span>
+      </div>
+    </nav>
+    
+    <article class="service-content">
+      <div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Коррекция протезов</h1>
+          <div class="service-header__price">от 1 500 ₽</div>
+        </header>
+        
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое коррекция протеза простыми словами</h2>
+            <p>Коррекция — это подгонка съёмного протеза, когда он натирает, давит или неудобно сидит. После изготовления протеза десна продолжает меняться, появляются точки давления, которые нужно сгладить.</p>
+            <p>Процедура занимает 15-30 минут. Стоматолог снимает острые края, подтачивает выступающие части, полирует поверхность. Это как обновить обувь, которая натёрла мозоль.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Когда нужна коррекция</h2>
+            <ul>
+              <li>Протез натирает десну или щёки</li>
+              <li>Появились язвочки или ранки от давления</li>
+              <li>Протез шатается или выпадает при жевании</li>
+              <li>Ощущение, что что-то мешает при разговоре</li>
+              <li>После потери ещё одного зуба нужно добавить искусственный</li>
+              <li>Протез сломался и требует ремонта</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Что происходит на коррекции</h2>
+            <p><strong>Осмотр</strong> — стоматолог смотрит, где именно натирает. Часто пациент показывает место, а причина давления находится в другом месте.</p>
+            <p><strong>Подточка</strong> — специальным бором сглаживается выступающий край или бугорок. Снимается минимальное количество пластмассы.</p>
+            <p><strong>Полировка</strong> — поверхность шлифуется до гладкости, чтобы не травмировать слизистую.</p>
+            <p><strong>Проверка</strong> — пациент надевает протез и проверяет, комфортно ли.</p>
+          </section>
+          
+          <div class="info-grid">
+            <section class="info-block info-block--pros">
+              <h3>Почему нельзя терпеть</h3>
+              <ul>
+                <li><strong>Язвы</strong> — постоянное давление вызывает натёртости, которые перерастают в болезненные язвы</li>
+                <li><strong>Воспаление</strong> — травмированная десна воспаляется, может начаться гингивит</li>
+                <li><strong>Атрофия</strong> — неправильное распределение нагрузки ускоряет убыль кости</li>
+                <li><strong>Неудобство</strong> — вы не сможете нормально есть и говорить</li>
+              </ul>
+            </section>
+            
+            <section class="info-block info-block--cons">
+              <h3>Когда обращаться</h3>
+              <ul>
+                <li><strong>Новый протез</strong> — в первые дни после получения, даже если кажется, что всё нормально</li>
+                <li><strong>Первое время</strong> — 1-2 недели привыкания, могут появиться точки давления</li>
+                <li><strong>Любое неудобство</strong> — не ждите, пока станет хуже</li>
+                <li><strong>После долгого перерыва</strong> — если не носили протез долго, он может не сесть как раньше</li>
+              </ul>
+            </section>
+          </div>
+          
+          <section class="info-section">
+            <h2>Виды коррекции</h2>
+            <p><strong>Стандартная подточка</strong> — сглаживание острых краёв и выступов. 15-20 минут.</p>
+            <p><strong>Перебазировка</strong> — добавление слоя пластмассы на внутреннюю поверхность протеза, когда десна изменилась. Нужна, если протез сидит неплотно. 30-40 минут.</p>
+            <p><strong>Ремонт</strong> — склейка сломанного протеза или добавление нового зуба. 1-2 часа.</p>
+            <p><strong>Полная переделка</strong> — если протез сильно износился или изменился прикус. Снимается новый слепок.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Что делать до визита к стоматологу</h2>
+            <ul>
+              <li><strong>Не подтачивать самим</strong> — можно испортить протез</li>
+              <li><strong>Полоскать рот</strong> — тёплый солевой раствор (1 чайная ложка на стакан)</li>
+              <li><strong>Не снимать на ночь</strong> — если натёрло, продолжайте носить, чтобы язва не появилась на новом месте</li>
+              <li><strong>Обезболить</strong> — можно использовать гель для прорезывания зубов (калгель) на язвочку</li>
+              <li><strong>Записаться на коррекцию</strong> — как можно раньше</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Сколько раз нужно корректировать</h2>
+            <p>Новый протез обычно требует 2-3 коррекции в первые недели. Это нормально — десна привыкает, меняет форму.</p>
+            <p>В среднем за срок службы (5-7 лет) может потребоваться ещё 3-5 коррекций. Это связано с естественными изменениями десны и кости.</p>
+            <p>Всё, что больше 5-7 коррекций за срок службы — повод задуматься о новом протезе.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Как избежать частых коррекций</h2>
+            <ul>
+              <li><strong>Правильное хранение</strong> — не давать протезу высыхать, не класть в горячую воду</li>
+              <li><strong>Регулярная чистка</strong> — налёт и камень меняют форму протеза</li>
+              <li><strong>Профессиональная чистка</strong> — раз в полгода у стоматолога</li>
+              <li><strong>Не жевать твёрдое</strong> — ириски, орехи, карамель деформируют пластмассу</li>
+              <li><strong>Следить за весом</strong> — потеря веса меняет форму десны</li>
+              <li><strong>Не ремонтировать дома</strong> — клей из хозяйственного магазина токсичен и портит протез</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Когда протез не спасти</h2>
+            <p><strong>Многочисленные трещины</strong> — пластмасса потеряла прочность, может сломаться в любой момент.</p>
+            <p><strong>Сильная атрофия кости</strong> — протез невозможно стабилизировать, требуется новый или импланты.</p>
+            <p><strong>Изменение прикуса</strong> — зубы стёрлись или сместились, смыкание неправильное.</p>
+            <p><strong>Неоднократные переломы</strong> — пластмасса устала, нужен новый протез.</p>
+          </section>
+        </div>
+        
+        <div class="service-cta">
+          <p>Протез натирает или сидит неудобно? Запишитесь на коррекцию.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+
+.breadcrumbs {
+  padding: var(--space-sm) 0;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+.breadcrumbs .container {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  flex-wrap: wrap;
+}
+.breadcrumbs a { color: var(--color-primary); }
+
+.service-content { padding: var(--space-3xl) 0; }
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.service-header__title {
+  font-size: var(--text-3xl);
+  color: var(--color-text);
+}
+.service-header__price {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+  color: white;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: var(--text-xl);
+}
+
+.info-section {
+  margin-bottom: var(--space-xl);
+}
+.info-section h2 {
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+.info-section p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+.info-section ul {
+  padding-left: var(--space-lg);
+}
+.info-section li {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.info-block {
+  background: white;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+.info-block h3 {
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+.info-block ul {
+  list-style: none;
+  padding: 0;
+}
+.info-block li {
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-bg);
+}
+.info-block li strong {
+  color: var(--color-text);
+}
+
+.service-cta {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-xl);
+}
+.service-cta p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+.cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+.btn--secondary {
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .service-header { flex-direction: column; }
+  .service-header__price { width: 100%; text-align: center; }
+}
+</style>
