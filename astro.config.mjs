@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
@@ -14,8 +13,7 @@ export default defineConfig({
     hover: true
   },
   integrations: [
-    sitemap(),
-    tailwind()
+    sitemap()
   ],
   image: {
     domains: ['ortopednn.ru']
