@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Съёмный протез — Никитина М.Г."
+  description="Съёмные зубные протезы в Нижнем Новгороде. Цена от 8000 рублей. Виды, показания, уход за съёмными протезами."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <a href="/services">Услуги</a>
+        <span>/</span>
+        <span>Съёмный протез</span>
+      </div>
+    </nav>
+    
+    <article class="service-content">
+      <div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Съёмный протез</h1>
+          <div class="service-header__price">от 8 000 ₽</div>
+        </header>
+        
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое съёмный протез простыми словами</h2>
+            <p>Съёмный протез — это конструкция, которую пациент может сам снимать и надевать обратно. В отличие от коронок или мостов, которые фиксируются навсегда, съёмный протез вынимается изо рта для чистки и на ночь.</p>
+            <p>Современные съёмные протезы выглядят естественно: розовая десна из мягкой пластмассы, белые зубы из керамики или пластмассы. Крепятся к оставшимся зубам крючками (кламмерами) или на импланты.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Когда применяется</h2>
+            <ul>
+              <li>Отсутствуют все зубы на одной или обеих челюстях</li>
+              <li>Отсутствует много зубов подряд, но есть оставшиеся опорные зубы</li>
+              <li>Нет возможности поставить импланты (по медицинским показаниям или финансам)</li>
+              <li>Временное решение перед имплантацией</li>
+              <li>Утрачены только несколько зубов (частичный протез)</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Виды съёмных протезов</h2>
+            <p><strong>Полный съёмный протез</strong> — применяется при отсутствии всех зубов на челюсти. Держится на десне за счёт эффекта присасывания. В верхней челюсти держится лучше, в нижней — хуже из-за формы.</p>
+            <p><strong>Частичный съёмный протез</strong> — когда есть свои зубы. Крепится к ним крючками (кламмерами) или замками (аттачментами). Более устойчив, чем полный.</p>
+            <p><strong>Бюгельный протез</strong> — металлический каркас в форме дуги (бюгель = дуга по-немецки). Более прочный и тонкий, чем пластмассовый. Распределяет жевательную нагрузку равномерно между зубами и десной.</p>
+            <p><strong>Нейлоновый протез</strong> — гибкий и мягкий, из нейлона. Незаметен, крючки из того же материала розового цвета. Но мягче пластмассы, поэтому жевать твёрдую пищу сложнее.</p>
+            <p><strong>Протез на имплантах (условно-съёмный)</strong> — на 2-4 имплантах крепится протез, который снимает только врач. Самый надёжный вариант при отсутствии зубов.</p>
+          </section>
+          
+          <div class="info-grid">
+            <section class="info-block info-block--pros">
+              <h3>Преимущества</h3>
+              <ul>
+                <li><strong>Доступная цена</strong> — самый бюджетный вариант при отсутствии зубов</li>
+                <li><strong>Не требует обточки зубов</strong> — не нужно портить здоровые зубы</li>
+                <li><strong>Ремонтопригодность</strong> — если сломался, можно починить</li>
+                <li><strong>Подходит при любом количестве зубов</strong> — даже при полном их отсутствии</li>
+                <li><strong>Быстрое изготовление</strong> — 1-2 недели от слепка до готового протеза</li>
+                <li><strong>Можно добавить зубы</strong> — если потеряли ещё один, протез дорабатывается</li>
+              </ul>
+            </section>
+            
+            <section class="info-block info-block--cons">
+              <h3>Что учитывать</h3>
+              <ul>
+                <li><strong>Натирает десну</strong> — в начале ношения, пока привыкаете (1-2 недели)</li>
+                <li><strong>Снижает вкусовые ощущения</strong> — пластмасса закрывает нёбо (верхняя челюсть)</li>
+                <li><strong>Ограничения в еде</strong> — твёрдую пищу (яблоки, орехи) жевать сложнее</li>
+                <li><strong>Подвижность</strong> — может смещаться при разговоре или еде</li>
+                <li><strong>Атрофия кости</strong> — без нагрузки челюстная кость постепенно уменьшается</li>
+                <li><strong>Крючки заметны</strong> — на передних зубах металлические кламмеры видны</li>
+                <li><strong>Срок службы 5-7 лет</strong> — потом требует замены из-за износа</li>
+              </ul>
+            </section>
+          </div>
+          
+          <section class="info-section">
+            <h2>Как привыкнуть к съёмному протезу</h2>
+            <p>Первые дни протез ощущается как инородное тело во рту. Это нормально. Начните с мягкой пищи, режьте еду мелкими кусочками, жуйте на обеих сторонах одновременно.</p>
+            <p>Для улучшения фиксации в первое время можно использовать специальный крем (Corega, Protefix). Наносится на протез тонким слоем, держит плотно 8-12 часов.</p>
+            <p>При повышенном слюноотделении — это пройдёт через неделю. При нарушении дикции — читайте вслух, произносите скороговорки. Речь восстановится за 1-2 недели.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Как ухаживать за съёмным протезом</h2>
+            <ul>
+              <li><strong>Утром и вечером</strong> — чистить протез мягкой щёткой и специальной пастой или жидким мылом</li>
+              <li><strong>После еды</strong> — полоскать рот и промывать протез под водой</li>
+              <li><strong>На ночь</strong> — можно снимать и класть в стакан с водой или специальным раствором для хранения</li>
+              <li><strong>Не кипятить</strong> — горячая вода деформирует пластмассу</li>
+              <li><strong>Не использовать абразивные пасты</strong> — царапают поверхность, где скапливаются бактерии</li>
+              <li><strong>Уронили в раковину?</strong> — подстелите полотенце или наберите воду, чтобы не разбился</li>
+              <li><strong>Крючки гнуть нельзя</strong> — при поломке обращайтесь к стоматологу</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Срок службы</h2>
+            <p>Пластмассовый протез служит 3-5 лет. Бюгельный — 5-7 лет. Нейлоновый — 2-3 года (быстрее растягивается).</p>
+            <p>Причина замены: пластмасса впитывает запахи и меняет цвет, протез разбалтывается и не прилегает плотно к десне, меняется прикус из-за атрофии кости.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Альтернативы</h2>
+            <p><strong>Импланты</strong> — дороже, но это отдельные зубы, которые выглядят и работают как свои. Не нужно снимать, не натирают, кость не атрофируется.</p>
+            <p><strong>Мостовидный протез</strong> — если есть опорные зубы по краям пробела. Делается несъёмным, но требует обточки здоровых зубов.</p>
+            <p>Если нет финансовой возможности на импланты — съёмный протез отличный вариант. Технологии шагнули далеко вперёд, современные протезы выглядят естественно и комфортно.</p>
+          </section>
+        </div>
+        
+        <div class="service-cta">
+          <p>Не знаете, какой протез выбрать? Приходите на консультацию.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+
+.breadcrumbs {
+  padding: var(--space-sm) 0;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+.breadcrumbs .container {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  flex-wrap: wrap;
+}
+.breadcrumbs a { color: var(--color-primary); }
+
+.service-content { padding: var(--space-3xl) 0; }
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.service-header__title {
+  font-size: var(--text-3xl);
+  color: var(--color-text);
+}
+.service-header__price {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+  color: white;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: var(--text-xl);
+}
+
+.info-section {
+  margin-bottom: var(--space-xl);
+}
+.info-section h2 {
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+.info-section p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+.info-section ul {
+  padding-left: var(--space-lg);
+}
+.info-section li {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.info-block {
+  background: white;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+.info-block h3 {
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+.info-block ul {
+  list-style: none;
+  padding: 0;
+}
+.info-block li {
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-bg);
+}
+.info-block li strong {
+  color: var(--color-text);
+}
+
+.service-cta {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-xl);
+}
+.service-cta p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+.cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+.btn--secondary {
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .service-header { flex-direction: column; }
+  .service-header__price { width: 100%; text-align: center; }
+}
+</style>
