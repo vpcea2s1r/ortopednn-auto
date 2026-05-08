@@ -1,19 +1,24 @@
-name: 🚀 Deploy
+name: Deploy to Cloudflare Pages
 
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: read
+      deployments: write
+
     steps:
       - uses: actions/checkout@v4
       
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
       
       - run: npm ci
       
@@ -23,8 +28,8 @@ jobs:
       
       - uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ortopednn-auto
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: f9f6e18138b25466c67363fc4c0e94c4
+          projectName: nikitina-ortoped
           directory: dist
           branch: main

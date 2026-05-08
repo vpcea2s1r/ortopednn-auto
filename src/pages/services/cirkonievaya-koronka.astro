@@ -1,0 +1,276 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Циркониевые коронки — Никитина М.Г."
+  description="Циркониевые коронки в Нижнем Новгороде. Цена от 18000 рублей. Показания, этапы, уход."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <a href="/services">Услуги</a>
+        <span>/</span>
+        <span>Циркониевые коронки</span>
+      </div>
+    </nav>
+    
+    <article class="service-content">
+      <div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Циркониевые коронки</h1>
+          <div class="service-header__price">от 18 000 ₽</div>
+        </header>
+        
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Технология</h2>
+            <p>Циркониевые коронки изготавливаются из диоксида циркония — материала, сочетающего исключительную прочность с превосходной эстетикой. Технология CAD/CAM позволяет создавать коронки с высокой точностью.</p>
+            <p>Каркас коронки вытачивается из цельного блока циркония на фрезерном станке, затем покрывается керамической массой для достижения естественного вида. Прочность циркония достигает 1200 МПа, что превышает прочность металла.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Показания к применению</h2>
+            <ul>
+              <li>Протезирование жевательных зубов</li>
+              <li>Мостовидные конструкции на 3-4 единицы</li>
+              <li>Пациенты с аллергией на металлы</li>
+              <li>Эстетическое протезирование передних зубов (цельноциркониевые)</li>
+              <li>Имплантация с немедленной нагрузкой</li>
+              <li>Замена старых металлокерамических коронок</li>
+              <li>Бруксизм (с защитной капой)</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Противопоказания</h2>
+            <ul>
+              <li>Недостаточная высота зубов для фиксации</li>
+              <li>Тяжёлые формы пародонтита</li>
+              <li>Некачественно пролеченные корневые каналы</li>
+              <li>Патология прикуса (глубокий прикус)</li>
+              <li>Некоторые виды глубокого стискивания зубов</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Этапы изготовления</h2>
+            <p><strong>Осмотр и планирование:</strong> Оценка состояния зубов, рентгеновские снимки, обсуждение плана лечения.</p>
+            <p><strong>Препарирование:</strong> Обточка зуба под будущую коронку (0.8-1.2 мм со всех сторон).</p>
+            <p><strong>Цифровое сканирование:</strong> Получение 3D-модели зубного ряда с помощью внутриротового сканера.</p>
+            <p><strong>Моделирование:</strong> Создание конструкции в специализированной программе.</p>
+            <p><strong>Фрезерование:</strong> Вытачивание каркаса из циркониевого блока.</p>
+            <p><strong>Нанесение керамики:</strong> Послойное нанесение керамической массы и спекание в печи.</p>
+            <p><strong>Примерка и фиксация:</strong> Установка готовой коронки на стоматологический цемент.</p>
+          </section>
+          
+          <div class="info-grid">
+            <section class="info-block info-block--pros">
+              <h3>Преимущества</h3>
+              <ul>
+                <li>Высочайшая прочность — выдерживают значительные нагрузки</li>
+                <li>Отличная биосовместимость — не вызывают аллергии</li>
+                <li>Естественный внешний вид, полупрозрачность как у натуральных зубов</li>
+                <li>Минимальная теплопроводность — нет чувствительности от горячего/холодного</li>
+                <li>Точность изготовления CAD/CAM технологией</li>
+                <li>Долговечность — срок службы 15-20 лет</li>
+                <li>Не окисляются и не темнеют со временем</li>
+              </ul>
+            </section>
+            
+            <section class="info-block info-block--cons">
+              <h3>Особенности и ограничения</h3>
+              <ul>
+                <li>Высокая стоимость по сравнению с металлокерамикой</li>
+                <li>Требуется значительная обточка зуба</li>
+                <li>При глубоком прикусе возможны сколы керамики</li>
+                <li>Цельноциркониевые коронки менее эстетичны для передних зубов</li>
+                <li>Высокая твёрдость может стирать противоположные зубы</li>
+              </ul>
+            </section>
+          </div>
+          
+          <section class="info-section">
+            <h2>Виды циркониевых коронок</h2>
+            <p><strong>Классические (каркасные):</strong> Циркониевый каркас + керамическое покрытие. Оптимальное сочетание прочности и эстетики.</p>
+            <p><strong>Цельноциркониевые (monolithic):</strong> Цельный цирконий без керамического покрытия. Максимальная прочность для жевательной зоны.</p>
+            <p><strong>Multi-layer (многослойные):</strong> Блоки с градиентом прозрачности от основания к режущему краю. Максимальная эстетика для передних зубов.</p>
+            <p><strong>Pre-shaded:</strong> Заранее окрашенные блоки с имитацией естественных оттенков эмали.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Уход за циркониевыми коронками</h2>
+            <ul>
+              <li>Регулярная чистка зубов два раза в день</li>
+              <li>Использование ирригатора для очистки промежутков</li>
+              <li>Избегать чрезмерно твёрдой пищи</li>
+              <li>Ночная капа при бруксизме</li>
+              <li>Профессиональная гигиена раз в 6 месяцев</li>
+              <li>Регулярные осмотры у стоматолога</li>
+              <li>Отказ от курения (влияет на цвет десны)</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Срок службы</h2>
+            <p>При соблюдении рекомендаций циркониевые коронки служат 15-20 лет и более. На долговечность влияют: качество ухода, наличие бруксизма, состояние опорных зубов и десны.</p>
+          </section>
+        </div>
+        
+        <div class="service-cta">
+          <p>Нужна консультация по циркониевым коронкам?</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+
+.breadcrumbs {
+  padding: var(--space-sm) 0;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+.breadcrumbs .container {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  flex-wrap: wrap;
+}
+.breadcrumbs a { color: var(--color-primary); }
+
+.service-content { padding: var(--space-3xl) 0; }
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.service-header__title {
+  font-size: var(--text-3xl);
+  color: var(--color-text);
+}
+.service-header__price {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+  color: white;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: var(--text-xl);
+}
+
+.info-section {
+  margin-bottom: var(--space-xl);
+}
+.info-section h2 {
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+.info-section p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+.info-section ul {
+  padding-left: var(--space-lg);
+}
+.info-section li {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.info-block {
+  background: white;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+.info-block h3 {
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+.info-block ul {
+  list-style: none;
+  padding: 0;
+}
+.info-block li {
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-bg);
+}
+
+.service-cta {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-xl);
+}
+.service-cta p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+.cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+.btn--secondary {
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .service-header { flex-direction: column; }
+  .service-header__price { width: 100%; text-align: center; }
+}
+</style>
