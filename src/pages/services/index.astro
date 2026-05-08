@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Услуги протезирования зубов" 
+  description="Услуги стоматолога-ортопеда Никитиной М.Г.: коронки, виниры, съёмные и бюгельные протезы в Нижнем Новгороде"
+  doctor={doctor} 
+  socials={socials}
+>
+  <Navbar />
+  <main class="services-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <span>Услуги</span>
+      </div>
+    </nav>
+    
+    <section class="services-content">
+      <div class="container">
+        <h1>Услуги протезирования зубов</h1>
+        <p class="services-intro">Выберите интересующую услугу для получения подробной информации.</p>
+        
+        <div class="services-grid">
+          <a href="/services/metallokeramika" class="service-card">
+            <h2>Металлокерамика</h2>
+            <p>Коронки из металла с керамическим покрытием. Прочные и эстетичные.</p>
+            <span class="service-price">от 9 000 ₽</span>
+          </a>
+          
+          <a href="/services/cirkonievaya-koronka" class="service-card">
+            <h2>Циркониевые коронки</h2>
+            <p>Безметалловая керамика. Максимальная эстетика и биосовместимость.</p>
+            <span class="service-price">от 18 000 ₽</span>
+          </a>
+          
+          <a href="/services/viniry-emaks" class="service-card">
+            <h2>Виниры E-MAX</h2>
+            <p>Тонкие керамические накладки на передние зубы для идеальной улыбки.</p>
+            <span class="service-price">от 25 000 ₽</span>
+          </a>
+          
+          <a href="/services/sjemny-protez" class="service-card">
+            <h2>Съёмные протезы</h2>
+            <p>Акриловые, AcryFree, нейлоновые. Полное или частичное протезирование.</p>
+            <span class="service-price">от 15 000 ₽</span>
+          </a>
+          
+          <a href="/services/byugelnyj" class="service-card">
+            <h2>Бюгельные протезы</h2>
+            <p>На замках и кламмерах. Удобные и эстетичные съёмные конструкции.</p>
+            <span class="service-price">от 40 000 ₽</span>
+          </a>
+          
+          <a href="/services/korrekciya" class="service-card">
+            <h2>Ремонт протезов</h2>
+            <p>Коррекция, починка, перебазировкаexisting протезов.</p>
+            <span class="service-price">от 2 000 ₽</span>
+          </a>
+        </div>
+        
+        <div class="services-cta">
+          <h2>Нужна консультация?</h2>
+          <p>Позвоните — поможем подобрать оптимальное решение для вашего случая.</p>
+          <a href="tel:+79202537317" class="btn">Позвонить</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+.services-page {
+  min-height: 100vh;
+}
+
+.breadcrumbs {
+  padding: var(--space-sm) 0;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.breadcrumbs .container {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+}
+
+.services-content {
+  padding: var(--space-3xl) 0;
+}
+
+.services-content h1 {
+  font-size: var(--text-3xl);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.services-intro {
+  text-align: center;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2xl);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.service-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.service-card h2 {
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.service-card p {
+  color: var(--color-text-muted);
+  flex-grow: 1;
+  margin-bottom: var(--space-md);
+}
+
+.service-price {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.services-cta {
+  text-align: center;
+  padding: var(--space-3xl) 0;
+  margin-top: var(--space-2xl);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+}
+
+.services-cta h2 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-md);
+}
+
+.services-cta p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 640px) {
+  .services-content {
+    padding: var(--space-xl) 0;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

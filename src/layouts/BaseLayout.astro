@@ -1,8 +1,8 @@
 ---
-import Analytics from '../components/Analytics.astro';
+import '../styles/global.css';
 
-const { title, description, region, doctor = {}, socials = [] } = Astro.props;
-const doctorName = doctor?.name || 'Никитина Марина Георгиевна';
+const { title = '', description = '', region, doctor = {}, socials = [] } = Astro.props;
+const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '...' : title;
 ---
 
 <!doctype html>
@@ -10,16 +10,28 @@ const doctorName = doctor?.name || 'Никитина Марина Георгие
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>{title}</title>
+  <title>{truncatedTitle}</title>
   <meta name="description" content={description}/>
+  
   <meta name="geo.region" content="RU-NIZHNOV"/>
   <meta name="geo.placename" content={region || "Нижний Новгород"}/>
   <meta name="ICBM" content="56.294,43.936"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
   <link rel="canonical" href={`https://ortopednn.ru${Astro.url.pathname}`}/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content={Astro.url.href}/>
+  <meta property="og:title" content={truncatedTitle}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:locale" content="ru_RU"/>
+  
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Dentist",
-    "name": "Никитина Марина Георгиевна",
+    "name": doctor.name || "Никитина Марина Георгиевна",
     "jobTitle": "Стоматолог-ортопед",
     "address": {
       "@type": "PostalAddress",
@@ -29,65 +41,12 @@ const doctorName = doctor?.name || 'Никитина Марина Георгие
       "postalCode": "603000",
       "addressCountry": "RU"
     },
-    "telephone": "+79202537317",
+    "telephone": doctor.phone || "+79202537317",
     "priceRange": "₽₽",
     "openingHours": "Mo-Fr 09:00-19:00",
     "areaServed": "Нижний Новгород",
     "medicalSpecialty": "Prosthodontics"
   })}/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <Analytics ymId="YOUR_METRIKA_ID" gaId="YOUR_GA_ID"/>
-  <style is:global>
-    :root {
-      --primary: #7c3aed;
-      --primary-dark: #5b21b6;
-      --primary-light: #ede9fe;
-      --bg: #faf5ff;
-      --bg-alt: #f5f3ff;
-      --text: #1e1b4b;
-      --text-muted: #4b5563;
-      --white: #ffffff;
-      --border: #e9d5ff;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    
-    a:focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
-    }
-    
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 24px;
-    }
-    
-    h1, h2, h3 {
-      line-height: 1.2;
-      overflow-wrap: break-word;
-    }
-  </style>
 </head>
 <body>
   <slot/>
