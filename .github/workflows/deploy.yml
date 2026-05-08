@@ -25,6 +25,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ortopednn
+          projectName: ortopednn-auto
           directory: dist
           branch: main
