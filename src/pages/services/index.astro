@@ -4,10 +4,21 @@ import Navbar from '../../components/Navbar.astro';
 
 const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
 const socials = [];
+
+const services = [
+  { slug: 'metallokeramika', title: 'Металлокерамика', desc: 'Коронки с металлическим каркасом и керамическим покрытием. Прочные и доступные.', price: 'от 9 000 ₽' },
+  { slug: 'cirkonievaya-koronka', title: 'Циркониевая коронка', desc: 'Безметалловая керамика из диоксида циркония. Максимальная эстетика.', price: 'от 18 000 ₽' },
+  { slug: 'viniry-emaks', title: 'Виниры E-MAX', desc: 'Тонкие керамические накладки для идеальной улыбки.', price: 'от 25 000 ₽' },
+  { slug: 'sjemny-protez', title: 'Съёмные протезы', desc: 'Акриловые, AcryFree, нейлоновые. Полное или частичное протезирование.', price: 'от 15 000 ₽' },
+  { slug: 'byugelnyj', title: 'Бюгельные протезы', desc: 'На замках и кламмерах. Удобные и эстетичные съёмные конструкции.', price: 'от 40 000 ₽' },
+  { slug: 'korrekciya', title: 'Ремонт протезов', desc: 'Коррекция, починка, перебазировка existing протезов.', price: 'от 2 000 ₽' },
+  { slug: 'vremennaya-koronka', title: 'Временная коронка', desc: 'Защита зуба на время изготовления permanentной конструкции.', price: 'от 1 500 ₽' },
+  { slug: 'celnolitaya-koronka', title: 'Цельнолитая коронка', desc: 'Металлическая коронка литая, без керамики. Прочность и доступность.', price: 'от 5 000 ₽' },
+];
 ---
 
 <BaseLayout 
-  title="Услуги протезирования зубов" 
+  title="Услуги протезирования зубов | Никитина М.Г."
   description="Услуги стоматолога-ортопеда Никитиной М.Г.: коронки, виниры, съёмные и бюгельные протезы в Нижнем Новгороде"
   doctor={doctor} 
   socials={socials}
@@ -28,41 +39,13 @@ const socials = [];
         <p class="services-intro">Выберите интересующую услугу для получения подробной информации.</p>
         
         <div class="services-grid">
-          <a href="/services/metallokeramika" class="service-card">
-            <h2>Металлокерамика</h2>
-            <p>Коронки из металла с керамическим покрытием. Прочные и эстетичные.</p>
-            <span class="service-price">от 9 000 ₽</span>
-          </a>
-          
-          <a href="/services/cirkonievaya-koronka" class="service-card">
-            <h2>Циркониевые коронки</h2>
-            <p>Безметалловая керамика. Максимальная эстетика и биосовместимость.</p>
-            <span class="service-price">от 18 000 ₽</span>
-          </a>
-          
-          <a href="/services/viniry-emaks" class="service-card">
-            <h2>Виниры E-MAX</h2>
-            <p>Тонкие керамические накладки на передние зубы для идеальной улыбки.</p>
-            <span class="service-price">от 25 000 ₽</span>
-          </a>
-          
-          <a href="/services/sjemny-protez" class="service-card">
-            <h2>Съёмные протезы</h2>
-            <p>Акриловые, AcryFree, нейлоновые. Полное или частичное протезирование.</p>
-            <span class="service-price">от 15 000 ₽</span>
-          </a>
-          
-          <a href="/services/byugelnyj" class="service-card">
-            <h2>Бюгельные протезы</h2>
-            <p>На замках и кламмерах. Удобные и эстетичные съёмные конструкции.</p>
-            <span class="service-price">от 40 000 ₽</span>
-          </a>
-          
-          <a href="/services/korrekciya" class="service-card">
-            <h2>Ремонт протезов</h2>
-            <p>Коррекция, починка, перебазировкаexisting протезов.</p>
-            <span class="service-price">от 2 000 ₽</span>
-          </a>
+          {services.map(item => (
+            <a href={`/services/${item.slug}`} class="service-card">
+              <h2>{item.title}</h2>
+              <p>{item.desc}</p>
+              <span class="service-price">{item.price}</span>
+            </a>
+          ))}
         </div>
         
         <div class="services-cta">
@@ -76,29 +59,21 @@ const socials = [];
 </BaseLayout>
 
 <style>
-.services-page {
-  min-height: 100vh;
-}
+.services-page { min-height: 100vh; }
 
 .breadcrumbs {
   padding: var(--space-sm) 0;
   background: white;
   border-bottom: 1px solid var(--color-border);
 }
-
 .breadcrumbs .container {
   display: flex;
   gap: var(--space-sm);
   font-size: var(--text-sm);
 }
+.breadcrumbs a { color: var(--color-primary); }
 
-.breadcrumbs a {
-  color: var(--color-primary);
-}
-
-.services-content {
-  padding: var(--space-3xl) 0;
-}
+.services-content { padding: var(--space-3xl) 0; }
 
 .services-content h1 {
   font-size: var(--text-3xl);
@@ -133,6 +108,7 @@ const socials = [];
   border-color: var(--color-primary);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+  text-decoration: none;
 }
 
 .service-card h2 {
@@ -187,14 +163,11 @@ const socials = [];
 .btn:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
+  text-decoration: none;
 }
 
 @media (max-width: 640px) {
-  .services-content {
-    padding: var(--space-xl) 0;
-  }
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+  .services-content { padding: var(--space-xl) 0; }
+  .services-grid { grid-template-columns: 1fr; }
 }
 </style>

@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Металлокерамическая коронка — Никитина М.Г."
+  description="Металлокерамическая коронка в Нижнем Новгороде. Цена от 9000 рублей. Технология, показания, уход."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <a href="/services">Услуги</a>
+        <span>/</span>
+        <span>Металлокерамическая коронка</span>
+      </div>
+    </nav>
+    
+    <article class="service-content">
+      <div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Металлокерамическая коронка</h1>
+          <div class="service-header__price">от 9 000 ₽</div>
+        </header>
+        
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Технология</h2>
+            <p>Металлокерамическая коронка — это зубная коронка с каркасом из сплава кобальт-хром и внешним покрытием из керамики (фарфора). Такая конструкция обеспечивает высокую прочность и приемлемую эстетику.</p>
+            <p>Каркас из металла обеспечивает долговечность, а керамическое покрытие имитирует цвет и текстуру натурального зуба. Это проверенный временем метод, который широко используется в стоматологии уже более 50 лет.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Показания к применению</h2>
+            <ul>
+              <li>Сильно разрушенные зубы с большими пломбами</li>
+              <li>Зубы после лечения корневых каналов (депульпированные)</li>
+              <li>Необходимость изготовления мостовидных протезов</li>
+              <li>Достаточная высота зуба для препарирования (обточки)</li>
+              <li>Пациенты с ограниченным бюджетом, желающие получить надёжный результат</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Противопоказания</h2>
+            <ul>
+              <li>Аллергия на металлы (кобальт, хром, никель)</li>
+              <li>Бруксизм (скрежетание зубами) — требуется защитная капа</li>
+              <li>Недостаточная высота культи зуба</li>
+              <li>Пациенты с высокими эстетическими требованиями (рекомендуются безметалловые коронки)</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Как проходит процесс</h2>
+            <p><strong>Консультация:</strong> Осмотр, рентген, обсуждение плана лечения.</p>
+            <p><strong>Препарирование:</strong> Обточка зуба на толщину 1.5-2 мм со всех сторон. Процедура проводится под местной анестезией.</p>
+            <p><strong>Снятие слепков:</strong> Используются силиконовые массы для точного оттиска.</p>
+            <p><strong>Временная коронка:</strong> На время изготовления permanentной коронки устанавливается временная (1-2 недели).</p>
+            <p><strong>Примерка и фиксация:</strong> Готовая коронка примеряется и фиксируется на специальный цемент.</p>
+          </section>
+          
+          <div class="info-grid">
+            <section class="info-block info-block--pros">
+              <h3>Преимущества</h3>
+              <ul>
+                <li>Высокая прочность — выдерживает большие жевательные нагрузки</li>
+                <li>Доступная цена по сравнению с безметалловыми коронками</li>
+                <li>Хорошая биосовместимость при правильном выборе сплава</li>
+                <li>Долговечность — срок службы 10-15 лет при правильном уходе</li>
+                <li>Ремонтопригодность — можно корректировать прямо в полости рта</li>
+              </ul>
+            </section>
+            
+            <section class="info-block info-block--cons">
+              <h3>Особенности</h3>
+              <ul>
+                <li>Металлический каркас может просвечивать через керамику</li>
+                <li>Возможна аллергия на металлы (кобальт-хром)</li>
+                <li>Со временем возможно появление тёмной линии у десны</li>
+                <li>Требуется значительное препарирование (обточка) зуба</li>
+                <li>Не рекомендуется для передних зубов при высоких эстетических требованиях</li>
+              </ul>
+            </section>
+          </div>
+          
+          <section class="info-section">
+            <h2>Источники информации</h2>
+            <ul class="sources">
+              <li>Journal of Prosthodontics, 2021 — исследование долговечности металлокерамических коронок (10-летнее наблюдение)</li>
+              <li>PubMed PMID: 31875238 — анализ клинических результатов металлокерамических коронок</li>
+              <li>International Journal of Oral Science — сравнение материалов для зубных коронок</li>
+              <li>The Journal of Prosthetic Dentistry — влияние типа сплава на долговечность коронок</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Уход за металлокерамической коронкой</h2>
+            <ul>
+              <li>Чистка зубов два раза в день мягкой щёткой</li>
+              <li>Использование ирригатора для очистки области коронки и десны</li>
+              <li>Избегать чрезмерно твёрдой пищи (орехи, леденцы, кости)</li>
+              <li>Не использовать зубы для открывания упаковок</li>
+              <li>Регулярные осмотры у стоматолога каждые 6 месяцев</li>
+              <li>Профессиональная чистка зубов раз в год</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Срок службы</h2>
+            <p>При правильном уходе и соблюдении рекомендаций стоматолога металлокерамическая коронка служит 10-15 лет. На срок службы влияют: качество гигиены, наличие бруксизма, состояние десны вокруг коронки.</p>
+          </section>
+        </div>
+        
+        <div class="service-cta">
+          <p>Хотите узнать больше о металлокерамических коронках?</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+
+.breadcrumbs {
+  padding: var(--space-sm) 0;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+.breadcrumbs .container {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  flex-wrap: wrap;
+}
+.breadcrumbs a { color: var(--color-primary); }
+
+.service-content { padding: var(--space-3xl) 0; }
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.service-header__title {
+  font-size: var(--text-3xl);
+  color: var(--color-text);
+}
+.service-header__price {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+  color: white;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: var(--text-xl);
+}
+
+.service-body { }
+
+.info-section {
+  margin-bottom: var(--space-xl);
+}
+.info-section h2 {
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+.info-section p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+.info-section ul {
+  padding-left: var(--space-lg);
+}
+.info-section li {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.info-block {
+  background: white;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+.info-block h3 {
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+.info-block ul {
+  list-style: none;
+  padding: 0;
+}
+.info-block li {
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-bg);
+}
+
+.sources {
+  background: var(--color-bg-alt);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+}
+.sources li {
+  font-size: var(--text-sm);
+}
+
+.service-cta {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-xl);
+}
+.service-cta p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+.cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+.btn--secondary {
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .service-header { flex-direction: column; }
+  .service-header__price { width: 100%; text-align: center; }
+}
+</style>
