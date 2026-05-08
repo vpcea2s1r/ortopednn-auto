@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Прототип зубов — Никитина М.Г."
+  description="Прототипы зубов в Нижнем Новгороде. Восковая моделировка и Mock-up для визуализации будущих зубов. Цена от 1500 рублей."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <a href="/services">Услуги</a>
+        <span>/</span>
+        <span>Прототип зубов</span>
+      </div>
+    </nav>
+    
+    <article class="service-content">
+      <div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Прототип зубов</h1>
+          <div class="service-header__price">от 1 500 ₽</div>
+        </header>
+        
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое прототип зубов простыми словами</h2>
+            <p>Прототип зубов — это временная конструкция из воска или пластмассы, которая показывает, как будут выглядеть ваши будущие зубы. Это как "примерка" улыбки до начала серьёзного лечения.</p>
+            <p>Вы приходите к стоматологу, вам делают слепок, а через день-два вы уже смотрите в зеркало на новую улыбку. Можно потрогать языком, сфотографироваться, показать семье и решить — нравится или нужно что-то изменить.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Зачем нужен прототип</h2>
+            <ul>
+              <li><strong>Увидеть результат заранее</strong> — не ждать месяцы, чтобы понять, как будут выглядеть зубы</li>
+              <li><strong>Внести изменения</strong> — попросить сделать зубы чуть крупнее, мельче, белее</li>
+              <li><strong>Привыкнуть</strong> — несколько дней походить с прототипом и понять, удобно ли</li>
+              <li><strong>Оценить функцию</strong> — проверить, как вы говорите, едите, улыбаетесь</li>
+              <li><strong>Убедить себя</strong> — для тех, кто сомневается, прототип помогает принять решение</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Когда используется</h2>
+            <p><strong>Перед винирами</strong> — особенно важно для передних зубов. Вы видите форму и цвет до того, как зубы обточат.</p>
+            <p><strong>Перед коронками</strong> — особенно в эстетической зоне (верхние передние зубы).</p>
+            <p><strong>При имплантации</strong> — планирование формы десны и зубов на имплантах.</p>
+            <p><strong>Полная реабилитация</strong> — при тотальном протезировании всего зубного ряда.</p>
+            <p><strong>Съёмные протезы</strong> — можно примерить форму и размер зубов до изготовления.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Как это работает</h2>
+            <p><strong>1. Обсуждение</strong> — вы рассказываете, что хотите. Врач показывает фотографии, обсуждает форму и цвет.</p>
+            <p><strong>2. Снятие слепков</strong> — или цифровое сканирование зубов.</p>
+            <p><strong>3. Моделирование</strong> — техник или врач моделирует зубы в воске на модели. Это занимает 1-2 часа.</p>
+            <p><strong>4. Перенос в рот</strong> — с помощью силиконового ключа восковая модель переносится в ваш рот.</p>
+            <p><strong>5. Фиксация</strong> — прототип крепится на временный цемент или просто прилегает к зубам.</p>
+            <p><strong>6. Оценка</strong> — вы смотрите в зеркало, фотографируетесь, едите, говорите.</p>
+            <p><strong>7. Корректировка</strong> — при необходимости вносим изменения и делаем новый прототип.</p>
+          </section>
+          
+          <div class="info-grid">
+            <section class="info-block info-block--pros">
+              <h3>Преимущества</h3>
+              <ul>
+                <li><strong>Видите результат</strong> — до начала лечения, без обточки зубов</li>
+                <li><strong>Можно менять</strong> — сколько угодно вариантов, пока не понравится</li>
+                <li><strong>Уверенность</strong> — точно знаете, что получите</li>
+                <li><strong>Низкая стоимость</strong> — дешевле переделывать готовые коронки</li>
+                <li><strong>Комфорт</strong> — пробуете дома в привычной обстановке</li>
+                <li><strong>Быстро</strong> — результат через 1-2 дня</li>
+              </ul>
+            </section>
+            
+            <section class="info-block info-block--cons">
+              <h3>Что учитывать</h3>
+              <ul>
+                <li><strong>Временность</strong> — прототип не рассчитан на долгое ношение</li>
+                <li><strong>Хрупкость</strong> — восковая модель легко повреждается</li>
+                <li><strong>Не фиксируется</strong> — может смещаться при еде</li>
+                <li><strong>Не точная копия</strong> — итоговый результат может немного отличаться</li>
+              </ul>
+            </section>
+          </div>
+          
+          <section class="info-section">
+            <h2>Виды прототипов</h2>
+            <p><strong>Восковый mock-up</strong> — самый простой и быстрый. Воск наносится на зубы, моделируется форма. Хрупкий, но позволяет быстро оценить форму.</p>
+            <p><strong>Пластмассовый прототип</strong> — более прочный, можно носить дольше. Делается в лаборатории по восковой модели.</p>
+            <p><strong>Digital wax-up</strong> — цифровое моделирование на компьютере. Можно увидеть на экране и даже "примерить" с помощью AR.</p>
+            <p><strong>Пробная улыбка (Smile test drive)</strong> — композитный материал наносится на зубы и корректируется прямо во рту. Можно поносить несколько дней.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Сколько стоит носить</h2>
+            <p>Стандартный прототип носят 3-7 дней. Этого достаточно, чтобы привыкнуть и понять, всё ли устраивает.</p>
+            <p>При тотальном протезировании можно носить дольше — 2-4 недели. Это позволяет адаптироваться к новой высоте прикуса.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Что дальше</h2>
+            <p>Когда прототип одобрен, начинается основное лечение. Форма прототипа сканируется или используется как основа для изготовления постоянных конструкций.</p>
+            <p>Прототип экономит время и деньги — вы точно знаете результат и не переделываете готовые работы.</p>
+          </section>
+        </div>
+        
+        <div class="service-cta">
+          <p>Хотите увидеть свою будущую улыбку? Запишитесь на консультацию.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>
