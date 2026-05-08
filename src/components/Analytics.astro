@@ -2,7 +2,7 @@
 const { ymId, gaId, cfToken } = Astro.props;
 ---
 
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "2e297eecf808d6421081d9709cb6cbf6", " zoneId": "2e297eecf808d6421081d9709cb6cbf6"}`}></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfToken}"}`}></script>
 
 <script is:inline>
 (function(){
@@ -24,21 +24,5 @@ const { ymId, gaId, cfToken } = Astro.props;
       document.head.appendChild(s);
     }
   }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('cookie-banner')) return;
-    
-    const b = document.createElement('div');
-    b.id = 'cookie-banner';
-    b.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#fff;padding:1rem;z-index:9999;display:flex;gap:1rem;align-items:center;';
-    b.innerHTML = `<p>🍪 Cookie для анализа (Яндекс Метрика, Google Analytics, Cloudflare)</p><button id="accept" style="background:#0284c7;color:#fff;border:none;padding:0.5rem 1rem;border-radius:6px;cursor:pointer">Принять</button>`;
-    document.body.appendChild(b);
-    
-    document.getElementById('accept').onclick = () => {
-      localStorage.setItem(CONSENT_KEY, 'accepted');
-      b.remove();
-      location.reload();
-    };
-  });
 })();
 </script>
