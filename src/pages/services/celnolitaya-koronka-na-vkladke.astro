@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Цельнолитая коронка на вкладке — Никитина М.Г."
+  description="Цельнолитая коронка на вкладке в Нижнем Новгороде. Прочная металлическая конструкция на основе лабораторной вкладки. Цена от 8200 рублей."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <a href="/services">Услуги</a>
+        <span>/</span>
+        <span>Цельнолитая коронка на вкладке</span>
+      </div>
+    </nav>
+    
+    <article class="service-content">
+      <div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Цельнолитая коронка на вкладке</h1>
+          <div class="service-header__price">от 8 200 ₽</div>
+        </header>
+        
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что это такое простыми словами</h2>
+            <p>Цельнолитая коронка на вкладке — это металлическая коронка, которая ставится не на обточенный зуб, а на литую вкладку. Вкладка заменяет разрушенную часть зуба и обеспечивает прочную основу для коронки.</p>
+            <p>Это решение для зубов с сильным разрушением, когда пломба не выдержит, но корень здоров.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Когда нужна</h2>
+            <ul>
+              <li>Зуб разрушен более чем на 50%</li>
+              <li>После лечения каналов, когда стенки зуба тонкие</li>
+              <li>Скол зуба ниже уровня десны</li>
+              <li>Опора для мостовидного протеза</li>
+              <li>Альтернатива удалению зуба</li>
+            </ul>
+          </section>
+          
+          <div class="info-grid">
+            <section class="info-block info-block--pros">
+              <h3>Преимущества</h3>
+              <ul>
+                <li><strong>Прочность</strong> — литая конструкция выдерживает любую нагрузку</li>
+                <li><strong>Долговечность</strong> — служит 15-20 лет</li>
+                <li><strong>Сохранение зуба</strong> — не нужно удалять корень</li>
+                <li><strong>Точность</strong> — идеальное прилегание вкладки к зубу</li>
+                <li><strong>Стоимость</strong> — дешевле циркониевых конструкций</li>
+              </ul>
+            </section>
+            
+            <section class="info-block info-block--cons">
+              <h3>Что учитывать</h3>
+              <ul>
+                <li><strong>Внешний вид</strong> — металл заметен, не для передних зубов</li>
+                <li><strong>Аллергия</strong> — возможна реакция на металл</li>
+                <li><strong>Сроки</strong> — требует 2-3 визита</li>
+                <li><strong>Обточка</strong> — нужно обработать зуб под вкладку</li>
+              </ul>
+            </section>
+          </div>
+          
+          <section class="info-section">
+            <h2>Как делается</h2>
+            <p><strong>1. Подготовка</strong> — лечение каналов, установка штифтов.</p>
+            <p><strong>2. Обточка</strong> — формирование полости под вкладку.</p>
+            <p><strong>3. Слепок</strong> — снятие слепка для лаборатории.</p>
+            <p><strong>4. Изготовление вкладки</strong> — литьё металлической вкладки.</p>
+            <p><strong>5. Изготовление коронки</strong> — коронка отливается на вкладку.</p>
+            <p><strong>6. Фиксация</strong> — вкладка и коронка цементируются.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Разборная вкладка</h2>
+            <p>Если корни зуба сильно расходятся, используется разборная вкладка — её части вводятся в каналы под углом и затем собираются. Это сложная, но очень надёжная конструкция.</p>
+          </section>
+        </div>
+        
+        <div class="service-cta">
+          <p>Нужна консультация?</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

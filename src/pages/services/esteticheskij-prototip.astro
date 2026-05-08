@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout 
+  title="Эстетический прототип — Никитина М.Г."
+  description="Эстетические прототипы зубов в Нижнем Новгороде. Восковая моделировка и Mock-up для планирования протезирования. Цена от 1500 рублей."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="container">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <a href="/services">Услуги</a>
+        <span>/</span>
+        <span>Эстетический прототип</span>
+      </div>
+    </nav>
+    
+    <article class="service-content">
+      <div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Эстетический прототип</h1>
+          <div class="service-header__price">от 1 500 ₽</div>
+        </header>
+        
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое эстетический прототип простыми словами</h2>
+            <p>Эстетический прототип — это временная конструкция из воска или пластмассы, которая показывает, как будут выглядеть будущие зубы. Это как "примерка" улыбки до начала лечения.</p>
+            <p>Прототип крепится во рту на несколько дней, и вы можете оценить форму, цвет и размер зубов, покачать головой, сфотографироваться, посмотреть в зеркало и решить, всё ли устраивает.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Зачем нужен</h2>
+            <ul>
+              <li><strong>Увидеть результат заранее</strong> — понять, как будут выглядеть новые зубы</li>
+              <li><strong>Внести изменения</strong> — скорректировать форму и размер до изготовления</li>
+              <li><strong>Привыкнуть</strong> — несколько дней носить прототип и привыкнуть к новой улыбке</li>
+              <li><strong>Показать результат</strong> — показать семье и друзьям</li>
+              <li><strong>Оценить функцию</strong> — проверить, удобно ли жевать и говорить</li>
+            </ul>
+          </section>
+          
+          <section class="info-section">
+            <h2>Как делается</h2>
+            <p><strong>1. Планирование</strong> — обсуждение пожеланий, подбор формы и цвета.</p>
+            <p><strong>2. Снятие слепков</strong> — или цифровое сканирование.</p>
+            <p><strong>3. Моделирование</strong> — техник или врач моделирует зубы в воске на модели.</p>
+            <p><strong>4. Перенос в полость рта</strong> — силиконовый ключ помогает перенести восковую модель в рот.</p>
+            <p><strong>5. Фиксация</strong> — прототип крепится на временный цемент.</p>
+          </section>
+          
+          <div class="info-grid">
+            <section class="info-block info-block--pros">
+              <h3>Преимущества</h3>
+              <ul>
+                <li><strong>Видите результат</strong> — до начала лечения</li>
+                <li><strong>Корректировка</strong> — можно изменить форму и размер</li>
+                <li><strong>Уверенность</strong> — знаете, что получите</li>
+                <li><strong>Комфортная коррекция</strong> — пробуете дома</li>
+                <li><strong>Быстро</strong> — делается за 1-2 дня</li>
+                <li><strong>Низкая стоимость</strong> — дешевле переделывать готовые коронки</li>
+              </ul>
+            </section>
+            
+            <section class="info-block info-block--cons">
+              <h3>Что учитывать</h3>
+              <ul>
+                <li><strong>Временность</strong> — прототип не прочный, это временная конструкция</li>
+                <li><strong>Привыкание</strong> — несколько дней адаптации</li>
+                <li><strong>Точность</strong> — итоговый результат может немного отличаться</li>
+              </ul>
+            </section>
+          </div>
+          
+          <section class="info-section">
+            <h2>Виды прототипов</h2>
+            <p><strong>Восковый mock-up</strong> — моделирование в воске на модели. Быстро, но хрупко.</p>
+            <p><strong>Пластмассовый прототип</strong> — более прочный, можно носить дольше.</p>
+            <p><strong>Digital wax-up</strong> — цифровое моделирование, можно увидеть на экране.</p>
+          </section>
+          
+          <section class="info-section">
+            <h2>Применение</h2>
+            <p><strong>Виниры</strong> — особенно перед винирами прототип помогает понять, как они будут выглядеть.</p>
+            <p><strong>Коронки</strong> — для эстетической зоны.</p>
+            <p><strong>Импланты</strong> — планирование формы десны и зубов.</p>
+            <p><strong>Полная реабилитация</strong> — при тотальном протезировании.</p>
+          </section>
+        </div>
+        
+        <div class="service-cta">
+          <p>Хотите увидеть свою будущую улыбку?</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>
