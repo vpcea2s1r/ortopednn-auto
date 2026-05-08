@@ -9,8 +9,10 @@ const doctor = {
 
 <section class="price-section" id="price">
   <div class="container">
-    <h2>Цены</h2>
-    <p class="subtitle">Фиксированные цены без скрытых платежей</p>
+    <header class="price-header">
+      <h2>Цены</h2>
+      <p class="subtitle">Фиксированные цены без скрытых платежей</p>
+    </header>
     
     <div class="price-grid">
       {pricing.map(section => (
@@ -47,17 +49,16 @@ const doctor = {
 
 <style>
 .price-section {
-  padding: 64px 24px;
+  padding: 64px 0;
   background: #faf5ff;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
+.price-header {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.price-section h2 {
-  text-align: center;
+.price-header h2 {
   font-size: 2rem;
   font-weight: 800;
   color: #1e1b4b;
@@ -65,9 +66,7 @@ const doctor = {
 }
 
 .subtitle {
-  text-align: center;
-  color: #6b7280;
-  margin-bottom: 40px;
+  color: #4b5563;
 }
 
 .price-grid {
@@ -128,7 +127,7 @@ const doctor = {
 
 .note {
   text-align: center;
-  color: #9ca3af;
+  color: #6b7280;
   font-size: 0.875rem;
   margin-top: 32px;
 }
@@ -173,8 +172,20 @@ const doctor = {
 }
 
 @media (max-width: 640px) {
+  .price-section {
+    padding: 48px 0;
+  }
+  .price-header h2 {
+    font-size: 1.5rem;
+  }
   .price-grid {
     grid-template-columns: 1fr;
+  }
+  .cta-section {
+    padding: 64px 16px;
+  }
+  .cta-section h2 {
+    font-size: 1.5rem;
   }
 }
 </style>

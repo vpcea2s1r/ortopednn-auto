@@ -47,7 +47,7 @@ const doctorName = doctor?.name || 'Никитина Марина Георгие
       --bg: #faf5ff;
       --bg-alt: #f5f3ff;
       --text: #1e1b4b;
-      --text-muted: #6b7280;
+      --text-muted: #4b5563;
       --white: #ffffff;
       --border: #e9d5ff;
     }
@@ -69,6 +69,23 @@ const doctorName = doctor?.name || 'Никитина Марина Георгие
     a {
       color: var(--primary);
       text-decoration: none;
+    }
+    
+    a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px;
+    }
+    
+    h1, h2, h3 {
+      line-height: 1.2;
+      overflow-wrap: break-word;
     }
   </style>
 </head>

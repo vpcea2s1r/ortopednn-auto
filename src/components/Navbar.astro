@@ -26,7 +26,7 @@ const navLinks = [
 <style>
 .navbar {
   background: white;
-  padding: 12px 24px;
+  padding: 12px 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
@@ -36,6 +36,7 @@ const navLinks = [
 .nav-container {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +45,7 @@ const navLinks = [
 .logo {
   font-weight: 800;
   color: #1e1b4b;
-  font-size: 1.125rem;
+  font-size: 1rem;
   text-decoration: none;
 }
 
@@ -54,7 +55,7 @@ const navLinks = [
 }
 
 .nav-links a {
-  color: #6b7280;
+  color: #4b5563;
   font-weight: 500;
   text-decoration: none;
   font-size: 0.95rem;
@@ -92,11 +93,16 @@ const navLinks = [
 }
 
 @media (max-width: 480px) {
-  .phone-btn span:not(svg) {
-    display: none;
+  .logo {
+    font-size: 0.85rem;
   }
-  .phone-btn::after {
-    content: "Звонок";
+  .phone-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  .phone-btn svg {
+    width: 16px;
+    height: 16px;
   }
 }
 </style>

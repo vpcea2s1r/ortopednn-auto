@@ -69,7 +69,7 @@ const doctor = Astro.props.doctor;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #1e1b4b;
   margin-bottom: 12px;
@@ -78,7 +78,7 @@ const doctor = Astro.props.doctor;
 
 .subtitle {
   font-size: 1.125rem;
-  color: #6b7280;
+  color: #4b5563;
   margin-bottom: 32px;
 }
 
@@ -87,23 +87,25 @@ const doctor = Astro.props.doctor;
   justify-content: center;
   gap: 48px;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 150px;
 }
 
 .stat .num {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: #7c3aed;
 }
 
 .stat .label {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #4b5563;
   margin-top: 4px;
 }
 
@@ -188,20 +190,39 @@ const doctor = Astro.props.doctor;
   right: 20%;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 768px) {
   .hero h1 {
-    font-size: 2rem;
-  }
-  .hero-stats {
-    gap: 32px;
+    font-size: 3rem;
   }
   .stat .num {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: white;
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: auto;
+    padding: 48px 16px;
+  }
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .hero-stats {
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .stat {
+    min-width: 120px;
+  }
+  .stat .num {
+    font-size: 1rem;
   }
   .hero-actions {
     flex-direction: column;
+    width: 100%;
   }
   .btn-primary, .btn-secondary {
     width: 100%;

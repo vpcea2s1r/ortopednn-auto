@@ -63,44 +63,6 @@ import socials from '../../data/socials.json';
 </BaseLayout>
 
 <style>
-.footer {
-  background: #1e1b4b;
-  padding: 48px 24px;
-}
-
-.footer-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-
-.footer-brand .logo {
-  font-weight: 800;
-  color: white;
-  font-size: 1.25rem;
-}
-
-.footer-brand p {
-  color: rgba(255,255,255,0.6);
-  font-size: 0.875rem;
-  margin-top: 4px;
-}
-
-.footer-info p {
-  color: rgba(255,255,255,0.8);
-  font-size: 0.9rem;
-  margin-bottom: 4px;
-}
-
-.footer-info .copy {
-  color: rgba(255,255,255,0.4);
-  font-size: 0.8rem;
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -113,15 +75,8 @@ import socials from '../../data/socials.json';
   border: 0;
 }
 
-@media (max-width: 640px) {
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
 .about-doctor {
-  padding: 64px 24px;
+  padding: 64px 0;
   background: white;
 }
 
@@ -134,8 +89,6 @@ import socials from '../../data/socials.json';
 }
 
 .about-content {
-  max-width: 1000px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
@@ -167,6 +120,57 @@ import socials from '../../data/socials.json';
   border-bottom: 1px solid #f3e8ff;
 }
 
+.breadcrumbs {
+  padding: 12px 0;
+  background: white;
+  border-bottom: 1px solid #f3e8ff;
+}
+
+.breadcrumbs a {
+  color: #7c3aed;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.footer {
+  background: #1e1b4b;
+  padding: 48px 0;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand .logo {
+  font-weight: 800;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.footer-brand p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.footer-info p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.footer-info .copy {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.8rem;
+}
+
 @media (max-width: 768px) {
   .about-content {
     grid-template-columns: 1fr;
@@ -174,20 +178,16 @@ import socials from '../../data/socials.json';
   }
 }
 
-.breadcrumbs {
-  padding: 12px 24px;
-  background: white;
-  border-bottom: 1px solid #f3e8ff;
-}
-
-.breadcrumbs .container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.breadcrumbs a {
-  color: #7c3aed;
-  font-size: 0.875rem;
-  font-weight: 500;
+@media (max-width: 640px) {
+  .about-doctor {
+    padding: 48px 0;
+  }
+  .about-doctor h2 {
+    font-size: 1.5rem;
+  }
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 </style>
