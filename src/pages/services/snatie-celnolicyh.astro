@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Снятие цельнолитых коронок | Никитина М.Г." description="Снятие цельнолитых коронок из кобальт-хрома и других сплавов. Цена 1 000 руб." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Снятие цельнолитых коронок</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Снятие цельнолитых коронок</h1>
+          <div class="service-header__price">1 000 ₽</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое цельнолитая коронка</h2>
+            <p>Цельнолитые коронки изготавливаются литьём из кобальт-хромового или никель-хромового сплава. Они прочнее штампованных, имеют большую толщину стенок и более плотно прилегают к зубу.</p>
+            <p>Снятие цельнолитых коронок сложнее, чем штампованных, из-за более плотной фиксации. Требуется большее усилие и иногда специальное оборудование.</p>
+          </section>
+          <section class="info-section">
+            <h2>Показания к снятию</h2>
+            <ul>
+              <li>Замена на металлокерамику или цирконий</li>
+              <li>Необходимость лечения зуба</li>
+              <li>Перелом или скол коронки</li>
+              <li>Нарушение цвета десны (цианоз)</li>
+              <li>Плановая замена по сроку службы</li>
+              <li>Необходимость перебазировки</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Методы снятия</h2>
+            <p><strong>Коронкосниматель с крюком:</strong> базовый метод. Крюк заводится под край, рычагом создаётся усилие. Для крепкой фиксации может потребоваться несколько попыток.</p>
+            <p><strong>Ультразвуковой аппарат:</strong> УЗ-колебания разрушают цементную линию. Процедура безболезненна и атравматична. Может потребоваться 5-15 минут.</p>
+            <p><strong>Коронкосниматель с толчковым механизмом:</strong> пружинный или пневматический инструмент. Создаёт резкий толчок, разрушающий цемент.</p>
+            <p><strong>Распил:</strong> в крайнем случае коронку распиливают алмазным диском. Коронка при этом не сохраняется.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Важно знать</h3><ul>
+              <li><strong>Прочность сплава</strong> — Co-Cr прочнее Ni-Cr, труднее снимать</li>
+              <li><strong>Сохранность</strong> — коронку можно использовать повторно (если не распилена)</li>
+              <li><strong>Цена</strong> — выше, чем для штампованных, из-за сложности</li>
+              <li><strong>Время</strong> — от 3 до 15 минут в зависимости от метода</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Возможные сложности</h3><ul>
+              <li><strong>Прочная фиксация</strong> — некоторые коронки снять очень трудно</li>
+              <li><strong>Риск скола</strong> — при неправильной технике</li>
+              <li><strong>Распил</strong> — иногда это единственный вариант</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Что делать после снятия</h2>
+            <p><strong>Оценка зуба:</strong> осмотр на предмет кариеса, трещин, состояния культи.</p>
+            <p><strong>Лечение:</strong> при необходимости — лечение каналов, реставрация.</p>
+            <p><strong>Новая коронка:</strong> изготовление и фиксация новой конструкции.</p>
+            <p>Исследования показывают, что большинство цельно-литых коронок можно снять без распила при правильной технике и терпении.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

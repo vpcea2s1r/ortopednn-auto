@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Армирование протеза | Никитина М.Г." description="Армирование съёмного протеза — усиление металлической сеткой для прочности. Цена 6 060 руб." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Армирование протеза</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Армирование протеза</h1>
+          <div class="service-header__price">6 060 ₽</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое армирование</h2>
+            <p>Армирование — это включение металлической или полимерной арматуры в базис съёмного протеза для повышения его прочности и устойчивости к переломам.</p>
+            <p>Армирующий элемент (сетка, стержень, волокно) распределяет нагрузку и предотвращает распространение трещин. Это значительно увеличивает срок службы протеза.</p>
+          </section>
+          <section class="info-section">
+            <h2>Когда применяется</h2>
+            <ul>
+              <li>Длинные базисы (высокий риск перелома)</li>
+              <li>Пациенты с бруксизмом</li>
+              <li>Высокая жевательная нагрузка</li>
+              <li>Пациенты с ограниченной ловкостью (высокий риск падения)</li>
+              <li>После перелома протеза (профилактика повторного)</li>
+              <li>При протезировании на имплантатах</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Виды армирования</h2>
+            <p><strong>Металлическая сетка:</strong> классический вариант. Кобальт-хромовая или нержавеющая сталь. Высокая прочность, хорошая фиксация в акриле.</p>
+            <p><strong>Стекловолокно:</strong> современный эстетичный вариант. Цвет близок к акрилу, менее заметен. Прочность достаточна для большинства случаев.</p>
+            <p><strong>Углеволокно:</strong> высокопрочный современный материал. Используется реже из-за сложности обработки.</p>
+            <p><strong>Полиамидное волокно:</strong> гибкое, комфортное. Используется для мягких базисов.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Преимущества армирования</h3><ul>
+              <li><strong>Прочность</strong> — значительно снижает риск перелома</li>
+              <li><strong>Долговечность</strong> — срок службы увеличивается</li>
+              <li><strong>Ремонтопригодность</strong> — армированный протез можно чинить</li>
+              <li><strong>Комфорт</strong> — тоньше и легче обычного</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Видимость</strong> — металлическая сетка может быть заметна</li>
+              <li><strong>Ремонт сложнее</strong> — требуется обработка арматуры</li>
+              <li><strong>Аллергия</strong> — металл может вызывать реакцию</li>
+              <li><strong>Вес</strong> — металлическая сетка добавляет вес</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Процесс армирования</h2>
+          <p><strong>1. Изготовление протеза:</strong> арматура включается при полимеризации акрила.</p>
+          <p><strong>2. Расположение:</strong> сетка размещается в толще базиса, не на поверхности.</p>
+          <p><strong>3. Фиксация:</strong> арматура имеет выступы для лучшей фиксации в акриле.</p>
+          <p><strong>4. Обработка:</strong> полировка, проверка.</p>
+          <p>Исследования показывают, что армированные протезы в 3-5 раз реже ломаются, чем обычные.</p>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

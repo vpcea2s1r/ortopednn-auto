@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Диагностические модели (2 челюсти) | Никитина М.Г." description="Гипсовые диагностические модели обеих челюстей. Цена 1 800 руб." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Диагностические модели (2 челюсти)</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Диагностические модели (2 челюсти)</h1>
+          <div class="service-header__price">1 800 ₽</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое диагностические модели</h2>
+            <p>Диагностические модели — это гипсовые слепки зубных рядов пациента. Они используются для детального анализа клинической ситуации, планирования лечения и изготовления вспомогательных конструкций.</p>
+            <p>Модели отливаются из гипса высокой прочности (IV тип по ADA) для сохранения точности. Две модели (верхняя и нижняя челюсть) позволяют оценить прикус, соотношение зубов, эстетику.</p>
+          </section>
+          <section class="info-section">
+            <h2>Зачем нужны диагностические модели</h2>
+            <ul>
+              <li>Оценка прикуса и соотношения челюстей</li>
+              <li>Анализ окклюзионных контактов</li>
+              <li>Планирование ортопедического лечения</li>
+              <li>Изготовление Wax-up</li>
+              <li>Изготовление хирургических шаблонов</li>
+              <li>Изготовление индивидуальных ложек</li>
+              <li>Ортодонтическая диагностика</li>
+              <li>Артикуляторные исследования</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Виды гипса для моделей</h2>
+            <p><strong>IV тип (Type IV):</strong> супергипс, высокопрочный. Используется для рабочих моделей и диагностики. Прочность на сжатие — 70-100 МПа.</p>
+            <p><strong>III тип (Type III):</strong> стандартный гипс. Для учебных моделей и предварительных слепков. Прочность — 30-50 МПа.</p>
+            <p><strong>V тип (Type V):</strong> сверхпрочный гипс для моделей под металлокерамику. Прочность — более 100 МПа.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Преимущества диагностических моделей</h3><ul>
+              <li><strong>Точность</strong> — воспроизводят реальную ситуацию</li>
+              <li><strong>Анализ</strong> — можно изучать без пациента</li>
+              <li><strong>Планирование</strong> — основа для Wax-up и Mock-up</li>
+              <li><strong>Документация</strong> — хранятся для сравнения</li>
+              <li><strong>Коммуникация</strong> — пациент видит свой прикус</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Срок хранения</strong> — гипсовые модели хрупкие, могут сломаться</li>
+              <li><strong>Усадка</strong> — гипс даёт минимальную усадку</li>
+              <li><strong>Альтернатива</strong> — цифровые модели (сканеры) заменяют гипс</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Этапы изготовления</h2>
+            <p><strong>1. Снятие оттисков:</strong> альгинатные или силиконовые слепки обеих челюстей.</p>
+            <p><strong>2. Замешивание гипса:</strong> порошок смешивается с водой до консистенции сметаны.</p>
+            <p><strong>3. Заливка:</strong> гипс заливается в оттиск, вибрируется для удаления пузырьков.</p>
+            <p><strong>4. Расформовка:</strong> через 30-45 минут модель извлекается из слепка.</p>
+            <p><strong>5. Обработка:</strong> обрезка, подирование (формирование основания), шлифовка.</p>
+            <p><strong>6. Анализ:</strong> модель готова для диагностики.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

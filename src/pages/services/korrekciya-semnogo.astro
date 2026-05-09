@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Коррекция съемного протеза | Никитина М.Г." description="Коррекция съемного протеза — исправление натирания и дискомфорта. Цена 550 руб." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Коррекция съемного протеза</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Коррекция съемного протеза</h1>
+          <div class="service-header__price">550 ₽</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Зачем нужна коррекция</h2>
+            <p>Съёмный протез — это индивидуальная конструкция, но даже идеально изготовленный протез может натирать в первые дни ношения. Это связано с неравномерным распределением нагрузки, особенностями слизистой и процессом адаптации.</p>
+            <p>Коррекция — это снятие излишков материала с протеза для устранения натирания. Процедура быстрая и безболезненная.</p>
+          </section>
+          <section class="info-section">
+            <h2>Когда нужна коррекция</h2>
+            <ul>
+              <li>Натирание десны в первые дни после получения протеза</li>
+              <li>Дискомфорт при жевании</li>
+              <li>Ощущение инородного тела</li>
+              <li>Травмирование слизистой</li>
+              <li>Язвы или покраснения от протеза</li>
+              <li>Изменение прикуса после корректировки</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Как проходит коррекция</h2>
+            <p><strong>1. Осмотр:</strong> врач осматривает слизистую и протез, выявляет точку натирания.</p>
+            <p><strong>2. Маркировка:</strong> на протез наносится индикатор давления (артикуляционная бумага, копировальная бумага), пациент прикусывает — окрашенные точки показывают чрезмерные контакты.</p>
+            <p><strong>3. Сошлифовывание:</strong> излишки акрила снимаются бором. Сначала убираются острые края и выступы.</p>
+            <p><strong>4. Полировка:</strong> поверхность полируется для гладкости.</p>
+            <p><strong>5. Проверка:</strong> пациент примеряет, оценивает комфорт.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Важно знать</h3><ul>
+              <li><strong>Нормально</strong> — коррекция нужна почти всегда</li>
+              <li><strong>Безболезненно</strong> — процедура не травмирует</li>
+              <li><strong>Быстро</strong> — 10-20 минут</li>
+              <li><strong>Повторно</strong> — может потребоваться несколько коррекций</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Чего нельзя делать</h3><ul>
+              <li><strong>Не шлифовать самому</strong> — можно испортить протез</li>
+              <li><strong>Не носить при натирании</strong> — это усугубит проблему</li>
+              <li><strong>Не подпиливать острые края напильником</strong> — неравномерно, травматично</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Как избежать натирания</h2>
+            <p><strong>Гигиена:</strong> промывайте протез после еды, очищайте мягкой щёткой.</p>
+            <p><strong>Постепенность:</strong> в первые дни носите протез по несколько часов, давая слизистой адаптироваться.</p>
+            <p><strong>Не снимать на ночь:</strong> в первые недели рекомендуется спать в протезе для формирования адаптированной слизистой.</p>
+            <p><strong>Обращаться вовремя:</strong> при первых признаках натирания — к врачу на коррекцию.</p>
+            <p>Клинические исследования показывают, что 80-90% пациентов нуждаются в коррекции съёмных протезов в первые 2 недели после получения.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

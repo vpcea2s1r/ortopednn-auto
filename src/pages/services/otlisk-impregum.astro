@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Двухслойные оттиски Impregum | Никитина М.Г." description="Двухслойные оттиски материалом Impregum. Полиэфирная точность для сложных работ. Цена 3 420 руб." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Снятие двухслойных оттисков Impregum</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Двухслойные оттиски Impregum</h1>
+          <div class="service-header__price">3 420 ₽</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое Impregum</h2>
+            <p>Impregum — полиэфирный оттискной материал от 3M ESPE. Это один из наиболее точных материалов для стоматологических оттисков. Полиэфиры сочетают точность силиконов с улучшенной гидрофильностью.</p>
+            <p>В отличие от А-силиконов (PVS), полиэфирные материалы лучше смачивают влажные поверхности, что особенно важно при работе с поддесневыми уступами и в области десневых бороздок.</p>
+          </section>
+          <section class="info-section">
+            <h2>Когда применяется</h2>
+            <ul>
+              <li>Поддесневые уступы и глубокие препарирования</li>
+              <li>Работы на имплантатах с закрытым переключением</li>
+              <li>Точные коронки и мостовидные протезы</li>
+              <li>Виниры и вкладки</li>
+              <li>Сложные клинические случаи с недостаточной изоляцией</li>
+              <li>Пациенты с повышенным слюноотделением</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Характеристики Impregum</h2>
+            <p><strong>Тип:</strong> полиэфирный (polyether)</p>
+            <p><strong>Гидрофильность:</strong> высокая, превосходит PVS</p>
+            <p><strong>Детализация:</strong> до 25 микрон</p>
+            <p><strong>Жёсткость:</strong> высокая, что может затруднять снятие при глубоких поднутрениях</p>
+            <p><strong>Адгезия:</strong> отличная к тканям зуба и слизистой</p>
+            <p><strong>Вкус:</strong> нейтральный, не вызывает тошноты</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Преимущества Impregum</h3><ul>
+              <li><strong>Лучшая гидрофильность</strong> — работает во влажной среде</li>
+              <li><strong>Высокая точность</strong> — детализация до 25 микрон</li>
+              <li><strong>Стабильность</strong> — не даёт усадки</li>
+              <li><strong>Хорошая текучесть</strong> — затекает во все детали</li>
+              <li><strong>Долгое хранение</strong> — слепок стабилен неделями</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Жёсткость</strong> — может быть сложно снять при узких пространствах</li>
+              <li><strong>Цена</strong> — дороже силиконов</li>
+              <li><strong>Время</strong> — дольше полимеризация</li>
+              <li><strong>Аллергия</strong> — редко, но возможна на компоненты</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Протокол двухслойного оттиска Impregum</h2>
+            <p><strong>1. Подготовка:</strong> ложка, адгезив для полиэфира.</p>
+            <p><strong>2. Базовый слой:</strong> Impregum Penta или Soft наносится на ложку.</p>
+            <p><strong>3. Корректирующий слой:</strong> на область уступа наносится тонкий слой Impregum Garant.</p>
+            <p><strong>4. Фиксация:</strong> ложка фиксируется на 4-5 минут (время полимеризации полиэфира дольше, чем у силиконов).</p>
+            <p><strong>5. Снятие:</strong> из-за высокой жёсткости снятие может потребовать больше усилий.</p>
+            <p><strong>6. Оценка:</strong> проверка качества, чёткость краёв.</p>
+          </section>
+          <section class="info-section"><h2>Сравнение с другими материалами</h2>
+            <p><strong>Impregum vs Speedex:</strong> Impregum дороже, но лучше работает во влажных условиях. Для глубоких поддесневых работ предпочтительнее полиэфир.</p>
+            <p><strong>Impregum vs альгинат:</strong> Impregum значительно точнее и стабильнее. Применяется для работ, требующих высокой детализации.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

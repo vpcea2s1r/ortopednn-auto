@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Перебазировка врачебная | Никитина М.Г." description="Врачебная перебазировка съёмного протеза — коррекция базиса прямо в клинике. Цена 4 200 руб." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Перебазировка врачебная</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Перебазировка врачебная</h1>
+          <div class="service-header__price">4 200 ₽</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое перебазировка</h2>
+            <p>Перебазировка — это коррекция базиса (основания) съёмного протеза для улучшения его посадки на слизистой. Со временем под протезом атрофируется кость, и между протезом и слизистой появляется зазор. Это приводит к нестабильности, натиранию, плохому прикусу.</p>
+            <p>Врачебная перебазировка выполняется прямо в кресле, без лабораторного этапа. Используется специальный самоотвердевающий материал.</p>
+          </section>
+          <section class="info-section">
+            <h2>Когда нужна перебазировка</h2>
+            <ul>
+              <li>Протез плохо фиксируется</li>
+              <li>Протез «гуляет» при жевании</li>
+              <li>Натирание, несмотря на коррекцию</li>
+              <li>Изменение прикуса (зубы «не встречаются»)</li>
+              <li>После потери зубов под протезом</li>
+              <li>Давно изготовленный протез (более 5 лет)</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Врачебная vs лабораторная</h2>
+            <p><strong>Врачебная:</strong> выполняется в кресле за 20-40 минут. Используется мягкий или твёрдый самотвердеющий материал. Быстро, но менее долговечно.</p>
+            <p><strong>Лабораторная:</strong> протез отправляется в лабораторию на 1-2 дня. Базис переводится на новую модель. Долговечнее и точнее, но дольше и дороже.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Преимущества врачебной перебазировки</h3><ul>
+              <li><strong>Быстро</strong> — за один визит</li>
+              <li><strong>Комфортно</strong> — нет лабораторного ожидания</li>
+              <li><strong>Мягкий материал</strong> — можно носить сразу</li>
+              <li><strong>Обратимость</strong> — можно повторить</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Долговечность</strong> — мягкая перебазировка служит 1-2 года</li>
+              <li><strong>Точность</strong> — ниже, чем лабораторная</li>
+              <li><strong>Может потребоваться лабораторная</strong> — при сильной атрофии</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Как проходит процедура</h2>
+            <p><strong>1. Осмотр:</strong> оценка состояния протеза и слизистой.</p>
+            <p><strong>2. Подготовка протеза:</strong> очистка, изоляция краёв.</p>
+            <p><strong>3. Подготовка материала:</strong> самотвердеющий акрил или мягкий материал замешивается.</p>
+            <p><strong>4. Нанесение:</strong> материал наносится на базисную часть протеза.</p>
+            <p><strong>5. Фиксация:</strong> протез надевается в рот, пациент прикусывает.</p>
+            <p><strong>6. Полимеризация:</strong> материал застывает (2-5 минут).</p>
+            <p><strong>7. Обработка:</strong> удаление излишков, полировка.</p>
+          </section>
+          <section class="info-section"><h2>Материалы для перебазировки</h2>
+            <p><strong>Мягкие (tissue conditioners):</strong> акрил с пластификатором. Мягкие, амортизируют. Используются временно или как долгосрочное решение для болезненных слизистых. Служат несколько недель-месяцев.</p>
+            <p><strong>Твёрдые:</strong> обычный акрил холодного отверждения. Долговечнее, но жёстче. Можно использовать годами.</p>
+            <p><strong>Комбинированные:</strong> твёрдый базис с мягкой подкладкой.</p>
+            <p>Исследования показывают, что правильно выполненная врачебная перебазировка восстанавливает функцию протеза на 70-90% от первоначальной.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>
