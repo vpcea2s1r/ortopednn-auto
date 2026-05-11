@@ -17,8 +17,99 @@ const socials = [];
         <div class="service-body">
           <section class="info-section">
             <h2>Что такое Temp-Bond</h2>
-            <p>Temp-Bond — непостоянный (временный) цемент производства Keystone Dental. Используется для фиксации временных конструкций и пробного ношения постоянных.</p>
-            <p>Временная фиксация позволяет снять конструкцию при необходимости без повреждения. Это важно для диагностики, коррекции прикуса, оценки эстетики и комфорта.</p>
+            <p>Temp-Bond — непостоянный (временный) цемент производства Keystone Dental. Используется для фиксации временных конструкций и пробного ношения постоянных. Временная фиксация позволяет снять конструкцию при необходимости без повреждения.</p>
+            <p>Это критически важно для диагностики, коррекции прикуса, оценки эстетики и комфорта. Temp-Bond — один из наиболее распространённых временных цементов в стоматологии, применяется более 40 лет.</p>
+          </section>
+
+          <section class="info-section">
+            <h2>Виды Temp-Bond</h2>
+            <div class="materials-grid">
+              <div class="material-card">
+                <h3>Temp-Bond (с эвгенолом)</h3>
+                <div class="material-price">классический</div>
+                <ul>
+                  <li>Эвгенол успокаивает пульпу</li>
+                  <li>Хорошая фиксация</li>
+                  <li>Может влиять на адгезию</li>
+                  <li>Нельзя с композитами</li>
+                </ul>
+              </div>
+              <div class="material-card material-card--featured">
+                <h3>Temp-Bond NE (без эвгенола)</h3>
+                <div class="material-price">рекомендуем</div>
+                <ul>
+                  <li>Нет аллергии на эвгенол</li>
+                  <li>Лучше для композитов</li>
+                  <li>Стабильнее</li>
+                  <li>Проще удаление</li>
+                </ul>
+              </div>
+              <div class="material-card">
+                <h3>Temp-Bond Micro</h3>
+                <div class="material-price">шприц</div>
+                <ul>
+                  <li>Готов к применению</li>
+                  <li>Удобное нанесение</li>
+                  <li>Быстрая работа</li>
+                  <li>Точная дозировка</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="info-section">
+            <h2>Когда применяется</h2>
+            <ul>
+              <li>Временные коронки на период изготовления постоянных</li>
+              <li>Пробное ношение постоянных коронок (try-in) для оценки эстетики</li>
+              <li>Тестирование окклюзии и прикуса</li>
+              <li>Пациенты с риском аллергии — пробная фиксация перед постоянной</li>
+              <li>Мостовидные протезы на время лабораторного этапа (1-2 недели)</li>
+              <li>Фиксация на имплантатах на время приживления (osseointegration)</li>
+              <li>Тестирование комфорта при бруксизме</li>
+            </ul>
+          </section>
+
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Преимущества временной фиксации</h3><ul>
+              <li><strong>Обратимость</strong> — легко снимается без повреждения</li>
+              <li><strong>Диагностика</strong> — оценка комфорта и эстетики</li>
+              <li><strong>Тестирование</strong> — проверка конструкции перед постоянной фиксацией</li>
+              <li><strong>Защита</strong> — зуб защищён на время ожидания</li>
+              <li><strong>Доступность</strong> — низкая стоимость</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Ограничения</h3><ul>
+              <li><strong>Герметичность</strong> — не полностью герметична</li>
+              <li><strong>Срок</strong> — не рекомендуется более 2-3 недель</li>
+              <li><strong>Микроподвижность</strong> — конструкция может немного смещаться</li>
+              <li><strong>Эвгенол</strong> — может ингибировать полимеризацию композитов</li>
+            </ul></section>
+          </div>
+
+          <section class="info-section">
+            <h2>Статистика и показатели</h2>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-value">2-3</div>
+                <div class="stat-label">недели максимум</div>
+                <div class="stat-desc">срок временной фиксации</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">2-3 МПа</div>
+                <div class="stat-label">прочность</div>
+                <div class="stat-desc">на сдвиг</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">2-3 мин</div>
+                <div class="stat-label">время работы</div>
+                <div class="stat-desc">до застывания</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">99%</div>
+                <div class="stat-label">снимаемость</div>
+                <div class="stat-desc">легко без повреждений</div>
+              </div>
+            </div>
           </section>
           <section class="info-section">
             <h2>Когда применяется</h2>
@@ -85,6 +176,41 @@ const socials = [];
 .info-section p { color: var(--color-text-muted); line-height: 1.7; }
 .info-section ul { padding-left: var(--space-lg); }
 .info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+.material-card {
+  background: white;
+  padding: var(--space-md);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+.material-card--featured { border-color: var(--color-primary); background: linear-gradient(to bottom, white, var(--color-bg-alt)); }
+.material-card h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-xs); }
+.material-price { font-size: var(--text-sm); font-weight: 600; color: var(--color-text-muted); margin-bottom: var(--space-sm); }
+.material-card ul { list-style: none; padding: 0; }
+.material-card li { font-size: var(--text-sm); color: var(--color-text-muted); padding: 2px 0; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+.stat-card {
+  background: white;
+  padding: var(--space-md);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+.stat-value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); }
+.stat-label { font-size: var(--text-sm); color: var(--color-text); font-weight: 600; margin-top: var(--space-xs); }
+.stat-desc { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; }
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
 .info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }

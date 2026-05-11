@@ -1,43 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-
 const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
 const socials = [];
 ---
 
-<BaseLayout 
-  title="Разборная лабораторная вкладка — Никитина М.Г."
-  description="Разборные культевые вкладки в Нижнем Новгороде. Надёжное восстановление зубов с искривлёнными каналами. Цена от 5340 рублей."
-  doctor={doctor}
-  socials={socials}
->
+<BaseLayout title="Разборная лабораторная вкладка — Никитина М.Г." description="Разборные культевые вкладки в Нижнем Новгороде. Надёжное восстановление зубов с искривлёнными каналами. Цена от 5340 руб." doctor={doctor} socials={socials}>
   <Navbar />
   <main class="service-page">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <div class="container">
-        <a href="/">Главная</a>
-        <span>/</span>
-        <a href="/services">Услуги</a>
-        <span>/</span>
-        <span>Разборная лабораторная вкладка</span>
-      </div>
-    </nav>
-    
-    <article class="service-content">
-      <div class="container">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Разборная лабораторная вкладка</span></div></nav>
+    <article class="service-content"><div class="container">
         <header class="service-header">
           <h1 class="service-header__title">Разборная лабораторная вкладка</h1>
           <div class="service-header__price">от 5 340 ₽</div>
         </header>
-        
         <div class="service-body">
           <section class="info-section">
             <h2>Что такое разборная вкладка простыми словами</h2>
             <p>Разборная вкладка — это культевая вкладка, которая состоит из нескольких частей, вводимых в каналы зуба под разными углами. Используется, когда корневые каналы сильно расходятся или искривлены.</p>
-            <p>Представьте, что у вас зуб с тремя каналами, которые уходят в разные стороны. Обычную вкладку невозможно ввести, не сломав стенку. Разборная вкладка собирается внутри зуба, как конструктор.</p>
+            <p>Представьте, что у вас зуб с двумя каналами, которые уходят в разные стороны. Обычную вкладку невозможно ввести, не сломав стенку. Разборная вкладка собирается внутри зуба, как конструктор.</p>
           </section>
-          
           <section class="info-section">
             <h2>Когда нужна разборная вкладка</h2>
             <ul>
@@ -48,62 +30,94 @@ const socials = [];
               <li>После ретроградного пломбирования</li>
             </ul>
           </section>
-          
           <div class="info-grid">
-            <section class="info-block info-block--pros">
-              <h3>Преимущества</h3>
-              <ul>
-                <li><strong>Надёжная фиксация</strong> — каждая часть фиксируется в своём канале</li>
-                <li><strong>Сохранение зуба</strong> — позволяет спасти зуб, который иначе пришлось бы удалить</li>
-                <li><strong>Прочность</strong> — монолитная конструкция после сборки</li>
-                <li><strong>Долговечность</strong> — служит 15-20 лет</li>
-                <li><strong>Равномерная нагрузка</strong> — давление распределяется на все корни</li>
-              </ul>
-            </section>
-            
-            <section class="info-block info-block--cons">
-              <h3>Что учитывать</h3>
-              <ul>
-                <li><strong>Сложность</strong> — требует высокой квалификации врача и техника</li>
-                <li><strong>Сроки</strong> — изготовление 3-5 дней</li>
-                <li><strong>Стоимость</strong> — дороже обычной культевой вкладки</li>
-                <li><strong>Необратимость</strong> — вкладка фиксируется навсегда</li>
-              </ul>
-            </section>
+            <section class="info-block info-block--pros"><h3>Преимущества</h3><ul>
+              <li><strong>Надёжная фиксация</strong> — каждая часть фиксируется в своём канале</li>
+              <li><strong>Сохранение зуба</strong> — позволяет спасти зуб, который иначе пришлось бы удалить</li>
+              <li><strong>Прочность</strong> — монолитная конструкция после сборки</li>
+              <li><strong>Долговечность</strong> — служит 15-20 лет</li>
+              <li><strong>Равномерная нагрузка</strong> — давление распределяется на все корни</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Сложность</strong> — требует высокой квалификации врача и техника</li>
+              <li><strong>Сроки</strong> — изготовление 3-5 дней</li>
+              <li><strong>Стоимость</strong> — дороже обычной культевой вкладки</li>
+              <li><strong>Необратимость</strong> — вкладка фиксируется навсегда</li>
+            </ul></section>
           </div>
-          
-          <section class="info-section">
-            <h2>Как делается</h2>
-            <p><strong>1. Подготовка каналов</strong> — расширение и обработка каждого канала.</p>
-            <p><strong>2. Снятие слепков</strong> — с каждого канала отдельно.</p>
-            <p><strong>3. Моделирование</strong> — техник проектирует каждую часть вкладки.</p>
-            <p><strong>4. Изготовление</strong> — литьё или фрезерование каждой части.</p>
-            <p><strong>5. Примерка</strong> — проверка посадки всех частей.</p>
-            <p><strong>6. Фиксация</strong> — части последовательно вводятся и цементируются.</p>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔩</span><h3>Кобальт-хром (Co-Cr)</h3></div>
+                <div class="material-card__body">
+                  <p>Самый распространённый материал. Прочный, доступный.</p>
+                  <ul>
+                    <li>Толщина стенки: 0,5-0,8 мм</li>
+                    <li>Прочность: высокая</li>
+                    <li>Цена: доступная</li>
+                    <li>Срок службы: 15-20 лет</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">✨</span><h3>Золото</h3></div>
+                <div class="material-card__body">
+                  <p>Благородный сплав. Максимальная точность и биосовместимость.</p>
+                  <ul>
+                    <li>Сплав: золото 85-90%, платина</li>
+                    <li>Точность: максимальная</li>
+                    <li>Биосовместимость: отличная</li>
+                    <li>Цена: высокая</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🦷</span><h3>Диоксид циркония</h3></div>
+                <div class="material-card__body">
+                  <p>Белый материал. Современный вариант для эстетичных зон.</p>
+                  <ul>
+                    <li>Цвет: белый</li>
+                    <li>Прочность: высокая</li>
+                    <li>Эстетика: хорошая</li>
+                    <li>Сложность обработки: высокая</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">от 5 340 ₽</div>
+              <div class="stat-card__label">стоимость</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">15-20 лет</div>
+              <div class="stat-card__label">срок службы</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">3-5 дней</div>
+              <div class="stat-card__label">изготовление</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">2-4</div>
+              <div class="stat-card__label">части вкладки</div>
+            </div>
+          </div>
+          <section class="info-section"><h2>Как делается</h2>
+          <p><strong>1. Подготовка каналов:</strong> расширение и обработка каждого канала.</p>
+          <p><strong>2. Снятие слепков:</strong> с каждого канала отдельно.</p>
+          <p><strong>3. Моделирование:</strong> техник проектирует каждую часть вкладки.</p>
+          <p><strong>4. Изготовление:</strong> литьё или фрезерование каждой части.</p>
+          <p><strong>5. Примерка:</strong> проверка посадки всех частей.</p>
+          <p><strong>6. Фиксация:</strong> части последовательно вводятся и цементируются.</p>
           </section>
-          
-          <section class="info-section">
-            <h2>Материалы</h2>
-            <p><strong>Кобальт-хром</strong> — самый распространённый, прочный, доступный.</p>
-            <p><strong>Золото</strong> — максимальная точность и биосовместимость.</p>
-            <p><strong>Диоксид циркония</strong> — белый, но сложнее в обработке.</p>
-          </section>
-          
-          <section class="info-section">
-            <h2>Срок службы</h2>
-            <p>Разборная вкладка служит 15-20 лет и более. Ключевое значение имеет качество лечения каналов и точность изготовления.</p>
+          <section class="info-section"><h2>Срок службы</h2>
+          <p>Разборная вкладка служит 15-20 лет и более. Ключевое значение имеет качество лечения каналов и точность изготовления.</p>
           </section>
         </div>
-        
-        <div class="service-cta">
-          <p>Нужна консультация по разборным вкладкам?</p>
-          <div class="cta-buttons">
-            <a href="tel:+79202537317" class="btn">Позвонить</a>
-            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
-          </div>
-        </div>
-      </div>
-    </article>
+        <div class="service-cta"><p>Нужна консультация по разборным вкладкам?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a></div></div>
+    </div></article>
   </main>
 </BaseLayout>
 
@@ -126,11 +140,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>

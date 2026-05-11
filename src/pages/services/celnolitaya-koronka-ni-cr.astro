@@ -1,43 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-
 const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
 const socials = [];
 ---
 
-<BaseLayout 
-  title="Цельнолитая коронка (никель-хром) — Никитина М.Г."
-  description="Цельнолитые коронки из никель-хрома в Нижнем Новгороде. Доступный вариант для жевательных зубов. Цена от 5900 рублей."
-  doctor={doctor}
-  socials={socials}
->
+<BaseLayout title="Цельнолитая коронка (никель-хром) — Никитина М.Г." description="Цельнолитые коронки из никель-хрома в Нижнем Новгороде. Доступный вариант для жевательных зубов. Цена от 5900 руб." doctor={doctor} socials={socials}>
   <Navbar />
   <main class="service-page">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <div class="container">
-        <a href="/">Главная</a>
-        <span>/</span>
-        <a href="/services">Услуги</a>
-        <span>/</span>
-        <span>Цельнолитая коронка (Ni-Cr)</span>
-      </div>
-    </nav>
-    
-    <article class="service-content">
-      <div class="container">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Цельнолитая коронка (Ni-Cr)</span></div></nav>
+    <article class="service-content"><div class="container">
         <header class="service-header">
           <h1 class="service-header__title">Цельнолитая коронка (никель-хром)</h1>
           <div class="service-header__price">от 5 900 ₽</div>
         </header>
-        
         <div class="service-body">
           <section class="info-section">
-            <h2>Что такое коронка из никель-хрома простыми словами</h2>
+            <h2>Что такое коронка из никель-хрома</h2>
             <p>Цельнолитая коронка из никель-хрома — это металлический колпачок на зуб, отлитый из сплава никеля и хрома. Это самый доступный вид коронок.</p>
             <p>Сплав Ni-Cr дешевле кобальт-хрома, поэтому такие коронки стоят чуть меньше. Прочность и долговечность достаточные для жевательных зубов.</p>
           </section>
-          
           <section class="info-section">
             <h2>Когда применяется</h2>
             <ul>
@@ -49,67 +31,99 @@ const socials = [];
               <li>Ограниченный бюджет при сохранении функции</li>
             </ul>
           </section>
-          
           <section class="info-section">
             <h2>Чем отличается от кобальт-хромовой</h2>
-            <p><strong>Состав</strong> — Ni-Cr vs Co-Cr. Никель-хром содержит никель, который дешевле.</p>
-            <p><strong>Стоимость</strong> — ниже на 5-10%.</p>
-            <p><strong>Прочность</strong> — достаточная, но Co-Cr немного прочнее.</p>
-            <p><strong>Аллергия</strong> — никель чаще вызывает аллергию, чем кобальт.</p>
+            <p><strong>Состав:</strong> Ni-Cr vs Co-Cr. Никель-хром содержит никель, который дешевле.</p>
+            <p><strong>Стоимость:</strong> ниже на 5-10%.</p>
+            <p><strong>Прочность:</strong> достаточная, но Co-Cr немного прочнее.</p>
+            <p><strong>Аллергия:</strong> никель чаще вызывает аллергию, чем кобальт.</p>
           </section>
-          
           <div class="info-grid">
-            <section class="info-block info-block--pros">
-              <h3>Преимущества</h3>
-              <ul>
-                <li><strong>Доступность</strong> — самая низкая цена среди металлических коронок</li>
-                <li><strong>Прочность</strong> — выдерживает жевательную нагрузку</li>
-                <li><strong>Точность</strong> — литьё обеспечивает хорошую посадку</li>
-                <li><strong>Минимальная обточка</strong> — зуб обрабатывается меньше, чем под металлокерамику</li>
-                <li><strong>Долговечность</strong> — служит 10-15 лет</li>
-                <li><strong>Ремонт</strong> — можно паять и корректировать</li>
-              </ul>
-            </section>
-            
-            <section class="info-block info-block--cons">
-              <h3>Что учитывать</h3>
-              <ul>
-                <li><strong>Внешний вид</strong> — металл заметен, не для передних зубов</li>
-                <li><strong>Аллергия</strong> — возможна реакция на никель (около 10% населения)</li>
-                <li><strong>Теплопроводность</strong> — зуб может реагировать на температуру</li>
-                <li><strong>Окисление</strong> — возможно потемнение у десны</li>
-              </ul>
-            </section>
+            <section class="info-block info-block--pros"><h3>Преимущества</h3><ul>
+              <li><strong>Доступность</strong> — самая низкая цена среди металлических коронок</li>
+              <li><strong>Прочность</strong> — выдерживает жевательную нагрузку</li>
+              <li><strong>Точность</strong> — литьё обеспечивает хорошую посадку</li>
+              <li><strong>Минимальная обточка</strong> — зуб обрабатывается меньше, чем под металлокерамику</li>
+              <li><strong>Долговечность</strong> — служит 10-15 лет</li>
+              <li><strong>Ремонт</strong> — можно паять и корректировать</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Внешний вид</strong> — металл заметен, не для передних зубов</li>
+              <li><strong>Аллергия</strong> — возможна реакция на никель (около 10% населения)</li>
+              <li><strong>Теплопроводность</strong> — зуб может реагировать на температуру</li>
+              <li><strong>Окисление</strong> — возможно потемнение у десны</li>
+            </ul></section>
           </div>
-          
-          <section class="info-section">
-            <h2>Кому подходит</h2>
-            <p><strong>Да</strong> — жевательные зубы, пациенты без аллергии, ограниченный бюджет.</p>
-            <p><strong>Нет</strong> — передние зубы, аллергия на никель, пациенты с повышенной чувствительностью к металлам.</p>
+          <div class="materials-grid">
+            <h2 class="section-title">Сплавы и материалы</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔩</span><h3>Никель-хром (Ni-Cr)</h3></div>
+                <div class="material-card__body">
+                  <p>Стандартный сплав для цельнолитых коронок.</p>
+                  <ul>
+                    <li>Состав: Ni 65-80%, Cr 15-25%</li>
+                    <li>Толщина: 0,3-0,5 мм</li>
+                    <li>Прочность: достаточная</li>
+                    <li>Цена: низкая</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔧</span><h3>Цементы для фиксации</h3></div>
+                <div class="material-card__body">
+                  <p>Цементы для постоянной фиксации коронок.</p>
+                  <ul>
+                    <li>Фосфатный цемент — классика</li>
+                    <li>Стеклоиономерный — современный</li>
+                    <li>Композитные — лучшая фиксация</li>
+                    <li>Выбор зависит от клинической ситуации</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Покрытия</h3></div>
+                <div class="material-card__body">
+                  <p>Дополнительные покрытия для улучшения свойств.</p>
+                  <ul>
+                    <li>Золотое напыление — эстетика</li>
+                    <li>Нитрид титана — твёрдость</li>
+                    <li>Без покрытия — стандарт</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">от 5 900 ₽</div>
+              <div class="stat-card__label">стоимость</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">10-15 лет</div>
+              <div class="stat-card__label">срок службы</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">2-3</div>
+              <div class="stat-card__label">визита</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">~10%</div>
+              <div class="stat-card__label">аллергия на никель</div>
+            </div>
+          </div>
+          <section class="info-section"><h2>Кому подходит</h2>
+          <p><strong>Да</strong> — жевательные зубы, пациенты без аллергии, ограниченный бюджет.</p>
+          <p><strong>Нет</strong> — передние зубы, аллергия на никель, пациенты с повышенной чувствительностью к металлам.</p>
           </section>
-          
-          <section class="info-section">
-            <h2>Альтернативы</h2>
-            <p><strong>Кобальт-хром</strong> — прочнее и гипоаллергеннее, но чуть дороже.</p>
-            <p><strong>Металлокерамика</strong> — эстетичнее, с керамическим покрытием.</p>
-            <p><strong>Цирконий</strong> — безметалловая эстетика, дороже.</p>
-          </section>
-          
-          <section class="info-section">
-            <h2>Срок службы</h2>
-            <p>Коронки из Ni-Cr служат 10-15 лет. При хорошей гигиене и отсутствии аллергии — дольше.</p>
+          <section class="info-section"><h2>Альтернативы</h2>
+          <p><strong>Кобальт-хром</strong> — прочнее и гипоаллергеннее, но чуть дороже.</p>
+          <p><strong>Металлокерамика</strong> — эстетичнее, с керамическим покрытием.</p>
+          <p><strong>Цирконий</strong> — безметалловая эстетика, дороже.</p>
           </section>
         </div>
-        
-        <div class="service-cta">
-          <p>Нужна консультация по цельнолитым коронкам?</p>
-          <div class="cta-buttons">
-            <a href="tel:+79202537317" class="btn">Позвонить</a>
-            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
-          </div>
-        </div>
-      </div>
-    </article>
+        <div class="service-cta"><p>Нужна консультация по цельнолитым коронкам?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a></div></div>
+    </div></article>
   </main>
 </BaseLayout>
 
@@ -132,11 +146,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>

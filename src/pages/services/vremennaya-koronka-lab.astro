@@ -1,43 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-
 const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
 const socials = [];
 ---
 
-<BaseLayout 
-  title="Лабораторная временная коронка — Никитина М.Г."
-  description="Временные лабораторные коронки в Нижнем Новгороде. Более прочные, чем кабинетные. Цена от 4080 рублей."
-  doctor={doctor}
-  socials={socials}
->
+<BaseLayout title="Лабораторная временная коронка — Никитина М.Г." description="Временные лабораторные коронки в Нижнем Новгороде. Более прочные, чем кабинетные. Цена от 4080 руб." doctor={doctor} socials={socials}>
   <Navbar />
   <main class="service-page">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <div class="container">
-        <a href="/">Главная</a>
-        <span>/</span>
-        <a href="/services">Услуги</a>
-        <span>/</span>
-        <span>Лабораторная временная коронка</span>
-      </div>
-    </nav>
-    
-    <article class="service-content">
-      <div class="container">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Лабораторная временная коронка</span></div></nav>
+    <article class="service-content"><div class="container">
         <header class="service-header">
           <h1 class="service-header__title">Временная коронка лабораторная</h1>
           <div class="service-header__price">от 4 080 ₽</div>
         </header>
-        
         <div class="service-body">
           <section class="info-section">
-            <h2>Что такое лабораторная временная коронка простыми словами</h2>
+            <h2>Что такое лабораторная временная коронка</h2>
             <p>Лабораторная временная коронка — это защитный колпачок на обточенный зуб, изготовленный в зуботехнической лаборатории. Она прочнее и точнее, чем кабинетная (сделанная врачом за один визит).</p>
             <p>Используется, когда нужно носить временную коронку дольше обычного — например, ожидая изготовления дорогой постоянной коронки или при сложном лечении.</p>
           </section>
-          
           <section class="info-section">
             <h2>Чем отличается от кабинетной временной коронки</h2>
             <p><strong>Точность</strong> — лабораторная коронка изготавливается на точной модели, прилегание идеальное.</p>
@@ -45,7 +27,6 @@ const socials = [];
             <p><strong>Эстетика</strong> — можно подобрать цвет и форму.</p>
             <p><strong>Срок</strong> — изготавливается 1-2 дня, можно носить несколько месяцев.</p>
           </section>
-          
           <section class="info-section">
             <h2>Когда применяется</h2>
             <ul>
@@ -56,52 +37,86 @@ const socials = [];
               <li>После имплантации на время приживления</li>
             </ul>
           </section>
-          
           <div class="info-grid">
-            <section class="info-block info-block--pros">
-              <h3>Преимущества</h3>
-              <ul>
-                <li><strong>Прочность</strong> — выдерживает жевательную нагрузку</li>
-                <li><strong>Точность</strong> — идеальное прилегание к десне</li>
-                <li><strong>Эстетика</strong> — можно подобрать цвет</li>
-                <li><strong>Защита</strong> — надёжно закрывает обточенный зуб</li>
-                <li><strong>Комфорт</strong> — не мешает и не натирает</li>
-              </ul>
-            </section>
-            
-            <section class="info-block info-block--cons">
-              <h3>Что учитывать</h3>
-              <ul>
-                <li><strong>Стоимость</strong> — дороже кабинетной временной коронки</li>
-                <li><strong>Сроки</strong> — требует 1-2 дня на изготовление</li>
-                <li><strong>Визиты</strong> — минимум 2 визита</li>
-              </ul>
-            </section>
+            <section class="info-block info-block--pros"><h3>Преимущества</h3><ul>
+              <li><strong>Прочность</strong> — выдерживает жевательную нагрузку</li>
+              <li><strong>Точность</strong> — идеальное прилегание к десне</li>
+              <li><strong>Эстетика</strong> — можно подобрать цвет</li>
+              <li><strong>Защита</strong> — надёжно закрывает обточенный зуб</li>
+              <li><strong>Комфорт</strong> — не мешает и не натирает</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Стоимость</strong> — дороже кабинетной временной коронки</li>
+              <li><strong>Сроки</strong> — требует 1-2 дня на изготовление</li>
+              <li><strong>Визиты</strong> — минимум 2 визита</li>
+            </ul></section>
           </div>
-          
-          <section class="info-section">
-            <h2>Материалы</h2>
-            <p><strong>Пластмасса</strong> — самый распространённый материал. Достаточно прочная, можно подобрать цвет.</p>
-            <p><strong>Полиметилметакрилат (PMMA)</strong> — более прочный и гладкий, меньше впитывает красители.</p>
-            <p><strong>Композит</strong> — самый прочный вариант для временных коронок.</p>
-          </section>
-          
-          <section class="info-section">
-            <h2>Срок ношения</h2>
-            <p>Лабораторная временная коронка рассчитана на ношение до 3-6 месяцев. При более длительном сроке материал начинает стираться и менять цвет.</p>
-            <p>Если постоянная коронка задерживается — обсудите с врачом изготовление более долговечной временной коронки.</p>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔧</span><h3>Пластмасса</h3></div>
+                <div class="material-card__body">
+                  <p>Самый распространённый материал. Достаточно прочный, можно подобрать цвет.</p>
+                  <ul>
+                    <li>Тип: PMMA (полиметилметакрилат)</li>
+                    <li>Цвет: подбор по шкале Vita</li>
+                    <li>Прочность: достаточная для 3-6 мес</li>
+                    <li>Стоимость: доступная</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">✨</span><h3>PMMA высокопрочный</h3></div>
+                <div class="material-card__body">
+                  <p>Более прочный и гладкий материал. Меньше впитывает красители.</p>
+                  <ul>
+                    <li>Тип: PMMA премиум</li>
+                    <li>Пористость: минимальная</li>
+                    <li>Гладкость: высокая</li>
+                    <li>Срок: до 6-12 месяцев</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Композит</h3></div>
+                <div class="material-card__body">
+                  <p>Самый прочный вариант для временных коронок.</p>
+                  <ul>
+                    <li>Тип: светоотверждаемый композит</li>
+                    <li>Прочность: максимальная</li>
+                    <li>Эстетика: отличная</li>
+                    <li>Цена: выше</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">от 4 080 ₽</div>
+              <div class="stat-card__label">стоимость</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">1-2 дня</div>
+              <div class="stat-card__label">изготовление</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">3-6 мес</div>
+              <div class="stat-card__label">срок ношения</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">2</div>
+              <div class="stat-card__label">визита минимум</div>
+            </div>
+          </div>
+          <section class="info-section"><h2>Срок ношения</h2>
+          <p>Лабораторная временная коронка рассчитана на ношение до 3-6 месяцев. При более длительном сроке материал начинает стираться и менять цвет.</p>
+          <p>Если постоянная коронка задерживается — обсудите с врачом изготовление более долговечной временной коронки.</p>
           </section>
         </div>
-        
-        <div class="service-cta">
-          <p>Нужна временная коронка или хотите узнать больше?</p>
-          <div class="cta-buttons">
-            <a href="tel:+79202537317" class="btn">Позвонить</a>
-            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
-          </div>
-        </div>
-      </div>
-    </article>
+        <div class="service-cta"><p>Нужна временная коронка или хотите узнать больше?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a></div></div>
+    </div></article>
   </main>
 </BaseLayout>
 
@@ -124,11 +139,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>

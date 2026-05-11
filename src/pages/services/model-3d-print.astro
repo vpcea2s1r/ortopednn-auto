@@ -18,20 +18,19 @@ const socials = [];
           <section class="info-section">
             <h2>Что такое 3D-печатная модель</h2>
             <p>3D-печатная модель — это физическая копия челюсти, изготовленная методом послойного синтеза (аддитивное производство). В отличие от гипсовых моделей, цифровая модель не имеет швов и точно повторяет данные сканирования.</p>
-            <p>Неразборная модель — модель, в которой зубы и основание отлиты как единое целое. Используется для определённых целей, когда не требуется разделение на части.</p>
+            <p>Неразборная модель — модель, в которой зубы и основание напечатаны как единое целое. Используется для определённых целей, когда не требуется разделение на части.</p>
           </section>
           <section class="info-section">
             <h2>Технологии 3D-печати в стоматологии</h2>
             <p><strong>SLA (Stereolithography):</strong> лазерная полимеризация фотополимерной смолы. Высокая точность (до 50 микрон), гладкая поверхность. Основной метод для стоматологических моделей.</p>
             <p><strong>DLP (Digital Light Processing):</strong> проекционная полимеризация. Быстрее SLA, сопоставимая точность.</p>
-            <p><strong>FDM (Fused Deposition Modeling):</strong> послойное наплавление пластика. Низкая точность, применяется редко.</p>
             <p><strong>PolyJet:</strong> струйная печать фотополимером. Высочайшая точность, дороговизна.</p>
           </section>
           <section class="info-section">
             <h2>Когда применяется</h2>
             <ul>
               <li>Изготовление хирургических шаблонов</li>
-              <li>Временные коронки и мосты (печать directly)</li>
+              <li>Временные коронки и мосты (печать напрямую)</li>
               <li>Окклюзионные шины</li>
               <li>Ортодонтические модели</li>
               <li>Коммуникация с пациентом</li>
@@ -54,19 +53,70 @@ const socials = [];
               <li><strong>Оборудование</strong> — требуется 3D-принтер</li>
             </ul></section>
           </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы для печати</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🪨</span><h3>Model resin</h3></div>
+                <div class="material-card__body">
+                  <p>Стандартный материал для стоматологических моделей.</p>
+                  <ul>
+                    <li>Тип: фотополимерная смола</li>
+                    <li>Цвет: серый, белый</li>
+                    <li>Прочность: достаточная</li>
+                    <li>Точность: 50-100 мкм</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔥</span><h3>Model Cast resin</h3></div>
+                <div class="material-card__body">
+                  <p>Литьевой материал для выжигания. Используется для металлических каркасов.</p>
+                  <ul>
+                    <li>Выжигание: при 700-900°C</li>
+                    <li>Зольность: минимальная</li>
+                    <li>Для CAD/CAM литья</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Gingiva resin</h3></div>
+                <div class="material-card__body">
+                  <p>Розовый материал для имитации десны.</p>
+                  <ul>
+                    <li>Цвет: розовый</li>
+                    <li>Эластичность: достаточная</li>
+                    <li>Комбинация с Model resin</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">3 000 ₽</div>
+              <div class="stat-card__label">стоимость за челюсть</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">1-4 часа</div>
+              <div class="stat-card__label">время печати</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-card__value">50-100 мкм</div>
+              <div class="stat-card__label">точность печати</div>
+            </div>
+          </div>
           <section class="info-section"><h2>Этапы изготовления</h2>
             <p><strong>1. Сканирование:</strong> внутриротовой сканер или сканер гипсовой модели.</p>
             <p><strong>2. Обработка:</strong> цифровая обработка в CAD-программе.</p>
             <p><strong>3. Подготовка:</strong> нарезка на слои (slicing), установка параметров печати.</p>
             <p><strong>4. Печать:</strong> 3D-принтер послойно синтезирует модель.</p>
             <p><strong>5. Постобработка:</strong> промывка в спирте, дополнительная полимеризация в УФ-камере.</p>
-            <p><strong>6. Готово:</strong> модель可以使用.</p>
+            <p><strong>6. Готово:</strong> модель можно использовать.</p>
           </section>
-          <section class="info-section"><h2>Материалы для печати</h2>
-            <p><strong>Model resin:</strong> стандартный материал для моделей. Прочный, точный, серый или белый.</p>
-            <p><strong>Model Cast resin:</strong> литьевой материал для выжигания. Используется для металлических каркасов.</p>
-            <p><strong>Gingiva resin:</strong> розовый материал для имитации десны. Используется в комбинированных моделях.</p>
-            <p>Современные стоматологические 3D-принтеры обеспечивают точность 50-100 микрон, что достаточно для большинства клинических задач.</p>
+          <section class="info-section"><h2>Сравнение с гипсовыми моделями</h2>
+            <p>Современные стоматологические 3D-принтеры обеспечивают точность 50-100 микрон, что достаточно для большинства клинических задач и превосходит точность гипсовых моделей.</p>
           </section>
         </div>
         <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
@@ -93,11 +143,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>

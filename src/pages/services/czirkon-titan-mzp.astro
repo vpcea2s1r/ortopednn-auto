@@ -62,6 +62,65 @@ const socials = [];
               <li><strong>Необходим имплантат</strong> — сам имплантат оплачивается отдельно</li>
             </ul></section>
           </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Варианты МЗП</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🦷</span><h3>Циркониевый каркас</h3></div>
+                <div class="material-card__body">
+                  <p>Белый каркас из диоксида циркония. Современный стандарт.</p>
+                  <ul>
+                    <li>Прочность: 1000-1500 МПа</li>
+                    <li>Цвет: белый</li>
+                    <li>Эстетика: отличная</li>
+                    <li>Можно без керамики</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔩</span><h3>Титановый каркас</h3></div>
+                <div class="material-card__body">
+                  <p>Титановый каркас с керамическим покрытием. Традиционный выбор.</p>
+                  <ul>
+                    <li>Прочность: высокая</li>
+                    <li>Цвет: серый</li>
+                    <li>Требует керамику</li>
+                    <li>Биосовместимость: отличная</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Керамическое покрытие</h3></div>
+                <div class="material-card__body">
+                  <p>Полевошпатная или полевошпатная керамика для эстетики.</p>
+                  <ul>
+                    <li>Толщина: 0,5-1 мм</li>
+                    <li>Цвет: подбор по Vita</li>
+                    <li>Прозрачность: регулируемая</li>
+                    <li>Адгезия: к цирконию/титану</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">15-20+ лет</div>
+              <div class="stat-card__label">срок службы</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">от 27 000 ₽</div>
+              <div class="stat-card__label">стоимость коронки</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">95-98%</div>
+              <div class="stat-card__label">выживаемость за 10 лет</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">3-6 мес</div>
+              <div class="stat-card__label">остеоинтеграция</div>
+            </div>
+          </div>
           <section class="info-section"><h2>Этапы изготовления</h2>
           <p><strong>1. Имплантация:</strong> хирургическая установка имплантата.</p>
           <p><strong>2. Заживление:</strong> остеоинтеграция 3-6 месяцев.</p>
@@ -97,11 +156,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>
