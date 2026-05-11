@@ -52,6 +52,65 @@ const socials = [];
               <li><strong>Материал</strong> — требуется подходящий силикон</li>
             </ul></section>
           </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы для силиконового ключа</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🧱</span><h3>Speedex Putty</h3></div>
+                <div class="material-card__body">
+                  <p>Силикон для ключей Putty-консистенции. Высокая стабильность.</p>
+                  <ul>
+                    <li>Тип: A-силикон (PVS)</li>
+                    <li>Консистенция: Putty (твёрдый)</li>
+                    <li>Время полимеризации: 2-3 мин</li>
+                    <li>Стабильность размеров: высокая</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🧪</span><h3>Regid body силикон</h3></div>
+                <div class="material-card__body">
+                  <p>Жёсткий силикон для точных ключей. Сохраняет форму.</p>
+                  <ul>
+                    <li>Тип: A-силикон</li>
+                    <li>Консистенция: rigid</li>
+                    <li>Минимальная деформация</li>
+                    <li>Подходит для сложных конструкций</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Материал для Mock-up</h3></div>
+                <div class="material-card__body">
+                  <p>Композитные и акриловые материалы для заполнения ключа.</p>
+                  <ul>
+                    <li>Временные композитные материалы</li>
+                    <li>Mock-up пасты (например, Pattern Resin)</li>
+                    <li>Акриловые пластмассы холодного отверждения</li>
+                    <li>Подбор по цвету и прозрачности</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">800 ₽</div>
+              <div class="stat-card__label">стоимость ключа</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">5-10 мин</div>
+              <div class="stat-card__label">изготовление</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">5-10 мин</div>
+              <div class="stat-card__label">клиническое применение</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">25 мкм</div>
+              <div class="stat-card__label">точность воспроизведения</div>
+            </div>
+          </div>
           <section class="info-section"><h2>Клиническое применение: Mock-up</h2>
             <p>Mock-up — это перенос Wax-up в полость рта с помощью силиконового ключа. Процедура:</p>
             <p><strong>1.</strong> Зубы очищаются, обрабатываются адгезивом.</p>
@@ -59,6 +118,9 @@ const socials = [];
             <p><strong>3.</strong> Ключ фиксируется на зубах на 1-2 минуты.</p>
             <p><strong>4.</strong> Ключ удаляется, композит остаётся на зубах в форме Wax-up.</p>
             <p>Исследования показывают, что mock-up значительно повышает удовлетворённость пациентов и снижает количество коррекций после фиксации постоянных конструкций.</p>
+          </section>
+          <section class="info-section"><h2>Изготовление временных коронок</h2>
+          <p>Силиконовый ключ также используется для изготовления временных коронок: в ключ заливается временный материал, фиксируется на обточенном зубе, после застывания — готова временная коронка.</p>
           </section>
         </div>
         <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
@@ -85,11 +147,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>

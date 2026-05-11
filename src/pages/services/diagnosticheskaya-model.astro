@@ -53,6 +53,65 @@ const socials = [];
               <li><strong>Альтернатива</strong> — цифровые модели (сканеры) заменяют гипс</li>
             </ul></section>
           </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🪨</span><h3>Гипс IV типа</h3></div>
+                <div class="material-card__body">
+                  <p>Супергипс для диагностических и рабочих моделей. Высокая прочность и точность.</p>
+                  <ul>
+                    <li>Прочность: 70-100 МПа</li>
+                    <li>Расширение: минимальное (0,1%)</li>
+                    <li>Время застывания: 30-45 мин</li>
+                    <li>Применение: основной для ортопедии</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Альгинатные слепки</h3></div>
+                <div class="material-card__body">
+                  <p>Оттискной материал для снятия первичных слепков под модели.</p>
+                  <ul>
+                    <li>Тип: альгинат, порошок</li>
+                    <li>Время замешивания: 1-2 мин</li>
+                    <li>Время во рту: 3-5 мин</li>
+                    <li>Точность: достаточная для диагностики</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔧</span><h3>Обработка моделей</h3></div>
+                <div class="material-card__body">
+                  <p>Инструменты и материалы для финишной обработки гипсовых моделей.</p>
+                  <ul>
+                    <li>Подирование: формирование основания</li>
+                    <li>Обрезка: удаление излишков</li>
+                    <li>Шлифовка: гладкая поверхность</li>
+                    <li>Покраска: розовый цвет для десны</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">1 800 ₽</div>
+              <div class="stat-card__label">стоимость (2 модели)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">2</div>
+              <div class="stat-card__label">модели (челюсти)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">30-45 мин</div>
+              <div class="stat-card__label">время изготовления</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">до 70-100 МПа</div>
+              <div class="stat-card__label">прочность гипса IV типа</div>
+            </div>
+          </div>
           <section class="info-section"><h2>Этапы изготовления</h2>
             <p><strong>1. Снятие оттисков:</strong> альгинатные или силиконовые слепки обеих челюстей.</p>
             <p><strong>2. Замешивание гипса:</strong> порошок смешивается с водой до консистенции сметаны.</p>
@@ -60,6 +119,9 @@ const socials = [];
             <p><strong>4. Расформовка:</strong> через 30-45 минут модель извлекается из слепка.</p>
             <p><strong>5. Обработка:</strong> обрезка, подирование (формирование основания), шлифовка.</p>
             <p><strong>6. Анализ:</strong> модель готова для диагностики.</p>
+          </section>
+          <section class="info-section"><h2>Хранение моделей</h2>
+          <p>Гипсовые модели требуют аккуратного хранения: в коробках, защищённых от ударов. Срок хранения — несколько лет при правильных условиях. Альтернатива — цифровое сканирование, которое не требует физического хранения.</p>
           </section>
         </div>
         <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
@@ -86,11 +148,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>
