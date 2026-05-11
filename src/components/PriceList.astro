@@ -95,12 +95,29 @@ const doctorPhone = "+79202537317";
 .price-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: var(--space-sm);
   padding: var(--space-sm);
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all var(--transition-fast);
   background: var(--color-bg);
+}
+
+.price-item__name {
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  flex: 1;
+  min-width: 0;
+}
+
+.price-item__price {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .price-item:hover {
