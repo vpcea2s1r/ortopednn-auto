@@ -5,6 +5,7 @@ import HeroSection from '../components/HeroSection.astro';
 import Specializations from '../components/Specializations.astro';
 import PriceList from '../components/PriceList.astro';
 import FAQ from '../components/FAQ.astro';
+import WhyMeStatic from '../components/WhyMeStatic.astro';
 
 import doctor from '../../data/doctor.json';
 import socials from '../../data/socials.json';
@@ -25,6 +26,7 @@ import socials from '../../data/socials.json';
   </nav>
   <main id="main">
     <HeroSection doctor={doctor}/>
+    <WhyMeStatic doctor={doctor}/>
     <section class="about-doctor">
       <div class="container">
         <h2 class="about-doctor__title">О враче</h2>

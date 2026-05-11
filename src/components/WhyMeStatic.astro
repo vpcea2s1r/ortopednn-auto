@@ -6,7 +6,7 @@ const doctor = Astro.props.doctor;
   <div class="container">
     <div class="why-content">
       <div class="why-text">
-        <h2>Почему пациенты выбирают меня</h2>
+        <h2>Почему выбирают нас</h2>
         <ul>
           {doctor.utp.map((item, i) => (
             <li>
@@ -17,13 +17,11 @@ const doctor = Astro.props.doctor;
         </ul>
       </div>
       <div class="why-card">
-        <div class="doctor-photo">
-          <img src={doctor.photo || "https://via.placeholder.com/200"} alt={doctor.name} width="180" height="180"/>
-        </div>
         <div class="doctor-info">
           <h3>{doctor.name}</h3>
           <p>{doctor.specialty}</p>
           <p class="experience">{doctor.experience}</p>
+          <p class="address">{doctor.address}</p>
         </div>
       </div>
     </div>
@@ -115,9 +113,15 @@ const doctor = Astro.props.doctor;
 }
 
 .doctor-info .experience {
-  color: #0ea5e9;
+  color: var(--color-primary);
   font-weight: 600;
   margin-top: 8px;
+}
+
+.doctor-info .address {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: var(--space-sm);
 }
 
 .container {
