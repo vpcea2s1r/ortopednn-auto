@@ -59,15 +59,10 @@
   --z-tooltip: 400;
 }
 
-/* Dark mode support */
+/* Dark mode disabled — causes readability issues on mobile */
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #f1f5f9;
-    --color-text-muted: #94a3b8;
-    --color-bg: #0f172a;
-    --color-bg-alt: #1e293b;
-    --color-border: #334155;
-  }
+  /* intentionally empty — dark mode not fully supported */
 }
 
 /* Reduced motion */
