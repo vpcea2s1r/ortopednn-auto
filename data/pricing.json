@@ -28,8 +28,8 @@
       { "code": "А16.07.035.001", "codeShort": "О.2.1.1", "name": "Частичный съемный протез", "price": "24 400 ₽", "link": "/services/chastichny-sjemny-protez" },
       { "code": "А16.07.023.001", "codeShort": "О.2.1.2", "name": "Полный съемный протез", "price": "27 360 ₽", "link": "/services/polny-sjemny-protez" },
       { "code": "А16.07.035.003", "codeShort": "О.2.1.3", "name": "Иммедиат-протез акриловый", "price": "12 940 ₽", "link": "/services/immediat-protez" },
-      { "code": "А16.07.035.004", "codeShort": "О.2.1.4", "name": "Съемный протез из «Имплакрила»", "price": "41 400 ₽", "link": "/services/perebazirovka-implakril" },
-      { "code": "А16.07.035.005", "codeShort": "О.2.1.5", "name": "Иммедиат-протез из «Имплакрила»", "price": "22 080 ₽", "link": "/services/perebazirovka-implakril" },
+      { "code": "А16.07.035.004", "codeShort": "О.2.1.4", "name": "Съемный протез из «Имплакрила»", "price": "41 400 ₽", "link": "/services/sjemnyj-protez-implakril" },
+      { "code": "А16.07.035.005", "codeShort": "О.2.1.5", "name": "Иммедиат-протез из «Имплакрила»", "price": "22 080 ₽", "link": "/services/immediat-implakril" },
       { "code": "А16.07.035.006", "codeShort": "О.2.1.6", "name": "Съемный протез с металлическим базисом", "price": "34 300 ₽", "link": "/services/chastichny-sjemny-protez" },
       { "code": "А16.07.035.007", "codeShort": "О.2.1.7", "name": "Съемный протез с металлическим базисом (огнеупор)", "price": "59 400 ₽", "link": "/services/chastichny-sjemny-protez" }
     ]
