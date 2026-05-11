@@ -1,272 +1,268 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-
 const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
 const socials = [];
 ---
 
-<BaseLayout 
-  title="Съёмный протез — Никитина М.Г."
-  description="Съёмные зубные протезы в Нижнем Новгороде. Цена от 8000 рублей. Виды, показания, уход за съёмными протезами."
-  doctor={doctor}
-  socials={socials}
->
+<BaseLayout title="Съёмный протез — Никитина М.Г." description="Съёмные зубные протезы в Нижнем Новгороде. Цена от 8000 рублей. Виды, показания, уход за съёмными протезами." doctor={doctor} socials={socials}>
   <Navbar />
   <main class="service-page">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <div class="container">
-        <a href="/">Главная</a>
-        <span>/</span>
-        <a href="/services">Услуги</a>
-        <span>/</span>
-        <span>Съёмный протез</span>
-      </div>
-    </nav>
-    
-    <article class="service-content">
-      <div class="container">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Съёмный протез</span></div></nav>
+    <article class="service-content"><div class="container">
         <header class="service-header">
           <h1 class="service-header__title">Съёмный протез</h1>
           <div class="service-header__price">от 8 000 ₽</div>
         </header>
-        
         <div class="service-body">
+
           <section class="info-section">
-            <h2>Что такое съёмный протез простыми словами</h2>
-            <p>Съёмный протез — это конструкция, которую пациент может сам снимать и надевать обратно. В отличие от коронок или мостов, которые фиксируются навсегда, съёмный протез вынимается изо рта для чистки и на ночь.</p>
-            <p>Современные съёмные протезы выглядят естественно: розовая десна из мягкой пластмассы, белые зубы из керамики или пластмассы. Крепятся к оставшимся зубам крючками (кламмерами) или на импланты.</p>
+            <h2>Что такое съёмный протез</h2>
+            <p>Съёмный протез — это ортопедическая конструкция, предназначенная для замещения отсутствующих зубов и восстановления жевательной функции. В отличие от несъёмных конструкций (коронок, мостов), съёмный протез пациент может самостоятельно извлекать из полости рта для проведения гигиенических процедур и надевать обратно.</p>
+            <p>Современные съёмные протезы представляют собой высокотехнологичные изделия, состоящие из розового базиса (имитирующего слизистую оболочку десны), искусственных зубов и элементов фиксации (кламмеров, аттачменов или телескопических коронок). По данным зарубежных стоматологических исследований, съёмные протезы остаются основным методом протезирования при значительной потере зубов, особенно среди пациентов старшего возраста.</p>
+            <p>Качество современных съёмных конструкций существенно отличается от тех, которые использовались 20-30 лет назад. Новые материалы — термопластики, нейлон, акриловые сополимеры — обеспечивают комфортное прилегание, естественный внешний вид и минимальное воздействие на слизистую оболочку полости рта.</p>
           </section>
-          
+
           <section class="info-section">
-            <h2>Когда применяется</h2>
+            <h2>Показания к применению</h2>
             <ul>
-              <li>Отсутствуют все зубы на одной или обеих челюстях</li>
-              <li>Отсутствует много зубов подряд, но есть оставшиеся опорные зубы</li>
-              <li>Нет возможности поставить импланты (по медицинским показаниям или финансам)</li>
-              <li>Временное решение перед имплантацией</li>
-              <li>Утрачены только несколько зубов (частичный протез)</li>
+              <li>Полное отсутствие зубов на одной или обеих челюстях (адентия) — в таких случаях изготавливается полный съёмный протез</li>
+              <li>Частичное отсутствие зубов, когда невозможно изготовить мостовидный протез (концевой дефект, отсутствие опорных зубов)</li>
+              <li>Невозможность проведения имплантации по медицинским показаниям или из-за атрофии костной ткани</li>
+              <li>Временное протезирование на период приживления имплантатов или изготовления постоянной конструкции</li>
+              <li>Значительная потеря зубов с оставшимися опорными зубами, непригодными для фиксации мостовидного протеза</li>
+              <li>Пожелание пациента иметь съёмную конструкцию по личным или финансовым причинам</li>
             </ul>
           </section>
-          
+
           <section class="info-section">
             <h2>Виды съёмных протезов</h2>
-            <p><strong>Полный съёмный протез</strong> — применяется при отсутствии всех зубов на челюсти. Держится на десне за счёт эффекта присасывания. В верхней челюсти держится лучше, в нижней — хуже из-за формы.</p>
-            <p><strong>Частичный съёмный протез</strong> — когда есть свои зубы. Крепится к ним крючками (кламмерами) или замками (аттачментами). Более устойчив, чем полный.</p>
-            <p><strong>Бюгельный протез</strong> — металлический каркас в форме дуги (бюгель = дуга по-немецки). Более прочный и тонкий, чем пластмассовый. Распределяет жевательную нагрузку равномерно между зубами и десной.</p>
-            <p><strong>Нейлоновый протез</strong> — гибкий и мягкий, из нейлона. Незаметен, крючки из того же материала розового цвета. Но мягче пластмассы, поэтому жевать твёрдую пищу сложнее.</p>
-            <p><strong>Протез на имплантах (условно-съёмный)</strong> — на 2-4 имплантах крепится протез, который снимает только врач. Самый надёжный вариант при отсутствии зубов.</p>
+            <div class="materials-grid">
+              <div class="material-card">
+                <h3>Полный съёмный протез</h3>
+                <p>Применяется при полном отсутствии зубов на челюсти. Держится на слизистой оболочке за счёт эффекта присасывания (субъективное ощущение «присасывания» к десне) и анатомических рельефов нёба и альвеолярного гребня. На верхней челюсти площадь прилегания больше, поэтому фиксация надёжнее. На нижней челюсти фиксация проблематичнее из-за ограниченного пространства и подвижности языка.</p>
+                <ul>
+                  <li>Применение: полная адентия</li>
+                  <li>Материал: акриловая пластмасса</li>
+                  <li>Фиксация: присасывание</li>
+                </ul>
+              </div>
+              <div class="material-card">
+                <h3>Частичный съёмный протез</h3>
+                <p>Используется при сохранении одного или нескольких зубов, которые служат опорой. Фиксируется кламмерами (металлическими крючками) или аттачментами (замками). Кламмеры охватывают опорные зубы, обеспечивая удержание и стабилизацию протеза. Аттачменты более эстетичны — видимая часть не содержит металла. По данным клинических исследований, частичные протезы служат дольше полных за счёт лучшей фиксации.</p>
+                <ul>
+                  <li>Применение: частичная адентия</li>
+                  <li>Материал: акрил, нейлон, термопластик</li>
+                  <li>Фиксация: кламмеры или аттачменты</li>
+                </ul>
+              </div>
+              <div class="material-card">
+                <h3>Бюгельный протез</h3>
+                <p>Конструкция на металлическом каркасе (дуге — бюгеле), соединяющем две стороны протеза. Металлический каркас позволяет сделать базис тоньше и прочнее, а распределение жевательной нагрузки — более физиологичным. Часть нагрузки передаётся на опорные зубы через кламмеры, часть — на слизистую оболочку. Бюгельные протезы считаются наиболее физиологичными среди съёмных конструкций.</p>
+                <ul>
+                  <li>Применение: частичная адентия</li>
+                  <li>Материал: металл + акрил/термопластик</li>
+                  <li>Фиксация: кламмеры или замки</li>
+                </ul>
+              </div>
+              <div class="material-card">
+                <h3>Нейлоновый и термопластический протез</h3>
+                <p>Изготавливается из гибких материалов — нейлона, полиоксиметилена или термопластичных сополимеров. Обладает высокой эластичностью и полупрозрачным розовым цветом, сливающимся со слизистой оболочкой. Кламмеры также выполнены из того же материала, что делает конструкцию менее заметной. Рекомендуется при аллергии на акриловые мономеры и для пациентов с чувствительной слизистой.</p>
+                <ul>
+                  <li>Применение: частичная адентия</li>
+                  <li>Материал: нейлон, Valplast, Flexite</li>
+                  <li>Фиксация: гибкие кламмеры</li>
+                </ul>
+              </div>
+              <div class="material-card">
+                <h3>Протез на имплантах (условно-съёмный)</h3>
+                <p>На 2-4 дентальных имплантах фиксируется съёмный протез с помощью аттачменов (локаторов) или балочной системы. Пациент не может самостоятельно снять протез — для извлечения требуется помощь врача. Обеспечивает значительно лучшую фиксацию и стабильность по сравнению с обычными съёмными протезами, особенно на нижней челюсти. Также замедляет атрофию костной ткани.</p>
+                <ul>
+                  <li>Применение: полная/частичная адентия</li>
+                  <li>Материал: акрил + имплантаты</li>
+                  <li>Фиксация: аттачменты на имплантах</li>
+                </ul>
+              </div>
+            </div>
           </section>
-          
+
+          <section class="info-section">
+            <h2>Протокол изготовления</h2>
+            <ol class="protocol-list">
+              <li><strong>Консультация и обследование.</strong> Осмотр полости рта, оценка состояния оставшихся зубов, слизистой оболочки, определение типа прикуса. Рентгенологическое исследование при необходимости. Обсуждение с пациентом возможных вариантов и их стоимости.</li>
+              <li><strong>Подготовка полости рта.</strong> При необходимости — лечение кариеса, удаление неподлежащих зубов, профессиональная гигиена. Изготовление индивидуальной ложки (если используется).</li>
+              <li><strong>Снятие оттисков.</strong> Снятие предварительных оттисков для изготовления индивидуальных ложек. Затем — рабочих оттисков двухслойной массой (силикон, полиэфир). Оттиски снимаются с обеих челюстей.</li>
+              <li><strong>Определение центральной окклюзии.</strong> Изготовление восковых прикусных валиков, определение межальвеолярной высоты и центрального соотношения челюстей. Примерка валиков во рту.</li>
+              <li><strong>Постановка зубов.</strong> Расстановка искусственных зубов на восковом базисе по восковым валикам. Проверка эстетики, функции, речи. При необходимости — корректировка положения зубов.</li>
+              <li><strong>Примерка готового протеза.</strong> Проверка прилегания конструкции, окклюзионных контактов, эстетики, фиксации. При выявлении проблем — корректировка.</li>
+              <li><strong>Окончательная фиксация.</strong> Выдача готового протеза пациенту, обучение правилам использования и ухода, назначение даты контрольного осмотра.</li>
+            </ol>
+          </section>
+
+          <section class="info-section">
+            <h2>Биомеханика и распределение нагрузки</h2>
+            <p>Съёмный протез передаёт жевательное давление на слизистую оболочку альвеолярного гребня и на опорные зубы (при наличии кламмерной фиксации). Соотношение нагрузки между слизистой и зубами зависит от типа конструкции и состояния опорных тканей.</p>
+            <p>При частичном протезе нагрузка распределяется примерно 40% на слизистую и 60% на опорные зубы через кламмеры. При полном протезе вся нагрузка передаётся на слизистую оболочку, что со временем приводит к атрофии костной ткани под протезом.</p>
+            <p>Скорость атрофии индивидуальна и зависит от качества гигиены, характера питания, общего состояния здоровья. Зарубежные исследования показывают, что за первые 5 лет ношения полного съёмного протеза высота альвеолярного гребня может уменьшиться на 30-50%.</p>
+          </section>
+
+          <section class="info-section">
+            <h2>Адаптация и привыкание</h2>
+            <p>Период адаптации к съёмному протезу составляет от нескольких дней до 2-3 недель. В это время пациент может испытывать дискомфорт, повышенное слюноотделение, изменение вкусовых ощущений, незначительное нарушение дикции.</p>
+            <p><strong>Рекомендации для быстрой адаптации:</strong></p>
+            <ul>
+              <li>Первые дни ешьте мягкую пищу, измельчённую на мелкие кусочки</li>
+              <li>Жуйте на обеих сторонах челюсти одновременно для равномерной нагрузки</li>
+              <li>Для улучшения фиксации используйте специальные кремы (Corega, Protefix, FittyDent) в первое время</li>
+              <li>При нарушении дикции — читайте вслух, произносите скороговорки по 15-20 минут в день</li>
+              <li>При точечном натирании — обратитесь к стоматологу для корректировки, не пытайтесь подтачивать протез самостоятельно</li>
+              <li>Не снимайте протез на ночь первые 2 недели — это ускоряет адаптацию</li>
+            </ul>
+          </section>
+
+          <section class="info-section">
+            <h2>Уход за съёмным протезом</h2>
+            <p>Правильный уход за съёмным протезом определяет срок его службы и здоровье слизистой оболочки полости рта. По данным клинических исследований, основная причина преждевременной замены съёмных протезов — не износ материалов, а воспалительные процессы в слизистой оболочке, вызванные неудовлетворительной гигиеной.</p>
+            <p><strong>Ежедневная гигиена:</strong></p>
+            <ul>
+              <li>Промывайте протез после каждого приёма пищи проточной водой</li>
+              <li>Чистите протез мягкой зубной щёткой и специальной пастой для протезов (или жидким мылом) дважды в день</li>
+              <li>Не используйте обычную зубную пасту — абразивные компоненты царапают поверхность протеза</li>
+              <li>Очищайте межзубные промежутки и кламмеры специальными щёточками</li>
+            </ul>
+            <p><strong>Глубокая очистка:</strong></p>
+            <ul>
+              <li>Используйте очищающие таблетки (Corega, Protefix, Kukident) 1-2 раза в неделю — растворяют налёт и дезинфицируют</li>
+              <li>Замачивайте протез в растворе на 10-15 минут, затем промывайте водой</li>
+              <li>Не используйте кипяток или горячую воду — пластмасса деформируется</li>
+              <li>Не применяйте отбеливающие средства — могут изменить цвет пластмассы</li>
+            </ul>
+            <p><strong>Защита от повреждений:</strong></p>
+            <ul>
+              <li>Наполняйте раковину водой или подкладывайте полотенце перед чисткой — защита от удара при падении</li>
+              <li>Храните протез в сухом закрытом контейнере или в специальном растворе</li>
+              <li>Не гните кламмеры и не используйте протез для открывания упаковок</li>
+            </ul>
+          </section>
+
+          <section class="info-section">
+            <h2>Преимущества в цифрах</h2>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-number">1-2 недели</span>
+                <span class="stat-label">срок изготовления</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">5-7 лет</span>
+                <span class="stat-label">срок службы акрилового</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">40+ лет</span>
+                <span class="stat-label">опыт применения</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">до 30%</span>
+                <span class="stat-label">атрофия за 5 лет</span>
+              </div>
+            </div>
+          </section>
+
           <div class="info-grid">
             <section class="info-block info-block--pros">
               <h3>Преимущества</h3>
               <ul>
-                <li><strong>Доступная цена</strong> — самый бюджетный вариант при отсутствии зубов</li>
-                <li><strong>Не требует обточки зубов</strong> — не нужно портить здоровые зубы</li>
-                <li><strong>Ремонтопригодность</strong> — если сломался, можно починить</li>
-                <li><strong>Подходит при любом количестве зубов</strong> — даже при полном их отсутствии</li>
-                <li><strong>Быстрое изготовление</strong> — 1-2 недели от слепка до готового протеза</li>
-                <li><strong>Можно добавить зубы</strong> — если потеряли ещё один, протез дорабатывается</li>
+                <li><strong>Доступная цена</strong> — самый экономичный вариант при значительной потере зубов</li>
+                <li><strong>Не требует обточки зубов</strong> — здоровые зубы остаются нетронутыми</li>
+                <li><strong>Ремонтопригодность</strong> — при поломке или потере зуба протез можно восстановить</li>
+                <li><strong>Универсальность</strong> — подходит при любом количестве оставшихся зубов</li>
+                <li><strong>Быстрое изготовление</strong> — от слепка до готовой конструкции 1-2 недели</li>
+                <li><strong>Возможность корректировки</strong> — можно добавить зубы при потере новых</li>
               </ul>
             </section>
-            
             <section class="info-block info-block--cons">
-              <h3>Что учитывать</h3>
+              <h3>Особенности</h3>
               <ul>
-                <li><strong>Натирает десну</strong> — в начале ношения, пока привыкаете (1-2 недели)</li>
-                <li><strong>Снижает вкусовые ощущения</strong> — пластмасса закрывает нёбо (верхняя челюсть)</li>
-                <li><strong>Ограничения в еде</strong> — твёрдую пищу (яблоки, орехи) жевать сложнее</li>
-                <li><strong>Подвижность</strong> — может смещаться при разговоре или еде</li>
-                <li><strong>Атрофия кости</strong> — без нагрузки челюстная кость постепенно уменьшается</li>
-                <li><strong>Крючки заметны</strong> — на передних зубах металлические кламмеры видны</li>
-                <li><strong>Срок службы 5-7 лет</strong> — потом требует замены из-за износа</li>
+                <li><strong>Период адаптации</strong> — первое время возможны натирание, изменение дикции, повышенное слюноотделение</li>
+                <li><strong>Ограничения в еде</strong> — твёрдую пищу (яблоки, орехи, мясо) жевать сложнее</li>
+                <li><strong>Атрофия кости</strong> — без нагрузки челюстная кость постепенно уменьшается, требуется перебазировка или замена протеза</li>
+                <li><strong>Снижение вкусовых ощущений</strong> — базис верхнего протеза закрывает нёбо, где расположены вкусовые рецепторы</li>
+                <li><strong>Подвижность</strong> — нижний протез может смещаться при разговоре и еде</li>
+                <li><strong>Срок службы</strong> — 5-7 лет для акриловых, после чего требуется замена</li>
               </ul>
             </section>
           </div>
-          
-          <section class="info-section">
-            <h2>Как привыкнуть к съёмному протезу</h2>
-            <p>Первые дни протез ощущается как инородное тело во рту. Это нормально. Начните с мягкой пищи, режьте еду мелкими кусочками, жуйте на обеих сторонах одновременно.</p>
-            <p>Для улучшения фиксации в первое время можно использовать специальный крем (Corega, Protefix). Наносится на протез тонким слоем, держит плотно 8-12 часов.</p>
-            <p>При повышенном слюноотделении — это пройдёт через неделю. При нарушении дикции — читайте вслух, произносите скороговорки. Речь восстановится за 1-2 недели.</p>
-          </section>
-          
-          <section class="info-section">
-            <h2>Как ухаживать за съёмным протезом</h2>
-            <ul>
-              <li><strong>Утром и вечером</strong> — чистить протез мягкой щёткой и специальной пастой или жидким мылом</li>
-              <li><strong>После еды</strong> — полоскать рот и промывать протез под водой</li>
-              <li><strong>На ночь</strong> — можно снимать и класть в стакан с водой или специальным раствором для хранения</li>
-              <li><strong>Не кипятить</strong> — горячая вода деформирует пластмассу</li>
-              <li><strong>Не использовать абразивные пасты</strong> — царапают поверхность, где скапливаются бактерии</li>
-              <li><strong>Уронили в раковину?</strong> — подстелите полотенце или наберите воду, чтобы не разбился</li>
-              <li><strong>Крючки гнуть нельзя</strong> — при поломке обращайтесь к стоматологу</li>
-            </ul>
-          </section>
-          
-          <section class="info-section">
-            <h2>Срок службы</h2>
-            <p>Пластмассовый протез служит 3-5 лет. Бюгельный — 5-7 лет. Нейлоновый — 2-3 года (быстрее растягивается).</p>
-            <p>Причина замены: пластмасса впитывает запахи и меняет цвет, протез разбалтывается и не прилегает плотно к десне, меняется прикус из-за атрофии кости.</p>
-          </section>
-          
-          <section class="info-section">
-            <h2>Альтернативы</h2>
-            <p><strong>Импланты</strong> — дороже, но это отдельные зубы, которые выглядят и работают как свои. Не нужно снимать, не натирают, кость не атрофируется.</p>
-            <p><strong>Мостовидный протез</strong> — если есть опорные зубы по краям пробела. Делается несъёмным, но требует обточки здоровых зубов.</p>
-            <p>Если нет финансовой возможности на импланты — съёмный протез отличный вариант. Технологии шагнули далеко вперёд, современные протезы выглядят естественно и комфортно.</p>
-          </section>
+
         </div>
-        
         <div class="service-cta">
-          <p>Не знаете, какой протез выбрать? Приходите на консультацию.</p>
+          <h2>Записаться на консультацию</h2>
+          <p>врач-ортопед Никитина Марина Георгиевна</p>
           <div class="cta-buttons">
-            <a href="tel:+79202537317" class="btn">Позвонить</a>
-            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
+            <a href="tel:+79202537317" class="btn btn--primary">Позвонить</a>
+            <a href="https://t.me/nikitina_ortoped" class="btn btn--telegram">Telegram</a>
+            <a href="https://wa.me/79202537317" class="btn btn--whatsapp">WhatsApp</a>
           </div>
         </div>
-      </div>
-    </article>
+    </div></article>
   </main>
 </BaseLayout>
 
 <style>
-.service-page { min-height: 100vh; }
-
-.breadcrumbs {
-  padding: var(--space-sm) 0;
-  background: white;
-  border-bottom: 1px solid var(--color-border);
-}
-.breadcrumbs .container {
-  display: flex;
-  gap: var(--space-sm);
-  font-size: var(--text-sm);
-  flex-wrap: wrap;
-}
+.service-page { min-height: 100vh; background: var(--color-bg-alt); }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
 .breadcrumbs a { color: var(--color-primary); }
-
 .service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 2px solid var(--color-primary); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); font-weight: 700; }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); white-space: nowrap; }
+.service-body { background: white; padding: var(--space-xl); border-radius: var(--radius-xl); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
 
-.service-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
-  flex-wrap: wrap;
-  gap: var(--space-md);
-}
-.service-header__title {
-  font-size: var(--text-3xl);
-  color: var(--color-text);
-}
-.service-header__price {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
-  color: white;
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-lg);
-  font-weight: 700;
-  font-size: var(--text-xl);
-}
+.info-section { margin-bottom: var(--space-2xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); font-weight: 600; }
+.info-section p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); }
+.info-section ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; }
+.info-section strong { color: var(--color-text); }
 
-.info-section {
-  margin-bottom: var(--space-xl);
-}
-.info-section h2 {
-  font-size: var(--text-xl);
-  color: var(--color-primary);
-  margin-bottom: var(--space-md);
-}
-.info-section p {
-  color: var(--color-text-muted);
-  line-height: 1.7;
-}
-.info-section ul {
-  padding-left: var(--space-lg);
-}
-.info-section li {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-xs);
-  line-height: 1.6;
-}
+.protocol-list { padding-left: var(--space-lg); }
+.protocol-list li { margin-bottom: var(--space-md); color: var(--color-text-muted); line-height: 1.6; }
+.protocol-list li strong { color: var(--color-text); }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-}
+.materials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.material-card { background: var(--color-bg-alt); padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.material-card h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-sm); font-weight: 600; }
+.material-card p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-sm); font-size: var(--text-sm); }
+.material-card ul { padding-left: var(--space-md); }
+.material-card li { color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: 2px; }
 
-.info-block {
-  background: white;
-  padding: var(--space-lg);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-}
-.info-block h3 {
-  font-size: var(--text-lg);
-  color: var(--color-text);
-  margin-bottom: var(--space-md);
-}
-.info-block ul {
-  list-style: none;
-  padding: 0;
-}
-.info-block li {
-  color: var(--color-text-muted);
-  padding: var(--space-xs) 0;
-  border-bottom: 1px solid var(--color-bg);
-}
-.info-block li strong {
-  color: var(--color-text);
-}
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-xl); border-radius: var(--radius-xl); text-align: center; }
+.stat-number { display: block; font-size: var(--text-2xl); font-weight: 700; }
+.stat-label { display: block; font-size: var(--text-sm); opacity: 0.85; margin-top: var(--space-xs); }
 
-.service-cta {
-  text-align: center;
-  padding: var(--space-2xl);
-  background: var(--color-bg-alt);
-  border-radius: var(--radius-xl);
-  margin-top: var(--space-xl);
-}
-.service-cta p {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-md);
-}
-.cta-buttons {
-  display: flex;
-  gap: var(--space-md);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  background: var(--color-primary);
-  color: white;
-  padding: var(--space-sm) var(--space-xl);
-  border-radius: var(--radius-lg);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all var(--transition-fast);
-}
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  text-decoration: none;
-}
-.btn--secondary {
-  background: white;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-}
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: var(--color-bg-alt); padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); font-weight: 600; }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: var(--text-sm); }
+.info-block li:last-child { border-bottom: none; }
+
+.service-cta { text-align: center; padding: var(--space-2xl); background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta h2 { font-size: var(--text-2xl); color: white; margin-bottom: var(--space-sm); }
+.service-cta p { color: rgba(255,255,255,0.85); margin-bottom: var(--space-lg); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
+.btn--primary { background: white; color: var(--color-primary); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
+.btn--telegram { background: #229ED9; color: white; }
+.btn--whatsapp { background: #25D366; color: white; }
+.btn--telegram:hover, .btn--whatsapp:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
 
 @media (max-width: 768px) {
-  .info-grid { grid-template-columns: 1fr; }
   .service-header { flex-direction: column; }
   .service-header__price { width: 100%; text-align: center; }
+  .service-body { padding: var(--space-lg); }
+  .info-grid { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; align-items: center; }
 }
 </style>
