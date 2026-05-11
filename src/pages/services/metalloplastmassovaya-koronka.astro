@@ -1,43 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-
 const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
 const socials = [];
 ---
 
-<BaseLayout 
-  title="Металлопластмассовая коронка — Никитина М.Г."
-  description="Металлопластмассовые коронки в Нижнем Новгороде. Временные и постоянные конструкции. Цена от 7500 рублей."
-  doctor={doctor}
-  socials={socials}
->
+<BaseLayout title="Металлопластмассовая коронка — Никитина М.Г." description="Металлопластмассовые коронки в Нижнем Новгороде. Временные и постоянные конструкции. Цена от 7500 руб." doctor={doctor} socials={socials}>
   <Navbar />
   <main class="service-page">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <div class="container">
-        <a href="/">Главная</a>
-        <span>/</span>
-        <a href="/services">Услуги</a>
-        <span>/</span>
-        <span>Металлопластмассовая коронка</span>
-      </div>
-    </nav>
-    
-    <article class="service-content">
-      <div class="container">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Металлопластмассовая коронка</span></div></nav>
+    <article class="service-content"><div class="container">
         <header class="service-header">
           <h1 class="service-header__title">Металлопластмассовая коронка</h1>
           <div class="service-header__price">от 7 500 ₽</div>
         </header>
-        
         <div class="service-body">
           <section class="info-section">
             <h2>Что такое металлопластмассовая коронка простыми словами</h2>
             <p>Металлопластмассовая коронка — это коронка с металлическим каркасом и пластмассовым покрытием сверху. Это промежуточный вариант между цельнолитыми металлическими коронками и металлокерамикой.</p>
-            <p>Пластмасса придаёт коронке белый цвет, имитирующий зуб. При этом стоит дешевле керамики, но и meno долговечна.</p>
+            <p>Пластмасса придаёт коронке белый цвет, имитирующий зуб. При этом стоит дешевле керамики, но и менее долговечна.</p>
           </section>
-          
           <section class="info-section">
             <h2>Когда применяется</h2>
             <ul>
@@ -46,61 +28,108 @@ const socials = [];
               <li>Бюджетный вариант для жевательных зубов</li>
               <li>Длительное временное протезирование (до 1-2 лет)</li>
               <li>Адаптационный период перед постоянными коронками</li>
+              <li>Бюджетное долгосрочное решение для задних зубов</li>
             </ul>
           </section>
-          
+          <section class="info-section">
+            <h2>Строение коронки</h2>
+            <p><strong>Каркас:</strong> цельнолитой металлический каркас (Co-Cr сплав). Обеспечивает прочность и точность.</p>
+            <p><strong>Покрытие:</strong> слой стоматологической пластмассы (акрил, композит). Придаёт белый цвет.</p>
+            <p><strong>Связка:</strong> специальная обработка каркаса для лучшего сцепления с пластмассой.</p>
+          </section>
           <div class="info-grid">
-            <section class="info-block info-block--pros">
-              <h3>Преимущества</h3>
-              <ul>
-                <li><strong>Эстетика</strong> — белый цвет, имитирует зуб</li>
-                <li><strong>Стоимость</strong> — дешевле металлокерамики</li>
-                <li><strong>Прочность</strong> — металлический каркас выдерживает нагрузку</li>
-                <li><strong>Ремонт</strong> — пластмассу можно добавить при сколе</li>
-                <li><strong>Быстрое изготовление</strong> — можно сделать за 1-2 дня</li>
-              </ul>
-            </section>
-            
-            <section class="info-block info-block--cons">
-              <h3>Ограничения</h3>
-              <ul>
-                <li><strong>Стирание</strong> — пластмасса стирается быстрее керамики</li>
-                <li><strong>Окрашивание</strong> — впитывает красители от кофе, чая, сигарет</li>
-                <li><strong>Сколы</strong> — пластмасса может откалываться от металла</li>
-                <li><strong>Срок службы</strong> — 3-5 лет максимум</li>
-                <li><strong>Аллергия</strong> — на акрил бывает реакция</li>
-              </ul>
-            </section>
+            <section class="info-block info-block--pros"><h3>Преимущества</h3><ul>
+              <li><strong>Эстетика</strong> — белый цвет, имитирует зуб</li>
+              <li><strong>Стоимость</strong> — дешевле металлокерамики</li>
+              <li><strong>Прочность</strong> — металлический каркас выдерживает нагрузку</li>
+              <li><strong>Ремонт</strong> — пластмассу можно добавить при сколе</li>
+              <li><strong>Быстрое изготовление</strong> — можно сделать за 1-2 дня</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Ограничения</h3><ul>
+              <li><strong>Стирание</strong> — пластмасса стирается быстрее керамики</li>
+              <li><strong>Окрашивание</strong> — впитывает красители от кофе, чая, сигарет</li>
+              <li><strong>Сколы</strong> — пластмасса может откалываться от металла</li>
+              <li><strong>Срок службы</strong> — 3-5 лет максимум</li>
+              <li><strong>Аллергия</strong> — на акрил бывает реакция</li>
+            </ul></section>
           </div>
-          
-          <section class="info-section">
-            <h2>Отличие от металлокерамики</h2>
-            <p><strong>Материал</strong> — керамика vs пластмасса. Керамика прочнее и не окрашивается.</p>
-            <p><strong>Срок службы</strong> — металлокерамика 15-20 лет, металлопластмасса 3-5 лет.</p>
-            <p><strong>Стоимость</strong> — металлопластмасса дешевле на 30-50%.</p>
-            <p><strong>Ремонт</strong> — металлопластмассу можно чинить, металлокерамику обычно нет.</p>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔩</span><h3>Металлический каркас</h3></div>
+                <div class="material-card__body">
+                  <p>Кобальт-хромовый сплав — стандарт для цельнолитых конструкций.</p>
+                  <ul>
+                    <li>Толщина каркаса — 0,3-0,5 мм</li>
+                    <li>Высокая прочность</li>
+                    <li>Точность литья</li>
+                    <li>Устойчивость к коррозии</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Пластмассовое покрытие</h3></div>
+                <div class="material-card__body">
+                  <p>Стоматологическая пластмасса для облицовки коронки.</p>
+                  <ul>
+                    <li>Акриловые пластмассы</li>
+                    <li>Композитные материалы</li>
+                    <li>Подбор цвета по шкале Vita</li>
+                    <li>Толщина слоя — 1-2 мм</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🦷</span><h3>Бондинг</h3></div>
+                <div class="material-card__body">
+                  <p>Система фиксации пластмассы к металлу.</p>
+                  <ul>
+                    <li>Механическая обработка поверхности</li>
+                    <li>Специальные адгезивы</li>
+                    <li>Оптическое сцепление</li>
+                    <li>Снижает риск скола</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">3-5 лет</div>
+              <div class="stat-card__label">срок службы</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">от 7 500 ₽</div>
+              <div class="stat-card__label">стоимость</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">1-2 дня</div>
+              <div class="stat-card__label">изготовление</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">30-50%</div>
+              <div class="stat-card__label">дешевле металлокерамики</div>
+            </div>
+          </div>
+          <section class="info-section"><h2>Отличие от металлокерамики</h2>
+          <p><strong>Материал покрытия:</strong> керамика vs пластмасса. Керамика прочнее и не окрашивается.</p>
+          <p><strong>Срок службы:</strong> металлокерамика 15-20 лет, металлопластмасса 3-5 лет.</p>
+          <p><strong>Стоимость:</strong> металлопластмасса дешевле на 30-50%.</p>
+          <p><strong>Ремонт:</strong> металлопластмассу можно чинить, металлокерамику обычно нет.</p>
           </section>
-          
-          <section class="info-section">
-            <h2>Уход</h2>
-            <ul>
-              <li>Чистить зубы два раза в день</li>
-              <li>Избегать твёрдой пищи</li>
-              <li>Не употреблять красящие продукты</li>
-              <li>Раз в полгода — осмотр</li>
-            </ul>
+          <section class="info-section"><h2>Уход</h2>
+          <ul>
+            <li>Чистить зубы два раза в день</li>
+            <li>Избегать твёрдой пищи (орехи, леденцы)</li>
+            <li>Не употреблять красящие продукты (кофе, чай, красное вино)</li>
+            <li>Раз в полгода — осмотр</li>
+            <li>Отказаться от курения</li>
+          </ul>
           </section>
         </div>
-        
-        <div class="service-cta">
-          <p>Нужна консультация?</p>
-          <div class="cta-buttons">
-            <a href="tel:+79202537317" class="btn">Позвонить</a>
-            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
-          </div>
-        </div>
-      </div>
-    </article>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a></div></div>
+    </div></article>
   </main>
 </BaseLayout>
 
@@ -123,11 +152,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>
