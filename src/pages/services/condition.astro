@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Показания к протезированию | Никитина М.Г." description="Показания к зубному протезированию — когда нужен съёмный или несъёмный протез." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Показания к протезированию</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Показания к протезированию</h1>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Когда необходимо протезирование</h2>
+            <p>Потеря даже одного зуба — это повод обратиться к стоматологу-ортопеду. Отсутствие зубов приводит к смещению соседних, нарушению прикуса, проблемам с пищеварением и дикции.</p>
+            <p>Своевременное протезирование помогает сохранить здоровье оставшихся зубов и всей зубочелюстной системы.</p>
+          </section>
+          <section class="info-section">
+            <h2>Основные показания</h2>
+            <ul>
+              <li>Отсутствие одного или нескольких зубов</li>
+              <li>Полное отсутствие зубов на одной или обеих челюстях</li>
+              <li>Разрушение зуба более чем на 50%</li>
+              <li>Повышенная стираемость зубов</li>
+              <li>Аномалии формы или положения зубов</li>
+              <li>Желание улучшить эстетику улыбки</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Виды протезирования</h2>
+            <p><strong>Несъёмное:</strong> коронки, мостовидные протезы, виниры. Фиксируются на зубах или имплантатах. Подходят при наличии опорных зубов.</p>
+            <p><strong>Съёмное:</strong> частичные и полные съёмные протезы. Используются при большом количестве отсутствующих зубов или полной адентии.</p>
+            <p><strong>Условно-съёмное:</strong> протезы на имплантатах. Снимаются при необходимости, но надёжно фиксируются.</p>
+          </section>
+          <section class="info-section">
+            <h2>Противопоказания</h2>
+            <p>Существуют относительные и абсолютные противопоказания к протезированию. К относительным относятся: острые воспалительные процессы, неудовлетворительная гигиена, беременность.</p>
+            <p>Абсолютные противопоказания определяются индивидуально после обследования. В большинстве случаев можно найти подходящее решение.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Съёмное протезирование показано при</h3><ul>
+              <li>Большом количестве отсутствующих зубов</li>
+              <li>Отсутствии концевых зубов</li>
+              <li>Невозможности установки имплантатов</li>
+              <li>Как временное решение</li>
+              <li>Непереносимости других конструкций</li>
+            </ul></section>
+            <section class="info-block info-block--pros"><h3>Несъёмное протезирование показано при</h3><ul>
+              <li>Разрушении отдельных зубов</li>
+              <li>Отсутствии 1-3 зубов подряд</li>
+              <li>Хорошем состоянии опорных зубов</li>
+              <li>Желании долгосрочного решения</li>
+              <li>Требованиях к эстетике</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Консультация ортопеда</h2>
+            <p>На консультации врач осмотрит полость рта, оценит состояние зубов и слизистой, обсудит с вами возможные варианты и поможет выбрать оптимальное решение.</p>
+            <p>Узнайте, какой вид протезирования подходит именно вам. Запишитесь на приём для получения индивидуального плана лечения.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

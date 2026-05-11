@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Иммедиат-протез | Никитина М.Г." description="Иммедиат-протез — временная конструкция сразу после удаления зубов. Цена по запросу." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Иммедиат-протез</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Иммедиат-протез</h1>
+          <div class="service-header__price">по запросу</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое иммедиат-протез</h2>
+            <p>Иммедиат-протез (от англ. immediate — немедленный) — это временная съёмная конструкция, которая устанавливается сразу после удаления зубов. Служит для восстановления эстетики и функции на период заживления.</p>
+            <p>Иммедиат-протез позволяет не оставаться без зубов даже на время ожидания постоянного протеза или имплантата.</p>
+          </section>
+          <section class="info-section">
+            <h2>Когда применяется</h2>
+            <ul>
+              <li>Удаление передних зубов</li>
+              <li>Подготовка к имплантации</li>
+              <li>Период остеоинтеграции имплантата</li>
+              <li>Изготовление постоянного протеза</li>
+              <li>Психологический комфорт пациента</li>
+              <li>Сохранение дикции и жевания</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Особенности иммедиат-протеза</h2>
+            <p><strong>Материал:</strong> обычно акриловый, лёгкий и быстро изготавливаемый.</p>
+            <p><strong>Изготовление:</strong> до удаления зубов снимаются слепки.</p>
+            <p><strong>Установка:</strong> сразу после удаления, на свежую лунку.</p>
+            <p><strong>Срок ношения:</strong> от 2 недель до 6 месяцев.</p>
+            <p><strong>Замена:</strong> после заживления изготавливается постоянный протез.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Преимущества</h3><ul>
+              <li><strong>Эстетика</strong> — вы не останетесь без зубов</li>
+              <li><strong>Функция</strong> — сохранение жевания и дикции</li>
+              <li><strong>Защита</strong> — закрывает лунку после удаления</li>
+              <li><strong>Быстро</strong> — изготавливается за 1-2 дня</li>
+              <li><strong>Доступно</strong> — относительно невысокая стоимость</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Временность</strong> — не для постоянного ношения</li>
+              <li><strong>Подгонка</strong> — требует корректировки при заживлении</li>
+              <li><strong>Дискомфорт</strong> — первое время может давить</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Этапы изготовления</h2>
+            <p><strong>1. Консультация:</strong> планирование удаления и протезирования.</p>
+            <p><strong>2. Снятие слепков:</strong> до удаления зубов.</p>
+            <p><strong>3. Изготовление:</strong> лаборатория готовит протез.</p>
+            <p><strong>4. Удаление зубов:</strong> хирургический этап.</p>
+            <p><strong>5. Установка:</strong> протез фиксируется сразу.</p>
+            <p><strong>6. Корректировка:</strong> подгонка по мере заживления.</p>
+          </section>
+          <section class="info-section"><h2>Уход за иммедиат-протезом</h2>
+            <p>В первые дни не снимайте протез без необходимости — это защитит лунку. Полощите рот антисептиком после еды. Очищайте протез мягкой щёткой.</p>
+            <p>Посещайте врача для контроля заживления и своевременной корректировки протеза. После полного заживления протез заменяется на постоянный.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

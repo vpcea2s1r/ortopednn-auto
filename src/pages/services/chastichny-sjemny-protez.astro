@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Частичный съёмный протез термопластический | Никитина М.Г." description="Частичный съёмный протез из термопластичного материала — гибкий и комфортный. Цена от 41 400 руб." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Частичный съёмный протез</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Частичный съёмный протез термопластический</h1>
+          <div class="service-header__price">от 41 400 ₽</div>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Что такое частичный термопластический протез</h2>
+            <p>Частичный съёмный протез — это конструкция, замещающая несколько отсутствующих зубов. Термопластический материал (нейлон, AcryFree, Dental D) делает протез гибким и комфортным.</p>
+            <p>В отличие от жёсткого акрила, термопластичные протезы мягче прилегают к десне, не натирают и не вызывают аллергию.</p>
+          </section>
+          <section class="info-section">
+            <h2>Когда применяется</h2>
+            <ul>
+              <li>Отсутствие нескольких зубов подряд</li>
+              <li>Концевой дефект (нет зубов в конце ряда)</li>
+              <li>Невозможность имплантации</li>
+              <li>Противопоказания к мостовидному протезу</li>
+              <li>Аллергия на металл или акрил</li>
+              <li>Временное решение перед имплантацией</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Термопластичные материалы</h2>
+            <p><strong>Нейлон:</strong> мягкий, гибкий, гипоаллергенный. Идеален для чувствительных дёсен.</p>
+            <p><strong>AcryFree:</strong> полужёсткий, прочнее нейлона, комфортный.</p>
+            <p><strong>ДенталДи:</strong> белый бюгель, эстетичный, без металлических кламмеров.</p>
+            <p>Все материалы не содержат мономера и не окрашиваются.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Преимущества термопластика</h3><ul>
+              <li><strong>Гибкость</strong> — мягко прилегает к десне</li>
+              <li><strong>Комфорт</strong> — не натирает, не давит</li>
+              <li><strong>Гипоаллергенность</strong> — без мономера и латекса</li>
+              <li><strong>Эстетика</strong> — розовый полупрозрачный цвет</li>
+              <li><strong>Лёгкость</strong> — меньше нагрузка на челюсть</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Цена</strong> — выше классического акрила</li>
+              <li><strong>Ремонт</strong> — сложнее поддаётся переделке</li>
+              <li><strong>Срок службы</strong> — 3-5 лет, меньше чем у бюгеля</li>
+            </ul></section>
+          </div>
+          <section class="info-section"><h2>Этапы изготовления</h2>
+            <p><strong>1. Консультация:</strong> осмотр, план лечения.</p>
+            <p><strong>2. Подготовка:</strong> лечение оставшихся зубов.</p>
+            <p><strong>3. Снятие слепков:</strong> точное моделирование.</p>
+            <p><strong>4. Изготовление:</strong> лабораторное создание протеза.</p>
+            <p><strong>5. Примерка:</strong> подгонка и корректировка.</p>
+            <p><strong>6. Фиксация:</strong> установка, обучение уходу.</p>
+          </section>
+          <section class="info-section"><h2>Уход за частичным протезом</h2>
+            <p>Промывайте протез после каждого приёма пищи. Используйте мягкую щётку и специальные средства для очистки. Не используйте кипяток — может деформироваться.</p>
+            <p>Храните в контейнере с водой или специальном растворе. Регулярно посещайте стоматолога для проверки состояния протеза и дёсен.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>
