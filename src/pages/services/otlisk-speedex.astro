@@ -1,36 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-
 const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
 const socials = [];
 ---
 
-<BaseLayout 
-  title="Двухслойные оттиски Speedex | Никитина М.Г."
-  description="Двухслойные оттиски материалом Speedex. Точность и детализация для качественного протезирования. Цена 1 380 руб."
-  doctor={doctor}
-  socials={socials}
->
+<BaseLayout title="Двухслойные оттиски Speedex | Никитина М.Г." description="Двухслойные оттиски материалом Speedex. Точность и детализация для качественного протезирования. Цена 1 380 руб." doctor={doctor} socials={socials}>
   <Navbar />
   <main class="service-page">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <div class="container">
-        <a href="/">Главная</a>
-        <span>/</span>
-        <a href="/services">Услуги</a>
-        <span>/</span>
-        <span>Снятие двухслойных оттисков Speedex</span>
-      </div>
-    </nav>
-    
-    <article class="service-content">
-      <div class="container">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Снятие двухслойных оттисков Speedex</span></div></nav>
+    <article class="service-content"><div class="container">
         <header class="service-header">
           <h1 class="service-header__title">Двухслойные оттиски Speedex</h1>
           <div class="service-header__price">1 380 ₽</div>
         </header>
-        
         <div class="service-body">
           <section class="info-section">
             <h2>Что такое двухслойный оттиск</h2>
@@ -38,7 +21,6 @@ const socials = [];
             <p>Speedex — это А-силикон (поливинилсилоксан, PVS) производства компании Zhermack (Италия). Материал зарекомендовал себя в клинической практике благодаря стабильности, точности и удобству работы.</p>
             <p>Двухслойная техника особенно важна для работ, где требуется высокая точность: коронки, мостовидные протезы, виниры, вкладки. Первый слой фиксирует общую форму, второй — детализирует края препарированных зубов.</p>
           </section>
-          
           <section class="info-section">
             <h2>Когда применяется</h2>
             <ul>
@@ -50,70 +32,116 @@ const socials = [];
               <li>Сложные клинические случаи с множественными уступами</li>
             </ul>
           </section>
-          
           <section class="info-section">
             <h2>Материал Speedex</h2>
             <p><strong>Характеристики Speedex:</strong></p>
-            <p><strong>Тип:</strong>Addition silicone (A-силикон, поливинилсилоксан)</p>
+            <p><strong>Тип:</strong> Addition silicone (A-силикон, поливинилсилоксан)</p>
             <p><strong>Консистенции:</strong> regular body (базовый слой), light body (корректирующий слой)</p>
             <p><strong>Время полимеризации:</strong> 3-4 минуты во рту</p>
             <p><strong>Точность:</strong> детализация до 25 микрон</p>
             <p><strong>Стабильность:</strong> стабилен в течение нескольких недель</p>
             <p><strong>Гидрофильность:</strong> хорошая, но для влажных условий лучше использовать гидрофильные материалы</p>
-            <p><strong>Комбинирование:</strong> Speedex Regular можно комбинировать с другими корректирующими материалами (Panasil, Honigum)</p>
           </section>
-          
           <div class="info-grid">
-            <section class="info-block info-block--pros">
-              <h3>Преимущества двухслойной техники</h3>
-              <ul>
-                <li><strong>Точность детализации</strong> — корректирующий слой затекает во все мельчайшие детали</li>
-                <li><strong>Стабильность размеров</strong> — PVS не даёт усадки</li>
-                <li><strong>Эластичность</strong> — снимается без деформации</li>
-                <li><strong>Многоразовая отливка</strong> — можно отливать несколько моделей</li>
-                <li><strong>Долгое хранение</strong> — слепок стабилен неделями</li>
-                <li><strong>Комфорт для пациента</strong> — базовый слой быстро заполняет пространство</li>
-              </ul>
-            </section>
-            
-            <section class="info-block info-block--cons">
-              <h3>Что учитывать</h3>
-              <ul>
-                <li><strong>Техника чувствительна</strong> — требует точного соблюдения протокола</li>
-                <li><strong>Время работы</strong> — дольше, чем одноэтапная техника</li>
-                <li><strong>Несовместимость</strong> — нельзя комбинировать с альгинатом</li>
-                <li><strong>Ингибиция</strong> — некоторые материалы (латекс, гуттаперча) ингибируют полимеризацию</li>
-              </ul>
-            </section>
+            <section class="info-block info-block--pros"><h3>Преимущества двухслойной техники</h3><ul>
+              <li><strong>Точность детализации</strong> — корректирующий слой затекает во все мельчайшие детали</li>
+              <li><strong>Стабильность размеров</strong> — PVS не даёт усадки</li>
+              <li><strong>Эластичность</strong> — снимается без деформации</li>
+              <li><strong>Многоразовая отливка</strong> — можно отливать несколько моделей</li>
+              <li><strong>Долгое хранение</strong> — слепок стабилен неделями</li>
+              <li><strong>Комфорт для пациента</strong> — базовый слой быстро заполняет пространство</li>
+            </ul></section>
+            <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
+              <li><strong>Техника чувствительна</strong> — требует точного соблюдения протокола</li>
+              <li><strong>Время работы</strong> — дольше, чем одноэтапная техника</li>
+              <li><strong>Несовместимость</strong> — нельзя комбинировать с альгинатом</li>
+              <li><strong>Ингибиция</strong> — некоторые материалы (латекс, гуттаперча) ингибируют полимеризацию</li>
+            </ul></section>
           </div>
-          
-          <section class="info-section">
-            <h2>Как проходит процедура</h2>
-            <p><strong>1. Подготовка:</strong> подбирается стандартная или индивидуальная ложка. Ложка должна перекрывать зубы на 3-5 мм.</p>
-            <p><strong>2. Нанесение адгезива:</strong> на внутреннюю поверхность ложки наносится адгезив для силикона, чтобы материал лучше держался.</p>
-            <p><strong>3. Базовый слой:</strong> Speedex Regular замешивается и наносится на ложку. Материал распределяется равномерно, формируя слой 2-3 мм.</p>
-            <p><strong>4. Корректирующий слой:</strong> Speedex Light наносится тонким слоем (0,5-1 мм) на область препарированных зубов и на базовый слой вокруг них.</p>
-            <p><strong>5. Фиксация:</strong> ложка вводится в рот и прижимается. Первый этап — базовый слой застывает 30-60 секунд. Затем ложка вынимается, удаляется не застывший корректирующий слой, наносится новый, и ложка возвращается в рот на 3-4 минуты.</p>
-            <p><strong>6. Снятие и проверка:</strong> после полной полимеризации ложка снимается. Проверяется чёткость отображения краёв, отсутствие пузырей и разрывов.</p>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы Speedex</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔩</span><h3>Speedex Regular Body</h3></div>
+                <div class="material-card__body">
+                  <p>Базовый слой для двухслойной техники. Средняя вязкость, высокая стабильность.</p>
+                  <ul>
+                    <li>Тип: A-силикон (PVS)</li>
+                    <li>Консистенция: medium-high</li>
+                    <li>Время полимеризации: 3-4 мин</li>
+                    <li>Толщина слоя: 2-3 мм</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🧪</span><h3>Speedex Light Body</h3></div>
+                <div class="material-card__body">
+                  <p>Корректирующий слой для детализации. Низкая вязкость, высокая текучесть.</p>
+                  <ul>
+                    <li>Тип: A-силикон (PVS)</li>
+                    <li>Консистенция: low (жидкий)</li>
+                    <li>Толщина слоя: 0,5-1 мм</li>
+                    <li>Детализация: до 25 микрон</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🎨</span><h3>Адгезив для ложки</h3></div>
+                <div class="material-card__body">
+                  <p>Специальный адгезив для фиксации силикона на ложке.</p>
+                  <ul>
+                    <li>Наносится тонким слоем</li>
+                    <li>Высыхает за 1-2 минуты</li>
+                    <li>Предотвращает отрыв</li>
+                    <li>Совместим с PVS</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">25 мкм</div>
+              <div class="stat-card__label">точность детализации</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">3-4</div>
+              <div class="stat-card__label">минут полимеризация</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">1 380 ₽</div>
+              <div class="stat-card__label">стоимость оттиска</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">2-4</div>
+              <div class="stat-card__label">недели стабильность</div>
+            </div>
+          </div>
+          <section class="info-section"><h2>Протокол двухслойного оттиска Speedex</h2>
+            <p><strong>1. Подготовка ложки:</strong> подбирается стандартная или индивидуальная ложка. Ложка должна перекрывать зубы на 3-5 мм. Нанесение адгезива для силикона на внутреннюю поверхность.</p>
+            <p><strong>2. Базовый слой:</strong> Speedex Regular замешивается (двухкомпонентный, 1:1) и наносится на ложку. Материал распределяется равномерно, формируя слой 2-3 мм.</p>
+            <p><strong>3. Корректирующий слой:</strong> Speedex Light наносится тонким слоем (0,5-1 мм) на область препарированных зубов и на базовый слой вокруг них.</p>
+            <p><strong>4. Фиксация — первый этап:</strong> ложка вводится в рот и прижимается. Базовый слой застывает 30-60 секунд.</p>
+            <p><strong>5. Фиксация — второй этап:</strong> ложка вынимается, удаляется не застывший корректирующий слой, наносится новый тонкий слой, и ложка возвращается в рот на 3-4 минуты.</p>
+            <p><strong>6. Снятие:</strong> после полной полимеризации ложка снимается плавным движением вдоль длинной оси зуба.</p>
+            <p><strong>7. Проверка:</strong> оценка качества — чёткость отображения краёв, отсутствие пузырей и разрывов.</p>
+            <p><strong>8. Обработка:</strong> промывка водой, дезинфекция раствором (например, 0,5% хлоргексидин).</p>
           </section>
-          
-          <section class="info-section">
-            <h2>Почему Speedex</h2>
+          <section class="info-section"><h2>Почему Speedex</h2>
             <p>Speedex — один из наиболее популярных материалов для двухслойных оттисков в европейской клинической практике. Соотношение цена-качество делает его доступным для широкого применения.</p>
             <p><strong>Клинические исследования</strong> подтверждают, что двухслойные оттиски Speedex обеспечивают точность, достаточную для большинства ортопедических работ. Детализация краёв достигает 25-50 микрон, что соответствует требованиям для коронок и мостовидных протезов.</p>
             <p>Материал не содержит бисфенол-А, гипоаллергенен, не вызывает раздражения слизистой. Подходит для пациентов с чувствительностью к другим материалам.</p>
           </section>
+          <section class="info-section"><h2>Подготовка к оттиску Speedex</h2>
+          <p><strong>Изоляция:</strong> ретракционная нить для оттеснения десны и обнажения уступа.</p>
+          <p><strong>Сушка:</strong> осушение области уступа струёй воздуха.</p>
+          <p><strong>Контроль:</strong> проверка качества препарирования, наличия уступа.</p>
+          <p><strong>Ложка:</strong> индивидуальная ложка предпочтительнее для точных работ.</p>
+          <p><strong>Адгезив:</strong> обязательно использование адгезива для предотвращения отрыва материала от ложки.</p>
+          </section>
         </div>
-        
-        <div class="service-cta">
-          <p>Нужна консультация?</p>
-          <div class="cta-buttons">
-            <a href="tel:+79202537317" class="btn">Позвонить</a>
-            <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a>
-          </div>
-        </div>
-      </div>
-    </article>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
   </main>
 </BaseLayout>
 
@@ -136,11 +164,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>
