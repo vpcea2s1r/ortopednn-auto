@@ -2,36 +2,36 @@
   {
     "category": "Несъемное протезирование",
     "items": [
-      { "code": "А16.07.033.001", "codeShort": "О.1.1", "name": "Врачебная вкладка", "price": "3 180 ₽", "link": "/services/vkladka" },
-      { "code": "А16.07.033.002", "codeShort": "О.1.2", "name": "Лабораторная вкладка", "price": "5 040 ₽", "link": "/services/vkladka" },
-      { "code": "А16.07.033.003", "codeShort": "О.1.3", "name": "Разборная лабораторная вкладка", "price": "5 340 ₽", "link": "/services/vkladka" },
+      { "code": "А16.07.033.001", "codeShort": "О.1.1", "name": "Врачебная вкладка", "price": "3 180 ₽", "link": "/services/vrachebnaya-vkladka" },
+      { "code": "А16.07.033.002", "codeShort": "О.1.2", "name": "Лабораторная вкладка", "price": "5 040 ₽", "link": "/services/laboratornaya-vkladka" },
+      { "code": "А16.07.033.003", "codeShort": "О.1.3", "name": "Разборная лабораторная вкладка", "price": "8 160 ₽", "link": "/services/razbornaya-vkladka" },
       { "code": "А16.07.004.001", "codeShort": "О.1.4", "name": "Безметалловая коронка на оксиде циркония", "price": "27 000 ₽", "link": "/services/cirkonievaya-koronka" },
-      { "code": "А16.07.003.001", "codeShort": "О.1.5", "name": "Винир E-MAX", "price": "30 000 ₽", "link": "/services/viniry-emaks" },
-      { "code": "А16.07.003.002", "codeShort": "О.1.6", "name": "Винир на рефракторе", "price": "39 000 ₽", "link": "/services/viniry-emaks" },
+      { "code": "А16.07.003.001", "codeShort": "О.1.5", "name": "Винир E-MAX", "price": "12 000 ₽", "link": "/services/viniry-emaks" },
+      { "code": "А16.07.003.002", "codeShort": "О.1.6", "name": "Винир на рефракторе", "price": "39 000 ₽", "link": "/services/vinir-na-refraktore" },
       { "code": "А16.07.004.002", "codeShort": "О.1.7", "name": "Металлокерамическая коронка", "price": "9 000 ₽", "link": "/services/metallokeramika" },
-      { "code": "А16.07.004.003", "codeShort": "О.1.8", "name": "Металлокерамическая коронка на вкладке", "price": "12 000 ₽", "link": "/services/metallokeramika" },
-      { "code": "А16.07.004.004", "codeShort": "О.1.9", "name": "Металлокерамическая искусственная десна", "price": "2 080 ₽", "link": "/services/metallokeramika" },
-      { "code": "А16.07.004.005", "codeShort": "О.1.10", "name": "Цельнолитая коронка (кобальт)", "price": "6 060 ₽", "link": "/services/celnolitaya-koronka" },
-      { "code": "А16.07.004.006", "codeShort": "О.1.11", "name": "Цельнолитая коронка (никель-хром)", "price": "5 900 ₽", "link": "/services/celnolitaya-koronka" },
-      { "code": "А16.07.004.007", "codeShort": "О.1.12", "name": "Цельнолитая коронка на вкладке", "price": "8 200 ₽", "link": "/services/celnolitaya-koronka" },
-      { "code": "А16.07.004.008", "codeShort": "О.1.13", "name": "Цельнолитая коронка на вкладке разборная", "price": "9 660 ₽", "link": "/services/celnolitaya-koronka" },
-      { "code": "А16.07.004.009", "codeShort": "О.1.14", "name": "Цельнолитая бюгельная коронка", "price": "6 060 ₽", "link": "/services/celnolitaya-koronka" },
-      { "code": "А16.07.004.010", "codeShort": "О.1.15", "name": "Металлопластмассовая коронка", "price": "7 500 ₽", "link": "/services/metallokeramika" },
-      { "code": "А16.07.004.011", "codeShort": "О.1.16", "name": "Временная коронка врачебная", "price": "2 160 ₽", "link": "/services/vremennaya-koronka" },
-      { "code": "А16.07.004.012", "codeShort": "О.1.17", "name": "Временная коронка лабораторная", "price": "4 080 ₽", "link": "/services/vremennaya-koronka" },
-      { "code": "А16.07.004.013", "codeShort": "О.1.18", "name": "Эстетический прототип (1 единица)", "price": "1 500 ₽", "link": "/services/prototype" }
+      { "code": "А16.07.004.003", "codeShort": "О.1.8", "name": "Металлокерамическая коронка на вкладке", "price": "12 000 ₽", "link": "/services/metallokeramicheskaya-koronka-na-vkladke" },
+      { "code": "А16.07.004.004", "codeShort": "О.1.9", "name": "Металлокерамическая искусственная десна", "price": "4 000 ₽", "link": "/services/iskusstvennaya-desna" },
+      { "code": "А16.07.004.005", "codeShort": "О.1.10", "name": "Цельнолитая коронка (кобальт)", "price": "5 900 ₽", "link": "/services/celnolitaya-koronka" },
+      { "code": "А16.07.004.006", "codeShort": "О.1.11", "name": "Цельнолитая коронка (никель-хром)", "price": "2 700 ₽", "link": "/services/celnolitaya-koronka-ni-cr" },
+      { "code": "А16.07.004.007", "codeShort": "О.1.12", "name": "Цельнолитая коронка на вкладке", "price": "9 660 ₽", "link": "/services/celnolitaya-koronka-na-vkladke" },
+      { "code": "А16.07.004.008", "codeShort": "О.1.13", "name": "Цельнолитая коронка на вкладке разборная", "price": "9 660 ₽", "link": "/services/razbornaya-celnolitaya-koronka" },
+      { "code": "А16.07.004.009", "codeShort": "О.1.14", "name": "Цельнолитая бюгельная коронка", "price": "4 500 ₽", "link": "/services/byugelnaya-koronka" },
+      { "code": "А16.07.004.010", "codeShort": "О.1.15", "name": "Металлопластмассовая коронка", "price": "5 900 ₽", "link": "/services/metalloplastmassovaya-koronka" },
+      { "code": "А16.07.004.011", "codeShort": "О.1.16", "name": "Временная коронка врачебная", "price": "от 1 500 ₽", "link": "/services/vremennaya-koronka" },
+      { "code": "А16.07.004.012", "codeShort": "О.1.17", "name": "Временная коронка лабораторная", "price": "от 1 500 ₽", "link": "/services/vremennaya-koronka-lab" },
+      { "code": "А16.07.004.013", "codeShort": "О.1.18", "name": "Эстетический прототип (1 единица)", "price": "от 1 500 ₽", "link": "/services/prototype" }
     ]
   },
   {
     "category": "Съемное протезирование — Акрилловые протезы",
     "items": [
-      { "code": "А16.07.035.001", "codeShort": "О.2.1.1", "name": "Частичный съемный протез", "price": "24 400 ₽", "link": "/services/sjemny-protez" },
-      { "code": "А16.07.023.001", "codeShort": "О.2.1.2", "name": "Полный съемный протез", "price": "27 360 ₽", "link": "/services/sjemny-protez" },
-      { "code": "А16.07.035.003", "codeShort": "О.2.1.3", "name": "Иммедиат-протез акриловый", "price": "12 940 ₽", "link": "/services/sjemny-protez" },
-      { "code": "А16.07.035.004", "codeShort": "О.2.1.4", "name": "Съемный протез из «Имплакрила»", "price": "41 400 ₽", "link": "/services/implakril" },
-      { "code": "А16.07.035.005", "codeShort": "О.2.1.5", "name": "Иммедиат-протез из «Имплакрила»", "price": "22 080 ₽", "link": "/services/implakril" },
-      { "code": "А16.07.035.006", "codeShort": "О.2.1.6", "name": "Съемный протез с металлическим базисом", "price": "34 300 ₽", "link": "/services/sjemny-protez" },
-      { "code": "А16.07.035.007", "codeShort": "О.2.1.7", "name": "Съемный протез с металлическим базисом (огнеупор)", "price": "59 400 ₽", "link": "/services/sjemny-protez" }
+      { "code": "А16.07.035.001", "codeShort": "О.2.1.1", "name": "Частичный съемный протез", "price": "24 400 ₽", "link": "/services/chastichny-sjemny-protez" },
+      { "code": "А16.07.023.001", "codeShort": "О.2.1.2", "name": "Полный съемный протез", "price": "27 360 ₽", "link": "/services/polny-sjemny-protez" },
+      { "code": "А16.07.035.003", "codeShort": "О.2.1.3", "name": "Иммедиат-протез акриловый", "price": "12 940 ₽", "link": "/services/immediat-protez" },
+      { "code": "А16.07.035.004", "codeShort": "О.2.1.4", "name": "Съемный протез из «Имплакрила»", "price": "41 400 ₽", "link": "/services/perebazirovka-implakril" },
+      { "code": "А16.07.035.005", "codeShort": "О.2.1.5", "name": "Иммедиат-протез из «Имплакрила»", "price": "22 080 ₽", "link": "/services/perebazirovka-implakril" },
+      { "code": "А16.07.035.006", "codeShort": "О.2.1.6", "name": "Съемный протез с металлическим базисом", "price": "34 300 ₽", "link": "/services/chastichny-sjemny-protez" },
+      { "code": "А16.07.035.007", "codeShort": "О.2.1.7", "name": "Съемный протез с металлическим базисом (огнеупор)", "price": "59 400 ₽", "link": "/services/chastichny-sjemny-protez" }
     ]
   },
   {
@@ -39,9 +39,9 @@
     "items": [
       { "code": "А16.07.023.002", "codeShort": "О.2.2.1", "name": "Протез «AcryFree»", "price": "41 400 ₽", "link": "/services/acryfree" },
       { "code": "А16.07.035.008", "codeShort": "О.2.2.2", "name": "Бюгель «ДенталДи» (белый бюгель)", "price": "52 200 ₽", "link": "/services/dentaldi" },
-      { "code": "А16.07.035.009", "codeShort": "О.2.2.3", "name": "Частичный съемный протез термопластический", "price": "41 400 ₽", "link": "/services/nejlon" },
-      { "code": "А16.07.035.010", "codeShort": "О.2.2.4", "name": "Нейлоновый съемный протез", "price": "41 400 ₽", "link": "/services/nejlon" },
-      { "code": "А16.07.035.011", "codeShort": "О.2.2.5", "name": "Иммедиат-протез термопластический (до 3 зубов)", "price": "21 000 ₽", "link": "/services/nejlon" }
+      { "code": "А16.07.035.009", "codeShort": "О.2.2.3", "name": "Частичный съемный протез термопластический", "price": "41 400 ₽", "link": "/services/nejlonovyj-protez" },
+      { "code": "А16.07.035.010", "codeShort": "О.2.2.4", "name": "Нейлоновый съемный протез", "price": "41 400 ₽", "link": "/services/nejlonovyj-protez" },
+      { "code": "А16.07.035.011", "codeShort": "О.2.2.5", "name": "Иммедиат-протез термопластический (до 3 зубов)", "price": "21 000 ₽", "link": "/services/immediat-protez" }
     ]
   },
   {
@@ -50,40 +50,40 @@
       { "code": "А16.07.036.001", "codeShort": "О.2.3.1", "name": "Бюгельный протез (2 кламмера)", "price": "60 700 ₽", "link": "/services/byugelnyj" },
       { "code": "А16.07.036.002", "codeShort": "О.2.3.2", "name": "Бюгельный протез (3 кламмера)", "price": "62 400 ₽", "link": "/services/byugelnyj" },
       { "code": "А16.07.036.003", "codeShort": "О.2.3.3", "name": "Бюгельный протез с замками", "price": "83 200 ₽", "link": "/services/byugelnyj-zamki" },
-      { "code": "Д23.07.002.046", "codeShort": "О.2.3.4", "name": "Дополнительный замок", "price": "6 900 ₽", "link": "/services/byugelnyj-zamki" },
-      { "code": "А23.07.002.074", "codeShort": "О.2.3.5", "name": "Замена пластмассовой матрицы", "price": "4 620 ₽", "link": "/services/byugelnyj" }
+      { "code": "Д23.07.002.046", "codeShort": "О.2.3.4", "name": "Дополнительный замок", "price": "6 900 ₽", "link": "/services/dopolnitelnyj-zamok" },
+      { "code": "А23.07.002.074", "codeShort": "О.2.3.5", "name": "Замена пластмассовой матрицы", "price": "4 620 ₽", "link": "/services/byugelnyj-klammery" }
     ]
   },
   {
     "category": "Прочие работы",
     "items": [
-      { "code": "А02.07.010.001", "codeShort": "О.3.1", "name": "Снятие альгинатных оттисков", "price": "720 ₽", "link": "/services/otтиски" },
-      { "code": "А02.07.010.002", "codeShort": "О.3.2", "name": "Снятие двухслойных оттисков «Speedex»", "price": "1 380 ₽", "link": "/services/otтиски" },
-      { "code": "А02.07.010.003", "codeShort": "О.3.3", "name": "Снятие двухслойных оттисков «Elite»", "price": "1 800 ₽", "link": "/services/otтиски" },
-      { "code": "А02.07.010.004", "codeShort": "О.3.4", "name": "Снятие двухслойных оттисков «Impregum»", "price": "3 420 ₽", "link": "/services/otтиски" },
-      { "code": "А02.07.010.005", "codeShort": "О.3.5", "name": "Силиконовый ключ", "price": "800 ₽", "link": "/services/klyuch" },
-      { "code": "А16.07.049.001", "codeShort": "О.3.6", "name": "Фиксация коронки «Fuji»", "price": "960 ₽", "link": "/services/fiksaciya" },
-      { "code": "А16.07.049.003", "codeShort": "О.3.7", "name": "Временная фиксация «Temp-Bond»", "price": "350 ₽", "link": "/services/fiksaciya" },
-      { "code": "А16.07.049.004", "codeShort": "О.3.8", "name": "Фиксация коронки «Maxcem»", "price": "1 320 ₽", "link": "/services/fiksaciya" },
-      { "code": "А16.07.053.003", "codeShort": "О.3.9", "name": "Снятие штампованных коронок", "price": "275 ₽", "link": "/services/snyatie-koronok" },
-      { "code": "А16.07.053.004", "codeShort": "О.3.10", "name": "Снятие цельнолитых коронок", "price": "1 000 ₽", "link": "/services/snyatie-koronok" },
-      { "code": "А02.07.010", "codeShort": "О.3.11", "name": "Диагностические модели (2 челюсти)", "price": "1 800 ₽", "link": "/services/modeli" },
-      { "code": "А02.07.010.007", "codeShort": "О.3.27", "name": "Модель неразборная 3D-print (1 челюсть)", "price": "3 000 ₽", "link": "/services/modeli" },
-      { "code": "А02.07.010.006", "codeShort": "О.3.12", "name": "Диагностическое моделирование воском", "price": "1 500 ₽", "link": "/services/modeli" },
-      { "code": "А02.07.006.002", "codeShort": "О.3.13", "name": "Прикусной шаблон", "price": "1 140 ₽", "link": "/services/shablon" },
-      { "code": "А02.07.006.003", "codeShort": "О.3.14", "name": "Прикусной шаблон на жестком базисе", "price": "3 240 ₽", "link": "/services/shablon" },
-      { "code": "А23.07.002.082", "codeShort": "О.3.15", "name": "Ложка индивидуальная", "price": "3 000 ₽", "link": "/services/lozhka" },
-      { "code": "А23.30.050.001", "codeShort": "О.3.16", "name": "Коррекция съемного протеза", "price": "550 ₽", "link": "/services/korrekciya" },
-      { "code": "А23.30.050.002", "codeShort": "О.3.17", "name": "Перебазировка врачебная", "price": "4 200 ₽", "link": "/services/perebazirovka" },
-      { "code": "А23.07.002.034", "codeShort": "О.3.18", "name": "Перебазировка лабораторная", "price": "5 700 ₽", "link": "/services/perebazirovka" },
-      { "code": "А23.30.050.003", "codeShort": "О.3.19", "name": "Перебазировка из «Имплакрила»", "price": "9 600 ₽", "link": "/services/perebazirovka" },
-      { "code": "А23.07.002.037", "codeShort": "О.3.20", "name": "Починка перелома съемного протеза", "price": "3 360 ₽", "link": "/services/pochinka" },
-      { "code": "А23.07.002.036", "codeShort": "О.3.21", "name": "Приварка одного зуба (кламмера)", "price": "3 180 ₽", "link": "/services/pochinka" },
-      { "code": "А23.07.002.075", "codeShort": "О.3.22", "name": "Приварка двух зубов", "price": "3 900 ₽", "link": "/services/pochinka" },
-      { "code": "А23.07.002.076", "codeShort": "О.3.23", "name": "Приварка трех зубов", "price": "4 680 ₽", "link": "/services/pochinka" },
-      { "code": "А23.07.002.012", "codeShort": "О.3.24", "name": "Армирование", "price": "6 060 ₽", "link": "/services/armirovanie" },
-      { "code": "А23.07.002.010", "codeShort": "О.3.25", "name": "Кламмер дополнительный", "price": "1 080 ₽", "link": "/services/pochinka" },
-      { "code": "А23.07.002.080", "codeShort": "О.3.26", "name": "МЗП одной коронки (цирконий, титан)", "price": "780 ₽", "link": "/services/mzp" }
+      { "code": "А02.07.010.001", "codeShort": "О.3.1", "name": "Снятие альгинатных оттисков", "price": "720 ₽", "link": "/services/otlisk-alginatnyj" },
+      { "code": "А02.07.010.002", "codeShort": "О.3.2", "name": "Снятие двухслойных оттисков «Speedex»", "price": "1 380 ₽", "link": "/services/otlisk-speedex" },
+      { "code": "А02.07.010.003", "codeShort": "О.3.3", "name": "Снятие двухслойных оттисков «Elite»", "price": "1 800 ₽", "link": "/services/otlisk-elite" },
+      { "code": "А02.07.010.004", "codeShort": "О.3.4", "name": "Снятие двухслойных оттисков «Impregum»", "price": "3 420 ₽", "link": "/services/otlisk-impregum" },
+      { "code": "А02.07.010.005", "codeShort": "О.3.5", "name": "Силиконовый ключ", "price": "800 ₽", "link": "/services/silikonovyj-klyuch" },
+      { "code": "А16.07.049.001", "codeShort": "О.3.6", "name": "Фиксация коронки «Fuji»", "price": "960 ₽", "link": "/services/fiksaciya-fuji" },
+      { "code": "А16.07.049.003", "codeShort": "О.3.7", "name": "Временная фиксация «Temp-Bond»", "price": "350 ₽", "link": "/services/fiksaciya-temp-bond" },
+      { "code": "А16.07.049.004", "codeShort": "О.3.8", "name": "Фиксация коронки «Maxcem»", "price": "700 ₽", "link": "/services/fiksaciya-maxcem" },
+      { "code": "А16.07.053.003", "codeShort": "О.3.9", "name": "Снятие штампованных коронок", "price": "275 ₽", "link": "/services/snatie-shtampovannyh" },
+      { "code": "А16.07.053.004", "codeShort": "О.3.10", "name": "Снятие цельнолитых коронок", "price": "1 000 ₽", "link": "/services/snatie-celnolicyh" },
+      { "code": "А02.07.010", "codeShort": "О.3.11", "name": "Диагностические модели (2 челюсти)", "price": "1 500 ₽", "link": "/services/diagnosticheskaya-model" },
+      { "code": "А02.07.010.007", "codeShort": "О.3.27", "name": "Модель неразборная 3D-print (1 челюсть)", "price": "3 000 ₽", "link": "/services/model-3d-print" },
+      { "code": "А02.07.010.006", "codeShort": "О.3.12", "name": "Диагностическое моделирование воском", "price": "1 500 ₽", "link": "/services/modelirovanie-voskom" },
+      { "code": "А02.07.006.002", "codeShort": "О.3.13", "name": "Прикусной шаблон", "price": "1 140 ₽", "link": "/services/prikusnoj-shablon" },
+      { "code": "А02.07.006.003", "codeShort": "О.3.14", "name": "Прикусной шаблон на жестком базисе", "price": "3 240 ₽", "link": "/services/prikusnoj-shablon-bazis" },
+      { "code": "А23.07.002.082", "codeShort": "О.3.15", "name": "Ложка индивидуальная", "price": "3 000 ₽", "link": "/services/lozhka-individualnaya" },
+      { "code": "А23.30.050.001", "codeShort": "О.3.16", "name": "Коррекция съемного протеза", "price": "550 ₽", "link": "/services/korrekciya-semnogo" },
+      { "code": "А23.30.050.002", "codeShort": "О.3.17", "name": "Перебазировка врачебная", "price": "4 200 ₽", "link": "/services/perebazirovka-vrachebnaya" },
+      { "code": "А23.07.002.034", "codeShort": "О.3.18", "name": "Перебазировка лабораторная", "price": "5 700 ₽", "link": "/services/perebazirovka-laboratornaya" },
+      { "code": "А23.30.050.003", "codeShort": "О.3.19", "name": "Перебазировка из «Имплакрила»", "price": "9 600 ₽", "link": "/services/perebazirovka-implakril" },
+      { "code": "А23.07.002.037", "codeShort": "О.3.20", "name": "Починка перелома съемного протеза", "price": "3 360 ₽", "link": "/services/poychinika-semnogo" },
+      { "code": "А23.07.002.036", "codeShort": "О.3.21", "name": "Приварка одного зуба", "price": "1 500 ₽", "link": "/services/privarka-1-zuba" },
+      { "code": "А23.07.002.075", "codeShort": "О.3.22", "name": "Приварка двух зубов", "price": "2 000 ₽", "link": "/services/privarka-2-zubov" },
+      { "code": "А23.07.002.076", "codeShort": "О.3.23", "name": "Приварка трех зубов", "price": "3 000 ₽", "link": "/services/privarka-3-zubov" },
+      { "code": "А23.07.002.012", "codeShort": "О.3.24", "name": "Армирование", "price": "1 600 ₽", "link": "/services/armirovanie" },
+      { "code": "А23.07.002.010", "codeShort": "О.3.25", "name": "Кламмер дополнительный", "price": "1 080 ₽", "link": "/services/kljammer-dopolnitelnyj" },
+      { "code": "А23.07.002.080", "codeShort": "О.3.26", "name": "МЗП одной коронки (цирконий, титан)", "price": "780 ₽", "link": "/services/czirkon-titan-mzp" }
     ]
   }
 ]
