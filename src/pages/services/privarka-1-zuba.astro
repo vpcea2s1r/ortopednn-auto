@@ -18,7 +18,7 @@ const socials = [];
           <section class="info-section">
             <h2>Когда нужна приварка зуба</h2>
             <p>После потери зуба (особенно заднего) пациент может не захотеть делать новый протез, если остальные зубы в хорошем состоянии. Приварка зуба к существующему протезу — быстрый и экономичный способ восстановить зубной ряд.</p>
-            <p>Также приварка требуется, если зуб выпал из протеза или сломался.</p>
+            <p>Также приварка требуется, если зуб выпал из протеза или сломался. Один зуб — минимальный объём ремонта, который выполняется быстро и с высоким качеством.</p>
           </section>
           <section class="info-section">
             <h2>Показания</h2>
@@ -27,16 +27,18 @@ const socials = [];
               <li>Выпадение зуба из протеза</li>
               <li>Перелом зуба на протезе</li>
               <li>Экономически обоснованный ремонт</li>
+              <li>Удаление зуба с сохранением протеза</li>
             </ul>
           </section>
           <section class="info-section">
             <h2>Как проходит приварка</h2>
-            <p><strong>1. Подготовка протеза:</strong> очистка, изоляция.</p>
-            <p><strong>2. Модель:</strong> снятие оттиска для изготовления нового зуба.</p>
-            <p><strong>3. Изготовление:</strong> подбор цвета, формы зуба (по возможности — сохранение выпавшего).</p>
-            <p><strong>4. Подготовка:</strong> на базисе делается углубление для нового зуба.</p>
-            <p><strong>5. Фиксация:</strong> зуб приклеивается/приваривается к базису.</p>
-            <p><strong>6. Обработка:</strong> полировка, проверка прилегания.</p>
+            <p><strong>1. Подготовка протеза:</strong> очистка, проверка состояния базиса.</p>
+            <p><strong>2. Изоляция:</strong> защита поверхностей от попадания акрила.</p>
+            <p><strong>3. Модель:</strong> снятие оттиска для изготовления нового зуба (или подбор из гарнитуры).</p>
+            <p><strong>4. Изготовление:</strong> подбор цвета, формы зуба. По возможности — сохранение выпавшего зуба.</p>
+            <p><strong>5. Подготовка:</strong> на базисе делается углубление для нового зуба.</p>
+            <p><strong>6. Фиксация:</strong> зуб приклеивается к базису.</p>
+            <p><strong>7. Обработка:</strong> полировка, проверка прилегания.</p>
           </section>
           <div class="info-grid">
             <section class="info-block info-block--pros"><h3>Преимущества</h3><ul>
@@ -46,16 +48,84 @@ const socials = [];
               <li><strong>Эстетично</strong> — новый зуб подбирается под остальные</li>
             </ul></section>
             <section class="info-block info-block--cons"><h3>Что учитывать</h3><ul>
-              <li><strong>Прочность</strong> — место склейки уязвимо</li>
+              <li><strong>Прочность</strong> — место склейки уязвимо при больших нагрузках</li>
               <li><strong>Может потребоваться перебазировка</strong> — при изменении слизистой</li>
-              <li><strong>Цвет</strong> — идеальное совпадение не гарантировано</li>
+              <li><strong>Цвет</strong> — идеальное совпадение не гарантировано, зависит от гарнитуры</li>
             </ul></section>
+          </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🦷</span><h3>Зубы</h3></div>
+                <div class="material-card__body">
+                  <p>Пластмассовые зубы фабричного производства. Подбираются по размеру, форме, цвету.</p>
+                  <ul>
+                    <li>Гарнитуры: Anthogyr, Ivoclar Vivodent, Heraeus Kulzer</li>
+                    <li>Цвета: A1, A2, A3, A3.5, B1, B2, C2 и другие</li>
+                    <li>Размеры: маленький, средний, большой</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔧</span><h3>Самотвердеющий акрил</h3></div>
+                <div class="material-card__body">
+                  <p>Для фиксации. Цвет розовый для десны, белый для зуба.</p>
+                  <ul>
+                    <li>Акриловые пластмассы холодного отверждения</li>
+                    <li>Высокая адгезия к базису</li>
+                    <li>Время работы — 8-10 минут</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🧪</span><h3>Изоляция</h3></div>
+                <div class="material-card__body">
+                  <p>Защита поверхностей протеза от акрила.</p>
+                  <ul>
+                    <li>Воск, вазелин или специальный лак</li>
+                    <li>Легко снимается после полимеризации</li>
+                    <li>Защищает зубной ряд и базис</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">1</div>
+              <div class="stat-card__label">день срок</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">1</div>
+              <div class="stat-card__label">зуб приваривается</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">до 10 лет</div>
+              <div class="stat-card__label">служат приваренные зубы</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">100%</div>
+              <div class="stat-card__label">восстановление функции</div>
+            </div>
           </div>
           <section class="info-section"><h2>Материалы для приварки</h2>
           <p><strong>Зубы:</strong> пластмассовые зубы фабричного производства. Подбираются по размеру, форме, цвету.</p>
           <p><strong>Самотвердеющий акрил:</strong> для фиксации. Цвет розовый для десны, белый для зуба.</p>
-          <p><strong>Клей:</strong> специальный стоматологический клей для акрила.</p>
+          <p><strong>Изоляция:</strong> вазелин, воск или лак для защиты протеза.</p>
           <p>Современные зубные гарнитуры позволяют подобрать зуб практически под любой протез по цвету и форме.</p>
+          </section>
+          <section class="info-section"><h2>Протокол приварки одного зуба</h2>
+          <p><strong>1. Осмотр:</strong> оценка состояния протеза, проверка возможности приварки.</p>
+          <p><strong>2. Подготовка:</strong> очистка протеза, проверка на трещины базиса.</p>
+          <p><strong>3. Изоляция:</strong> защита поверхностей от попадания акрила.</p>
+          <p><strong>4. Подбор зуба:</strong> выбор из гарнитуры по цвету, размеру, форме.</p>
+          <p><strong>5. Моделирование:</strong> разметка положения зуба, подготовка углубления в базисе.</p>
+          <p><strong>6. Фиксация:</strong> нанесение акрила, установка зуба.</p>
+          <p><strong>7. Полимеризация:</strong> выдержка под давлением.</p>
+          <p><strong>8. Обработка:</strong> шлифовка и полировка линии склейки.</p>
+          <p><strong>9. Проверка:</strong> контроль прилегания и окклюзии.</p>
+          </section>
         </div>
         <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
     </div></article>
@@ -81,11 +151,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>

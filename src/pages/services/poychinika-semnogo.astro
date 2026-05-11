@@ -25,6 +25,7 @@ const socials = [];
               <li>Неравномерной нагрузке</li>
               <li>Удалении/установке с усилием</li>
               <li>Изменении формы слизистой</li>
+              <li>Старении материала (более 5 лет)</li>
             </ul>
             <p>Переломы бывают разные: трещины, сколы, разломы на части. Сложность ремонта зависит от характера повреждения.</p>
           </section>
@@ -56,15 +57,86 @@ const socials = [];
               <li><strong>Линия склейки</strong> — видна, но не мешает</li>
               <li><strong>Может потребоваться перебазировка</strong> — при изменении прикуса</li>
               <li><strong>Прочность ниже</strong> — оригинального</li>
+              <li><strong>Не все переломы ремонтируемы</strong> — при сильном износе нужен новый</li>
             </ul></section>
           </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Материалы для ремонта</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔧</span><h3>Самотвердеющий акрил</h3></div>
+                <div class="material-card__body">
+                  <p>Основной материал для склейки и восстановления базиса.</p>
+                  <ul>
+                    <li>Акриловые пластмассы холодного отверждения</li>
+                    <li>Розовый цвет для базиса</li>
+                    <li>Высокая прочность на изгиб</li>
+                    <li>Время полимеризации: 15-20 минут</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🧪</span><h3>Изоляция</h3></div>
+                <div class="material-card__body">
+                  <p>Защита поверхностей от попадания акрила при ремонте.</p>
+                  <ul>
+                    <li>Воск базисный</li>
+                    <li>Изолирующий лак</li>
+                    <li>Вазелин</li>
+                    <li>Защищает зубы и поверхности</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🛡️</span><h3>Армирование</h3></div>
+                <div class="material-card__body">
+                  <p>При повторных переломах — усиление металлической сеткой.</p>
+                  <ul>
+                    <li>Стандартная сетка из нержавеющей стали</li>
+                    <li>Индивидуальное изготовление</li>
+                    <li>Предотвращает повторный перелом</li>
+                    <li>Рекомендуется при 2+ переломах</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">1ч–2д</div>
+              <div class="stat-card__label">срок ремонта</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">3 360 ₽</div>
+              <div class="stat-card__label">стоимость</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">до 5</div>
+              <div class="stat-card__label">раз можно ремонтировать</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">30-40%</div>
+              <div class="stat-card__label">протезов ремонтируются</div>
+            </div>
+          </div>
           <section class="info-section"><h2>Как избежать переломов</h2>
-          <p><strong>Осторожность:</strong> не ронять, ставить на мягкую поверхность.</p>
-          <p><strong>Правильное снятие:</strong> снимать двумя руками, без рывков.</p>
-          <p><strong>Уход:</strong> промывать, не сушить на батарее.</p>
-          <p><strong>Своевременная замена:</strong> менять протез до перелома.</p>
-          <p><strong>Армирование:</strong> при высоком риске — металлическая сетка в базисе.</p>
+          <p><strong>Осторожность:</strong> не ронять, ставить на мягкую поверхность (полотенце, вода).</p>
+          <p><strong>Правильное снятие:</strong> снимать двумя руками, без рывков, равномерно.</p>
+          <p><strong>Уход:</strong> промывать после еды, не сушить на батарее, хранить в воде.</p>
+          <p><strong>Своевременная замена:</strong> менять протез до перелома (срок 5-7 лет).</p>
+          <p><strong>Армирование:</strong> при высоком риске — металлическая сетка в базисе при изготовлении.</p>
           <p>Статистика показывает, что 30-40% съёмных протезов ремонтируются хотя бы один раз за срок службы.</p>
+          </section>
+          <section class="info-section"><h2>Когда ремонт не поможет</h2>
+          <p>В некоторых случаях ремонт не решит проблему:</p>
+          <ul>
+            <li>Протез старше 10 лет — материал сильно изношен</li>
+            <li>Многократные переломы — базис слишком хрупкий</li>
+            <li>Изменение прикуса — требуется полная перебазировка</li>
+            <li>Силиконовые протезы — требуют специального ремонта</li>
+          </ul>
+          <p>В таких случаях врач порекомендует изготовление нового протеза.</p>
+          </section>
         </div>
         <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
     </div></article>
@@ -90,11 +162,26 @@ const socials = [];
 .info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
 .info-block ul { list-style: none; padding: 0; }
 .info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
 .service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
 .service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
 .btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
 </style>
