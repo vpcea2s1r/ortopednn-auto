@@ -1,9 +1,13 @@
 ---
 import '../styles/global.css';
 
-const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website' } = Astro.props;
+const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified } = Astro.props;
 const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '...' : title;
 const isHomepage = Astro.url.pathname === '/';
+const siteOrigin = "2025-01-15T00:00:00+03:00";
+const today = new Date().toISOString();
+const published = datePublished || siteOrigin;
+const modified = dateModified || today;
 ---
 
 <!doctype html>
@@ -18,6 +22,8 @@ const isHomepage = Astro.url.pathname === '/';
   <meta name="googlebot" content="index, follow"/>
   <meta name="author" content="Никитина Марина Георгиевна"/>
   <meta name="language" content="Russian"/>
+  <meta name="article:published_time" content={published}/>
+  <meta name="article:modified_time" content={modified}/>
   <link rel="alternate" type="application/rss+xml" title="Sitemap" href="/sitemap-index.xml"/>
   
   <meta name="geo.region" content="RU-NIZHNOV"/>
