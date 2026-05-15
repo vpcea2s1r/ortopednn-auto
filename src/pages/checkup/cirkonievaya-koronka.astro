@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout
+  title="Циркониевая коронка — цена, преимущества | Никитина М.Г."
+  description="Сколько стоит циркониевая коронка в Нижнем Новгороде. Сравнение с металлокерамикой, срок службы, показания."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Циркониевая коронка цена</span></div></nav>
+
+    <article class="content">
+      <div class="container">
+        <h1>Сколько стоит циркониевая коронка</h1>
+        <p class="lead">Циркониевые коронки изготавливаются из диоксида циркония — материала, который сочетает прочность металла с эстетикой натурального зуба. Технология CAD/CAM позволяет создавать конструкции с точностью до 10 микрон.</p>
+
+        <section>
+          <h2>Почему цирконий дороже металлокерамики</h2>
+          <p>Циркониевая коронка изготавливается методом компьютерного моделирования и фрезерования из цельного блока диоксида циркония. Это требует дорогостоящего оборудования — фрезерного станка и 3D-сканера. Сам материал — высокотехнологичная керамика, производимая ограниченным числом компаний в мире. В отличие от металлокерамики, цирконий не содержит металла, что исключает аллергические реакции и тёмную линию у десны.</p>
+          <p>Прочность циркония достигает 1200 МПа — это в полтора раза выше, чем у металлокерамики. При этом он сохраняет полупрозрачность, приближённую к натуральной эмали. Исследования долгосрочной выживаемости показывают, что 96–98% циркониевых коронок сохраняют функцию через 10 лет.</p>
+        </section>
+
+        <section>
+          <h2>Цена циркониевой коронки</h2>
+          <p>В Нижнем Новгороде стоимость одной единицы — от 27 000 ₽. В цену входит цифровое сканирование, компьютерное моделирование, фрезерование каркаса, нанесение керамической облицовки и фиксация. Циркониевый мост из 3 единиц — от 65 000 ₽. Цена циркониевой коронки на имплантат — от 27 000 ₽ (МЗП — металлокерамическая коронка с циркониевым каркасом).</p>
+        </section>
+
+        <section>
+          <h2>Когда выбирают цирконий</h2>
+          <ul>
+            <li>Протезирование передних зубов — максимальная эстетика</li>
+            <li>Аллергия на металлы — цирконий гипоаллергенен</li>
+            <li>Мостовидные конструкции большой протяжённости — высокая прочность</li>
+            <li>Имплантация — цирконий биосовместим с костной тканью</li>
+            <li>Бруксизм — при использовании защитной капы выдерживает повышенные нагрузки</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Цирконий или металлокерамика</h2>
+          <p>Если стоит выбор между этими материалами, ориентируйтесь на зону установки. Для жевательных зубов металлокерамика за 9 000–10 000 ₽ — рациональный выбор. Для передних зубов цирконий за 27 000 ₽ оправдан — он не отличим от соседних зубов и не вызывает потемнения десны. Для пациентов с аллергией на металлы цирконий — единственный безопасный вариант среди прочных коронок.</p>
+          <p>С точки зрения биосовместимости цирконий превосходит металлокерамику. Исследования показывают минимальную адгезию бактериального налёта к циркониевой поверхности — это снижает риск воспаления десны вокруг коронки.</p>
+        </section>
+
+        <section>
+          <h2>Процесс изготовления</h2>
+          <p>В отличие от металлокерамики, где каркас отливается вручную, циркониевая коронка проектируется в программе и вытачивается из блока. Это исключает ошибки литья и гарантирует точное прилегание. Пациенту не нужна временная коронка на длительный срок — изготовление занимает 7–14 дней, как и металлокерамики.</p>
+        </section>
+
+        <section class="cta-section">
+          <h2>Хотите циркониевую коронку?</h2>
+          <p>Никитина Марина Георгиевна проконсультирует и подберёт оптимальный материал. Консультация бесплатная.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="/services/cirkonievaya-koronka" class="btn btn--secondary">О циркониевых коронках</a>
+          </div>
+        </section>
+
+        <nav class="related">
+          <h3>Читайте также:</h3>
+          <ul>
+            <li><a href="/checkup/metallokeramika-cena">Металлокерамическая коронка — цена</a></li>
+            <li><a href="/checkup/koronka-na-zub-cena">Сколько стоит коронка на зуб</a></li>
+            <li><a href="/checkup/bolit-zub-pod-koronkoj">Болит зуб под коронкой</a></li>
+            <li><a href="/services/metallokeramika">Металлокерамические коронки</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <style>
+    .page { min-height: 100vh; background: var(--color-bg-alt); }
+    .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+    .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+    .breadcrumbs a { color: var(--color-primary); }
+    .content { padding: var(--space-3xl) 0; }
+    .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+    .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); }
+    .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; }
+    .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); }
+    .content ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .content li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; }
+    .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; }
+    .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; }
+    .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
+    .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
+    .btn--primary { background: white; color: var(--color-primary); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
+    .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); }
+    .btn--secondary:hover { border-color: white; text-decoration: none; }
+    .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+    .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .related li { margin: 0; }
+    .related a { color: var(--color-primary); font-size: var(--text-sm); }
+    @media (max-width: 768px) {
+      .content h1 { font-size: var(--text-2xl); }
+      .cta-section { padding: var(--space-xl) var(--space-md); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</BaseLayout>
