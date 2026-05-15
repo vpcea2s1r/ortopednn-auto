@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout
+  title="Протезирование на имплантах — цены | Никитина М.Г."
+  description="Протезирование на имплантах в Нижнем Новгороде. Стоимость под ключ, All-on-4, съёмные протезы на имплантах."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Протезирование на имплантах</span></div></nav>
+
+    <article class="content">
+      <div class="container">
+        <h1>Протезирование на имплантах — цены</h1>
+        <p class="lead">Протезирование с опорой на имплантаты — наиболее физиологичный способ восстановления зубов. Имплант замещает корень зуба, передавая нагрузку на кость и предотвращая её атрофию.</p>
+
+        <section>
+          <h2>Виды протезов на имплантах</h2>
+          <p><strong>Одиночная коронка на имплантате</strong> — при отсутствии одного зуба. Полноценный зуб, не затрагивающий соседние. Срок службы имплантата 20+ лет.</p>
+          <p><strong>Мост на имплантатах</strong> — при отсутствии нескольких зубов подряд. Устанавливается на 2 имплантата. Дешевле, чем ставить имплантат на каждый зуб.</p>
+          <p><strong>All-on-4 (все на 4-х имплантатах)</strong> — методика полного протезирования челюсти на 4 имплантатах. Позволяет восстановить все зубы за 1 день. Меньше имплантатов, ниже стоимость, меньше хирургии.</p>
+          <p><strong>Съёмный протез на имплантатах</strong> — на 2–4 имплантатах фиксируется съёмная конструкция с помощью кнопочных аттачменов или балочной системы. Фиксация значительно лучше, чем у обычного съёмного протеза.</p>
+        </section>
+
+        <section>
+          <h2>Цена протезирования на имплантах</h2>
+          <p>Стоимость складывается из имплантата, абатмента и коронки. Имплантат — от 30 000–60 000 ₽ в зависимости от производителя (Dentium, Osstem, Straumann, Nobel). Абатмент — от 5 000–20 000 ₽. Коронка — от 9 000 (металлокерамика) до 27 000 ₽ (цирконий). Всё под ключ: одиночный имплантат с коронкой — от 50 000–90 000 ₽. All-on-4 — от 250 000 ₽ на челюсть.</p>
+        </section>
+
+        <section>
+          <h2>Преимущества имплантации</h2>
+          <ul>
+            <li>Не требует обточки соседних зубов — сохраняет здоровые ткани</li>
+            <li>Предотвращает атрофию кости — имплант передаёт нагрузку</li>
+            <li>Срок службы 20+ лет, а коронку можно заменить при износе</li>
+            <li>Максимальный комфорт и фиксация — несъёмная конструкция</li>
+            <li>Эстетика неотличима от натуральных зубов</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Имплантация или мост</h2>
+          <p>Мост требует обточки соседних здоровых зубов. Имплантат — нет. Мост быстрее — 2–3 недели. Имплантация — 3–6 месяцев с учётом приживления. Мост дешевле на старте. Имплантат дороже, но служит дольше и не вредит соседним зубам. При хорошем состоянии соседних зубов имплантат — выбор на будущее.</p>
+        </section>
+
+        <section class="cta-section">
+          <h2>Нужна консультация по имплантам?</h2>
+          <p>Никитина Марина Георгиевна расскажет о вариантах протезирования. Бесплатный осмотр.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="/services/mostovidnyj-protez" class="btn btn--secondary">Альтернативы</a>
+          </div>
+        </section>
+
+        <nav class="related">
+          <h3>Читайте также:</h3>
+          <ul>
+            <li><a href="/checkup/mostovidnyj-protez-cena">Мостовидный протез — цена</a></li>
+            <li><a href="/checkup/koronka-na-zub-cena">Коронка на зуб — цена</a></li>
+            <li><a href="/checkup/kakoj-protez-vybrat">Какой протез лучше выбрать</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <style>
+    .page { min-height: 100vh; background: var(--color-bg-alt); }
+    .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+    .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+    .breadcrumbs a { color: var(--color-primary); }
+    .content { padding: var(--space-3xl) 0; }
+    .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+    .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); }
+    .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; }
+    .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); }
+    .content ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .content li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; }
+    .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; }
+    .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; }
+    .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
+    .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
+    .btn--primary { background: white; color: var(--color-primary); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
+    .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); }
+    .btn--secondary:hover { border-color: white; text-decoration: none; }
+    .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+    .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .related li { margin: 0; }
+    .related a { color: var(--color-primary); font-size: var(--text-sm); }
+    @media (max-width: 768px) {
+      .content h1 { font-size: var(--text-2xl); }
+      .cta-section { padding: var(--space-xl) var(--space-md); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</BaseLayout>

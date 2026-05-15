@@ -138,27 +138,55 @@ import socials from '../../../data/socials.json';
           <div class="articles-grid">
             <a href="/checkup/bolit-zub-pod-koronkoj" class="article-card">
               <h3>Болит зуб под коронкой — что делать?</h3>
-              <p>Причины боли, домашняя помощь, варианты лечения. Клинические рекомендации.</p>
+              <p>Причины боли, домашняя помощь, варианты лечения.</p>
             </a>
             <a href="/checkup/koronka-na-zub-cena" class="article-card">
               <h3>Сколько стоит коронка на зуб?</h3>
-              <p>Цены на металлокерамику, цирконий, цельнолитые коронки в Нижнем Новгороде.</p>
+              <p>Цены на металлокерамику, цирконий, цельнолитые коронки в НН.</p>
             </a>
             <a href="/checkup/byugelnyj-protez-cena" class="article-card">
               <h3>Бюгельный протез — цена</h3>
-              <p>Сколько стоит бюгельный протез на кламмерах и замках. Сравнение с другими протезами.</p>
+              <p>Кламмерные и замковые конструкции. Сравнение с другими протезами.</p>
             </a>
             <a href="/checkup/metallokeramika-cena" class="article-card">
               <h3>Металлокерамическая коронка — цена</h3>
-              <p>Стоимость металлокерамики, показания, сравнение с цирконием.</p>
+              <p>Стоимость, показания, сравнение с цирконием.</p>
+            </a>
+            <a href="/checkup/cirkonievaya-koronka" class="article-card">
+              <h3>Циркониевая коронка — цена</h3>
+              <p>Преимущества циркония, срок службы, стоимость.</p>
             </a>
             <a href="/checkup/semnyj-protez-cena" class="article-card">
               <h3>Съёмный протез — цены в НН</h3>
-              <p>Акриловые, нейлоновые, AcryFree, бюгельные. Сравнение материалов.</p>
+              <p>Акриловые, нейлоновые, AcryFree. Сравнение материалов.</p>
             </a>
             <a href="/checkup/polnyj-semnyj-protez" class="article-card">
               <h3>Полный съёмный протез — цена</h3>
-              <p>Акрил, AcryFree, нейлон. Какой выбрать при полном отсутствии зубов.</p>
+              <p>Акрил, AcryFree, нейлон. Какой выбрать при полной адентии.</p>
+            </a>
+            <a href="/checkup/nejlonovyj-protez" class="article-card">
+              <h3>Нейлоновый протез — отзывы</h3>
+              <p>Плюсы и минусы, сравнение с акрилом, цена.</p>
+            </a>
+            <a href="/checkup/akrilovyj-protez" class="article-card">
+              <h3>Акриловый протез</h3>
+              <p>Цена, срок службы, кому подходит.</p>
+            </a>
+            <a href="/checkup/mostovidnyj-protez-cena" class="article-card">
+              <h3>Мостовидный протез — цена</h3>
+              <p>Металлокерамика, цирконий, адгезивные мосты.</p>
+            </a>
+            <a href="/checkup/kakoj-protez-vybrat" class="article-card">
+              <h3>Какой протез лучше выбрать</h3>
+              <p>Сравнение всех видов протезов по ситуации.</p>
+            </a>
+            <a href="/checkup/vypala-koronka" class="article-card">
+              <h3>Выпала коронка — что делать</h3>
+              <p>Первая помощь и когда срочно к врачу.</p>
+            </a>
+            <a href="/checkup/implantatsiya-cena" class="article-card">
+              <h3>Протезирование на имплантах</h3>
+              <p>Цены, All-on-4, одиночные коронки на имплантах.</p>
             </a>
           </div>
         </div>
@@ -312,7 +340,7 @@ import socials from '../../../data/socials.json';
   }
   .articles-section { padding-bottom: var(--space-2xl); }
   .articles-section h2 { font-size: var(--text-xl); color: var(--color-text); margin-bottom: var(--space-lg); }
-  .articles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
   .article-card { display: block; background: white; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-lg); text-decoration: none; transition: all var(--transition-fast); }
   .article-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(124, 58, 237, 0.1); border-color: var(--color-primary); text-decoration: none; }
   .article-card h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-xs); font-weight: 600; }
