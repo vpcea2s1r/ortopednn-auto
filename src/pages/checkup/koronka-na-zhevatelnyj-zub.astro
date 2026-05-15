@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+<BaseLayout title="Коронка на жевательный зуб — какую выбрать | Никитина М.Г." description="Какую коронку лучше поставить на жевательный зуб. Сравнение металлокерамики, циркония, цельнолитых коронок для боковых зубов." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Коронка на жевательный зуб</span></div></nav>
+    <article class="content"><div class="container">
+      <h1>Какую коронку лучше поставить на жевательный зуб</h1>
+      <p class="lead">Жевательные зубы (моляры и премоляры) принимают основную нагрузку при пережёвывании пищи — до 70% всей жевательной силы. Поэтому материал коронки должен быть максимально прочным.</p>
+      <section><h2>Какие коронки подходят для жевательных зубов</h2>
+      <p><strong>Металлокерамика — от 9 000 ₽.</strong> Оптимальный выбор: прочная, доступная по цене, эстетичнее цельнолитой. Выдерживает жевательное давление до 800 МПа. Срок службы 10–15 лет.</p>
+      <p><strong>Цирконий — от 27 000 ₽.</strong> Прочнее металлокерамики (1200 МПа). Полностью биосовместим, не даёт реакции на холодное/горячее. Рекомендуется при бруксизме и аллергии на металл.</p>
+      <p><strong>Цельнолитая коронка — от 5 900 ₽.</strong> Самая прочная, но неэстетичная — металлического цвета. Подходит для самых дальних зубов, незаметных при улыбке.</p>
+      <p><strong>E-MAX — от 30 000 ₽.</strong> Высокая эстетика, но для жевательных зубов прочность (400 МПа) ниже, чем у циркония. Лучше использовать для передних зубов.</p></section>
+      <section><h2>Что влияет на выбор</h2>
+      <p>Высота зуба — для металлокерамики нужно 1,5–2 мм обточки. Наличие бруксизма — цирконий предпочтительнее. Аллергия на металлы — только цирконий. Бюджет — цельнолитая или металлокерамика. Исследования долгосрочной выживаемости показывают, что для жевательных зубов металлокерамика и цирконий имеют сопоставимые показатели (92–96% за 10 лет).</p></section>
+      <section class="cta-section"><h2>Нужна коронка на жевательный зуб?</h2>
+      <p>Никитина Марина Георгиевна подберёт оптимальный материал под ваш случай.</p>
+      <div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="/checkup/metallokeramika-cena" class="btn btn--secondary">Цены на коронки</a></div></section>
+      <nav class="related"><h3>Читайте также:</h3><ul><li><a href="/checkup/koronka-na-zub-cena">Сколько стоит коронка на зуб</a></li><li><a href="/checkup/bolit-zub-pod-koronkoj">Болит зуб под коронкой</a></li></ul></nav>
+    </div></article>
+  </main>
+  <style>.page { min-height: 100vh; background: var(--color-bg-alt); } .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); } .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; } .breadcrumbs a { color: var(--color-primary); } .content { padding: var(--space-3xl) 0; } .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); } .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); } .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; } .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); } .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; } .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; } .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); } .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); } .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; } .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); } .btn--primary { background: white; color: var(--color-primary); } .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; } .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); } .btn--secondary:hover { border-color: white; text-decoration: none; } .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); } .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); } .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); } .related li { margin: 0; } .related a { color: var(--color-primary); font-size: var(--text-sm); } @media (max-width: 768px) { .content h1 { font-size: var(--text-2xl); } .cta-section { padding: var(--space-xl) var(--space-md); } .cta-buttons { flex-direction: column; align-items: center; } }</style>
+</BaseLayout>
