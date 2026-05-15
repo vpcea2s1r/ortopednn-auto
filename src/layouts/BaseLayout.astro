@@ -1,13 +1,38 @@
 ---
 import '../styles/global.css';
 
-const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified } = Astro.props;
+const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle } = Astro.props;
 const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '...' : title;
 const isHomepage = Astro.url.pathname === '/';
 const siteOrigin = "2025-01-15T00:00:00+03:00";
 const today = new Date().toISOString();
 const published = datePublished || siteOrigin;
 const modified = dateModified || today;
+
+const segmentNames = {
+  'services': 'Услуги',
+  'blog': 'Блог',
+  'about': 'О враче',
+  'checkup': 'Самопроверка',
+  'compare': 'Сравнение',
+  'materials': 'Материалы',
+};
+
+const pathParts = Astro.url.pathname.replace(/\/$/, '').split('/').filter(Boolean);
+const breadcrumbItems = [{ name: 'Главная', url: 'https://ortopednn.ru/' }];
+const pageNameFromTitle = breadcrumbTitle || truncatedTitle.split(/[—|–]/)[0].trim();
+
+let currentUrl = 'https://ortopednn.ru';
+for (let i = 0; i < pathParts.length; i++) {
+  currentUrl += '/' + pathParts[i];
+  const isLast = i === pathParts.length - 1;
+  breadcrumbItems.push({
+    name: isLast ? pageNameFromTitle : (segmentNames[pathParts[i]] || pathParts[i]),
+    url: currentUrl + '/'
+  });
+}
+
+const hasBreadcrumbs = breadcrumbItems.length > 1;
 ---
 
 <!doctype html>
@@ -168,6 +193,19 @@ const modified = dateModified || today;
           }
         }
       ]
+    })}/>
+  )}
+
+  {hasBreadcrumbs && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems.map((item, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": item.name,
+        "item": item.url
+      }))
     })}/>
   )}
 </head>
