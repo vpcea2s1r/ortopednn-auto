@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout
+  title="Акриловый протез — цена, плюсы и минусы | Никитина М.Г."
+  description="Акриловые съёмные протезы — стоимость от 15 000 ₽. Показания, уход, срок службы. Сравнение с нейлоном и AcryFree."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Акриловый протез</span></div></nav>
+
+    <article class="content">
+      <div class="container">
+        <h1>Акриловый протез — цена, плюсы и минусы</h1>
+        <p class="lead">Акриловый (пластмассовый) протез — самый доступный и распространённый вид съёмного протезирования. Применяется более 50 лет, технология отработана, материал доступен.</p>
+
+        <section>
+          <h2>Цена акрилового протеза</h2>
+          <p>Частичный акриловый протез — от 24 400 ₽. Полный акриловый протез на одну челюсть — от 15 000 ₽. Иммедиат-протез (временный после удаления) — от 12 940 ₽. Цена зависит от количества зубов, наличия армирования и сложности изготовления.</p>
+        </section>
+
+        <section>
+          <h2>Плюсы и минусы акрила</h2>
+          <p><strong>Плюсы:</strong> низкая цена, простота ремонта, возможность перебазировки при атрофии кости, подходит для полного и частичного протезирования, срок службы 5–7 лет.</p>
+          <p><strong>Минусы:</strong> жёсткий базис, требуется привыкание, возможна аллергия на остаточный мономер, базис верхнего протеза закрывает нёбо, кламмеры из металла заметны на передних зубах.</p>
+        </section>
+
+        <section>
+          <h2>Кому подходит акриловый протез</h2>
+          <ul>
+            <li>При ограниченном бюджете — самый доступный вариант</li>
+            <li>Временное протезирование на период имплантации</li>
+            <li>Полное отсутствие зубов на обеих челюстях</li>
+            <li>Пациентам без аллергии на акрил</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Как продлить срок службы</h2>
+          <p>Чистить протез дважды в день мягкой щёткой, промывать после еды, раз в неделю замачивать в очищающих таблетках. Раз в полгода посещать стоматолога для осмотра и коррекции. При появлении натирания — сразу на коррекцию, не ждать привыкания. При поломке — ремонт акрилового протеза возможен и недорог.</p>
+        </section>
+
+        <section class="cta-section">
+          <h2>Нужен акриловый протез?</h2>
+          <p>Никитина Марина Георгиевна подберёт оптимальный вариант. Бесплатная консультация.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="/services/sjemny-protez" class="btn btn--secondary">Все виды протезов</a>
+          </div>
+        </section>
+
+        <nav class="related">
+          <h3>Читайте также:</h3>
+          <ul>
+            <li><a href="/checkup/nejlonovyj-protez">Нейлоновый протез</a></li>
+            <li><a href="/checkup/semnyj-protez-cena">Съёмные протезы — цены в НН</a></li>
+            <li><a href="/checkup/polnyj-semnyj-protez">Полный съёмный протез</a></li>
+            <li><a href="/checkup/kakoj-protez-vybrat">Какой протез лучше выбрать</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <style>
+    .page { min-height: 100vh; background: var(--color-bg-alt); }
+    .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+    .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+    .breadcrumbs a { color: var(--color-primary); }
+    .content { padding: var(--space-3xl) 0; }
+    .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+    .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); }
+    .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; }
+    .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); }
+    .content ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .content li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; }
+    .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; }
+    .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; }
+    .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
+    .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
+    .btn--primary { background: white; color: var(--color-primary); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
+    .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); }
+    .btn--secondary:hover { border-color: white; text-decoration: none; }
+    .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+    .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .related li { margin: 0; }
+    .related a { color: var(--color-primary); font-size: var(--text-sm); }
+    @media (max-width: 768px) {
+      .content h1 { font-size: var(--text-2xl); }
+      .cta-section { padding: var(--space-xl) var(--space-md); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</BaseLayout>
