@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout
+  title="Съёмный протез — цены в Нижнем Новгороде | Никитина М.Г."
+  description="Цены на съёмные протезы в Нижнем Новгороде: акриловые, нейлоновые, AcryFree, бюгельные. Сравнение материалов и стоимости."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Съёмный протез цена</span></div></nav>
+
+    <article class="content">
+      <div class="container">
+        <h1>Сколько стоит съёмный протез в Нижнем Новгороде</h1>
+        <p class="lead">Съёмное протезирование остаётся самым доступным способом восстановить зубы при значительной утрате. Современные материалы и технологии изготовления позволяют получить комфортную и эстетичную конструкцию по цене от нескольких тысяч рублей.</p>
+
+        <section>
+          <h2>Какие бывают съёмные протезы</h2>
+
+          <h3>Акриловый протез — от 15 000 ₽</h3>
+          <p>Классический вариант из акриловой пластмассы. Твёрдый базис розового цвета, искусственные зубы. Подходит для полного и частичного протезирования. Самый доступный по цене, срок службы 5–7 лет. Требует привыкания из-за жёсткости базиса.</p>
+
+          <h3>Нейлоновый протез — от 41 400 ₽</h3>
+          <p>Гибкий полупрозрачный базис из нейлона. Мягче акрила, не натирает, практически незаметен во рту. Не содержит мономеров — гипоаллергенен. Срок службы 3–5 лет. Сложнее в ремонте, но комфортнее в ношении.</p>
+
+          <h3>AcryFree — от 41 400 ₽</h3>
+          <p>Современный термопластичный материал без мономера. Сочетает эластичность нейлона и прочность акрила. Полужёсткий, комфортный, ремонтопригодный. Рекомендуется при аллергии на акрил.</p>
+
+          <h3>Бюгельный протез — от 25 000 ₽</h3>
+          <p>Конструкция с металлическим каркасом. Тонкий, не закрывает нёбо, равномерно распределяет нагрузку. Служит 7–10 лет. Более физиологичен, чем акриловый.</p>
+
+          <h3>Иммедиат-протез — от 12 940 ₽</h3>
+          <p>Временная конструкция, устанавливается сразу после удаления зубов. Позволяет не оставаться без зубов на период заживления. Изготавливается за 1–2 дня.</p>
+        </section>
+
+        <section>
+          <h2>Что влияет на стоимость</h2>
+          <p>Объём протеза — полный на челюсть дороже частичного. Материал — нейлон дороже акрила. Количество опорных зубов — чем их меньше, тем сложнее фиксация. Необходимость предварительного лечения — удаление, санация полости рта. В среднем полный съёмный протез под ключ в Нижнем Новгороде стоит от 15 000 до 42 000 ₽ в зависимости от материала.</p>
+        </section>
+
+        <section>
+          <h2>Как выбрать материал протеза</h2>
+          <p>Для полного съёмного протеза при ограниченном бюджете — акрил. При аллергии на пластмассу — AcryFree или нейлон. Для частичного протеза при наличии опорных зубов — бюгельный протез оптимален по соотношению цена-качество. При чувствительной слизистой — нейлон мягче и не травмирует.</p>
+        </section>
+
+        <section>
+          <h2>Срок службы и уход</h2>
+          <p>Акриловые протезы служат 5–7 лет, нейлоновые 3–5 лет, бюгельные 7–10 лет. Основные факторы износа — атрофия костной ткани под протезом и естественный износ материала. Регулярная чистка протеза дважды в день мягкой щёткой и замачивание в очищающих таблетках раз в неделю продлевают срок службы. Раз в полгода обязателен осмотр — для своевременной коррекции и перебазировки.</p>
+        </section>
+
+        <section class="cta-section">
+          <h2>Нужен съёмный протез?</h2>
+          <p>Никитина Марина Георгиевна поможет выбрать оптимальную конструкцию. Консультация бесплатная.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="/services/sjemny-protez" class="btn btn--secondary">Подробнее о протезах</a>
+          </div>
+        </section>
+
+        <nav class="related">
+          <h3>Читайте также:</h3>
+          <ul>
+            <li><a href="/checkup/polnyj-semnyj-protez">Полный съёмный протез — цена</a></li>
+            <li><a href="/checkup/nejlonovyj-protez">Нейлоновый протез — отзывы</a></li>
+            <li><a href="/checkup/akrilovyj-protez">Акриловый протез</a></li>
+            <li><a href="/checkup/kakoj-protez-vybrat">Какой протез лучше выбрать</a></li>
+            <li><a href="/checkup/byugelnyj-protez-cena">Бюгельный протез — цена</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <style>
+    .page { min-height: 100vh; background: var(--color-bg-alt); }
+    .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+    .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+    .breadcrumbs a { color: var(--color-primary); }
+    .content { padding: var(--space-3xl) 0; }
+    .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+    .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); }
+    .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; }
+    .content h3 { font-size: var(--text-lg); color: var(--color-text); margin: var(--space-lg) 0 var(--space-sm) 0; }
+    .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); }
+    .content ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .content li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; }
+    .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; }
+    .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; }
+    .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
+    .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
+    .btn--primary { background: white; color: var(--color-primary); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
+    .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); }
+    .btn--secondary:hover { border-color: white; text-decoration: none; }
+    .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+    .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .related li { margin: 0; }
+    .related a { color: var(--color-primary); font-size: var(--text-sm); }
+    @media (max-width: 768px) {
+      .content h1 { font-size: var(--text-2xl); }
+      .cta-section { padding: var(--space-xl) var(--space-md); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</BaseLayout>
