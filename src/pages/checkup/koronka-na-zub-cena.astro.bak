@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout
+  title="Сколько стоит коронка на зуб — цены в Нижнем Новгороде | Никитина М.Г."
+  description="Цены на зубные коронки в Нижнем Новгороде: металлокерамика, цирконий, E-MAX. Сравнение материалов и стоимость под ключ."
+  doctor={doctor}
+  socials={socials}
+  breadcrumbTitle="Коронка на зуб цена"
+>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Коронка на зуб цена</span></div></nav>
+
+    <article class="content">
+      <div class="container">
+        <h1>Сколько стоит коронка на зуб в Нижнем Новгороде</h1>
+        <p class="lead">Стоимость коронки зависит от материала, способа изготовления и клинической ситуации. Разница между бюджетным и премиальным вариантом может достигать 5–6 раз. Важно понимать, что формирует цену, чтобы выбрать оптимальный вариант без переплаты.</p>
+
+        <section>
+          <h2>Из чего складывается цена коронки</h2>
+          <p>Конечная стоимость включает несколько составляющих: работа врача по препарированию зуба и фиксации, изготовление конструкции в зуботехнической лаборатории, стоимость материала, временная коронка на период изготовления. В некоторых случаях добавляется цена анестезии, ретракции десны, снятия оттисков. Итоговая цена за одну единицу складывается из клинических и лабораторных этапов, каждый из которых требует квалификации и времени.</p>
+        </section>
+
+        <section>
+          <h2>Виды коронок и их стоимость</h2>
+
+          <h3>Металлокерамическая коронка — от 9 000 ₽</h3>
+          <p>Самый популярный вариант. Металлический каркас из кобальт-хромового сплава покрыт керамикой. Сочетает прочность и приемлемую эстетику. Срок службы — 10–15 лет. Клинические исследования подтверждают, что металлокерамика остаётся «золотым стандартом» для жевательных зубов благодаря высокой устойчивости к жевательным нагрузкам. Оптимальный выбор, если важна надёжность, а не идеальная эстетика.</p>
+
+          <h3>Циркониевая коронка — от 27 000 ₽</h3>
+          <p>Изготавливается из диоксида циркония методом CAD/CAM — компьютерного моделирования и фрезерования из цельного блока. Материал обладает прочностью до 1200 МПа, что значительно выше, чем у металлокерамики. Цирконий биосовместим, не вызывает аллергии, не даёт тёмной линии у десны. Эстетика приближена к натуральному зубу за счёт полупрозрачности материала. Рекомендуется для передних и жевательных зубов при высоких эстетических требованиях.</p>
+
+          <h3>Временная коронка — от 1 500 ₽</h3>
+          <p>Изготавливается из пластмассы или композитного материала на период 1–2 недели, пока делается постоянная конструкция. Защищает обточенный зуб, сохраняет эстетику и функцию жевания. Временная коронка — обязательный этап, так как без неё зуб может сместиться, а десна — изменить форму.</p>
+
+          <h3>Цельнолитая коронка — от 5 900 ₽</h3>
+          <p>Полностью металлическая коронка из кобальт-хрома. Максимально прочная, но неэстетичная — металлического цвета. Применяется для жевательных зубов, когда эстетика не имеет значения. Срок службы — более 15 лет. Самый бюджетный вариант для восстановления жевательной функции.</p>
+        </section>
+
+        <section>
+          <h2>Сравнение материалов по характеристикам</h2>
+          <p><strong>Металлокерамика:</strong> прочность высокая, эстетика хорошая, биосовместимость средняя (возможна аллергия на металл), срок службы 10–15 лет, цена от 9 000 ₽.</p>
+          <p><strong>Цирконий:</strong> прочность очень высокая, эстетика отличная, биосовместимость отличная (гипоаллергенен), срок службы 15–20 лет, цена от 27 000 ₽.</p>
+          <p><strong>Цельнолитая:</strong> прочность максимальная, эстетика низкая, биосовместимость хорошая, срок службы от 15 лет, цена от 5 900 ₽.</p>
+          <p>Клинические исследования показывают, что выживаемость циркониевых коронок за 10 лет составляет 96–98%, металлокерамических — 92–95%, цельнолитых — 95–97%. Разница в первую очередь связана не с материалом, а с качеством препарирования и фиксации.</p>
+        </section>
+
+        <section>
+          <h2>Что влияет на конечную цену</h2>
+          <ul>
+            <li><strong>Клиническая ситуация:</strong> зуб уже депульпирован или требуется лечение, нужна культевая вкладка или штифт</li>
+            <li><strong>Количество коронок:</strong> при изготовлении мостовидного протеза цена за единицу может быть ниже</li>
+            <li><strong>Сложность препарирования:</strong> при глубоком поддесневом уступе или искривлённых каналах работа сложнее</li>
+            <li><strong>Лабораторные этапы:</strong> CAD/CAM-фрезерование дороже ручного моделирования, но точнее</li>
+            <li><strong>Квалификация врача:</strong> опытный ортопед работает точнее и быстрее, что снижает риски и продлевает срок службы</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Какие коронки лучше для передних зубов</h2>
+          <p>Для зоны улыбки приоритет — эстетика. Циркониевые коронки или коронки из дисиликата лития (E-MAX) обеспечивают естественную полупрозрачность, не отличимую от соседних зубов. Металлокерамика на передних зубах может давать сероватый оттенок у десны, особенно со временем. Биосовместимость циркония также выше — он не окисляется и не взаимодействует с тканями десны.</p>
+        </section>
+
+        <section>
+          <h2>Как не переплатить за коронку</h2>
+          <ul>
+            <li>Получите план лечения с детализацией всех этапов до начала работ</li>
+            <li>Сравните стоимость под ключ — не только коронки, но и подготовки зуба</li>
+            <li>Выбирайте материал исходя из клинической задачи: для жевательных зубов достаточно металлокерамики, для передних — цирконий оправдан</li>
+            <li>Не экономьте на временной коронке и качестве фиксации — это влияет на срок службы</li>
+            <li>Регулярные осмотры раз в полгода продлевают жизнь любой коронки в 1,5–2 раза</li>
+          </ul>
+        </section>
+
+        <section class="cta-section">
+          <h2>Хотите узнать точную стоимость?</h2>
+          <p>Никитина Марина Георгиевна проведёт осмотр, оценит состояние зуба и назовёт точную цену коронки под ключ. Консультация бесплатная.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="/#price" class="btn btn--secondary">Смотреть прайс-лист</a>
+          </div>
+        </section>
+
+        <nav class="related">
+          <h3>Читайте также:</h3>
+          <ul>
+            <li><a href="/services/metallokeramika">Металлокерамические коронки</a></li>
+            <li><a href="/services/cirkonievaya-koronka">Циркониевые коронки</a></li>
+            <li><a href="/checkup/bolit-zub-pod-koronkoj">Болит зуб под коронкой — что делать</a></li>
+            <li><a href="/checkup/vypala-koronka">Выпала коронка — что делать</a></li>
+            <li><a href="/services/snatie-shtampovannyh">Снятие старых коронок</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <style>
+    .page { min-height: 100vh; background: var(--color-bg-alt); }
+    .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+    .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+    .breadcrumbs a { color: var(--color-primary); }
+    .content { padding: var(--space-3xl) 0; }
+    .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+    .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); }
+    .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; }
+    .content h3 { font-size: var(--text-lg); color: var(--color-text); margin: var(--space-lg) 0 var(--space-sm) 0; }
+    .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); }
+    .content ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .content li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; }
+    .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; }
+    .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; }
+    .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
+    .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
+    .btn--primary { background: white; color: var(--color-primary); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
+    .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); }
+    .btn--secondary:hover { border-color: white; text-decoration: none; }
+    .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+    .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .related li { margin: 0; }
+    .related a { color: var(--color-primary); font-size: var(--text-sm); }
+    @media (max-width: 768px) {
+      .content h1 { font-size: var(--text-2xl); }
+      .cta-section { padding: var(--space-xl) var(--space-md); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout
+  title="Бюгельный протез — цены, виды, отзывы | Никитина М.Г."
+  description="Сколько стоит бюгельный протез в Нижнем Новгороде. Цены на кламмерные и замковые конструкции. Сравнение материалов."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Бюгельный протез цена</span></div></nav>
+
+    <article class="content">
+      <div class="container">
+        <h1>Бюгельный протез — цена, виды и особенности</h1>
+        <p class="lead">Бюгельный протез — съёмная конструкция с металлическим каркасом (дугой), которая распределяет жевательную нагрузку между опорными зубами и слизистой. Считается самым физиологичным вариантом съёмного протезирования.</p>
+
+        <section>
+          <h2>Из чего складывается цена бюгельного протеза</h2>
+          <p>Стоимость зависит от нескольких факторов. Металлический каркас из кобальт-хрома или титана определяет базу. Способ фиксации — кламмеры дешевле, аттачменты дороже. Количество зубов в конструкции влияет на объём лабораторной работы. Сложность клинического случая — при неровном альвеолярном гребне или подвижных опорных зубах работа требует больше времени. Клинические исследования подтверждают, что бюгельные протезы с замковой фиксацией служат в среднем на 3–5 лет дольше кламмерных, что оправдывает их более высокую стоимость.</p>
+        </section>
+
+        <section>
+          <h2>Цены на бюгельные протезы</h2>
+
+          <h3>Бюгельный протез на кламмерах — от 25 000 ₽</h3>
+          <p>Металлические крючки (кламмеры) охватывают опорные зубы. Самый доступный вариант, но кламмеры могут быть заметны на передних зубах. Надёжность фиксации высокая, обслуживание простое.</p>
+
+          <h3>Бюгельный протез на замках (аттачмены) — от 28 000 ₽</h3>
+          <p>Фиксация с помощью микрозамков. Одна часть замка крепится на коронку опорного зуба, вторая — в теле протеза. При смыкании замок защёлкивается. Полностью незаметен снаружи. Обеспечивает лучшую эстетику и стабильность.</p>
+
+          <h3>Бюгельный протез на телескопических коронках</h3>
+          <p>Самый дорогой и эстетичный вариант. На опорные зубы фиксируются металлические коронки, на них надевается протез с внутренними коронками. Обеспечивает максимальную фиксацию и комфорт.</p>
+
+          <h3>Бюгельный протез на нижнюю челюсть — от 25 000 ₽</h3>
+          <p>Нижний бюгель короче верхнего и не имеет нёбной перемычки, что облегчает адаптацию. Цена зависит от количества опорных зубов и типа крепления.</p>
+        </section>
+
+        <section>
+          <h2>Сравнение с другими протезами</h2>
+          <p>По сравнению с акриловым протезом, бюгель тоньше, не закрывает нёбо и лучше распределяет нагрузку. Акриловый протез дешевле, но менее комфортен. Нейлоновый протез мягче и эстетичнее, но уступает бюгелю в прочности и долговечности. Импланты — наиболее надёжное решение, но требуют хирургического вмешательства и значительно дороже.</p>
+          <p>Исследования биомеханики показывают, что бюгельные протезы передают до 60% жевательного давления на опорные зубы через каркас, что замедляет атрофию костной ткани по сравнению с акриловыми протезами, где вся нагрузка приходится на слизистую.</p>
+        </section>
+
+        <section>
+          <h2>Что влияет на срок службы</h2>
+          <p>Средний срок службы бюгельного протеза — 7–10 лет. При правильном уходе может служить дольше. Качество гигиены — основной фактор. Налёт на кламмерах и каркасе приводит к коррозии и ослаблению фиксации. Регулярные осмотры позволяют своевременно подтянуть кламмеры и заменить изношенные аттачмены. При потере опорного зуба конструкцию можно отремонтировать, добавив новый зуб без замены всего протеза.</p>
+        </section>
+
+        <section>
+          <h2>Бюгельный протез или импланты — что выбрать</h2>
+          <p>Имплантация — более дорогой, но и более надёжный метод. Однако она требует достаточного объёма костной ткани и отсутствия противопоказаний. Если имплантация невозможна, бюгельный протез остаётся оптимальным вариантом. Комбинированный подход — установка 2–4 имплантатов для опоры бюгельного протеза — значительно улучшает фиксацию и комфорт.</p>
+        </section>
+
+        <section class="cta-section">
+          <h2>Нужна консультация по бюгельному протезу?</h2>
+          <p>Никитина Марина Георгиевна подберёт оптимальную конструкцию под вашу клиническую ситуацию. Консультация бесплатная.</p>
+          <div class="cta-buttons">
+            <a href="tel:+79202537317" class="btn">Позвонить</a>
+            <a href="/services/byugelnyj" class="btn btn--secondary">Подробнее о бюгелях</a>
+          </div>
+        </section>
+
+        <nav class="related">
+          <h3>Читайте также:</h3>
+          <ul>
+            <li><a href="/services/byugelnyj-zamki">Бюгельные протезы на замках</a></li>
+            <li><a href="/services/byugelnyj">Бюгельные протезы — обзор</a></li>
+            <li><a href="/checkup/polnyj-semnyj-protez">Полный съёмный протез цена</a></li>
+            <li><a href="/checkup/nejlonovyj-protez">Нейлоновый протез отзывы</a></li>
+            <li><a href="/checkup/kakoj-protez-vybrat">Какой протез лучше выбрать</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <style>
+    .page { min-height: 100vh; background: var(--color-bg-alt); }
+    .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+    .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+    .breadcrumbs a { color: var(--color-primary); }
+    .content { padding: var(--space-3xl) 0; }
+    .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+    .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); }
+    .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; }
+    .content h3 { font-size: var(--text-lg); color: var(--color-text); margin: var(--space-lg) 0 var(--space-sm) 0; }
+    .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); }
+    .content ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .content li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; }
+    .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; }
+    .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; }
+    .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+    .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
+    .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
+    .btn--primary { background: white; color: var(--color-primary); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; }
+    .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); }
+    .btn--secondary:hover { border-color: white; text-decoration: none; }
+    .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+    .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .related li { margin: 0; }
+    .related a { color: var(--color-primary); font-size: var(--text-sm); }
+    @media (max-width: 768px) {
+      .content h1 { font-size: var(--text-2xl); }
+      .cta-section { padding: var(--space-xl) var(--space-md); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</BaseLayout>

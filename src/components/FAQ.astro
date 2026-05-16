@@ -1,0 +1,77 @@
+---
+const faq = [
+  { q: "Больно ли обтачивать зубы под коронку?", a: "Работаем с анестезией — вы не почувствуете боли. После процедуры возможна чувствительность на 1-2 дня.", cat: "treatment" },
+  { q: "Сколько времени занимает протезирование?", a: "Коронки — 7-14 дней. Съёмные протезы — 2-3 недели. Зависит от сложности.", cat: "treatment" },
+  { q: "Какой протез лучше — съёмный или на имплантах?", a: "Импланты комфортнее и долговечнее. Но съёмные подходят, когда имплантация невозможна.", cat: "prosthetics" },
+  { q: "Нужно ли обтачивать здоровые зубы?", a: "Сохраняем здоровые зубы. Обточка нужна только для фиксации коронки.", cat: "treatment" },
+  { q: "Как ухаживать за съёмным протезом?", a: "Промывайте после еды, чистите 2 раза в день, храните в воде. Раз в полгода — профчистка.", cat: "care" },
+  { q: "Сколько служит циркониевая коронка?", a: "15-20 лет при правильном уходе. Раз в год — осмотр.", cat: "durability" },
+  { q: "Что делать, если протез натирает?", a: "Запишитесь на коррекцию. Обычно 1-3 визита. Не подтачивайте сами.", cat: "care" },
+  { q: "Как понять, что пора менять коронку?", a: "Боль, отёк, подвижность, изменение цвета десны, запах — повод обратиться.", cat: "care" }
+];
+---
+
+<div class="faq-container">
+  <h2>Частые вопросы</h2>
+  {faq.map((item) => (
+    <details class="faq-item">
+      <summary>{item.q}</summary>
+      <p>{item.a}</p>
+    </details>
+  ))}
+</div>
+
+<style>
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-3xl) 0;
+}
+.faq-container h2 {
+  text-align: center;
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+}
+.faq-item {
+  margin-bottom: var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: white;
+}
+.faq-item summary {
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  background: white;
+  font-weight: 500;
+  list-style: none;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-item summary::after {
+  content: "+";
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: transform 0.2s;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq-item[open] summary {
+  color: var(--color-primary);
+}
+.faq-item p {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg);
+  margin: 0;
+  line-height: 1.6;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+</style>

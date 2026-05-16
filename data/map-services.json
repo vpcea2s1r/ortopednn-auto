@@ -1,0 +1,14 @@
+[
+  {
+    "platform": "yandex_maps",
+    "name": "Яндекс.Карты",
+    "url": "https://yandex.ru/maps/org/123",
+    "rating": 4.9
+  },
+  {
+    "platform": "2gis",
+    "name": "2ГИС",
+    "url": "https://2gis.ru/nn/firm/456",
+    "rating": 4.8
+  }
+]

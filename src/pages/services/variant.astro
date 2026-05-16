@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Варианты протезирования | Никитина М.Г." description="Варианты зубного протезирования — съёмные и несъёмные конструкции, показания и особенности." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Варианты протезирования</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Варианты протезирования</h1>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Какие бывают протезы</h2>
+            <p>Современная стоматология предлагает множество вариантов восстановления утраченных зубов. Выбор зависит от количества отсутствующих зубов, состояния полости рта, бюджета и пожеланий пациента.</p>
+            <p>Все конструкции делятся на три большие группы: несъёмные, съёмные и условно-съёмные протезы.</p>
+          </section>
+          <section class="info-section">
+            <h2>Несъёмное протезирование</h2>
+            <p><strong>Коронки:</strong> одиночные конструкции, надеваются на обточенный зуб. Металлокерамика, керамика, цирконий.</p>
+            <p><strong>Мостовидные протезы:</strong> несколько коронок, соединённых вместе. Опираются на соседние зубы или имплантаты.</p>
+            <p><strong>Вкладки:</strong> микропротезы для восстановления части зуба. Альтернатива пломбам.</p>
+          </section>
+          <section class="info-section">
+            <h2>Съёмное протезирование</h2>
+            <p><strong>Полные съёмные:</strong> при отсутствии всех зубов. Опираются на слизистую.</p>
+            <p><strong>Частичные съёмные:</strong> при отсутствии нескольких зубов. Фиксируются на оставшихся зубах.</p>
+            <p><strong>Бюгельные:</strong> протезы с дугой (бюгелем). Распределяют нагрузку равномерно.</p>
+            <p><strong>Термопластичные:</strong> гибкие протезы из нейлона или AcryFree. Мягче и комфортнее.</p>
+          </section>
+          <section class="info-section">
+            <h2>Условно-съёмные конструкции</h2>
+            <p><strong>Протезы на имплантатах:</strong> съёмная конструкция с фиксацией на имплантатах. Снимается для чистки, но надёжно держится.</p>
+            <p><strong>Балочные конструкции:</strong> металлическая балка соединяет имплантаты, на неё фиксируется протез.</p>
+            <p><strong>Кнопочная фиксация:</strong> замковый механизм на имплантатах.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Когда выбирают несъёмные</h3><ul>
+              <li>Хорошее состояние опорных зубов</li>
+              <li>Отсутствие 1-3 зубов</li>
+              <li>Желание постоянного решения</li>
+              <li>Высокие эстетические требования</li>
+              <li>Возможность обточки зубов</li>
+            </ul></section>
+            <section class="info-block info-block--pros"><h3>Когда выбирают съёмные</h3><ul>
+              <li>Отсутствие многих зубов</li>
+              <li>Нет возможности для имплантации</li>
+              <li>Противопоказания к обточке</li>
+              <li>Ограниченный бюджет</li>
+              <li>Временное решение</li>
+            </ul></section>
+          </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Сравнение вариантов</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🦷</span><h3>Несъёмные</h3></div>
+                <div class="material-card__body">
+                  <p>Фиксируются на зубах и снимаются только врачом. Максимальный комфорт и эстетика.</p>
+                  <ul>
+                    <li>Коронки: 1-2 недели, 5 000–30 000 ₽</li>
+                    <li>Мосты: 2-3 недели, от 15 000 ₽</li>
+                    <li>Виниры: 1-2 недели, от 12 000 ₽</li>
+                    <li>Срок службы: 10-15 лет</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔧</span><h3>Съёмные</h3></div>
+                <div class="material-card__body">
+                  <p>Пациент снимает и надевает самостоятельно. Подходят при большом количестве отсутствующих зубов.</p>
+                  <ul>
+                    <li>Акриловые: 2-4 недели, от 10 000 ₽</li>
+                    <li>Бюгельные: 3-4 недели, от 25 000 ₽</li>
+                    <li>Нейлоновые: 2-3 недели, от 20 000 ₽</li>
+                    <li>Срок службы: 5-7 лет</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🔩</span><h3>На имплантатах</h3></div>
+                <div class="material-card__body">
+                  <p>Съёмные протезы с фиксацией на имплантатах. Лучше держатся, чем обычные съёмные.</p>
+                  <ul>
+                    <li>Срок: 3-6 месяцев</li>
+                    <li>Стоимость: от 80 000 ₽</li>
+                    <li>Минимум 2 имплантата</li>
+                    <li>Срок службы: 15-20 лет</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">3</div>
+              <div class="stat-card__label">группы протезов</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">10+</div>
+              <div class="stat-card__label">видов конструкций</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">15+ лет</div>
+              <div class="stat-card__label">срок службы циркония</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">100%</div>
+              <div class="stat-card__label">восстановление жевания</div>
+            </div>
+          </div>
+          <section class="info-section"><h2>Как выбрать оптимальный вариант</h2>
+            <p>Выбор метода протезирования — это совместное решение врача и пациента. Учитываются: состояние зубов и дёсен, общее здоровье, образ жизни, эстетические пожелания и финансовые возможности.</p>
+            <p>Запишитесь на консультацию для получения индивидуального плана лечения и точного расчёта стоимости.</p>
+          </section>
+          <section class="info-section"><h2>Что влияет на выбор</h2>
+          <p><strong>Количество зубов:</strong> при отсутствии 1-3 зубов — мост или имплантат. При отсутствии многих — съёмный протез.</p>
+          <p><strong>Состояние опорных зубов:</strong> если зубы здоровые и крепкие — несъёмные конструкции. Если слабые — съёмные или имплантаты.</p>
+          <p><strong>Бюджет:</strong> акриловые протезы — самый доступный вариант. Цирконий и имплантаты — дороже, но долговечнее.</p>
+          <p><strong>Эстетика:</strong> для зоны улыбки — керамика, цирконий. Для жевательных зубов — металлокерамика.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>

@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Specializations from '../components/Specializations.astro';
+import PriceList from '../components/PriceList.astro';
+import FAQ from '../components/FAQ.astro';
+import WhyMeStatic from '../components/WhyMeStatic.astro';
+import LocationBlock from '../components/LocationBlock.astro';
+
+import doctor from '../../data/doctor.json';
+import socials from '../../data/socials.json';
+---
+
+<BaseLayout 
+  title="Протезирование зубов в Нижнем Новгороде | Цены на коронки и протезы | Никитина М.Г."
+  description="Стоматолог-ортопед Никитина М.Г. в Нижнем Новгороде. Протезирование зубов: коронки (металлокерамика, цирконий), съёмные и бюгельные протезы. Запись на приём. Адрес: ул. Октябрьской Революции, д. 43, оф. 316."
+  region="Нижний Новгород"
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <div class="container">
+      <a href="/">Главная</a>
+    </div>
+  </nav>
+  <main id="main">
+    <HeroSection doctor={doctor}/>
+    <section class="ai-intro">
+      <div class="container">
+        <p>Протезирование зубов в Нижнем Новгороде — это восстановление отсутствующих зубов коронками, съёмными или бюгельными протезами. Стоматолог-ортопед Никитина М.Г. принимает пациентов с 1994 года. Услуги: металлокерамика от 9000 ₽, цирконий от 27 000 ₽, съёмные протезы от 22 000 ₽. Консультация бесплатная, запись по телефону +7 (920) 253-73-17.</p>
+      </div>
+    </section>
+    <WhyMeStatic doctor={doctor}/>
+    <section class="about-doctor">
+      <div class="container">
+        <h2 class="about-doctor__title">О враче</h2>
+        <div class="about-doctor__content">
+          <div class="about-doctor__text">
+            <p>Никитина Марина Георгиевна — стоматолог-ортопед с высшим медицинским образованием. Специализируется на протезировании зубов: коронки, съёмные и бюгельные протезы. Использует современные методики и материалы, работает с пациентами индивидуально, подбирает оптимальное решение для каждого случая.</p>
+          </div>
+          <div class="about-doctor__services">
+            <h3 class="about-doctor__services-title">Основные направления:</h3>
+            <ul class="about-doctor__list">
+              <li>Металлокерамические коронки</li>
+              <li>Циркониевые коронки</li>
+              <li>Съёмные протезы (акрил, AcryFree, нейлон)</li>
+              <li>Бюгельные протезы</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <Specializations />
+    <PriceList />
+    <FAQ />
+    <LocationBlock />
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <div class="site-footer__brand">
+        <span class="site-footer__logo">врач-ортопед Никитина Марина Георгиевна</span>
+        <p class="site-footer__subtitle">Стоматолог-ортопед</p>
+      </div>
+      <div class="site-footer__info">
+        <p>Никитина М.Г. — стоматолог-ортопед</p>
+        <p>Приём: г. Нижний Новгород, ул. Октябрьской Революции, 43, оф. 316</p>
+        <p class="site-footer__copy">© {new Date().getFullYear()} Все права защищены</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.breadcrumbs {
+  padding: var(--space-sm) 0;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.about-doctor {
+  padding: var(--space-3xl) 0;
+  background: white;
+}
+
+.about-doctor__title {
+  text-align: center;
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+}
+
+.about-doctor__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.about-doctor__text p {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+.about-doctor__services-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.about-doctor__list {
+  list-style: none;
+  padding: 0;
+}
+
+.about-doctor__list li {
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-bg);
+}
+
+.site-footer {
+  background: #1e1b4b;
+  padding: var(--space-xl) 0;
+}
+
+.site-footer__content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.site-footer__logo {
+  font-weight: 800;
+  color: white;
+  font-size: var(--text-lg);
+}
+
+.site-footer__subtitle {
+  color: rgba(255,255,255,0.6);
+  font-size: var(--text-sm);
+  margin-top: var(--space-xxs);
+}
+
+.site-footer__info p {
+  color: rgba(255,255,255,0.8);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-xxs);
+}
+
+.site-footer__copy {
+  color: rgba(255,255,255,0.4);
+  font-size: var(--text-xs);
+}
+
+.ai-intro {
+  padding: var(--space-lg) 0;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ai-intro .container {
+  max-width: 800px;
+}
+
+.ai-intro p {
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .about-doctor__content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-doctor {
+    padding: var(--space-xl) 0;
+  }
+  .about-doctor__title {
+    font-size: var(--text-xl);
+  }
+  .site-footer__content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>

@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import FAQ from '../../components/FAQ.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+---
+
+<BaseLayout 
+  title="Сравнение съёмных протезов и имплантов | Никитина Марина Георгиевна"
+  description="Что лучше — съёмный протез или имплант? Сравнение по комфорту, долговечности, цене и показаниям."
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="container">
+    <a href="/" class="back">← На главную</a>
+    
+    <h1>Съёмный протез или имплант: что выбрать?</h1>
+    
+    <div class="intro">
+      <p>Это один из самых частых вопросов, который слышу от пациентов. Постараюсь объяснить объективно, без рекламы.</p>
+    </div>
+
+    <div class="comparison">
+      <div class="card">
+        <h2>🦷 Имплант</h2>
+        <div class="pros-cons">
+          <div class="pros">
+            <h3>Преимущества</h3>
+            <ul>
+              <li>Ощущается как свой зуб</li>
+              <li>Не нужно обтачивать соседние зубы</li>
+              <li>Служит 20-30 лет</li>
+              <li>Предотвращает атрофию кости</li>
+              <li>Не выпадает при жевании</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h3>Недостатки</h3>
+            <ul>
+              <li>Хирургическое вмешательство</li>
+              <li>Дороже съёмных протезов</li>
+              <li>Ожидание приживления 3-6 месяцев</li>
+              <li>Противопоказания (диабет, курение, остеопороз)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research">
+          <h4>Исследования</h4>
+          <p>According to a 2022 systematic review in the <em>Journal of Dental Research</em>, dental implants show 95% survival rate after 10 years when properly maintained. The study emphasizes that bone quality and patient health are key success factors.</p>
+          <p>Перевод: Систематический обзор 2022 года показал 95% выживаемость имплантов за 10 лет при правильном уходе. Качество кости и здоровье пациента — ключевые факторы успеха.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🫄 Съёмный протез</h2>
+        <div class="pros-cons">
+          <div class="pros">
+            <h3>Преимущества</h3>
+            <ul>
+              <li>Не требует операции</li>
+              <li>Доступная цена</li>
+              <li>Готов за 2-3 недели</li>
+              <li>Подходит при большом количестве отсутствующих зубов</li>
+              <li>Легко снять для чистки</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h3>Недостатки</h3>
+            <ul>
+              <li>Дискомфорт, особенно верхний протез</li>
+              <li>Давление на десну ускоряет атрофию</li>
+              <li>Ограничения в еде (твёрдая пища)</li>
+              <li>Нужно снимать для чистки</li>
+              <li>Служит 5-7 лет</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research">
+          <h4>Исследования</h4>
+          <p>According to the <em>International Journal of Prosthodontics</em>, removable dentures lead to 0.2-0.5mm bone loss per year in the first 5 years. Patient satisfaction studies show 60-70% success rate for removable prosthetics.</p>
+          <p>Перевод: Съёмные протезы вызывают потерю кости 0.2-0.5 мм в год. Удовлетворённость пациентов — 60-70%.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation">
+      <h2>Мои рекомендации</h2>
+      <div class="grid">
+        <div class="item">
+          <h3>Выбирайте имплант если:</h3>
+          <ul>
+            <li>Отсутствует 1-3 зуба</li>
+            <li>Здоровье позволяет операцию</li>
+            <li>Есть время на лечение (3-6 месяцев)</li>
+            <li>Бюджет позволяет</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Выбирайте съёмный протез если:</h3>
+          <ul>
+            <li>Отсутствует много зубов</li>
+            <li>Есть противопоказания к имплантации</li>
+            <li>Нужен быстрый результат</li>
+            <li>Бюджет ограничен</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-cta">
+      <h3>Не знаете, что подходит вам?</h3>
+      <p>Позвоните — разберём вашу ситуацию и подберём оптимальный вариант.</p>
+      <a href={`tel:${doctor.phone}`} class="btn">Позвонить</a>
+    </div>
+
+    <FAQ />
+  </main>
+</BaseLayout>
+
+<style>
+.container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+h1 { color: #1e3a5f; margin-bottom: 1rem; }
+.intro p { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+.comparison { display: grid; gap: 1.5rem; margin-bottom: 3rem; }
+.card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.card h2 { color: #1e3a5f; margin-bottom: 1rem; }
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.pros h3, .cons h3 { font-size: 0.9rem; color: #4a90d9; margin-bottom: 0.5rem; }
+.pros ul, .cons ul { list-style: none; padding: 0; }
+.pros li, .cons li { padding: 0.25rem 0; font-size: 0.95rem; }
+.pros li::before { content: "✓ "; color: #22c55e; }
+.cons li::before { content: "✗ "; color: #ef4444; }
+.research { background: #f0f8ff; padding: 1rem; border-radius: 8px; font-size: 0.9rem; }
+.research h4 { color: #2e6ab3; margin-bottom: 0.5rem; }
+.research em { color: #1e3a5f; }
+.research p:last-child { color: #5a7a9a; margin-top: 0.5rem; font-style: italic; }
+.recommendation { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+.recommendation h2 { color: #1e3a5f; margin-bottom: 1rem; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.item h3 { color: #4a90d9; font-size: 1rem; margin-bottom: 0.75rem; }
+.item ul { list-style: disc; padding-left: 1.5rem; }
+.item li { margin-bottom: 0.5rem; }
+.quiz-cta { text-align: center; padding: 2rem; background: linear-gradient(135deg, #e8f4fd, #f0f8ff); border-radius: 12px; }
+.quiz-cta h3 { color: #1e3a5f; }
+.quiz-cta p { color: #5a7a9a; margin: 1rem 0; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+@media (max-width: 640px) {
+  .pros-cons, .grid { grid-template-columns: 1fr; }
+}
+</style>

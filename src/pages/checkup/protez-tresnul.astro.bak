@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+<BaseLayout title="Протез треснул — что делать? | Никитина М.Г." description="Треснул съёмный протез — возможен ли ремонт. Причины поломок, когда можно починить, а когда нужна замена." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Протез треснул что делать</span></div></nav>
+    <article class="content"><div class="container">
+      <h1>Треснул протез — что делать</h1>
+      <p class="lead">Трещина в съёмном протезе — не повод покупать новый. В большинстве случаев конструкцию можно отремонтировать за 1–2 дня. Главное — не пытаться склеить самостоятельно.</p>
+      <section><h2>Почему трескаются протезы</h2>
+      <p>Акриловые протезы ломаются чаще нейлоновых из-за жёсткости материала. Основные причины: падение протеза на твёрдую поверхность, неравномерная нагрузка при жевании, естественный износ материала (после 3–5 лет), неправильная посадка из-за атрофии кости. Исследования показывают, что около 30% акриловых протезов требуют ремонта в течение первых 5 лет эксплуатации.</p></section>
+      <section><h2>Можно ли починить</h2>
+      <p>Небольшая трещина — ремонт возможен. Стоматолог проводит склейку акрилом в лаборатории, шов почти незаметен. Если трещина проходит через искусственный зуб — зуб заменяется отдельно. Если протез раскололся на несколько частей — ремонт возможен, но может потребоваться армирование. Если база протеза разрушена на 30% и более — рекомендуется замена, так как ремонт будет ненадёжным.</p></section>
+      <section><h2>Чего нельзя делать</h2>
+      <p>Не клейте протез суперклеем — он токсичен для слизистой. Не используйте эпоксидную смолу — она даёт усадку и нарушает посадку. Не пытайтесь носить треснутый протез — острый край травмирует десну и язык. Не подтачивайте край трещины самостоятельно.</p></section>
+      <section><h2>Стоимость ремонта</h2>
+      <p>Склейка трещины — от 2 000 ₽. Замена сломанного зуба в протезе — от 3 180 ₽ за один зуб. Армирование протеза металлической сеткой — от 6 060 ₽. В большинстве случаев ремонт дешевле и быстрее, чем изготовление нового протеза.</p></section>
+      <section class="cta-section"><h2>Треснул протез? Звоните.</h2>
+      <p>Никитина Марина Георгиевна отремонтирует протез в короткие сроки. Бесплатная консультация.</p>
+      <div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="/services/poychinika-semnogo" class="btn btn--secondary">Ремонт протезов</a></div></section>
+      <nav class="related"><h3>Читайте также:</h3><ul><li><a href="/checkup/nejlonovyj-protez">Нейлоновый протез</a></li><li><a href="/checkup/akrilovyj-protez">Акриловый протез</a></li></ul></nav>
+    </div></article>
+  </main>
+  <style>.page { min-height: 100vh; background: var(--color-bg-alt); } .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); } .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; } .breadcrumbs a { color: var(--color-primary); } .content { padding: var(--space-3xl) 0; } .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); } .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); } .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; } .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); } .content ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); } .content li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.7; } .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; } .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; } .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); } .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); } .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; } .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); } .btn--primary { background: white; color: var(--color-primary); } .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; } .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); } .btn--secondary:hover { border-color: white; text-decoration: none; } .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); } .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); } .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); } .related li { margin: 0; } .related a { color: var(--color-primary); font-size: var(--text-sm); } @media (max-width: 768px) { .content h1 { font-size: var(--text-2xl); } .cta-section { padding: var(--space-xl) var(--space-md); } .cta-buttons { flex-direction: column; align-items: center; } }</style>
+</BaseLayout>

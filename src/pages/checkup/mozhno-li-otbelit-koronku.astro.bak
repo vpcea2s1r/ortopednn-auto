@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+<BaseLayout title="Можно ли отбелить коронку на зубе | Никитина М.Г." description="Можно ли отбелить коронку на зубе — нет, коронки не отбеливаются. Причины потемнения и варианты решения." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/checkup">Самопроверка</a><span>/</span><span>Можно ли отбелить коронку</span></div></nav>
+    <article class="content"><div class="container">
+      <h1>Можно ли отбелить коронку на зубе</h1>
+      <p class="lead">Короткий ответ: нет. Коронки из керамики и циркония не поддаются отбеливанию. В отличие от натуральных зубов, их цвет заложен на этапе изготовления.</p>
+      <section><h2>Почему коронка не отбеливается</h2>
+      <p>Керамика и цирконий — инертные материалы. Отбеливающие гели на основе перекиси водорода воздействуют на органические ткани зуба, но не меняют цвет керамики. Профессиональное отбеливание сделает натуральные зубы светлее, но коронка останется прежнего цвета — разница станет ещё заметнее.</p></section>
+      <section><h2>Что делать, если коронка потемнела</h2>
+      <p>Потемнение может быть связано с изменением цвета зуба под коронкой, старением цемента или налётом на границе. Сначала необходима диагностика причины. Если зуб под коронкой потемнел — возможно внутриканальное отбеливание (через коронку). Если проблема в материале — единственное решение замена коронки. Профессиональная гигиена может убрать внешний налёт, вернув коронке первоначальный блеск.</p></section>
+      <section><h2>Профилактика потемнения</h2>
+      <p>Регулярная гигиена — налёт делает коронку визуально темнее. Отказ от красящих продуктов в первые дни после фиксации. Ежегодная профессиональная чистка. Своевременная замена старого цемента при разгерметизации.</p></section>
+      <section class="cta-section"><h2>Коронка потемнела? Решим.</h2>
+      <p>Никитина Марина Георгиевна определит причину и предложит оптимальное решение.</p>
+      <div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="/checkup/koronka-na-zub-cena" class="btn btn--secondary">Новая коронка</a></div></section>
+      <nav class="related"><h3>Читайте также:</h3><ul><li><a href="/checkup/zapah-iz-pod-koronki">Запах из под коронки</a></li><li><a href="/checkup/bolit-zub-pod-koronkoj">Болит зуб под коронкой</a></li></ul></nav>
+    </div></article>
+  </main>
+  <style>.page { min-height: 100vh; background: var(--color-bg-alt); } .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); } .breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; } .breadcrumbs a { color: var(--color-primary); } .content { padding: var(--space-3xl) 0; } .content .container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); } .content h1 { font-size: var(--text-3xl); color: var(--color-text); margin-bottom: var(--space-md); } .content h2 { font-size: var(--text-2xl); color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md) 0; } .content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-md); } .lead { font-size: var(--text-lg); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-xl); line-height: 1.6; } .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl); border-radius: var(--radius-xl); margin-top: var(--space-3xl); text-align: center; } .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); } .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); } .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; } .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); } .btn--primary { background: white; color: var(--color-primary); } .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-decoration: none; } .btn--secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); } .btn--secondary:hover { border-color: white; text-decoration: none; } .related { margin-top: var(--space-2xl); padding: var(--space-lg); background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); } .related h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-sm); } .related ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); } .related li { margin: 0; } .related a { color: var(--color-primary); font-size: var(--text-sm); } @media (max-width: 768px) { .content h1 { font-size: var(--text-2xl); } .cta-section { padding: var(--space-xl) var(--space-md); } .cta-buttons { flex-direction: column; align-items: center; } }</style>
+</BaseLayout>

@@ -1,0 +1,82 @@
+---
+const doctor = Astro.props.doctor;
+---
+
+<section class="trust">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="icon">💳</div>
+        <h4>Оплата</h4>
+        <p>Наличные • Карта</p>
+      </div>
+      <div class="trust-card">
+        <div class="icon">📍</div>
+        <h4>Локация</h4>
+        <p>Центр НН</p>
+      </div>
+      <div class="trust-card">
+        <div class="icon">🕐</div>
+        <h4>График</h4>
+        <p>Пн-Пт: 09:00 - 20:00</p>
+      </div>
+    </div>
+    <p class="disc">Информация носит ознакомительный характер</p>
+  </div>
+</section>
+
+<style>
+.trust {
+  padding: 48px 0;
+  background: #f8fafc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.trust-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.trust-card h4 {
+  font-size: 0.875rem;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.trust-card p {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.disc {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 640px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

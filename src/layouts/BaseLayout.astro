@@ -1,0 +1,229 @@
+---
+import '../styles/global.css';
+
+const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle } = Astro.props;
+const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '...' : title;
+const isHomepage = Astro.url.pathname === '/';
+const siteOrigin = "2025-01-15T00:00:00+03:00";
+const today = new Date().toISOString();
+const published = datePublished || siteOrigin;
+const modified = dateModified || today;
+
+const segmentNames = {
+  'services': 'Услуги',
+  'blog': 'Блог',
+  'about': 'О враче',
+  'checkup': 'Самопроверка',
+  'compare': 'Сравнение',
+  'materials': 'Материалы',
+};
+
+const pathParts = Astro.url.pathname.replace(/\/$/, '').split('/').filter(Boolean);
+const breadcrumbItems = [{ name: 'Главная', url: 'https://ortopednn.ru/' }];
+const pageNameFromTitle = breadcrumbTitle || truncatedTitle.split(/[—|–]/)[0].trim();
+
+let currentUrl = 'https://ortopednn.ru';
+for (let i = 0; i < pathParts.length; i++) {
+  currentUrl += '/' + pathParts[i];
+  const isLast = i === pathParts.length - 1;
+  breadcrumbItems.push({
+    name: isLast ? pageNameFromTitle : (segmentNames[pathParts[i]] || pathParts[i]),
+    url: currentUrl + '/'
+  });
+}
+
+const hasBreadcrumbs = breadcrumbItems.length > 1;
+---
+
+<!doctype html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Content-Language" content="ru"/>
+  <title>{truncatedTitle}</title>
+  <meta name="description" content={description}/>
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+  <meta name="googlebot" content="index, follow"/>
+  <meta name="author" content="Никитина Марина Георгиевна"/>
+  <meta name="language" content="Russian"/>
+  <meta name="article:published_time" content={published}/>
+  <meta name="article:modified_time" content={modified}/>
+  <link rel="alternate" type="application/rss+xml" title="Sitemap" href="/sitemap-index.xml"/>
+  
+  <meta name="geo.region" content="RU-NIZHNOV"/>
+  <meta name="geo.placename" content={region || "Нижний Новгород"}/>
+  <meta name="ICBM" content="56.294,43.936"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
+  <link rel="canonical" href={`https://ortopednn.ru${Astro.url.pathname}`}/>
+  <meta property="og:type" content={pageType}/>
+  <meta property="og:url" content={Astro.url.href}/>
+  <meta property="og:title" content={truncatedTitle}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:locale" content="ru_RU"/>
+  
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Никитина Марина Георгиевна",
+    "jobTitle": "Врач-стоматолог-ортопед",
+    "description": "Стоматолог-ортопед с 1994 года. Специализируется на протезировании зубов: коронки, съёмные и бюгельные протезы.",
+    "url": "https://ortopednn.ru",
+    "image": "https://ortopednn.ru/favicon.svg",
+    "telephone": "+79202537317",
+    "priceRange": "₽₽",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Октябрьской Революции, д. 43, оф. 316",
+      "addressLocality": "Нижний Новгород",
+      "addressRegion": "Нижегородская область",
+      "postalCode": "603000",
+      "addressCountry": "RU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 56.294,
+      "longitude": 43.936
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "medicalSpecialty": "Prosthodontics",
+    "alumni": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "name": "Высшее медицинское образование",
+        "educationalInstitution": {
+          "@type": "CollegeOrUniversity",
+          "name": "Нижегородский государственный медицинский институт"
+        },
+        "dateOfGraduation": "1995"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "certificate",
+        "name": "Сертификат специалиста по специальности: стоматология ортопедическая",
+        "validIn": {
+          "@type": "Place",
+          "name": "Россия"
+        },
+        "validThrough": "2025"
+      }
+    ],
+    "sameAs": []
+  })}/>
+
+  {isHomepage && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Больно ли обтачивать зубы под коронку?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Работаем с анестезией — вы не почувствуете боли. После процедуры возможна чувствительность на 1-2 дня."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько времени занимает протезирование?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Коронки — 7-14 дней. Съёмные протезы — 2-3 недели. Зависит от сложности."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой протез лучше — съёмный или на имплантах?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Импланты комфортнее и долговечнее. Но съёмные подходят, когда имплантация невозможна."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужно ли обтачивать здоровые зубы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Сохраняем здоровые зубы. Обточка нужна только для фиксации коронки."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как ухаживать за съёмным протезом?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Промывайте после еды, чистите 2 раза в день, храните в воде. Раз в полгода — профчистка."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько служит циркониевая коронка?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "15-20 лет при правильном уходе. Раз в год — осмотр."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что делать, если протез натирает?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Запишитесь на коррекцию. Обычно 1-3 визита. Не подтачивайте сами."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как понять, что пора менять коронку?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Боль, отёк, подвижность, изменение цвета десны, запах — повод обратиться."
+          }
+        }
+      ]
+    })}/>
+  )}
+
+  {hasBreadcrumbs && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems.map((item, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": item.name,
+        "item": item.url
+      }))
+    })}/>
+  )}
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109240855', 'ym');
+
+    ym(109240855, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109240855" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+  <slot/>
+</body>
+</html>

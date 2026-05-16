@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
+const socials = [];
+---
+
+<BaseLayout title="Показания к протезированию | Никитина М.Г." description="Показания к зубному протезированию — когда нужен съёмный или несъёмный протез." doctor={doctor} socials={socials}>
+  <Navbar />
+  <main class="service-page">
+    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Показания к протезированию</span></div></nav>
+    <article class="service-content"><div class="container">
+        <header class="service-header">
+          <h1 class="service-header__title">Показания к протезированию</h1>
+        </header>
+        <div class="service-body">
+          <section class="info-section">
+            <h2>Когда нужно протезирование зубов?</h2>
+            <p>Потеря даже одного зуба — это повод обратиться к стоматологу-ортопеду. Отсутствие зубов приводит к смещению соседних, нарушению прикуса, проблемам с пищеварением и дикции.</p>
+            <p>Своевременное протезирование помогает сохранить здоровье оставшихся зубов и всей зубочелюстной системы. Чем раньше вы обратитесь, тем проще и дешевле будет лечение.</p>
+          </section>
+          <section class="info-section">
+            <h2>В каких случаях нужно протезирование?</h2>
+            <ul>
+              <li>Отсутствие одного или нескольких зубов</li>
+              <li>Полное отсутствие зубов на одной или обеих челюстях</li>
+              <li>Разрушение зуба более чем на 50%</li>
+              <li>Повышенная стираемость зубов</li>
+              <li>Аномалии формы или положения зубов</li>
+              <li>Желание улучшить эстетику улыбки</li>
+              <li>Травматический перелом зуба</li>
+              <li>Функциональные нарушения жевания</li>
+            </ul>
+          </section>
+          <section class="info-section">
+            <h2>Какие виды протезирования существуют?</h2>
+            <p><strong>Несъёмное:</strong> коронки, мостовидные протезы. Фиксируются на зубах или имплантатах. Подходят при наличии опорных зубов.</p>
+            <p><strong>Съёмное:</strong> частичные и полные съёмные протезы. Используются при большом количестве отсутствующих зубов или полной адентии.</p>
+            <p><strong>Условно-съёмное:</strong> протезы на имплантатах. Снимаются при необходимости, но надёжно фиксируются.</p>
+          </section>
+          <div class="info-grid">
+            <section class="info-block info-block--pros"><h3>Съёмное протезирование показано при</h3><ul>
+              <li>Большом количестве отсутствующих зубов</li>
+              <li>Отсутствии концевых зубов</li>
+              <li>Невозможности установки имплантатов</li>
+              <li>Как временное решение</li>
+              <li>Непереносимости других конструкций</li>
+              <li>Пародонтите с подвижностью зубов</li>
+            </ul></section>
+            <section class="info-block info-block--pros"><h3>Несъёмное протезирование показано при</h3><ul>
+              <li>Разрушении отдельных зубов</li>
+              <li>Отсутствии 1-3 зубов подряд</li>
+              <li>Хорошем состоянии опорных зубов</li>
+              <li>Желании долгосрочного решения</li>
+              <li>Требованиях к эстетике</li>
+              <li>Высокой стираемости</li>
+            </ul></section>
+          </div>
+          <div class="materials-grid">
+            <h2 class="section-title">Как выбрать протез — сравнение вариантов</h2>
+            <div class="materials-cards">
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🕐</span><h3>По срокам</h3></div>
+                <div class="material-card__body">
+                  <p>Выбор срока зависит от клинической ситуации и пожеланий пациента.</p>
+                  <ul>
+                    <li>Несъёмные: от 2 недель до нескольких месяцев</li>
+                    <li>Съёмные: 2-4 недели</li>
+                    <li>Имплантация: 3-6 месяцев</li>
+                    <li>Временные протезы: 1-2 дня</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">💰</span><h3>По бюджету</h3></div>
+                <div class="material-card__body">
+                  <p>Стоимость варьируется от бюджетных до премиальных решений.</p>
+                  <ul>
+                    <li>Акриловые протезы — доступная цена</li>
+                    <li>Нейлоновые — средний сегмент</li>
+                    <li>Циркониевые коронки — премиум</li>
+                    <li>Имплантаты — высокая стоимость</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="material-card">
+                <div class="material-card__header"><span class="material-icon">🦷</span><h3>По количеству зубов</h3></div>
+                <div class="material-card__body">
+                  <p>Количество отсутствующих зубов определяет тип конструкции.</p>
+                  <ul>
+                    <li>1-2 зуба: коронка, мост, имплантат</li>
+                    <li>3-5 зубов: мост, частичный протез</li>
+                    <li>Более 5: бюгельный, частичный съёмный</li>
+                    <li>Все зубы: полный съёмный, на имплантатах</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card__value">1</div>
+              <div class="stat-card__label">потерянный зуб — уже показание</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">100%</div>
+              <div class="stat-card__label">восстановление функции</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">3</div>
+              <div class="stat-card__label">типа конструкций</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__value">10-15 лет</div>
+              <div class="stat-card__label">срок службы коронок</div>
+            </div>
+          </div>
+          <section class="info-section">
+            <h2>Когда протезирование невозможно?</h2>
+            <p>Существуют относительные и абсолютные противопоказания к протезированию. К относительным относятся: острые воспалительные процессы, неудовлетворительная гигиена, беременность.</p>
+            <p>Абсолютные противопоказания определяются индивидуально после обследования. В большинстве случаев можно найти подходящее решение.</p>
+          </section>
+          <section class="info-section">
+            <h2>Как записаться на консультацию к ортопеду?</h2>
+            <p>На консультации врач осмотрит полость рта, оценит состояние зубов и слизистой, обсудит с вами возможные варианты и поможет выбрать оптимальное решение.</p>
+            <p>Узнайте, какой вид протезирования подходит именно вам. Запишитесь на приём для получения индивидуального плана лечения.</p>
+          </section>
+        </div>
+        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
+    </div></article>
+  </main>
+</BaseLayout>
+
+<style>
+.service-page { min-height: 100vh; }
+.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+.breadcrumbs .container { display: flex; gap: var(--space-sm); font-size: var(--text-sm); flex-wrap: wrap; }
+.breadcrumbs a { color: var(--color-primary); }
+.service-content { padding: var(--space-3xl) 0; }
+.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
+.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
+.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
+.info-section { margin-bottom: var(--space-xl); }
+.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+.info-section p { color: var(--color-text-muted); line-height: 1.7; }
+.info-section ul { padding-left: var(--space-lg); }
+.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
+.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
+.info-block ul { list-style: none; padding: 0; }
+.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
+.materials-grid { margin-bottom: var(--space-xl); }
+.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
+.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
+.material-card__header .material-icon { font-size: var(--text-2xl); }
+.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.material-card__body { padding: var(--space-lg); }
+.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
+.material-card__body ul { list-style: none; padding: 0; }
+.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
+.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
+.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
+.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
+.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
+@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
+</style>
