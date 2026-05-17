@@ -225,5 +225,36 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
 </head>
 <body>
   <slot/>
+  <footer class="legal-disclaimer">
+    <div class="container">
+      <p><strong>Правовая информация:</strong></p>
+      <p>Данный сайт является персональным блогом (личной информационной страницей) врача Никитиной М.Г. Ресурс носит исключительно информационно-просветительский характер, не является представительством какой-либо медицинской организации, не осуществляет дистанционное оказание медицинских услуг и не собирает за них оплату.</p>
+      <p>Информация о видах ортопедических работ отражает профессиональную специализацию и клинический опыт доктора. Официальный практический прием пациентов и медицинские манипуляции осуществляются строго на базе лицензированной клиники по адресу: г. Нижний Новгород, ул. Октябрьской Революции, 43, оф. 316, в соответствии с её действующим прейскурантом, правилами и медицинской лицензией.</p>
+      <p class="legal-disclaimer__contraindications">ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА.</p>
+    </div>
+  </footer>
 </body>
+<style>
+  .legal-disclaimer {
+    padding: var(--space-xl) 0;
+    background: #1a1a1a;
+    color: #999;
+    font-size: var(--text-xs);
+    line-height: 1.5;
+  }
+  .legal-disclaimer p {
+    margin: 0 0 var(--space-sm);
+    max-width: 800px;
+  }
+  .legal-disclaimer__contraindications {
+    color: #ccc;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .legal-disclaimer .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+</style>
 </html>

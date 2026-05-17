@@ -4,14 +4,19 @@ const { variant = 'checkup' } = Astro.props;
 
 <section class="cta-section">
   <div class="container">
-    <h2>{variant === 'checkup' ? 'Запишитесь на консультацию' : 'Нужна консультация?'}</h2>
-    <p>{variant === 'checkup'
-      ? 'Позвоните — ответим на все вопросы и подберём удобное время'
-      : 'Позвоните — поможем подобрать оптимальное решение для вашего случая'}</p>
-    <div class="cta-buttons">
-      <a href="tel:+79202537317" class="btn btn--primary">Позвонить</a>
-      <a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Написать в Telegram</a>
-    </div>
+    {variant === 'checkup' ? (
+      <div class="cta-expert">
+        <p>Каждая клиническая ситуация уникальна и требует очного осмотра. Если вам нужна экспертная помощь доктора Никитиной в Нижнем Новгороде, позвоните по телефону: <a href="tel:+79202537317" class="cta-phone">+7 (920) 253-73-17</a>. Мы подберем удобное время для консультации.</p>
+      </div>
+    ) : (
+      <>
+        <h2>Нужна консультация?</h2>
+        <p>Позвоните — поможем подобрать оптимальное решение для вашего случая</p>
+        <div class="cta-buttons">
+          <a href="tel:+79202537317" class="btn btn--primary">Позвонить</a>
+        </div>
+      </>
+    )}
   </div>
 </section>
 
@@ -19,6 +24,10 @@ const { variant = 'checkup' } = Astro.props;
   .cta-section { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-2xl) 0; text-align: center; }
   .cta-section h2 { color: white; font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
   .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
+  .cta-expert { max-width: 700px; margin: 0 auto; }
+  .cta-expert p { font-size: var(--text-base); line-height: 1.7; margin-bottom: 0; }
+  .cta-phone { color: white; font-weight: 700; text-decoration: underline; white-space: nowrap; }
+  .cta-phone:hover { color: rgba(255,255,255,0.8); }
   .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
   .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; font-size: var(--text-base); transition: all var(--transition-fast); }
   .btn--primary { background: white; color: var(--color-primary); }
