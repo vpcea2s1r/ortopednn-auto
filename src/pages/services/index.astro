@@ -143,8 +143,12 @@ const services = [
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .services-grid { grid-template-columns: 1fr; }
 }
 
 .service-card {
@@ -216,6 +220,5 @@ const services = [
 
 @media (max-width: 640px) {
   .services-content { padding: var(--space-xl) 0; }
-  .services-grid { grid-template-columns: 1fr; }
 }
 </style>
