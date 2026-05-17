@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
@@ -18,5 +18,12 @@ export default defineConfig({
     build: {
       cssCodeSplit: true
     }
-  }
+  },
+  fonts: [{
+    name: 'Inter',
+    cssVariable: '--font-inter',
+    subsets: ['cyrillic', 'latin'],
+    weights: [400, 500, 600, 700, 800],
+    provider: fontProviders.google()
+  }]
 });
