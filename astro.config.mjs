@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders } from 'astro/config';
+import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
@@ -18,6 +18,10 @@ export default defineConfig({
     build: {
       cssCodeSplit: true
     }
+  },
+  experimental: {
+    rustCompiler: true,
+    svgOptimizer: svgoOptimizer()
   },
   fonts: [{
     name: 'Inter',

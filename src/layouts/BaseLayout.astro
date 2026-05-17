@@ -1,5 +1,6 @@
 ---
 import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle } = Astro.props;
@@ -57,6 +58,7 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
   <meta name="ICBM" content="56.294,43.936"/>
   
   <Font cssVariable="--font-inter" preload/>
+  <ClientRouter/>
   
   <link rel="canonical" href={`https://ortopednn.ru${Astro.url.pathname}`}/>
   <meta property="og:type" content={pageType}/>
