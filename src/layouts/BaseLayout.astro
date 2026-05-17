@@ -3,8 +3,9 @@ import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
-const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle } = Astro.props;
+const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle, ogImage = '/og-image.svg' } = Astro.props;
 const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '...' : title;
+const truncatedDesc = description.length > 160 ? description.slice(0, 157) + '...' : description;
 const isHomepage = Astro.url.pathname === '/';
 const siteOrigin = "2025-01-15T00:00:00+03:00";
 const today = new Date().toISOString();
@@ -44,7 +45,7 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="Content-Language" content="ru"/>
   <title>{truncatedTitle}</title>
-  <meta name="description" content={description}/>
+  <meta name="description" content={truncatedDesc}/>
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
   <meta name="googlebot" content="index, follow"/>
   <meta name="author" content="Никитина Марина Георгиевна"/>
@@ -57,6 +58,9 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
   <meta name="geo.placename" content={region || "Нижний Новгород"}/>
   <meta name="ICBM" content="56.294,43.936"/>
   
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <link rel="apple-touch-icon" href="/favicon.svg"/>
+  
   <Font cssVariable="--font-inter" preload/>
   <ClientRouter/>
   
@@ -64,19 +68,23 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
   <meta property="og:type" content={pageType}/>
   <meta property="og:url" content={Astro.url.href}/>
   <meta property="og:title" content={truncatedTitle}/>
-  <meta property="og:description" content={description}/>
+  <meta property="og:description" content={truncatedDesc}/>
+  <meta property="og:image" content={`https://ortopednn.ru${ogImage}`}/>
   <meta property="og:locale" content="ru_RU"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content={truncatedTitle}/>
+  <meta name="twitter:description" content={truncatedDesc}/>
+  <meta name="twitter:image" content={`https://ortopednn.ru${ogImage}`}/>
   
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Dentist",
-    "name": "Никитина Марина Георгиевна",
-    "jobTitle": "Врач-стоматолог-ортопед",
+    "@type": "MedicalBusiness",
+    "name": "ОртопедНН — Никитина Марина Георгиевна",
     "description": "Стоматолог-ортопед с 1994 года. Специализируется на протезировании зубов: коронки, съёмные и бюгельные протезы.",
     "url": "https://ortopednn.ru",
-    "image": "https://ortopednn.ru/favicon.svg",
+    "image": "https://ortopednn.ru/og-image.svg",
     "telephone": "+79202537317",
-    "priceRange": "₽₽",
+    "priceRange": "По записи",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "ул. Октябрьской Революции, д. 43, оф. 316",
