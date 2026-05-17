@@ -1,7 +1,7 @@
 ---
 const doctor = Astro.props.doctor;
 const photos = doctor.photos || [];
-const initialPhoto = photos.length ? photos[Math.floor(Math.random() * photos.length)] : "images/1.jpg";
+const initialPhoto = photos.length ? "/" + photos[Math.floor(Math.random() * photos.length)] : "/images/1.jpg";
 const photosJson = JSON.stringify(photos);
 ---
 
@@ -15,7 +15,7 @@ const photosJson = JSON.stringify(photos);
         <p class="doctor-address">{doctor.address}</p>
       </div>
       <div class="doctor-photo">
-        <img id="doctor-photo" src="/{initialPhoto}" alt={doctor.name} width="300" height="420" />
+        <img id="doctor-photo" src={initialPhoto} alt={doctor.name} width="300" height="420" />
       </div>
     </div>
   </div>
