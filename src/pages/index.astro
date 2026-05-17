@@ -33,25 +33,6 @@ import socials from '../../data/socials.json';
       </div>
     </section>
     <WhyMeStatic doctor={doctor}/>
-    <section class="about-doctor">
-      <div class="container">
-        <h2 class="about-doctor__title">О враче</h2>
-        <div class="about-doctor__content">
-          <div class="about-doctor__text">
-            <p>Приём ведёт Никитина Марина Георгиевна — стоматолог-ортопед с высшим медицинским образованием и стажем более 30 лет. Главный принцип — бережное отношение к своим зубам у каждого пациента. Лечение проходит без боли: современные анестетики, щадящие методы препарирования, комфортная атмосфера. Доктор доступен для связи напрямую — отвечает на вопросы пациентов лично.</p>
-          </div>
-          <div class="about-doctor__services">
-            <h3 class="about-doctor__services-title">Основные направления:</h3>
-            <ul class="about-doctor__list">
-              <li>Металлокерамические коронки</li>
-              <li>Циркониевые коронки</li>
-              <li>Съёмные протезы (акрил, AcryFree, нейлон)</li>
-              <li>Бюгельные протезы</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
     <Specializations />
     <PriceList />
     <FAQ />
@@ -95,51 +76,6 @@ import socials from '../../data/socials.json';
   color: var(--color-primary);
   font-size: var(--text-sm);
   font-weight: 500;
-}
-
-.about-doctor {
-  padding: var(--space-3xl) 0;
-  background: white;
-}
-
-.about-doctor__title {
-  text-align: center;
-  font-size: var(--text-2xl);
-  font-weight: 800;
-  color: var(--color-text);
-  margin-bottom: var(--space-xl);
-}
-
-.about-doctor__content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
-}
-
-.about-doctor__text p {
-  color: var(--color-text-muted);
-  font-size: var(--text-base);
-  line-height: 1.7;
-  margin-bottom: var(--space-md);
-}
-
-.about-doctor__services-title {
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: var(--space-md);
-}
-
-.about-doctor__list {
-  list-style: none;
-  padding: 0;
-}
-
-.about-doctor__list li {
-  color: var(--color-text);
-  font-size: var(--text-sm);
-  padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--color-bg);
 }
 
 .site-footer {
@@ -197,20 +133,7 @@ import socials from '../../data/socials.json';
   line-height: 1.7;
 }
 
-@media (max-width: 768px) {
-  .about-doctor__content {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-}
-
 @media (max-width: 640px) {
-  .about-doctor {
-    padding: var(--space-xl) 0;
-  }
-  .about-doctor__title {
-    font-size: var(--text-xl);
-  }
   .site-footer__content {
     flex-direction: column;
     text-align: center;
