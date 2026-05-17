@@ -1,5 +1,5 @@
 ---
-const photosArr = JSON.stringify((Astro.props.doctor.photos || []));
+const photos = (Astro.props.doctor.photos || []).join('||');
 ---
 
 <section class="why">
@@ -12,19 +12,24 @@ const photosArr = JSON.stringify((Astro.props.doctor.photos || []));
         <p class="doctor-address">{Astro.props.doctor.address}</p>
       </div>
       <div class="doctor-photo">
-        <img id="doctor-photo" src="/images/1.jpg" alt={Astro.props.doctor.name} width="300" height="420" />
+        <img id="doctor-photo" src="/images/1.jpg" alt={Astro.props.doctor.name} width="300" height="420" data-photos={photos} />
       </div>
     </div>
   </div>
 </section>
 
-<script is:inline>
-var _pl = {photosArr};
+<script>
 (function() {
-  var img = document.getElementById('doctor-photo');
-  if (img && _pl && _pl.length) {
-    img.src = '/' + _pl[Math.floor(Math.random() * _pl.length)];
+  function rotate() {
+    var img = document.getElementById('doctor-photo');
+    if (!img) return;
+    var list = img.getAttribute('data-photos');
+    if (!list) return;
+    list = list.split('||');
+    img.src = '/' + list[Math.floor(Math.random() * list.length)];
   }
+  rotate();
+  document.addEventListener('astro:page-load', rotate);
 })();
 </script>
 
