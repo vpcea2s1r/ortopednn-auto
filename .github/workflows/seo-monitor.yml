@@ -1,0 +1,177 @@
+name: SEO Monitor
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Lighthouse
+        run: npm install -g lighthouse
+
+      - name: Check sitemap & URLs
+        id: sitemap
+        run: |
+          echo "### 🌐 Sitemap Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          SITEMAP_URL="https://ortopednn.ru/sitemap-0.xml"
+          echo "Fetching sitemap: $SITEMAP_URL"
+
+          XML=$(curl -s -L "$SITEMAP_URL" 2>&1)
+          URLS=$(echo "$XML" | grep -oP '<loc>\K[^<]+')
+          TOTAL=$(echo "$URLS" | wc -l)
+
+          echo "**Total URLs:** $TOTAL" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "| # | URL | Status | Time (s) |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|---|---|" >> $GITHUB_STEP_SUMMARY
+
+          ERRORS=0
+          i=0
+          for url in $URLS; do
+            i=$((i + 1))
+            result=$(curl -s -o /dev/null -w "%{http_code}|%{time_total}" -L --max-time 10 "$url" 2>&1)
+            code=$(echo "$result" | cut -d'|' -f1)
+            time=$(echo "$result" | cut -d'|' -f2)
+            time_fmt=$(printf "%.2f" "$time")
+            if [ "$code" != "200" ]; then
+              ERRORS=$((ERRORS + 1))
+              echo "| $i | $url | ❌ $code | ${time_fmt}s |" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "| $i | $url | ✅ $code | ${time_fmt}s |" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Errors:** $ERRORS / $TOTAL" >> $GITHUB_STEP_SUMMARY
+
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+          echo "errors=$ERRORS" >> $GITHUB_OUTPUT
+
+      - name: Lighthouse audit
+        id: lighthouse
+        run: |
+          echo "### ⚡ Lighthouse" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          lighthouse https://ortopednn.ru/ \
+            --chrome-flags="--headless --no-sandbox" \
+            --output=json \
+            --output-path=./lighthouse.json \
+            --quiet \
+            --only-categories=performance,seo,accessibility
+
+          if [ -f ./lighthouse.json ]; then
+            PERF=$(jq -r '.categories.performance.score * 100 | floor' ./lighthouse.json 2>/dev/null || echo "N/A")
+            SEO=$(jq -r '.categories.seo.score * 100 | floor' ./lighthouse.json 2>/dev/null || echo "N/A")
+            A11Y=$(jq -r '.categories.accessibility.score * 100 | floor' ./lighthouse.json 2>/dev/null || echo "N/A")
+
+            echo "**Performance:** $PERF" >> $GITHUB_STEP_SUMMARY
+            echo "**SEO:** $SEO" >> $GITHUB_STEP_SUMMARY
+            echo "**Accessibility:** $A11Y" >> $GITHUB_STEP_SUMMARY
+
+            echo "perf=$PERF" >> $GITHUB_OUTPUT
+            echo "seo=$SEO" >> $GITHUB_OUTPUT
+            echo "a11y=$A11Y" >> $GITHUB_OUTPUT
+          else
+            echo "Lighthouse failed to generate report" >> $GITHUB_STEP_SUMMARY
+            echo "perf=N/A" >> $GITHUB_OUTPUT
+            echo "seo=N/A" >> $GITHUB_OUTPUT
+            echo "a11y=N/A" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check SSL cert
+        id: ssl
+        run: |
+          echo "### 🔒 SSL Certificate" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          expiry=$(echo | openssl s_client -servername ortopednn.ru -connect ortopednn.ru:443 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
+          if [ -n "$expiry" ]; then
+            echo "**Expires:** $expiry" >> $GITHUB_STEP_SUMMARY
+            expiry_epoch=$(date -d "$expiry" +%s 2>/dev/null)
+            now_epoch=$(date +%s)
+            days_left=$(( (expiry_epoch - now_epoch) / 86400 ))
+            echo "**Days left:** $days_left" >> $GITHUB_STEP_SUMMARY
+            echo "days=$days_left" >> $GITHUB_OUTPUT
+          else
+            echo "Could not check SSL" >> $GITHUB_STEP_SUMMARY
+            echo "days=N/A" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build size
+        id: build
+        run: |
+          echo "### 📦 Build Size" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -d ./dist ]; then
+            SIZE=$(du -sh ./dist | cut -f1)
+            PAGES=$(find ./dist -name "*.html" | wc -l)
+            echo "**Total size:** $SIZE" >> $GITHUB_STEP_SUMMARY
+            echo "**HTML pages:** $PAGES" >> $GITHUB_STEP_SUMMARY
+            echo "size=$SIZE" >> $GITHUB_OUTPUT
+            echo "pages=$PAGES" >> $GITHUB_OUTPUT
+          else
+            echo "No dist folder" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Send to Telegram
+        if: always()
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
+            echo "Telegram secrets not set — skipping"
+            exit 0
+          fi
+
+          SUMMARY="📊 *SEO Monitor — ortopednn.ru*%0A%0A"
+          SUMMARY="${SUMMARY}🌐 *Sitemap:* ${{ steps.sitemap.outputs.total }} URLs, ❌ ${{ steps.sitemap.outputs.errors }} errors%0A"
+          SUMMARY="${SUMMARY}⚡ *Performance:* ${{ steps.lighthouse.outputs.perf }} | *SEO:* ${{ steps.lighthouse.outputs.seo }} | *A11y:* ${{ steps.lighthouse.outputs.a11y }}%0A"
+          SUMMARY="${SUMMARY}🔒 *SSL:* ${{ steps.ssl.outputs.days }} days left%0A"
+          SUMMARY="${SUMMARY}📦 *Build:* ${{ steps.build.outputs.size }} (${{ steps.build.outputs.pages }} pages)%0A%0A"
+          SUMMARY="${SUMMARY}[Open Summary](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+
+          curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${CHAT_ID}" \
+            -d "text=${SUMMARY}" \
+            -d "parse_mode=Markdown" \
+            -d "disable_web_page_preview=true" > /dev/null 2>&1 || echo "Telegram send failed"
+
+      - name: Check for regressions
+        if: always()
+        run: |
+          echo "### 📋 Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.sitemap.outputs.errors }}" -gt "0" ]; then
+            echo "❌ **${{ steps.sitemap.outputs.errors }} broken URLs found!**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          PERF_NUM=${{ steps.lighthouse.outputs.perf }}
+          if [ "$PERF_NUM" != "N/A" ] && [ "$PERF_NUM" -lt 80 ]; then
+            echo "⚠️ **Performance dropped below 80**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          SSL_NUM=${{ steps.ssl.outputs.days }}
+          if [ "$SSL_NUM" != "N/A" ] && [ "$SSL_NUM" -lt 14 ]; then
+            echo "🔴 **SSL expires in $SSL_NUM days!**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Check complete" >> $GITHUB_STEP_SUMMARY
