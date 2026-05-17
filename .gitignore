@@ -3,9 +3,10 @@ dist
 .DS_Store
 .env
 *.log
-data/*.json.tmp
-src/content/districts/*.md
-src/content/services/*.md
+9router
+openserp
+scripts
+wordstat
 .wrangler
 .keystatic
 .astro
