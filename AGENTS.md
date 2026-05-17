@@ -93,18 +93,18 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 
 ### Pricing Data
 
-- **Source:** `data/pricing.json` — 5 категорий, 87 позиций
-- **Rendering:** `src/pages/services/index.astro` — рендерит `<span class="service-price">{price}</span>`
-- **Также используется в:** индивидуальных страницах услуг (./astro файлы в src/pages/services/)
-- **На главной:** цены рендерятся из `getAllServicesFlat()` или hardcoded
+- **Данные:** `data/pricing.json` (не тронуты)
+- **Список услуг:** `src/pages/services/index.astro` — цены удалены
+- **Индивидуальные страницы:** `src/pages/services/*.astro` — цены удалены (ServiceArticle: price-бадж, material-price, stat-card__value, inline цены)
+- **Главная:** цены удалены
+- **Компонент:** `ServiceArticle.astro` — удалены price из Props, price-бадж, Product schema, CSS
 
-### Next Critical Steps
+### Next Steps
 
-1. **Удалить цены с индивидуальных страниц услуг** — проверить все 62 файла в `src/pages/services/*.astro` на наличие `<span class="service-price">` или `{price}` 
-2. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
-3. **Переделать дизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
-4. **Яндекс.Вебмастер** — проверить индексацию, регион, поисковые запросы
-5. **Яндекс.Бизнес** — создать карточку организации
+1. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
+2. **Переделать дизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
+3. **Яндекс.Вебмастер** — проверить индексацию, регион, поисковые запросы
+4. **Яндекс.Бизнес** — создать карточку организации
 
 ## Setup After Clone
 
