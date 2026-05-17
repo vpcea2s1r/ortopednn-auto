@@ -1,6 +1,6 @@
 ---
 const doctor = Astro.props.doctor;
-const photo = doctor.photos?.[0] || doctor.photo || "/images/1.jpg";
+const photosJson = JSON.stringify(doctor.photos);
 ---
 
 <section class="why">
@@ -13,11 +13,32 @@ const photo = doctor.photos?.[0] || doctor.photo || "/images/1.jpg";
         <p class="doctor-address">{doctor.address}</p>
       </div>
       <div class="doctor-photo">
-        <img src={photo} alt={doctor.name} width="300" height="300" />
+        <img id="doctor-photo" src="/images/1.jpg" alt={doctor.name} width="300" height="300" />
       </div>
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  try {
+    var photos = {photosJson};
+    var img = document.getElementById('doctor-photo');
+    if (img && photos && photos.length > 1) {
+      img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
+    }
+  } catch(e) {}
+  document.addEventListener('astro:page-load', function() {
+    try {
+      var photos = {photosJson};
+      var img = document.getElementById('doctor-photo');
+      if (img && photos && photos.length > 1) {
+        img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
+      }
+    } catch(e) {}
+  });
+})();
+</script>
 
 <style>
 .why {
@@ -66,14 +87,20 @@ const photo = doctor.photos?.[0] || doctor.photo || "/images/1.jpg";
 }
 
 .doctor-photo img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
+  width: 300px;
+  height: 300px;
   border-radius: 24px;
   object-fit: cover;
   box-shadow: 0 20px 40px -8px rgba(0,0,0,0.15);
   display: block;
   margin: 0 auto;
+}
+
+@media (max-width: 400px) {
+  .doctor-photo img {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 .container {
