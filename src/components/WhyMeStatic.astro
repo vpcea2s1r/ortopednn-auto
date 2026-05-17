@@ -1,21 +1,18 @@
 ---
-const doctor = Astro.props.doctor;
-const photos = doctor.photos || [];
-const initialPhoto = photos.length ? "/" + photos[Math.floor(Math.random() * photos.length)] : "/images/1.jpg";
-const photosJson = JSON.stringify(photos);
+const photos = JSON.stringify((Astro.props.doctor.photos || []));
 ---
 
 <section class="why">
   <div class="container">
     <div class="why-content">
       <div class="doctor-info">
-        <h2 class="doctor-name">{doctor.name}</h2>
-        <p class="doctor-specialty">{doctor.specialty}</p>
-        <p class="doctor-experience">{doctor.experience}</p>
-        <p class="doctor-address">{doctor.address}</p>
+        <h2 class="doctor-name">{Astro.props.doctor.name}</h2>
+        <p class="doctor-specialty">{Astro.props.doctor.specialty}</p>
+        <p class="doctor-experience">{Astro.props.doctor.experience}</p>
+        <p class="doctor-address">{Astro.props.doctor.address}</p>
       </div>
       <div class="doctor-photo">
-        <img id="doctor-photo" src={initialPhoto} alt={doctor.name} width="300" height="420" />
+        <img id="doctor-photo" src="/images/1.jpg" alt={Astro.props.doctor.name} width="300" height="420" />
       </div>
     </div>
   </div>
@@ -23,15 +20,17 @@ const photosJson = JSON.stringify(photos);
 
 <script>
 (function() {
-  var photos = {photosJson};
-  function rotate() {
-    var img = document.getElementById('doctor-photo');
-    if (img && photos && photos.length > 1) {
-      var next = photos[Math.floor(Math.random() * photos.length)];
-      if (next) img.src = '/' + next;
-    }
+  var photos = {photos};
+  var img = document.getElementById('doctor-photo');
+  if (img && photos && photos.length) {
+    img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
   }
-  document.addEventListener('astro:page-load', rotate);
+  document.addEventListener('astro:page-load', function() {
+    var img = document.getElementById('doctor-photo');
+    if (img && photos && photos.length) {
+      img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
+    }
+  });
 })();
 </script>
 
