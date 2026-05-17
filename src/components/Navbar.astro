@@ -14,7 +14,7 @@ const navLinks = [
 <nav class="navbar" role="navigation" aria-label="Основная навигация">
   <div class="navbar__top">
     <a href="/" class="navbar__brand">
-      <img class="navbar__avatar" id="doctor-avatar" src="/images/1.jpg" alt="" width="36" height="36"/>
+      <img class="navbar__avatar" id="doctor-avatar" src="/images/1.jpg" alt="" width="48" height="48"/>
       <span class="navbar__logo">ОртопедНН</span>
     </a>
     <a href="tel:+79202537317" class="navbar__phone">
@@ -88,16 +88,17 @@ const navLinks = [
 }
 
 .navbar__avatar {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .navbar__logo {
   font-weight: 800;
   color: var(--color-text);
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
 }
 
 .navbar__phone {
