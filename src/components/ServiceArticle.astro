@@ -8,9 +8,7 @@ import CtaBlock from './CtaBlock.astro';
 export interface Props {
   title: string;
   description: string;
-  price: string;
   breadcrumbName: string;
-  priceNumeric?: number;
   datePublished?: string;
   dateModified?: string;
 }
@@ -18,9 +16,7 @@ export interface Props {
 const {
   title,
   description,
-  price,
   breadcrumbName,
-  priceNumeric,
   datePublished,
   dateModified,
 } = Astro.props;
@@ -28,19 +24,6 @@ const {
 const today = new Date().toISOString().split('T')[0];
 const pubDate = datePublished || today;
 const modDate = dateModified || today;
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: breadcrumbName,
-  description,
-  offers: {
-    '@type': 'Offer',
-    price: priceNumeric || price.replace(/[^\d]/g, ''),
-    priceCurrency: 'RUB',
-    availability: 'https://schema.org/InStock',
-    url: `https://ortopednn.ru${Astro.url.pathname}`,
-  },
-};
 ---
 
 <BaseLayout
@@ -68,7 +51,6 @@ const productSchema = {
       <div class="container">
         <header class="service-header">
           <h1 class="service-header__title">{breadcrumbName}</h1>
-          {price && <div class="service-header__price" itemprop="price">{price}</div>}
         </header>
         <div class="service-body">
           <slot />
@@ -79,8 +61,6 @@ const productSchema = {
     <CtaBlock variant="service" />
   </main>
 
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-
   <style>
     .service-page { min-height: 100vh; }
     .breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
@@ -89,7 +69,6 @@ const productSchema = {
     .service-content { padding: var(--space-3xl) 0; }
     .service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
     .service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
-    .service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
     .service-body :global(section) { margin-bottom: var(--space-xl); }
     .service-body :global(h2) { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
     .service-body :global(p) { color: var(--color-text-muted); line-height: 1.7; }
@@ -98,7 +77,6 @@ const productSchema = {
     .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
     @media (max-width: 768px) {
       .service-header { flex-direction: column; }
-      .service-header__price { width: 100%; text-align: center; }
     }
   </style>
 </BaseLayout>
