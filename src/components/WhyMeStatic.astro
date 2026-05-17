@@ -1,28 +1,19 @@
 ---
 const doctor = Astro.props.doctor;
+const photo = doctor.photos?.[0] || doctor.photo || "/images/1.jpg";
 ---
 
 <section class="why">
   <div class="container">
     <div class="why-content">
-      <div class="why-text">
-        <h2>Почему выбирают нас</h2>
-        <ul>
-          {doctor.utp.map((item, i) => (
-            <li>
-              <span class="check">{i + 1}</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+      <div class="doctor-info">
+        <h2 class="doctor-name">{doctor.name}</h2>
+        <p class="doctor-specialty">{doctor.specialty}</p>
+        <p class="doctor-experience">{doctor.experience}</p>
+        <p class="doctor-address">{doctor.address}</p>
       </div>
-      <div class="why-card">
-        <div class="doctor-info">
-          <h3>{doctor.name}</h3>
-          <p>{doctor.specialty}</p>
-          <p class="experience">{doctor.experience}</p>
-          <p class="address">{doctor.address}</p>
-        </div>
+      <div class="doctor-photo">
+        <img src={photo} alt={doctor.name} width="300" height="300" />
       </div>
     </div>
   </div>
@@ -47,81 +38,42 @@ const doctor = Astro.props.doctor;
   }
 }
 
-.why-text h2 {
+.doctor-info {
+  max-width: 500px;
+}
+
+.doctor-name {
   font-size: 1.75rem;
-  margin-bottom: 32px;
   color: #1e293b;
+  margin-bottom: 8px;
 }
 
-.why-text ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.why-text li {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  font-size: 1rem;
-  color: #475569;
-}
-
-.check {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  background: #0ea5e9;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.doctor-specialty {
+  font-size: 1.1rem;
+  color: var(--color-primary);
   font-weight: 600;
-  font-size: 14px;
-}
-
-.why-card {
-  background: white;
-  border-radius: 24px;
-  padding: 32px;
-  box-shadow: 0 20px 40px -8px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.doctor-photo {
-  margin-bottom: 20px;
-}
-
-.doctor-photo img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #e0f2fe;
-}
-
-.doctor-info h3 {
-  font-size: 1.25rem;
-  color: #1e293b;
   margin-bottom: 4px;
 }
 
-.doctor-info p {
+.doctor-experience {
   color: #64748b;
+  margin-bottom: 8px;
 }
 
-.doctor-info .experience {
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-top: 8px;
-}
-
-.doctor-info .address {
+.doctor-address {
   color: var(--color-text-muted);
   font-size: var(--text-sm);
-  margin-top: var(--space-sm);
+}
+
+.doctor-photo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 20px 40px -8px rgba(0,0,0,0.15);
+  display: block;
+  margin: 0 auto;
 }
 
 .container {
