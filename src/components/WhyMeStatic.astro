@@ -21,16 +21,18 @@ const photos = JSON.stringify((Astro.props.doctor.photos || []));
 <script>
 (function() {
   var photos = {photos};
-  var img = document.getElementById('doctor-photo');
-  if (img && photos && photos.length) {
-    img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
-  }
-  document.addEventListener('astro:page-load', function() {
+  function rotate() {
     var img = document.getElementById('doctor-photo');
     if (img && photos && photos.length) {
       img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
     }
-  });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', rotate);
+  } else {
+    rotate();
+  }
+  document.addEventListener('astro:page-load', rotate);
 })();
 </script>
 
