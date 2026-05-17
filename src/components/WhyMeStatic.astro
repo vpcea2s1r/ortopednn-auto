@@ -1,6 +1,8 @@
 ---
 const doctor = Astro.props.doctor;
-const photosJson = JSON.stringify(doctor.photos);
+const photos = doctor.photos || [];
+const initialPhoto = photos.length ? photos[Math.floor(Math.random() * photos.length)] : "images/1.jpg";
+const photosJson = JSON.stringify(photos);
 ---
 
 <section class="why">
@@ -13,7 +15,7 @@ const photosJson = JSON.stringify(doctor.photos);
         <p class="doctor-address">{doctor.address}</p>
       </div>
       <div class="doctor-photo">
-        <img id="doctor-photo" src="/images/1.jpg" alt={doctor.name} width="300" height="300" />
+        <img id="doctor-photo" src="/{initialPhoto}" alt={doctor.name} width="300" height="420" />
       </div>
     </div>
   </div>
@@ -21,22 +23,15 @@ const photosJson = JSON.stringify(doctor.photos);
 
 <script>
 (function() {
-  try {
-    var photos = {photosJson};
+  var photos = {photosJson};
+  function rotate() {
     var img = document.getElementById('doctor-photo');
     if (img && photos && photos.length > 1) {
-      img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
+      var next = photos[Math.floor(Math.random() * photos.length)];
+      if (next) img.src = '/' + next;
     }
-  } catch(e) {}
-  document.addEventListener('astro:page-load', function() {
-    try {
-      var photos = {photosJson};
-      var img = document.getElementById('doctor-photo');
-      if (img && photos && photos.length > 1) {
-        img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
-      }
-    } catch(e) {}
-  });
+  }
+  document.addEventListener('astro:page-load', rotate);
 })();
 </script>
 
@@ -88,9 +83,10 @@ const photosJson = JSON.stringify(doctor.photos);
 
 .doctor-photo img {
   width: 300px;
-  height: 300px;
+  height: 420px;
   border-radius: 24px;
   object-fit: cover;
+  object-position: center 20%;
   box-shadow: 0 20px 40px -8px rgba(0,0,0,0.15);
   display: block;
   margin: 0 auto;
@@ -98,8 +94,8 @@ const photosJson = JSON.stringify(doctor.photos);
 
 @media (max-width: 400px) {
   .doctor-photo img {
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 310px;
   }
 }
 
