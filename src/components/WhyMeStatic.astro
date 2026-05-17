@@ -1,5 +1,5 @@
 ---
-const photos = JSON.stringify((Astro.props.doctor.photos || []));
+const photosArr = JSON.stringify((Astro.props.doctor.photos || []));
 ---
 
 <section class="why">
@@ -18,21 +18,13 @@ const photos = JSON.stringify((Astro.props.doctor.photos || []));
   </div>
 </section>
 
-<script>
+<script is:inline>
+var _pl = {photosArr};
 (function() {
-  var photos = {photos};
-  function rotate() {
-    var img = document.getElementById('doctor-photo');
-    if (img && photos && photos.length) {
-      img.src = '/' + photos[Math.floor(Math.random() * photos.length)];
-    }
+  var img = document.getElementById('doctor-photo');
+  if (img && _pl && _pl.length) {
+    img.src = '/' + _pl[Math.floor(Math.random() * _pl.length)];
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', rotate);
-  } else {
-    rotate();
-  }
-  document.addEventListener('astro:page-load', rotate);
 })();
 </script>
 
