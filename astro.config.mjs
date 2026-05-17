@@ -4,6 +4,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://ortopednn.ru',
   output: 'static',
+  redirects: {
+    '/services/protezirovanie-zubov/': '/services/',
+    '/services/koronki/': '/services/',
+    '/services/semnye-protezy/': '/services/',
+    '/services/byugelnye-protezy/': '/services/',
+  },
   prefetch: {
     prefetchAll: false,
     hover: true
