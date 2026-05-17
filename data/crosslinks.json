@@ -1,0 +1,143 @@
+{
+  "/services/metallokeramika/": [
+    { "url": "/checkup/metallokeramika-cena/", "title": "Цена на металлокерамическую коронку" },
+    { "url": "/checkup/bolit-zub-pod-koronkoj/", "title": "Почему болит зуб под коронкой" },
+    { "url": "/checkup/bolno-li-stavit-koronku/", "title": "Больно ли ставить коронку" },
+    { "url": "/checkup/skolko-delaetsya-koronka/", "title": "Сколько делается коронка на зуб" },
+    { "url": "/checkup/vypala-koronka/", "title": "Выпала коронка — что делать" },
+    { "url": "/checkup/koronka-na-zub-cena/", "title": "Сколько стоит коронка на зуб" }
+  ],
+  "/services/metallokeramicheskaya-koronka/": [
+    { "url": "/checkup/metallokeramika-cena/", "title": "Цена на металлокерамическую коронку" },
+    { "url": "/checkup/bolit-zub-pod-koronkoj/", "title": "Почему болит зуб под коронкой" }
+  ],
+  "/services/cirkonievaya-koronka/": [
+    { "url": "/checkup/cirkonievaya-koronka/", "title": "Циркониевая коронка — особенности" },
+    { "url": "/checkup/koronka-temnee-sosednego-zuba/", "title": "Коронка темнее соседнего зуба" },
+    { "url": "/checkup/koronka-na-perednij-zub/", "title": "Коронка на передний зуб" },
+    { "url": "/checkup/koronka-na-zub-cena/", "title": "Сколько стоит коронка на зуб" },
+    { "url": "/checkup/skolko-delaetsya-koronka/", "title": "Сколько делается коронка на зуб" },
+    { "url": "/checkup/mozhno-li-otbelit-koronku/", "title": "Можно ли отбелить коронку" }
+  ],
+  "/services/celnolitaya-koronka/": [
+    { "url": "/checkup/koronka-na-zhevatelnyj-zub/", "title": "Коронка на жевательный зуб" },
+    { "url": "/checkup/privkus-metalla-ot-koronki/", "title": "Привкус металла от коронки" }
+  ],
+  "/services/celnolitaya-koronka-ni-cr/": [
+    { "url": "/checkup/koronka-na-zhevatelnyj-zub/", "title": "Коронка на жевательный зуб" }
+  ],
+  "/services/metalloplastmassovaya-koronka/": [
+    { "url": "/checkup/koronka-na-zub-cena/", "title": "Сколько стоит коронка на зуб" }
+  ],
+  "/services/vremennaya-koronka/": [
+    { "url": "/checkup/skolko-delaetsya-koronka/", "title": "Сколько делается коронка на зуб" },
+    { "url": "/checkup/bolno-li-stavit-koronku/", "title": "Больно ли ставить коронку" }
+  ],
+  "/services/vremennaya-koronka-lab/": [
+    { "url": "/checkup/skolko-delaetsya-koronka/", "title": "Сколько делается коронка на зуб" }
+  ],
+  "/services/byugelnyj/": [
+    { "url": "/checkup/byugelnyj-protez-cena/", "title": "Цена бюгельного протеза" },
+    { "url": "/checkup/kakoj-protez-vybrat/", "title": "Какой протез выбрать" },
+    { "url": "/checkup/protez-ploho-derzhitsya/", "title": "Протез плохо держится" },
+    { "url": "/checkup/protez-skripit-pri-zhevanii/", "title": "Протез скрипит при жевании" },
+    { "url": "/checkup/bolit-chelyust-posle-protezirovaniya/", "title": "Болит челюсть после протезирования" }
+  ],
+  "/services/byugelnyj-zamki/": [
+    { "url": "/checkup/byugelnyj-protez-cena/", "title": "Цена бюгельного протеза" }
+  ],
+  "/services/byugelnyj-klammery/": [
+    { "url": "/checkup/byugelnyj-protez-cena/", "title": "Цена бюгельного протеза" }
+  ],
+  "/services/sjemny-protez/": [
+    { "url": "/checkup/semnyj-protez-cena/", "title": "Цена съёмного протеза" },
+    { "url": "/checkup/polnyj-semnyj-protez/", "title": "Полный съёмный протез" },
+    { "url": "/checkup/akrilovyj-protez/", "title": "Акриловый протез" },
+    { "url": "/checkup/nejlonovyj-protez/", "title": "Нейлоновый протез" },
+    { "url": "/checkup/kakoj-protez-vybrat/", "title": "Какой протез выбрать" },
+    { "url": "/checkup/protez-ploho-derzhitsya/", "title": "Протез плохо держится" },
+    { "url": "/checkup/cemu-spat-v-proteze/", "title": "Можно ли спать в протезе" },
+    { "url": "/checkup/protez-tresnul/", "title": "Протез треснул — что делать" },
+    { "url": "/checkup/bolit-chelyust-posle-protezirovaniya/", "title": "Болит челюсть после протезирования" }
+  ],
+  "/services/polny-sjemny-protez/": [
+    { "url": "/checkup/polnyj-semnyj-protez/", "title": "Полный съёмный протез" },
+    { "url": "/checkup/semnyj-protez-cena/", "title": "Цена съёмного протеза" },
+    { "url": "/checkup/kakoj-protez-vybrat/", "title": "Какой протез выбрать" },
+    { "url": "/checkup/cemu-spat-v-proteze/", "title": "Можно ли спать в протезе" }
+  ],
+  "/services/chastichny-sjemny-protez/": [
+    { "url": "/checkup/semnyj-protez-cena/", "title": "Цена съёмного протеза" }
+  ],
+  "/services/nejlonovyj-protez/": [
+    { "url": "/checkup/nejlonovyj-protez/", "title": "Нейлоновый протез" },
+    { "url": "/checkup/semnyj-protez-cena/", "title": "Цена съёмного протеза" },
+    { "url": "/checkup/kakoj-protez-vybrat/", "title": "Какой протез выбрать" }
+  ],
+  "/services/acryfree/": [
+    { "url": "/checkup/semnyj-protez-cena/", "title": "Цена съёмного протеза" }
+  ],
+  "/services/dentaldi/": [
+    { "url": "/checkup/semnyj-protez-cena/", "title": "Цена съёмного протеза" }
+  ],
+  "/services/immediat-protez/": [
+    { "url": "/checkup/semnyj-protez-cena/", "title": "Цена съёмного протеза" }
+  ],
+  "/services/korrekciya/": [
+    { "url": "/checkup/protez-ploho-derzhitsya/", "title": "Протез плохо держится" },
+    { "url": "/checkup/protez-skripit-pri-zhevanii/", "title": "Протез скрипит при жевании" },
+    { "url": "/checkup/bolit-chelyust-posle-protezirovaniya/", "title": "Болит челюсть после протезирования" }
+  ],
+  "/services/korrekciya-semnogo/": [
+    { "url": "/checkup/protez-ploho-derzhitsya/", "title": "Протез плохо держится" },
+    { "url": "/checkup/protez-skripit-pri-zhevanii/", "title": "Протез скрипит при жевании" }
+  ],
+  "/services/poychinika-semnogo/": [
+    { "url": "/checkup/protez-tresnul/", "title": "Протез треснул — что делать" }
+  ],
+  "/services/fiksaciya-temp-bond/": [
+    { "url": "/checkup/fiksaciya-koronki-cena/", "title": "Фиксация коронки — цены" },
+    { "url": "/checkup/vypala-koronka/", "title": "Выпала коронка — что делать" }
+  ],
+  "/services/fiksaciya-maxcem/": [
+    { "url": "/checkup/fiksaciya-koronki-cena/", "title": "Фиксация коронки — цены" },
+    { "url": "/checkup/vypala-koronka/", "title": "Выпала коронка — что делать" }
+  ],
+  "/services/fiksaciya-fuji/": [
+    { "url": "/checkup/fiksaciya-koronki-cena/", "title": "Фиксация коронки — цены" },
+    { "url": "/checkup/vypala-koronka/", "title": "Выпала коронка — что делать" }
+  ],
+  "/services/snatie-shtampovannyh/": [
+    { "url": "/checkup/snyatie-koronki-cena/", "title": "Снятие коронки — цена" }
+  ],
+  "/services/snatie-celnolicyh/": [
+    { "url": "/checkup/snyatie-koronki-cena/", "title": "Снятие коронки — цена" }
+  ],
+  "/services/esteticheskij-prototip/": [
+    { "url": "/checkup/koronka-na-perednij-zub/", "title": "Коронка на передний зуб" }
+  ],
+  "/services/privarka-1-zuba/": [
+    { "url": "/checkup/protez-tresnul/", "title": "Протез треснул — что делать" }
+  ],
+  "/services/privarka-2-zubov/": [
+    { "url": "/checkup/protez-tresnul/", "title": "Протез треснул — что делать" }
+  ],
+  "/services/privarka-3-zubov/": [
+    { "url": "/checkup/protez-tresnul/", "title": "Протез треснул — что делать" }
+  ],
+  "/services/perebazirovka-vrachebnaya/": [
+    { "url": "/checkup/protez-ploho-derzhitsya/", "title": "Протез плохо держится" }
+  ],
+  "/services/perebazirovka-laboratornaya/": [
+    { "url": "/checkup/protez-ploho-derzhitsya/", "title": "Протез плохо держится" }
+  ],
+  "/services/byugelnaya-koronka/": [
+    { "url": "/checkup/byugelnyj-protez-cena/", "title": "Цена бюгельного протеза" }
+  ],
+  "/services/armirovanie/": [
+    { "url": "/checkup/protez-tresnul/", "title": "Протез треснул — что делать" }
+  ],
+  "/services/kljammer-dopolnitelnyj/": [
+    { "url": "/checkup/protez-ploho-derzhitsya/", "title": "Протез плохо держится" }
+  ]
+}

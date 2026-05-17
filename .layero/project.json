@@ -1,0 +1,10 @@
+{
+  "name": "ortopednn-auto",
+  "framework_hint": "astro",
+  "build_cmd": "npm run build",
+  "output_dir": "dist",
+  "project_id": "a50a6a9b-82ae-47eb-9278-937ac021700f",
+  "slug": "ortopednn-auto",
+  "organization_slug": "ortopednn",
+  "apex_hostname": "ortopednn-ortopednn-auto.layero.ru"
+}
