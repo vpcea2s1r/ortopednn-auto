@@ -1,9 +1,11 @@
 # AGENTS.md — ortopednn project
 
 ## Project Context
-- Astro (SSG) — live-сайт на Astro, build в `dist/`. **РЕПОЗИТОРИЙ** (nikitina-ortoped) содержит устаревший Next.js код.
-- LIVE-код скопирован в `live/` — это Astro, оттуда деплоится ortopednn.ru
-- Hosted on Layero (Russian CDN, no VPN needed)
+- **LIVE-код (Astro):** `C:\opencode\ortopednn-auto\` — Astro SSG, деплоится на GitHub Pages
+- **Репозиторий:** `github.com/vpcea2s1r/ortopednn-auto`
+- **Старый репозиторий (Next.js):** `C:\opencode\ortopednn\` — устаревший код, НЕ используется на live, подлежит удалению
+- **Тестовый поддомен (Astro):** `C:\opencode\stomatolog\` — stomatolog.ortopednn.ru (GitHub Pages)
+- **Layero больше не используется** — деплой через GitHub Pages
 - Dentist prosthodontist site — Никитина М.Г., Нижний Новгород
 - TypeScript, Tailwind CSS v4
 
@@ -48,146 +50,61 @@ idea-refine → planning → incremental → test → code-review → shipping
 ### Запуск
 
 ```powershell
-# Старт 9router (порт 20128)
 cd C:\opencode\ortopednn\9router
 .\start.ps1
 ```
 
 Dashboard: http://localhost:20128 (пароль: `123456`)
 
-### Подключение провайдера (через UI)
-
-1. Открыть http://localhost:20128 → Логин `123456`
-2. Providers → Connect **Kiro AI** (AWS Builder ID / Google / GitHub OAuth)
-3. Или Connect **OpenCode Free** (без авторизации)
-4. После подключения — готово к использованию
-
-### Использование в OpenCode
-
-Уже настроено:
-- Провайдер `9router` в `opencode-providers.json`
-- Модели: `9router/kr/claude-sonnet-4.5` (основная), `9router/kr/claude-haiku-4.5` (small)
-
-### Структура
-
-```
-9router/          — код 9router (Next.js 16, standalone build)
-9router/.env     — конфигурация (порт 20128, пароль 123456)
-9router/start.ps1 — скрипт запуска
-```
-
 ## Project Goal & Status
 
 **Goal:** Продвижение ortopednn.ru (Никитина М.Г., стоматолог-ортопед) в ТОП-1 Яндекса по Нижнему Новгороду.
 
 ### Constraints (актуальные)
-- Deploy: Cloudflare Pages (судя по всему, через Layero CDN)
-- Telegram: **присутствует** (`t.me/nikitina_ortoped`) на страницах услуг (вопреки ранним утверждениям)
+- Deploy: Cloudflare Pages (через Layero CDN) — Live; GitHub Pages — test subdomain
+- Telegram: `t.me/nikitina_ortoped` — присутствует на страницах услуг
 - Нет отдельной страницы "Записаться" — только телефон
 - Доктор — наёмный работник (не владелец клиники)
-- Виниры E-MAX — есть на сайте (не удалены, хоть и low priority)
+- Цены удалены из ortopednn.ru/services/ (по запросу пользователя)
 
-### LIVE-сайт (ortopednn.ru) — актуальная структура (2026-05-16)
+### LIVE-сайт (ortopednn.ru) — структура (2026-05-17)
 
 **Sitemap:** `sitemap-index.xml` → `sitemap-0.xml`, всего **103+ URL**
 
 | Раздел | Кол-во | Описание |
 |--------|--------|---------|
-| `/` | 1 | Главная с ценами, FAQ, контактами |
+| `/` | 1 | Главная с FAQ, контактами |
 | `/about/` | 1 | О враче |
 | `/blog/` | 1 + 3 статьи | Блог (care-crown, care-denture, first-visit) |
-| `/checkup/` | 1 + **30 статей** | Самодиагностика + статьи по проблемам/ценам |
+| `/checkup/` | 1 + **30 статей** | Самодиагностика + статьи по проблемам |
 | `/compare/` | 1 | Сравнение конструкций |
 | `/materials/` | 1 | Материалы |
-| `/services/` | 1 + **62 услуги** | Услуги с ценами и описанием (+ 2 справ. страницы: condition, variant) |
-
-**Checkup статьи (30):** akrilovyj-protez, bolit-chelyust-posle-protezirovaniya, bolit-zub-pod-koronkoj, bolno-li-stavit-koronku, byugelnyj-protez-cena, cemu-spat-v-proteze, cirkonievaya-koronka, desna-otoshla-ot-koronki, fiksaciya-koronki-cena, implantatsiya-cena, kakoj-protez-vybrat, koronka-na-perednij-zub, koronka-na-zhevatelnyj-zub, koronka-na-zub-cena, koronka-temnee-sosednego-zuba, metallokeramika-cena, mostovidnyj-protez-cena, mozhno-li-otbelit-koronku, nejlonovyj-protez, polnyj-semnyj-protez, privkus-metalla-ot-koronki, protez-ploho-derzhitsya, protez-skripit-pri-zhevanii, protez-tresnul, schel-mezhdu-koronkoj-i-zubom, semnyj-protez-cena, skolko-delaetsya-koronka, snyatie-koronki-cena, vypala-koronka, zapah-iz-pod-koronki
-
-**Услуги (66 файлов):** index.astro + 62 услуги + 2 справ. (condition, variant) + metallokeramicheskaya-koronka (дубль metallokeramika)
+| `/services/` | 1 + **62 услуги** | Услуги с описанием (цены удалены) |
 
 ### Astro Features (current config)
 
 | Feature | Status | Config location |
 |---------|--------|-----------------|
-| `trailingSlash: 'always'` | ✅ | `live/astro.config.mjs:8` |
-| `scopedStyleStrategy: 'where'` | ✅ | `live/astro.config.mjs:9` |
-| `remark-smartypants` | ✅ | `live/astro.config.mjs:24-27` |
-| Content Collections v2 (`file()` loader) | ✅ | `live/src/content/config.ts` |
-| Default `og:image` (favicon) | ✅ | `live/src/layouts/BaseLayout.astro:71-74` |
-| `@astrojs/cloudflare` adapter | ✅ | `live/astro.config.mjs:10-13` |
-| `@astrojs/sitemap` | ✅ | `live/astro.config.mjs:17-19` |
+| Output: static | ✅ | `astro.config.mjs:7` |
+| `@astrojs/cloudflare` adapter | ✅ | `astro.config.mjs:8-10` |
+| `@astrojs/sitemap` | ✅ | `astro.config.mjs:16` |
+| Content Collections v2 (`file()` loader) | ✅ | `src/content/config.ts` |
+| OG image fallback (favicon) | ✅ | `src/layouts/BaseLayout.astro` |
 
-### Blocked (no external network for npm install)
+### Pricing Data
 
-| Feature | Why |
-|---------|-----|
-| `rehype-slug` (auto heading IDs) | Needs npm install |
-| `astro-og-canvas` (OG generation) | Not installed |
-| `@astrojs/check` (type checking) | Not installed |
-| `astro-og-canvas` (per-page OG) | Not installed |
-
-### Content Collections (src/content/config.ts)
-
-- `pricing` — загружается из `data/pricing.json` через `file()` loader, 4 категории × items
-- `districts` — загружается из `data/districts.json` через `file()` loader
-- Zod-схемы с валидацией для обоих коллекций
-- Готово для использования `getCollection()` в любых .astro страницах
-
-### Ключевые отличия LIVE от репозитория
-
-| Аспект | Репозиторий (код) | LIVE (ortopednn.ru) |
-|--------|-------------------|---------------------|
-| **Checkup** | `app/checkup/` не существует | 30 статей + самодиагностика |
-| **Сервис слагы** | content.ts (14 услуг) | 62 услуги с ценами |
-| **Blog** | нет | 3 статьи |
-| **About** | нет | Есть `/about/` |
-| **Compare** | нет | Есть `/compare/` |
-| **Materials** | нет | Есть `/materials/` |
-| **Telegram** | `t.me/nikitina_ortoped` | Есть на страницах услуг |
-| **Metrika ID** | 109258289 | 109240855 (старый) |
-| **Контент услуг** | Краткий (content.ts) | Детальный (708+ строк каждый) |
-| **Astro config** | next.config.js (Next.js) | `astro.config.mjs` (Astro 5) |
-
-### Yandex.Webmaster — текущий статус
-
-- Сайт **добавлен и верифицирован** (metrika 109240855 работает)
-- **noindex убран** — Яндекс может индексировать
-- Регион — нужно проверить (должен быть Нижний Новгород)
-- **Страницы в индексе** — нужно проверить (было 0 из-за noindex)
-- **Поисковые запросы** — нужно посмотреть реальные данные
-
-### Wordstat Data
-
-- Файл `CHECKUP-PLAN.md` — есть в `live/CHECKUP-PLAN.md`
-- Файл `wordstat/wordstat_similar_queries.xlsx` — **отсутствует**
-- **Нужно**: сравнить Wordstat оценки с реальными запросами из Яндекс.Вебмастер
+- **Source:** `data/pricing.json` — 5 категорий, 87 позиций
+- **Rendering:** `src/pages/services/index.astro` — рендерит `<span class="service-price">{price}</span>`
+- **Также используется в:** индивидуальных страницах услуг (./astro файлы в src/pages/services/)
+- **На главной:** цены рендерятся из `getAllServicesFlat()` или hardcoded
 
 ### Next Critical Steps
 
-1. **`rehype-slug` — установить** при появлении сети (авто-ID для заголовков)
-2. **`astro-og-canvas` — установить** для генерации OG-картинок на каждую страницу
-3. **Яндекс.Вебмастер** — проверить индексацию, регион, поисковые запросы
-4. **Яндекс.Бизнес** — создать карточку организации (ручное действие, ~30 мин)
-5. **Синхронизировать репозиторий** с live-сайтом (код устарел)
-6. **Убрать дубликаты** в услугах (metallokeramika и metallokeramicheskaya-koronka — дубли?)
-
-### Новые фичи (добавлены 2026-05-16)
-
-| Фича | Файл | Зачем |
-|------|------|-------|
-| `trailingSlash: 'always'` | `astro.config.mjs` | SEO — единый формат URL, нет дублей |
-| `scopedStyleStrategy: 'where'` | `astro.config.mjs` | Меньшая специфичность CSS |
-| `remark-smartypants` | `astro.config.mjs` | Типографские кавычки, тире |
-| Content Collections v2 (file loader) | `src/content/config.ts` | Type-safe доступ к pricing/districts |
-| OG image fallback (favicon) | `BaseLayout.astro` | Базовый og:image для соцсетей |
-| `src/content.ts` aggregator | `src/content.ts` | Централизованный `getCollection()` |
-| `src/util/` (4 utility files) | `src/util/` | slug, groupByCategory, pageType helpers |
-| Navbar `aria-current` | `Navbar.astro` | А11y: подсветка активного раздела |
-| 404 page improved | `404.astro` | Полноценная страница 404 |
-| `public/_redirects` | `public/_redirects` | SEO-редиректы (Cloudflare формат) |
-| Trailing slash во всех ссылках | 8 файлов | Единый формат URL |
-| `.bak` files removed | `src/pages/checkup/`, `src/pages/services/` | Очистка после конвертации |
-| `.gitignore` добавлен | `live/.gitignore` | Исключение node_modules/ из коммита |
+1. **Удалить цены с индивидуальных страниц услуг** — проверить все 62 файла в `src/pages/services/*.astro` на наличие `<span class="service-price">` или `{price}` 
+2. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
+3. **Переделать дизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
+4. **Яндекс.Вебмастер** — проверить индексацию, регион, поисковые запросы
+5. **Яндекс.Бизнес** — создать карточку организации
 
 ## Setup After Clone
 
