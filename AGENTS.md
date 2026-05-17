@@ -61,15 +61,24 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 **Goal:** Продвижение ortopednn.ru (Никитина М.Г., стоматолог-ортопед) в ТОП-1 Яндекса по Нижнему Новгороду.
 
 ### Constraints (актуальные)
-- Deploy: Cloudflare Pages (через Layero CDN) — Live; GitHub Pages — test subdomain
-- Telegram: `t.me/nikitina_ortoped` — присутствует на страницах услуг
+- **Deploy:** GitHub Pages (static SSG). Cloudflare не используется (заблокирован в РФ).
+- **Telegram-бот для SEO мониторинга:** `@ortopednn_bot` — chat_id: `45185475` (Юрий)
+- **Telegram контакт:** `t.me/nikitina_ortoped` — присутствует на страницах услуг
 - Нет отдельной страницы "Записаться" — только телефон
 - Доктор — наёмный работник (не владелец клиники)
 - Цены удалены из ortopednn.ru/services/ (по запросу пользователя)
 
+### GitHub Secrets (Telegram Bot)
+
+| Secret | Значение | Назначение |
+|--------|----------|------------|
+| `TELEGRAM_BOT_TOKEN` | `8992312371:AAEmKcm3WLeTfOjGQrM1-P8XE8yyiTmnSEM` | Токен бота `@ortopednn_bot` |
+| `TELEGRAM_CHAT_ID` | `45185475` | Чат Юрия для уведомлений |
+| `ORTOPEDNN_BOT` | (тот же токен) | Запасной / старый |
+
 ### LIVE-сайт (ortopednn.ru) — структура (2026-05-17)
 
-**Sitemap:** `sitemap-index.xml` → `sitemap-0.xml`, всего **103+ URL**
+**Sitemap:** `sitemap-index.xml` → `sitemap-0.xml`, всего **105 URLs** (0 errors)
 
 | Раздел | Кол-во | Описание |
 |--------|--------|---------|
@@ -85,9 +94,13 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 
 | Feature | Status | Config location |
 |---------|--------|-----------------|
-| Output: static | ✅ | `astro.config.mjs:7` |
-| `@astrojs/cloudflare` adapter | ✅ | `astro.config.mjs:8-10` |
-| `@astrojs/sitemap` | ✅ | `astro.config.mjs:16` |
+| Output: static | ✅ | `astro.config.mjs` |
+| Astro 6 | ✅ | `package.json: astro@^6.0.0` |
+| Rust compiler | ✅ | `experimental.rustCompiler: true` — сборка 10.44s |
+| SVG optimizer | ✅ | `experimental.svgOptimizer: svgoOptimizer()` |
+| Fonts API (Inter) | ✅ | `fonts` config + `<Font cssVariable="--font-inter" preload/>` |
+| View Transitions | ✅ | `<ClientRouter />` в `BaseLayout.astro` |
+| `@astrojs/sitemap` | ✅ | `astro.config.mjs` |
 | Content Collections v2 (`file()` loader) | ✅ | `src/content/config.ts` |
 | OG image fallback (favicon) | ✅ | `src/layouts/BaseLayout.astro` |
 
@@ -101,10 +114,44 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 
 ### Next Steps
 
-1. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
-2. **Переделать дизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
-3. **Яндекс.Вебмастер** — проверить индексацию, регион, поисковые запросы
-4. **Яндекс.Бизнес** — создать карточку организации
+1. **Interactive Telegram Bot** — добавить команды `/check`, `/ssl`, `/perf`, `/stats` (GitHub Actions → Telegram)
+2. **Яндекс.Вебмастер интеграция** — статистика по запросам и позициям в Telegram
+3. **Core Web Vitals** — реальные LCP/CLS/INP через CrUX API
+4. **Алерты реального времени** — мгновенный Telegram при падении perf < 50 или битых ссылках
+5. **Weekly digest** — динамика метрик за неделю
+6. **Бенчмарк конкурентов** — сравнение perf/seo с конкурентами
+7. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
+8. **Редизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
+
+## Telegram SEO Monitor Bot (`@ortopednn_bot`)
+
+Бот работает через GitHub Actions workflow (`.github/workflows/seo-monitor.yml`).
+
+### Что умеет сейчас
+- **Daily report** (5:00 UTC = 8:00 MSK) — sitemap check, Lighthouse perf/seo/a11y, SSL expiry, build size
+- **Regression alerts** — битые ссылки, perf < 80, SSL < 14 дней
+- **Ручной запуск** через `Actions → SEO Monitor → Run workflow`
+
+### Формат сообщения
+```
+📊 SEO Monitor — ortopednn.ru
+
+🌐 Sitemap: 105 URLs, ✅ 0 errors
+⚡ Performance: 55 | SEO: 100 | A11y: 96
+🔒 SSL: 83 days left
+📦 Build: 18MB (106 pages)
+
+[Open Summary](https://github.com/...)
+```
+
+### Команды (запланировано)
+| Команда | Статус | Описание |
+|---------|--------|----------|
+| `/check` | ❌ | Мгновенный SEO-чек (lighthouse + sitemap) |
+| `/ssl` | ❌ | Сколько дней до истечения сертификата |
+| `/perf` | ❌ | Performance score + Core Web Vitals |
+| `/stats` | ❌ | Яндекс.Вебмастер статистика |
+| `/digest` | ❌ | Weekly digest по динамике метрик |
 
 ## Setup After Clone
 
