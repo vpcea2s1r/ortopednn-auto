@@ -2,15 +2,9 @@ User-agent: *
 Allow: /
 
 User-agent: Yandex
-Clean-param: utm_source
-Clean-param: utm_medium
-Clean-param: utm_campaign
-Clean-param: utm_term
-Clean-param: utm_content
-Clean-param: utm_referrer
-Clean-param: from
-Clean-param: fbclid
-Clean-param: gclid
-Clean-param: yclid
+Disallow: /thank-you/
+Disallow: /404/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&utm_referrer&from&fbclid&gclid&yclid /
+Crawl-delay: 2
 
 Sitemap: https://ortopednn.ru/sitemap-index.xml
