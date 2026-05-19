@@ -144,6 +144,19 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 [Open Summary](https://github.com/...)
 ```
 
+## Performance Optimization Rules
+
+Performance (Lighthouse) важен для ранжирования Яндекса. Текущий score: **55**. Основные приёмы:
+
+1. **Изображения всегда WebP** — конвертировать через `sharp` (уже в зависимостях). Скрипт: `node -e "require('sharp')('input.jpg').webp({quality:80}).toFile('input.webp')"`
+2. **loading="lazy"** на всех изображениях ниже сгиба, включая фото врача
+3. **onerror fallback** для WebP: `onerror="this.onerror=null;this.src=this.src.replace('.webp','.jpg')"`
+4. **Preconnect** для сторонних доменов: `<link rel="preconnect" href="https://mc.yandex.ru">`
+5. **Render-blocking CSS** — инлайнить критический CSS для above-the-fold
+6. **Не дублировать @font-face** — вынести в отдельный CSS, не инлайнить на каждую страницу
+7. **GitHub Pages** — основной фактор медленной загрузки для РФ (сервер в США). Альтернатив нет (Cloudflare заблокирован в РФ).
+8. **Минимум внешних запросов** — текущий лимит: 3 домена (свой, Yandex Metrika, Yandex Maps). Любой новый внешний ресурс требует оправдания.
+
 ### Команды (запланировано)
 | Команда | Статус | Описание |
 |---------|--------|----------|

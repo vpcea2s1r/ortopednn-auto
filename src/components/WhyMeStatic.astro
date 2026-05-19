@@ -12,7 +12,7 @@ const photos = (Astro.props.doctor.photos || []).join('||');
         <p class="doctor-address">{Astro.props.doctor.address}</p>
       </div>
       <div class="doctor-photo">
-        <img id="doctor-photo" src="/images/1.jpg" alt={Astro.props.doctor.name} width="300" height="420" data-photos={photos} />
+        <img id="doctor-photo" src="/images/1.webp" alt={Astro.props.doctor.name} width="300" height="420" loading="lazy" data-photos={photos} onerror="this.onerror=null;this.src=this.src.replace('.webp','.jpg')" />
       </div>
     </div>
   </div>
@@ -26,7 +26,8 @@ const photos = (Astro.props.doctor.photos || []).join('||');
     var list = img.getAttribute('data-photos');
     if (!list) return;
     list = list.split('||');
-    img.src = '/' + list[Math.floor(Math.random() * list.length)];
+    var pick = list[Math.floor(Math.random() * list.length)];
+    img.src = '/' + pick.replace(/\.jpe?g$/i, '.webp');
   }
   rotate();
   document.addEventListener('astro:page-load', rotate);
