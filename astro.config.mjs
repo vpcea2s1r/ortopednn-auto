@@ -9,6 +9,8 @@ export default defineConfig({
     '/services/koronki/': '/services/',
     '/services/semnye-protezy/': '/services/',
     '/services/byugelnye-protezy/': '/services/',
+    '/services/vradecheskaya-vkladka/': '/services/vrachebnaya-vkladka/',
+    '/services/korrekciya-semnogo/': '/services/korrekciya/',
   },
   prefetch: {
     prefetchAll: false,
