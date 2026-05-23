@@ -219,13 +219,13 @@ th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
 async function callAI(prompt) {
   const systemPrompt = 'Ответь только JSON. Никакого другого текста. Ни markdown, ни пояснений. Только JSON.\n{"title":"заголовок","description":"мета-описание","body":"<p>HTML</p>"}';
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 180000);
+  const timer = setTimeout(() => controller.abort(), 300000);
   try {
     const response = await fetch('https://text.pollinations.ai/', {
       method: 'POST',
       signal: controller.signal,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: prompt }], model: 'openai', seed: Math.floor(Math.random() * 1000000) })
+      body: JSON.stringify({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: prompt }], model: 'mistral', seed: Math.floor(Math.random() * 1000000) })
     });
     clearTimeout(timer);
     return await response.text();
@@ -250,7 +250,7 @@ async function extractText(url) {
 
 async function rewrite(url) {
   const text = await extractText(url);
-  const snippet = text.substring(0, 5000);
+  const snippet = text.substring(0, 3000);
   const prompt = `Перепиши эту статью для блога стоматолога-ортопеда. Сохрани смысл, но переформулируй своим языком.
 
 Требования:
@@ -412,9 +412,13 @@ async function handleUpdate(upd) {
     const statusResp = await tg('sendMessage', { chat_id: chatId, text: `📥 Читаю статью... ⏳` });
     const msgId = statusResp.ok ? statusResp.result.message_id : null;
     if (!msgId) return;
-    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `⏳ Переписываю... Это может занять до 3 минут.` });
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `⏳ Переписываю... Это может занять до 5 минут.` });
+    const progress = setInterval(async () => {
+      try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `⏳ Всё ещё работаю... Подожди ещё.` }); } catch {}
+    }, 120000);
     try {
       const result = await rewrite(url);
+      clearInterval(progress);
       const edit = async (text, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text, ...(extra || {}) });
       if (result) {
         if (result.error) {
@@ -427,8 +431,9 @@ async function handleUpdate(upd) {
         }
       }
     } catch (e) {
+      clearInterval(progress);
       console.error('Rewrite error:', e.message);
-      const errMsg = e.message.includes('aborted') ? 'AI не ответил за 3 минуты. Попробуй другую ссылку или повтори позже.' : e.message.slice(0, 200);
+      const errMsg = e.message.includes('aborted') ? 'AI не ответил за 5 минут. Попробуй другую ссылку или повтори позже.' : e.message.slice(0, 200);
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${errMsg}` });
     }
   } else if (isCmd) {
