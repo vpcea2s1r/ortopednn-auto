@@ -43,19 +43,96 @@ function isDuplicateTitle(newTitle, threshold = 0.6) {
   return false;
 }
 
-function tryParse(raw) {
+// JSON string: "..." with proper escape handling
+const JSON_STR = '((?:[^"\\\\]|\\\\.)*)';
+
+function extractBodies(s) {
+  // Find the last `"body"` key, extract everything from its value until the closing `}`
+  const bodyMatch = s.match(/(?:"|')body(?:"|')\s*:\s*["']/);
+  if (!bodyMatch) return null;
+  const afterKey = s.slice(bodyMatch.index + bodyMatch[0].length);
+  let inStr = false, esc = false;
+  let content = '';
+  for (let i = 0; i < afterKey.length; i++) {
+    const ch = afterKey[i];
+    if (esc) { content += ch; esc = false; continue; }
+    if (ch === '\\') { content += ch; esc = true; continue; }
+    if (inStr) {
+      if (ch === '"' || ch === "'") {
+        // end of body value — check if followed by , or }
+        const rest = afterKey.slice(i + 1).trim();
+        if (rest.startsWith(',') || rest.startsWith('}')) {
+          return content;
+        }
+        // double quote inside body (unescaped) — treat as literal
+        content += ch;
+        continue;
+      }
+      content += ch;
+    } else if (ch === '"' || ch === "'") {
+      inStr = true;
+    }
+  }
+  // Fallback: everything until end is body
+  return afterKey.replace(/["']\s*[,\}].*$/s, '').trim();
+}
+
+function tryParseJSON(raw) {
+  // Strategy 1: Native parse
   try { const r = JSON.parse(raw); if (r && typeof r.title === 'string') return r; } catch {}
-  let depth = 0;
-  for (const c of raw) { if (c === '{') depth++; if (c === '}') depth--; }
-  if (depth > 0) { try { const r = JSON.parse(raw + '}'.repeat(depth)); if (r && typeof r.title === 'string') return r; } catch {} }
+  // Strategy 2: Close unclosed braces
+  let d = 0; for (const c of raw) { if (c === '{') d++; if (c === '}') d--; }
+  if (d > 0) { try { const r = JSON.parse(raw + '}'.repeat(d)); if (r && typeof r.title === 'string') return r; } catch {} }
+  // Strategy 3: Replace single quotes, unquoted keys
+  try { const s = raw.replace(/'/g, '"').replace(/([{,]\s*)(\w+)(\s*:)/g, '$1"$2"$3'); const r = JSON.parse(s); if (r && typeof r.title === 'string') return r; } catch {}
+  return null;
+}
+
+function tryExtract(raw) {
+  // Strategy 4: Regex JSON fields with proper escaping
+  const reT = new RegExp(`"title"\\s*:\\s*"${JSON_STR}"`);
+  const reD = new RegExp(`"description"\\s*:\\s*"${JSON_STR}"`);
+  const mt = raw.match(reT);
+  const md = raw.match(reD);
+  if (mt && md) {
+    const mb = extractBodies(raw);
+    if (mb) return { title: mt[1], description: md[1], body: mb };
+  }
+  // Strategy 5: Same with single quotes
+  const reTq = new RegExp(`'title'\\s*:\\s*'([^']+)'`);
+  const reDq = new RegExp(`'description'\\s*:\\s*'([^']+)'`);
+  const mtq = raw.match(reTq);
+  const mdq = raw.match(reDq);
+  if (mtq && mdq) {
+    const mb = extractBodies(raw);
+    if (mb) return { title: mtq[1], description: mdq[1], body: mb };
+  }
   return null;
 }
 
 function repairJSON(raw) {
-  raw = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-  if (raw.startsWith('{')) { try { const p = JSON.parse(raw); if (p.content) raw = p.content; } catch {} }
-  raw = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+  if (!raw || typeof raw !== 'string') return '';
+  raw = raw.replace(/```(?:json|html)?\n?/gi, '').replace(/```\n?/g, '').trim();
+  // If wrapped in a content field, unwrap
+  try { const p = JSON.parse(raw); if (p.content && typeof p.content === 'string') raw = p.content; } catch {}
+  raw = raw.replace(/```(?:json|html)?\n?/gi, '').replace(/```\n?/g, '').trim();
+  // Extract outermost JSON object
+  const first = raw.indexOf('{');
+  let depth = 0, lastGood = -1;
+  for (let i = first; i < raw.length && i >= 0; i++) {
+    if (raw[i] === '{') depth++;
+    else if (raw[i] === '}') { depth--; if (depth === 0) { lastGood = i + 1; break; } }
+  }
+  if (first !== -1 && lastGood > first) raw = raw.slice(first, lastGood);
   return raw;
+}
+
+function parseAny(raw) {
+  const cleaned = repairJSON(raw);
+  if (!cleaned) return null;
+  const r = tryParseJSON(cleaned);
+  if (r) return r;
+  return tryExtract(cleaned) || tryExtract(raw);
 }
 
 function formatDate(iso) {
@@ -189,9 +266,11 @@ ${snippet}
 Теперь верни ТОЛЬКО JSON. Пример:
 {"title":"Боль в десне после протезирования","description":"Причины боли в десне после установки коронок и протезов. Когда норма, а когда нужно к врачу.","body":"<p><strong>Короткий ответ:</strong> боль в десне 1-2 дня после фиксации — норма.</p><h2>Почему болит десна</h2><p>После фиксации коронки возможна чувствительность 1-2 дня.</p><ul><li>Адаптация тканей</li><li>Реакция на цемент</li></ul><h2>FAQ</h2><p><strong>Сколько болит?</strong> Обычно 2-3 дня.</p>"}`;
 
+  let lastRaw = '';
   for (let attempt = 1; attempt <= 3; attempt++) {
     const raw = await callAI(prompt);
-    const json = tryParse(repairJSON(raw));
+    lastRaw = raw;
+    const json = parseAny(raw);
     if (json && json.title && json.description && json.body) {
       const existingSlugs = loadExistingSlugs();
       const slug = makeSlug(json.title);
@@ -205,7 +284,7 @@ ${snippet}
       return { slug, title: json.title };
     }
   }
-  return null;
+  return { error: true, response: lastRaw };
 }
 
 async function tg(method, body) {
@@ -247,13 +326,14 @@ async function handleUpdate(upd) {
     try {
       const result = await rewrite(url);
       if (result) {
-        if (result.duplicate) {
+        if (result.error) {
+          const snippet = (result.response || '').replace(/\n/g, ' ').substring(0, 300);
+          await tg('sendMessage', { chat_id: chatId, text: `❌ Не удалось распарсить ответ.\nAI ответил:\n${snippet}\n\nПопробуй другую ссылку.` });
+        } else if (result.duplicate) {
           await tg('sendMessage', { chat_id: chatId, text: `⚠️ Дубликат: «${result.title}» — такая статья уже есть.` });
         } else {
           await tg('sendMessage', { chat_id: chatId, text: `✅ Черновик: ${result.title}\n🔗 https://stomatolog.ortopednn.ru/blog/${result.slug}/\n\nПрочитай на тестовом сайте и реши: публиковать?` });
         }
-      } else {
-        await tg('sendMessage', { chat_id: chatId, text: '❌ Не удалось распарсить ответ. Попробуй другую ссылку.' });
       }
     } catch (e) {
       console.error('Rewrite error:', e.message);
