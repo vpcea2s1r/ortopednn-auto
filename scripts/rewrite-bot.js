@@ -69,12 +69,21 @@ ${body}
 
 async function callAI(prompt) {
   const systemPrompt = 'Ответь только JSON. Никакого другого текста. Ни markdown, ни пояснений. Только JSON.\n{"title":"заголовок","description":"мета-описание","body":"<p>HTML</p>"}';
-  const response = await fetch('https://text.pollinations.ai/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: prompt }], model: 'openai', seed: Math.floor(Math.random() * 1000000) })
-  });
-  return await response.text();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 30000);
+  try {
+    const response = await fetch('https://text.pollinations.ai/', {
+      method: 'POST',
+      signal: controller.signal,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: prompt }], model: 'openai', seed: Math.floor(Math.random() * 1000000) })
+    });
+    clearTimeout(timer);
+    return await response.text();
+  } catch (e) {
+    clearTimeout(timer);
+    throw e;
+  }
 }
 
 async function extractText(url) {
