@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DRAFTS_DIR = join(__dirname, '..', 'data', 'drafts');
-const TOKEN = '8992312371:AAEmKcm3WLeTfOjGQrM1-P8XE8yyiTmnSEM';
+const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8992312371:AAEmKcm3WLeTfOjGQrM1-P8XE8yyiTmnSEM';
 const API = `https://api.telegram.org/bot${TOKEN}`;
 
 const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'p','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
@@ -171,11 +171,16 @@ async function handleUpdate(upd) {
   } else if (isUrl) {
     const url = text.match(/https?:\/\/[^\s]+/)[0];
     await tg('sendMessage', { chat_id: chatId, text: `📥 Читаю статью... ⏳` });
-    const result = await rewrite(url);
-    if (result) {
-      await tg('sendMessage', { chat_id: chatId, text: `✅ Черновик: ${result.title}\n🔗 https://stomatolog.ortopednn.ru/blog/${result.slug}/\n\nПрочитай на тестовом сайте и реши: публиковать?` });
-    } else {
-      await tg('sendMessage', { chat_id: chatId, text: '❌ Ошибка рерайта.' });
+    try {
+      const result = await rewrite(url);
+      if (result) {
+        await tg('sendMessage', { chat_id: chatId, text: `✅ Черновик: ${result.title}\n🔗 https://stomatolog.ortopednn.ru/blog/${result.slug}/\n\nПрочитай на тестовом сайте и реши: публиковать?` });
+      } else {
+        await tg('sendMessage', { chat_id: chatId, text: '❌ Не удалось распарсить ответ. Попробуй другую ссылку.' });
+      }
+    } catch (e) {
+      console.error('Rewrite error:', e.message);
+      await tg('sendMessage', { chat_id: chatId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
     }
   } else if (isCmd) {
     await tg('sendMessage', { chat_id: chatId, text: 'Неизвестная команда. Пришли ссылку.' });
