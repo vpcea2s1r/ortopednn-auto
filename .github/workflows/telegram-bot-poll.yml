@@ -11,26 +11,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node (for Lighthouse)
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
-      - name: Install Lighthouse
-        run: npm install -g lighthouse
+      - name: Install dependencies
+        run: npm install
 
       - name: Restore offset cache
-        id: cache
         uses: actions/cache@v4
         with:
           path: /tmp/bot_offset.txt
           key: bot-offset
 
-      - name: Run bot
+      - name: Check for URLs and rewrite
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python scripts/telegram-bot.py
+        run: node scripts/rewrite-bot.js --once
+
+      - name: Commit drafts
+        run: |
+          git config user.name "opencode"
+          git config user.email "opencode@ortopednn.ru"
+          git add data/drafts/ 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "draft: article rewrite from bot"
+
+      - name: Push changes
+        run: git push
 
       - name: Save offset cache
         uses: actions/cache@v4
