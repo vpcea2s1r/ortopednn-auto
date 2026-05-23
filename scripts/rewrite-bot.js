@@ -180,18 +180,13 @@ async function handleUpdate(upd) {
 async function pollOnce() {
   const offset = loadOffset();
   try {
-  const updates = await tg('getUpdates', { offset, timeout: 5 });
-  if (!updates.ok) return;
-  for (const upd of updates.result) {
-    saveOffset(upd.update_id + 1);
-    await handleUpdate(upd);
-  }
+    const updates = await tg('getUpdates', { offset, timeout: 5 });
+    if (!updates.ok) return;
+    for (const upd of updates.result) {
+      saveOffset(upd.update_id + 1);
+      await handleUpdate(upd);
+    }
   } catch (e) { console.error('Poll error:', e.message); }
-  if (!updates.ok) return;
-  for (const upd of updates.result) {
-    saveOffset(upd.update_id + 1);
-    await handleUpdate(upd);
-  }
 }
 
 async function main() {
