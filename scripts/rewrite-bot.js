@@ -70,7 +70,7 @@ ${body}
 async function callAI(prompt) {
   const systemPrompt = 'Ответь только JSON. Никакого другого текста. Ни markdown, ни пояснений. Только JSON.\n{"title":"заголовок","description":"мета-описание","body":"<p>HTML</p>"}';
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 30000);
+  const timer = setTimeout(() => controller.abort(), 120000);
   try {
     const response = await fetch('https://text.pollinations.ai/', {
       method: 'POST',
