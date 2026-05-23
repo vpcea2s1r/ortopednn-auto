@@ -87,7 +87,10 @@ async function callAI(prompt) {
 }
 
 async function extractText(url) {
-  const resp = await fetch(url, { timeout: 15000 });
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 20000);
+  const resp = await fetch(url, { signal: controller.signal });
+  clearTimeout(timer);
   const html = await resp.text();
   return html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')

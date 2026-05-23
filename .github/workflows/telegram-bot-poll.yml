@@ -24,10 +24,12 @@ jobs:
         run: npm install
 
       - name: Restore offset
-        uses: actions/cache/restore@v4
+        id: cache-offset
+        uses: actions/cache@v4
         with:
           path: /tmp/bot_offset.txt
-          key: bot-offset
+          key: bot-offset-${{ github.run_id }}
+          restore-keys: bot-offset-
 
       - name: Check for URLs and rewrite
         env:
@@ -43,9 +45,3 @@ jobs:
 
       - name: Push changes
         run: git push
-
-      - name: Save offset
-        uses: actions/cache/save@v4
-        with:
-          path: /tmp/bot_offset.txt
-          key: bot-offset
