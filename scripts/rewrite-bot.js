@@ -198,7 +198,6 @@ ${snippet}
       if (existingSlugs.has(slug)) return { duplicate: true, title: json.title };
       if (isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
       const date = new Date().toISOString().split('T')[0];
-      const slug = makeSlug(json.title);
       const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body });
       if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
       writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
