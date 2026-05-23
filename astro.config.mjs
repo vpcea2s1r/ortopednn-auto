@@ -17,7 +17,9 @@ export default defineConfig({
     hover: true
   },
   integrations: [
-    sitemap()
+    sitemap({
+      filter: (page) => !page.match(/\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo)\/?$/)
+    })
   ],
   image: {
     domains: ['ortopednn.ru']
