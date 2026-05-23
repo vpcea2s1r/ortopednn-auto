@@ -183,16 +183,17 @@ async function callAI(prompt) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 300000);
   try {
-    const resp = await fetch('https://text.pollinations.ai/', {
+    const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
       method: 'POST', signal: controller.signal,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-        model: 'mistral', seed: Math.floor(Math.random() * 1000000)
+        model: 'deepseek-v4-flash-free'
       })
     });
     clearTimeout(timer);
-    return await resp.text();
+    const data = await resp.json();
+    return data.choices?.[0]?.message?.content || await resp.text();
   } catch (e) { clearTimeout(timer); throw e; }
 }
 
