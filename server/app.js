@@ -1,0 +1,75 @@
+import express from 'express';
+import cron from 'node-cron';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
+const PORT = process.env.PORT || 3000;
+const isWebhook = !!process.env.WEBHOOK_DOMAIN;
+
+fs.mkdirSync(join(DATA_DIR, 'drafts'), { recursive: true });
+fs.mkdirSync(join(DATA_DIR, 'stats'), { recursive: true });
+
+let db;
+function getDb() {
+  if (db) return db;
+  try {
+    const Database = require('better-sqlite3');
+    db = new Database(join(DATA_DIR, 'stats', 'stats.db'));
+    db.pragma('journal_mode = WAL');
+    db.exec(`CREATE TABLE IF NOT EXISTS stat_snapshots (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT UNIQUE, source TEXT,
+      total_indexed INTEGER, total_errors INTEGER,
+      clicks INTEGER, impressions INTEGER, avg_position REAL,
+      raw TEXT
+    )`);
+    return db;
+  } catch {
+    return { prepare: () => ({ all: () => [], run: () => {}, get: () => null }) };
+  }
+}
+
+const app = express();
+app.use(express.json());
+
+app.get('/health', (req, res) => res.json({ status: 'ok', uptime: process.uptime() }));
+
+app.post('/api/generate', async (req, res) => {
+  try {
+    const { topic } = req.body || {};
+    if (!topic) return res.status(400).json({ error: 'topic required' });
+    const { generate } = await import('./generator.js');
+    const result = await generate(topic);
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.get('/api/drafts', (req, res) => {
+  const dir = join(DATA_DIR, 'drafts');
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith('.meta.json')) : [];
+  res.json(files.map(f => {
+    try { return JSON.parse(fs.readFileSync(join(dir, f), 'utf-8')); } catch { return null; }
+  }).filter(Boolean));
+});
+
+app.get('/api/stats', (req, res) => {
+  const rows = getDb().prepare('SELECT * FROM stat_snapshots ORDER BY date DESC LIMIT 60').all();
+  res.json(rows);
+});
+
+async function main() {
+  const { startBot } = await import('./bot.js');
+  const { setupCron } = await import('./cron.js');
+
+  setupCron(getDb, DATA_DIR);
+  startBot(isWebhook);
+
+  app.listen(PORT, () => console.log(`Server on :${PORT}`));
+}
+
+main();

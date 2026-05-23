@@ -2,7 +2,9 @@ node_modules
 dist
 .DS_Store
 .env
+*.env
 *.log
+data/drafts/
 9router
 openserp
 scripts

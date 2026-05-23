@@ -1,0 +1,392 @@
+import fetch from 'node-fetch';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = fileURLToPath(import.meta.url);
+const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
+const DRAFTS_DIR = join(DATA_DIR, 'drafts');
+const BLOG_INDEX = join(__dirname, '..', '..', 'src', 'pages', 'blog', 'index.astro');
+const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const API = `https://api.telegram.org/bot${TOKEN}`;
+const GH_TOKEN = process.env.GH_TOKEN || '';
+const GH_OWNER = 'vpcea2s1r';
+const GH_REPO = 'stomatolog';
+
+const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
+function makeSlug(text) {
+  return text.toLowerCase().trim()
+    .replace(/[а-яё]/g, c => TRANSLIT[c] || c)
+    .replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').substring(0, 80);
+}
+
+function loadExistingSlugs() {
+  const slugs = new Set();
+  try {
+    const index = readFileSync(BLOG_INDEX, 'utf-8');
+    const matches = index.matchAll(/slug:\s*'([^']+)'/g);
+    for (const m of matches) slugs.add(m[1]);
+    const draftMetas = existsSync(DRAFTS_DIR) ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')) : [];
+    for (const f of draftMetas) {
+      try { const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); slugs.add(d.slug); } catch {}
+    }
+  } catch {}
+  return slugs;
+}
+
+function isDuplicateTitle(newTitle, threshold = 0.6) {
+  try {
+    const index = readFileSync(BLOG_INDEX, 'utf-8');
+    const titles = index.matchAll(/title:\s*'([^']+)'/g);
+    const t = newTitle.toLowerCase();
+    for (const m of titles) {
+      const existing = m[1].toLowerCase();
+      if (existing === t) return true;
+      const common = [...t].filter(c => existing.includes(c)).length;
+      if (common / Math.max(t.length, existing.length) >= threshold) return true;
+    }
+  } catch {}
+  return false;
+}
+
+function extractBodies(s) {
+  const bodyMatch = s.match(/(?:"|')body(?:"|')\s*:\s*["']/);
+  if (!bodyMatch) return null;
+  const afterKey = s.slice(bodyMatch.index + bodyMatch[0].length);
+  let inStr = false, esc = false, content = '';
+  for (let i = 0; i < afterKey.length; i++) {
+    const ch = afterKey[i];
+    if (esc) { content += ch; esc = false; continue; }
+    if (ch === '\\') { content += ch; esc = true; continue; }
+    if (inStr) {
+      if (ch === '"' || ch === "'") {
+        const rest = afterKey.slice(i + 1).trim();
+        if (rest.startsWith(',') || rest.startsWith('}')) return content;
+        content += ch; continue;
+      }
+      content += ch;
+    } else if (ch === '"' || ch === "'") inStr = true;
+  }
+  return afterKey.replace(/["']\s*[,\}].*$/s, '').trim();
+}
+
+function tryParseJSON(raw) {
+  try { const r = JSON.parse(raw); if (r && typeof r.title === 'string') return r; } catch {}
+  let d = 0; for (const c of raw) { if (c === '{') d++; if (c === '}') d--; }
+  if (d > 0) { try { const r = JSON.parse(raw + '}'.repeat(d)); if (r && typeof r.title === 'string') return r; } catch {} }
+  try { const s = raw.replace(/'/g, '"').replace(/([{,]\s*)(\w+)(\s*:)/g, '$1"$2"$3'); const r = JSON.parse(s); if (r && typeof r.title === 'string') return r; } catch {}
+  return null;
+}
+
+function tryExtract(raw) {
+  const mt = raw.match(new RegExp(`"title"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"`));
+  const md = raw.match(new RegExp(`"description"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"`));
+  if (mt && md) { const mb = extractBodies(raw); if (mb) return { title: mt[1], description: md[1], body: mb }; }
+  const mtq = raw.match(/'title'\s*:\s*'([^']+)'/);
+  const mdq = raw.match(/'description'\s*:\s*'([^']+)'/);
+  if (mtq && mdq) { const mb = extractBodies(raw); if (mb) return { title: mtq[1], description: mdq[1], body: mb }; }
+  return null;
+}
+
+function repairJSON(raw) {
+  if (!raw || typeof raw !== 'string') return '';
+  raw = raw.replace(/```(?:json|html)?\n?/gi, '').replace(/```\n?/g, '').trim();
+  try { const p = JSON.parse(raw); if (p.content && typeof p.content === 'string') raw = p.content; } catch {}
+  raw = raw.replace(/```(?:json|html)?\n?/gi, '').replace(/```\n?/g, '').trim();
+  const first = raw.indexOf('{');
+  let depth = 0, lastGood = -1;
+  for (let i = first; i < raw.length && i >= 0; i++) {
+    if (raw[i] === '{') depth++;
+    else if (raw[i] === '}') { depth--; if (depth === 0) { lastGood = i + 1; break; } }
+  }
+  if (first !== -1 && lastGood > first) raw = raw.slice(first, lastGood);
+  return raw;
+}
+
+function parseAny(raw) {
+  const cleaned = repairJSON(raw);
+  if (!cleaned) return null;
+  return tryParseJSON(cleaned) || tryExtract(cleaned) || tryExtract(raw);
+}
+
+function stripH1(html) {
+  return html.replace(/<h1[^>]*>[\s\S]*?<\/h1>/gi, '');
+}
+
+function formatDate(iso) {
+  const m = { '01':'января','02':'февраля','03':'марта','04':'апреля','05':'мая','06':'июня','07':'июля','08':'августа','09':'сентября','10':'октября','11':'ноября','12':'декабря' };
+  const [y, month, d] = iso.split('-');
+  return `${parseInt(d,10)} ${m[month]||month} ${y}`;
+}
+
+function astroTemplate({ slug, title, description, author, date, body }) {
+  const e = (s) => s.replace(/"/g, '\\"').replace(/`/g, '\\`').replace(/\$/g, '\\$');
+  const bodyClean = stripH1(body);
+  return `---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+const slug = '${slug}';
+const pageUrl = \`https://ortopednn.ru/blog/\${slug}/\`;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "${e(title)}",
+  "description": "${e(description)}",
+  "author": { "@type": "Person", "name": "${e(author)}", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "${date}",
+  "dateModified": "${date}",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+<BaseLayout title="${e(title)}" description="${e(description)}" breadcrumbTitle="${e(title)}" doctor={doctor}>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    <article>
+      <h1>${e(title)}</h1>
+      <div class="meta">${formatDate(date)} — ${e(author)}, стоматолог-ортопед</div>
+${bodyClean}
+      <div class="cta">
+        <p>Нужна консультация?</p>
+        <a href={\`tel:\${doctor.phone}\`} class="btn">Позвонить: {doctor.phoneDisplay}</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+<style>
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+ol { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #e0e8f0; color: #5a7a9a; }
+th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+</style>`;
+}
+
+async function callAI(prompt) {
+  const system = 'Ответь только JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 300000);
+  try {
+    const resp = await fetch('https://text.pollinations.ai/', {
+      method: 'POST', signal: controller.signal,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
+        model: 'mistral', seed: Math.floor(Math.random() * 1000000)
+      })
+    });
+    clearTimeout(timer);
+    return await resp.text();
+  } catch (e) { clearTimeout(timer); throw e; }
+}
+
+async function extractText(url) {
+  const ctrl = new AbortController();
+  setTimeout(() => ctrl.abort(), 20000);
+  const resp = await fetch(url, { signal: ctrl.signal });
+  const html = await resp.text();
+  return html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<[^>]+>/g, ' ').replace(/&[#a-zA-Z0-9]+;/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+}
+
+async function rewrite(url) {
+  const text = await extractText(url);
+  const prompt = `Перепиши для блога стоматолога-ортопеда. Сохрани смысл, переформулируй.
+Требования: 1500-2000 символов, lead в первом абзаце, h2 подзаголовки, один ul/ol, FAQ 3-5 вопросов, без h1.
+Экранируй кавычки. Только JSON.
+
+Исходный текст:
+${text.substring(0, 3000)}
+
+{"title":"...","description":"...","body":"<p>...</p>"}`;
+
+  let lastRaw = '';
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    const raw = await callAI(prompt);
+    lastRaw = raw;
+    const json = parseAny(raw);
+    if (json && json.title && json.description && json.body) {
+      const existingSlugs = loadExistingSlugs();
+      const slug = makeSlug(json.title);
+      if (existingSlugs.has(slug) || isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
+      const date = new Date().toISOString().split('T')[0];
+      const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body });
+      if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
+      writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
+      writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft' }, null, 2), 'utf-8');
+      return { slug, title: json.title };
+    }
+  }
+  return { error: true, response: lastRaw };
+}
+
+async function pushToStomatolog(slug) {
+  const draftPath = join(DRAFTS_DIR, `${slug}.astro`);
+  if (!existsSync(draftPath)) return { error: 'Файл не найден' };
+  const content = readFileSync(draftPath, 'utf-8');
+  const encoded = Buffer.from(content, 'utf-8').toString('base64');
+  const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/src/pages/blog/${slug}.astro`;
+  const headers = { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' };
+  const existing = await fetch(url, { headers }).then(r => r.ok ? r.json() : null);
+  const sha = existing && existing.sha ? existing.sha : undefined;
+  const body = { message: `draft: ${slug}`, content: encoded };
+  if (sha) body.sha = sha;
+  const resp = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  const json = await resp.json();
+  if (!resp.ok) return { error: json.message || 'GitHub API error' };
+  unlinkSync(draftPath);
+  const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
+  if (existsSync(metaPath)) unlinkSync(metaPath);
+  return { ok: true, sha: json.content?.sha };
+}
+
+function deleteDraft(slug) {
+  ['astro', 'meta.json'].forEach(ext => {
+    const p = join(DRAFTS_DIR, `${slug}.${ext}`);
+    if (existsSync(p)) unlinkSync(p);
+  });
+}
+
+async function tg(method, body) {
+  const resp = await fetch(`${API}/${method}`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+  });
+  return await resp.json();
+}
+
+function draftButtons(slug) {
+  return {
+    inline_keyboard: [[
+      { text: 'Опубликовать', callback_data: `pub:${slug}` },
+      { text: 'Удалить', callback_data: `del:${slug}` }
+    ]]
+  };
+}
+
+async function handleCallback(cb) {
+  const chatId = cb.message.chat.id;
+  const msgId = cb.message.message_id;
+  const data = cb.data || '';
+  const slug = data.slice(4);
+  await tg('answerCallbackQuery', { callback_query_id: cb.id });
+  if (data.startsWith('pub:')) {
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Публикую ${slug}...` });
+    const result = await pushToStomatolog(slug);
+    if (result.error) {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${result.error}` });
+    } else {
+      await tg('editMessageText', {
+        chat_id: chatId, message_id: msgId,
+        text: `Опубликовано! https://stomatolog.ortopednn.ru/blog/${slug}/`,
+        reply_markup: { inline_keyboard: [] }
+      });
+    }
+  } else if (data.startsWith('del:')) {
+    deleteDraft(slug);
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Удалён.', reply_markup: { inline_keyboard: [] } });
+  }
+}
+
+async function handleUpdate(upd) {
+  if (upd.callback_query) return handleCallback(upd.callback_query);
+  const msg = upd.message;
+  if (!msg || !msg.text) return;
+  const chatId = msg.chat.id;
+  const text = msg.text.trim();
+  const isUrl = text.match(/https?:\/\/[^\s]+/);
+  const isCmd = text.startsWith('/');
+  if (isCmd && text === '/start') {
+    await tg('sendMessage', { chat_id: chatId, text: 'Пришли ссылку — сделаю рерайт.\n/drafts — черновики\n/stats — статистика' });
+  } else if (isCmd && text === '/drafts') {
+    const drafts = existsSync(DRAFTS_DIR)
+      ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')).map(f => {
+          try { return JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf8')); } catch { return null; }
+        }).filter(Boolean)
+      : [];
+    if (drafts.length === 0) {
+      await tg('sendMessage', { chat_id: chatId, text: 'Нет черновиков.' });
+    } else {
+      for (const d of drafts) {
+        await tg('sendMessage', {
+          chat_id: chatId,
+          text: `${d.title}\n${d.date}\nhttps://stomatolog.ortopednn.ru/blog/${d.slug}/`,
+          reply_markup: draftButtons(d.slug)
+        });
+      }
+    }
+  } else if (isUrl) {
+    const url = text.match(/https?:\/\/[^\s]+/)[0];
+    const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
+    const msgId = statusResp.ok ? statusResp.result.message_id : null;
+    if (!msgId) return;
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Переписываю... до 5 мин.' });
+    const progress = setInterval(async () => {
+      try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Всё ещё работаю...' }); } catch {}
+    }, 120000);
+    try {
+      const result = await rewrite(url);
+      clearInterval(progress);
+      const edit = (t, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: t, ...(extra || {}) });
+      if (result?.error) {
+        await edit(`Ошибка парсинга.\n${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`);
+      } else if (result?.duplicate) {
+        await edit(`Дубликат: ${result.title}`);
+      } else {
+        await edit(`Сохранён: ${result.title}\nhttps://stomatolog.ortopednn.ru/blog/${result.slug}/`, { reply_markup: draftButtons(result.slug) });
+      }
+    } catch (e) {
+      clearInterval(progress);
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: e.message.includes('aborted') ? 'AI не ответил за 5 мин.' : e.message.slice(0, 200) });
+    }
+  } else if (isCmd) {
+    await tg('sendMessage', { chat_id: chatId, text: 'Пришли ссылку.' });
+  }
+}
+
+export async function startBot(webhookMode = false) {
+  if (!TOKEN) { console.log('TELEGRAM_BOT_TOKEN not set, bot disabled'); return; }
+  const domain = process.env.WEBHOOK_DOMAIN;
+  if (webhookMode && domain) {
+    await tg('setWebhook', { url: `${domain}/webhook` });
+    console.log(`Webhook set: ${domain}/webhook`);
+    const { default: express } = await import('express');
+    const app = express();
+    app.use(express.json());
+    app.post('/webhook', (req, res) => {
+      handleUpdate(req.body).catch(e => console.error('Webhook error:', e));
+      res.sendStatus(200);
+    });
+    return;
+  }
+  console.log('Polling mode (every 10s)...');
+  let offset = 0;
+  while (true) {
+    try {
+      const updates = await tg('getUpdates', { offset, timeout: 30 });
+      if (updates.ok) {
+        for (const upd of updates.result) {
+          offset = upd.update_id + 1;
+          await handleUpdate(upd);
+        }
+      }
+    } catch (e) { console.error('Poll error:', e.message); }
+  }
+}

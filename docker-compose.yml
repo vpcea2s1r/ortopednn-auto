@@ -1,0 +1,36 @@
+services:
+  bot:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: ortopednn-bot
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - GH_TOKEN=${GH_TOKEN}
+      - GSC_CLIENT_ID=${GSC_CLIENT_ID}
+      - GSC_CLIENT_SECRET=${GSC_CLIENT_SECRET}
+      - GSC_REFRESH_TOKEN=${GSC_REFRESH_TOKEN}
+      - YANDEX_OAUTH_TOKEN=${YANDEX_OAUTH_TOKEN}
+      - YANDEX_CLIENT_ID=${YANDEX_CLIENT_ID}
+      - YANDEX_CLIENT_SECRET=${YANDEX_CLIENT_SECRET}
+      - DATA_DIR=/data
+      - PORT=3000
+      - TZ=Europe/Moscow
+    volumes:
+      - bot_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  bot_data:
