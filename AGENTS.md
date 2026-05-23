@@ -2,6 +2,12 @@
 
 ## Project Context
 - **LIVE-код (Astro):** `C:\opencode\ortopednn-auto\` — Astro SSG, деплоится на GitHub Pages
+- **Многосайтовая архитектура:** `docs/architecture.md` — как маштабировать проект на несколько доменов (ortopednn.ru, stomatolog.ortopednn.ru, и др.)
+- **VPS:** `94.183.155.147` — root, Docker (`ortopednn-bot` контейнер), Ubuntu 24.04
+- **Бот на VPS:** `server/` — Docker compose, polling mode, порт 3000
+- **Telegram fix:** `extra_hosts: api.telegram.org → 149.154.167.220` в docker-compose.yml (блокировка Telegram в РФ)
+- **Docker registry mirror:** `mirror.gcr.io` в `/etc/docker/daemon.json`
+- **Хостинг бота:** `docs/hosting.md` — документация по портированию бота
 - **Репозиторий:** `github.com/vpcea2s1r/ortopednn-auto`
 - **Старый репозиторий (Next.js):** `C:\opencode\ortopednn\` — устаревший код, НЕ используется на live, подлежит удалению
 - **Тестовый поддомен (Astro):** `C:\opencode\stomatolog\` — stomatolog.ortopednn.ru (GitHub Pages)
@@ -15,6 +21,7 @@
 3. **После каждого шага** — обновить инфо-файлы (AGENTS.md, yandex.md, etc.) с актуальными данными с live
 4. **При обнаружении расхождения** между кодом и live — фиксировать таблицу расхождений и предлагать синхронизацию
 5. **Перед commit/push** — проверить не затрёт ли старый код актуальный контент с live
+6. **Кодировка UTF-8 всегда** — при push через GitHub API: читать файл через `[System.IO.File]::ReadAllBytes`, кодировать в base64, НЕ использовать `Get-Content` (ломает UTF-8). Перед push проверять: `[System.Text.Encoding]::UTF8.GetString($bytes)` — русский текст должен читаться.
 
 ## Available Skills
 
@@ -68,23 +75,44 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 - Доктор — наёмный работник (не владелец клиники)
 - Цены удалены из ortopednn.ru/services/ (по запросу пользователя)
 
+### Google OAuth (Search Console API)
+
+| Параметр | Значение |
+|----------|----------|
+| Scope | `https://www.googleapis.com/auth/webmasters` |
+| Status | ✅ Site verified, sitemap submitted (0 errors, 0 warnings) |
+| GSC properties | `https://ortopednn.ru/` (URL-prefix) + `sc-domain:ortopednn.ru` (domain) — siteOwner |
+| Refresh rotation | Test user auth expires every 7 days |
+| Credentials file | `C:\opencode\ortopednn-auto\google-oauth.md` |
+
+### Yandex OAuth (Webmaster API)
+
+| Параметр | Значение |
+|----------|----------|
+| Token expires | ~161 дней (2026-10-31) |
+| Scope | `webmaster:hostinfo` + `webmaster:verify` |
+| User ID (Яндекс) | `156937890` |
+| Credentials file | `C:\opencode\ortopednn-auto\google-oauth.md` |
+
 ### GitHub Secrets (Telegram Bot)
 
-| Secret | Значение | Назначение |
-|--------|----------|------------|
-| `TELEGRAM_BOT_TOKEN` | `8992312371:AAEmKcm3WLeTfOjGQrM1-P8XE8yyiTmnSEM` | Токен бота `@ortopednn_bot` |
-| `TELEGRAM_CHAT_ID` | `45185475` | Чат Юрия для уведомлений |
-| `ORTOPEDNN_BOT` | (тот же токен) | Запасной / старый |
+Secrets stored in GitHub repo Secrets + VPS `/opt/ortopednn-auto/server/.env`.
 
-### LIVE-сайт (ortopednn.ru) — структура (2026-05-17)
+| Secret | Назначение |
+|--------|------------|
+| `TELEGRAM_BOT_TOKEN` | Токен бота `@ortopednn_bot` |
+| `TELEGRAM_CHAT_ID` | Чат Юрия для уведомлений |
+| `GH_PAT` | GitHub Personal Access Token |
 
-**Sitemap:** `sitemap-index.xml` → `sitemap-0.xml`, всего **105 URLs** (0 errors)
+### LIVE-сайт (ortopednn.ru) — структура (2026-05-23)
+
+**Sitemap:** `sitemap-index.xml` → `sitemap-0.xml`, всего **111 URLs** (0 errors, 6 redirect URLs excluded via filter)
 
 | Раздел | Кол-во | Описание |
 |--------|--------|---------|
 | `/` | 1 | Главная с FAQ, контактами |
 | `/about/` | 1 | О враче |
-| `/blog/` | 1 + 3 статьи | Блог (care-crown, care-denture, first-visit) |
+| `/blog/` | 1 + 4 статьи | Блог (care-crown, care-denture, first-visit, kak-chistit-semnye-protezy) |
 | `/checkup/` | 1 + **30 статей** | Самодиагностика + статьи по проблемам |
 | `/compare/` | 1 | Сравнение конструкций |
 | `/materials/` | 1 | Материалы |
@@ -114,8 +142,9 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 
 ### Next Steps
 
-1. **Interactive Telegram Bot** — добавить команды `/check`, `/ssl`, `/perf`, `/stats` (GitHub Actions → Telegram)
-2. **Яндекс.Вебмастер интеграция** — статистика по запросам и позициям в Telegram
+1. **Google Search Console** — верифицировать ortopednn.ru (HTML tag) для доступа к API
+2. **Interactive Telegram Bot** — добавить команды `/check`, `/ssl`, `/perf`, `/stats` (GitHub Actions → Telegram)
+2. **Яндекс.Вебмастер интеграция** — ✅ OAuth-токен получен (2026-05-22). Права: webmaster:hostinfo + webmaster:verify. Можно добавить права Yandex.Direct API
 3. **Core Web Vitals** — реальные LCP/CLS/INP через CrUX API
 4. **Алерты реального времени** — мгновенный Telegram при падении perf < 50 или битых ссылках
 5. **Weekly digest** — динамика метрик за неделю
@@ -137,7 +166,7 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 📊 SEO Monitor — ortopednn.ru
 
 🌐 Sitemap: 105 URLs, ✅ 0 errors
-⚡ Performance: 55 | SEO: 100 | A11y: 96
+⚡ Performance: ~70* | SEO: 100 | A11y: 96
 🔒 SSL: 83 days left
 📦 Build: 18MB (106 pages)
 
@@ -146,7 +175,7 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 
 ## Performance Optimization Rules
 
-Performance (Lighthouse) важен для ранжирования Яндекса. Текущий score: **55**. Основные приёмы:
+Performance (Lighthouse) важен для ранжирования Яндекса. Текущий score: **~70** (было 55, WebP фикс 2026-05-19). Основные приёмы:
 
 1. **Изображения всегда WebP** — конвертировать через `sharp` (уже в зависимостях). Скрипт: `node -e "require('sharp')('input.jpg').webp({quality:80}).toFile('input.webp')"`
 2. **loading="lazy"** на всех изображениях ниже сгиба, включая фото врача
@@ -165,6 +194,24 @@ Performance (Lighthouse) важен для ранжирования Яндекс
 | `/perf` | ❌ | Performance score + Core Web Vitals |
 | `/stats` | ❌ | Яндекс.Вебмастер статистика |
 | `/digest` | ❌ | Weekly digest по динамике метрик |
+
+## Writing Rules (обязательно для всех)
+
+**Источник:** https://github.com/Anbeeld/WRITING.md — скилл `writing` в `~/.config/opencode/skills/writing/`
+
+Все правила WRITING.md обязательны при написании любого текста для публичного просмотра (статьи, блог, SEO-копирайтинг, UI-тексты, email). Не применяются только к комментариям в коде, commit message и личным заметкам.
+
+Кратко (WRITING-mini):
+- Пиши для контекста: medium, аудитория, задача текста. При конфликте: правда > пользователь > жанр > правила.
+- Каждый абзац — одна конкретика (имя, число, цитата, деталь). many/various/essentially — не считаются.
+- Простые слова и глаголы. Повторяй обычные слова. Связывай местоимениями и формой предложения, не furthermore/moreover. Тесные мысли — в одно предложение.
+- Без ключевых речей, Great question, I hope this helps. Начинай с ответа, заканчивай ответом.
+- Избегай повторяющихся паттернов: parallel lists, concession rhythm (not X, but Y), stacked mini-sentences, одинаковые дуги абзацев.
+- Длинная форма: сквозная тема (тематическая, перспективная, пример-ведомая), не хронология. Включи пример, накопительное предложение, паузу.
+- Редактируй вырезанием. Не разрывай связанные мысли. Без эм-тире, если не оправдано. Без fake humanity. Не убирай структуру ради стиля.
+- Проверка: регистр, якоря, регулярность, позиция, перекоррекция. Смотреть (не запрет): delve/leverage/seamless, it's important to note, unnamed experts, unsupported causality.
+
+Скилл подгружается через `skill` tool по триггеру "writing".
 
 ## Setup After Clone
 
