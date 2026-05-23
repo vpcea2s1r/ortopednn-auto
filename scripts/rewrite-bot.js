@@ -8,7 +8,7 @@ const DRAFTS_DIR = join(__dirname, '..', 'data', 'drafts');
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8992312371:AAEmKcm3WLeTfOjGQrM1-P8XE8yyiTmnSEM';
 const API = `https://api.telegram.org/bot${TOKEN}`;
 
-const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'p','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
+const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
 function makeSlug(text) {
   return text.toLowerCase().trim()
     .replace(/[а-яё]/g, c => TRANSLIT[c] || c)
@@ -30,12 +30,27 @@ function repairJSON(raw) {
   return raw;
 }
 
+function formatDate(iso) {
+  const m = { '01':'января','02':'февраля','03':'марта','04':'апреля','05':'мая','06':'июня','07':'июля','08':'августа','09':'сентября','10':'октября','11':'ноября','12':'декабря' };
+  const [y, month, d] = iso.split('-');
+  return `${parseInt(d,10)} ${m[month]||month} ${y}`;
+}
+
+function stripH1(html) {
+  return html.replace(/<h1[^>]*>[\s\S]*?<\/h1>/gi, '');
+}
+
 function astroTemplate({ slug, title, description, author, date, body }) {
+  const escaped = (s) => s.replace(/"/g, '\\"').replace(/`/g, '\\`').replace(/\$/g, '\\$');
+  const escapedTitle = escaped(title);
+  const escapedDesc = escaped(description);
+  const escapedAuthor = escaped(author);
+  const bodyClean = stripH1(body);
+  const dateFormatted = formatDate(date);
   return `---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
-import socials from '../../../data/socials.json';
 
 const slug = '${slug}';
 const pageUrl = \`https://ortopednn.ru/blog/\${slug}/\`;
@@ -43,9 +58,9 @@ const pageUrl = \`https://ortopednn.ru/blog/\${slug}/\`;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "${title.replace(/"/g, '\\"')}",
-  "description": "${description.replace(/"/g, '\\"')}",
-  "author": { "@type": "Person", "name": "${author}", "medicalSpecialty": "Prosthodontics" },
+  "headline": "${escapedTitle}",
+  "description": "${escapedDesc}",
+  "author": { "@type": "Person", "name": "${escapedAuthor}", "medicalSpecialty": "Prosthodontics" },
   "datePublished": "${date}",
   "dateModified": "${date}",
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
@@ -54,17 +69,43 @@ const ldArticle = {
 };
 ---
 
-<BaseLayout title="${title.replace(/"/g, '\\"')}" description="${description.replace(/"/g, '\\"')}">
-  <Navbar slot="navbar" />
-  <main class="max-w-3xl mx-auto px-4 py-12">
-    <article itemscope itemtype="https://schema.org/Article">
-      <h1 class="text-3xl font-bold mb-6">${title}</h1>
-      <div class="prose prose-lg max-w-none">
-${body}
+<BaseLayout title="${escapedTitle}" description="${escapedDesc}" breadcrumbTitle="${escapedTitle}" doctor={doctor}>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    <article>
+      <h1>${escapedTitle}</h1>
+      <div class="meta">${dateFormatted} — ${escapedAuthor}, стоматолог-ортопед</div>
+${bodyClean}
+      <div class="cta">
+        <p>Нужна консультация?</p>
+        <a href={\`tel:\${doctor.phone}\`} class="btn">Позвонить: {doctor.phoneDisplay}</a>
       </div>
     </article>
   </main>
-</BaseLayout>`;
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+ol { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #e0e8f0; color: #5a7a9a; }
+th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+</style>`;
 }
 
 async function callAI(prompt) {
@@ -106,9 +147,10 @@ async function rewrite(url) {
 
 Требования:
 - Объём: 1500-2000 символов
-- Заголовок h1: чёткий, с ключевыми словами
+- Первый абзац body: lead (сильный, с "Короткий ответ:" если уместно)
 - Структура: h2 для подзаголовков, p для абзацев, один ul или ol
 - FAQ: 3-5 вопросов в конце
+- НЕ используй h1 — заголовок будет добавлен автоматически
 - Без "запишитесь", без восклицательных знаков
 - Только факты, сроки, материалы
 - Экранируй кавычки внутри строк
@@ -117,7 +159,7 @@ async function rewrite(url) {
 ${snippet}
 
 Теперь верни ТОЛЬКО JSON. Пример:
-{"title":"Боль в десне после протезирования","description":"Причины боли в десне после установки коронок и протезов. Когда норма, а когда нужно к врачу.","body":"<h2>Почему болит десна</h2><p>После фиксации коронки возможна чувствительность 1-2 дня.</p><ul><li>Адаптация тканей</li><li>Реакция на цемент</li></ul><h2>FAQ</h2><p><strong>Сколько болит?</strong> Обычно 2-3 дня.</p>"}`;
+{"title":"Боль в десне после протезирования","description":"Причины боли в десне после установки коронок и протезов. Когда норма, а когда нужно к врачу.","body":"<p><strong>Короткий ответ:</strong> боль в десне 1-2 дня после фиксации — норма.</p><h2>Почему болит десна</h2><p>После фиксации коронки возможна чувствительность 1-2 дня.</p><ul><li>Адаптация тканей</li><li>Реакция на цемент</li></ul><h2>FAQ</h2><p><strong>Сколько болит?</strong> Обычно 2-3 дня.</p>"}`;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
     const raw = await callAI(prompt);
