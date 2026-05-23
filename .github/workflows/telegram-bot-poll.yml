@@ -34,6 +34,7 @@ jobs:
       - name: Check for URLs and rewrite
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: node scripts/rewrite-bot.js --once
 
       - name: Commit drafts
