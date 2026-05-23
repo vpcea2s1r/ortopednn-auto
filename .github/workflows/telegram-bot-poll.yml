@@ -45,3 +45,28 @@ jobs:
 
       - name: Push changes
         run: git push
+
+      - name: Deploy drafts to stomatolog test site
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          for f in data/drafts/*.astro; do
+            [ -f "$f" ] || continue
+            slug=$(basename "$f" .astro)
+            content=$(base64 -w0 < "$f")
+            existing=$(curl -s -H "Authorization: token $GH_TOKEN" \
+              "https://api.github.com/repos/vpcea2s1r/stomatolog/contents/src/pages/blog/${slug}.astro" \
+              | jq -r '.sha // empty')
+            if [ -n "$existing" ]; then
+              resp=$(curl -s -X PUT -H "Authorization: token $GH_TOKEN" \
+                -H "Accept: application/vnd.github.v3+json" \
+                "https://api.github.com/repos/vpcea2s1r/stomatolog/contents/src/pages/blog/${slug}.astro" \
+                -d "{\"message\":\"draft: ${slug}\",\"content\":\"${content}\",\"sha\":\"${existing}\"}")
+            else
+              resp=$(curl -s -X PUT -H "Authorization: token $GH_TOKEN" \
+                -H "Accept: application/vnd.github.v3+json" \
+                "https://api.github.com/repos/vpcea2s1r/stomatolog/contents/src/pages/blog/${slug}.astro" \
+                -d "{\"message\":\"draft: ${slug}\",\"content\":\"${content}\"}")
+            fi
+            echo "→ stomatolog: $slug ($(echo "$resp" | jq -r '.commit.sha // "error"'))"
+          done
