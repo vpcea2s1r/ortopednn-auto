@@ -5,6 +5,9 @@ on:
     - cron: '*/15 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   poll:
     runs-on: ubuntu-latest
@@ -20,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Restore offset cache
-        uses: actions/cache@v4
+      - name: Restore offset
+        uses: actions/cache/restore@v4
         with:
           path: /tmp/bot_offset.txt
           key: bot-offset
@@ -41,8 +44,8 @@ jobs:
       - name: Push changes
         run: git push
 
-      - name: Save offset cache
-        uses: actions/cache@v4
+      - name: Save offset
+        uses: actions/cache/save@v4
         with:
           path: /tmp/bot_offset.txt
           key: bot-offset
