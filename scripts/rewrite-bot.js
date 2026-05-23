@@ -170,7 +170,7 @@ async function handleUpdate(upd) {
     await tg('sendMessage', { chat_id: chatId, text: `📥 Читаю статью... ⏳` });
     const result = await rewrite(url);
     if (result) {
-      await tg('sendMessage', { chat_id: chatId, text: `✅ Черновик: ${result.title}\n📁 data/drafts/${result.slug}.astro\n\nПрочитай и реши: публиковать?` });
+      await tg('sendMessage', { chat_id: chatId, text: `✅ Черновик: ${result.title}\n🔗 https://stomatolog.ortopednn.ru/blog/${result.slug}/\n\nПрочитай на тестовом сайте и реши: публиковать?` });
     } else {
       await tg('sendMessage', { chat_id: chatId, text: '❌ Ошибка рерайта.' });
     }
