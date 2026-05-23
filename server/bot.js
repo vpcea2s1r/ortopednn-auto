@@ -185,15 +185,21 @@ async function callAI(prompt) {
   try {
     const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
       method: 'POST', signal: controller.signal,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
       body: JSON.stringify({
         messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
         model: 'deepseek-v4-flash-free'
       })
     });
     clearTimeout(timer);
-    const data = await resp.json();
-    return data.choices?.[0]?.message?.content || await resp.text();
+    const ct = resp.headers.get('content-type') || '';
+    const text = await resp.text();
+    if (!ct.includes('json') && !text.trim().startsWith('{')) {
+      console.error('AI non-JSON response:', text.substring(0, 300));
+      return text;
+    }
+    const data = JSON.parse(text);
+    return data.choices?.[0]?.message?.content || text;
   } catch (e) { clearTimeout(timer); throw e; }
 }
 
