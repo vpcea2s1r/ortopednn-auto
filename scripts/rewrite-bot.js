@@ -219,7 +219,7 @@ th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
 async function callAI(prompt) {
   const systemPrompt = 'Ответь только JSON. Никакого другого текста. Ни markdown, ни пояснений. Только JSON.\n{"title":"заголовок","description":"мета-описание","body":"<p>HTML</p>"}';
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 120000);
+  const timer = setTimeout(() => controller.abort(), 180000);
   try {
     const response = await fetch('https://text.pollinations.ai/', {
       method: 'POST',
@@ -412,6 +412,7 @@ async function handleUpdate(upd) {
     const statusResp = await tg('sendMessage', { chat_id: chatId, text: `📥 Читаю статью... ⏳` });
     const msgId = statusResp.ok ? statusResp.result.message_id : null;
     if (!msgId) return;
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `⏳ Переписываю... Это может занять до 3 минут.` });
     try {
       const result = await rewrite(url);
       const edit = async (text, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text, ...(extra || {}) });
@@ -427,7 +428,8 @@ async function handleUpdate(upd) {
       }
     } catch (e) {
       console.error('Rewrite error:', e.message);
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
+      const errMsg = e.message.includes('aborted') ? 'AI не ответил за 3 минуты. Попробуй другую ссылку или повтори позже.' : e.message.slice(0, 200);
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${errMsg}` });
     }
   } else if (isCmd) {
     await tg('sendMessage', { chat_id: chatId, text: 'Неизвестная команда. Пришли ссылку.' });
