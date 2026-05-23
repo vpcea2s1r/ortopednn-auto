@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DRAFTS_DIR = join(__dirname, '..', 'data', 'drafts');
+const BLOG_INDEX = join(__dirname, '..', 'src', 'pages', 'blog', 'index.astro');
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8992312371:AAEmKcm3WLeTfOjGQrM1-P8XE8yyiTmnSEM';
 const API = `https://api.telegram.org/bot${TOKEN}`;
 
@@ -13,6 +14,33 @@ function makeSlug(text) {
   return text.toLowerCase().trim()
     .replace(/[а-яё]/g, c => TRANSLIT[c] || c)
     .replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').substring(0, 80);
+}
+
+function loadExistingSlugs() {
+  const slugs = new Set();
+  try {
+    const index = readFileSync(BLOG_INDEX, 'utf-8');
+    const matches = index.matchAll(/slug:\s*'([^']+)'/g);
+    for (const m of matches) slugs.add(m[1]);
+    const draftMetas = existsSync(DRAFTS_DIR) ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')) : [];
+    for (const f of draftMetas) {
+      try { const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); slugs.add(d.slug); } catch {}
+    }
+  } catch {}
+  return slugs;
+}
+
+function isDuplicateTitle(newTitle, threshold = 0.6) {
+  const index = readFileSync(BLOG_INDEX, 'utf-8');
+  const titles = index.matchAll(/title:\s*'([^']+)'/g);
+  const t = newTitle.toLowerCase();
+  for (const m of titles) {
+    const existing = m[1].toLowerCase();
+    if (existing === t) return true;
+    const common = [...t].filter(c => existing.includes(c)).length;
+    if (common / Math.max(t.length, existing.length) >= threshold) return true;
+  }
+  return false;
 }
 
 function tryParse(raw) {
@@ -165,6 +193,10 @@ ${snippet}
     const raw = await callAI(prompt);
     const json = tryParse(repairJSON(raw));
     if (json && json.title && json.description && json.body) {
+      const existingSlugs = loadExistingSlugs();
+      const slug = makeSlug(json.title);
+      if (existingSlugs.has(slug)) return { duplicate: true, title: json.title };
+      if (isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
       const date = new Date().toISOString().split('T')[0];
       const slug = makeSlug(json.title);
       const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body });
@@ -216,7 +248,11 @@ async function handleUpdate(upd) {
     try {
       const result = await rewrite(url);
       if (result) {
-        await tg('sendMessage', { chat_id: chatId, text: `✅ Черновик: ${result.title}\n🔗 https://stomatolog.ortopednn.ru/blog/${result.slug}/\n\nПрочитай на тестовом сайте и реши: публиковать?` });
+        if (result.duplicate) {
+          await tg('sendMessage', { chat_id: chatId, text: `⚠️ Дубликат: «${result.title}» — такая статья уже есть.` });
+        } else {
+          await tg('sendMessage', { chat_id: chatId, text: `✅ Черновик: ${result.title}\n🔗 https://stomatolog.ortopednn.ru/blog/${result.slug}/\n\nПрочитай на тестовом сайте и реши: публиковать?` });
+        }
       } else {
         await tg('sendMessage', { chat_id: chatId, text: '❌ Не удалось распарсить ответ. Попробуй другую ссылку.' });
       }
