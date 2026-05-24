@@ -151,7 +151,7 @@ Secrets stored in GitHub repo Secrets + VPS `/opt/ortopednn-auto/server/.env`.
 7. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
 8. **Редизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
 
-## Telegram SEO Monitor Bot (`@ortopednn_bot`)
+## Telegram SEO Monitor Bot (`@ortopednn52_bot`)
 
 Бот работает на VPS (94.183.155.147) в Docker-контейнере, polling mode, порт 3000.
 
@@ -168,31 +168,6 @@ Secrets stored in GitHub repo Secrets + VPS `/opt/ortopednn-auto/server/.env`.
 - После перезапуска контейнера offset сбрасывается (потоковые обновления могут теряться). Исправить: хранить offset в SQLite.
 - inline-кнопки меню могут не срабатывать если бот не получил callback_query (проверить через docker logs).
 - SSH к VPS недоступен из некоторых регионов — управление только через docker exec.
-
-### Формат сообщения
-```
-📊 SEO Monitor — ortopednn.ru
-
-🌐 Sitemap: 111 URLs, ✅ 0 errors
-⚡ Performance: ~70* | SEO: 100 | A11y: 96
-🔒 SSL: 83 days left
-📦 Build: 18MB (106 pages)
-
-[Open Summary](https://github.com/...)
-```
-
-## Performance Optimization Rules
-
-Performance (Lighthouse) важен для ранжирования Яндекса. Текущий score: **~70** (было 55, WebP фикс 2026-05-19). Основные приёмы:
-
-1. **Изображения всегда WebP** — конвертировать через `sharp` (уже в зависимостях). Скрипт: `node -e "require('sharp')('input.jpg').webp({quality:80}).toFile('input.webp')"`
-2. **loading="lazy"** на всех изображениях ниже сгиба, включая фото врача
-3. **onerror fallback** для WebP: `onerror="this.onerror=null;this.src=this.src.replace('.webp','.jpg')"`
-4. **Preconnect** для сторонних доменов: `<link rel="preconnect" href="https://mc.yandex.ru">`
-5. **Render-blocking CSS** — инлайнить критический CSS для above-the-fold
-6. **Не дублировать @font-face** — вынести в отдельный CSS, не инлайнить на каждую страницу
-7. **GitHub Pages** — основной фактор медленной загрузки для РФ (сервер в США). Альтернатив нет (Cloudflare заблокирован в РФ).
-8. **Минимум внешних запросов** — текущий лимит: 3 домена (свой, Yandex Metrika, Yandex Maps). Любой новый внешний ресурс требует оправдания.
 
 ### Команды бота
 | Команда | Статус | Описание |
