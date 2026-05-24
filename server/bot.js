@@ -180,38 +180,79 @@ th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
 
 async function callAI(prompt) {
   const system = 'Ответь только JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 300000);
   try {
     const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
-      method: 'POST', signal: controller.signal,
+      method: 'POST', signal: AbortSignal.timeout(300000),
       headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
       body: JSON.stringify({
         messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
         model: 'deepseek-v4-flash-free'
       })
     });
-    clearTimeout(timer);
-    const ct = resp.headers.get('content-type') || '';
-    const text = await resp.text();
-    if (!ct.includes('json') && !text.trim().startsWith('{')) {
-      console.error('AI non-JSON response:', text.substring(0, 300));
-      return text;
+    const text = await Promise.race([
+      resp.text(),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('body timeout')), 60000))
+    ]);
+    if (!text.trim()) throw new Error('Empty response');
+    if (text.trim().startsWith('{')) {
+      const data = JSON.parse(text);
+      return data.choices?.[0]?.message?.content || text;
     }
-    const data = JSON.parse(text);
-    return data.choices?.[0]?.message?.content || text;
-  } catch (e) { clearTimeout(timer); throw e; }
+    const ct = resp.headers.get('content-type') || '';
+    if (!ct.includes('json')) {
+      console.error('AI non-JSON response:', text.substring(0, 300));
+    }
+    return text;
+  } catch (e) { throw e; }
 }
 
 async function extractText(url) {
-  const ctrl = new AbortController();
-  setTimeout(() => ctrl.abort(), 20000);
-  const resp = await fetch(url, { signal: ctrl.signal });
+  const resp = await fetch(url, { signal: AbortSignal.timeout(20000) });
   const html = await resp.text();
   return html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/<[^>]+>/g, ' ').replace(/&[#a-zA-Z0-9]+;/g, ' ')
     .replace(/\s+/g, ' ').trim();
+}
+
+async function checkPerf() {
+  const resp = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2Fortopednn.ru&strategy=mobile`, { signal: AbortSignal.timeout(30000) });
+  const data = await resp.json();
+  const lh = data?.lighthouseResult?.categories;
+  const perf = lh?.performance?.score != null ? Math.round(lh.performance.score * 100) : '—';
+  const seo = lh?.seo?.score != null ? Math.round(lh.seo.score * 100) : '—';
+  const a11y = lh?.accessibility?.score != null ? Math.round(lh.accessibility.score * 100) : '—';
+  const crux = data?.loadingExperience?.metrics || {};
+  const fmt = (m) => m?.percentile != null ? m.percentile : null;
+  const lcp = fmt(crux.LARGEST_CONTENTFUL_PAINT_MS);
+  const cls = fmt(crux.CUMULATIVE_LAYOUT_SHIFT_SCORE);
+  const fid = fmt(crux.FIRST_INPUT_DELAY_MS);
+  const emoji = (s) => s >= 90 ? '🟢' : s >= 50 ? '🟡' : '🔴';
+  return [
+    `⚡ *Performance*: ${emoji(perf)} ${perf}`,
+    `🔍 *SEO*: ${emoji(seo)} ${seo}`,
+    `♿ *A11y*: ${emoji(a11y)} ${a11y}`,
+    ``,
+    `👤 *Real Users*`,
+    lcp ? `  LCP: ${(lcp/1000).toFixed(1)}s ${lcp <= 2500 ? '🟢' : lcp <= 4000 ? '🟡' : '🔴'}` : '',
+    cls !== null ? `  CLS: ${cls.toFixed(2)} ${cls <= 0.1 ? '🟢' : cls <= 0.25 ? '🟡' : '🔴'}` : '',
+    fid ? `  FID: ${fid}ms ${fid <= 100 ? '🟢' : fid <= 300 ? '🟡' : '🔴'}` : '',
+  ].filter(Boolean).join('\n');
+}
+
+async function searchPubMed(query) {
+  const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=5&retmode=json`;
+  const searchResp = await fetch(searchUrl, { signal: AbortSignal.timeout(15000) });
+  const searchData = await searchResp.json();
+  const ids = searchData?.esearchresult?.idlist || [];
+  if (!ids.length) return [];
+  const summaryUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(',')}&retmode=json`;
+  const sumResp = await fetch(summaryUrl, { signal: AbortSignal.timeout(15000) });
+  const sumData = await sumResp.json();
+  return ids.map(id => {
+    const r = sumData?.result?.[id] || {};
+    return { id, title: r.title || '', source: r.source || '', pubdate: r.pubdate || '', url: `https://pubmed.ncbi.nlm.nih.gov/${id}/` };
+  });
 }
 
 async function rewrite(url) {
@@ -279,6 +320,16 @@ async function tg(method, body) {
   return await resp.json();
 }
 
+function mainMenu() {
+  return {
+    inline_keyboard: [
+      [{ text: '📊 Производительность', callback_data: 'menu:perf' }],
+      [{ text: '📝 Черновики', callback_data: 'menu:drafts' }],
+      [{ text: '🔬 PubMed рерайт', callback_data: 'menu:research' }]
+    ]
+  };
+}
+
 function draftButtons(slug) {
   return {
     inline_keyboard: [[
@@ -294,6 +345,41 @@ async function handleCallback(cb) {
   const data = cb.data || '';
   const slug = data.slice(4);
   await tg('answerCallbackQuery', { callback_query_id: cb.id });
+  await tg('answerCallbackQuery', { callback_query_id: cb.id });
+  await tg('answerCallbackQuery', { callback_query_id: cb.id });
+  if (data.startsWith('menu:')) {
+    const action = data.slice(5);
+    if (action === 'perf') {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📊 Проверяю...', reply_markup: { inline_keyboard: [] } });
+      try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
+      catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
+    } else if (action === 'drafts') {
+      await tg('sendMessage', { chat_id: chatId, text: '/drafts' });
+    } else if (action === 'research') {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Напиши: /research тема', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+    } else if (action === 'back') {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Меню управления ботом:', reply_markup: mainMenu() });
+    }
+    return;
+  }
+  if (data.startsWith('pubmed:')) {
+    const pmid = data.slice(7);
+    const pmidUrl = `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📄 Читаю PubMed...' });
+    try {
+      const result = await rewrite(pmidUrl);
+      if (result?.error) {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${result.response?.substring(0, 200) || result.error}` });
+      } else if (result?.duplicate) {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Дубликат: ${result.title}` });
+      } else {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Сохранён: ${result.title}`, reply_markup: draftButtons(result.slug) });
+      }
+    } catch (e) {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+    }
+    return;
+  }
   if (data.startsWith('pub:')) {
     await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Публикую ${slug}...` });
     const result = await pushToStomatolog(slug);
@@ -320,8 +406,14 @@ async function handleUpdate(upd) {
   const text = msg.text.trim();
   const isUrl = text.match(/https?:\/\/[^\s]+/);
   const isCmd = text.startsWith('/');
-  if (isCmd && text === '/start') {
-    await tg('sendMessage', { chat_id: chatId, text: 'Пришли ссылку — сделаю рерайт.\n/drafts — черновики\n/stats — статистика' });
+  if (isCmd && (text === '/start' || text === '/menu')) {
+    await tg('sendMessage', { chat_id: chatId, text: 'Меню управления ботом:', reply_markup: mainMenu() });
+  } else if (isCmd && text === '/perf') {
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '📊 Проверяю производительность...' });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
+    if (!msgId) return;
+    try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
+    catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
   } else if (isCmd && text === '/drafts') {
     const drafts = existsSync(DRAFTS_DIR)
       ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')).map(f => {
@@ -339,32 +431,49 @@ async function handleUpdate(upd) {
         });
       }
     }
-  } else if (isUrl) {
-    const url = text.match(/https?:\/\/[^\s]+/)[0];
-    const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
-    const msgId = statusResp.ok ? statusResp.result.message_id : null;
+  } else if (isCmd && text.startsWith('/research ')) {
+    const query = text.slice(10).trim();
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `🔍 Ищу PubMed: ${query}...` });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
     if (!msgId) return;
-    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Переписываю... до 5 мин.' });
-    const progress = setInterval(async () => {
-      try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Всё ещё работаю...' }); } catch {}
-    }, 120000);
     try {
-      const result = await rewrite(url);
-      clearInterval(progress);
-      const edit = (t, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: t, ...(extra || {}) });
-      if (result?.error) {
-        await edit(`Ошибка парсинга.\n${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`);
-      } else if (result?.duplicate) {
-        await edit(`Дубликат: ${result.title}`);
+      const results = await searchPubMed(query);
+      if (!results.length) {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Ничего не найдено.' });
       } else {
-        await edit(`Сохранён: ${result.title}\nhttps://stomatolog.ortopednn.ru/blog/${result.slug}/`, { reply_markup: draftButtons(result.slug) });
+        const text = results.map((r, i) => `${i+1}. ${r.title}\n_${r.source}, ${r.pubdate}_`).join('\n\n');
+        const buttons = results.map(r => ([{ text: r.title.substring(0, 40), callback_data: `pubmed:${r.id}` }]));
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: text, parse_mode: 'Markdown', reply_markup: { inline_keyboard: buttons } });
       }
     } catch (e) {
-      clearInterval(progress);
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: e.message.includes('aborted') ? 'AI не ответил за 5 мин.' : e.message.slice(0, 200) });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+    }
+  } else if (isUrl) {
+    try {
+      const url = text.match(/https?:\/\/[^\s]+/)[0];
+      const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
+      const msgId = statusResp.ok ? statusResp.result.message_id : null;
+      if (!msgId) return;
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Переписываю... до 5 мин.' });
+      const progress = setInterval(async () => {
+        try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Всё ещё работаю...' }); } catch {}
+      }, 120000);
+      try {
+        const result = await rewrite(url);
+        clearInterval(progress);
+        const edit = (t, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: t, ...(extra || {}) });
+        if (result?.error) { await edit(`Ошибка парсинга.\n${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`); }
+        else if (result?.duplicate) { await edit(`Дубликат: ${result.title}`); }
+        else { await edit(`Сохранён: ${result.title}\nhttps://stomatolog.ortopednn.ru/blog/${result.slug}/`, { reply_markup: draftButtons(result.slug) }); }
+      } catch (e) {
+        clearInterval(progress);
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: e.message.includes('aborted') ? 'AI не ответил за 5 мин. Попробуй ещё раз.' : e.message.slice(0, 200) });
+      }
+    } catch (e) {
+      await tg('sendMessage', { chat_id: chatId, text: `Ошибка: ${e.message.slice(0, 200)}` });
     }
   } else if (isCmd) {
-    await tg('sendMessage', { chat_id: chatId, text: 'Пришли ссылку.' });
+    await tg('sendMessage', { chat_id: chatId, text: 'Неизвестная команда. /menu — меню управления.' });
   }
 }
 
@@ -383,6 +492,12 @@ export async function startBot(webhookMode = false) {
     });
     return;
   }
+  await tg('setMyCommands', { commands: [
+    { command: 'menu', description: 'Меню управления' },
+    { command: 'perf', description: 'Производительность сайта' },
+    { command: 'research', description: 'Поиск PubMed + рерайт' },
+    { command: 'drafts', description: 'Черновики статей' }
+  ]});
   console.log('Polling mode (every 10s)...');
   let offset = 0;
   while (true) {
@@ -390,10 +505,17 @@ export async function startBot(webhookMode = false) {
       const updates = await tg('getUpdates', { offset, timeout: 30 });
       if (updates.ok) {
         for (const upd of updates.result) {
+          try { await handleUpdate(upd); } catch (e) {
+            console.error('Update error:', e.message);
+            if (upd.message?.chat?.id) {
+              try { await tg('sendMessage', { chat_id: upd.message.chat.id, text: `Ошибка: ${e.message.slice(0, 200)}` }); } catch {}
+            }
+          }
           offset = upd.update_id + 1;
-          await handleUpdate(upd);
         }
       }
     } catch (e) { console.error('Poll error:', e.message); }
   }
 }
+
+export { rewrite };
