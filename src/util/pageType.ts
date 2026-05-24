@@ -1,15 +1,1 @@
-const pageTypeMap: [string, string][] = [
-  ['/services/', 'service'],
-  ['/checkup/', 'checkup'],
-  ['/blog/', 'article'],
-  ['/about/', 'about'],
-  ['/compare/', 'compare'],
-  ['/materials/', 'materials'],
-];
-
-export function getPageType(pathname: string): string {
-  for (const [prefix, type] of pageTypeMap) {
-    if (pathname.startsWith(prefix)) return type;
-  }
-  return 'website';
-}
+Y29uc3QgcGFnZVR5cGVNYXA6IFtzdHJpbmcsIHN0cmluZ11bXSA9IFsKICBbJy9zZXJ2aWNlcy8nLCAnc2VydmljZSddLAogICAgWycvYmxvZy8nLCAnYXJ0aWNsZSddLAogIFsnL2Fib3V0LycsICdhYm91dCddLAogIFsnL2NvbXBhcmUvJywgJ2NvbXBhcmUnXSwKICBbJy9tYXRlcmlhbHMvJywgJ21hdGVyaWFscyddLApdOwoKZXhwb3J0IGZ1bmN0aW9uIGdldFBhZ2VUeXBlKHBhdGhuYW1lOiBzdHJpbmcpOiBzdHJpbmcgewogIGZvciAoY29uc3QgW3ByZWZpeCwgdHlwZV0gb2YgcGFnZVR5cGVNYXApIHsKICAgIGlmIChwYXRobmFtZS5zdGFydHNXaXRoKHByZWZpeCkpIHJldHVybiB0eXBlOwogIH0KICByZXR1cm4gJ3dlYnNpdGUnOwp9Cg==
