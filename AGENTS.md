@@ -153,7 +153,7 @@ Secrets stored in GitHub repo Secrets + VPS `/opt/ortopednn-auto/server/.env`.
 
 ## Telegram SEO Monitor Bot (`@ortopednn_bot`)
 
-Бот работает через GitHub Actions workflow (`.github/workflows/seo-monitor.yml`).
+Бот работает на VPS (94.183.155.147) в Docker-контейнере, polling mode, порт 3000.
 
 ### Что умеет сейчас
 - **Инлайн-меню** (`/menu`): Производительность, Черновики, PubMed-рерайт
@@ -163,6 +163,11 @@ Secrets stored in GitHub repo Secrets + VPS `/opt/ortopednn-auto/server/.env`.
 - **URL-рерайт** — кидаешь ссылку → бот читает, AI переписывает для блога → черновик
 - **Daily cron** (8:00 MSK) — сбор статистики GSC + Яндекс в SQLite
 - **Polling** (каждые 10с) — порт 3000, healthcheck
+
+### Известные проблемы
+- После перезапуска контейнера offset сбрасывается (потоковые обновления могут теряться). Исправить: хранить offset в SQLite.
+- inline-кнопки меню могут не срабатывать если бот не получил callback_query (проверить через docker logs).
+- SSH к VPS недоступен из некоторых регионов — управление только через docker exec.
 
 ### Формат сообщения
 ```
