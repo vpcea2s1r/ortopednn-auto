@@ -343,6 +343,7 @@ async function handleCallback(cb) {
   const chatId = cb.message.chat.id;
   const msgId = cb.message.message_id;
   const data = cb.data || '';
+  console.log('Callback:', data.slice(0, 40));
   const slug = data.slice(4);
   await tg('answerCallbackQuery', { callback_query_id: cb.id });
   await tg('answerCallbackQuery', { callback_query_id: cb.id });
@@ -354,7 +355,22 @@ async function handleCallback(cb) {
       try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
       catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
     } else if (action === 'drafts') {
-      await tg('sendMessage', { chat_id: chatId, text: '/drafts' });
+      const draftsList = existsSync(DRAFTS_DIR)
+        ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')).map(f => {
+            try { return JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf8')); } catch { return null; }
+          }).filter(Boolean) : [];
+      if (!draftsList.length) {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Нет черновиков.', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+      } else {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📝 Черновики:', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+        for (const d of draftsList) {
+          await tg('sendMessage', {
+            chat_id: chatId,
+            text: `${d.title}\n${d.date}\nhttps://stomatolog.ortopednn.ru/blog/${d.slug}/`,
+            reply_markup: draftButtons(d.slug)
+          });
+        }
+      }
     } else if (action === 'research') {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Напиши: /research тема', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
     } else if (action === 'back') {
@@ -393,8 +409,12 @@ async function handleCallback(cb) {
       });
     }
   } else if (data.startsWith('del:')) {
-    deleteDraft(slug);
-    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Удалён.', reply_markup: { inline_keyboard: [] } });
+    try {
+      deleteDraft(slug);
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Удалён.', reply_markup: { inline_keyboard: [] } });
+    } catch (e) {
+      await tg('answerCallbackQuery', { callback_query_id: cb.id, text: 'Ошибка: ' + e.message.slice(0, 50), show_alert: true });
+    }
   }
 }
 
@@ -518,4 +538,4 @@ export async function startBot(webhookMode = false) {
   }
 }
 
-export { rewrite };
+export { rewrite, checkPerf, searchPubMed };
