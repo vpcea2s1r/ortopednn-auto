@@ -106,14 +106,13 @@ Secrets stored in GitHub repo Secrets + VPS `/opt/ortopednn-auto/server/.env`.
 
 ### LIVE-сайт (ortopednn.ru) — структура (2026-05-23)
 
-**Sitemap:** `sitemap-index.xml` → `sitemap-0.xml`, всего **111 URLs** (0 errors, 6 redirect URLs excluded via filter)
+**Sitemap:** `sitemap-index.xml` → `sitemap-0.xml`, всего **111 URLs** (0 errors)
 
 | Раздел | Кол-во | Описание |
 |--------|--------|---------|
 | `/` | 1 | Главная с FAQ, контактами |
 | `/about/` | 1 | О враче |
-| `/blog/` | 1 + 4 статьи | Блог (care-crown, care-denture, first-visit, kak-chistit-semnye-protezy) |
-| `/checkup/` | 1 + **30 статей** | Самодиагностика + статьи по проблемам |
+| `/blog/` | 1 + **11 статей** | Блог (включая новую: болит зуб под коронкой) |
 | `/compare/` | 1 | Сравнение конструкций |
 | `/materials/` | 1 | Материалы |
 | `/services/` | 1 + **62 услуги** | Услуги с описанием (цены удалены) |
@@ -157,15 +156,19 @@ Secrets stored in GitHub repo Secrets + VPS `/opt/ortopednn-auto/server/.env`.
 Бот работает через GitHub Actions workflow (`.github/workflows/seo-monitor.yml`).
 
 ### Что умеет сейчас
-- **Daily report** (5:00 UTC = 8:00 MSK) — sitemap check, Lighthouse perf/seo/a11y, SSL expiry, build size
-- **Regression alerts** — битые ссылки, perf < 80, SSL < 14 дней
-- **Ручной запуск** через `Actions → SEO Monitor → Run workflow`
+- **Инлайн-меню** (`/menu`): Производительность, Черновики, PubMed-рерайт
+- `/perf` — Lighthouse + CrUX (PageSpeed API, без ключа)
+- `/research <тема>` — поиск PubMed, inline-выбор статьи → рерайт → черновик
+- `/drafts` — черновики с inline-кнопками: опубликовать (→ stomatolog.ortopednn.ru) / удалить
+- **URL-рерайт** — кидаешь ссылку → бот читает, AI переписывает для блога → черновик
+- **Daily cron** (8:00 MSK) — сбор статистики GSC + Яндекс в SQLite
+- **Polling** (каждые 10с) — порт 3000, healthcheck
 
 ### Формат сообщения
 ```
 📊 SEO Monitor — ortopednn.ru
 
-🌐 Sitemap: 105 URLs, ✅ 0 errors
+🌐 Sitemap: 111 URLs, ✅ 0 errors
 ⚡ Performance: ~70* | SEO: 100 | A11y: 96
 🔒 SSL: 83 days left
 📦 Build: 18MB (106 pages)
@@ -186,12 +189,14 @@ Performance (Lighthouse) важен для ранжирования Яндекс
 7. **GitHub Pages** — основной фактор медленной загрузки для РФ (сервер в США). Альтернатив нет (Cloudflare заблокирован в РФ).
 8. **Минимум внешних запросов** — текущий лимит: 3 домена (свой, Yandex Metrika, Yandex Maps). Любой новый внешний ресурс требует оправдания.
 
-### Команды (запланировано)
+### Команды бота
 | Команда | Статус | Описание |
 |---------|--------|----------|
-| `/check` | ❌ | Мгновенный SEO-чек (lighthouse + sitemap) |
+| `/perf` | ✅ | Lighthouse + CrUX PageSpeed |
+| `/research` | ✅ | Поиск PubMed + AI рерайт |
+| `/menu` | ✅ | Инлайн-меню |
+| `/drafts` | ✅ | Черновики (опубликовать/удалить) |
 | `/ssl` | ❌ | Сколько дней до истечения сертификата |
-| `/perf` | ❌ | Performance score + Core Web Vitals |
 | `/stats` | ❌ | Яндекс.Вебмастер статистика |
 | `/digest` | ❌ | Weekly digest по динамике метрик |
 
