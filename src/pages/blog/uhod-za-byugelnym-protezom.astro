@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+const slug = 'uhod-za-byugelnym-protezom';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Уход за бюгельным протезом — полное руководство",
+  "description": "Как правильно ухаживать за бюгельным протезом: ежедневная чистка, таблетированные очистители, ультразвуковая обработка, замена кламмеров, профосмотры.",
+  "author": { "@type": "Person", "name": "Никитина Марина Геннадьевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-25",
+  "dateModified": "2026-05-25",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Уход за бюгельным протезом — полное руководство"
+  description="Как ухаживать за бюгельным протезом: график чистки, таблетки-очистители, ультразвук, замена кламмеров, полугодовые осмотры у ортопеда."
+  breadcrumbTitle="Уход за бюгельным протезом"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-25"
+  dateModified="2026-05-25"
+>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← В блог</a>
+    
+    <article>
+      <h1>Уход за бюгельным протезом — полное руководство</h1>
+      <div class="meta">25 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Бюгельный протез — сложная ортопедическая конструкция с металлическим каркасом, кламмерами или аттачментами. При неправильном уходе он теряет фиксацию, накапливает налёт и вызывает воспаление слизистой. Полный протокол ухода — от ежедневной чистки до профессионального обслуживания.</p>
+
+      <h2>Ежедневная чистка — техника и инструменты</h2>
+
+      <p>Бюгельный протез нужно чистить дважды в день: утром после завтрака и вечером перед сном. Обычная зубная паста с высокой абразивностью царапает акрил и базис — в микротрещинах скапливаются бактерии.</p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Инструмент</th><th>Назначение</th><th>Замена</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Щётка для протезов (мягкая)</td><td>Очистка базиса и кламмеров</td><td>Каждые 2–3 мес.</td></tr>
+          <tr><td>Монопучковая щётка</td><td>Очистка аттачментов</td><td>Каждые 2–3 мес.</td></tr>
+          <tr><td>Таблетки-очиститель</td><td>Удаление пигментации</td><td>1–2 раза в неделю</td></tr>
+          <tr><td>Ультразвуковая ванночка</td><td>Удаление налёта из микротрещин</td><td>1 раз в 2 нед.</td></tr>
+          <tr><td>Ёршик межзубной</td><td>Гигиена опорных зубов</td><td>Ежедневно</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>Чистить протез нужно над раковиной, наполненной водой, или сложенным полотенцем — при падении бюгель чаще всего ломается.</p>
+
+      <h2>Таблетированные очистители</h2>
+
+      <p>Комбинация механической чистки и химического замачивания снижает бактериальную колонизацию эффективнее, чем одна чистка щёткой. Раствор таблеток за 15 минут удаляет до 93% налёта и бактерий.</p>
+
+      <p>Замачивать на 15–20 минут 1–2 раза в неделю. Дольше 30 минут не оставлять — агрессивные компоненты повреждают полимерную матрицу базиса.</p>
+
+      <h2>Ультразвуковая очистка</h2>
+
+      <p>Ультразвуковые ванночки с частотой 35–45 кГц удаляют пигментный налёт из труднодоступных зон: внутренней поверхности седла, пазов аттачментов, мест соединения кламмера с каркасом.</p>
+
+      <p>Регулярная ультразвуковая обработка — 1 раз в 2 недели — снижает риск протезного стоматита и продлевает срок службы протеза на 3–5 лет.</p>
+
+      <h2>Чего нельзя делать</h2>
+
+      <ul>
+        <li>Использовать отбеливающие пасты и жёсткие щётки</li>
+        <li>Замачивать в хлоргексидине дольше 10 минут</li>
+        <li>Использовать уксус, соду, лимонную кислоту</li>
+        <li>Сушить на батарее или под солнцем</li>
+        <li>Носить протез при натирании без коррекции</li>
+      </ul>
+
+      <h2>Хранение</h2>
+
+      <p>Хранить во влажной среде — в контейнере с водой или раствором. Высыхание акрила приводит к усадке. Оптимальная температура — 18–25 °C. Контейнер с вентиляцией, воду менять ежедневно.</p>
+
+      <h2>Замена кламмеров и аттачментов</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Элемент</th><th>Срок службы</th><th>Признаки износа</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Металлические кламмеры</td><td>5–7 лет</td><td>Ослабление фиксации</td></tr>
+          <tr><td>Акриловые кламмеры</td><td>2–3 года</td><td>Трещины, потеря эластичности</td></tr>
+          <tr><td>Замковые аттачменты</td><td>3–5 лет</td><td>Люфт в замке</td></tr>
+          <tr><td>Сменные матрицы</td><td>1–2 года</td><td>Щель при смыкании</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>Сменные матрицы аттачментов рекомендуется заменять раз в год — это устраняет люфт и предотвращает перегрузку опорных зубов.</p>
+
+      <h2>Профессиональная гигиена</h2>
+
+      <p>Осмотр у ортопеда каждые 6 месяцев:</p>
+
+      <ul>
+        <li>Проверка фиксации кламмеров</li>
+        <li>Выявление балансировки</li>
+        <li>Профессиональная очистка протеза</li>
+        <li>Осмотр слизистой под седлом</li>
+        <li>Перебазировка при необходимости</li>
+      </ul>
+
+      <p>Пациенты, соблюдающие график полугодовых осмотров, в 4–5 раз реже требуют ремонта или замены протеза.</p>
+
+      <div class="cta">
+        <p>Запишитесь на осмотр бюгельного протеза.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p, ul { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { padding-left: 1.5rem; }
+li { margin-bottom: 0.5rem; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>
