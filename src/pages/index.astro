@@ -53,6 +53,14 @@ import socials from '../../data/socials.json';
   </footer>
 </BaseLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://ortopednn.ru/" }
+  ]
+})} />
+
 <style>
 .visually-hidden {
   position: absolute;
