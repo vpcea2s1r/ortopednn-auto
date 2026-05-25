@@ -5,7 +5,7 @@ import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
 
 const slug = 'patologicheskaya-stiraemost-zubov-lechenie';
-const pageUrl = https://ortopednn.ru/blog//;
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -105,7 +105,7 @@ const ldArticle = {
 
       <div class="cta">
         <p>Запишитесь на консультацию к стоматологу-ортопеду.</p>
-        <a href={	el:} class="btn">+7 (920) 253-73-17</a>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
       </div>
     </article>
   </main>
