@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
+import { pickAndRun, runPipelineManual, addTopic, listTopics, listState } from './agent-pipeline.js';
 
 const __dirname = fileURLToPath(import.meta.url);
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
@@ -314,8 +315,10 @@ function deleteDraft(slug) {
 }
 
 async function tg(method, body) {
+  const timeout = method === 'getUpdates' ? 60000 : 15000;
   const resp = await fetch(`${API}/${method}`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+    signal: AbortSignal.timeout(timeout)
   });
   return await resp.json();
 }
@@ -355,20 +358,24 @@ async function handleCallback(cb) {
       try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
       catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
     } else if (action === 'drafts') {
+      console.log('DRAFTS_DIR:', DRAFTS_DIR, 'exists:', existsSync(DRAFTS_DIR));
       const draftsList = existsSync(DRAFTS_DIR)
         ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')).map(f => {
-            try { return JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf8')); } catch { return null; }
+            try { const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf8')); return d; } catch { return null; }
           }).filter(Boolean) : [];
+      console.log('Drafts count:', draftsList.length);
       if (!draftsList.length) {
         await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Нет черновиков.', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
       } else {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📝 Черновики:', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📝 ${draftsList.length} черновиков:`, reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
         for (const d of draftsList) {
-          await tg('sendMessage', {
-            chat_id: chatId,
-            text: `${d.title}\n${d.date}\nhttps://stomatolog.ortopednn.ru/blog/${d.slug}/`,
-            reply_markup: draftButtons(d.slug)
-          });
+          try {
+            await tg('sendMessage', {
+              chat_id: chatId,
+              text: `${d.title}\n${d.date}\nhttps://stomatolog.ortopednn.ru/blog/${d.slug}/`,
+              reply_markup: draftButtons(d.slug)
+            });
+          } catch (e) { console.error('Send draft error:', e.message); }
         }
       }
     } else if (action === 'research') {
@@ -451,6 +458,20 @@ async function handleUpdate(upd) {
         });
       }
     }
+  } else if (isCmd && text.startsWith('/autogen ')) {
+    const query = text.slice(9).trim();
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `Запускаю пайплайн: ${query}...` });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
+    if (!msgId) return;
+    try {
+      await addTopic(query);
+      runPipelineManual(query).then(async (result) => {
+        if (result.error) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка на этапе "${result.stage}": ${result.error}` });
+        else await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Опубликовано: ${result.published.title}\n${result.published.url}` });
+      }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` }));
+    } catch (e) {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+    }
   } else if (isCmd && text.startsWith('/research ')) {
     const query = text.slice(10).trim();
     const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `🔍 Ищу PubMed: ${query}...` });
@@ -469,29 +490,32 @@ async function handleUpdate(upd) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
     }
   } else if (isUrl) {
-    try {
-      const url = text.match(/https?:\/\/[^\s]+/)[0];
-      const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
-      const msgId = statusResp.ok ? statusResp.result.message_id : null;
-      if (!msgId) return;
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Переписываю... до 5 мин.' });
-      const progress = setInterval(async () => {
-        try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Всё ещё работаю...' }); } catch {}
-      }, 120000);
-      try {
-        const result = await rewrite(url);
-        clearInterval(progress);
-        const edit = (t, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: t, ...(extra || {}) });
-        if (result?.error) { await edit(`Ошибка парсинга.\n${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`); }
-        else if (result?.duplicate) { await edit(`Дубликат: ${result.title}`); }
-        else { await edit(`Сохранён: ${result.title}\nhttps://stomatolog.ortopednn.ru/blog/${result.slug}/`, { reply_markup: draftButtons(result.slug) }); }
-      } catch (e) {
-        clearInterval(progress);
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: e.message.includes('aborted') ? 'AI не ответил за 5 мин. Попробуй ещё раз.' : e.message.slice(0, 200) });
+    const url = text.match(/https?:\/\/[^\s]+/)[0];
+    const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
+    const msgId = statusResp.ok ? statusResp.result.message_id : null;
+    if (!msgId) return;
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '⏳ Рерайт... до 5 мин. Бот отвечает на команды.' });
+    const progress = setInterval(async () => {
+      try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '⏳ Всё ещё работаю...' }); } catch {}
+    }, 120000);
+    rewrite(url).then(async (result) => {
+      clearInterval(progress);
+      const edit = (t, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: t, ...(extra || {}) });
+      if (result?.error) { edit(`❌ ${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`); }
+      else if (result?.duplicate) { edit(`⚠️ Дубликат: ${result.title}`); }
+      else {
+        try {
+          const draftFile = readFileSync(join(DRAFTS_DIR, `${result.slug}.astro`), 'utf-8');
+          const text = draftFile.replace(/<[^>]+>/g, ' ').replace(/&[#a-zA-Z0-9]+;/g, ' ').replace(/\s+/g, ' ').trim();
+          const full = text.substring(0, 4000);
+          await tg('sendMessage', { chat_id: chatId, text: `📄 *${result.title}*\n\n${full}`, parse_mode: 'Markdown' });
+          edit(`✅ Черновик сохранён`, { reply_markup: draftButtons(result.slug) });
+        } catch { edit(`✅ Сохранён: ${result.title}`, { reply_markup: draftButtons(result.slug) }); }
       }
-    } catch (e) {
-      await tg('sendMessage', { chat_id: chatId, text: `Ошибка: ${e.message.slice(0, 200)}` });
-    }
+    }).catch(e => {
+      clearInterval(progress);
+      tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message.includes('aborted') ? 'AI не ответил за 5 мин.' : e.message.slice(0, 200)}` });
+    });
   } else if (isCmd) {
     await tg('sendMessage', { chat_id: chatId, text: 'Неизвестная команда. /menu — меню управления.' });
   }
@@ -525,13 +549,12 @@ export async function startBot(webhookMode = false) {
       const updates = await tg('getUpdates', { offset, timeout: 30 });
       if (updates.ok) {
         for (const upd of updates.result) {
-          try { await handleUpdate(upd); } catch (e) {
-            console.error('Update error:', e.message);
-            if (upd.message?.chat?.id) {
-              try { await tg('sendMessage', { chat_id: upd.message.chat.id, text: `Ошибка: ${e.message.slice(0, 200)}` }); } catch {}
-            }
-          }
           offset = upd.update_id + 1;
+          handleUpdate(upd).catch(e => {
+            console.error('Update error:', e.message);
+            const chatId = upd.message?.chat?.id || upd.callback_query?.message?.chat?.id;
+            if (chatId) tg('sendMessage', { chat_id: chatId, text: `Ошибка: ${e.message.slice(0, 200)}` }).catch(() => {});
+          });
         }
       }
     } catch (e) { console.error('Poll error:', e.message); }
