@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+const slug = 'dezinfektsiya-proteza';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Дезинфекция зубного протеза: средства и правила",
+  "description": "Дезинфекция зубных протезов: таблетки Corega, Protefix, народные средства. Как часто дезинфицировать, сколько замачивать, что нельзя использовать.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Дезинфекция зубного протеза: средства и правила | Никитина М.Г."
+  description="Дезинфекция зубных протезов: таблетки, ультразвуковая ванночка, народные средства. Как часто дезинфицировать съёмный протез, что нельзя."
+  breadcrumbTitle="Дезинфекция протеза"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    
+    <article>
+      <h1>Дезинфекция зубного протеза: средства и правила</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Съёмный протез нужно не только чистить от налёта, но и дезинфицировать — убивать бактерии, грибки, плесень. Без дезинфекции протез становится источником инфекции: стоматит, запах, воспаление десны.</p>
+
+      <h2>Чем дезинфицировать</h2>
+
+      <h3>Специальные таблетки</h3>
+      <p>Corega, Protefix, Dentipur, Lacalut Denture. Таблетку растворяют в стакане воды, опускают протез на 10–15 минут. Убивают 99% бактерий и грибков. Рекомендую использовать ежедневно, если есть склонность к стоматитам — не реже 2 раз в неделю.</p>
+
+      <h3>Ультразвуковая ванночка</h3>
+      <p>Специальные устройства для чистки протезов ультразвуком. Протез помещается в ванночку с водой на 3–5 минут. Ультразвук удаляет налёт из пор акрила, куда не достаёт щётка.</p>
+
+      <h3>Хлоргексидин (только для дезинфекции)</h3>
+      <p>Раствор хлоргексидина 0,05%. Замачивать на 10–15 минут не чаще раза в неделю. Не подходит для частого использования — окрашивает акрил. Лучше использовать специальные таблетки.</p>
+
+      <h2>Чего нельзя делать</h2>
+      <ul>
+        <li><strong>Кипятить</strong> — протез деформируется</li>
+        <li><strong>Использовать уксус</strong> — разъедает акрил</li>
+        <li><strong>Хлорка</strong> — обесцвечивает протез</li>
+        <li><strong>Зубная паста с отбеливанием</strong> — царапает</li>
+        <li><strong>Спирт</strong> — сушит акрил, делает хрупким</li>
+      </ul>
+
+      <h2>Как часто дезинфицировать</h2>
+      <p>Ежедневная чистка щёткой + дезинфекция таблетками раз в день — оптимальный режим. Если протез новый и нет воспаления — можно раз в 2–3 дня. При молочнице (кандидоз) — ежедневно до исчезновения симптомов.</p>
+
+      <div class="cta">
+        <p>Не знаете, как ухаживать за протезом? Расскажу на приёме, покажу средства.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+</style>
