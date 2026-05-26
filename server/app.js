@@ -49,6 +49,44 @@ app.post('/api/generate', async (req, res) => {
   }
 });
 
+app.post('/api/pipeline/run', async (req, res) => {
+  try {
+    const { topic } = req.body || {};
+    const pipeline = await import('./agent-pipeline.js');
+    if (topic) {
+      await pipeline.addTopic(topic);
+      const result = await pipeline.runPipelineManual(topic);
+      return res.json(result);
+    }
+    const result = await pipeline.pickAndRun();
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.post('/api/pipeline/add', async (req, res) => {
+  try {
+    const { topic } = req.body || {};
+    if (!topic) return res.status(400).json({ error: 'topic required' });
+    const pipeline = await import('./agent-pipeline.js');
+    const result = await pipeline.addTopic(topic);
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.get('/api/pipeline/topics', async (req, res) => {
+  const pipeline = await import('./agent-pipeline.js');
+  res.json(await pipeline.listTopics());
+});
+
+app.get('/api/pipeline/state', async (req, res) => {
+  const pipeline = await import('./agent-pipeline.js');
+  res.json(await pipeline.listState());
+});
+
 app.get('/api/drafts', (req, res) => {
   const dir = join(DATA_DIR, 'drafts');
   const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith('.meta.json')) : [];
