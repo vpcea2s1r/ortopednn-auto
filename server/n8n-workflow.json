@@ -1,0 +1,135 @@
+{
+  "name": "Content Pipeline — ortopednn",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "hours", "hoursInterval": 24 }]
+        }
+      },
+      "id": "scheduler",
+      "name": "Daily Trigger (7:00 MSK)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://bot:3000/api/pipeline/run",
+        "options": {},
+        "sendBody": true,
+        "bodyParameters": { "parameters": [] }
+      },
+      "id": "http1",
+      "name": "Run Pipeline",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            { "value1": "={{ $json.error }}", "value2": "exists" }
+          ]
+        }
+      },
+      "id": "if1",
+      "name": "Check Error",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "45185475",
+        "text": "✅ Опубликована статья:\n{{ $json.published.title }}\n{{ $json.published.url }}",
+        "additionalFields": {}
+      },
+      "id": "tgOk",
+      "name": "Notify Success",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1400, 200]
+    },
+    {
+      "parameters": {
+        "chatId": "45185475",
+        "text": "❌ Ошибка пайплайна:\n{{ $json.error }}",
+        "additionalFields": {}
+      },
+      "id": "tgErr",
+      "name": "Notify Error",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1400, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://bot:3000/api/pipeline/topics",
+        "options": {},
+        "sendBody": true,
+        "bodyParameters": { "parameters": [] }
+      },
+      "id": "httpCount",
+      "name": "Check Topic Count",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 500]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            { "value1": "={{ $json.length }}", "value2": 0, "value2": 0, "operation": "Smaller" }
+          ]
+        }
+      },
+      "id": "ifEmpty",
+      "name": "Topics remain?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1000, 500]
+    },
+    {
+      "parameters": {
+        "chatId": "45185475",
+        "text": "⚠️ Очередь тем пуста. Добавьте через /api/pipeline/add или бота /autogen",
+        "additionalFields": {}
+      },
+      "id": "tgWarn",
+      "name": "Warn Empty Queue",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1400, 600]
+    }
+  ],
+  "connections": {
+    "Daily Trigger (7:00 MSK)": {
+      "main": [[{ "node": "Run Pipeline", "type": "main", "index": 0 }]]
+    },
+    "Run Pipeline": {
+      "main": [
+        [{ "node": "Check Error", "type": "main", "index": 0 }],
+        [{ "node": "Check Topic Count", "type": "main", "index": 0 }]
+      ]
+    },
+    "Check Error": {
+      "main": [
+        [{ "node": "Notify Error", "type": "main", "index": 0 }],
+        [{ "node": "Notify Success", "type": "main", "index": 0 }]
+      ]
+    },
+    "Check Topic Count": {
+      "main": [
+        [{ "node": "Warn Empty Queue", "type": "main", "index": 0 }],
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": ["content-pipeline"]
+}
