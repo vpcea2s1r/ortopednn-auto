@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+const slug = 'chem-chistit-zubnye-protezy';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Чем чистить зубные протезы: средства, пасты, таблетки",
+  "description": "Чем чистить зубные протезы: пасты, щётки, таблетки для дезинфекции, ирригаторы. Какие средства подходят, какие нельзя использовать.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Чем чистить зубные протезы: пасты, щётки, таблетки | Никитина М.Г."
+  description="Чем чистить зубные протезы: обзор средств — пасты, щётки, таблетки Corega и Protefix, ирригаторы. Какие подходят для съёмных и несъёмных протезов."
+  breadcrumbTitle="Чем чистить протезы"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    
+    <article>
+      <h1>Чем чистить зубные протезы: средства, пасты, таблетки</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Съёмные и несъёмные протезы чистят разными средствами. Для съёмных — специальные пасты без абразива и дезинфицирующие таблетки. Для несъёмных — обычная паста, ирригатор и флосс. Простое правило: паста для живых зубов царапает акрил протеза.</p>
+
+      <h2>Средства для съёмных протезов</h2>
+
+      <h3>Пасты для протезов</h3>
+      <p>Специальные пасты — Corega, Protefix, Lacalut Denture, Fittydent. Они не содержат грубых абразивов, не царапают акрил, нейлон и нейлоновые протезы. Чистят налёт, не повреждая поверхность. Наносятся на мягкую щётку.</p>
+
+      <h3>Дезинфицирующие таблетки</h3>
+      <p>Растворимые таблетки — Corega, Protefix, Dentipur. Протез замачивают на 10–15 минут ежедневно или на 30 минут раз в неделю. Таблетки убивают бактерии, убирают запах и налёт в труднодоступных местах. Не заменяют механическую чистку: после таблеток протез нужно ополоснуть.</p>
+
+      <h3>Щётки</h3>
+      <p>Специальная щётка для протезов — с одной стороны мягкая щетина, с другой — более жёсткая. Можно использовать и обычную мягкую зубную щётку. Жёсткая щетина царапает акрил.</p>
+
+      <h2>Средства для несъёмных протезов</h2>
+      <p>Коронки и мосты чистят обычной зубной пастой и щёткой. Дополнительно — ирригатор (Waterpik, B.Well, AquaJet). Струя воды вымывает остатки из-под коронок и мостов. Зубная нить — для промежутков между коронками.</p>
+
+      <h2>Чего нельзя использовать</h2>
+      <ul>
+        <li><strong>Отбеливающие пасты</strong> — абразив царапает протез</li>
+        <li><strong>Соду, соль, уксус</strong> — разрушают материал</li>
+        <li><strong>Хлорсодержащие средства</strong> — обесцвечивают</li>
+        <li><strong>Металлические щётки</strong> — царапают поверхность</li>
+        <li><strong>Зубной порошок</strong> — слишком грубый абразив</li>
+      </ul>
+
+      <div class="cta">
+        <p>Не знаете, чем чистить протез? Спросите меня на приёме — покажу и расскажу.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+</style>

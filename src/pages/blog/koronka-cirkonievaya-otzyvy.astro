@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+const slug = 'koronka-cirkonievaya-otzyvy';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Коронка циркониевая: отзывы пациентов и мнение врача",
+  "description": "Циркониевая коронка — отзывы: что говорят пациенты, плюсы и минусы. Стоит ли ставить цирконий, сколько служит, как выглядит.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Коронка циркониевая: отзывы пациентов и мнение врача | Никитина М.Г."
+  description="Циркониевые коронки — отзывы: что хвалят, что критикуют. Реальный опыт пациентов: эстетика, привыкание, цена. Мнение стоматолога-ортопеда."
+  breadcrumbTitle="Циркониевая коронка отзывы"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    
+    <article>
+      <h1>Коронка циркониевая: отзывы пациентов и мнение врача</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Циркониевые коронки — один из самых популярных вариантов. Пациенты часто спрашивают отзывы тех, кто уже поставил цирконий. Собираю типичные плюсы и минусы, которые отмечают пациенты, с комментариями врача.</p>
+
+      <h2>Что хвалят в циркониевых коронках</h2>
+
+      <p><strong>Эстетика.</strong> Цирконий белого цвета, просвечивает, выглядит как натуральный зуб. Пациенты отмечают, что коронки не отличаются от соседних зубов. Нет тёмной полосы у десны, как бывает у металлокерамики.</p>
+
+      <p><strong>Не вызывают аллергии.</strong> Цирконий биосовместим. Нет металла, нет окисления, нет привкуса во рту. Пациенты с аллергией на металл чувствуют себя комфортно.</p>
+
+      <p><strong>Прочность.</strong> Коронки не трескаются, не сколачиваются. Пациенты едят жёсткую пищу без ограничений. Цирконий подходит для жевательных зубов.</p>
+
+      <h2>Что критикуют</h2>
+
+      <p><strong>Цена.</strong> Цирконий дороже металлокерамики. Пациенты, которые сравнивают, часто выбирают цирконий, если бюджет позволяет.</p>
+
+      <p><strong>Прозрачность.</strong> Если зуб под коронкой тёмный, цирконий может просвечивать серым оттенком. Это решается непрозрачным подслоем. На металлокерамике такой проблемы нет.</p>
+
+      <p><strong>Привыкание.</strong> Некоторые пациенты говорят, что циркониевая коронка ощущается плотнее металлокерамической. Через 1–2 недели ощущение проходит.</p>
+
+      <h2>Мнение врача</h2>
+      <p>Цирконий — лучший выбор для передних зубов (эстетика) и для пациентов с аллергией. Для жевательных зубов цирконий так же хорош, как металлокерамика, но дороже. Если бюджет позволяет — ставьте цирконий. Если нужно сэкономить — металлокерамика тоже достойный вариант.</p>
+
+      <div class="cta">
+        <p>Хотите посмотреть, как выглядят циркониевые коронки? Приходите на консультацию — покажу работы.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+</style>

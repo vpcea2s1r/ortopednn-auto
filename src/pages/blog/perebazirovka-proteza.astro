@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+const slug = 'perebazirovka-proteza';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Перебазировка зубного протеза: когда нужна, сколько стоит",
+  "description": "Перебазировка зубного протеза: когда нужна, как делается, сколько стоит. Разница между врачебной и лабораторной перебазировкой.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Перебазировка зубного протеза: когда нужна, сколько стоит | Никитина М.Г."
+  description="Перебазировка протеза: что это, зачем нужна. Врачебная и лабораторная перебазировка, сроки, стоимость. Когда проще сделать новый протез."
+  breadcrumbTitle="Перебазировка протеза"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    
+    <article>
+      <h1>Перебазировка зубного протеза: когда нужна, сколько стоит</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Перебазировка — это обновление внутренней поверхности протеза. Со временем костная ткань под протезом уменьшается (атрофия), и протез перестаёт плотно прилегать. Появляется зазор, протез шатается, под него попадает еда. Перебазировка возвращает посадку.</p>
+
+      <h2>Когда нужна перебазировка</h2>
+      <ul>
+        <li><strong>Протез болтается</strong> — между протезом и десной есть зазор</li>
+        <li><strong>Еда забивается под протез</strong> — плохое прилегание</li>
+        <li><strong>Протез натирает</strong> — точки давления из-за неравномерного прилегания</li>
+        <li><strong>Протезу больше 2-3 лет</strong> — профилактика</li>
+      </ul>
+
+      <h2>Виды перебазировки</h2>
+      <h3>Врачебная (клиническая)</h3>
+      <p>Врач наносит на внутреннюю поверхность протеза мягкую прокладку (Implakril, Ufi Gel). Пациент носит протез 20–30 минут, прокладка застывает и заполняет зазоры. Плюс — быстро (одно посещение). Минус — мягкая прокладка служит 6–12 месяцев, потом заменяется.</p>
+
+      <h3>Лабораторная</h3>
+      <p>Протез отдают в лабораторию на 1–2 дня. Там снимают новый слепок и отливают новый базис из акрила. Плюс — протез служит ещё 2–3 года. Минус — нужно ждать, дороже.</p>
+
+      <h2>Сколько стоит</h2>
+      <p>Врачебная перебазировка дешевле лабораторной, так как делается за один приём. Лабораторная стоит дороже, так как включает работу зуботехника. Но лабораторная даёт более долговременный результат. Точная цена зависит от объёма работ.</p>
+
+      <h2>Когда проще сделать новый протез</h2>
+      <p>Если протезу больше 5 лет и перебазировку уже делали — новый протез будет надёжнее. Акрил со временем стареет: накапливает влагу, теряет прочность. Одна перебазировка продлевает жизнь протезу. Вторая — сомнительная экономия.</p>
+
+      <div class="cta">
+        <p>Протез болтается или натирает? Приходите — сделаем перебазировку или решим, что лучше.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+</style>
