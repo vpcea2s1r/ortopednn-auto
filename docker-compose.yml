@@ -34,5 +34,24 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: ortopednn-n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_HOST=localhost
+      - WEBHOOK_URL=http://94.183.155.147:5678/
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - TZ=Europe/Moscow
+    volumes:
+      - n8n_data:/home/node/.n8n
+    labels:
+      - "com.ortopednn.description=n8n workflow orchestrator for content automation"
+
 volumes:
   bot_data:
+  n8n_data:
