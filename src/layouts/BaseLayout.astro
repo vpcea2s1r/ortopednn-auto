@@ -4,7 +4,8 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle, ogImage = '/og-image.svg', noindex = false } = Astro.props;
-const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '...' : title;
+const titleWithCity = title.includes('Нижний Новгород') ? title : `${title} | Нижний Новгород`;
+const truncatedTitle = titleWithCity.length > 60 ? titleWithCity.slice(0, 57) + '...' : titleWithCity;
 const truncatedDesc = description.length > 160 ? description.slice(0, 157) + '...' : description;
 const isHomepage = Astro.url.pathname === '/';
 const siteOrigin = "2025-01-15T00:00:00+03:00";
@@ -19,6 +20,7 @@ const segmentNames = {
   'checkup': 'Самопроверка',
   'compare': 'Сравнение',
   'materials': 'Материалы',
+  'stomatolog-ortoped-nizhnij-novgorod': 'Стоматолог-ортопед в Нижнем Новгороде',
 };
 
 const pathParts = Astro.url.pathname.replace(/\/$/, '').split('/').filter(Boolean);
@@ -238,7 +240,7 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
     <div class="container">
       <p><strong>Правовая информация:</strong></p>
       <p>Данный сайт является персональным блогом (личной информационной страницей) врача Никитиной М.Г. Ресурс носит исключительно информационно-просветительский характер, не является представительством какой-либо медицинской организации, не осуществляет дистанционное оказание медицинских услуг и не собирает за них оплату.</p>
-      <p>Информация о видах ортопедических работ отражает профессиональную специализацию и клинический опыт доктора. Официальный практический прием пациентов и медицинские манипуляции осуществляются строго на базе лицензированной клиники по адресу: г. Нижний Новгород, ул. Октябрьской Революции, 43, в соответствии с её действующим прейскурантом, правилами и медицинской лицензией.</p>
+      <p>Информация о видах ортопедических работ отражает профессиональную специализацию и клинический опыт доктора. Официальный практический прием пациентов и медицинские манипуляции осуществляются на базе лицензированной клиники по адресу: г. Нижний Новгород, ул. Октябрьской Революции, 43, в соответствии с её действующим прейскурантом, правилами и медицинской лицензией.</p>
       <p class="legal-disclaimer__contraindications">ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА.</p>
     </div>
   </footer>
@@ -252,7 +254,7 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
     line-height: 1.5;
   }
   .legal-disclaimer p {
-    margin: 0 0 var(--space-sm);
+    margin: 0 auto var(--space-sm);
     max-width: 800px;
   }
   .legal-disclaimer__contraindications {
