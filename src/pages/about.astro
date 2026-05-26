@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import Navbar from '../components/Navbar.astro';
 import doctor from '../../data/doctor.json';
 import socials from '../../data/socials.json';
 ---
@@ -13,6 +13,7 @@ import socials from '../../data/socials.json';
   cfToken="YOUR_CF_TOKEN" 
   socials={socials}
 >
+  <Navbar />
   <article class="p">
     <h1>{doctor.name}</h1>
     <p>{doctor.experience} практики.</p>
