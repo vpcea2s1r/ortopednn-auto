@@ -12,11 +12,18 @@ export function setupCron(getDb, dir) {
     console.log('Daily: collecting stats');
     import('./collector.js').then(m => m.collectAll(db())).catch(e => console.error(e));
   });
+  cron.schedule('0 7 * * *', () => {
+    console.log('Daily 7:00: content pipeline');
+    import('./agent-pipeline.js').then(m => m.pickAndRun()).then(r => {
+      if (r.info) console.log(r.info);
+      else console.log(r.published ? `Pipeline: ${r.published.url}` : `Pipeline: ${JSON.stringify(r).slice(0, 100)}`);
+    }).catch(e => console.error('Pipeline error:', e));
+  });
   cron.schedule('0 9 * * 1', () => {
     console.log('Weekly: sitemap check');
     checkSitemap();
   });
-  console.log('Cron: stats 8:00 daily, sitemap 9:00 Monday');
+  console.log('Cron: content 7:00 daily, stats 8:00 daily, sitemap 9:00 Monday');
 }
 
 async function checkSitemap() {
