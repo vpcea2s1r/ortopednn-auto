@@ -10,7 +10,7 @@ const STATE_FILE = join(DATA_DIR, 'pipeline-state.json');
 const GH_TOKEN = process.env.GH_TOKEN || '';
 const GH_OWNER = 'vpcea2s1r';
 const GH_REPO = 'ortopednn-auto';
-const GH_BRANCH = 'main';
+const GH_BRANCH = 'master';
 
 const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
 function makeSlug(text) {
@@ -29,7 +29,7 @@ async function ghFetch(path) {
 }
 
 async function ghPut(path, content, message, sha) {
-  const body = { message, content: Buffer.from(content, 'utf-8').toString('base64') };
+  const body = { message, content: Buffer.from(content, 'utf-8').toString('base64'), branch: GH_BRANCH };
   if (sha) body.sha = sha;
   const resp = await fetch(ghApi(path), { method: 'PUT', headers: ghHeaders, body: JSON.stringify(body) });
   const json = await resp.json();
@@ -62,11 +62,15 @@ function saveState(state) {
 
 /* --- RESEARCH AGENT --- */
 
+const DENTISTRY_KEYWORDS = ['dentistry', 'dental', 'prosthodontics', 'prosthetic', 'implant', 'crown', 'bridge', 'orthopedic stomatology', 'oral rehabilitation', 'stomatology'];
+
 async function researchAgent(topic) {
-  const pubmedQuery = topic.replace(/[^а-яa-z\s]/gi, '').trim().split(' ').slice(0, 3).join(' ');
+  const words = topic.replace(/[^а-яa-z\s]/gi, '').trim().split(/\s+/).filter(Boolean);
+  const topicKeywords = words.slice(0, 3);
+  const query = [...topicKeywords, ...DENTISTRY_KEYWORDS.slice(0, 3)].join(' ');
   let pubmedResults = [];
   try {
-    const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(pubmedQuery)}&retmax=3&retmode=json`;
+    const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=3&retmode=json`;
     const searchResp = await fetch(searchUrl, { signal: AbortSignal.timeout(15000) });
     const searchData = await searchResp.json();
     const ids = searchData?.esearchresult?.idlist || [];
@@ -87,21 +91,22 @@ async function writerAgent(topic, research) {
     ? research.pubmedResults.map(r => `- ${r.title} (${r.source})`).join('\n')
     : '';
 
-  const prompt = `Напиши SEO-статью для блога стоматолога-ортопеда на тему: "${topic}"
+  const prompt = `Напиши экспертную статью для блога стоматолога-ортопеда на тему: "${topic}"
 
-${pubmedContext ? 'Научный контекст из PubMed:\n' + pubmedContext : ''}
+${pubmedContext ? 'Научный контекст из PubMed (используй для аргументации):\n' + pubmedContext : ''}
 
-Требования:
-- 1500-2500 символов
-- Первый абзац — lead с ответом на главный вопрос пациента
-- h2 подзаголовки через каждые 2-3 абзаца
-- Один ul или ol с перечислением
-- FAQ блок: 3-5 типичных вопросов пациентов с ответами
-- Без h1, без восклицательных знаков
-- Только факты, без "запишитесь к врачу"
+Ключевые параметры:
+- 2000-3000 символов
+- Первый абзац — ответ на главный вопрос пациента (без общих фраз)
+- Каждый h2 — конкретный аспект темы
+- Раздел "Сравнение" с таблицей (методы/материалы/сроки)
+- FAQ: 3-5 вопросов с короткими предметными ответами
+- Стиль: естественный русский, как говорит опытный врач коллеге. Без канцелярита, без "следует отметить", "необходимо подчеркнуть"
+- Без h1, без "запишитесь к нам", без восклицательных знаков
+- HTML: только p, h2, ul/ol, table (с thead/tbody), strong
 
-Ответь ТОЛЬКО JSON без markdown-разметки:
-{"title":"заголовок H1 для статьи","description":"мета-описание 150-160 символов","body":"<p>полный HTML текст статьи</p>"}`;
+Ответь ТОЛЬКО JSON:
+{"title":"","description":"150-160 символов","body":"полный HTML"}`;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
     const raw = await callAI(prompt);
