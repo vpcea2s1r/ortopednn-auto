@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
-import { pickAndRun, runPipelineManual, addTopic, listTopics, listState } from './agent-pipeline.js';
+import { pickAndRun, runPipelineManual, addTopic, listTopics, listState, ghPut, ghFetch } from './agent-pipeline.js';
 
 const __dirname = fileURLToPath(import.meta.url);
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
@@ -307,6 +307,63 @@ async function pushToStomatolog(slug) {
   return { ok: true, sha: json.content?.sha };
 }
 
+async function publishToOrtopednn(slug) {
+  const draftPath = join(DRAFTS_DIR, `${slug}.astro`);
+  if (!existsSync(draftPath)) return { error: 'Файл не найден' };
+  const content = readFileSync(draftPath, 'utf-8');
+  const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
+  const meta = existsSync(metaPath) ? JSON.parse(readFileSync(metaPath, 'utf-8')) : {};
+
+  try {
+    await ghPut(`src/pages/blog/${slug}.astro`, content, `draft: ${slug} [approved]`);
+  } catch (e) {
+    return { error: e.message };
+  }
+
+  if (meta.astroEntry) {
+    try {
+      const indexFile = await ghFetch('src/pages/blog/index.astro');
+      if (indexFile) {
+        const indexContent = Buffer.from(indexFile.content, 'base64').toString('utf-8');
+        const insertPoint = indexContent.indexOf('const articles = [');
+        if (insertPoint !== -1) {
+          const afterBracket = indexContent.indexOf('[', insertPoint) + 1;
+          const patched = indexContent.slice(0, afterBracket) + '\n' + meta.astroEntry + indexContent.slice(afterBracket);
+          await ghPut('src/pages/blog/index.astro', patched, 'blog: update index [draft]', indexFile.sha);
+        }
+      }
+    } catch (e) {
+      console.error('Index patch error:', e.message);
+    }
+  }
+
+  try {
+    const contentFile = await ghFetch('CONTENT.md');
+    if (contentFile) {
+      let contentMd = Buffer.from(contentFile.content, 'base64').toString('utf-8');
+      const lines = contentMd.split('\n');
+      const headerIdx = lines.findIndex(l => l.startsWith('| # |'));
+      if (headerIdx !== -1) {
+        const lastNum = lines.filter(l => l.match(/^\|\s*\d+\s*\|/)).reduce((max, l) => {
+          const m = l.match(/^\|\s*(\d+)\s*\|/);
+          return m ? Math.max(max, parseInt(m[1])) : max;
+        }, 0);
+        const newLine = `| ${lastNum + 1} | ${meta.title || ''} | ${meta.date || ''} ✅ |`;
+        const lastRow = lines.map((l, i) => ({ l, i })).filter(({ l }) => l.startsWith('|') && l.match(/^\|\s*\d+\s*\|/)).pop();
+        if (lastRow) {
+          contentMd = lines.slice(0, lastRow.i + 1).join('\n') + '\n' + newLine + '\n' + lines.slice(lastRow.i + 1).join('\n');
+          await ghPut('CONTENT.md', contentMd, 'blog: update CONTENT.md [draft]', contentFile.sha);
+        }
+      }
+    }
+  } catch (e) {
+    console.error('CONTENT.md patch error:', e.message);
+  }
+
+  deleteDraft(slug);
+  return { ok: true, slug, url: `https://ortopednn.ru/blog/${slug}/` };
+}
+
 function deleteDraft(slug) {
   ['astro', 'meta.json'].forEach(ext => {
     const p = join(DRAFTS_DIR, `${slug}.${ext}`);
@@ -372,7 +429,7 @@ async function handleCallback(cb) {
           try {
             await tg('sendMessage', {
               chat_id: chatId,
-              text: `${d.title}\n${d.date}\nhttps://stomatolog.ortopednn.ru/blog/${d.slug}/`,
+              text: `${d.title}\n${d.date}\n${d.repo === 'ortopednn-auto' ? `https://ortopednn.ru/blog/${d.slug}/` : `https://stomatolog.ortopednn.ru/blog/${d.slug}/`}`,
               reply_markup: draftButtons(d.slug)
             });
           } catch (e) { console.error('Send draft error:', e.message); }
@@ -405,13 +462,20 @@ async function handleCallback(cb) {
   }
   if (data.startsWith('pub:')) {
     await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Публикую ${slug}...` });
-    const result = await pushToStomatolog(slug);
+    const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
+    let result;
+    if (existsSync(metaPath)) {
+      const meta = JSON.parse(readFileSync(metaPath, 'utf-8'));
+      result = meta.repo === 'ortopednn-auto' ? await publishToOrtopednn(slug) : await pushToStomatolog(slug);
+    } else {
+      result = await pushToStomatolog(slug);
+    }
     if (result.error) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${result.error}` });
     } else {
       await tg('editMessageText', {
         chat_id: chatId, message_id: msgId,
-        text: `Опубликовано! https://stomatolog.ortopednn.ru/blog/${slug}/`,
+        text: `Опубликовано! ${result.url}`,
         reply_markup: { inline_keyboard: [] }
       });
     }
@@ -453,7 +517,7 @@ async function handleUpdate(upd) {
       for (const d of drafts) {
         await tg('sendMessage', {
           chat_id: chatId,
-          text: `${d.title}\n${d.date}\nhttps://stomatolog.ortopednn.ru/blog/${d.slug}/`,
+          text: `${d.title}\n${d.date}\n${d.repo === 'ortopednn-auto' ? `https://ortopednn.ru/blog/${d.slug}/` : `https://stomatolog.ortopednn.ru/blog/${d.slug}/`}`,
           reply_markup: draftButtons(d.slug)
         });
       }
@@ -467,7 +531,7 @@ async function handleUpdate(upd) {
       await addTopic(query);
       runPipelineManual(query).then(async (result) => {
         if (result.error) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка на этапе "${result.stage}": ${result.error}` });
-        else await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Опубликовано: ${result.published.title}\n${result.published.url}` });
+        else await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Черновик готов: ${result.draft.title}`, reply_markup: draftButtons(result.draft.slug) });
       }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` }));
     } catch (e) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
