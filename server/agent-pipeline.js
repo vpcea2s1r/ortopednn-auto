@@ -125,6 +125,26 @@ function seoAgent(article) {
   return { slug, date, title: article.title, description: article.description.substring(0, 160), body: bodyClean };
 }
 
+/* --- DRAFT AGENT (save locally instead of publishing) --- */
+
+async function draftAgent(article) {
+  const { slug, title, description, date, body } = article;
+  const astro = astroTemplate({ slug, title, description, date, body });
+  const draftsDir = join(DATA_DIR, 'drafts');
+  mkdirSync(draftsDir, { recursive: true });
+
+  writeFileSync(join(draftsDir, `${slug}.astro`), astro, 'utf-8');
+
+  const newEntry = `  { slug: '${slug}', title: '${title.replace(/'/g, "\\'")}', date: '${date}', desc: '${description.replace(/'/g, "\\'")}' },`;
+  writeFileSync(join(draftsDir, `${slug}.meta.json`), JSON.stringify({
+    slug, title, description, date, status: 'draft',
+    repo: 'ortopednn-auto',
+    astroEntry: newEntry
+  }, null, 2), 'utf-8');
+
+  return { slug, title, url: `https://ortopednn.ru/blog/${slug}/` };
+}
+
 /* --- PUBLISHER AGENT --- */
 
 function astroTemplate({ slug, title, description, date, body }) {
@@ -382,9 +402,9 @@ export async function runPipelineManual(topic) {
     result.review = reviewed.scores;
     if (reviewed.warning) result.review.warning = 'quality concerns after max retries';
 
-    result.stage = 'publish';
-    const published = await publisherAgent(reviewed.article);
-    result.published = published;
+    result.stage = 'draft';
+    const draftInfo = await draftAgent(reviewed.article);
+    result.draft = draftInfo;
 
     result.stage = 'done';
     result.completedAt = new Date().toISOString();
@@ -405,9 +425,8 @@ export async function pickAndRun() {
     pending.status = 'error';
     pending.error = result.error;
   } else {
-    pending.status = 'done';
-    pending.slug = result.published?.slug;
-    pending.url = result.published?.url;
+    pending.status = 'awaiting_review';
+    pending.slug = result.draft?.slug;
     pending.completedAt = result.completedAt;
   }
   const state = loadState();
@@ -418,6 +437,8 @@ export async function pickAndRun() {
   saveTopics(topics);
   return result;
 }
+
+export { ghPut, ghFetch };
 
 export async function addTopic(topic) {
   const topics = loadTopics();
