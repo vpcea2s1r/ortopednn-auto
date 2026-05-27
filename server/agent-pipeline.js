@@ -293,6 +293,73 @@ function parseJSON(raw) {
   return null;
 }
 
+/* --- REVIEW AGENT --- */
+
+const DENTAL_TERMS = ['зуб', 'коронк', 'протез', 'имплант', 'мост', 'винир', 'керамик', 'циркони', 'металлокерамик', 'стоматолог', 'ортопед', 'десн', 'челюст', 'прикус', 'пломб', 'абатмент', 'культ', 'слепок', 'бюгель', 'нейлон', 'акрил', 'CAD/CAM', '3D', 'окклюзи', 'периодонт', 'пародонт', 'гингивит', 'пульпит', 'эмал', 'дентин', 'цемент', 'фиксаци', 'адгезив'];
+
+function reviewArticle(article, topic) {
+  const body = (article.body || '').toLowerCase();
+  const text = body.replace(/<[^>]+>/g, '');
+  const scores = {};
+
+  // 1. Relevance: count dental terms
+  scores.dentalTermCount = DENTAL_TERMS.reduce((c, t) => c + (text.includes(t) ? 1 : 0), 0);
+  scores.relevance = scores.dentalTermCount >= 4 ? 'pass' : 'weak';
+
+  // 2. Length
+  scores.length = text.length;
+  scores.lengthPass = text.length >= 1200;
+
+  // 3. Structure: count h2 headings
+  scores.h2Count = (body.match(/<h2/g) || []).length;
+  scores.h2Pass = scores.h2Count >= 2;
+
+  // 4. Has list
+  scores.hasList = /<[uo]l>/.test(body);
+
+  // 5. Has FAQ
+  scores.hasFAQ = /faq|вопрос|част/i.test(body);
+
+  // Overall
+  const failCount = [!scores.lengthPass, !scores.h2Pass, !scores.hasList, !scores.hasFAQ, scores.relevance === 'weak'].filter(Boolean).length;
+  scores.pass = failCount <= 1;
+
+  return scores;
+}
+
+async function reviewAgent(article, topic, maxRetries = 2) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    const scores = reviewArticle(article, topic);
+
+    if (scores.pass) return { article, scores, retries: attempt - 1 };
+
+    // Improve prompt based on what's missing
+    const fixes = [];
+    if (scores.relevance === 'weak') fixes.push('больше терминов по стоматологии (коронки, протезы, импланты)');
+    if (!scores.lengthPass) fixes.push('увеличить объём до 2000+ символов');
+    if (!scores.h2Pass) fixes.push('добавить 2-3 подзаголовка h2');
+    if (!scores.hasList) fixes.push('добавить список ul/ol с перечислением');
+    if (!scores.hasFAQ) fixes.push('добавить блок FAQ (3 вопроса с ответами)');
+
+    const prompt = `Перепиши эту статью для блога стоматолога-ортопеда. Исправь: ${fixes.join('; ')}.
+
+Оригинал:
+${article.body}
+
+Ответь ТОЛЬКО JSON:
+{"title":"${article.title}","description":"${article.description}","body":"полный HTML"}`;
+
+    const raw = await callAI(prompt);
+    const improved = parseJSON(raw);
+    if (improved?.title && improved?.description && improved?.body) {
+      article = improved;
+    }
+  }
+
+  const finalScores = reviewArticle(article, topic);
+  return { article, scores: finalScores, retries: maxRetries - 1, warning: !finalScores.pass };
+}
+
 /* --- MAIN PIPELINE --- */
 
 export async function runPipelineManual(topic) {
@@ -310,8 +377,13 @@ export async function runPipelineManual(topic) {
     const seo = seoAgent(article);
     result.seo = seo;
 
+    result.stage = 'review';
+    const reviewed = await reviewAgent(seo, topic);
+    result.review = reviewed.scores;
+    if (reviewed.warning) result.review.warning = 'quality concerns after max retries';
+
     result.stage = 'publish';
-    const published = await publisherAgent(seo);
+    const published = await publisherAgent(reviewed.article);
     result.published = published;
 
     result.stage = 'done';
