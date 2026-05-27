@@ -14,9 +14,22 @@ export function setupCron(getDb, dir) {
   });
   cron.schedule('0 7 * * *', () => {
     console.log('Daily 7:00: content pipeline');
-    import('./agent-pipeline.js').then(m => m.pickAndRun()).then(r => {
-      if (r.info) console.log(r.info);
-      else console.log(r.published ? `Pipeline: ${r.published.url}` : `Pipeline: ${JSON.stringify(r).slice(0, 100)}`);
+    import('./agent-pipeline.js').then(m => m.pickAndRun()).then(async r => {
+      if (r.info) { console.log(r.info); return; }
+      if (r.draft) {
+        console.log(`Pipeline: draft ${r.draft.slug}`);
+        const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+        const CHAT_ID = process.env.TELEGRAM_CHAT_ID || '45185475';
+        if (TOKEN) {
+          const text = `📝 Новый черновик:\n${r.draft.title}\nhttps://ortopednn.ru/blog/${r.draft.slug}/\n\n/drafts — просмотреть и опубликовать`;
+          await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text })
+          }).catch(e => console.error('TG notify error:', e.message));
+        }
+      } else {
+        console.log('Pipeline result:', JSON.stringify(r).slice(0, 200));
+      }
     }).catch(e => console.error('Pipeline error:', e));
   });
   cron.schedule('0 9 * * 1', () => {
