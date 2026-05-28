@@ -375,32 +375,106 @@ function parseJSON(raw) {
 
 const DENTAL_TERMS = ['зуб', 'коронк', 'протез', 'имплант', 'мост', 'винир', 'керамик', 'циркони', 'металлокерамик', 'стоматолог', 'ортопед', 'десн', 'челюст', 'прикус', 'пломб', 'абатмент', 'культ', 'слепок', 'бюгель', 'нейлон', 'акрил', 'CAD/CAM', '3D', 'окклюзи', 'периодонт', 'пародонт', 'гингивит', 'пульпит', 'эмал', 'дентин', 'цемент', 'фиксаци', 'адгезив'];
 
+/* ai-tells-validator: detect AI-sounding patterns in text */
+
+const AI_BANNED_WORDS = [
+  'delve', 'delving', 'tapestry', 'meticulous', 'meticulously', 'pivotal',
+  'robust', 'underscore', 'underscores', 'underscoring', 'showcase', 'showcases', 'showcasing',
+  'testament', 'intricate', 'intricacies', 'enduring', 'fostering', 'foster', 'fostered',
+  'garner', 'bolster', 'bolstered', 'interplay',
+  'leverage', 'leverages', 'leveraging', 'streamline', 'streamlines', 'streamlining',
+  'transformative', 'transformational', 'groundbreaking', 'cutting-edge',
+  'seamless', 'seamlessly', 'elevate', 'elevates', 'elevating',
+  'unlock', 'unlocks', 'unlocking', 'empower', 'empowers', 'empowering',
+  'revolutionize', 'revolutionizes', 'revolutionary', 'paradigm', 'synergy', 'synergies',
+  'holistic', 'holistically'
+];
+
+const AI_BANNED_PHRASES = [
+  'i hope this email finds you well', 'i hope this finds you well',
+  'just checking in', 'circling back', 'touching base',
+  'reaching out to', 'wanted to reach out',
+  'in conclusion', 'in summary', 'to summarize',
+  'it is important to note', "it's important to note",
+  'it is worth noting', 'needless to say',
+  'at the end of the day',
+  "in today's fast-paced", "in today's digital age",
+  'plays a vital role', 'plays a crucial role', 'plays a key role',
+  'navigate the complexities', 'navigating the complexities',
+  'when it comes to', 'at its core',
+  'a powerful tool', 'best-in-class', 'world-class',
+  'next-generation', 'mission-critical', 'value proposition',
+  'thought leader', 'thought leadership',
+  'best practices', 'enhance your', 'optimize your',
+  'unlock the power', 'harness the power',
+  'let me know your thoughts', 'looking forward to hearing',
+  'forward to hearing from you'
+];
+
+const AI_PATTERNS = [
+  { re: /\bnot\s+(?:just\s+|merely\s+|simply\s+|only\s+)?[a-z][a-z\s,'-]{2,60}?,?\s+but\s+(?:also\s+|rather\s+)?[a-z]/i, tag: 'not_just_but' },
+  { re: /,\s+(?:reinforcing|ensuring|fostering|enabling|driving|empowering|enhancing|cultivating|underscoring|highlighting|contributing|paving|setting)\s+/i, tag: 'participle_tail' },
+  { re: /\bwhether\s+you\s*['']?\s*re\b/i, tag: 'whether_youre' },
+  { re: /\bexcited\s+to\b/i, tag: 'excited_to' },
+];
+
+function checkAiTells(body) {
+  if (!body) return [];
+  const text = body.replace(/<[^>]+>/g, '');
+  const lower = text.toLowerCase();
+  const tells = [];
+
+  for (const word of AI_BANNED_WORDS) {
+    const re = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\-]/g, '\\$&') + '\\b', 'i');
+    if (re.test(text)) {
+      tells.push({ tag: 'ai_word:' + word });
+    }
+  }
+
+  for (const phrase of AI_BANNED_PHRASES) {
+    if (lower.includes(phrase)) {
+      tells.push({ tag: 'ai_phrase:' + phrase });
+    }
+  }
+
+  for (const p of AI_PATTERNS) {
+    if (p.re.test(text)) {
+      tells.push({ tag: 'ai_pattern:' + p.tag });
+    }
+  }
+
+  const emDashes = (text.match(/—/g) || []).length;
+  if (emDashes > 1) tells.push({ tag: 'ai_em_dash_overuse', detail: `${emDashes} em-dashes` });
+
+  if (/[“”‘’]/.test(text)) tells.push({ tag: 'ai_smart_quotes' });
+
+  return tells;
+}
+
 function reviewArticle(article, topic) {
   const body = (article.body || '').toLowerCase();
   const text = body.replace(/<[^>]+>/g, '');
   const scores = {};
 
-  // 1. Relevance: count dental terms
   scores.dentalTermCount = DENTAL_TERMS.reduce((c, t) => c + (text.includes(t) ? 1 : 0), 0);
   scores.relevance = scores.dentalTermCount >= 4 ? 'pass' : 'weak';
 
-  // 2. Length
   scores.length = text.length;
   scores.lengthPass = text.length >= 1200;
 
-  // 3. Structure: count h2 headings
   scores.h2Count = (body.match(/<h2/g) || []).length;
   scores.h2Pass = scores.h2Count >= 2;
 
-  // 4. Has list
   scores.hasList = /<[uo]l>/.test(body);
 
-  // 5. Has FAQ
   scores.hasFAQ = /faq|вопрос|част/i.test(body);
 
-  // Overall
+  const tells = checkAiTells(article.body);
+  scores.aiTells = tells;
+  scores.aiPass = tells.length === 0;
+
   const failCount = [!scores.lengthPass, !scores.h2Pass, !scores.hasList, !scores.hasFAQ, scores.relevance === 'weak'].filter(Boolean).length;
-  scores.pass = failCount <= 1;
+  scores.pass = failCount <= 1 && scores.aiPass;
 
   return scores;
 }
@@ -411,13 +485,16 @@ async function reviewAgent(article, topic, maxRetries = 2) {
 
     if (scores.pass) return { article, scores, retries: attempt - 1 };
 
-    // Improve prompt based on what's missing
     const fixes = [];
     if (scores.relevance === 'weak') fixes.push('больше терминов по стоматологии (коронки, протезы, импланты)');
     if (!scores.lengthPass) fixes.push('увеличить объём до 2000+ символов');
     if (!scores.h2Pass) fixes.push('добавить 2-3 подзаголовка h2');
     if (!scores.hasList) fixes.push('добавить список ul/ol с перечислением');
     if (!scores.hasFAQ) fixes.push('добавить блок FAQ (3 вопроса с ответами)');
+    if (!scores.aiPass) {
+      const tags = [...new Set(scores.aiTells.map(t => t.tag))];
+      fixes.push(`убрать AI-маркеры: ${tags.join(', ')}. Пиши естественным русским языком, без шаблонных фраз и штампов`);
+    }
 
     const prompt = `Перепиши эту статью для блога стоматолога-ортопеда. Исправь: ${fixes.join('; ')}.
 
