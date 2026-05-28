@@ -120,15 +120,49 @@ function formatDate(iso) {
   return `${parseInt(d,10)} ${m[month]||month} ${y}`;
 }
 
-function astroTemplate({ slug, title, description, author, date, body }) {
+function htmlTemplate({ title, date, body }) {
+  return `<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>${title}</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:700px;margin:0 auto;padding:20px;color:#333;line-height:1.7}
+h1{color:#1e3a5f;font-size:1.6rem}
+.meta{color:#7a9ab8;font-size:.9rem;margin-bottom:1.5rem}
+h2{color:#2e6ab3;margin:2rem 0 1rem}
+p{color:#555;margin-bottom:1rem}
+ul,ol{padding-left:1.5rem;margin-bottom:1rem;color:#555}
+table{width:100%;border-collapse:collapse;margin-bottom:1.5rem}
+th,td{text-align:left;padding:.75rem;border-bottom:1px solid #e0e8f0;color:#555}
+th{background:#f5f8fc;color:#1e3a5f}
+.cta{text-align:center;padding:1.5rem;background:#f8fafc;border-radius:8px;margin-top:2rem}
+.cta p{margin-bottom:1rem}
+.btn{display:inline-block;background:#4a90d9;color:#fff;padding:.75rem 2rem;border-radius:100px;text-decoration:none;font-weight:600}
+a{color:#4a90d9}
+</style>
+</head>
+<body>
+<h1>${title}</h1>
+<div class="meta">${formatDate(date)} — Никитина Марина Георгиевна, стоматолог-ортопед</div>
+${body}
+<div class="cta"><p>Нужна консультация?</p><a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a></div>
+</body>
+</html>`;
+}
+
+function astroTemplate({ slug, title, description, author, date, body, noindex = false }) {
   const e = (s) => s.replace(/"/g, '\\"').replace(/`/g, '\\`').replace(/\$/g, '\\$');
   const bodyClean = stripH1(body);
+  const domain = noindex ? 'stomatolog.ortopednn.ru' : 'ortopednn.ru';
   return `---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
 const slug = '${slug}';
-const pageUrl = \`https://ortopednn.ru/blog/\${slug}/\`;
+const pageUrl = \`https://${domain}/blog/\${slug}/\`;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -142,7 +176,7 @@ const ldArticle = {
   "publisher": { "@type": "Organization", "name": "ОртопедНН" }
 };
 ---
-<BaseLayout title="${e(title)}" description="${e(description)}" breadcrumbTitle="${e(title)}" doctor={doctor}>
+<BaseLayout title="${e(title)}" description="${e(description)}" breadcrumbTitle="${e(title)}" doctor={doctor} noindex={${noindex}}>
   <Navbar />
   <main class="container">
     <a href="/blog" class="back">← К статьям</a>
@@ -277,7 +311,7 @@ ${text.substring(0, 3000)}
       const slug = makeSlug(json.title);
       if (existingSlugs.has(slug) || isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
       const date = new Date().toISOString().split('T')[0];
-      const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body });
+      const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body, noindex: true });
       if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
       writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
       writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft' }, null, 2), 'utf-8');
@@ -287,24 +321,38 @@ ${text.substring(0, 3000)}
   return { error: true, response: lastRaw };
 }
 
+function extractBodyFromAstro(astroContent) {
+  // Extract article body between <h1> and cta div
+  const h1end = astroContent.indexOf('</h1>');
+  const ctaStart = astroContent.indexOf('cta');
+  if (h1end === -1 || ctaStart === -1) return '';
+  // Find the meta div after h1, then get content after </div>
+  const metaEnd = astroContent.indexOf('</div>', h1end);
+  const start = metaEnd !== -1 ? metaEnd + 6 : h1end + 5;
+  const end = astroContent.lastIndexOf('<div', ctaStart);
+  return astroContent.slice(start, end !== -1 ? end : ctaStart).trim();
+}
+
 async function pushToStomatolog(slug) {
   const draftPath = join(DRAFTS_DIR, `${slug}.astro`);
+  const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
   if (!existsSync(draftPath)) return { error: 'Файл не найден' };
-  const content = readFileSync(draftPath, 'utf-8');
-  const encoded = Buffer.from(content, 'utf-8').toString('base64');
-  const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/src/pages/blog/${slug}.astro`;
+  const astroContent = readFileSync(draftPath, 'utf-8');
+  const meta = existsSync(metaPath) ? JSON.parse(readFileSync(metaPath, 'utf-8')) : {};
+  const body = extractBodyFromAstro(astroContent);
+  const html = htmlTemplate({ title: meta.title || slug, date: meta.date || new Date().toISOString().split('T')[0], body });
+  const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/blog/${slug}.html`;
   const headers = { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' };
   const existing = await fetch(url, { headers }).then(r => r.ok ? r.json() : null);
   const sha = existing && existing.sha ? existing.sha : undefined;
-  const body = { message: `draft: ${slug}`, content: encoded };
-  if (sha) body.sha = sha;
-  const resp = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  const payload = { message: `draft: ${slug}`, content: Buffer.from(html, 'utf-8').toString('base64') };
+  if (sha) payload.sha = sha;
+  const resp = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(payload) });
   const json = await resp.json();
   if (!resp.ok) return { error: json.message || 'GitHub API error' };
   unlinkSync(draftPath);
-  const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
   if (existsSync(metaPath)) unlinkSync(metaPath);
-  return { ok: true, sha: json.content?.sha };
+  return { ok: true, slug, url: `https://stomatolog.ortopednn.ru/blog/${slug}.html` };
 }
 
 async function publishToOrtopednn(slug) {
@@ -315,7 +363,9 @@ async function publishToOrtopednn(slug) {
   const meta = existsSync(metaPath) ? JSON.parse(readFileSync(metaPath, 'utf-8')) : {};
 
   try {
-    await ghPut(`src/pages/blog/${slug}.astro`, content, `draft: ${slug} [approved]`);
+    const existing = await ghFetch(`src/pages/blog/${slug}.astro`);
+    const sha = existing?.sha;
+    await ghPut(`src/pages/blog/${slug}.astro`, content, `draft: ${slug} [approved]`, sha);
   } catch (e) {
     return { error: e.message };
   }
@@ -390,13 +440,15 @@ function mainMenu() {
   };
 }
 
-function draftButtons(slug) {
-  return {
-    inline_keyboard: [[
-      { text: 'Опубликовать', callback_data: `pub:${slug}` },
-      { text: 'Удалить', callback_data: `del:${slug}` }
-    ]]
-  };
+function draftButtons(slug, repo) {
+  const buttons = [];
+  if (repo === 'ortopednn-auto') {
+    buttons.push({ text: 'На сайт', callback_data: `pub:${slug}` });
+  } else {
+    buttons.push({ text: 'Опубликовать', callback_data: `pub:${slug}` });
+  }
+  buttons.push({ text: 'Удалить', callback_data: `del:${slug}` });
+  return { inline_keyboard: [buttons] };
 }
 
 async function handleCallback(cb) {
@@ -427,10 +479,13 @@ async function handleCallback(cb) {
         await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📝 ${draftsList.length} черновиков:`, reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
         for (const d of draftsList) {
           try {
+            const isPipeline = d.repo === 'ortopednn-auto';
+            const statusIcon = isPipeline ? '🔄' : '📄';
+            const statusText = isPipeline ? 'На рассмотрении' : 'Черновик';
             await tg('sendMessage', {
               chat_id: chatId,
-              text: `${d.title}\n${d.date}\n${d.repo === 'ortopednn-auto' ? `https://ortopednn.ru/blog/${d.slug}/` : `https://stomatolog.ortopednn.ru/blog/${d.slug}/`}`,
-              reply_markup: draftButtons(d.slug)
+              text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}\nstomatolog.ortopednn.ru/blog/${d.slug}.html`,
+              reply_markup: draftButtons(d.slug, d.repo)
             });
           } catch (e) { console.error('Send draft error:', e.message); }
         }
@@ -467,6 +522,17 @@ async function handleCallback(cb) {
     if (existsSync(metaPath)) {
       const meta = JSON.parse(readFileSync(metaPath, 'utf-8'));
       result = meta.repo === 'ortopednn-auto' ? await publishToOrtopednn(slug) : await pushToStomatolog(slug);
+      // After successful publish to ortopednn, delete from stomatolog
+      if (result.ok && meta.repo === 'ortopednn-auto') {
+        try {
+          const stomUrl = `https://api.github.com/repos/vpcea2s1r/stomatolog/contents/blog/${slug}.html`;
+          const stomHeaders = { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' };
+          const stomExisting = await fetch(stomUrl, { headers: stomHeaders }).then(r => r.ok ? r.json() : null);
+          if (stomExisting?.sha) {
+            await fetch(stomUrl, { method: 'DELETE', headers: stomHeaders, body: JSON.stringify({ message: `remove: ${slug} [published to ortopednn]`, sha: stomExisting.sha }) });
+          }
+        } catch (e) { console.error('Stomatolog delete error:', e.message); }
+      }
     } else {
       result = await pushToStomatolog(slug);
     }
@@ -481,6 +547,21 @@ async function handleCallback(cb) {
     }
   } else if (data.startsWith('del:')) {
     try {
+      const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
+      if (existsSync(metaPath)) {
+        const meta = JSON.parse(readFileSync(metaPath, 'utf-8'));
+        if (meta.repo === 'ortopednn-auto') {
+          // Also delete from stomatolog repo
+          try {
+            const stomUrl = `https://api.github.com/repos/vpcea2s1r/stomatolog/contents/blog/${slug}.html`;
+            const stomHeaders = { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' };
+            const stomExisting = await fetch(stomUrl, { headers: stomHeaders }).then(r => r.ok ? r.json() : null);
+            if (stomExisting?.sha) {
+              await fetch(stomUrl, { method: 'DELETE', headers: stomHeaders, body: JSON.stringify({ message: `remove: ${slug} [deleted]`, sha: stomExisting.sha }) });
+            }
+          } catch (e) { console.error('Stomatolog delete error:', e.message); }
+        }
+      }
       deleteDraft(slug);
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Удалён.', reply_markup: { inline_keyboard: [] } });
     } catch (e) {
@@ -515,10 +596,14 @@ async function handleUpdate(upd) {
       await tg('sendMessage', { chat_id: chatId, text: 'Нет черновиков.' });
     } else {
       for (const d of drafts) {
+        const isPipeline = d.repo === 'ortopednn-auto';
+        const domain = 'stomatolog.ortopednn.ru';
+        const statusIcon = isPipeline ? '🔄' : '📄';
+        const statusText = isPipeline ? 'На рассмотрении' : 'Черновик';
         await tg('sendMessage', {
           chat_id: chatId,
-          text: `${d.title}\n${d.date}\n${d.repo === 'ortopednn-auto' ? `https://ortopednn.ru/blog/${d.slug}/` : `https://stomatolog.ortopednn.ru/blog/${d.slug}/`}`,
-          reply_markup: draftButtons(d.slug)
+          text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}\n${domain}/blog/${d.slug}.html`,
+          reply_markup: draftButtons(d.slug, d.repo)
         });
       }
     }
