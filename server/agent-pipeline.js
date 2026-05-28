@@ -578,7 +578,7 @@ export async function pickAndRun() {
   return result;
 }
 
-export { ghPut, ghFetch };
+export { ghPut, ghFetch, checkAiTells };
 
 export async function addTopic(topic) {
   const topics = loadTopics();
