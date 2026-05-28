@@ -11,6 +11,7 @@ const GH_TOKEN = process.env.GH_TOKEN || '';
 const GH_OWNER = 'vpcea2s1r';
 const GH_REPO = 'ortopednn-auto';
 const GH_BRANCH = 'master';
+const STOMATOLOG_REPO = 'stomatolog';
 
 const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
 function makeSlug(text) {
@@ -125,11 +126,11 @@ function seoAgent(article) {
   return { slug, date, title: article.title, description: article.description.substring(0, 160), body: bodyClean };
 }
 
-/* --- DRAFT AGENT (save locally instead of publishing) --- */
+/* --- DRAFT AGENT (save locally + publish to stomatolog) --- */
 
 async function draftAgent(article) {
   const { slug, title, description, date, body } = article;
-  const astro = astroTemplate({ slug, title, description, date, body });
+  const astro = astroTemplate({ slug, title, description, date, body, noindex: true });
   const draftsDir = join(DATA_DIR, 'drafts');
   mkdirSync(draftsDir, { recursive: true });
 
@@ -145,16 +146,73 @@ async function draftAgent(article) {
   return { slug, title, url: `https://ortopednn.ru/blog/${slug}/` };
 }
 
+/* --- STOMATOLOG PUBLISHER (publish to stomatolog.ortopednn.ru as HTML with noindex) --- */
+
+function stomatologHtmlTemplate({ title, date, body }) {
+  return `<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>${title}</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:700px;margin:0 auto;padding:20px;color:#333;line-height:1.7}
+h1{color:#1e3a5f;font-size:1.6rem}
+.meta{color:#7a9ab8;font-size:.9rem;margin-bottom:1.5rem}
+h2{color:#2e6ab3;margin:2rem 0 1rem}
+p{color:#555;margin-bottom:1rem}
+ul,ol{padding-left:1.5rem;margin-bottom:1rem;color:#555}
+table{width:100%;border-collapse:collapse;margin-bottom:1.5rem}
+th,td{text-align:left;padding:.75rem;border-bottom:1px solid #e0e8f0;color:#555}
+th{background:#f5f8fc;color:#1e3a5f}
+.cta{text-align:center;padding:1.5rem;background:#f8fafc;border-radius:8px;margin-top:2rem}
+.cta p{margin-bottom:1rem}
+.btn{display:inline-block;background:#4a90d9;color:#fff;padding:.75rem 2rem;border-radius:100px;text-decoration:none;font-weight:600}
+a{color:#4a90d9}
+</style>
+</head>
+<body>
+<h1>${title.replace(/"/g, '&quot;')}</h1>
+<div class="meta">${formatDate(date)} — Никитина Марина Георгиевна, стоматолог-ортопед</div>
+${body}
+<div class="cta"><p>Нужна консультация?</p><a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a></div>
+</body>
+</html>`;
+}
+
+function stomatologFormatDate(iso) {
+  const m = { '01':'января','02':'февраля','03':'марта','04':'апреля','05':'мая','06':'июня','07':'июля','08':'августа','09':'сентября','10':'октября','11':'ноября','12':'декабря' };
+  const [y, month, d] = iso.split('-');
+  return `${parseInt(d,10)} ${m[month]||month} ${y}`;
+}
+
+async function stomatologPublisherAgent(article) {
+  const { slug, title, date, body } = article;
+  const html = stomatologHtmlTemplate({ title, date, body });
+  const url = `https://api.github.com/repos/${GH_OWNER}/${STOMATOLOG_REPO}/contents/blog/${slug}.html`;
+  const headers = { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' };
+  const existing = await fetch(url, { headers }).then(r => r.ok ? r.json() : null);
+  const sha = existing?.sha;
+  const payload = { message: `blog: ${slug} [auto-pipeline]`, content: Buffer.from(html, 'utf-8').toString('base64') };
+  if (sha) payload.sha = sha;
+  const resp = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(payload) });
+  const json = await resp.json();
+  if (!resp.ok) throw new Error(`stomatolog ${slug}: ${json.message}`);
+  return { slug, title, url: `https://stomatolog.ortopednn.ru/blog/${slug}.html` };
+}
+
 /* --- PUBLISHER AGENT --- */
 
-function astroTemplate({ slug, title, description, date, body }) {
+function astroTemplate({ slug, title, description, date, body, noindex = false }) {
   const e = (s) => s.replace(/"/g, '\\"').replace(/`/g, '\\`').replace(/\$/g, '\\$');
+  const domain = noindex ? 'stomatolog.ortopednn.ru' : 'ortopednn.ru';
   return `---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
 const slug = '${slug}';
-const pageUrl = \`https://ortopednn.ru/blog/\${slug}/\`;
+const pageUrl = \`https://${domain}/blog/\${slug}/\`;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -168,7 +226,7 @@ const ldArticle = {
   "publisher": { "@type": "Organization", "name": "ОртопедНН" }
 };
 ---
-<BaseLayout title="${e(title)}" description="${e(description)}" breadcrumbTitle="${e(title)}" doctor={doctor}>
+<BaseLayout title="${e(title)}" description="${e(description)}" breadcrumbTitle="${e(title)}" doctor={doctor} noindex={${noindex}}>
   <Navbar />
   <main class="container">
     <a href="/blog" class="back">← К статьям</a>
@@ -406,6 +464,10 @@ export async function runPipelineManual(topic) {
     const draftInfo = await draftAgent(reviewed.article);
     result.draft = draftInfo;
 
+    result.stage = 'stomatolog';
+    const stomUrl = await stomatologPublisherAgent(reviewed.article);
+    result.stomatologUrl = stomUrl.url;
+
     result.stage = 'done';
     result.completedAt = new Date().toISOString();
     return result;
@@ -425,8 +487,9 @@ export async function pickAndRun() {
     pending.status = 'error';
     pending.error = result.error;
   } else {
-    pending.status = 'awaiting_review';
+    pending.status = 'on_stomatolog';
     pending.slug = result.draft?.slug;
+    pending.url = result.stomatologUrl;
     pending.completedAt = result.completedAt;
   }
   const state = loadState();
