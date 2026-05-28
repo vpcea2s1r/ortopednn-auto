@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
-import { pickAndRun, runPipelineManual, addTopic, listTopics, listState, ghPut, ghFetch } from './agent-pipeline.js';
+import { pickAndRun, runPipelineManual, addTopic, listTopics, listState, ghPut, ghFetch, checkAiTells } from './agent-pipeline.js';
 
 const __dirname = fileURLToPath(import.meta.url);
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
@@ -292,33 +292,72 @@ async function searchPubMed(query) {
 
 async function rewrite(url) {
   const text = await extractText(url);
-  const prompt = `Перепиши для блога стоматолога-ортопеда. Сохрани смысл, переформулируй.
-Требования: 1500-2000 символов, lead в первом абзаце, h2 подзаголовки, один ul/ol, FAQ 3-5 вопросов, без h1.
-Экранируй кавычки. Только JSON.
+  const buildPrompt = (extra) => `Ты стоматолог-ортопед. Перепиши исходный текст для блога на русском. Пиши языком врача — просто, без воды, без штампов.
 
-Исходный текст:
-${text.substring(0, 3000)}
+ТРЕБОВАНИЯ:
+- lead (абзац-введение с сутью) в начале
+- 2-3 подзаголовка h2
+- таблица сравнения или классификации (обязательно)
+- один список ul/ol  
+- блок FAQ: 3-5 вопросов с ответами
+- без h1
+- 2000-3000 символов body
+- экранируй кавычки, только JSON
+
+ЗАПРЕЩЕНО:
+- не выдумывай ссылки на исследования, PMID, DOI, источники
+- не придумывай названия продуктов, материалов или технологий
+- не используй эти слова: delve, tapestry, meticulous, robust, leverage, groundbreaking, seamless, transformative, empower, revolutionize, synergy, holistic, intricate, testament, foster, showcase, pivotal, underscore, interplay, garner, bolster, elevate, unlock, paradigm
+- не используй фразы: когда речь заходит о, стоит отметить, важно подчеркнуть, играет важную роль, современные реалии, не только но и, позволяет не только, в заключение, в конечном счёте, решая задачу, открывает возможности
+- без длинных причастных оборотов в конце предложений (обеспечивая, позволяя, создавая)
+- без тире (—) в каждом абзаце
+- пиши короткими предложениями, без канцелярита
+
+ИСХОДНЫЙ ТЕКСТ:
+${text.substring(0, 5000)}
+
+${extra || ''}
+UUID: ${Date.now()}
 
 {"title":"...","description":"...","body":"<p>...</p>"}`;
 
+  let lastJson = null;
   let lastRaw = '';
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  const maxAttempts = 4;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const extra = (attempt > 1 && lastJson) ? `Предыдущая попытка отклонена из-за AI-стиля. Исправь:\n${checkAiTells(lastJson.body).map(t => '- ' + t.tag).join('\n')}\nПиши естественнее.` : '';
+    const prompt = buildPrompt(extra);
     const raw = await callAI(prompt);
     lastRaw = raw;
     const json = parseAny(raw);
-    if (json && json.title && json.description && json.body) {
-      const existingSlugs = loadExistingSlugs();
-      const slug = makeSlug(json.title);
-      if (existingSlugs.has(slug) || isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
-      const date = new Date().toISOString().split('T')[0];
-      const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body, noindex: true });
-      if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
-      writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
-      writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft' }, null, 2), 'utf-8');
-      return { slug, title: json.title };
-    }
+    if (!json || !json.title || !json.description || !json.body) continue;
+    lastJson = json;
+
+    const tells = checkAiTells(json.body);
+    if (tells.length > 0 && attempt < maxAttempts) continue;
+
+    const existingSlugs = loadExistingSlugs();
+    const slug = makeSlug(json.title);
+    if (existingSlugs.has(slug) || isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
+
+    const date = new Date().toISOString().split('T')[0];
+    const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body, noindex: true });
+    if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
+    writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
+    writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft' }, null, 2), 'utf-8');
+
+    const htmlContent = htmlTemplate({ title: json.title, date, body: json.body });
+    const enc = Buffer.from(htmlContent, 'utf-8').toString('base64');
+    const ghUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/blog/${slug}.html`;
+    const existing = await fetch(ghUrl, { headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' } }).then(r => r.ok ? r.json() : null);
+    const req = { message: `draft: ${slug}`, content: enc, branch: 'main' };
+    if (existing?.sha) req.sha = existing.sha;
+    await fetch(ghUrl, { method: 'PUT', headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' }, body: JSON.stringify(req) });
+
+    return { slug, title: json.title, tells: tells.length };
   }
-  return { error: true, response: lastRaw };
+  return { error: true, response: lastRaw, tells: lastJson ? checkAiTells(lastJson.body) : [] };
 }
 
 function extractBodyFromAstro(astroContent) {
@@ -650,15 +689,19 @@ async function handleUpdate(upd) {
     rewrite(url).then(async (result) => {
       clearInterval(progress);
       const edit = (t, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: t, ...(extra || {}) });
-      if (result?.error) { edit(`❌ ${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`); }
-      else if (result?.duplicate) { edit(`⚠️ Дубликат: ${result.title}`); }
-      else {
+      if (result?.error) {
+        let msg = `❌ ${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`;
+        if (result.tells?.length) msg += `\nAI-маркеры: ${result.tells.map(t => t.tag).join(', ')}`;
+        edit(msg);
+      } else if (result?.duplicate) {
+        edit(`⚠️ Дубликат: ${result.title}`);
+      } else {
         try {
           const draftFile = readFileSync(join(DRAFTS_DIR, `${result.slug}.astro`), 'utf-8');
           const text = draftFile.replace(/<[^>]+>/g, ' ').replace(/&[#a-zA-Z0-9]+;/g, ' ').replace(/\s+/g, ' ').trim();
-          const full = text.substring(0, 4000);
-          await tg('sendMessage', { chat_id: chatId, text: `📄 *${result.title}*\n\n${full}`, parse_mode: 'Markdown' });
-          edit(`✅ Черновик сохранён`, { reply_markup: draftButtons(result.slug) });
+          const full = text.substring(0, 3000);
+          await tg('sendMessage', { chat_id: chatId, text: `📄 *${result.title}*\n\n${full}\n\n[Читать на stomatolog](https://stomatolog.ortopednn.ru/blog/${result.slug}.html)`, parse_mode: 'Markdown', disable_web_page_preview: true });
+          edit(`✅ Готово`, { reply_markup: draftButtons(result.slug) });
         } catch { edit(`✅ Сохранён: ${result.title}`, { reply_markup: draftButtons(result.slug) }); }
       }
     }).catch(e => {
