@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'oslozhneniya-posle-implantatsii';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Осложнения после имплантации зубов — что бывает и как избежать",
+  "description": "Возможные осложнения после имплантации: отёк, боль, кровотечение, периимплантит, отторжение. Причины, профилактика, когда к врачу.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-29",
+  "dateModified": "2026-05-29",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Осложнения после имплантации зубов — что бывает и как избежать | Никитина М.Г."
+  description="Осложнения после имплантации зубов: отёк, боль, кровотечение, отторжение импланта. Когда это норма, когда бить тревогу. Причины и профилактика."
+  breadcrumbTitle="Осложнения после имплантации"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-29"
+  dateModified="2026-05-29"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Осложнения после имплантации зубов — что бывает и как избежать</h1>
+      <div class="meta">29 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Большинство осложнений после имплантации — ранние (отёк, боль, кровотечение) проходят за 3–7 дней. Поздние (периимплантит, отторжение) встречаются у 2–5% пациентов и связаны с плохой гигиеной или ошибками планирования. При правильном уходе риск минимален.</p>
+
+      <h2>Какие осложнения бывают после имплантации</h2>
+
+      <p>Осложнения делятся на ранние (первые дни после операции) и поздние (через месяцы или годы). Ранние — нормальная реакция организма на вмешательство. Поздние — результат инфекции, перегрузки или нарушения протокола.</p>
+
+      <p>По данным мета-анализа в <em>Clinical Oral Implants Research</em> (2023), общая частота отторжения имплантов составляет 2.8% за 10 лет. Основные причины — периимплантит (1.5%) и недостаточная первичная стабильность (0.8%).</p>
+      <p class="translation">97.2% имплантов успешно приживаются — отторжение встречается редко, в основном из-за инфекции или нарушения гигиены.</p>
+
+      <h2>Ранние осложнения (норма)</h2>
+
+      <p><strong>Отёк.</strong> Появляется на 2–3 день, держится 3–5 дней. Снимается холодом в первые 24 часа. Если отёк усиливается после 5 дня — возможна инфекция.</p>
+
+      <p><strong>Боль.</strong> После отхода анестезии — умеренная боль. Купируется ибупрофеном или кеторолаком. Сильная боль дольше 3 дней — повод для осмотра.</p>
+
+      <p><strong>Кровотечение.</strong> Незначительное кровотечение из раны первые 2–3 часа — норма. Если кровь идёт дольше или усиливается — обратиться к врачу.</p>
+
+      <p><strong>Гематома (синяк).</strong> Возникает на 3–5 день в области операции. Проходит самостоятельно за 7–10 дней.</p>
+
+      <h2>Ранние осложнения (тревожные)</h2>
+
+      <p><strong>Нагноение.</strong> Гной из раны, неприятный запах, повышенная температура. Причина — инфицирование раны. Требует срочного визита к врачу.</p>
+
+      <p><strong>Расхождение швов.</strong> Швы разошлись раньше времени. Возможно из-за отёка или механического воздействия. Врач наложит повторно.</p>
+
+      <p><strong>Парестезия.</strong> Онемение губы, подбородка или языка. Возникает при повреждении нижнелуночкового нерва. Чаще временное (2–4 недели), редко — постоянное.</p>
+
+      <h2>Поздние осложнения</h2>
+
+      <p><strong>Периимплантит.</strong> Воспаление тканей вокруг импланта, аналогичное пародонтиту. Причина — бактериальный налёт, курение, плохая гигиена. Проявляется кровоточивостью, покраснением десны, неприятным запахом. Лечится консервативно на ранней стадии, на поздней — удаление импланта.</p>
+
+      <p><strong>Отторжение импланта.</strong> Имплант не прижился или потерял интеграцию с костью. Причины: недостаточный объём кости, перегрузка, инфекция, курение. Симптомы — подвижность импланта, боль при накусывании.</p>
+
+      <p><strong>Атрофия кости вокруг импланта.</strong> Естественная убыль кости до 0.2 мм в год считается нормой. Ускоренная потеря (более 1 мм в год) — признак проблем.</p>
+
+      <h2>Как снизить риск осложнений</h2>
+
+      <ul>
+        <li><strong>Выбор врача.</strong> Опытный имплантолог с КТ-диагностикой на этапе планирования — база успеха.</li>
+        <li><strong>Гигиена.</strong> Чистка дважды в день, ирригатор, нить. Вокруг импланта гигиена должна быть тщательнее, чем вокруг своих зубов.</li>
+        <li><strong>Отказ от курения.</strong> Курение увеличивает риск отторжения в 2–3 раза (данные <em>Journal of Dental Research</em>, 2021). Минимум — не курить 2 недели до и после операции.</li>
+        <li><strong>Контрольные осмотры.</strong> Раз в год — осмотр у стоматолога и рентген-контроль.</li>
+        <li><strong>При сахарном диабете.</strong> Компенсация диабета (гликированный гемоглобин ниже 7%) — условие для успешной имплантации.</li>
+      </ul>
+
+      <h2>Когда обращаться к врачу</h2>
+
+      <ul>
+        <li>Температура выше 38°C дольше 2 дней</li>
+        <li>Гной или неприятный запах из области импланта</li>
+        <li>Сильная боль, не снимающаяся обезболивающими</li>
+        <li>Подвижность импланта (ощущается при жевании)</li>
+        <li>Онемение губы или подбородка дольше 2 недель</li>
+        <li>Кровотечение, не останавливающееся через 3 часа</li>
+      </ul>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Беспокоит состояние импланта? Запишитесь на осмотр.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

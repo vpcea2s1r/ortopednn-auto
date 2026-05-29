@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'byugelnyj-ili-semnyj-protez';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Бюгельный или съёмный протез — что лучше выбрать: сравнение конструкций",
+  "description": "Сравнение бюгельных и съёмных протезов: конструкция, цена, комфорт, эстетика. Таблица различий, показания к каждому типу.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-29",
+  "dateModified": "2026-05-29",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Бюгельный или съёмный протез — что лучше | Стоматолог-ортопед Нижний Новгород"
+  description="Бюгельный или съёмный акриловый протез — сравнение по цене, комфорту, сроку службы. Кому подходит каждый тип, таблица различий."
+  breadcrumbTitle="Бюгельный или съёмный протез"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-29"
+  dateModified="2026-05-29"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Бюгельный или съёмный протез — что лучше: сравнение конструкций</h1>
+      <div class="meta">29 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Бюгельный протез — жёсткая конструкция на металлическом каркасе для частичного отсутствия зубов. Съёмный (акриловый, нейлоновый) — мягкий протез на десну, чаще для полной адентии. Бюгель дороже, но удобнее и долговечнее. Съёмный — дешевле, но менее комфортный.</p>
+
+      <h2>Чем отличается бюгельный протез от съёмного</h2>
+
+      <p>Главное различие — в конструкции. Бюгельный протез имеет металлический каркас (дугу), который соединяет все элементы и передаёт нагрузку на опорные зубы. Съёмные акриловые и нейлоновые протезы — базис из пластмассы или нейлона, который лежит прямо на десне, нагрузка передаётся на слизистую.</p>
+
+      <p>Бюгельный протез — это всегда частичный протез (нужны опорные зубы). Съёмный — может быть как частичным, так и полным.</p>
+
+      <h2>Таблица сравнения</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Параметр</th><th>Бюгельный</th><th>Съёмный акриловый</th><th>Съёмный нейлоновый</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Каркас</td><td>Металлическая дуга</td><td>Нет (акрил)</td><td>Нет (нейлон)</td></tr>
+          <tr><td>Показания</td><td>Частичная адентия</td><td>Частичная и полная</td><td>Частичная (1-3 зуба)</td></tr>
+          <tr><td>Фиксация</td><td>Кламмеры / замки на зубах</td><td>На десне (кламмеры)</td><td>На десне (эластичность)</td></tr>
+          <tr><td>Комфорт</td><td>Высокий (компактный)</td><td>Средний (массивный)</td><td>Средний (мягкий)</td></tr>
+          <tr><td>Дикция</td><td>Практически не нарушает</td><td>Нарушает (нёбо перекрыто)</td><td>Меньше нарушает</td></tr>
+          <tr><td>Прочность</td><td>10-15 лет</td><td>3-5 лет</td><td>5-7 лет</td></tr>
+          <tr><td>Цена</td><td>Высокая</td><td>Низкая</td><td>Средняя</td></tr>
+          <tr><td>Ремонт</td><td>Сложнее (металл)</td><td>Проще (акрил)</td><td>Сложнее</td></tr>
+          <tr><td>Гигиена</td><td>Легко чистить</td><td>Пористый, сложнее</td><td>Средне</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Когда выбирают бюгельный протез</h2>
+
+      <p>Бюгельный протез подходит, если отсутствует часть зубов, но сохранились здоровые опорные зубы. Он не перекрывает нёбо — это важно для сохранения вкусовой чувствительности и дикции. Металлический каркас тонкий, поэтому протез меньше ощущается во рту. По данным исследования в <em>Journal of Prosthodontics</em> (2021), пациенты с бюгельными протезами в 2 раза реже сообщают о дискомфорте при жевании по сравнению с акриловыми пластиночными протезами.</p>
+
+      <p>Бюгель показан при односторонних и двусторонних концевых дефектах, при подвижности зубов (шинирующий эффект), при аллергии на акрил.</p>
+
+      <h2>Когда выбирают съёмный протез</h2>
+
+      <p>Съёмный акриловый или нейлоновый протез — выбор при полном отсутствии зубов, когда ставить бюгель не на что. Также съёмный протез дешевле — это важно, если бюджет ограничен. Акриловый протез можно быстро починить, добавить зуб при потере. Нейлоновый — более эластичный и эстетичный, но хуже передаёт жевательную нагрузку.</p>
+
+      <p>Съёмные протезы проигрывают бюгельным в комфорте: они массивнее, перекрывают нёбо, ухудшают вкусовое восприятие. Привыкание занимает 2–4 недели, тогда как к бюгелю — 1–2 недели.</p>
+
+      <h2>Сводка: какой протез выбрать</h2>
+
+      <ul>
+        <li><strong>Частичная адентия, есть опорные зубы, нужен комфорт</strong> — бюгельный протез</li>
+        <li><strong>Полная адентия</strong> — съёмный акриловый или нейлоновый протез (или имплантация)</li>
+        <li><strong>Минимальный бюджет</strong> — съёмный акриловый протез</li>
+        <li><strong>Аллергия на акрил</strong> — бюгельный (металл) или нейлоновый</li>
+        <li><strong>1–2 отсутствующих зуба</strong> — нейлоновый или бюгельный на кламмерах</li>
+      </ul>
+
+      <p>Окончательный выбор делает врач после осмотра: оценивается количество и состояние опорных зубов, степень атрофии кости, прикус, бюджет и пожелания пациента.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Нужна консультация — какой протез выбрать?</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
