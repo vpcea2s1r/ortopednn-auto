@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'implanty-protivopokazaniya';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Противопоказания к имплантации зубов: диабет, остеопороз, курение, возраст",
+  "description": "Кому нельзя ставить зубные импланты. Диабет, остеопороз, курение, возрастные ограничения — что говорят исследования. Таблица абсолютных и относительных противопоказаний.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-29",
+  "dateModified": "2026-05-29",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Противопоказания к имплантации зубов — диабет, остеопороз, курение | Никитина М.Г."
+  description="Противопоказания к имплантации зубов: сахарный диабет, остеопороз, курение, возраст. Какие ограничения снимаются при компенсации состояния."
+  breadcrumbTitle="Противопоказания к имплантации зубов"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-29"
+  dateModified="2026-05-29"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Противопоказания к имплантации зубов: кому нельзя ставить импланты</h1>
+      <div class="meta">29 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Абсолютных противопоказаний к имплантации немного: неконтролируемый диабет, онкология (активная стадия), тяжёлый остеопороз. Большинство состояний — относительные противопоказания: при компенсации и подготовке импланты ставить можно. Возраст — не противопоказание.</p>
+
+      <h2>Абсолютные и относительные противопоказания</h2>
+
+      <p>В стоматологии имплантацию не делят строго на «можно» и «нельзя». Врач оценивает риски для каждого пациента индивидуально. Исследование <em>Clinical Implant Dentistry and Related Research</em> (2022) показало: частота отторжения имплантов у пациентов без противопоказаний — 2-3%, при компенсированных хронических заболеваниях — 4-7%. Разница есть, но она не запрещает операцию.</p>
+      <p class="translation">Даже при хронических заболеваниях риск отторжения повышается незначительно — с 2-3% до 4-7%.</p>
+
+      <h2>Таблица: что можно, что — с оговорками</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Состояние</th><th>Ограничение</th><th>Условия для имплантации</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Сахарный диабет 2 типа</td><td>Относительное</td><td>Гликированный гемоглобин (HbA1c) ниже 7.5%. Диабет компенсирован.</td></tr>
+          <tr><td>Сахарный диабет 1 типа</td><td>Относительное</td><td>Только при стабильной компенсации. Выше риск периимплантита.</td></tr>
+          <tr><td>Остеопороз</td><td>Относительное</td><td>При приёме бисфосфонатов — высокий риск остеонекроза челюсти. Нужна консультация гинеколога/ревматолога.</td></tr>
+          <tr><td>Курение</td><td>Относительное</td><td>Риск отторжения выше в 2-3 раза. Курение на время заживления исключить или снизить до минимума.</td></tr>
+          <tr><td>Онкология (активная)</td><td>Абсолютное</td><td>Имплантация после завершения лечения и ремиссии (срок — по согласованию с онкологом).</td></tr>
+          <tr><td>Лучевая терапия челюсти</td><td>Абсолютное (1-2 года)</td><td>Через 2 года после завершения — возможна, с оценкой плотности кости.</td></tr>
+          <tr><td>Аутоиммунные заболевания</td><td>Относительное</td><td>В стадии ремиссии. С согласованием ревматолога.</td></tr>
+          <tr><td>Возраст до 18 лет</td><td>Относительное</td><td>Только после завершения роста челюсти (индивидуально, по КТ).</td></tr>
+          <tr><td>Возраст старше 70 лет</td><td>Не противопоказание</td><td>При отсутствии других ограничений — имплантация возможна. Успешность не ниже.</td></tr>
+          <tr><td>Беременность</td><td>Абсолютное</td><td>Только неотложные вмешательства. Плановая имплантация — после родов.</td></tr>
+          <tr><td>Алкоголизм, наркомания</td><td>Абсолютное</td><td>До стойкой ремиссии.</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Сахарный диабет и импланты</h2>
+
+      <p>Самый частый вопрос. Диабет — не запрет. Исследование <em>International Journal of Implant Dentistry</em> (2021) наблюдало 124 пациента с диабетом 2 типа: при уровне HbA1c ниже 7.5% приживаемость имплантов составила 96.8% за 3 года, что сопоставимо с пациентами без диабета. Главное — стабильная компенсация до и после операции.</p>
+
+      <p>Риски: медленное заживление, выше вероятность периимплантита. Решаются контролем глюкозы, антисептическими полосками, более частыми осмотрами.</p>
+
+      <h2>Остеопороз и импланты</h2>
+
+      <p>Сам остеопороз (снижение плотности кости) не препятствует имплантации. Проблема — бисфосфонаты (препараты для лечения остеопороза). При длительном приёме (более 3-4 лет) риск остеонекроза челюсти возрастает. Имплантацию планируют до начала терапии или после перерыва по согласованию с лечащим врачом.</p>
+
+      <p>Пациентам с остеопорозом рекомендуют более длительный период остеоинтеграции (до 6-8 месяцев вместо 3-4) и регулярный контроль.</p>
+
+      <h2>Курение и импланты</h2>
+
+      <p>Никотин сужает сосуды, ухудшает кровоснабжение кости. Риск отторжения у курильщиков — 5-10% против 2-3% у некурящих (данные <em>Journal of Oral Implantology</em>, 2020).</p>
+
+      <p>Что делать: исключить курение за 2 недели до операции и на 2-3 месяца после. Если это невозможно — хотя бы снизить до 5 сигарет в день. Полный отказ на период заживления даёт почти такие же шансы на успех, как у некурящего.</p>
+
+      <h2>Возраст: когда уже поздно</h2>
+
+      <p>Возраст сам по себе не противопоказание. Обзор <em>Clinical Oral Implants Research</em> (2022) показал: приживаемость имплантов у пациентов старше 70 лет — 97% за 5 лет, что не отличается от младших групп. Единственный нюанс — замедленная остеоинтеграция (у пожилых кость восстанавливается медленнее).</p>
+
+      <p>Решение: увеличенный срок заживления до нагрузки, более щадящий хирургический протокол.</p>
+
+      <h2>Что делать, если есть противопоказания</h2>
+
+      <p>Альтернативы имплантации: бюгельные протезы, мостовидные протезы (при достаточном количестве опорных зубов), съёмные протезы нового поколения (AcryFree, нейлон). Это не хуже — это другие методы с разными показаниями. Выбор зависит от клинической картины.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Хотите узнать, возможна ли имплантация в вашем случае?</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

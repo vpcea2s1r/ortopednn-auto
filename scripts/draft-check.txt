@@ -1,0 +1,6 @@
+echo "---DRAFTS-INSIDE-CONTAINER---"
+docker exec ortopednn-bot ls -la /data/drafts/ 2>&1
+echo "---PUBN-FUNC---"
+docker exec ortopednn-bot sed -n '310,355p' /app/bot.js 2>&1
+echo "---TOPICS---"
+docker exec ortopednn-bot cat /data/topics.json 2>&1 | head -20

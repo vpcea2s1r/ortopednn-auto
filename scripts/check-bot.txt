@@ -1,0 +1,20 @@
+cd /opt/ortopednn-auto
+echo "---TEST-PUBLISH---"
+docker exec ortopednn-bot node -e "
+const {ghPut, ghFetch} = await import('/app/agent-pipeline.js');
+const fs = await import('fs');
+// Check if draft file exists
+const slug = 'adgezivnyy-most-chto-eto-plyusy-i-minusy-ekspertnaya-statya';
+const path = '/data/drafts/' + slug + '.astro';
+console.log('draft exists:', fs.existsSync(path));
+if (fs.existsSync(path)) {
+  const content = fs.readFileSync(path, 'utf-8');
+  console.log('size:', content.length);
+  // Try a direct ghPut
+  ghPut('src/pages/blog/' + slug + '.astro', content, 'test-publish').then(r => {
+    console.log('SUCCESS:', r.content.sha.substring(0, 12));
+  }).catch(e => {
+    console.log('ERROR:', e.message);
+  });
+}
+"
