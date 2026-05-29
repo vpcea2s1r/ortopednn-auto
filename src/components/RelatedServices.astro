@@ -1,0 +1,36 @@
+---
+import type { ServiceItem } from '../../data/services';
+
+export interface Props {
+  services: ServiceItem[];
+}
+
+const { services } = Astro.props;
+---
+
+{services.length > 0 && (
+  <section class="related-services-section">
+    <h2>Услуги по теме</h2>
+    <div class="services-grid">
+      {services.map(s => (
+        <a href={`/services/${s.slug}`} class="service-link">
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+          <span class="service-link-arrow">Подробнее →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .related-services-section { margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border); }
+  .related-services-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+  .service-link { display: flex; flex-direction: column; background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-md); text-decoration: none; transition: all var(--transition-normal); }
+  .service-link:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); }
+  .service-link h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-xs); }
+  .service-link p { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-sm); }
+  .service-link-arrow { font-size: var(--text-sm); color: var(--color-primary); font-weight: 600; }
+  @media (max-width: 640px) { .services-grid { grid-template-columns: 1fr; } }
+</style>

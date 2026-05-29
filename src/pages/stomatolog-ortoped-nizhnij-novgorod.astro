@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import doctor from '../../data/doctor.json';
+import socials from '../../data/socials.json';
+---
+
+<BaseLayout 
+  title="Стоматолог ортопед в Нижнем Новгороде — Никитина М.Г."
+  description="Стоматолог-ортопед в Нижнем Новгороде: протезирование, коронки, съёмные протезы. Стаж с 1994 года. Приём: ул. Октябрьской Революции, 43."
+  breadcrumbTitle="Стоматолог-ортопед в Нижнем Новгороде"
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main id="main">
+    <section class="hero">
+      <div class="container container--w900">
+        <h1>Стоматолог-ортопед в Нижнем Новгороде</h1>
+        <p class="hero-sub">Восстановление и протезирование зубов — любой сложности</p>
+        <p class="hero-doctor">Никитина Марина Георгиевна, стоматолог-ортопед, стаж более 30 лет</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </section>
+
+    <section class="services-overview">
+      <div class="container container--w900">
+        <h2>Что делает стоматолог-ортопед</h2>
+        <p>Стоматолог-ортопед восстанавливает зубы, которые уже нельзя вылечить пломбой, и заменяет отсутствующие зубы. В отличие от терапевта, ортопед работает с конструкциями — коронками, мостами, протезами.</p>
+
+        <div class="service-list">
+          <div class="service-item">
+            <h3>Коронки на зубы</h3>
+            <p>Металлокерамика, цирконий, диоксид циркония, E-max. Восстановление разрушенного зуба под ключ.</p>
+          </div>
+          <div class="service-item">
+            <h3>Протезирование на имплантах</h3>
+            <p>Одиночная коронка на импланте, мост на имплантах, All-on-4, покрывной протез.</p>
+          </div>
+          <div class="service-item">
+            <h3>Съёмные протезы</h3>
+            <p>Акриловые, нейлоновые, AcryFree протезы. Полные и частичные. Бюгельные протезы на замках.</p>
+          </div>
+          <div class="service-item">
+            <h3>Мостовидные протезы</h3>
+            <p>Металлокерамические, циркониевые мосты. Восстановление отсутствующих зубов без имплантации.</p>
+          </div>
+        </div>
+
+        <a href="/services/" class="btn btn-outline">Все услуги</a>
+      </div>
+    </section>
+
+    <section class="why">
+      <div class="container container--w900">
+        <h2>Почему выбирают Никитину М.Г.</h2>
+        <ul>
+          <li><strong>Стаж с 1994 года</strong> — более 30 лет практики</li>
+          <li><strong>Индивидуальный подход</strong> — подбор конструкции под клиническую ситуацию</li>
+          <li><strong>Современные материалы</strong> — цирконий, E-max, AcryFree</li>
+          <li><strong>Работа с любой сложностью</strong> — полное отсутствие зубов, атрофия кости, сахарный диабет</li>
+          <li><strong>В центре Нижнего Новгорода</strong> — ул. Октябрьской Революции, 43</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="stages">
+      <div class="container container--w900">
+        <h2>Как проходит приём</h2>
+        <ol class="stage-list">
+          <li><strong>Осмотр и диагностика</strong> — оценка состояния зубов и дёсен, рентген</li>
+          <li><strong>Составление плана</strong> — обсуждение вариантов, материалов и сроков</li>
+          <li><strong>Подготовка</strong> — лечение зубов, удаление нервов, снятие слепков</li>
+          <li><strong>Изготовление конструкции</strong> — в зуботехнической лаборатории</li>
+          <li><strong>Примерка и фиксация</strong> — установка постоянного протеза</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="faq-mini">
+      <div class="container container--w900">
+        <h2>Частые вопросы</h2>
+
+        <div class="faq-item">
+          <h3>Сколько стоит протезирование у ортопеда?</h3>
+          <p>Стоимость зависит от материала и сложности. Металлокерамическая коронка стоит дешевле циркониевой. Точная цена — после осмотра.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Коронку ставят за один раз?</h3>
+          <p>Нет. Первый визит — обточка и слепки. Второй — фиксация постоянной коронки. Между визитами ставится временная коронка.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Как долго служат коронки?</h3>
+          <p>Металлокерамика — 10–12 лет, циркониевые коронки — 15–20 лет. Срок зависит от гигиены и нагрузки.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Можно ли протезировать при сахарном диабете?</h3>
+          <p>Да. При компенсированном диабете протезирование возможно. Выбор конструкции — с учётом особенностей слизистой.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container container--w900">
+        <h2>Запись на приём к стоматологу-ортопеду</h2>
+        <p>{doctor.address}</p>
+        <p>Нижний Новгород, ул. Октябрьской Революции, 43</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+        <p class="cta-hint">Звоните с 9 до 19, запишем на удобное время</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <div class="site-footer__brand">
+        <span class="site-footer__logo">врач-ортопед Никитина Марина Георгиевна</span>
+        <p class="site-footer__subtitle">Стоматолог-ортопед</p>
+      </div>
+      <div class="site-footer__info">
+        <p>Никитина М.Г. — стоматолог-ортопед</p>
+        <p>Приём: г. Нижний Новгород, ул. Октябрьской Революции, 43</p>
+        <p class="site-footer__copy">© {new Date().getFullYear()} Все права защищены</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a5a8a 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-doctor {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--color-primary-hover);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: #1e3a5f;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    color: #1e3a5f;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    line-height: 1.7;
+    color: #4a6a8a;
+    margin-bottom: 1rem;
+  }
+
+  .services-overview {
+    padding: 2rem 0;
+  }
+
+  .service-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-item {
+    background: #f0f4f8;
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+
+  .service-item p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  .why {
+    background: #f0f4f8;
+    padding: 2rem 0;
+  }
+
+  .why ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .why li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #dce4ec;
+    line-height: 1.6;
+    color: #4a6a8a;
+  }
+
+  .stages {
+    padding: 2rem 0;
+  }
+
+  .stage-list {
+    counter-reset: stage;
+    list-style: none;
+    padding: 0;
+  }
+
+  .stage-list li {
+    counter-increment: stage;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #e8edf2;
+    line-height: 1.6;
+    color: #4a6a8a;
+  }
+
+  .stage-list li::before {
+    content: counter(stage) ". ";
+    font-weight: 700;
+    color: #1e3a5f;
+  }
+
+  .faq-mini {
+    background: #f0f4f8;
+    padding: 2rem 0;
+  }
+
+  .faq-item {
+    margin-bottom: 1.2rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.05rem;
+    color: #1e3a5f;
+    margin-bottom: 0.3rem;
+  }
+
+  .faq-item p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 2.5rem 0;
+  }
+
+  .cta-section h2 {
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-hint {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+  }
+
+  .site-footer {
+    background: #1e3a5f;
+    color: white;
+    padding: 1.5rem 0;
+  }
+
+  .site-footer__content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .site-footer p {
+    color: #9ab8d4;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  .site-footer__copy {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+</style>

@@ -4,98 +4,105 @@ import Navbar from '../../components/Navbar.astro';
 import FAQ from '../../components/FAQ.astro';
 import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
+import { articles, categories, getArticlesByCategory } from '../../../data/blog-articles.ts';
 
-const articles = [
-  { slug: 'protezirovanie-pri-parodontoze-taktika-materialy-i-prognoz', title: 'Протезирование при пародонтозе: тактика, материалы и прогноз', date: '2026-05-28', desc: 'Как проводят протезирование при пародонтозе. Шинирование, выбор материалов, срок службы конструкций, прогноз и ответы на частые вопросы пациентов.' },
-  { slug: 'adgezivnyy-most-chto-eto-plyusy-i-minusy-ekspertnaya-statya', title: 'Адгезивный мост: что это, плюсы и минусы. Экспертная статья', date: '2026-05-27', desc: 'Адгезивный мост — минимально инвазивный метод восстановления зубов без обточки соседних. В статье — конструкция, плюсы и минусы, сравнение с аналогами, FAQ с оп' },
-  { slug: 'koronka-metallokeramicheskaya-otzyvy', title: 'Металлокерамическая коронка: отзывы пациентов, плюсы и минусы', date: '2026-05-26', desc: 'Металлокерамическая коронка — реальные отзывы, что хвалят и критикуют. Срок службы, кому подходит.' },
-  { slug: 'dezinfektsiya-proteza', title: 'Дезинфекция зубного протеза: средства и правила', date: '2026-05-26', desc: 'Дезинфекция протезов: таблетки Corega, Protefix, ультразвук. Как часто дезинфицировать, что нельзя.' },
-  { slug: 'skolko-delayut-koronku', title: 'Сколько делают коронку на зуб: сроки изготовления', date: '2026-05-26', desc: 'Сроки изготовления коронок: от слепка до установки. Сколько ждать по разным материалам.' },
-  { slug: 'viniry-ili-koronki', title: 'Виниры или коронки — что выбрать: сравнение, плюсы и минусы', date: '2026-05-26', desc: 'Виниры или коронки: в чём разница, что лучше для передних и жевательных зубов, что дороже. Таблица сравнения.' },
-  { slug: 'chem-chistit-zubnye-protezy', title: 'Чем чистить зубные протезы: средства, пасты, таблетки', date: '2026-05-26', desc: 'Чем чистить протезы: пасты, щётки, таблетки Corega, ирригаторы. Что подходит для съёмных и несъёмных протезов.' },
-  { slug: 'koronka-cirkonievaya-otzyvy', title: 'Коронка циркониевая: отзывы пациентов и мнение врача', date: '2026-05-26', desc: 'Циркониевые коронки — отзывы: что хвалят, что критикуют. Реальный опыт пациентов, плюсы и минусы.' },
-  { slug: 'plastmassovaya-koronka-cena', title: 'Пластмассовая коронка: цена, плюсы, минусы, срок службы', date: '2026-05-26', desc: 'Пластмассовая коронка: цена, сколько служит. Когда ставить, плюсы и минусы, отличие от металлокерамики.' },
-  { slug: 'remont-zubnogo-proteza', title: 'Ремонт зубного протеза: трещины, сколы, поломки', date: '2026-05-26', desc: 'Что делать, если сломался протез: трещина, выпал зуб, сломался кламмер. Что чинят, когда проще сделать новый.' },
-  { slug: 'perebazirovka-proteza', title: 'Перебазировка зубного протеза: когда нужна, сколько стоит', date: '2026-05-26', desc: 'Перебазировка протеза: что это, когда нужна. Врачебная и лабораторная перебазировка, стоимость.' },
-  { slug: 'bezmetallovye-koronki', title: 'Безметалловые коронки: виды, плюсы и минусы', date: '2026-05-26', desc: 'Цирконий, E-max, керамика — сравнение безметалловых коронок по прочности, эстетике и сроку службы.' },
-  { slug: 'koronka-ili-most', title: 'Коронка или мост: что лучше выбрать', date: '2026-05-26', desc: 'Коронка или мост: отличия, что лучше при отсутствующем зубе. Сравнение по цене, показаниям, сроку службы.' },
-  { slug: 'vosstanovlenie-zuba-na-shtifte', title: 'Восстановление зуба на штифте: показания, этапы, плюсы и минусы', date: '2026-05-26', desc: 'Штифт в зубе: виды, этапы установки. Когда нужен, плюсы и минусы восстановления на штифте.' },
-  { slug: 'protezirovanie-pri-saharnom-diabete', title: 'Протезирование зубов при сахарном диабете: особенности и риски', date: '2026-05-26', desc: 'Можно ли протезировать зубы при сахарном диабете: показания, выбор конструкции, особенности ухода.' },
-  { slug: 'podgotovka-k-protezirovaniyu', title: 'Подготовка к протезированию зубов: что нужно знать', date: '2026-05-26', desc: 'Подготовка к протезированию: осмотр, санация, гигиена, лечение дёсен. Сколько времени занимает, какие врачи нужны.' },
-  { slug: 'etapy-protezirovaniya-zubov', title: 'Этапы протезирования зубов: от осмотра до фиксации', date: '2026-05-26', desc: 'Все этапы протезирования: диагностика, подготовка, слепки, примерка, фиксация. Таблица сроков каждого этапа.' },
-  { slug: 'uhod-za-zubnymi-protezami', title: 'Уход за зубными протезами: как чистить, чем мыть, что нельзя делать', date: '2026-05-26', desc: 'Как ухаживать за съёмными и несъёмными протезами: ежедневная чистка, дезинфекция, хранение.' },
-  { slug: 'zapah-iz-pod-koronki', title: 'Запах из-под коронки: причины, что делать, как убрать', date: '2026-05-26', desc: 'Почему пахнет из-под коронки: основные причины, что делать в домашних условиях, когда менять коронку.' },
-  { slug: 'natirayet-desnu-protezom', title: 'Натирает десна протезом: что делать, как исправить, сколько привыкать', date: '2026-05-26', desc: 'Протез натирает десну: что делать в домашних условиях, когда идти к врачу, сколько длится привыкание.' },
-  { slug: 'bolno-li-obachivat-zuby', title: 'Больно ли обтачивать зубы под коронку: что чувствует пациент', date: '2026-05-26', desc: 'Обточка зубов под коронку — больно или нет: анестезия, ощущения, сколько длится. Ответ на главный страх.' },
-  { slug: 'koronka-iz-dioksida-cirkoniya', title: 'Коронка из диоксида циркония — плюсы, минусы, особенности', date: '2026-05-26', desc: 'Коронки из диоксида циркония: прочность, эстетика, биосовместимость. Из чего делают, сколько служат, кому подходят.' },
-  { slug: 'naraschivanie-zuba', title: 'Наращивание зуба — что это, показания, методы восстановления', date: '2026-05-26', desc: 'Когда зуб разрушен, но сохранить его ещё можно. Штифт, культевая вкладка, коронка — методы и показания.' },
-  { slug: 'nejlon-acrifree-akril-kakoj-luchshe', title: 'Нейлон, AcryFree или акрил — какой материал для протеза лучше', date: '2026-05-25', desc: 'Сравнение нейлона, AcryFree и акрила для съёмных протезов: эстетика, комфорт, биосовместимость, цена.' },
-  { slug: 'immediat-protezy-chto-eto-pokazaniya', title: 'Иммедиат-протезы — что это, показания, этапы изготовления', date: '2026-05-25', desc: 'Иммедиат-протезы: что это, когда нужны, этапы изготовления, плюсы и минусы. Сравнение с отсроченным протезированием.' },
-  { slug: 'uhod-za-byugelnym-protezom', title: 'Уход за бюгельным протезом — правила чистки и хранения', date: '2026-05-25', desc: 'Как чистить бюгельный протез, какие средства использовать, как хранить на ночь. Таблица ежедневного и еженедельного ухода.' },
-  { slug: 'keramicheskie-vkladki-vs-koronki', title: 'Керамические вкладки или коронки — что выбрать', date: '2026-05-25', desc: 'Керамические вкладки (inlay/onlay) или коронка — сравнение по объёму препарирования, прочности, эстетике.' },
-  { slug: 'kak-vybrat-material-koronki', title: 'Как выбрать материал коронки — сравнение всех видов', date: '2026-05-25', desc: 'Сравнение металлокерамики, циркония, E-max, золота и композита для коронок: таблица по эстетике, прочности, биосовместимости.' },
-  { slug: 'ceny-na-protezirovanie-v-nn', title: 'Цены на протезирование зубов в Нижнем Новгороде — обзор', date: '2026-05-25', desc: 'Что влияет на стоимость протезирования: материал, лаборатория, квалификация врача, оборудование клиники.' },
-  { slug: 'srok-sluzhby-protezov', title: 'Срок службы зубных протезов — таблица по материалам', date: '2026-05-25', desc: 'Сколько служат коронки, мосты, съёмные и имплантные протезы. Таблица срока службы по материалам, факторы долговечности.' },
-  { slug: 'alternativy-syomnym-protezam', title: 'Альтернативы съёмным протезам — современные решения', date: '2026-05-25', desc: 'Современные альтернативы съёмным протезам: All-on-4, мосты на имплантах, адгезивные мосты, бюгельные протезы.' },
-  { slug: 'protezirovanie-na-implantah', title: 'Протезирование на имплантах — виды, этапы, плюсы и минусы', date: '2026-05-25', desc: 'Одиночная коронка на импланте, мост, All-on-4, покрывной протез. Этапы, плюсы и минусы каждого метода.' },
-  { slug: 'vremennye-koronki-zachem-nuzhny', title: 'Временные коронки — зачем нужны и почему их нельзя пропускать', date: '2026-05-25', desc: 'Зачем нужны временные коронки, что будет без них, сравнение материалов. Риски отказа от временной коронки.' },
-  { slug: 'patologicheskaya-stiraemost-zubov-lechenie', title: 'Патологическая стираемость зубов: лечение и восстановление', date: '2026-05-25', desc: 'Когда эмаль стирается быстрее нормы: причины, диагностика, этапы лечения.' },
-  { slug: 'byugelnyj-protez-na-zamkah', title: 'Бюгельный протез на замках — плюсы и минусы', date: '2026-05-24', desc: 'Бюгель на аттачменах: плюсы и минусы, отличие от кламмерного, кому подходит.' },
-  { slug: 'cirkonij-ili-metallokeramika', title: 'Циркониевые или металлокерамические коронки: что лучше', date: '2026-05-24', desc: 'Сравнение циркония и металлокерамики: эстетика, прочность, цена, срок службы.' },
-  { slug: 'mostovidnyj-protez-vidy-plyusy-minusy', title: 'Мостовидный протез — виды, плюсы и минусы', date: '2026-05-24', desc: 'Металлокерамика, цирконий, мост на имплантах. Сравнение, сроки, плюсы и минусы.' },
-  { slug: 'kak-privyknut-k-semnym-protezam', title: 'Как привыкнуть к съёмным протезам — советы стоматолога-ортопеда', date: '2026-05-24', desc: 'Первая неделя: боль, дикция, еда. Таблица адаптации, когда нужна коррекция.' },
-  { slug: 'bolit-zub-pod-koronkoj', title: 'Болит зуб под коронкой — что делать и какие причины', date: '2026-05-23', desc: 'Зуб под коронкой болит при накусывании, ноет или дёргает. Причины, чем снять боль до приёма, когда ждать нельзя.' },
-  { slug: 'kak-chistit-semnye-protezy', title: 'Как чистить съёмные протезы — пошаговая инструкция', date: '2026-05-23', desc: 'Чистка протеза: пошаговая инструкция, какие средства подходят, чего нельзя делать. Таблица частоты ухода, сроки замены.' },
-  { slug: 'vospalenie-desny-pod-koronkoj', title: 'Воспалилась десна под коронкой — что делать', date: '2026-05-22', desc: 'Покраснела, кровоточит или болит десна вокруг коронки. Причины, домашняя помощь, когда к врачу.' },
-  { slug: 'bolno-li-stavit-koronku', title: 'Больно ли ставить коронку на зуб', date: '2026-05-22', desc: 'Разбираем все этапы: укол, обточка, слепки, фиксация. Таблица ощущений. Когда бывает больно и что с этим делать.' },
-  { slug: 'kurenie-posle-protezirovaniya', title: 'Можно ли курить после протезирования зубов', date: '2026-05-22', desc: 'Через сколько можно курить после имплантации, коронок и съёмных протезов. Таблица сроков и риски.' },
-  { slug: 'posle-ustanovki-koronki', title: 'Через сколько можно есть после установки коронки', date: '2026-05-22', desc: 'Всё зависит от цемента. Разбираем сроки для временных и постоянных коронок, что можно есть в первый день.' },
-  { slug: 'nizhnij-protez', title: 'Нижний зубной протез: особенности и фиксация', date: '2026-03-16', desc: 'Протезирование нижней челюсти: виды конструкций, почему плохо держится, имплантация, уход.' },
-  { slug: 'verhnij-protez', title: 'Верхний зубной протез: виды, показания и уход', date: '2026-03-15', desc: 'Клинические показания, биосовместимость материалов, адаптация и уход.' },
-  { slug: 'care-denture', title: 'Уход за съёмным протезом: полное руководство', date: '2024-03-15', desc: 'Как продлить жизнь протеза и избежать проблем. Проверенные советы.' },
-  { slug: 'care-crown', title: 'Уход за коронками: что нужно знать', date: '2024-03-10', desc: 'Правила ухода за циркониевыми и металлокерамическими коронками.' },
-  { slug: 'first-visit', title: 'Первый визит к ортопеду: чего ожидать', date: '2024-03-05', desc: 'Как подготовиться к консультации и что спросить у врача.' }
-];
+const uncategorized = articles.filter(a => !a.category);
 ---
 
-<BaseLayout 
+<BaseLayout clientRouter 
   title="Блог о протезировании зубов в Нижнем Новгороде | Никитина М.Г."
   description="Полезные статьи об уходе за зубами, протезировании и стоматологии."
   doctor={doctor}
   socials={socials}
 >
   <Navbar />
-  <main class="container">
+  <main class="container container--w800">
     <a href="/" class="back">← На главную</a>
     
     <h1>Полезные статьи</h1>
     <p class="intro">Делимся знаниями о протезировании и уходе за зубами.</p>
 
-    <div class="articles">
-      {articles.map(article => (
-        <a href={`/blog/${article.slug}`} class="article-card">
-          <div class="date">{article.date}</div>
-          <h2>{article.title}</h2>
-          <p>{article.desc}</p>
-          <span class="read-more">Читать →</span>
-        </a>
-      ))}
-    </div>
+    <nav class="categories">
+      {categories.map(cat => {
+        const count = getArticlesByCategory(cat.id).length;
+        return (
+          <a href={`/blog/${cat.slug}`} class="category-chip">
+            {cat.name}
+            <span class="count">{count}</span>
+          </a>
+        );
+      })}
+    </nav>
+
+    {categories.map(cat => {
+      const catArticles = getArticlesByCategory(cat.id).sort((a, b) => b.date.localeCompare(a.date));
+      if (catArticles.length === 0) return null;
+      return (
+        <section class="category-section">
+          <h2 class="category-title">
+            <a href={`/blog/${cat.slug}`}>{cat.name}</a>
+          </h2>
+          <p class="category-desc">{cat.desc}</p>
+          <div class="articles">
+            {catArticles.slice(0, 5).map(article => (
+              <a href={`/blog/${article.slug}`} class="article-card">
+                <div class="date">{article.date}</div>
+                <h3>{article.title}</h3>
+                <p>{article.desc}</p>
+                <span class="read-more">Читать →</span>
+              </a>
+            ))}
+          </div>
+          {catArticles.length > 5 && (
+            <a href={`/blog/${cat.slug}`} class="view-all">Все статьи по теме →</a>
+          )}
+        </section>
+      );
+    })}
+
+    {uncategorized.length > 0 && (
+      <section class="category-section">
+        <h2 class="category-title">Полезная информация</h2>
+        <div class="articles">
+          {uncategorized.sort((a, b) => b.date.localeCompare(a.date)).map(article => (
+            <a href={`/blog/${article.slug}`} class="article-card">
+              <div class="date">{article.date}</div>
+              <h3>{article.title}</h3>
+              <p>{article.desc}</p>
+              <span class="read-more">Читать →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
     <FAQ />
   </main>
 </BaseLayout>
 
 <style>
-.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
-.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
-h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
-.intro { color: #5a7a9a; margin-bottom: 2rem; }
-.articles { display: grid; gap: 1.5rem; margin-bottom: 3rem; }
-.article-card { background: white; border-radius: 12px; padding: 1.5rem; text-decoration: none; display: block; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.article-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-.date { color: #7a9ab8; font-size: 0.85rem; margin-bottom: 0.5rem; }
-.article-card h2 { color: #1e3a5f; font-size: 1.25rem; margin-bottom: 0.5rem; }
-.article-card p { color: #5a7a9a; margin-bottom: 1rem; line-height: 1.6; }
-.read-more { color: #4a90d9; font-weight: 600; }
+
+  .back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+  h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+  .intro { color: #5a7a9a; margin-bottom: 2rem; }
+
+  .categories { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .category-chip { background: #eef3f8; color: #1e3a5f; padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .category-chip:hover { background: #dce6f0; }
+  .category-chip .count { background: #d0dbe8; border-radius: 10px; padding: 0.05rem 0.5rem; font-size: 0.75rem; font-weight: 400; }
+
+  .category-section { margin-bottom: 2.5rem; }
+  .category-title { color: #1e3a5f; margin-bottom: 0.25rem; }
+  .category-title a { color: #1e3a5f; text-decoration: none; }
+  .category-title a:hover { color: #4a90d9; }
+  .category-desc { color: #7a9ab8; font-size: 0.85rem; margin-bottom: 1rem; }
+  .articles { display: grid; gap: 1rem; margin-bottom: 1rem; }
+  .article-card { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; text-decoration: none; display: block; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .article-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .date { color: #7a9ab8; font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .article-card h3 { color: #1e3a5f; font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .article-card p { color: #5a7a9a; margin-bottom: 0.8rem; line-height: 1.5; font-size: 0.9rem; }
+  .read-more { color: #4a90d9; font-weight: 600; font-size: 0.9rem; }
+  .view-all { color: #4a90d9; font-weight: 500; font-size: 0.9rem; text-decoration: none; display: inline-block; margin-bottom: 0.5rem; }
+  .view-all:hover { text-decoration: underline; }
 </style>

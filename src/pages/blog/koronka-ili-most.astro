@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'koronka-ili-most';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Коронка или мост: что лучше выбрать",
+  "description": "Коронка или мост: в чём разница, что лучше для замены отсутствующего зуба. Сравнение по цене, сроку службы и сложности.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Коронка или мост — что лучше выбрать | Никитина М.Г."
+  description="Коронка или мост: отличия, что лучше при отсутствующем зубе. Сравнение по цене, показаниям, сроку службы. Консультация в Нижнем Новгороде."
+  breadcrumbTitle="Коронка или мост"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Коронка или мост: что лучше выбрать</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Коронка и мост решают разные задачи. Коронка восстанавливает разрушенный зуб. Мост заменяет отсутствующий зуб, опираясь на соседние. Выбор между ними возникает, когда зуба нет, и нужно решать — ставить мост или имплант с коронкой.</p>
+
+      <h2>Коронка</h2>
+      <p>Коронка — это колпачок, который надевается на свой зуб или имплант. Показания: зуб разрушен. Коронка защищает его от дальнейшего разрушения и восстанавливает функцию. Коронка на импланте заменяет отсутствующий зуб — это альтернатива мосту.</p>
+
+      <h2>Мост</h2>
+      <p>Мост — это конструкция из нескольких соединённых коронок. Крайние коронки надеваются на опорные зубы (они обтачиваются), промежуточные — заменяют отсутствующие. Мост не требует имплантации, но опорные зубы должны быть здоровы.</p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Параметр</th><th>Коронка на импланте</th><th>Мост</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Обточка соседних зубов</td><td>Нет</td><td>Да (опорные зубы)</td></tr>
+          <tr><td>Операция</td><td>Имплантация</td><td>Нет</td></tr>
+          <tr><td>Срок службы</td><td>20+ лет</td><td>10–15 лет</td></tr>
+          <tr><td>Цена</td><td>Выше</td><td>Ниже</td></tr>
+          <tr><td>Время лечения</td><td>3–6 месяцев</td><td>2–3 недели</td></tr>
+          <tr><td>Нагрузка на соседние зубы</td><td>Нет</td><td>Да</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Что выбрать</h2>
+      <p>Если соседние зубы уже имеют пломбы или коронки — мост оправдан. Если соседние зубы здоровы — предпочтительнее имплант с коронкой, чтобы не обтачивать здоровые зубы. Мост дешевле и быстрее, но имплант долговечнее и не вредит опорным зубам.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Не знаете, что выбрать — коронку на импланте или мост? Приходите на консультацию, разберёмся.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

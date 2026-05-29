@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import FAQ from '../../../components/FAQ.astro';
+import { categories, getArticlesByCategory } from '../../../../data/blog-articles.ts';
+import doctor from '../../../../data/doctor.json';
+import socials from '../../../../data/socials.json';
+
+const cat = categories.find(c => c.id === 'koronki')!;
+const articles = getArticlesByCategory('koronki');
+const allArticles = articles.sort((a, b) => b.date.localeCompare(a.date));
+---
+
+<BaseLayout clientRouter
+  title={`${cat.name} — виды, материалы, уход | Никитина М.Г.`}
+  description={cat.desc}
+  breadcrumbTitle="Коронки"
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← Все статьи</a>
+
+    <h1>{cat.name}</h1>
+    <p class="intro">{cat.intro}</p>
+    <p class="count">{allArticles.length} статей</p>
+
+    <div class="articles">
+      {allArticles.map(article => (
+        <a href={`/blog/${article.slug}`} class="article-card">
+          <div class="date">{article.date}</div>
+          <h2>{article.title}</h2>
+          <p>{article.desc}</p>
+          <span class="read-more">Читать →</span>
+        </a>
+      ))}
+    </div>
+
+    <FAQ />
+  </main>
+</BaseLayout>
+
+<style>
+
+  .back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+  h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+  .intro { color: #5a7a9a; margin-bottom: 0.25rem; }
+  .count { color: #7a9ab8; font-size: 0.85rem; margin-bottom: 2rem; }
+  .articles { display: grid; gap: 1.5rem; margin-bottom: 3rem; }
+  .article-card { background: white; border-radius: 12px; padding: 1.5rem; text-decoration: none; display: block; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .article-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .date { color: #7a9ab8; font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .article-card h2 { color: #1e3a5f; font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .article-card p { color: #5a7a9a; margin-bottom: 1rem; line-height: 1.6; }
+  .read-more { color: #4a90d9; font-weight: 600; }
+</style>

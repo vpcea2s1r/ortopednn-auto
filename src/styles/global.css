@@ -115,10 +115,15 @@ label {
 
 .container {
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--container-width, 1200px);
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
+.container--w700 { --container-width: 700px; }
+.container--w800 { --container-width: 800px; }
+.container--w900 { --container-width: 900px; }
+.container--w1000 { --container-width: 1000px; }
+.container--w1100 { --container-width: 1100px; }
 
 .flex { display: flex; }
 .flex-col { flex-direction: column; }

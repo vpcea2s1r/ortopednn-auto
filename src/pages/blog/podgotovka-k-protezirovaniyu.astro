@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'podgotovka-k-protezirovaniyu';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Подготовка к протезированию зубов: что нужно знать",
+  "description": "Подготовка к протезированию: что включает, какие врачи нужны, сколько длится, этапы. С чего начать.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Подготовка к протезированию зубов: что нужно знать | Никитина М.Г."
+  description="Подготовка к протезированию зубов: осмотр, лечение, санация, выбор конструкции. Этапы подготовки, сколько времени занимает."
+  breadcrumbTitle="Подготовка к протезированию"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Подготовка к протезированию зубов: что нужно знать</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Протезирование начинается не с обточки зубов, а с подготовки. Нужно вылечить всё, что может помешать: кариес, воспаление дёсен, больные корни. Без подготовки любой протез — коронка, мост или съёмный — прослужит меньше и может вызвать осложнения.</p>
+
+      <h2>Что входит в подготовку</h2>
+
+      <h3>Осмотр и диагностика</h3>
+      <p>Врач оценивает состояние зубов, дёсен, костной ткани. Делает панорамный снимок (ортопантомограмму) — он показывает все зубы, корни и скрытые проблемы. Иногда нужен КТ — при планировании имплантации или больших мостов.</p>
+
+      <h3>Санация полости рта</h3>
+      <p>Перед протезированием нужно вылечить все зубы: кариес, пульпит, периодонтит. Если зуб не подлежит лечению — его удаляют. Удаление лучше сделать за 2–3 недели до протезирования, чтобы лунка зажила.</p>
+
+      <h3>Профессиональная гигиена</h3>
+      <p>Снятие зубного камня и налёта. Чистые зубы — точные слепки. Если камень есть, слепок будет неточным, и коронка не подойдёт. Гигиену делают за 3–7 дней до снятия слепков.</p>
+
+      <h3>Лечение дёсен</h3>
+      <p>Если десны воспалены или кровоточат — сначала лечение. Протез на больной десне фиксируется хуже, под ним скапливается налёт, воспаление усиливается.</p>
+
+      <h2>Сколько времени занимает подготовка</h2>
+
+      <p>От 1 до 4 недель, зависит от объёма. Если нужен только гигиена и пара пломб — 3–5 дней. Если требуется удаление, лечение каналов или лечение пародонтита — до месяца.</p>
+
+      <p>Не пропускайте этап подготовки. Пациенты, которые торопятся и протезируются «по-быстрому», через год-два возвращаются с проблемами: коронка воспалилась, зуб под коронкой разрушился, протез шатается.</p>
+
+      <h2>Какие врачи нужны</h2>
+      <ul>
+        <li><strong>Стоматолог-ортопед</strong> — ведущий врач, составляет план</li>
+        <li><strong>Терапевт</strong> — лечит кариес и каналы</li>
+        <li><strong>Хирург</strong> — удаляет зубы, которые нельзя спасти</li>
+        <li><strong>Пародонтолог</strong> — лечит дёсны, если нужно</li>
+        <li><strong>Гигиенист</strong> — делает профессиональную чистку</li>
+      </ul>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Нужна консультация перед протезированием? Запишитесь на осмотр — составлю план лечения.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

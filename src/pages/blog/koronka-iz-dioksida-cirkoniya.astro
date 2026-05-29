@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'koronka-iz-dioksida-cirkoniya';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Коронка из диоксида циркония — плюсы, минусы, особенности",
+  "description": "Коронки из диоксида циркония: прочность, эстетика, биосовместимость. Из чего делают, сколько служат, кому подходят.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Коронка из диоксида циркония — плюсы, минусы | Никитина М.Г."
+  description="Коронки из диоксида циркония: почему их выбирают. Прочность, эстетика, биосовместимость: факты, цифры, сравнение. Нижний Новгород."
+  breadcrumbTitle="Коронка из диоксида циркония"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Коронка из диоксида циркония — плюсы, минусы, особенности</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Диоксид циркония — керамический материал, по прочности близкий к металлу, а по эстетике — к натуральному зубу. Коронки из него не вызывают аллергии, не темнеют у десны и служат 15–20 лет. Это не самый дешёвый вариант, но для жевательных зубов и пациентов с аллергией на металл — часто лучший выбор.</p>
+
+      <h2>Что такое диоксид циркония</h2>
+
+      <p>Диоксид циркония (ZrO₂) — не металл и не пластмасса. Это высокопрочная керамика, которую получают из оксида циркония. В стоматологии используется цирконий, стабилизированный оксидом иттрия — так материал становится прозрачнее и ближе к оптике натурального зуба.</p>
+
+      <p>Из циркония делают не только коронки, но и мосты, абатменты для имплантов, культевые вкладки. Каркас фрезеруют на станках CAD/CAM из цельного блока циркония — это исключает микротрещины и усадку, характерные для послойного нанесения.</p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Характеристика</th><th>Показатель</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Прочность на изгиб</td><td>900–1200 МПа</td></tr>
+          <tr><td>Прозрачность</td><td>средняя (ближе к натуральному зубу, чем металлокерамика)</td></tr>
+          <tr><td>Срок службы</td><td>15–20 лет</td></tr>
+          <tr><td>Аллергенность</td><td>гипоаллергенен</td></tr>
+          <tr><td>Цвет десны у коронки</td><td>не темнеет (нет металла)</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Плюсы коронок из диоксида циркония</h2>
+
+      <h3>Прочность</h3>
+
+      <p>По прочности цирконий не уступает металлокерамике, а по некоторым данным превосходит. Металлокерамика выдерживает нагрузку 500–600 МПа, монолитный цирконий — до 1200 МПа. Это значит, что коронка не треснет даже при жевании твёрдой пищи.</p>
+
+      <h3>Эстетика</h3>
+
+      <p>Каркас из циркония — белый, а не тёмный, как металл. Через него не просвечивает серая полоса у десны. Современные многослойные блоки циркония имитируют дентин и эмаль, поэтому коронка выглядит естественно. Для передних зубов используют мультислойный цирконий с градиентом прозрачности.</p>
+
+      <h3>Биосовместимость</h3>
+
+      <p>Цирконий — один из самых биосовместимых материалов в стоматологии. Он не окисляется, не вызывает аллергии, не влияет на вкус. Исследования показывают: на поверхности циркония на 70% меньше бактериального налёта, чем на металлокерамике. Это снижает риск воспаления десны вокруг коронки.</p>
+
+      <h3>Точность прилегания</h3>
+
+      <p>Циркониевые коронки фрезеруют на станках CAD/CAM. Зазор между коронкой и зубом — 20–40 микрон (меньше толщины волоса). Это исключает попадание слюны и бактерий под коронку.</p>
+
+      <h2>Минусы и ограничения</h2>
+
+      <ul>
+        <li><strong>Твёрдость выше, чем у эмали.</strong> Цирконий тверже натурального зуба. При неправильном расчёте окклюзии коронка может стирать зуб-антагонист. Опытный ортопед этого не допустит.</li>
+        <li><strong>Прозрачность ниже, чем у E-max.</strong> Для передних зубов с тонкой эмалью E-max даёт более естественный результат. На жевательных зубах разница незаметна.</li>
+        <li><strong>Цена.</strong> Цирконий дороже металлокерамики в 2–3 раза из-за стоимости оборудования и материала.</li>
+      </ul>
+
+      <h2>Монолитный и мультислойный цирконий — в чём разница</h2>
+
+      <p>Монолитный цирконий — однородный белый блок. Коронки из него прочные, но менее естественные. Их чаще ставят на жевательные зубы. Мультислойный цирконий — блок с градиентом: от непрозрачного у десны до прозрачного у режущего края. Такие коронки подходят для передних зубов, где важна эстетика.</p>
+
+      <p>В Нижнем Новгороде большинство зуботехнических лабораторий работают с мультислойным цирконием — это стандарт для премиальных коронок.</p>
+
+      <h2>Как ставят циркониевую коронку</h2>
+
+      <p>Процедура не отличается от установки любой другой коронки — два визита. Первый: обточка зуба, снятие цифрового слепка (сканером, а не слепочной массой), фиксация временной коронки. Второй: примерка и фиксация постоянной коронки. Между визитами — 7–10 дней, лаборатория изготавливает коронку.</p>
+
+      <h2>Кому подходят коронки из диоксида циркония</h2>
+
+      <ul>
+        <li>Пациентам с аллергией на металлы (никель, хром, кобальт)</li>
+        <li>Для жевательных зубов — высокая нагрузка, нужна прочность</li>
+        <li>Для передних зубов — мультислойный цирконий даёт естественный вид</li>
+        <li>Пациентам с тонкой десной — нет тёмной полосы у края</li>
+      </ul>
+
+      <h2>Сравнение с другими материалами</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Материал</th><th>Прочность</th><th>Эстетика</th><th>Биосовместимость</th><th>Срок службы</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Диоксид циркония</td><td>высокая</td><td>хорошая</td><td>гипоаллергенен</td><td>15–20 лет</td></tr>
+          <tr><td>Металлокерамика</td><td>высокая</td><td>средняя (полоска у десны)</td><td>возможна аллергия</td><td>10–15 лет</td></tr>
+          <tr><td>E-max</td><td>средняя</td><td>отличная</td><td>гипоаллергенен</td><td>10–15 лет</td></tr>
+          <tr><td>Золото</td><td>высокая</td><td>низкая</td><td>гипоаллергенен</td><td>15–20 лет</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Когда к врачу</h2>
+
+      <ul>
+        <li>Вам нужна коронка на жевательный зуб с высокой нагрузкой</li>
+        <li>У вас аллергия на металл в предыдущих коронках</li>
+        <li>Десна вокруг старой металлокерамической коронки потемнела</li>
+        <li>Вы хотите максимально естественный вид без серой полосы</li>
+      </ul>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Циркониевые коронки — долгосрочное вложение в здоровье зубов. Запишитесь на консультацию, чтобы понять, подходит ли вам этот материал.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

@@ -4,6 +4,9 @@ import Navbar from './Navbar.astro';
 import doctorData from '../../data/doctor.json';
 import socialsData from '../../data/socials.json';
 import CtaBlock from './CtaBlock.astro';
+import { getRelatedServices, getProcedureType, getSlugFromPath } from '../../data/services.ts';
+import { getArticlesForService } from '../../data/cross-links';
+import type { BlogArticle } from '../../data/blog-articles';
 
 export interface Props {
   title: string;
@@ -24,10 +27,29 @@ const {
 const today = new Date().toISOString().split('T')[0];
 const pubDate = datePublished || today;
 const modDate = dateModified || today;
+
+const currentSlug = getSlugFromPath(Astro.url.pathname);
+const related = getRelatedServices(currentSlug);
+const relatedBlogArticles = getArticlesForService(currentSlug);
+const procedureType = getProcedureType(currentSlug);
+const medicalWebPage = {
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": breadcrumbName,
+  "description": description,
+  "url": `https://ortopednn.ru${Astro.url.pathname}`,
+  "datePublished": pubDate,
+  "dateModified": modDate,
+  "about": {
+    "@type": "MedicalProcedure",
+    "name": breadcrumbName,
+    "procedureType": procedureType
+  }
+};
 ---
 
 <BaseLayout
-  title={title}
+  title={title.includes('Нижний Новгород') ? title : `${title.replace(' — ', ' в Нижнем Новгороде — ')}`}
   description={description}
   breadcrumbTitle={breadcrumbName}
   pageType="product"
@@ -58,7 +80,43 @@ const modDate = dateModified || today;
       </div>
     </article>
 
+    <script type="application/ld+json" set:html={JSON.stringify(medicalWebPage)} />
+
     <CtaBlock variant="service" />
+
+    {related.length > 0 && (
+      <section class="related-services">
+        <div class="container">
+          <h2>Связанные услуги</h2>
+          <div class="related-grid">
+            {related.map(item => (
+              <a href={`/services/${item.slug}`} class="related-card">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {relatedBlogArticles.length > 0 && (
+      <section class="related-articles-section">
+        <div class="container">
+          <h2>Статьи по теме</h2>
+          <div class="articles-grid">
+            {relatedBlogArticles.map(a => (
+              <a href={`/blog/${a.slug}`} class="article-card">
+                <time class="article-date">{a.date}</time>
+                <h3>{a.title}</h3>
+                <p>{a.desc}</p>
+                <span class="article-link-arrow">Читать →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
   </main>
 
   <style>
@@ -74,9 +132,26 @@ const modDate = dateModified || today;
     .service-body :global(p) { color: var(--color-text-muted); line-height: 1.7; }
     .service-body :global(ul) { padding-left: var(--space-lg); }
     .service-body :global(li) { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+    .related-services { padding: var(--space-3xl) 0; background: var(--color-bg-alt); }
+    .related-services h2 { font-size: var(--text-2xl); margin-bottom: var(--space-lg); color: var(--color-primary); }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+    .related-card { display: flex; flex-direction: column; background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-md); text-decoration: none; transition: all var(--transition-normal); }
+    .related-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); }
+    .related-card h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .related-card p { font-size: var(--text-sm); color: var(--color-text-muted); flex-grow: 1; }
+    .related-articles-section { padding: var(--space-3xl) 0; background: var(--color-bg); }
+    .related-articles-section h2 { font-size: var(--text-2xl); margin-bottom: var(--space-lg); color: var(--color-primary); }
+    .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+    .article-card { display: flex; flex-direction: column; background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-md); text-decoration: none; transition: all var(--transition-normal); }
+    .article-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); }
+    .article-date { font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-xs); }
+    .article-card h3 { font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .article-card p { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-sm); flex-grow: 1; }
+    .article-link-arrow { font-size: var(--text-sm); color: var(--color-primary); font-weight: 600; }
     @media (max-width: 768px) {
       .service-header { flex-direction: column; }
+      .related-grid { grid-template-columns: 1fr; }
+      .articles-grid { grid-template-columns: 1fr; }
     }
   </style>
 </BaseLayout>

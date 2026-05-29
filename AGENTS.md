@@ -27,7 +27,7 @@
 6. **Кодировка UTF-8 всегда** — при push через GitHub API: читать файл через `[System.IO.File]::ReadAllBytes`, кодировать в base64, НЕ использовать `Get-Content` (ломает UTF-8). Перед push проверять: `[System.Text.Encoding]::UTF8.GetString($bytes)` — русский текст должен читаться.
 
 7. **Article tracking in CONTENT.md** — перед написанием статьи прочитать CONTENT.md (список статей), после написания статьи добавить её в CONTENT.md, затем push.
-8. **Review-before-publish (Hard Rule)** — ни одна статья не публикуется без одобрения пользователя. Пайплайн сохраняет черновики в `/data/drafts/`. Пользователь читает через `/drafts` в Telegram боте и нажимает "Опубликовать". Прямая публикация через GitHub API (publisherAgent) запрещена — только через review flow.
+8. **Review-before-publish (Hard Rule)** — ни одна статья не публикуется без одобрения пользователя. Пайплайн сохраняет черновики в `/data/drafts/`. Пользователь читает через `/drafts` в Telegram боте или на preview.ortopednn.ru/preview/<slug>/ (noindex, banner). Нажимает "Опубликовать" или "Удалить". Прямая публикация через GitHub API (publisherAgent) запрещена — только через review flow.
 
 ## Available Skills
 
@@ -112,7 +112,7 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 
 ### LIVE-сайт (ortopednn.ru) — структура (2026-05-28)
 
-**Sitemap:** `sitemap-0.xml`, всего **106 pages** (build 2026-05-28, 0 errors)
+**Sitemap:** `sitemap-0.xml`, всего **151 pages** (build 2026-05-29, 0 errors)
 
 | Раздел | Кол-во | Описание |
 |--------|--------|---------|
@@ -133,7 +133,7 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 | SVG optimizer | ✅ | `experimental.svgOptimizer: svgoOptimizer()` |
 | Fonts API (Inter) | ✅ | `fonts` config + `<Font cssVariable="--font-inter" preload/>` |
 | View Transitions | ✅ | `<ClientRouter />` в `BaseLayout.astro` |
-| `@astrojs/sitemap` | ✅ | `astro.config.mjs` |
+| `@astrojs/sitemap` | ✅ | `astro.config.mjs` — `/preview/` excluded from sitemap |
 | Content Collections v2 (`file()` loader) | ✅ | `src/content/config.ts` |
 | OG image fallback (favicon) | ✅ | `src/layouts/BaseLayout.astro` |
 
@@ -145,7 +145,21 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 - **Главная:** цены удалены
 - **Компонент:** `ServiceArticle.astro` — удалены price из Props, price-бадж, Product schema, CSS
 
-### Next Steps
+### Preview System (Draft Review on ortopednn.ru)
+
+**Status:** ✅ Frontend on Astro — created
+**Flow:** Bot generates draft → pushes `data/drafts/<slug>.json` to repo → GitHub Actions rebuilds → preview at `ortopednn.ru/preview/<slug>/` (noindex, banner) → user reads + publishes via Telegram /drafts
+**Files:**
+- `data/draft-types.ts` — DraftMeta interface (slug, title, date, desc, body, category)
+- `src/pages/preview/...slug.astro` — dynamic route (BaseLayout, noindex, preview banner, publish/delete buttons)
+- `data/drafts/.gitkeep` — directory for draft JSONs
+- `astro.config.mjs` — `/preview/` excluded from sitemap
+
+**Need on VPS:**
+1. Bot to push `data/drafts/<slug>.json` to repo after generation
+2. Two API routes on bot: `/api/preview/publish` and `/api/preview/delete`
+
+## Next Steps
 
 1. **Google Search Console** — верифицировать ortopednn.ru (HTML tag) для доступа к API
 2. **Interactive Telegram Bot** — добавить команды `/check`, `/ssl`, `/perf`, `/stats` (GitHub Actions → Telegram)

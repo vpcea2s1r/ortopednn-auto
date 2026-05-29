@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'uhod-za-zubnymi-protezami';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Уход за зубными протезами: как чистить, чем мыть, что нельзя делать",
+  "description": "Как ухаживать за съёмными и несъёмными протезами: ежедневная чистка, дезинфекция, хранение. Что нельзя делать с протезами.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Уход за зубными протезами: как чистить, чем мыть, что нельзя делать | Никитина М.Г."
+  description="Правильный уход за съёмными и несъёмными протезами: чем чистить, как дезинфицировать, что нельзя делать. Рекомендации стоматолога-ортопеда в Нижнем Новгороде."
+  breadcrumbTitle="Уход за протезами"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Уход за зубными протезами: как чистить, чем мыть, что нельзя делать</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Любой протез — съёмный или несъёмный — требует ежедневного ухода. Налёт, остатки пищи и бактерии накапливаются на протезе не хуже, чем на живых зубах. Без чистки появляется запах, воспаляются дёсны, протез темнеет и служит меньше.</p>
+
+      <h2>Уход за несъёмными протезами</h2>
+
+      <p>Коронки, мосты и виниры чистят как обычные зубы — два раза в день щёткой с пастой. Важно чистить место соединения протеза с десной: там задерживаются остатки пищи. Используйте нить (флосс) для межзубных промежутков и ёршики для промывания под мостом.</p>
+
+      <p>Раз в день — ирригатор. Струя воды вымывает остатки из-под коронки и из-под моста. Без ирригатора в этих местах скапливается налёт, который не убрать щёткой.</p>
+
+      <p>Коронки из циркония и диоксида циркония не темнеют, но налёт на них виден отчётливее, чем на металлокерамике. Чистите их так же, как обычные зубы.</p>
+
+      <h2>Уход за съёмными протезами</h2>
+
+      <p>Съёмные протезы чистят дважды в день — утром и вечером. Используйте щётку с мягкой щетиной и специальную пасту для протезов (обычная зубная паста содержит абразив, который царапает акрил). В царапинах скапливается налёт, и протез темнеет.</p>
+
+      <ul>
+        <li><strong>Чистка</strong> — мягкая щётка + паста для протезов</li>
+        <li><strong>Дезинфекция</strong> — раз в неделю замачивать в растворе Corega, Protefix или аналогичном</li>
+        <li><strong>Хранение</strong> — ночью протез хранят в сухом контейнере (не в воде!)</li>
+        <li><strong>Полоскание</strong> — после каждого приёма пищи ополаскивать протез водой</li>
+      </ul>
+
+      <h2>Чем нельзя чистить протезы</h2>
+
+      <p>Пациенты часто совершают ошибки, которые сокращают срок службы протеза.</p>
+
+      <ul>
+        <li><strong>Обычная зубная паста</strong> — абразив царапает акрил и керамику</li>
+        <li><strong>Сода, соль, уксус</strong> — разрушают материал</li>
+        <li><strong>Отбеливатели с хлором</strong> — обесцвечивают протез</li>
+        <li><strong>Кипячение</strong> — акрил деформируется</li>
+        <li><strong>Металлические предметы</strong> — царапают поверхность</li>
+      </ul>
+
+      <h2>Уход за бюгельными протезами</h2>
+
+      <p>Бюгельные протезы имеют металлический каркас, на который крепятся зубы и кламмеры. Каркас чистится щёткой, а зубы — пастой для протезов. Кламмеры (крючки) не должны царапать эмаль живых зубов. Если под кламмером скапливается налёт, используйте ёршик.</p>
+
+      <h2>Как часто посещать врача</h2>
+
+      <p>Осмотр у стоматолога-ортопеда нужен раз в год. Врач проверяет состояние протеза, замковых креплений, дёсен под протезом, корректирует посадку. Съёмные протезы требуют периодической перебазировки — посадка меняется из-за изменений в костной ткани.</p>
+
+      <p>Если протез натирает, сломался или шатается — не пытайтесь починить самостоятельно. Неквалифицированный ремонт ухудшит ситуацию, и протез придётся делать заново.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Нужен осмотр протеза или консультация по уходу? Запишитесь к стоматологу-ортопеду в Нижнем Новгороде.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

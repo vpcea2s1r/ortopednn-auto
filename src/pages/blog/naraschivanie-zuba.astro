@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'naraschivanie-zuba';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Наращивание зуба — что это, показания, методы восстановления",
+  "description": "Когда и зачем наращивают зубы. Штифт, вкладка, коронка — что выбрать. Методы восстановления, сроки, отзывы пациентов в Нижнем Новгороде.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Наращивание зуба — что это, показания, методы | Никитина М.Г."
+  description="Наращивание зуба: когда зуб разрушен, но сохранить его ещё можно. Штифт, культевая вкладка, коронка — методы, этапы, показания."
+  breadcrumbTitle="Наращивание зуба"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Наращивание зуба — что это, показания, методы восстановления</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Наращивание зуба — термин, которым пациенты называют восстановление разрушенного зуба. Когда зуб сломался, стерся или разрушен кариесом, его не всегда нужно удалять. В большинстве случаев стоматолог может восстановить форму и функцию. Какой метод подходит — зависит от степени разрушения.</p>
+
+      <h2>Когда зуб можно нарастить, а когда пора удалять</h2>
+
+      <p>Главный критерий — сколько здоровой ткани осталось над десной. Если разрушено до 30% коронки — ставят пломбу или винир. Если 30–50% — коронку. Если более 50% — нужна культевая вкладка или штифт с коронкой. Если зуб разрушен ниже уровня десны — чаще всего показано удаление и имплантация.</p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Степень разрушения</th><th>Метод восстановления</th><th>Срок службы</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>До 30%</td><td>Пломба / композитная реставрация</td><td>3–5 лет</td></tr>
+          <tr><td>30–50%</td><td>Коронка (керамика, металлокерамика, цирконий)</td><td>10–20 лет</td></tr>
+          <tr><td>Более 50%</td><td>Культевая вкладка + коронка</td><td>10–15 лет</td></tr>
+          <tr><td>Разрушен ниже десны</td><td>Удаление + имплантация</td><td>20+ лет</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Методы наращивания зуба</h2>
+
+      <h3>Композитная реставрация (пломба)</h3>
+
+      <p>Если скололся край зуба, откололся небольшой кусочек или есть поверхностный кариес — восстановление проводит терапевт. Светоотверждаемый композит наносят слоями, моделируют форму зуба, полируют. Процедура занимает 30–60 минут. Минус — композит со временем стирается, темнеет, может дать усадку.</p>
+
+      <h3>Восстановление зуба на штифте</h3>
+
+      <p>Если зуб разрушен значительно, но корень здоров — в корневой канал фиксируют штифт (стекловолоконный, титановый или анкерный). На штифт наращивают композит. Метод подходит как временное решение, но уступает в надёжности культевой вкладке. Штифт со временем может расцементироваться, а нагрузка на корень распределяется неравномерно.</p>
+
+      <h3>Культевая вкладка</h3>
+
+      <p>Наиболее надёжный способ восстановления сильно разрушенного зуба. Вкладку изготавливают в зуботехнической лаборатории по слепку — из металла (кобальт-хром), диоксида циркония или керамики. Врач фиксирует вкладку в корневом канале, а сверху ставит коронку. Такая конструкция распределяет жевательную нагрузку равномерно и служит 10–15 лет.</p>
+
+      <p>Исследование <em>Journal of Prosthetic Dentistry</em> показало: выживаемость зубов с культевыми вкладками через 10 лет достигает 93%, что сопоставимо с имплантами.</p>
+      <p class="translation">93% зубов с культевой вкладкой служат 10 лет и дольше.</p>
+
+      <h3>Коронка</h3>
+
+      <p>Коронка закрывает зуб со всех сторон, защищая его от дальнейшего разрушения. При восстановлении разрушенного зуба коронка — финальный этап после вкладки или штифта. Без коронки наращенный зуб может сломаться под нагрузкой. Подробнее о выборе материала коронки — отдельная статья в нашем блоге.</p>
+
+      <h2>Какой метод выбрать</h2>
+
+      <p>Выбор зависит от состояния корня, объёма здоровой ткани и положения зуба в ряду. Для передних зубов важна эстетика — здесь чаще используют керамические вкладки и безметалловые коронки. Для жевательных — прочность: металлокерамика или диоксид циркония.</p>
+
+      <p>В Нижнем Новгороде пациенты часто откладывают восстановление разрушенных зубов, опасаясь боли или цены. Но чем раньше обратиться к врачу, тем больше шансов сохранить зуб простым методом.</p>
+
+      <h2>Когда к врачу</h2>
+
+      <ul>
+        <li>Откололся кусочек зуба</li>
+        <li>Зуб потемнел после лечения каналов</li>
+        <li>Пломба выпадает или дала трещину</li>
+        <li>Зуб разрушен, но корень сохранён</li>
+      </ul>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Восстановить зуб, а не удалять — лучший сценарий. Запишитесь на осмотр, чтобы оценить состояние зуба и выбрать метод.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .translation { background: var(--color-bg-alt); padding: 0.6rem 1rem; border-radius: 6px; font-size: 0.95rem; margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

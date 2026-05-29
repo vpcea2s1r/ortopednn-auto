@@ -3,9 +3,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'vremennye-koronki-zachem-nuzhny';
 const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -30,9 +37,14 @@ const ldArticle = {
   dateModified="2026-05-25"
 >
   <Navbar />
-  <main class="container">
+  <main class="container container--w800">
     <a href="/blog" class="back">← К статьям</a>
-
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
     <article>
       <h1>Временные коронки — зачем нужны и почему их нельзя пропускать</h1>
       <div class="meta">25 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
@@ -130,6 +142,8 @@ const ldArticle = {
       <h2>Клинический пример</h2>
       <p>Пациент Д., 34 года, обточка зуба 2.1 под коронку из диоксида циркония. Врач предложил временную коронку из CAD/CAM PMMA (срок лечения — 10 недель из-за имплантации соседнего зуба). Пациент отказался. Результат через 8 недель: выдвижение зуба-антагониста на 1,2 мм, разрастание десны, покрывающее край культи на 2 мм. Постоянная коронка не встала — потребовалась коррекция десны, переснятие слепков, новая коронка, дополнительные 4 недели лечения.</p>
 
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Включаем временное протезирование в план лечения для идеального результата.</p>
         <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
@@ -141,7 +155,6 @@ const ldArticle = {
 <script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
 
 <style>
-.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
 .back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
 article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
@@ -161,4 +174,8 @@ td { color: var(--color-text-muted); }
 .cta p { margin-bottom: 1rem; color: var(--color-text); }
 .btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
 .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
 </style>

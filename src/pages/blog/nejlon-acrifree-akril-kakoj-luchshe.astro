@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
 import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
 
 const slug = 'nejlon-acrifree-akril-kakoj-luchshe';
 const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -30,9 +36,15 @@ const ldArticle = {
   dateModified="2026-05-25"
 >
   <Navbar />
-  <main class="container">
-    <a href="/blog" class="back">← В блог</a>
-    
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>Нейлон / AcryFree / акрил</span>
+    </nav>
+
     <article>
       <h1>Нейлон, AcryFree или акрил — какой съёмный протез лучше</h1>
       <div class="meta">25 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
@@ -97,14 +109,27 @@ const ldArticle = {
         <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
       </div>
     </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме: съёмные протезы" />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
+    <div class="back-link">
+      <a href="/blog/semnye-protezy">← Все статьи о съёмных протезах</a>
+    </div>
   </main>
 </BaseLayout>
 
 <script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
 
 <style>
-.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
 .back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+.back-link { margin-top: 1.5rem; }
+.back-link a { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+.back-link a:hover { text-decoration: underline; }
 article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
 .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }

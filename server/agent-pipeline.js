@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -117,6 +117,40 @@ ${pubmedContext ? 'Научный контекст из PubMed (использу
   throw new Error('Writer agent: failed to generate after 3 attempts');
 }
 
+/* --- HORIZON WRITER (uses existing content instead of research) --- */
+
+async function horizonWriterAgent(item) {
+  const allContext = [
+    item.summary ? `Источник:\n${item.summary}` : '',
+    item.background ? `\nКонтекст: ${item.background}` : '',
+    item.community ? `\nОбсуждение: ${item.community}` : '',
+  ].filter(Boolean).join('\n');
+
+  const topic = `Новости стоматологии: ${item.title}`;
+
+  const prompt = `Напиши новостную статью для блога стоматолога-ортопеда на основе следующей информации:
+
+${allContext}
+
+Ключевые параметры:
+- 1500-2500 символов
+- Первый абзац — главная новость/открытие (кто, что, когда)
+- Объясни простым языком, почему это важно для пациентов и стоматологов
+- Только p, h2, ul/ol tags
+- Без h1, без "запишитесь к нам", без восклицательных знаков
+- Стиль: естественный русский, простые слова. Без канцелярита
+
+Ответь ТОЛЬКО JSON:
+{"title":"","description":"150-160 символов","body":"полный HTML в русском переводе"}`;
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    const raw = await callAI(prompt);
+    const json = parseJSON(raw);
+    if (json?.title && json?.description && json?.body) return json;
+  }
+  throw new Error('Horizon writer: failed after 3 attempts');
+}
+
 /* --- SEO AGENT --- */
 
 function seoAgent(article) {
@@ -126,7 +160,7 @@ function seoAgent(article) {
   return { slug, date, title: article.title, description: article.description.substring(0, 160), body: bodyClean };
 }
 
-/* --- DRAFT AGENT (save locally + publish to stomatolog) --- */
+/* --- DRAFT AGENT (save locally + push draft JSON to repo for preview) --- */
 
 async function draftAgent(article) {
   const { slug, title, description, date, body } = article;
@@ -142,6 +176,17 @@ async function draftAgent(article) {
     repo: 'ortopednn-auto',
     astroEntry: newEntry
   }, null, 2), 'utf-8');
+
+  // Push draft JSON to repo for preview on ortopednn.ru/preview/<slug>/
+  const draftJson = { slug, title, date, desc: description, body, category: 'uncategorized' };
+  writeFileSync(join(draftsDir, `${slug}.json`), JSON.stringify(draftJson, null, 2), 'utf-8');
+  try {
+    const existing = await ghFetch(`data/drafts/${slug}.json`);
+    await ghPut(`data/drafts/${slug}.json`, JSON.stringify(draftJson, null, 2),
+      `draft: ${slug} [preview]`, existing?.sha);
+  } catch (e) {
+    console.error('Failed to push draft JSON to repo:', e.message);
+  }
 
   return { slug, title, url: `https://ortopednn.ru/blog/${slug}/` };
 }
@@ -578,7 +623,66 @@ export async function pickAndRun() {
   return result;
 }
 
-export { ghPut, ghFetch, checkAiTells };
+/* --- HORIZON WATCHER --- */
+
+async function parseHorizonSummary(filePath) {
+  const text = readFileSync(filePath, 'utf-8');
+  const items = [];
+  const blocks = text.split(/\n---\n/);
+
+  for (const block of blocks) {
+    const titleMatch = block.match(/^## \[(.+?)\]\((.+?)\)/m);
+    if (!titleMatch) continue;
+
+    const scoreMatch = block.match(/⭐️\s*([\d.]+)\/10/);
+    const backgroundMatch = block.match(/\*\*Background\*\*:\s*(.+?)(?:\n\n|\*\*)/s);
+    const communityMatch = block.match(/Discussion\*\*:\s*(.+?)(?:\n\n|\*\*)/s);
+    const tagsMatch = block.match(/\*\*Tags?\*\*:\s*(.+?)(?:\n|$)/);
+    const sourceMatch = block.match(/^(rss|reddit|hackernews|telegram|github|twitter)\s*·/mi);
+
+    // Summary: text between title line + blank and the next blank (source line)
+    const bodyAfterTitle = block.split(/^## \[.+?\]\(.+?\)\n\n/m)?.[1] || '';
+    const summary = bodyAfterTitle.split(/\n\n/)[0]?.trim() || '';
+
+    items.push({
+      title: titleMatch[1],
+      url: titleMatch[2],
+      score: scoreMatch ? parseFloat(scoreMatch[1]) : 0,
+      summary: summary.substring(0, 500),
+      background: backgroundMatch ? backgroundMatch[1].trim() : '',
+      community: communityMatch ? communityMatch[1].trim() : '',
+      tags: tagsMatch ? tagsMatch[1].split(',').map(t => t.replace(/[`#]/g, '').trim()) : [],
+      source: sourceMatch ? sourceMatch[1].toLowerCase() : 'unknown',
+    });
+  }
+  return items;
+}
+
+export async function runHorizonPipeline() {
+  const summariesDir = join(DATA_DIR, '../horizon-data/summaries');
+  const files = readdirSync(summariesDir).filter(f => f.endsWith('.md')).sort();
+  if (files.length === 0) return { info: 'No Horizon summaries found' };
+
+  const latest = files[files.length - 1];
+  const items = await parseHorizonSummary(join(summariesDir, latest));
+  const highScored = items.filter(i => i.score >= 7.0).sort((a, b) => b.score - a.score);
+  const results = [];
+
+  for (const item of highScored) {
+    try {
+      const article = await horizonWriterAgent(item);
+      const seo = seoAgent(article);
+      const draft = await draftAgent(seo);
+      results.push({ slug: draft.slug, title: article.title, score: item.score, status: 'draft' });
+    } catch (e) {
+      results.push({ title: item.title, score: item.score, status: 'error', error: e.message });
+    }
+  }
+
+  return { file: latest, totalItems: items.length, generated: results.length, results };
+}
+
+export { ghPut, ghFetch, checkAiTells, runHorizonPipeline, horizonWriterAgent };
 
 export async function addTopic(topic) {
   const topics = loadTopics();

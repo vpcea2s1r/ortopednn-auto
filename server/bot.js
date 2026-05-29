@@ -450,6 +450,20 @@ async function publishToOrtopednn(slug) {
   }
 
   deleteDraft(slug);
+  // Clean up draft JSON from repo (if preview system generated it)
+  try {
+    const draftJson = await ghFetch(`data/drafts/${slug}.json`);
+    if (draftJson?.sha) {
+      const dlUrl = `https://api.github.com/repos/vpcea2s1r/ortopednn-auto/contents/data/drafts/${slug}.json`;
+      await fetch(dlUrl, {
+        method: 'DELETE',
+        headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' },
+        body: JSON.stringify({ message: `draft: ${slug} [published]`, sha: draftJson.sha, branch: 'master' })
+      });
+    }
+  } catch (e) {
+    console.error('Failed to clean up repo draft:', e.message);
+  }
   return { ok: true, slug, url: `https://ortopednn.ru/blog/${slug}/` };
 }
 
@@ -659,6 +673,20 @@ async function handleUpdate(upd) {
       }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` }));
     } catch (e) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+    }
+  } else if (isCmd && text === '/horizon') {
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '🌐 Запускаю Horizon пайплайн...' });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
+    if (!msgId) return;
+    try {
+      const { runHorizonPipeline } = await import('./agent-pipeline.js');
+      const result = await runHorizonPipeline();
+      const text = result.generated > 0
+        ? `🌐 Horizon: ${result.generated} черновиков из ${result.totalItems} новостей\n/drafts — просмотреть`
+        : `🌐 Horizon: нет новых черновиков (${result.totalItems} новостей)`;
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text });
+    } catch (e) {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
     }
   } else if (isCmd && text.startsWith('/research ')) {
     const query = text.slice(10).trim();

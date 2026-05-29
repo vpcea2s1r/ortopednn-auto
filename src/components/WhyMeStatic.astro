@@ -12,7 +12,7 @@ const photos = (Astro.props.doctor.photos || []).join('||');
         <p class="doctor-address">{Astro.props.doctor.address}</p>
       </div>
       <div class="doctor-photo">
-        <img id="doctor-photo" src="/images/1.webp" alt={Astro.props.doctor.name} width="300" height="420" loading="lazy" data-photos={photos} onerror="this.onerror=null;this.src=this.src.replace('.webp','.jpg')" />
+        <img id="doctor-photo" src="/images/1.webp" alt={Astro.props.doctor.name} width="300" height="420" loading="lazy" data-photos={photos} />
       </div>
     </div>
   </div>
@@ -98,9 +98,5 @@ const photos = (Astro.props.doctor.photos || []).join('||');
   }
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
+
 </style>

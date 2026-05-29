@@ -23,14 +23,13 @@ async function callAI(prompt) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 300000);
   try {
-    const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
+    const resp = await fetch('https://text.pollinations.ai/', {
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: prompt }], model: 'deepseek-v4-flash-free' })
+      body: JSON.stringify({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: prompt }], model: 'mistral' })
     });
     clearTimeout(timer);
-    const data = await resp.json();
-    return data.choices?.[0]?.message?.content || await resp.text();
+    return await resp.text();
   } catch (e) { clearTimeout(timer); throw e; }
 }
 

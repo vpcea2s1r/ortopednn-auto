@@ -3,10 +3,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'posle-ustanovki-koronki';
 const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
-
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -41,9 +47,14 @@ const ldArticle = {
   dateModified="2026-05-22"
 >
   <Navbar />
-  <main class="container">
+  <main class="container container--w800">
     <a href="/blog" class="back">← К статьям</a>
-
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
     <article>
       <h1>Через сколько можно есть после установки коронки</h1>
       <div class="meta">22 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
@@ -142,6 +153,8 @@ const ldArticle = {
       <h3>Через сколько можно есть после временной коронки?</h3>
       <p>Временный цемент слабее — 2 часа строго без еды, потом только мягкое. Твёрдое — через 24 часа.</p>
 
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Поставили коронку и не уверены, всё ли в порядке?</p>
         <a href={`tel:${doctor.phone}`} class="btn">Позвонить: +7 (920) 253-73-17</a>
@@ -153,7 +166,6 @@ const ldArticle = {
 <script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
 
 <style>
-.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
 .back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
 article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
@@ -172,4 +184,8 @@ th { background: #f0f6fb; color: #1e3a5f; font-weight: 600; }
 .cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
 .cta p { margin-bottom: 1rem; }
 .btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
 </style>

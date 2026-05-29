@@ -18,7 +18,10 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.match(/\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo)\/?$/)
+      filter: (page) => {
+        if (page.includes('/preview/')) return false;
+        return !page.match(/\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo)\/?$/);
+      }
     })
   ],
   image: {
@@ -36,8 +39,8 @@ export default defineConfig({
   fonts: [{
     name: 'Inter',
     cssVariable: '--font-inter',
-    subsets: ['cyrillic', 'latin'],
-    weights: [400, 500, 600, 700, 800],
+    subsets: ['cyrillic'],
+    weights: [400, 600, 700],
     provider: fontProviders.google()
   }]
 });

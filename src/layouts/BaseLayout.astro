@@ -3,7 +3,7 @@ import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
-const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle, ogImage = '/og-image.svg', noindex = false } = Astro.props;
+const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle, ogImage = '/og-image.svg', noindex = false, clientRouter = false } = Astro.props;
 const titleWithCity = title.includes('Нижний Новгород') ? title : `${title} | Нижний Новгород`;
 const truncatedTitle = titleWithCity.length > 60 ? titleWithCity.slice(0, 57) + '...' : titleWithCity;
 const truncatedDesc = description.length > 160 ? description.slice(0, 157) + '...' : description;
@@ -64,7 +64,7 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
   <link rel="apple-touch-icon" href="/favicon.svg"/>
   
   <Font cssVariable="--font-inter" preload/>
-  <ClientRouter/>
+  {clientRouter && <ClientRouter/>}
   
   <link rel="canonical" href={`https://ortopednn.ru${Astro.url.pathname}`}/>
   <meta property="og:type" content={pageType}/>
@@ -237,7 +237,7 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
 <body>
   <slot/>
   <footer class="legal-disclaimer">
-    <div class="container">
+    <div class="container container--w1100">
       <p><strong>Правовая информация:</strong></p>
       <p>Данный сайт является персональным блогом (личной информационной страницей) врача Никитиной М.Г. Ресурс носит исключительно информационно-просветительский характер, не является представительством какой-либо медицинской организации, не осуществляет дистанционное оказание медицинских услуг и не собирает за них оплату.</p>
       <p>Информация о видах ортопедических работ отражает профессиональную специализацию и клинический опыт доктора. Официальный практический прием пациентов и медицинские манипуляции осуществляются на базе лицензированной клиники по адресу: г. Нижний Новгород, ул. Октябрьской Революции, 43, в соответствии с её действующим прейскурантом, правилами и медицинской лицензией.</p>
@@ -262,10 +262,6 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
     font-weight: 700;
     letter-spacing: 0.03em;
   }
-  .legal-disclaimer .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 var(--space-md);
-  }
+
 </style>
 </html>

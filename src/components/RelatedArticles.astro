@@ -1,0 +1,38 @@
+---
+import type { BlogArticle } from '../../data/blog-articles.ts';
+
+export interface Props {
+  articles: BlogArticle[];
+  title?: string;
+}
+
+const { articles: items, title = 'Читайте также по теме' } = Astro.props;
+---
+
+{items.length > 0 && (
+  <nav class="related">
+    <h3>{title}</h3>
+    <div class="related-grid">
+      {items.map(item => (
+        <a href={`/blog/${item.slug}`} class="related-card">
+          <div class="date">{item.date}</div>
+          <h4>{item.title}</h4>
+          <p>{item.desc}</p>
+          <span class="read-more">Читать →</span>
+        </a>
+      ))}
+    </div>
+  </nav>
+)}
+
+<style>
+  .related { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e0e8f0; }
+  h3 { color: #1e3a5f; margin-bottom: 1.2rem; font-size: 1.3rem; }
+  .related-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .related-card { background: #f5f8fb; border-radius: 10px; padding: 1.2rem; text-decoration: none; display: block; transition: transform 0.2s, box-shadow 0.2s; }
+  .related-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  .date { color: #7a9ab8; font-size: 0.8rem; margin-bottom: 0.4rem; }
+  .related-card h4 { color: #1e3a5f; font-size: 1rem; margin-bottom: 0.4rem; }
+  .related-card p { color: #5a7a9a; font-size: 0.85rem; margin-bottom: 0.5rem; line-height: 1.5; }
+  .read-more { color: #4a90d9; font-weight: 600; font-size: 0.85rem; }
+</style>

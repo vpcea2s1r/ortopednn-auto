@@ -1,0 +1,127 @@
+{
+  "version": "1.0",
+  "ai": {
+    "provider": "openai",
+    "model": "gpt-4",
+    "api_key_env": "HORIZON_OPENAI_KEY",
+    "temperature": 0.3,
+    "max_tokens": 4096,
+    "throttle_sec": 1.5,
+    "analysis_concurrency": 2,
+    "enrichment_concurrency": 1
+  },
+  "sources": {
+    "rss": [
+      {
+        "name": "PubMed — dental materials",
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1GKJyB8REbkCN-EQ6wSOhhFL-wQNt2gA7ROhCBPuUs6QLWOiv5",
+        "enabled": true,
+        "category": "research"
+      },
+      {
+        "name": "PubMed — prosthodontics",
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1IxRfANoWQy6lJ4ZqHUJGPokOISjQvnFM5wbQELtJ-hN-KUP5c",
+        "enabled": true,
+        "category": "research"
+      },
+      {
+        "name": "PubMed — zirconia dental",
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1Kk0C26SnS7LgTgIhQ6aMq3GZAXL5gLPiIqN5qDDaEtPDw1eYb",
+        "enabled": true,
+        "category": "materials"
+      },
+      {
+        "name": "PubMed — 3D printing dentistry",
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1KgBgAE7P7c7VQmg8tK7ZxGVHQzxqU4TolOqXeHHcHPJGqP7R6",
+        "enabled": true,
+        "category": "technology"
+      },
+      {
+        "name": "PubMed — dental implants",
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1HRqQ5T-mB5ZOMY9-3LFHhKTO8gEnhIfJxFSN5STI8qthNfOE9",
+        "enabled": true,
+        "category": "implants"
+      },
+      {
+        "name": "Dental News — DrBicuspid",
+        "url": "https://www.drbicuspid.com/feed/",
+        "enabled": true,
+        "category": "news"
+      },
+      {
+        "name": "Dental Tribune Russia",
+        "url": "https://www.dental-tribune.com/feed/",
+        "enabled": true,
+        "category": "news"
+      },
+      {
+        "name": "ScienceDaily — Dentistry",
+        "url": "https://www.sciencedaily.com/rss/health_medicine/dentistry.xml",
+        "enabled": true,
+        "category": "research"
+      }
+    ],
+    "reddit": {
+      "enabled": true,
+      "fetch_comments": 3,
+      "subreddits": [
+        {
+          "subreddit": "dentistry",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "week",
+          "fetch_limit": 20,
+          "min_score": 10
+        },
+        {
+          "subreddit": "dentures",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "week",
+          "fetch_limit": 10,
+          "min_score": 5
+        },
+        {
+          "subreddit": "Dentistry",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "week",
+          "fetch_limit": 15,
+          "min_score": 10
+        }
+      ],
+      "users": []
+    },
+    "hackernews": {
+      "enabled": false
+    },
+    "github": [],
+    "twitter": {
+      "enabled": false
+    },
+    "openbb": {
+      "enabled": false
+    },
+    "ossinsight": {
+      "enabled": false
+    }
+  },
+  "filtering": {
+    "ai_score_threshold": 7.0,
+    "time_window_hours": 72
+  },
+  "email": {
+    "enabled": false
+  },
+  "webhook": {
+    "enabled": true,
+    "url_env": "HORIZON_WEBHOOK_URL",
+    "delivery": "summary",
+    "platform": "generic",
+    "layout": "markdown",
+    "request_body": {
+      "text": "Horizon: #{important_items}/#{all_items} items passed\n\n#{summary?limit=4000}"
+    },
+    "headers": ""
+  }
+}

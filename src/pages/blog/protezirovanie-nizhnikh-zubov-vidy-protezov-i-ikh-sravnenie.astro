@@ -3,10 +3,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie';
 const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
-
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -34,9 +40,15 @@ const ldArticle = {
 <BaseLayout title="Протезирование нижних зубов: виды протезов и их сравнение" description="Сравнение видов протезов нижних зубов: фиксированные, накладные, мости. Материалы, сроки изготовления, условия ношения и основные рекомендации.">
   <Navbar slot="navbar" />
 
-  <main class="max-w-3xl mx-auto px-4 py-12">
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span class="sep">›</span><a href="/blog/semnye-protezy">Съёмные протезы</a>
+      <span class="sep">›</span><span>Протезирование нижних зубов: виды протезов и их сравнение</span>
+    </nav>
+    
     <article>
-      <div class="prose prose-lg max-w-none">
+      <div class="article-body">
 <h1>Протезирование нижних зубов: виды протезов и их сравнение</h1>
 <p>Потеря нижних зубов влияет на жевательную функцию и эстетику. Выбор протеза зависит от количества потерянных зубов, состояния кости и личных предпочтений.</p>
 <h2>Виды протезов нижней челюсти</h2>
@@ -66,6 +78,19 @@ const ldArticle = {
 
 </ul>
       </div>
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
     </article>
   </main>
 </BaseLayout>
+
+<style>
+.article-body h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+.article-body h2 { font-size: 1.35rem; margin: 1.5rem 0 0.75rem; }
+.article-body p, .article-body li { line-height: 1.7; margin-bottom: 0.75rem; color: var(--color-text); }
+.article-body ul, .article-body ol { padding-left: 1.25rem; margin-bottom: 1rem; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

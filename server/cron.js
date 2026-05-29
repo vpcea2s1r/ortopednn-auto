@@ -8,6 +8,24 @@ let db, dataDir;
 export function setupCron(getDb, dir) {
   db = getDb;
   dataDir = dir;
+  cron.schedule('0 6 * * *', () => {
+    console.log('Daily 6:00: Horizon news → drafts');
+    import('./agent-pipeline.js').then(m => m.runHorizonPipeline()).then(async r => {
+      if (r.generated > 0) {
+        const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+        const CHAT_ID = process.env.TELEGRAM_CHAT_ID || '45185475';
+        if (TOKEN) {
+          const text = `🌐 Horizon: ${r.generated} черновиков из ${r.totalItems} новостей\n/drafts — просмотреть и опубликовать`;
+          await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text })
+          }).catch(e => console.error('TG notify error:', e.message));
+        }
+      } else {
+        console.log('Horizon pipeline:', JSON.stringify(r).slice(0, 200));
+      }
+    }).catch(e => console.error('Horizon error:', e));
+  });
   cron.schedule('0 8 * * *', () => {
     console.log('Daily: collecting stats');
     import('./collector.js').then(m => m.collectAll(db())).catch(e => console.error(e));

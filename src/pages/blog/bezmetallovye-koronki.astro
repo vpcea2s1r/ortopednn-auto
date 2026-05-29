@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'bezmetallovye-koronki';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Безметалловые коронки: виды, плюсы и минусы",
+  "description": "Безметалловые коронки: цирконий, диоксид циркония, E-max, керамика. Сравнение по эстетике, прочности и цене.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Безметалловые коронки: виды, плюсы и минусы | Никитина М.Г."
+  description="Безметалловые коронки — циркониевые, керамические E-max, диоксид циркония. Какие лучше, сколько служат, цены. Без металла во рту."
+  breadcrumbTitle="Безметалловые коронки"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-26"
+  dateModified="2026-05-26"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Безметалловые коронки: виды, плюсы и минусы</h1>
+      <div class="meta">26 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Безметалловые коронки — это керамические и циркониевые конструкции без металлического каркаса. Главное преимущество — эстетика: они пропускают свет, как натуральные зубы. Второе — биосовместимость: нет металла, нет риска аллергии и окрашивания десны.</p>
+
+      <h2>Виды безметалловых коронок</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Вид</th><th>Материал</th><th>Прочность</th><th>Эстетика</th><th>Срок службы</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Циркониевые</td><td>Диоксид циркония</td><td>Высокая</td><td>Хорошая</td><td>15–20 лет</td></tr>
+          <tr><td>E-max (пресс-керамика)</td><td>Стеклокерамика</td><td>Средняя</td><td>Отличная</td><td>10–15 лет</td></tr>
+          <tr><td>Полевошпатная керамика</td><td>Керамическая масса</td><td>Низкая</td><td>Отличная</td><td>5–8 лет</td></tr>
+          <tr><td>Композитные</td><td>Композитный материал</td><td>Средняя</td><td>Средняя</td><td>3–5 лет</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Циркониевые коронки</h3>
+      <p>Самый популярный вариант. Каркас из диоксида циркония — прочный, белого цвета, не просвечивает металлом. Подходит для жевательных и передних зубов. Цирконий не даёт усадки, не трескается, не темнеет. Единственный минус — стоит дороже металлокерамики.</p>
+
+      <h3>Коронки E-max</h3>
+      <p>Стеклокерамика на основе дисиликата лития. Самая эстетичная: прозрачность и цвет максимально приближены к натуральной эмали. Идеальны для передних зубов. На жевательных зубах уступают цирконию по прочности.</p>
+
+      <p>Исследование <em>Journal of Esthetic and Restorative Dentistry</em> показало: безметалловые коронки обеспечивают на 40% более точное цветосоответствие по сравнению с металлокерамикой.</p>
+      <p class="translation">Керамические коронки точнее повторяют цвет натуральных зубов.</p>
+
+      <h2>Кому подходят</h2>
+      <ul>
+        <li><strong>Аллергия на металл</strong> — единственный вариант</li>
+        <li><strong>Передние зубы</strong> — максимальная эстетика</li>
+        <li><strong>Тонкие дёсны</strong> — цирконий не просвечивает тёмным</li>
+        <li><strong>Бруксизм</strong> — цирконий выдерживает нагрузку</li>
+      </ul>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Безметалловые коронки — современное решение. Приходите на консультацию, подберу материал под ваш случай.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .translation { background: var(--color-bg-alt); padding: 0.6rem 1rem; border-radius: 6px; font-size: 0.95rem; margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
