@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'koronka-skololas-chto-delat';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Скололась коронка — что делать: причины, риски, варианты ремонта",
+  "description": "Коронка скололась — можно ли починить или нужна новая. Причины сколов металлокерамики, циркония, E-max. Когда нужен срочный визит к врачу.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-31",
+  "dateModified": "2026-05-31",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Скололась коронка — что делать: причины и ремонт | Никитина М.Г."
+  description="Коронка скололась — что делать в домашних условиях, когда к врачу. Причины сколов металлокерамики, циркония, E-max. Ремонт или замена."
+  breadcrumbTitle="Скололась коронка"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-31"
+  dateModified="2026-05-31"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Скололась коронка — что делать</h1>
+      <div class="meta">31 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Если коронка скололась — главное не паниковать. Скол керамики на металлокерамической коронке часто можно отремонтировать во рту, не снимая. Скол циркония или E-max обычно требует замены. В любом случае нужен осмотр стоматолога. До визита — не жуйте на эту сторону, полощите рот после еды.</p>
+
+      <h2>Почему коронка может сколоться</h2>
+
+      <p>Коронки — прочные конструкции, но они не вечны. Скол может произойти по разным причинам:</p>
+
+      <ul>
+        <li><strong>Перегрузка</strong> — бруксизм (скрежетание зубами), привычка грызть твёрдые предметы (ручки, ногти, семечки, орехи)</li>
+        <li><strong>Дефект изготовления</strong> — неравномерная толщина керамики, слабая связь каркаса с облицовкой</li>
+        <li><strong>Истончение со временем</strong> — естественный износ керамики через 5–8 лет использования</li>
+        <li><strong>Травма</strong> — удар, падение, столкновение</li>
+        <li><strong>Неправильное смыкание</strong> — завышенный прикус на коронке создаёт избыточную нагрузку</li>
+      </ul>
+
+      <p>Чаще всего скалывается керамическая облицовка на металлокерамических коронках. Цельнокерамические коронки (E-max, диоксид циркония) сколам подвержены меньше, но если скол происходит — он глубже.</p>
+
+      <h2>Можно ли починить скло</h2>
+
+      <p>Ответ зависит от материала и размера скола:</p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Материал</th><th>Мелкий скол (&lt; 2 мм)</th><th>Крупный скол (&gt; 2 мм)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Металлокерамика</td><td>Ремонт во рту — композитным материалом</td><td>Чаще нужна замена коронки</td></tr>
+          <tr><td>E-max</td><td>Редко — полировка, чаще замена</td><td>Замена коронки</td></tr>
+          <tr><td>Диоксид циркония</td><td>Обычно заменяют</td><td>Замена коронки</td></tr>
+          <tr><td>Пластмассовая коронка</td><td>Ремонт композитом</td><td>Замена</td></tr>
+          <tr><td>Металлопластмасса</td><td>Ремонт композитом</td><td>Замена</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>Ремонт во рту — временное решение на 6–12 месяцев. Композит уступает заводской керамике по прочности и эстетике. Если коронка на импланте — скорее всего потребуется замена.</p>
+
+      <h2>Что делать до визита к врачу</h2>
+
+      <ol>
+        <li><strong>Осмотрите место скола.</strong> Если острый край травмирует щёку или язык — заклейте кусочком стоматологического воска (продаётся в аптеке) или жевательной резинкой без сахара.</li>
+        <li><strong>Не жуйте на стороне скола.</strong> Избыточная нагрузка может усугубить повреждение или привести к полной поломке коронки.</li>
+        <li><strong>Полощите рот после еды.</strong> Под скол может забиваться пища — это вызовет воспаление десны и кариес под коронкой.</li>
+        <li><strong>При боли — обезболивающее.</strong> Ибупрофен или парацетамол. Если зуб реагирует на холодное или сладкое — повреждена внутренняя структура, нужен срочный приём.</li>
+        <li><strong>Не пытайтесь приклеить скол самостоятельно.</strong> Бытовой клей и суперклей токсичны для пульпы и десны.</li>
+      </ol>
+
+      <h2>Когда нужно срочно к врачу</h2>
+
+      <ul>
+        <li>Коронка шатается или полностью выпала</li>
+        <li>Видна тёмная внутренняя часть коронки (обнажился металл или культя)</li>
+        <li>Боль при накусывании или от температуры</li>
+        <li>Опухла десна вокруг коронки</li>
+        <li>Скол произошёл на коронке с имплантом</li>
+      </ul>
+
+      <h2>Сколько стоит ремонт</h2>
+
+      <p>Ремонт скола композитным материалом во рту — 1 500–3 500 рублей за одно посещение. Замена коронки — от 7 000 до 25 000 рублей (зависит от материала и лаборатории). Если повреждён зуб под коронкой (кариес, перелом) — сначала лечат зуб, потом делают новую коронку.</p>
+
+      <h2>Как предотвратить сколы</h2>
+
+      <ul>
+        <li>Используйте капу при бруксизме (ночная защита)</li>
+        <li>Не грызите твёрдые предметы</li>
+        <li>Регулярные осмотры — раз в 6 месяцев</li>
+        <li>Не допускайте завышения прикуса на новых коронках</li>
+      </ul>
+
+      <p>Скол коронки — неприятно, но не катастрофа. В большинстве случаев проблему решают за одно посещение. Главное — не откладывать визит к стоматологу, чтобы избежать осложнений.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Скололась коронка? Запишитесь на осмотр</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'byugelnyj-protez-chto-eto';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Бюгельный протез — что это, конструкция, плюсы и минусы",
+  "description": "Бюгельный протез: что это, из чего состоит, виды фиксации (кламмеры, замки), плюсы и минусы, сравнение со съёмными протезами, цена.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-31",
+  "dateModified": "2026-05-31",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Бюгельный протез — что это, конструкция, плюсы и минусы | Никитина М.Г."
+  description="Бюгельный протез: что это, конструкция, виды крепления, плюсы и минусы. Отличие от съёмного протеза, цена в Нижнем Новгороде."
+  breadcrumbTitle="Бюгельный протез"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-31"
+  dateModified="2026-05-31"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Бюгельный протез — что это, устройство и особенности</h1>
+      <div class="meta">31 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Бюгельный протез — частичный съёмный протез на жёстком металлическом каркасе (бюгеле). Главное отличие от обычного съёмного протеза — наличие дуги, которая распределяет нагрузку на всю челюсть, а не на десну. Бывает с кламмерами (металлические крючки) или на замках (аттачмены).</p>
+
+      <h2>Что такое бюгельный протез</h2>
+
+      <p>Бюгель (от нем. Bügel — дуга) — это литой металлический каркас, на котором крепятся искусственные зубы и базис из пластмассы. Каркас обычно делают из кобальто-хромового сплава — он лёгкий, прочный и биосовместимый.</p>
+
+      <p>Конструкция состоит из трёх элементов:</p>
+
+      <ul>
+        <li><strong>Дуга (бюгель)</strong> — металлический каркас, который проходит по нёбу (верхняя челюсть) или с язычной стороны (нижняя челюсть)</li>
+        <li><strong>Базис</strong> — пластмассовое основание с искусственными зубами</li>
+        <li><strong>Фиксаторы</strong> — кламмеры или замки, удерживающие протез на опорных зубах</li>
+      </ul>
+
+      <h2>Виды бюгельных протезов по типу фиксации</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Вид</th><th>Как крепится</th><th>Плюсы</th><th>Минусы</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>С кламмерами</td><td>Металлические крючки, охватывающие опорный зуб</td><td>Надёжная фиксация, невысокая цена, не требует обточки зубов</td><td>Кламмеры заметны при улыбке</td></tr>
+          <tr><td>На замках (аттачменах)</td><td>Миниатюрные замки между коронкой и протезом</td><td>Эстетика — замки невидимы, хорошая фиксация</td><td>Нужны коронки на опорные зубы, выше цена</td></tr>
+          <tr><td>DentalD (безметалловый)</td><td>Жёсткий безметалловый каркас</td><td>Максимальная эстетика, нет металла во рту</td><td>Дороже, менее прочный</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Чем отличается от обычного съёмного протеза</h2>
+
+      <p>Главное отличие — жёсткий металлический каркас. В обычном съёмном протезе нагрузка передаётся на десну через пластмассовый базис, который полностью перекрывает нёбо. В бюгельном протезе нагрузка распределяется между опорными зубами и десной через дугу.</p>
+
+      <p>Это даёт ряд преимуществ:</p>
+
+      <ul>
+        <li><strong>Меньший размер базиса</strong> — нёбо открыто, нет эффекта «искусственной челюсти», меньше проблем с дикцией и вкусовыми ощущениями</li>
+        <li><strong>Равномерное распределение нагрузки</strong> — 50% нагрузки уходит на опорные зубы, 50% — на десну</li>
+        <li><strong>Прочность</strong> — металлический каркас не ломается, в отличие от пластмассового базиса</li>
+        <li><strong>Точная посадка</strong> — литой каркас точно повторяет рельеф зубного ряда</li>
+      </ul>
+
+      <h2>Показания к бюгельному протезированию</h2>
+
+      <ul>
+        <li>Отсутствие нескольких зубов с двух сторон челюсти (концевые дефекты)</li>
+        <li>Необходимость шинирования подвижных зубов при пародонтите</li>
+        <li>Аллергия на акрил (пластмассу обычных протезов)</li>
+        <li>Желание получить более компактный и удобный протез</li>
+        <li>Противопоказания к имплантации</li>
+      </ul>
+
+      <h2>Цена бюгельного протеза в Нижнем Новгороде</h2>
+
+      <p>С кламмерами — от 35 000 до 45 000 рублей. На замках (аттачменах) — от 50 000 до 70 000 рублей. DentalD (безметалловый) — от 55 000 до 75 000 рублей. В цену входит изготовление каркаса, базиса, постановка зубов и работа врача.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Узнайте, подходит ли вам бюгельный протез</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

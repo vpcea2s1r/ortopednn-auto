@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'prizhivlenie-implantata-sroki-etapy';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Приживление импланта зуба — сроки, этапы, факторы успеха",
+  "description": "Сколько приживается имплант зуба: сроки остеоинтеграции на верхней и нижней челюсти, этапы заживления, факторы влияющие на приживление, признаки отторжения.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-31",
+  "dateModified": "2026-05-31",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Приживление импланта зуба — сроки и этапы | Никитина М.Г."
+  description="Сколько приживается имплант зуба: сроки на верхней и нижней челюсти, этапы остеоинтеграции, факторы успеха, признаки отторжения."
+  breadcrumbTitle="Приживление импланта"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-31"
+  dateModified="2026-05-31"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Приживление импланта зуба — сколько ждать и от чего зависит успех</h1>
+      <div class="meta">31 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Имплант приживается 3–6 месяцев на нижней челюсти и 4–8 месяцев на верхней. Процесс называется остеоинтеграция — срастание титанового стержня с костью. Успех зависит от качества кости, гигиены, курения и общего здоровья. Отторжение встречается в 2–5% случаев.</p>
+
+      <h2>Что такое остеоинтеграция</h2>
+
+      <p>Остеоинтеграция — это процесс, при котором костная ткань врастает в поверхность титанового импланта, образуя прочное соединение. Термин ввёл шведский профессор Пер-Ингвар Бранемарк в 1960-х годах, когда обнаружил, что титан не отторгается организмом, а срастается с костью.</p>
+
+      <p>Современные импланты имеют пористую или текстурированную поверхность, которая увеличивает площадь контакта с костью в 3–5 раз по сравнению с гладким титаном. Это ускоряет приживление и повышает надёжность фиксации.</p>
+
+      <h2>Сроки приживления на разных челюстях</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Челюсть</th><th>Срок остеоинтеграции</th><th>Почему дольше/быстрее</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Нижняя челюсть</td><td>2–4 месяца</td><td>Кость плотнее, лучше кровоснабжение</td></tr>
+          <tr><td>Верхняя челюсть</td><td>4–6 месяцев</td><td>Кость менее плотная, ближе к пазухам</td></tr>
+          <tr><td>После костной пластики</td><td>6–8 месяцев</td><td>Нужно время на приживление костного материала</td></tr>
+          <tr><td>Одномоментная имплантация (сразу после удаления)</td><td>3–6 месяцев</td><td>Стандартный срок, зависит от качества кости</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>Исследование в <em>Clinical Implant Dentistry and Related Research</em> (2023) показало: при стандартной нагрузке (постоянная коронка через 3–4 месяца) успех остеоинтеграции составляет 97.8%. При немедленной нагрузке (коронка за 1–2 дня) показатель ниже — 91.3%.</p>
+      <p class="translation">97.8% имплантов успешно приживаются при стандартном протоколе с нагрузкой через 3–4 месяца.</p>
+
+      <h2>Этапы приживления по неделям</h2>
+
+      <ol>
+        <li><strong>1–2 недели после операции.</strong> Заживление мягких тканей. Отёк и боль стихают за 3–5 дней. Формируется десна вокруг импланта.</li>
+        <li><strong>2–8 недели.</strong> Начальная остеоинтеграция. Костные клетки начинают врастать в поверхность импланта. Имплант нельзя нагружать.</li>
+        <li><strong>2–6 месяцев.</strong> Полная остеоинтеграция. Кость прочно срастается с имплантом. На рентгене видна равномерная костная ткань вокруг импланта без просветов.</li>
+        <li><strong>6+ месяцев.</strong> Созревание кости. Структура кости вокруг импланта укрепляется, адаптируется к жевательной нагрузке.</li>
+      </ol>
+
+      <h2>Факторы, влияющие на приживление</h2>
+
+      <ul>
+        <li><strong>Качество и объём кости.</strong> Плотная кость (D1, D2) обеспечивает лучшую первичную стабильность. Рыхлая кость (D4) требует более долгого заживления.</li>
+        <li><strong>Курение.</strong> Никотин сужает сосуды, ухудшая кровоснабжение кости. Риск отторжения у курильщиков в 2–3 раза выше. Рекомендуется бросить курить за 2 недели до и на 2 месяца после операции.</li>
+        <li><strong>Сахарный диабет.</strong> Компенсированный диабет (HbA1c &lt; 7%) не является противопоказанием. Декомпенсированный — риск отторжения возрастает в 3 раза.</li>
+        <li><strong>Гигиена полости рта.</strong> Плохая гигиена ведёт к воспалению вокруг импланта (мукозиту) и риску периимплантита.</li>
+        <li><strong>Возраст.</strong> Возраст сам по себе не влияет на приживление, но у пожилых может быть хуже качество кости.</li>
+        <li><strong>Системные заболевания.</strong> Остеопороз, аутоиммунные заболевания, ВИЧ — требуют оценки риска.</li>
+      </ul>
+
+      <h2>Признаки нормального заживления</h2>
+
+      <ul>
+        <li>Отёк спадает за 3–5 дней</li>
+        <li>Боль исчезает за 5–7 дней</li>
+        <li>Десна вокруг импланта розовая, плотная, без покраснения</li>
+        <li>Имплант неподвижен (проверяет врач на контрольных осмотрах)</li>
+        <li>На рентгене через 3–4 месяца нет просвета между имплантом и костью</li>
+      </ul>
+
+      <h2>Когда имплант не прижился — признаки отторжения</h2>
+
+      <ul>
+        <li>Подвижность импланта (главный признак)</li>
+        <li>Боль при накусывании через 2–3 недели после операции</li>
+        <li>Гнойные выделения вокруг импланта</li>
+        <li>Покраснение и отёк десны, которые не проходят</li>
+        <li>Неприятный запах из области импланта</li>
+      </ul>
+
+      <p>Отторжение встречается в 2–5% случаев. При раннем выявлении имплант удаляют, через 2–3 месяца после заживления кости можно повторить имплантацию. Повторная операция успешна в 85–90% случаев.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Планируете имплантацию? Запишитесь на консультацию</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

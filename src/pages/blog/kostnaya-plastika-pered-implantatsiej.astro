@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'kostnaya-plastika-pered-implantatsiej';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Костная пластика перед имплантацией зубов — виды, этапы, сроки",
+  "description": "Костная пластика (синус-лифтинг, подсадка кости) перед имплантацией: виды операций, этапы, сроки приживления, противопоказания. Когда нужна и как проводится.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-31",
+  "dateModified": "2026-05-31",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Костная пластика перед имплантацией — виды, этапы | Никитина М.Г."
+  description="Костная пластика перед имплантацией: синус-лифтинг, подсадка кости, этапы, сроки заживления. Когда нужна, цена в Нижнем Новгороде."
+  breadcrumbTitle="Костная пластика перед имплантацией"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-31"
+  dateModified="2026-05-31"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Костная пластика перед имплантацией зубов</h1>
+      <div class="meta">31 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Костная пластика — это наращивание костной ткани для установки импланта. Нужна, если кость истончилась или атрофировалась после удаления зуба. Основные виды: синус-лифтинг (верхняя челюсть) и подсадка костного блока (нижняя). Реабилитация — 4–6 месяцев. Без неё имплант может не прижиться.</p>
+
+      <h2>Когда нужна костная пластика</h2>
+
+      <p>Кость вокруг отсутствующего зуба со временем атрофируется — уменьшается в объёме. Это естественный процесс: без корня зуба костная ткань не получает нагрузку и рассасывается. Через 6–12 месяцев после удаления зуба объём кости может уменьшиться на 30–50%. Если кости недостаточно, имплант будет плохо фиксироваться, оголится или не приживётся.</p>
+
+      <p>По данным исследования в <em>Clinical Oral Implants Research</em> (2023), атрофия кости после удаления зуба достигает 40% за первый год. У 60% пациентов через 2 года после удаления требуется костная пластика перед имплантацией.</p>
+      <p class="translation">60% пациентов нуждаются в костной пластике через 2 года после удаления зуба — не откладывайте имплантацию.</p>
+
+      <p>Показания к костной пластике:</p>
+
+      <ul>
+        <li><strong>Атрофия кости</strong> после удаления зуба (самая частая причина)</li>
+        <li><strong>Травмы</strong> челюсти с потерей костной ткани</li>
+        <li><strong>Длительное ношение съёмных протезов</strong> — они ускоряют атрофию</li>
+        <li><strong>Воспалительные заболевания</strong> (периодонтит, кисты)</li>
+        <li><strong>Анатомические особенности</strong> — близкое расположение гайморовой пазухи или нижнечелюстного нерва</li>
+      </ul>
+
+      <h2>Виды костной пластики</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Метод</th><th>Когда применяют</th><th>Что делают</th><th>Срок заживления</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Синус-лифтинг</strong></td><td>Верхняя челюсть — недостаток высоты кости до пазухи</td><td>Поднимают дно гайморовой пазухи, заполняют пространство костным материалом</td><td>4–6 месяцев</td></tr>
+          <tr><td><strong>Подсадка костного блока</strong></td><td>Нижняя челюсть — значительная атрофия</td><td>Фиксируют блок из собственной или донорской кости</td><td>5–8 месяцев</td></tr>
+          <tr><td><strong>Направленная костная регенерация</strong></td><td>Локальный дефект кости</td><td>Укладывают костный материал под мембрану, которая защищает участок</td><td>4–6 месяцев</td></tr>
+          <tr><td><strong>Расщепление альвеолярного гребня</strong></td><td>Узкий гребень кости</td><td>Расщепляют кость и заполняют промежуток материалом</td><td>4–6 месяцев</td></tr>
+          <tr><td><strong>Аугментация</strong></td><td>Небольшой дефицит объёма</td><td>Устанавливают частицы костного заместителя вокруг импланта</td><td>3–4 месяца</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Материалы для костной пластики</h2>
+
+      <p>Костный материал может быть разного происхождения:</p>
+
+      <ul>
+        <li><strong>Аутогенный</strong> — собственная кость пациента (забирают с челюсти, подбородка или бедра). Лучшая приживаемость, но нужна дополнительная операция</li>
+        <li><strong>Аллогенный</strong> — донорская кость (обработанная и стерилизованная)</li>
+        <li><strong>Ксеногенный</strong> — животного происхождения (чаще бычья кость, например Bio-Oss)</li>
+        <li><strong>Синтетический</strong> — искусственные заменители (гидроксиапатит, трикальцийфосфат)</li>
+      </ul>
+
+      <p>В большинстве клиник используют ксеногенные или синтетические материалы — они не требуют забора собственной кости и дают предсказуемый результат.</p>
+
+      <h2>Этапы операции</h2>
+
+      <ol>
+        <li><strong>Диагностика.</strong> КТ челюсти, оценка объёма и плотности кости, выбор метода пластики.</li>
+        <li><strong>Операция.</strong> Под местной анестезией. Хирург формирует ложе, укладывает костный материал, закрывает мембраной (при НКР).</li>
+        <li><strong>Реабилитация.</strong> 4–6 месяцев для приживления материала и формирования новой кости.</li>
+        <li><strong>Установка импланта.</strong> После заживления — стандартная процедура имплантации.</li>
+        <li><strong>Остеоинтеграция импланта.</strong> Ещё 3–6 месяцев. Только после этого — постоянная коронка.</li>
+      </ol>
+
+      <p>Общий срок от костной пластики до фиксации коронки — 8–12 месяцев. Это дольше, чем обычная имплантация, но без этого этапа имплант может не прижиться.</p>
+
+      <h2>Больно ли делать костную пластику</h2>
+
+      <p>Операция проходит под местной анестезией — пациент ничего не чувствует. После операции возможен отёк, боль в течение 2–4 дней (снимается обычными обезболивающими), небольшое повышение температуры. В первую неделю рекомендуется мягкая пища, холодные компрессы, отказ от физических нагрузок.</p>
+
+      <h2>Противопоказания</h2>
+
+      <ul>
+        <li>Тяжёлый сахарный диабет в стадии декомпенсации</li>
+        <li>Нарушения свёртываемости крови</li>
+        <li>Активные воспалительные процессы в челюсти</li>
+        <li>Курение (замедляет заживление, увеличивает риск отторжения)</li>
+        <li>Остеопороз в тяжёлой форме</li>
+        <li>Онкологические заболевания в активной фазе</li>
+      </ul>
+
+      <h2>Цена вопроса в Нижнем Новгороде</h2>
+
+      <p>Стоимость костной пластики зависит от объёма работ и материала. Синус-лифтинг обходится в 20 000–45 000 рублей. НКР с мембраной — 15 000–35 000 рублей. Костный блок — от 30 000 до 60 000 рублей. В эту сумму входит сам материал, работа хирурга и анестезия.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Нужна консультация по костной пластике перед имплантацией?</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

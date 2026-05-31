@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'protezirovanie-zubov-nizhnij-novgorod-ceny';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протезирование зубов в Нижнем Новгороде — цены, виды, сравнение",
+  "description": "Сколько стоит протезирование зубов в Нижнем Новгороде: цены на коронки, мосты, съёмные и бюгельные протезы, имплантацию. Сравнение материалов и конструкций.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-05-31",
+  "dateModified": "2026-05-31",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Протезирование зубов в Нижнем Новгороде — цены 2026 | Никитина М.Г."
+  description="Цены на протезирование зубов в Нижнем Новгороде: коронки от 7000 руб, мосты от 20000, съёмные протезы от 12000, имплантация от 30000. Сравнение материалов."
+  breadcrumbTitle="Цены на протезирование в Нижнем Новгороде"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-05-31"
+  dateModified="2026-05-31"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Протезирование зубов в Нижнем Новгороде — цены 2026</h1>
+      <div class="meta">31 мая 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Стоимость протезирования в Нижнем Новгороде в 2026 году: коронка металлокерамическая от 7 000 руб., мостовидный протез от 20 000 руб., съёмный протез от 12 000 руб., бюгельный протез от 35 000 руб., имплантация с коронкой от 40 000 руб. Цены различаются в зависимости от материала, лаборатории и квалификации врача.</p>
+
+      <h2>Цены на коронки в Нижнем Новгороде</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Вид коронки</th><th>Цена (руб.)</th><th>Срок службы</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Металлокерамическая</td><td>7 000 – 10 000</td><td>8–12 лет</td></tr>
+          <tr><td>Циркониевая (CAD/CAM)</td><td>12 000 – 18 000</td><td>15–20 лет</td></tr>
+          <tr><td>E-max (прессованная керамика)</td><td>14 000 – 20 000</td><td>10–15 лет</td></tr>
+          <tr><td>Цельнолитая (металлическая)</td><td>4 000 – 6 000</td><td>15–20 лет</td></tr>
+          <tr><td>Пластмассовая (временная)</td><td>1 500 – 3 000</td><td>1–2 года</td></tr>
+          <tr><td>Металлопластмассовая</td><td>4 000 – 6 000</td><td>3–5 лет</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Цены на мостовидные протезы</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Вид моста</th><th>Цена за 3 единицы (руб.)</th><th>Особенности</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Металлокерамический</td><td>21 000 – 30 000</td><td>Классический вариант, проверенный</td></tr>
+          <tr><td>Циркониевый (CAD/CAM)</td><td>36 000 – 54 000</td><td>Максимальная эстетика, без металла</td></tr>
+          <tr><td>Цельнолитой (металлический)</td><td>12 000 – 18 000</td><td>Бюджетный вариант для жевательных зубов</td></tr>
+          <tr><td>Металлопластмассовый</td><td>12 000 – 18 000</td><td>Временный вариант</td></tr>
+          <tr><td>Адгезивный (мост-бабочка)</td><td>10 000 – 15 000</td><td>На 1 зуб без обточки соседних</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Цены на съёмные протезы</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Вид протеза</th><th>Цена (руб.)</th><th>Особенности</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Полный съёмный (акрил)</td><td>12 000 – 18 000</td><td>Самый доступный вариант</td></tr>
+          <tr><td>Нейлоновый (гибкий)</td><td>18 000 – 28 000</td><td>Эстетичный, гибкий, без кламмеров</td></tr>
+          <tr><td>AcryFree</td><td>22 000 – 35 000</td><td>Жёсткий, тонкий, точная посадка</td></tr>
+          <tr><td>Иммедиат-протез</td><td>10 000 – 15 000</td><td>Немедленная замена удалённых зубов</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Цены на бюгельные протезы</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Вид бюгеля</th><th>Цена (руб.)</th><th>Особенности</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>С кламмерами</td><td>35 000 – 45 000</td><td>Металлические фиксаторы на опорные зубы</td></tr>
+          <tr><td>На замках (аттачменах)</td><td>50 000 – 70 000</td><td>Невидимая фиксация, дороже</td></tr>
+          <tr><td>DentalD (без металла)</td><td>55 000 – 75 000</td><td>Максимальная эстетика, безметалловый</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Цены на протезирование на имплантах</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Метод</th><th>Цена (руб.)</th><th>Включает</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Имплант + коронка (одиночная)</td><td>40 000 – 60 000</td><td>Имплант, абатмент, коронка</td></tr>
+          <tr><td>Имплант + коронка (под ключ)</td><td>55 000 – 80 000</td><td>Всё включено с анестезией и работой</td></tr>
+          <tr><td>All-on-4 (полная челюсть)</td><td>200 000 – 350 000</td><td>4 импланта + несъёмный протез</td></tr>
+          <tr><td>All-on-6 (полная челюсть)</td><td>280 000 – 450 000</td><td>6 имплантов, более надёжная фиксация</td></tr>
+          <tr><td>Покрывной протез на 2 имплантах</td><td>80 000 – 120 000</td><td>Съёмный протез с фиксацией на имплантах</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Что влияет на цену</h2>
+
+      <ul>
+        <li><strong>Материал.</strong> Цирконий и E-max дороже металлокерамики, но эстетичнее и долговечнее.</li>
+        <li><strong>Лаборатория.</strong> Индивидуальная работа дороже серийной. Цифровые технологии (CAD/CAM, 3D-печать) точнее, но стоят больше.</li>
+        <li><strong>Квалификация врача.</strong> Опыт ортопеда влияет на качество препарирования, слепков и припасовки — от этого зависит срок службы протеза.</li>
+        <li><strong>Предварительное лечение.</strong> Санация, удаление зубов, лечение дёсен, костная пластика — всё это добавляет к итоговой сумме.</li>
+        <li><strong>Расположение клиники.</strong> В центре города цены выше, в спальных районах — ниже.</li>
+      </ul>
+
+      <h2>Как сэкономить без потери качества</h2>
+
+      <ul>
+        <li>Не экономьте на диагностике — КТ и планирование важны для долговечного результата</li>
+        <li>Выбирайте проверенного врача, а не самую низкую цену</li>
+        <li>Металлокерамика на жевательные зубы — оптимальный баланс цены и качества</li>
+        <li>На передние зубы лучше выбирать цирконий или E-max — эстетика важнее экономии</li>
+      </ul>
+
+      <p>Цены в статье — ориентировочные. Точную стоимость можно узнать только на консультации после осмотра и диагностики.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Узнайте точную стоимость вашего случая на консультации</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
