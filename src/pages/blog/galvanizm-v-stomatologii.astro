@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'galvanizm-v-stomatologii';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Гальванические токи во рту: опасно ли сочетание металлов в коронках", "description": "Разные металлы во рту создают гальванические пары. Может ли это вызвать дискомфорт, металлический привкус или повлиять на здоровье.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/galvanizm-v-stomatologii/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout
+  title="Гальванические токи во рту: опасно ли сочетание металлов в коронках | Никитина М.Г."
+  description="Разные металлы во рту создают гальванические пары. Может ли это вызвать дискомфорт, металлический привкус или повлиять на здоровье."
+  breadcrumbTitle="Гальванические токи во рту: опасно ли сочетание металлов в коронках"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <span class="sep">›</span>}
+      {category && <a href={`/blog/${category.id}`}>{category.name}</a>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
+    <article>
+
+<h1>Гальванические токи во рту: опасно ли сочетание металлов в коронках</h1>
+<div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Во рту могут возникнуть слабые электрические токи — если в коронках, мостах или протезах используются разные металлы. Разбираем физику процесса, мифы и реальные риски.</p>
+
+<h2>Что такое гальванизм в стоматологии</h2>
+
+<p>Гальванизм — возникновение электрического тока между двумя разными металлами в электролите. В полости рта электролитом выступает слюна — она содержит ионы натрия, калия, хлора и создаёт электропроводящую среду.</p>
+
+<p>Если во рту есть два разных металла (например, коронка из кобальт-хрома и амальгамовая пломба), между ними возникает разность потенциалов. Чем дальше металлы в гальваническом ряду — тем выше напряжение.</p>
+
+<p class="translation">Разные металлы во рту + слюна = слабая батарейка. Напряжение обычно 50–500 мВ — этого достаточно, чтобы почувствовать.</p>
+
+<h2>Какие металлы используются в стоматологии</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Металл / сплав</th><th>Применение</th><th>Потенциал (мВ)</th><th>Коррозия</th></tr>
+</thead>
+<tbody>
+<tr><td>Титан (Grade 4)</td><td>Импланты</td><td>–150</td><td>Минимальная</td></tr>
+<tr><td>Co-Cr (кобальт-хром)</td><td>Металлокерамика, бюгели</td><td>–50</td><td>Низкая</td></tr>
+<tr><td>Ni-Cr (никель-хром)</td><td>Бюджетные коронки</td><td>+120</td><td>Умеренная</td></tr>
+<tr><td>Амальгама</td><td>Пломбы (редко)</td><td>+350</td><td>Значительная</td></tr>
+<tr><td>Золото (Au-Pt)</td><td>Индивидуальные коронки</td><td>+450</td><td>Нет</td></tr>
+<tr><td>Нержавеющая сталь</td><td>Временные коронки</td><td>+200</td><td>Умеренная</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Разность потенциалов более 100 мВ между двумя металлами считается клинически значимой. Максимальные значения в полости рта — до 500 мВ между золотом и амальгамой.</p>
+
+<h2>Симптомы гальванизма</h2>
+
+<p>Реальные симптомы возникают редко — только у 5–10% пациентов с разными металлами во рту. Возможные проявления:</p>
+
+<ul>
+<li><strong>Металлический или кислый привкус.</strong> Возникает из-за ионов металлов, переходящих в слюну.</li>
+<li><strong>Жжение языка.</strong> Особенно кончика языка, при замыкании цепи.</li>
+<li><strong>Покалывание.</strong> Ощущение слабого тока при прикосновении к разным конструкциям одновременно.</li>
+</ul>
+
+<p>Важно: эти симптомы крайне редко имеют только стоматологическую причину. В 90% случаев жжение языка и металлический привкус связаны с гастритом, дефицитом B12 или побочными эффектами лекарств.</p>
+
+<h2>Электрохимическая коррозия</h2>
+
+<p>Главная проблема сочетания металлов — не ток, а ускоренная коррозия. Когда два металла создают гальваническую пару, менее благородный металл (анод) разрушается быстрее. Это значит:</p>
+
+<ul>
+<li>Кобальт-хромовая коронка рядом с золотой будет корродировать быстрее, чем обычно.</li>
+<li>Ионы металлов попадают в слюну, окрашивают зубы, могут вызывать местное раздражение.</li>
+<li>Бюгельный протез из Co-Cr в контакте с амальгамой может давать точечную коррозию.</li>
+</ul>
+
+<p>Исследование Journal of Oral Rehabilitation (2021) показало: при сочетании Co-Cr и амальгамы выделение ионов кобальта и хрома увеличивается в 2–3 раза по сравнению с изолированным Co-Cr.</p>
+
+<h2>Современные решения</h2>
+
+<p>Проблема гальванизма в современной стоматологии встречается реже, чем 20–30 лет назад. Причины:</p>
+
+<ul>
+<li>Амальгама почти не используется — заменена композитными материалами.</li>
+<li>Современные сплавы (Co-Cr, Ti, ZrO2) имеют близкий электрохимический потенциал.</li>
+<li>Циркониевые и E-max коронки не проводят ток — гальваническая пара с ними не возникает.</li>
+</ul>
+
+<p>Если вы ощущаете металлический привкус — не спешите винить коронки. Исключите желудочно-кишечные заболевания, проверьте уровень B12, обратите внимание на принимаемые лекарства. Консультация стоматолога-ортопеда нужна, если дискомфорт связан с новыми конструкциями.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Дискомфорт от коронок? Запишитесь на консультацию.</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

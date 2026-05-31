@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'bioplenka-na-zubnyh-protezah';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Биоплёнка на зубах и протезах — что это и чем опасна", "description": "Бактериальная биоплёнка — главная причина воспаления десен и кариеса под коронками. Почему обычная чистка не удаляет её полностью.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/bioplenka-na-zubnyh-protezah/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout
+  title="Биоплёнка на зубах и протезах — что это и чем опасна | Никитина М.Г."
+  description="Бактериальная биоплёнка — главная причина воспаления десен и кариеса под коронками. Почему обычная чистка не удаляет её полностью."
+  breadcrumbTitle="Биоплёнка на зубах и протезах — что это и чем опасна"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <span class="sep">›</span>}
+      {category && <a href={`/blog/${category.id}`}>{category.name}</a>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
+    <article>
+
+<h1>Биоплёнка на зубах и протезах — что это и чем опасна</h1>
+<div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Налёт на зубах — не просто скопление бактерий. Это структурированное сообщество микроорганизмов, защищённое матриксом из полисахаридов. Биоплёнка устойчива к антисептикам и механической чистке. Разбираем, как она формируется и почему с ней так трудно бороться.</p>
+
+<h2>Что такое биоплёнка</h2>
+
+<p>Биоплёнка — сообщество микроорганизмов, прикреплённых к поверхности и заключённых в матрикс из внеклеточных полимерных веществ (EPS). Простыми словами: бактерии выделяют клейкое вещество, которое скрепляет их в единую структуру и защищает от внешних воздействий.</p>
+
+<p>В природе 90% всех бактерий существуют в форме биоплёнок — от налёта на камнях в реке до зубного налёта. В полости рта биоплёнка образуется на зубах, дёснах, языке и стоматологических конструкциях.</p>
+
+<div class="translation">90% бактерий в природе живут в биоплёнках. Во рту — то же самое: зубной налёт это именно биоплёнка.</div>
+
+<h2>Как формируется биоплёнка</h2>
+
+<p>Процесс проходит несколько стадий:</p>
+
+<ol>
+<li><strong>Адсорбция.</strong> На поверхности зуба или протеза образуется пелликула — тонкая плёнка из белков слюны. Это происходит за секунды после чистки.</li>
+<li><strong>Прикрепление.</strong> Первые бактерии (обычно Streptococcus sanguinis) прикрепляются к пелликуле. Это обратимый этап — если почистить зубы вовремя.</li>
+<li><strong>Созревание.</strong> Прикрепившиеся бактерии выделяют сигнальные молекулы (quorum sensing), привлекающие другие виды. Формируется многовидовая структура. Бактерии начинают производить EPS-матрикс.</li>
+<li><strong>Формирование трёхмерной структуры.</strong> Биоплёнка становится похожа на гриб — с каналами для питания и удаления отходов. Внутри разные условия: на поверхности — аэробные, в глубине — анаэробные.</li>
+<li><strong>Расселение.</strong> Часть бактерий отрывается и колонизирует новые поверхности.</li>
+</ol>
+
+<p>Весь цикл занимает 24–48 часов. Этим объясняется рекомендация чистить зубы дважды в день — вы прерываете цикл на ранней стадии.</p>
+
+<h2>Почему биоплёнка опасна на протезах</h2>
+
+<p>На стоматологических конструкциях биоплёнка формируется быстрее и устойчивее, чем на зубах. Причины:</p>
+
+<ul>
+<li><strong>Шероховатость материала.</strong> На керамике биоплёнка на 40% толще, чем на эмали (Journal of Prosthodontics, 2020).</li>
+<li><strong>Пористость акрила.</strong> В акриловых протезах бактерии проникают внутрь материала — их не достать механической чисткой.</li>
+<li><strong>Граница конструкция-зуб.</strong> В микрозазорах биоплёнка не удаляется щёткой и не смывается слюной.</li>
+</ul>
+
+<p>Последствия: кариес опорных зубов под коронками, периимплантит вокруг имплантов, стоматит под протезами, галитоз (неприятный запах).</p>
+
+<h2>Quorum sensing — система связи бактерий</h2>
+
+<p>Бактерии в биоплёнке общаются друг с другом через сигнальные молекулы — этот механизм называется quorum sensing (чувство кворума). Когда количество бактерий достигает порога, они одновременно меняют поведение: начинают вырабатывать факторы вирулентности, усиливают устойчивость к антибиотикам.</p>
+
+<p>Исследование Nature Reviews Microbiology (2021) показало: в зрелой биоплёнке бактерии в 1000 раз устойчивее к антибиотикам, чем те же бактерии в свободном виде. Поэтому антибактериальные полоскания эффективны только против недавно образовавшегося налёта, но не против зрелой биоплёнки.</p>
+
+<h2>Как бороться с биоплёнкой</h2>
+
+<ul>
+<li><strong>Механическое удаление.</strong> Единственный надёжный метод — щётка, паста, ирригатор. Антисептики и полоскания — дополнение, не замена.</li>
+<li><strong>Ирригатор.</strong> Струя воды разрушает биоплёнку в межзубных промежутках и под мостами, куда щётка не достаёт.</li>
+<li><strong>Профессиональная гигиена.</strong> Ультразвук и Air Flow удаляют биоплёнку из пародонтальных карманов и с поддесневой части коронок.</li>
+<li><strong>Для съёмных протезов.</strong> Ультразвуковая ванна и таблетки Corega или Protefix — единственный способ удалить биоплёнку из пор акрила.</li>
+</ul>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Биоплёнка на протезе — обратитесь к стоматологу-ортопеду для профессиональной чистки.</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'mikrobiom-polosti-rta-protezirovanie';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Микробиом полости рта: как меняется микрофлора после протезирования", "description": "После установки коронок, мостов и протезов состав бактерий во рту меняется. Какие микробы заселяют новые конструкции и как за этим следить.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/mikrobiom-polosti-rta-protezirovanie/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout
+  title="Микробиом полости рта после протезирования — как меняется микрофлора | Никитина М.Г."
+  description="После установки коронок, мостов и протезов состав бактерий во рту меняется. Какие микробы заселяют новые конструкции и как за этим следить."
+  breadcrumbTitle="Микробиом полости рта: как меняется микрофлора после протезирования"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <span class="sep">›</span>}
+      {category && <a href={`/blog/${category.id}`}>{category.name}</a>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
+    <article>
+
+<h1>Микробиом полости рта: как меняется микрофлора после протезирования</h1>
+<div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Во рту живёт около 700 видов бактерий. Когда появляются коронки, мосты или протезы, экосистема меняется — новые поверхности заселяют другие микробы. Разбираемся, что происходит с микрофлорой и почему это важно.</p>
+
+<h2>Что такое микробиом полости рта</h2>
+
+<p>Микробиом — сообщество микроорганизмов, живущих в определённой среде. В полости рта это бактерии, грибы, вирусы и археи. Исследование Human Oral Microbiome Database насчитывает около 700 видов бактерий, которые в норме населяют рот. Большинство из них безвредны, некоторые полезны, а при определённых условиях патогенные виды начинают преобладать.</p>
+
+<p>Баланс микрофлоры зависит от многих факторов: диеты, гигиены, слюны, общего иммунитета. Стоматологические конструкции — новый фактор, который меняет условия.</p>
+
+<h2>Как протезы меняют среду обитания бактерий</h2>
+
+<p>Любая конструкция во рту — коронка, мост, протез или имплант — создаёт новые поверхности для прикрепления бактерий. У этих поверхностей несколько особенностей:</p>
+
+<ul>
+<li><strong>Шероховатость.</strong> Даже отполированная коронка шершавее эмали. Бактерии быстрее закрепляются на шероховатых поверхностях. Исследование Journal of Dentistry (2020) показало: на керамике бактерий на 30% больше, чем на эмали здорового зуба.</li>
+<li><strong>Граница конструкция-зуб.</strong> Микрозазор между коронкой и зубом — идеальное укрытие для бактерий. Там не достаёт щётка, не проходит слюна.</li>
+<li><strong>Пористость материала.</strong> Акриловые протезы пористые — бактерии проникают внутрь материала. За 6 месяцев использования в акриле накапливается до 10<sup>6</sup> КОЕ/см<sup>2</sup> (колониеобразующих единиц).</li>
+</ul>
+
+<div class="translation">На керамической коронке бактерий на 30% больше, чем на эмали. На акриловом протезе — в разы больше из-за пористости.</div>
+
+<h2>Какие бактерии заселяют протезы</h2>
+
+<p>Состав микрофлоры на протезах отличается от микрофлоры на зубах. Исследование Biofouling (2021) сравнивало микрофлору полости рта у пациентов со съёмными протезами и без. Результаты:</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Тип бактерий</th><th>На зубах</th><th>На протезах</th></tr>
+</thead>
+<tbody>
+<tr><td><em>Streptococcus mutans</em> (кариес)</td><td>10–15%</td><td>25–35%</td></tr>
+<tr><td><em>Porphyromonas gingivalis</em> (пародонтит)</td><td>2–5%</td><td>8–12%</td></tr>
+<tr><td><em>Candida albicans</em> (грибок)</td><td>1–3%</td><td>15–25%</td></tr>
+<tr><td>Лактобациллы (полезные)</td><td>20–30%</td><td>5–10%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>На протезах значительно больше кариесогенных бактерий и грибка Candida. Полезных лактобацилл — меньше. Это объясняет, почему у пациентов с протезами чаще бывает стоматит и кариес опорных зубов.</p>
+
+<h2>Граница коронки и зуба — зона риска</h2>
+
+<p>Самое уязвимое место — край коронки. Даже при идеальном изготовлении зазор на границе коронки и зуба составляет 50–100 микрон. Этого достаточно для проникновения бактерий, но недостаточно для действия слюны и щётки.</p>
+
+<p>В этом зазоре формируется анаэробная среда — без кислорода. Там размножаются бактерии, вызывающие кариес и воспаление десны. Исследование Journal of Prosthetic Dentistry (2022) показало: у 70% пациентов через 5 лет после установки коронки на границе обнаруживаются кариесогенные бактерии.</p>
+
+<h2>Что с этим делать</h2>
+
+<ul>
+<li><strong>Ирригатор обязателен.</strong> Только струя воды прочищает зону под коронками и между мостами.</li>
+<li><strong>Суперфлосс.</strong> Обычная нить не достаёт под мостовидные протезы — нужен суперфлосс с жёстким кончиком.</li>
+<li><strong>Профессиональная гигиена раз в 6 месяцев.</strong> Врач удаляет биоплёнку в недоступных местах ультразвуком.</li>
+<li><strong>Ежедневная дезинфекция протезов.</strong> Таблетки Corega или Protefix убивают до 99.9% бактерий на съёмных конструкциях.</li>
+</ul>
+
+<h2>Вывод</h2>
+
+<p>Микробиом полости рта меняется после протезирования — это нормально. Главное — не дать патогенным бактериям взять верх. Регулярная гигиена, ирригатор и профессиональные чистки держат микрофлору под контролем.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Нужна консультация по уходу за протезами?</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
