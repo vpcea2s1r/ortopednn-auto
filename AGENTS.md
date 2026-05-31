@@ -24,12 +24,14 @@
 3. **После каждого шага** — обновить инфо-файлы (AGENTS.md, yandex.md, etc.) с актуальными данными с live
 4. **При обнаружении расхождения** между кодом и live — фиксировать таблицу расхождений и предлагать синхронизацию
 5. **Перед commit/push** — проверить не затрёт ли старый код актуальный контент с live
-6. **Кодировка UTF-8 всегда** — при push через GitHub API:
-   - читать файл через `[System.IO.File]::ReadAllBytes`
-   - кодировать в base64 через `[Convert]::ToBase64String()`
+6. **Кодировка UTF-8 всегда**:
+   - ПРИ СОЗДАНИИ ФАЙЛА: использовать ТОЛЬКО `[System.IO.File]::WriteAllText($path, $content, [System.Text.Encoding]::UTF8)` — write tool и task-агенты ломают кодировку!
+   - НЕ использовать `write` tool для файлов с кириллицей
+   - ПРИ PUSH через GitHub API: читать через `[System.IO.File]::ReadAllBytes`, base64 через `[Convert]::ToBase64String()`
    - НЕ использовать `Get-Content` (ломает UTF-8)
-   - **ОБЯЗАТЕЛЬНАЯ ПРОВЕРКА перед push**: `[System.Text.Encoding]::UTF8.GetString($bytes)` — проверить что русский текст отображается корректно (содержит [char]0x0410-0x042F)
-   - **Проверка размера**: сравнить размер $bytes.Length с ожидаемым (если файл вдвое меньше — encoding сломан)
+   - **ПРОВЕРКА СРАЗУ ПОСЛЕ ЗАПИСИ**: `[System.Text.Encoding]::UTF8.GetString($bytes)` — должен содержать [char]0x0410-0x042F
+   - **Проверка размера**: сверить $bytes.Length с ожидаемым (если файл вдвое меньше — encoding сломан)
+   - **ПЕРЕД PUSH**: запустить `.\scripts\encoding-verify.ps1`
 
 7. **Article tracking in CONTENT.md** — перед написанием статьи прочитать CONTENT.md (список статей), после написания статьи добавить её в CONTENT.md, затем push.
 8. **Review-before-publish (Hard Rule)** — ни одна статья не публикуется без одобрения пользователя. Пайплайн сохраняет черновики в `/data/drafts/`. Пользователь читает через `/drafts` в Telegram боте или на preview.ortopednn.ru/preview/<slug>/ (noindex, banner). Нажимает "Опубликовать" или "Удалить". Прямая публикация через GitHub API (publisherAgent) запрещена — только через review flow.
