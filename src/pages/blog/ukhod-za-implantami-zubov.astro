@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'ukhod-za-implantami-zubov';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Уход за имплантами зубов — правила, средства, частота", "description": "Как ухаживать за имплантами: ежедневная гигиена, ирригатор, профессиональная чистка, что нельзя делать. Срок службы импланта зависит от ухода.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/ukhod-za-implantami-zubov/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout 
+  title="Уход за имплантами зубов — правила, средства, частота | Никитина М.Г."
+  description="Как ухаживать за имплантами: ежедневная гигиена, ирригатор, профессиональная чистка, что нельзя делать. Срок службы импланта зависит от ухода."
+  breadcrumbTitle="Уход за имплантами зубов — правила, средства, частота"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+
+<h1>Уход за имплантами зубов</h1>
+<div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead"><strong>TL;DR:</strong> Имплант служит 20+ лет, если за ним правильно ухаживать. Основные правила: чистить 2 раза в день, использовать ирригатор, не курить, раз в год проходить профосмотр. Без ухода развивается периимплантит — основная причина потери импланта.</p>
+
+<h2>Что влияет на срок службы импланта</h2>
+
+<p>Имплант сам по себе не портится — это титановый винт, который не подвержен кариесу. Но ткани вокруг него — кость и десна — требуют ухода. Главная причина потери импланта — периимплантит (воспаление тканей вокруг импланта), который возникает из-за недостаточной гигиены.</p>
+
+<p>По данным исследования в <em>Journal of Clinical Periodontology</em> (2023), периимплантит встречается у 20% пациентов через 5–10 лет после имплантации. При регулярном уходе риск снижается до 5%.</p>
+<p class="translation">20% пациентов с имплантами сталкиваются с периимплантитом — правильный уход снижает риск в 4 раза.</p>
+
+<h2>Ежедневный уход за имплантами</h2>
+
+<p>Имплант нужно чистить так же, как обычные зубы, но с дополнительными инструментами:</p>
+
+<ul>
+<li><strong>Щётка.</strong> Мягкая или средняя. Электрическая лучше — она эффективнее удаляет налёт. Чистить 2 раза в день по 2 минуты.</li>
+<li><strong>Ирригатор.</strong> Обязателен для имплантов. Вода под напором вымывает остатки еды из пространства между коронкой и десной, куда не достаёт щётка.</li>
+<li><strong>Ёршики.</strong> Интерпроксимальные ёршики для очистки боковых поверхностей.</li>
+<li><strong>Ополаскиватель.</strong> Без спирта. С хлоргексидином или цетилпиридиниом для профилактики воспалений.</li>
+</ul>
+
+<h2>Чего нельзя делать</h2>
+
+<ul>
+<li>Не использовать абразивные пасты (сода, отбеливающие) — они царапают коронку и абатмент.</li>
+<li>Не курить. Курение увеличивает риск периимплантита в 2–3 раза.</li>
+<li>Не грызть твёрдую еду (леденцы, орехи) коронкой на импланте.</li>
+<li>Не использовать жёсткие зубочистки — можно повредить десну вокруг импланта.</li>
+</ul>
+
+<h2>Профессиональный уход</h2>
+
+<p>Один раз в год нужно приходить на профессиональную гигиену. Врач снимает зубной камень ультразвуком, проверяет затяжку абатмента и состояние кости по рентгену. При периимплантите назначают курс антибактериальной терапии и чистку поверхности импланта.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Нужна консультация по уходу за имплантами?</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

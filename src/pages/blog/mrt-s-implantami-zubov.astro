@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'mrt-s-implantami-zubov';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Можно ли делать МРТ с имплантами зубов", "description": "Безопасно ли МРТ с зубными имплантами из титана. Как импланты ведут себя в магнитном поле, артефакты на снимках, что сказать врачу.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/mrt-s-implantami-zubov/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout 
+  title="Можно ли делать МРТ с имплантами зубов | Никитина М.Г."
+  description="Безопасно ли МРТ с зубными имплантами из титана. Как импланты ведут себя в магнитном поле, артефакты на снимках, что сказать врачу."
+  breadcrumbTitle="Можно ли делать МРТ с имплантами зубов"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+
+<h1>Можно ли делать МРТ с имплантами зубов</h1>
+<div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead"><strong>TL;DR:</strong> Да, МРТ с титановыми имплантами безопасно. Титан не магнитится, поэтому имплант не сдвинется и не нагреется. Но есть нюансы: имплант может создавать артефакты на снимке челюсти, поэтому предупредите радиолога о наличии имплантов.</p>
+
+<h2>Из чего делают импланты</h2>
+
+<p>Современные импланты делают из титана — материала, который относится к парамагнитным (diamagnetic). Это означает, что магнитное поле МРТ не воздействует на него. В отличие от ферромагнитных материалов (железо, сталь), титан не притягивается магнитом.</p>
+
+<p>Это касается всех основных брендов: Straumann, Nobel Biocare, Osstem, MIS, Alpha Bio и других. Все они используют медицинский титан классов Ti-6Al-4V или чистый титан Grade 4.</p>
+
+<h2>Что нужно сказать врачу перед МРТ</h2>
+
+<ul>
+<li>Скажите, что у вас зубные импланты. Радиолог должен знать.</li>
+<li>Импланты не являются противопоказанием к МРТ. Врач просто учтёт это при интерпретации снимков.</li>
+<li>Если сканируют голову или челюсть, имплант может создать локальные искажения (артефакты) на расстоянии 1–2 см вокруг импланта.</li>
+<li>Коронка из металлокерамики может давать больше артефактов на МРТ, чем циркониевая или E-max.</li>
+</ul>
+
+<h2>Мифы о МРТ и имплантах</h2>
+
+<p><strong>Миф 1:</strong> Имплант может сдвинуться в магнитном поле.<br>
+Реальность: Титан не магнитится. Имплант остаётся на месте.</p>
+
+<p><strong>Миф 2:</strong> Имплант нагревается во время МРТ.<br>
+Реальность: Нагрев титана в поле МРТ ничтожен — менее 0.1°C.</p>
+
+<p><strong>Миф 3:</strong> Имплант нужно удалять перед МРТ.<br>
+Реальность: Имплант не извлекается. Это пожизненная конструкция.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Остались вопросы про импланты?</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

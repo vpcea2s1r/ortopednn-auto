@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'implantatsiya-zubov-nizhnij-novgorod-cena';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Имплантация зубов в Нижнем Новгороде — цены 2026", "description": "Сколько стоит имплантация зуба в Нижнем Новгороде в 2026. Цены на Osstem, MIS, Straumann, Nobel Biocare под ключ. Что входит в стоимость, дополнительные расходы.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/implantatsiya-zubov-nizhnij-novgorod-cena/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout 
+  title="Имплантация зубов в Нижнем Новгороде — цены 2026 | Никитина М.Г."
+  description="Сколько стоит имплантация зуба в Нижнем Новгороде в 2026. Цены на Osstem, MIS, Straumann, Nobel Biocare под ключ. Что входит в стоимость, дополнительные расходы."
+  breadcrumbTitle="Имплантация зубов в Нижнем Новгороде — цены 2026"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+
+<h1>Имплантация зубов в Нижнем Новгороде — цены 2026</h1>
+<div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead"><strong>TL;DR:</strong> Имплантация зуба в Нижнем Новгороде в 2026 году стоит от 25 000 до 70 000 рублей за один имплант под ключ (имплант + абатмент + коронка). Цена зависит от бренда импланта, материала коронки и необходимости костной пластики.</p>
+
+<h2>Что входит в стоимость имплантации</h2>
+
+<p>Цена на имплант под ключ включает несколько составляющих:</p>
+
+<ul>
+<li>Хирургический этап (установка импланта, анестезия)</li>
+<li>Сам имплант (титановый винт)</li>
+<li>Абатмент (промежуточная деталь между имплантом и коронкой)</li>
+<li>Коронка (металлокерамика, цирконий или E-max)</li>
+<li>Контрольные осмотры (обычно входят в стоимость)</li>
+</ul>
+
+<h2>Цены на импланты в Нижнем Новгороде</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Тип импланта</th><th>Бренды</th><th>Цена под ключ (коронка металлокерамика)</th></tr>
+</thead>
+<tbody>
+<tr><td>Эконом</td><td>Osstem (IOF), MIS, Alpha Bio</td><td>25 000 – 35 000 ₽</td></tr>
+<tr><td>Премиум</td><td>Straumann, Nobel Biocare</td><td>50 000 – 70 000 ₽</td></tr>
+<tr><td>С циркониевой коронкой</td><td>Любой бренд</td><td>+15 000 – 25 000 ₽ к цене импланта</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Дополнительные расходы</h2>
+
+<ul>
+<li>Костная пластика (синус-лифтинг): 20 000 – 45 000 ₽</li>
+<li>Временная коронка на период приживления: 3 000 – 6 000 ₽</li>
+<li>КТ челюсти (для планирования): 3 000 – 5 000 ₽</li>
+</ul>
+
+<h2>Почему цены отличаются</h2>
+
+<p>Клиники в Нижнем Новгороде используют разные бренды имплантов. Osstem и MIS — корейские бренды с хорошей репутацией и доступной ценой. Straumann (Швейцария) и Nobel Biocare (Швеция) — премиум-сегмент с максимальной доказательной базой приживлемости. Все эти бренды доступны в Нижнем Новгороде.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Рассчитать стоимость имплантации?</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

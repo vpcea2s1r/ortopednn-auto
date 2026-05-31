@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'koronka-shataetsya-chto-delat';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Шатается коронка на зубе — причины и что делать", "description": "Коронка шатается: причины (расцементовка, кариес под коронкой), что делать до приёма, чем опасно откладывать. Когда нужна замена.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/koronka-shataetsya-chto-delat/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout 
+  title="Шатается коронка на зубе — причины и что делать | Никитина М.Г."
+  description="Коронка шатается: причины (расцементовка, кариес под коронкой), что делать до приёма, чем опасно откладывать. Когда нужна замена."
+  breadcrumbTitle="Шатается коронка на зубе — причины и что делать"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+
+<h1>Шатается коронка на зубе — причины и что делать</h1>
+<div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead"><strong>TL;DR:</strong> Коронка может шататься по нескольким причинам: расцементовался цемент, разрушился зуб под коронкой или воспалилась десна. Не пытайтесь зафиксировать коронку самостоятельно — обратитесь к врачу. Чем раньше, тем больше шансов сохранить коронку.</p>
+
+<h2>Почему коронка начинает шататься</h2>
+
+<p>Причин может быть несколько:</p>
+
+<ul>
+<li><strong>Расцементовка цемента.</strong> Самая частая причина. Со временем фиксирующий материал теряет свойства, особенно если использовался временный цемент. Средний срок службы цемента — 5–7 лет.</li>
+<li><strong>Разрушение зуба под коронкой.</strong> Кариес под коронкой разрушает ткани зуба, коронка теряет опору и начинает болтаться.</li>
+<li><strong>Воспаление десны.</strong> Пародонтит, гингивит или фистула могут привести к ослаблению фиксации коронки.</li>
+<li><strong>Неправильная прилегаемость.</strong> Если коронка изначально была изготовлена с недостаточной точностью, краевое прилегание нарушено и коронка будет шататься.</li>
+<li><strong>Бруксизм.</strong> Скрежетание зубами создаёт повышенную нагрузку, которая расшатывает коронку.</li>
+</ul>
+
+<h2>Что делать, если коронка шатается</h2>
+
+<p>Первое и главное — не откладывать визит к врачу. Пока коронка просто шатается, её ещё можно зафиксировать без последствий. Если под коронку попадает еда и бактерии, начинается кариес и зуб под коронкой быстро разрушается.</p>
+
+<p>До приёма врача:</p>
+<ul>
+<li>Не жуйте на эту сторону.</li>
+<li>Чистите коронку аккуратно, не давите.</li>
+<li>Полощите хлоргексидином 2 раза в день, чтобы снизить риск воспаления.</li>
+<li>Не пытайтесь приклеить коронку на зубной цемент из аптеки — это только ухудшит ситуацию.</li>
+</ul>
+
+<h2>Что сделает врач</h2>
+
+<p>Сначала снимет коронку, очистит зуб и коронку от остатков старого цемента. Проверит состояние зуба под коронкой с помощью рентгена. Если зуб цел, поставит новый цемент. Если зуб разрушен, нужна новая коронка или восстановление зуба культевой вкладкой.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Шатается коронка? Запишитесь на приём.</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
