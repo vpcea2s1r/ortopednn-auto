@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'semnyj-protez-na-verhnyuyu-chelyust';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Съёмный протез на верхнюю челюсть — какой лучше выбрать",
+  "description": "Протез на верхнюю челюсть: акриловый, нейлоновый, AcryFree или бюгельный. Сравнение материалов, фиксация, адаптация. Какой вариант служит дольше и не натирает.",
+  "author": {
+    "@type": "Person",
+    "name": "Никитина Марина Георгиевна",
+    "medicalSpecialty": "Prosthodontics"
+  },
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": {
+    "@type": "Organization",
+    "name": "ОртопедНН"
+  }
+};
+---
+
+<BaseLayout
+  title="Съёмный протез на верхнюю челюсть — какой лучше выбрать"
+  description="Съёмный протез на верхнюю челюсть: акрил, нейлон, AcryFree, бюгель. Сравнение материалов, фиксация без клея, адаптация. Телефон +7 (920) 253-73-17."
+  breadcrumbTitle="Съёмный протез на верхнюю челюсть"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Съёмный протез на верхнюю челюсть — какой лучше выбрать</h1>
+      <div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Выбор протеза на верхнюю челюсть зависит от количества отсутствующих зубов и состояния кости. Если зубов нет совсем — подойдёт полный съёмный протез из акрила или AcryFree. Если есть опорные зубы — можно бюгель с замками или частичный протез. Разбираем все варианты.</p>
+
+      <h2>Основные варианты протезов на верхнюю челюсть</h2>
+
+      <h3>Полный съёмный протез (акриловый)</h3>
+      <p>Классический вариант при полном отсутствии зубов на верхней челюсти. Базис перекрывает нёбо для лучшей фиксации — это создаёт клапанный эффект. Служат 3–5 лет, после нужна перебазировка или замена.</p>
+      <p>На верхней челюсти протез держится хорошо за счёт большой площади прилегания к нёбу — в отличие от нижней, где фиксация слабее.</p>
+
+      <h3>AcryFree — современная альтернатива акрилу</h3>
+      <p>AcryFree — безмономерный материал нового поколения. В отличие от акрила, не содержит остаточного мономера, не вызывает аллергии. Выше прочность, тоньше базис — почти не чувствуется на нёбе.</p>
+      <p>Основные плюсы: гипоаллергенность, эластичность (меньше трещин при падении), точное прилегание к десне.</p>
+
+      <h3>Нейлоновый протез</h3>
+      <p>Гибкий, эластичный, не видно кламмеров — они телесного цвета. Но на верхнюю челюсть нейлон подходит хуже: из-за гибкости он хуже фиксируется на беззубой челюсти. Больше подходит для частичного отсутствия зубов.</p>
+      <p>Минусы нейлона: не поддаётся перебазировке (когда десна меняет форму — протез перестаёт прилегать), быстрее впитывает запахи.</p>
+
+      <h3>Бюгельный протез</h3>
+      <p>Подходит, если на верхней челюсти осталось 3–6 здоровых зубов, которые могут служить опорой. Базис не перекрывает нёбо полностью — открыт свод. Это снижает рвотный рефлекс и улучшает вкусовые ощущения.</p>
+
+      <h2>Таблица: сравнение материалов</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Материал</th>
+              <th>Фиксация</th>
+              <th>Срок службы</th>
+              <th>Гибкость</th>
+              <th>Перебазировка</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Акрил</td>
+              <td>Высокая (клапан)</td>
+              <td>3–5 лет</td>
+              <td>Жёсткий</td>
+              <td>Да</td>
+            </tr>
+            <tr>
+              <td>AcryFree</td>
+              <td>Высокая</td>
+              <td>5–7 лет</td>
+              <td>Эластичный</td>
+              <td>Нет</td>
+            </tr>
+            <tr>
+              <td>Нейлон</td>
+              <td>Средняя</td>
+              <td>3–5 лет</td>
+              <td>Высокая</td>
+              <td>Нет</td>
+            </tr>
+            <tr>
+              <td>Бюгель (на зубах)</td>
+              <td>Максимальная</td>
+              <td>7–10 лет</td>
+              <td>Жёсткий</td>
+              <td>Да</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Какой протез на верхнюю челюсть лучше</h2>
+      <ul>
+        <li><strong>Полная адентия (нет ни одного зуба)</strong> — акрил (классика) или AcryFree (комфортнее). Нейлон — только если акрил вызывает аллергию</li>
+        <li><strong>Есть 1–2 зуба</strong> — частичный протез из акрила или AcryFree с опорой на зубы</li>
+        <li><strong>Есть 3–6 зубов</strong> — бюгельный протез на замках: лучше фиксация, не перекрыто нёбо</li>
+        <li><strong>Выраженный рвотный рефлекс</strong> — AcryFree (тоньше базис) или бюгель (нёбо открыто)</li>
+        <li><strong>Аллергия на акрил</strong> — AcryFree или нейлон</li>
+      </ul>
+
+      <h2>Как привыкнуть к протезу на верхнюю челюсть</h2>
+      <p>Первая неделя — самая сложная. Нёбо привыкает к инородному телу, меняется дикция, усиливается слюноотделение. Срок адаптации — 2–4 недели.</p>
+      <ul>
+        <li>Первые 3–5 дней — мягкая пища (супы, каши, пюре)</li>
+        <li>Читайте вслух каждый день — дикция восстанавливается за 5–10 дней</li>
+        <li>Снимайте протез на ночь только если он акриловый — AcryFree и нейлон можно оставлять</li>
+        <li>Если натирает — не терпите, идите на коррекцию через 2–3 дня</li>
+      </ul>
+      <p>Подробнее об адаптации — в статье <a href="/blog/kak-privyknut-k-semnym-protezam/">«Как привыкнуть к съёмным протезам»</a>.</p>
+
+      <h2>Как улучшить фиксацию протеза</h2>
+      <p>Если протез плохо держится, используйте фиксирующий крем (Corega, Protefix, Lacalut Dent). Наносите тонкой полоской на внутреннюю поверхность — хватает на 8–12 часов. Не используйте домашний клей — он токсичен.</p>
+      <p>Если фиксация ухудшилась со временем — значит, кость атрофировалась и нужна перебазировка. Раз в 2–3 года это нормально.</p>
+
+      <h2>Часто задаваемые вопросы</h2>
+
+      <h3>Какой протез на верхнюю челюсть самый удобный?</h3>
+      <p>Бюгельный (если есть опорные зубы) — не перекрывает нёбо, не влияет на вкус. Если зубов нет — AcryFree: он тоньше и легче акрила.</p>
+
+      <h3>Долго ли привыкать к верхнему протезу?</h3>
+      <p>2–4 недели. Первые 3–5 дней — дискомфорт при глотании и речи. К концу второй недели большинство привыкают.</p>
+
+      <h3>Можно ли жевать верхним протезом твёрдую пищу?</h3>
+      <p>Да, но аккуратно. Жевательная нагрузка распределяется на нёбо и альвеолярный отросток. Твёрдые яблоки, сухари, орехи лучше не грызть.</p>
+
+      <h3>Нужно ли снимать верхний протез на ночь?</h3>
+      <p>Акриловый — да, чтобы десна отдыхала. AcryFree и нейлоновый — не обязательно. Но гигиеническую чистку нужно делать всегда.</p>
+
+      <h3>Сколько стоит протез на верхнюю челюсть в Нижнем Новгороде?</h3>
+      <p>Стоимость зависит от материала и количества зубов. Для точной информации — запишитесь на консультацию, сделаем план лечения и расчёт.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Нужна консультация по выбору протеза на верхнюю челюсть? Приходите — подберём оптимальный вариант.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить: +7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+ol { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+a { color: #4a90d9; }
+.table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e0e8f0; color: #5a7a9a; }
+th { background: #f0f6fb; color: #1e3a5f; font-weight: 600; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

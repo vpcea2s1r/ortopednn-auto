@@ -40,7 +40,7 @@ export default defineConfig({
     name: 'Inter',
     cssVariable: '--font-inter',
     subsets: ['cyrillic'],
-    weights: [400, 600, 700],
+    weights: [400, 600, 700, 800],
     provider: fontProviders.google()
   }]
 });

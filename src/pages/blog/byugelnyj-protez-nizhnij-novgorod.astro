@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'byugelnyj-protez-nizhnij-novgorod';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Бюгельный протез в Нижнем Новгороде — особенности, преимущества",
+  "description": "Бюгельные протезы в Нижнем Новгороде: конструкции на замках и кламмерах. Кому подходят, какие бывают, чем отличаются от съёмных. Консультация ортопеда.",
+  "author": {
+    "@type": "Person",
+    "name": "Никитина Марина Георгиевна",
+    "medicalSpecialty": "Prosthodontics"
+  },
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": {
+    "@type": "Organization",
+    "name": "ОртопедНН"
+  }
+};
+---
+
+<BaseLayout
+  title="Бюгельный протез в Нижнем Новгороде — особенности и преимущества"
+  description="Бюгельные протезы в Нижнем Новгороде: замки и кламмеры, кому подходят, какие лучше. Отличие от съёмных протезов. Консультация +7 (920) 253-73-17."
+  breadcrumbTitle="Бюгельный протез в Нижнем Новгороде"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Бюгельный протез в Нижнем Новгороде</h1>
+      <div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Бюгельный протез — жёсткая конструкция на металлическом каркасе для замены нескольких отсутствующих зубов. В Нижнем Новгороде это один из самых востребованных видов протезирования при частичной потере зубов. Главные плюсы: тонкий базис (не перекрывает нёбо), надёжная фиксация, распределение нагрузки на кость.</p>
+
+      <h2>Что такое бюгельный протез</h2>
+      <p>Бюгель (от немецкого Bügel — дуга) — это протез на металлическом каркасе. В отличие от пластиночных протезов, у бюгеля тонкий базис, а нагрузка при жевании передаётся не только на десну, но и на опорные зубы. Это естественнее для челюсти.</p>
+      <p>Бюгельные протезы используются при отсутствии 2–6 зубов подряд или с обеих сторон челюсти.</p>
+
+      <h2>Виды бюгельных протезов</h2>
+
+      <h3>На кламмерах</h3>
+      <p>Кламмеры — металлические крючки, которые охватывают опорные зубы. Заметны при улыбке, если крепятся на передние зубы. Самый надёжный и доступный вариант фиксации. Служат от 5 до 8 лет без поломок.</p>
+
+      <h3>На замках (аттачменах)</h3>
+      <p>Замки невидимы — крепятся на коронки опорных зубов. Эстетичный вариант: замок состоит из двух частей (на коронке и на протезе), которые соединяются внутри. Стоимость выше, чем кламмеры, на 30–40%. Срок службы замков — 4–6 лет, затем требуется замена матрицы.</p>
+
+      <h3>Бюгель с шинированием</h3>
+      <p>Дополнительно фиксирует подвижные зубы при пародонтите. Показан, если зубы расшатаны — протез связывает их в единый блок. По данным исследований, шинирующие бюгели замедляют потерю зубов при пародонтите на 60%.</p>
+
+      <h2>Таблица: сравнение бюгельных протезов</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Вид</th>
+              <th>Эстетика</th>
+              <th>Надёжность</th>
+              <th>Кому подходит</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>На кламмерах</td>
+              <td>Средняя</td>
+              <td>Высокая</td>
+              <td>Бюджетный вариант, жевательные зубы</td>
+            </tr>
+            <tr>
+              <td>На замках</td>
+              <td>Высокая</td>
+              <td>Высокая</td>
+              <td>Передние зубы, эстетика важна</td>
+            </tr>
+            <tr>
+              <td>С шинированием</td>
+              <td>Средняя</td>
+              <td>Высокая</td>
+              <td>Пародонтит, подвижные зубы</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Плюсы и минусы бюгельных протезов</h2>
+
+      <h3>Плюсы</h3>
+      <ul>
+        <li>Тонкий базис — нёбо открыто, нет рвотного рефлекса</li>
+        <li>Нагрузка распределяется между зубами и костью — естественнее для челюсти</li>
+        <li>Срок службы — 7–10 лет</li>
+        <li>Можно ремонтировать — перебазировка, замена замков, приварка зубов</li>
+        <li>Не нужно снимать на ночь</li>
+      </ul>
+
+      <h3>Минусы</h3>
+      <ul>
+        <li>Металлический каркас виден на зубах (кламмеры) — не всегда эстетично</li>
+        <li>Требуется подготовка опорных зубов (обточка под коронки для замков)</li>
+        <li>Дороже пластиночных протезов</li>
+        <li>Первые 2–3 недели — адаптация</li>
+      </ul>
+
+      <h2>Этапы изготовления</h2>
+      <ol>
+        <li><strong>Осмотр и диагностика</strong> — рентген, оценка состояния опорных зубов</li>
+        <li><strong>Подготовка</strong> — лечение кариеса, обточка опорных зубов под коронки</li>
+        <li><strong>Слепки</strong> — снятие оттисков для зуботехнической лаборатории</li>
+        <li><strong>Примерка</strong> — проверка каркаса, прикуса</li>
+        <li><strong>Сдача</strong> — фиксация протеза, коррекция прикуса</li>
+      </ol>
+      <p>Весь цикл занимает 2–3 недели. После сдачи — 2–3 контрольных визита для коррекции.</p>
+
+      <h2>Бюгельный или съёмный протез: что выбрать</h2>
+      <p>Если у вас отсутствует 2–5 зубов и есть здоровые опорные зубы — бюгель лучше. Он тоньше, удобнее и не натирает нёбо. Пластиночный протез показан при полной адентии (нет ни одного зуба) или когда зубы слишком слабые для опоры бюгеля.</p>
+
+      <h2>Сколько служит бюгельный протез</h2>
+      <p>При хорошей гигиене и ежегодных осмотрах — 7–10 лет. Раз в 1–2 года нужна перебазировка (коррекция базиса по форме десны), так как кость под протезом со временем меняется. Раз в 4–6 лет — замена замковых матриц.</p>
+
+      <h2>Часто задаваемые вопросы</h2>
+
+      <h3>Больно ли носить бюгельный протез?</h3>
+      <p>Первые 2–3 недели — дискомфорт и натирание. Это нормально — десна адаптируется к новому базису. После адаптации протез не чувствуется.</p>
+
+      <h3>Как ухаживать за бюгельным протезом?</h3>
+      <p>Чистить 2 раза в день мягкой щёткой, использовать ирригатор для промывания замков. Раз в неделю — дезинфицирующие таблетки. Подробнее в статье <a href="/blog/uhod-za-byugelnym-protezom/">«Уход за бюгельным протезом»</a>.</p>
+
+      <h3>Можно ли жевать твёрдое?</h3>
+      <p>Да, бюгель выдерживает нормальную жевательную нагрузку. Но яблоко лучше нарезать кусочками, а орехи не грызть — это правило для любых протезов.</p>
+
+      <h3>Что лучше — бюгель или имплантация?</h3>
+      <p>Импланты — лучше по всем параметрам, но требуют хирургического вмешательства и стоят дороже. Если нет противопоказаний и позволяет бюджет — имплантация. Если нужен надёжный протез без операции — бюгель.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Хотите узнать, подойдёт ли вам бюгельный протез? Запишитесь на консультацию — сделаем план лечения.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить: +7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+ol { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+a { color: #4a90d9; }
+.table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e0e8f0; color: #5a7a9a; }
+th { background: #f0f6fb; color: #1e3a5f; font-weight: 600; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
