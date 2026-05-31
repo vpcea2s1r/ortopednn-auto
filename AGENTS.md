@@ -24,7 +24,12 @@
 3. **После каждого шага** — обновить инфо-файлы (AGENTS.md, yandex.md, etc.) с актуальными данными с live
 4. **При обнаружении расхождения** между кодом и live — фиксировать таблицу расхождений и предлагать синхронизацию
 5. **Перед commit/push** — проверить не затрёт ли старый код актуальный контент с live
-6. **Кодировка UTF-8 всегда** — при push через GitHub API: читать файл через `[System.IO.File]::ReadAllBytes`, кодировать в base64, НЕ использовать `Get-Content` (ломает UTF-8). Перед push проверять: `[System.Text.Encoding]::UTF8.GetString($bytes)` — русский текст должен читаться.
+6. **Кодировка UTF-8 всегда** — при push через GitHub API:
+   - читать файл через `[System.IO.File]::ReadAllBytes`
+   - кодировать в base64 через `[Convert]::ToBase64String()`
+   - НЕ использовать `Get-Content` (ломает UTF-8)
+   - **ОБЯЗАТЕЛЬНАЯ ПРОВЕРКА перед push**: `[System.Text.Encoding]::UTF8.GetString($bytes)` — проверить что русский текст отображается корректно (содержит [char]0x0410-0x042F)
+   - **Проверка размера**: сравнить размер $bytes.Length с ожидаемым (если файл вдвое меньше — encoding сломан)
 
 7. **Article tracking in CONTENT.md** — перед написанием статьи прочитать CONTENT.md (список статей), после написания статьи добавить её в CONTENT.md, затем push.
 8. **Review-before-publish (Hard Rule)** — ни одна статья не публикуется без одобрения пользователя. Пайплайн сохраняет черновики в `/data/drafts/`. Пользователь читает через `/drafts` в Telegram боте или на preview.ortopednn.ru/preview/<slug>/ (noindex, banner). Нажимает "Опубликовать" или "Удалить". Прямая публикация через GitHub API (publisherAgent) запрещена — только через review flow.
@@ -91,13 +96,19 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 | Refresh rotation | Test user auth expires every 7 days |
 | Credentials file | `C:\opencode\ortopednn-auto\google-oauth.md` |
 
-### Yandex OAuth (Webmaster API)
+### Yandex OAuth (Webmaster API) — обновлено 30.05.2026
 
 | Параметр | Значение |
 |----------|----------|
-| Token expires | ~161 дней (2026-10-31) |
-| Scope | `webmaster:hostinfo` + `webmaster:verify` |
+| Token expires | ~169 дней (2026-11-14) |
+| Scope | `webmaster:hostinfo` |
 | User ID (Яндекс) | `156937890` |
+| Access Token | `y0__wgBEKLd6koY2_VBIPiwkMgXMJyMhrkI_UB3K5NBR-vLj1_9Eg5Iq74ZV10` |
+| Refresh Token | `2:AAA:AAAAAAlarqI:1:_CQlUGOkUPSV6DA9:TSvJu0KMvh-PO6wlLaIudADnUcOIYXHPiXZErFOAam0f9dQISHGSbBx6n-HfWJuOVL8JAybES9gPx2YcI8s:b3t2IDKycgKcmoRClvGtmA` |
+| Client ID (новый) | `877c313650a94c02b5a7ce61a65d2c89` |
+| Client Secret (новый) | `14c950dd2be24fe38b6265c3ae9837ff` |
+| Client ID (старый, не используется) | `a8c3b0b8da2a4908943d5be7832e3a04` |
+| Client Secret (старый, не используется) | `98355eba98f645a3aaa9bf6d4cd15e07` |
 | Credentials file | `C:\opencode\ortopednn-auto\google-oauth.md` |
 
 ### GitHub Secrets (Telegram Bot)
@@ -207,6 +218,11 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 | `/stats` | ❌ | Яндекс.Вебмастер статистика |
 | `/digest` | ❌ | Weekly digest по динамике метрик |
 | `/autogen` | ✅ | Multi-Agent генерация статьи |
+
+## Build Stability Rule
+- Любое изменение кода (структуры JSON, компонентов, маршрутов, схем) должно быть совместимо с существующими данными в репозитории (`data/`, `content/`)
+- Перед commit/push — запустить `npm run build` и убедиться что build проходит без ошибок
+- Если меняется формат данных (например, поле в JSON) — обновить все существующие файлы или обеспечить поддержку старого формата
 
 ## Writing Rules (обязательно для всех)
 
