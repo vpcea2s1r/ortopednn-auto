@@ -653,9 +653,10 @@ async function handleUpdate(upd) {
         const domain = 'stomatolog.ortopednn.ru';
         const statusIcon = isPipeline ? '🔄' : '📄';
         const statusText = isPipeline ? 'На рассмотрении' : 'Черновик';
+        const urlPart = isPipeline ? '' : `\n${domain}/blog/${d.slug}.html`;
         await tg('sendMessage', {
           chat_id: chatId,
-          text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}\n${domain}/blog/${d.slug}.html`,
+          text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}${urlPart}`,
           reply_markup: draftButtons(d.slug, d.repo)
         });
       }
