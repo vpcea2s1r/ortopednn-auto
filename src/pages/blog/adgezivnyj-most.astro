@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'adgezivnyj-most';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Адгезивный мост — что это, плюсы и минусы, сколько служит",
+  "description": "Адгезивный мост (мост-бабочка) — щадящий способ заменить один зуб без обточки соседних. Сколько служит, кому подходит, сравнение с классическим мостом.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Адгезивный мост — что это, плюсы и минусы, сколько служит | Никитина М.Г."
+  description="Адгезивный мост (мост-бабочка) — щадящее протезирование без обточки зубов. Сколько служит, кому подходит, плюсы и минусы, сравнение с классическим мостом."
+  breadcrumbTitle="Адгезивный мост"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-01"
+  dateModified="2026-06-01"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Адгезивный мост — что это, плюсы и минусы, сколько служит</h1>
+      <div class="meta">1 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>TL;DR:</strong> Адгезивный мост — это протез на один зуб, который крепится к соседним зубам без обточки. Служит 3–7 лет. Дешевле классического моста, но менее надёжен. Хороший вариант как временное решение или когда соседние зубы здоровы.</p>
+
+      <h2>Что такое адгезивный мост</h2>
+
+      <p>Адгезивный мост (он же мост-бабочка, крыловидный мост, адгезивный протез) — это конструкция для замены одного отсутствующего зуба. В отличие от классического моста, опорные зубы не обтачивают — протез крепится к их внутренней поверхности с помощью композитного материала или стекловолоконной ленты.</p>
+
+      <p>Название «бабочка» конструкция получила из-за формы: крылышки по бокам искусственного зуба фиксируются на соседние зубы, напоминая крылья бабочки.</p>
+
+      <h2>Как устроен адгезивный мост</h2>
+
+      <p>Конструкция состоит из двух частей:</p>
+      <ul>
+        <li><strong>Искусственный зуб</strong> — из композитного материала, металлокерамики или циркония</li>
+        <li><strong>Крылья фиксации</strong> — тонкие пластинки (виниры), которые приклеиваются к задней стороне соседних зубов</li>
+      </ul>
+
+      <p>Фиксация происходит без сверления и обточки — только кислотное травление эмали и композитный клей. В некоторых случаях используют армирование стекловолоконной лентой для прочности.</p>
+
+      <h2>Сравнение с классическим мостом</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Параметр</th><th>Адгезивный мост</th><th>Классический мост</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Обточка зубов</td><td>Не нужна</td><td>Нужна — стачивают эмаль</td></tr>
+          <tr><td>Количество визитов</td><td>1–2</td><td>3–4</td></tr>
+          <tr><td>Срок изготовления</td><td>1 день (композит) или 1 неделя</td><td>2–3 недели</td></tr>
+          <tr><td>Срок службы</td><td>3–7 лет</td><td>10–15 лет</td></tr>
+          <tr><td>Замена 1 зуба</td><td>Да</td><td>Да</td></tr>
+          <tr><td>Замена 2+ зубов</td><td>Нет</td><td>Да</td></tr>
+          <tr><td>Цена</td><td>15 000–30 000 руб.</td><td>25 000–50 000 руб.</td></tr>
+          <tr><td>Надёжность</td><td>Ниже — может отклеиться</td><td>Высокая</td></tr>
+          <tr><td>Нагрузка</td><td>Только передние зубы</td><td>Любые</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Кому подходит</h2>
+
+      <h3>Показания</h3>
+      <ul>
+        <li>Отсутствует один передний зуб (или премоляр)</li>
+        <li>Соседние зубы здоровы, без пломб и коронок</li>
+        <li>Нужно временное решение на период остеоинтеграции импланта</li>
+        <li>Противопоказания к имплантации</li>
+        <li>Ограниченный бюджет</li>
+      </ul>
+
+      <h3>Противопоказания</h3>
+      <ul>
+        <li>Отсутствует 2 и более зубов подряд</li>
+        <li>Жевательные зубы (моляры) — нагрузка слишком высокая</li>
+        <li>Бруксизм (скрежет зубами)</li>
+        <li>Подвижность опорных зубов (пародонтит)</li>
+      </ul>
+
+      <h2>Плюсы и минусы</h2>
+
+      <h3>Плюсы</h3>
+      <ul>
+        <li>Соседние зубы остаются нетронутыми</li>
+        <li>Быстро — можно сделать за один день</li>
+        <li>Дешевле классического моста и имплантации</li>
+        <li>Обратимость — при желании можно заменить на имплант</li>
+        <li>Не требует хирургии</li>
+      </ul>
+
+      <h3>Минусы</h3>
+      <ul>
+        <li>Меньший срок службы (3–7 лет)</li>
+        <li>Может отклеиться при перегрузке</li>
+        <li>Подходит только для передних зубов</li>
+        <li>Эстетика уступает коронке на импланте</li>
+        <li>Требует бережного обращения — нельзя грызть твёрдое</li>
+      </ul>
+
+      <h2>Как делают адгезивный мост</h2>
+
+      <p>Процедура занимает 1–2 визита. Врач подбирает цвет, травит эмаль соседних зубов, наносит композитный материал и фиксирует протез. В лабораторном варианте — снимают слепки и изготавливают керамическую конструкцию за неделю.</p>
+
+      <p>По данным <em>Journal of Adhesive Dentistry</em> (2022), 5-летняя выживаемость адгезивных мостов из керамики достигает 87%, из композита — 72%. Основная причина потери — отслоение крыла фиксации, а не поломка самого протеза.</p>
+      <p class="translation">5-летняя выживаемость: керамические 87%, композитные 72%.</p>
+
+      <h2>Уход за адгезивным мостом</h2>
+      <ul>
+        <li>Не грызть твёрдую пищу передними зубами</li>
+        <li>Чистить зону фиксации ёршиками и суперфлоссом</li>
+        <li>Избегать ирисок, нуги и другой липкой еды</li>
+        <li>Осмотр у стоматолога раз в 6 месяцев — проверить фиксацию</li>
+      </ul>
+
+      <p>Если мост отклеился — не пытайтесь приклеить его самостоятельно. Композитные клеи из аптеки не подходят. Обратитесь к врачу для повторной фиксации.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Потеряли один зуб? Адгезивный мост — щадящий вариант без обточки.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: var(--color-text); margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
