@@ -24,6 +24,21 @@
 - **Рекомендации**: lazy loading, font-display:swap, fixed img dimensions, render-blocking audit
 - **Обновлён**: `wiki/project/progress-report.md` — добавлены CWV таблица и рекомендации
 
+## 2026-06-01 (v4 — CWV фиксы + бот)
+- **CWV фиксы**: Inter font-weight 800 добавлен, Яндекс.Метрика перенесена из `<head>` в `<body>` (async), `title` добавлен на iframe карты
+- **Push**: 13 файлов (5 новых статей + CWV + wiki) через GitHub API
+- **Бот**: диагностирован и починен — GH_TOKEN протух, контейнер пересобран, меню работает
+- **Черновики 404**: pipeline-драфты не пушатся на stomatolog → в `/drafts` ссылка показывается только для stomatolog-драфтов. Фикс: `server/bot.js`, commit `17ba473`
+- **Яндекс.Вебмастер**: `searchable_pages_count: 0` из-за ограниченного scope `webmaster:hostinfo` — нужен `webmaster:searchapi`
+- **Wiki**: `wiki/project/bot-draft-404.md` — документация фикса
+
+## 2026-06-01 (v5 — адгезивный мост)
+- **6-я статья из gap**: «Адгезивный мост — что это, плюсы и минусы, сколько служит» (`adgezivnyj-most`)
+- **Категория**: `mosty` (теперь 7 статей в кластере)
+- **Build**: 194 pages, 0 errors
+- **Push**: commit 50f59fe на master — GitHub Actions деплой
+- **Всего статей**: 82
+
 ## 2026-06-01 (v3 — наукопп-статьи)
 - **Добавлен раздел Дзен**: `wiki/project/dzen.md` (RSS, канал, учётные данные)
 - **5 новых научпоп-статей** (низкочастотники):
@@ -36,3 +51,10 @@
 - **Push**: 2 коммита на master (RSS + статьи) — GitHub Actions деплой
 - **RSS-лента**: `https://ortopednn.ru/rss.xml` — 67+ статей, Дзен готов к подключению
 - **Дзен-канал**: зарегистрирован `dzen.ru/ortopednn`
+
+## 2026-06-01 (v6 — категоризация 6 статей)
+- **Категоризировано 6 статей**: `kurenie-posle-protezirovaniya`→implanty, `bioplenka-na-zubnyh-protezah`→semnye, `mikrobiom-polosti-rta`→semnye, `cad-cam-v-stomatologii`→koronki, `parodontit-i-bolezn-altsgeymera`→implanty, `ukhod-za-polostyu-rta-posle-protezirovaniya`→implanty
+- **Осталось без категории**: 6 (zdorove-polosti-rta, podgotovka, etapy, ceny-nn, first-visit, protezirovanie-nn-ceny — truly general)
+- **Итоговые кластеры**: implanty=18, koronki=31, semnye=19, byugelnye=6, mosty=7
+- **Build**: 194 pages, 0 errors
+- **Push**: commit 00c25a5 (GH API)
