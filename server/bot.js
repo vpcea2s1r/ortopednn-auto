@@ -785,7 +785,8 @@ async function handleUpdate(upd) {
           ? `⚠️ Дубликат: ${result.title}`
           : `✅ Готово: ${result.title}\n/drafts — черновики` });
     } catch (e) {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message.slice(0, 200)}` });
+      console.error('PubMed rewrite error:', e.message?.substring(0, 200));
+      tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message?.slice(0, 200) || 'неизвестная ошибка'}` });
     }
   }
 }
