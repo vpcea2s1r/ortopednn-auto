@@ -47,43 +47,12 @@ const pageUrl = `https://ortopednn.ru/preview/${draft.slug}/`;
     </article>
 
     <div class="preview-actions">
-      <button class="btn btn-publish" data-slug={draft.slug}>✅ Опубликовать</button>
-      <button class="btn btn-delete" data-slug={draft.slug}>🗑 Удалить</button>
-      <p class="preview-fallback">Если кнопки не работают — откройте Telegram, команда <code>/drafts</code></p>
+      <a href="https://t.me/ortopednn52_bot?start=publish_{draft.slug}" class="btn btn-publish" target="_blank" rel="noopener">✅ Опубликовать</a>
+      <a href="https://t.me/ortopednn52_bot?start=delete_{draft.slug}" class="btn btn-delete" target="_blank" rel="noopener">🗑 Удалить</a>
+      <p class="preview-fallback">После нажатия подтвердите в Telegram. Или используйте <a href="https://t.me/ortopednn52_bot">@ortopednn52_bot</a> → /drafts</p>
     </div>
   </main>
 </BaseLayout>
-
-<script>
-  const API = 'http://94.183.155.147:3000';
-
-  async function apiAction(slug, action) {
-    try {
-      const r = await fetch(`${API}/api/preview/${action}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug })
-      });
-      const data = await r.json();
-      if (r.ok) {
-        window.location.href = action === 'publish' ? `/blog/${slug}/` : '/';
-      } else {
-        alert('Ошибка: ' + (data.error || 'неизвестная'));
-      }
-    } catch {
-      alert('Сервер недоступен. Опубликуйте через Telegram /drafts');
-    }
-  }
-
-  document.querySelector('.btn-publish')?.addEventListener('click', function() {
-    apiAction(this.dataset.slug, 'publish');
-  });
-  document.querySelector('.btn-delete')?.addEventListener('click', function() {
-    if (confirm('Удалить черновик?')) {
-      apiAction(this.dataset.slug, 'delete');
-    }
-  });
-</script>
 
 <style>
   .preview-banner {
