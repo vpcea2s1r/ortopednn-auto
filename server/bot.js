@@ -641,9 +641,10 @@ async function handleCallback(cb) {
 async function handleUpdate(upd) {
   if (upd.callback_query) return handleCallback(upd.callback_query);
   const msg = upd.message;
-  if (!msg || (!msg.text && !msg.caption)) return;
+  if (!msg || (!msg.text && !msg.caption)) { console.log('DROP no text/caption', upd.update_id); return; }
   const chatId = msg.chat.id;
   const text = (msg.text || msg.caption || '').trim();
+  console.log('MSG', upd.update_id, 'chat', chatId, 'hasUrl', !!text.match(/https?:\/\/[^\s]+/), 'text:', text.substring(0,80));
   const isUrl = text.match(/https?:\/\/[^\s]+/);
   const isCmd = text.startsWith('/');
   if (isCmd && (text === '/start' || text === '/menu')) {
