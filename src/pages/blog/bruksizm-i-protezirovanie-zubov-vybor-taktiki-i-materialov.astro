@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+const slug = 'bruksizm-i-protezirovanie-zubov-vybor-taktiki-i-materialov';
+const pageUrl = `https://stomatolog.ortopednn.ru/blog/${slug}/`;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Бруксизм и протезирование зубов: выбор тактики и материалов",
+  "description": "Узнайте, как правильно протезировать зубы при бруксизме. Разбираем влияние на пародонт и импланты, выбираем материалы и планируем лечение. Ответы на частые вопросы.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+<BaseLayout title="Бруксизм и протезирование зубов: выбор тактики и материалов" description="Узнайте, как правильно протезировать зубы при бруксизме. Разбираем влияние на пародонт и импланты, выбираем материалы и планируем лечение. Ответы на частые вопросы." breadcrumbTitle="Бруксизм и протезирование зубов: выбор тактики и материалов" doctor={doctor} noindex={true}>
+  <Navbar />
+  <main class="container">
+    <a href="/blog" class="back">← К статьям</a>
+    <article>
+      <h1>Бруксизм и протезирование зубов: выбор тактики и материалов</h1>
+      <div class="meta">1 июня 2026 — Никитина Марина Георгиевна, стоматолог-ортопед</div>
+<p>Многие пациенты с бруксизмом сомневаются, не навредят ли протезы. Протезирование возможно, но с обязательным учётом парафункции. Если её игнорировать, любой план лечения провалится: от сколов керамики до перелома имплантатов.</p>
+<h2>Влияние бруксизма на опорные ткани</h2>
+<p>При бруксизме нагрузка на зубы и пародонт превышает норму. Связь между здоровьем пародонта и общим состоянием организма подтверждена исследованиями (Clin Oral Investig). Перегрузка имплантатов тормозит остеоинтеграцию; при остеопорозе может быть полезен паратиреоидный гормон (J Oral Biosci). Для синус-лифтинга одинаково эффективны DBBM и H-PRF (Clin Implant Dent Relat Res).</p>
+<h2>Выбор материалов и конструкций</h2>
+<p>Для жевательной группы оптимален цирконий. Дисиликат лития (e.max) подходит для фронтальных зубов, но на молярах выше риск скола. Металлокерамика остаётся надёжным и бюджетным вариантом. Композитные зубы не рекомендуются из-за быстрой истираемости.</p>
+<h2>Планирование ортопедического лечения</h2>
+<p>Начинать нужно с нормализации окклюзии и изготовления ночной каппы. Окклюзионная схема должна быть функционально направляющей. При имплантации придерживаются отсроченной нагрузки с установкой временных протезов.</p>
+<h2>Сравнение методов протезирования при бруксизме</h2>
+<table>
+<thead>
+<tr><th>Метод</th><th>Материалы</th><th>Срок службы</th><th>Особенности</th></tr>
+</thead>
+<tbody>
+<tr><td>Несъемные коронки/мосты</td><td>Цирконий, дисиликат, металлокерамика</td><td>8–15 лет</td><td>Требуют обточки, риск расцементировки при парафункции</td></tr>
+<tr><td>Съемные протезы (бюгельные)</td><td>Металл, акрил, нейлон</td><td>5–10 лет</td><td>Менее стабильны, могут передавать нагрузку на пародонт</td></tr>
+<tr><td>Имплантаты с коронками</td><td>Цирконий, титан</td><td>15+ лет</td><td>Отсроченная нагрузка, требуют достаточного объёма кости</td></tr>
+<tr><td>Виниры/вкладки</td><td>Керамика (e.max, цирконий)</td><td>5–8 лет</td><td>Противопоказаны при тяжелом бруксизме</td></tr>
+</tbody>
+</table>
+<h2>Прогноз и профилактика</h2>
+<p>При соблюдении всех этапов и регулярном использовании каппы прогноз благоприятный. Рекомендуется наблюдение каждые 6–12 месяцев. Контроль бруксизма требует совместной работы стоматолога и невролога.</p>
+<h2>Часто задаваемые вопросы</h2>
+<ol>
+<li><strong>Могут ли импланты выдержать нагрузку при бруксизме?</strong> Да, при условии достаточного объёма кости, циркониевой коронки, ночной шины и отсроченной нагрузки.</li>
+<li><strong>Какой материал коронок самый надёжный?</strong> Цирконий (диоксид циркония) обеспечивает наилучшее соотношение прочности и эстетики.</li>
+<li><strong>Как долго служат протезы при бруксизме?</strong> В среднем 8–10 лет при регулярном контроле и ношении каппы. Без неё риск поломки возрастает вдвое.</li>
+</ol>
+      <div class="cta">
+        <p>Нужна консультация?</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить: {doctor.phoneDisplay}</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+<style>
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+ol { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #e0e8f0; color: #5a7a9a; }
+th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+</style>
