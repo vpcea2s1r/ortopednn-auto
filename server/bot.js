@@ -294,8 +294,8 @@ async function searchPubMed(query) {
   });
 }
 
-async function rewrite(url) {
-  const text = await extractText(url);
+async function rewrite(url, sourceText) {
+  const text = sourceText || await extractText(url);
   const buildPrompt = (extra) => `Ты стоматолог-ортопед. Перепиши исходный текст для блога на русском. Пиши языком врача — просто, без воды, без штампов.
 
 ТРЕБОВАНИЯ:
@@ -775,15 +775,16 @@ async function handleUpdate(upd) {
     if (!msgId) return;
     try {
       const results = await searchPubMed(text);
-      if (!results.length) {
-        console.log('PubMed 0 results for:', text.substring(0, 60));
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Ничего не найдено по теме. Попробуй короче или по-английски.' });
-        return;
+      if (results.length) {
+        const firstResult = results[0];
+        console.log('PubMed found:', firstResult.title);
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📄 Нашёл: ${firstResult.title}\n\n⏳ Рерайт... до 5 мин.` });
+        var result = await rewrite(firstResult.url);
+      } else {
+        console.log('PubMed 0 results, using raw text:', text.substring(0, 60));
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '⏳ Рерайт текста... до 5 мин.' });
+        var result = await rewrite(null, text);
       }
-      const firstResult = results[0];
-      console.log('PubMed found:', firstResult.title);
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📄 Нашёл: ${firstResult.title}\n\n⏳ Рерайт... до 5 мин.` });
-      const result = await rewrite(firstResult.url);
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: result.error
         ? `❌ ${result.response ? result.response.substring(0, 300) : 'Ошибка рерайта'}`
         : result.duplicate
