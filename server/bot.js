@@ -277,7 +277,9 @@ async function checkPerf() {
 }
 
 async function searchPubMed(query) {
-  const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=5&retmode=json`;
+  const keywords = query.split(/[\s,;:?!()]+/).filter(w => w.length > 2).slice(0, 6).join(' ');
+  const safeQuery = encodeURIComponent(keywords || query.substring(0, 100));
+  const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${safeQuery}&retmax=5&retmode=json`;
   const searchResp = await fetch(searchUrl, { signal: AbortSignal.timeout(15000) });
   if (!searchResp.ok) { console.error('PubMed search non-200:', searchResp.status, query.substring(0, 60)); return []; }
   const searchData = await searchResp.json();
@@ -296,6 +298,7 @@ async function searchPubMed(query) {
 
 async function rewrite(url, sourceText) {
   const text = sourceText || await extractText(url);
+  console.log('Rewrite started, source length:', text.length, 'url:', url ? url.substring(0,80) : 'raw');
   const buildPrompt = (extra) => `Ты стоматолог-ортопед. Перепиши исходный текст для блога на русском. Пиши языком врача — просто, без воды, без штампов.
 
 ТРЕБОВАНИЯ:
