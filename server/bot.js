@@ -641,13 +641,15 @@ async function handleCallback(cb) {
 async function handleUpdate(upd) {
   if (upd.callback_query) return handleCallback(upd.callback_query);
   const msg = upd.message;
-  if (!msg || !msg.text) return;
+  if (!msg || (!msg.text && !msg.caption)) return;
   const chatId = msg.chat.id;
-  const text = msg.text.trim();
+  const text = (msg.text || msg.caption || '').trim();
   const isUrl = text.match(/https?:\/\/[^\s]+/);
   const isCmd = text.startsWith('/');
   if (isCmd && (text === '/start' || text === '/menu')) {
-    await tg('sendMessage', { chat_id: chatId, text: 'Меню управления ботом:', reply_markup: mainMenu() });
+    const isStart = text === '/start';
+    const intro = isStart ? 'Привет! Я бот для рерайта статей и управления контентом ortopednn.ru.\n\nКидай ссылку — я перепишу её для блога. Или форвардни сообщение из канала.\n\n' : '';
+    await tg('sendMessage', { chat_id: chatId, text: intro + 'Меню управления ботом:', reply_markup: mainMenu() });
   } else if (isCmd && text === '/perf') {
     const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '📊 Проверяю производительность...' });
     const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
@@ -731,6 +733,7 @@ async function handleUpdate(upd) {
     }
   } else if (isUrl) {
     const url = text.match(/https?:\/\/[^\s]+/)[0];
+    console.log(`URL received: ${url} from ${chatId}`);
     const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
     const msgId = statusResp.ok ? statusResp.result.message_id : null;
     if (!msgId) return;
