@@ -352,7 +352,7 @@ UUID: ${Date.now()}
     const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body, noindex: true });
     if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
     writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
-    writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft' }, null, 2), 'utf-8');
+    writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft', repo: 'ortopednn-auto' }, null, 2), 'utf-8');
 
     const htmlContent = htmlTemplate({ title: json.title, date, body: json.body });
     const enc = Buffer.from(htmlContent, 'utf-8').toString('base64');
