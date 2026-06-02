@@ -216,30 +216,30 @@ th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
 
 async function callAI(prompt) {
   const system = 'Ответь только JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
+  const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
+    method: 'POST', signal: AbortSignal.timeout(300000),
+    headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
+    body: JSON.stringify({
+      messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
+      model: 'deepseek-v4-flash-free'
+    })
+  });
+  if (!resp.ok) console.error('AI API non-200:', resp.status);
+  const text = await Promise.race([
+    resp.text(),
+    new Promise((_, reject) => setTimeout(() => reject(new Error('body timeout')), 60000))
+  ]);
+  if (!text.trim()) throw new Error('Empty AI response');
   try {
-    const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
-      method: 'POST', signal: AbortSignal.timeout(300000),
-      headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
-      body: JSON.stringify({
-        messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-        model: 'deepseek-v4-flash-free'
-      })
-    });
-    const text = await Promise.race([
-      resp.text(),
-      new Promise((_, reject) => setTimeout(() => reject(new Error('body timeout')), 60000))
-    ]);
-    if (!text.trim()) throw new Error('Empty response');
     if (text.trim().startsWith('{')) {
       const data = JSON.parse(text);
       return data.choices?.[0]?.message?.content || text;
     }
-    const ct = resp.headers.get('content-type') || '';
-    if (!ct.includes('json')) {
-      console.error('AI non-JSON response:', text.substring(0, 300));
-    }
-    return text;
-  } catch (e) { throw e; }
+  } catch (e) {
+    console.error('AI JSON parse error:', e.message, 'response starts:', text.substring(0, 100));
+    throw e;
+  }
+  return text;
 }
 
 async function extractText(url) {
@@ -279,12 +279,15 @@ async function checkPerf() {
 async function searchPubMed(query) {
   const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=5&retmode=json`;
   const searchResp = await fetch(searchUrl, { signal: AbortSignal.timeout(15000) });
+  if (!searchResp.ok) { console.error('PubMed search non-200:', searchResp.status, query.substring(0, 60)); return []; }
   const searchData = await searchResp.json();
   const ids = searchData?.esearchresult?.idlist || [];
   if (!ids.length) return [];
   const summaryUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(',')}&retmode=json`;
   const sumResp = await fetch(summaryUrl, { signal: AbortSignal.timeout(15000) });
-  const sumData = await sumResp.json();
+  if (!sumResp.ok) { console.error('PubMed summary non-200:', sumResp.status); return []; }
+  let sumData;
+  try { sumData = await sumResp.json(); } catch (e) { console.error('PubMed summary parse error:', e.message); return []; }
   return ids.map(id => {
     const r = sumData?.result?.[id] || {};
     return { id, title: r.title || '', source: r.source || '', pubdate: r.pubdate || '', url: `https://pubmed.ncbi.nlm.nih.gov/${id}/` };
@@ -773,10 +776,12 @@ async function handleUpdate(upd) {
     try {
       const results = await searchPubMed(text);
       if (!results.length) {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Ничего не найдено по теме.' });
+        console.log('PubMed 0 results for:', text.substring(0, 60));
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Ничего не найдено по теме. Попробуй короче или по-английски.' });
         return;
       }
       const firstResult = results[0];
+      console.log('PubMed found:', firstResult.title);
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📄 Нашёл: ${firstResult.title}\n\n⏳ Рерайт... до 5 мин.` });
       const result = await rewrite(firstResult.url);
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: result.error
