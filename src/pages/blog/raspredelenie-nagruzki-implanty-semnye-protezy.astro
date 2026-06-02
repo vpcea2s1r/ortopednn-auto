@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'raspredelenie-nagruzki-implanty-semnye-protezy';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Как распределяется жевательная нагрузка: импланты против съёмных протезов", "description": "Импланты передают до 90% жевательного давления на кость, съёмные протезы — только 20–30%. Разница в биомеханике определяет комфорт, атрофию кости и срок службы.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-02", "dateModified": "2026-06-02", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/raspredelenie-nagruzki-implanty-semnye-protezy/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout
+  title="Жевательная нагрузка: импланты vs съёмные протезы | Никитина М.Г."
+  description="Импланты передают до 90% жевательного давления на кость, съёмные протезы — только 20–30%. Разница в биомеханике определяет комфорт и срок службы."
+  breadcrumbTitle="Как распределяется жевательная нагрузка: импланты против съёмных протезов"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-02"
+  dateModified="2026-06-02"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <span class="sep">›</span>}
+      {category && <a href={`/blog/${category.id}`}>{category.name}</a>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
+    <article>
+
+<h1>Как распределяется жевательная нагрузка: импланты против съёмных протезов</h1>
+<div class="meta">2 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Одна и та же жевательная сила — 70–150 Н (ньютонов) — по-разному распределяется в челюсти в зависимости от типа протеза. Имплант передаёт усилие прямо в кость, съёмный протез — в слизистую. Разница в биомеханике объясняет, почему импланты чувствуются как свои зубы, а съёмные протезы проседают и натирают.</p>
+
+<h2>Физика жевания</h2>
+
+<p>Жевательная сила у человека — от 70 до 800 Н в зависимости от пола, возраста и типа зубов. Максимальная сила — на первых молярах: до 500–800 Н у мужчин, 350–500 Н у женщин. Для пережёвывания пищи достаточно 70–150 Н — с такой силой мы жуём большинство продуктов.</p>
+
+<p>Но не вся эта сила идёт на перемалывание пищи. Часть рассеивается в тканях пародонта (связочный аппарат зуба), часть передаётся на кость. Имплант и съёмный протез делают это принципиально по-разному.</p>
+
+<h2>Биомеханика импланта</h2>
+
+<p>Имплант вкручен в кость — жёсткая фиксация без амортизации. Вся жевательная сила передаётся напрямую на костную ткань:</p>
+
+<ul>
+<li><strong>Нагрузка на кость:</strong> 85–95% от приложенной силы.</li>
+<li><strong>Амортизация:</strong> отсутствует — нет периодонтальной связки, как у естественного зуба.</li>
+<li><strong>Распределение:</strong> сила концентрируется на вершине импланта и в области шейки — риск перегрузки кости в этих зонах.</li>
+</ul>
+
+<p>Именно поэтому так важен объём и качество кости вокруг импланта. Исследование Clinical Implant Dentistry (2023) показало: при плотности кости D1 (толстый кортикальный слой) выживаемость имплантов 98.5%, при D4 (рыхлая кость) — 92%.</p>
+
+<h2>Биомеханика съёмного протеза</h2>
+
+<p>Съёмный протез опирается на слизистую оболочку и подлежащую костную ткань. Распределение нагрузки принципиально другое:</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Параметр</th><th>Имплант</th><th>Съёмный протез</th></tr>
+</thead>
+<tbody>
+<tr><td>Площадь опоры</td><td>≈ 50 мм² (шейка импланта)</td><td>15–25 см² (слизистая нёба и альвеолярного гребня)</td></tr>
+<tr><td>Амортизация</td><td>Нет (жёсткая фиксация)</td><td>Слизистая оболочка (1–3 мм)</td></tr>
+<tr><td>Нагрузка на кость</td><td>85–95%</td><td>20–30%</td></tr>
+<tr><td>Распределение давления</td><td>Концентрированное</td><td>Равномерное по площади</td></tr>
+<tr><td>Максимальная жевательная сила</td><td>150–350 Н</td><td>50–100 Н</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Из-за низкой эффективности передачи нагрузки пациенты со съёмными протезами жуют в 3–4 раза слабее, чем с имплантами. Это влияет не только на комфорт, но и на пищеварение — недостаточно пережёванная пища хуже усваивается.</p>
+
+<div class="translation">Пациент с полным съёмным протезом может развить жевательное усилие 50–100 Н — этого хватает для мягкой пищи, но недостаточно для мяса, сырых овощей, яблок.</div>
+
+<h2>Закон Вольфа на практике</h2>
+
+<p>Кость живая — она реагирует на нагрузку. Там, где давление есть, кость укрепляется. Где нагрузки нет — кость атрофируется. Это закон Вольфа, описанный ещё в XIX веке.</p>
+
+<p>С имплантом кость получает постоянную физиологическую нагрузку — как от корня зуба. Со съёмным протезом кость почти не нагружается. Результат: у пациентов с полными съёмными протезами за 10 лет альвеолярный гребень теряет 4–6 мм высоты (данные Journal of Prosthetic Dentistry, 2022).</p>
+
+<h2>Практические последствия</h2>
+
+<ul>
+<li><strong>Импланты:</strong> более эффективное жевание, сохранение кости, возможность есть твёрдую пищу. Минус — инвазивная операция, более высокая стоимость.</li>
+<li><strong>Съёмные протезы:</strong> неинвазивно, доступно. Минус — снижение жевательной способности в 2–3 раза, постепенная атрофия кости, необходимость перебазировки каждые 2–3 года.</li>
+<li><strong>Покрывные протезы на имплантах:</strong> компромисс — съёмная конструкция, фиксирующаяся на 2–4 имплантах. Жевательная эффективность — 60–80% от естественных зубов.</li>
+</ul>
+
+<h2>Вывод</h2>
+
+<p>Выбор между имплантами и съёмными протезами — это не только вопрос цены и хирургического вмешательства. Это выбор биомеханики: хотите жевать с той же силой, что и своими зубами — импланты. Готовы к ограничениям в еде — съёмные протезы.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Не знаете, какой вариант подходит вам?</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

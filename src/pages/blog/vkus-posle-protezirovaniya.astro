@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'vkus-posle-protezirovaniya';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Меняется ли вкус после протезирования: что говорят исследования", "description": "Съёмные протезы, перекрывающие нёбо, снижают чувствительность к горькому и кислому. Через 3–6 месяцев вкус восстанавливается. Что происходит на клеточном уровне.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-02", "dateModified": "2026-06-02", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/vkus-posle-protezirovaniya/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout
+  title="Меняется ли вкус после протезирования зубов | Никитина М.Г."
+  description="Съёмные протезы, перекрывающие нёбо, снижают чувствительность к горькому и кислому. Через 3–6 месяцев вкус восстанавливается. Что происходит на клеточном уровне."
+  breadcrumbTitle="Меняется ли вкус после протезирования"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-02"
+  dateModified="2026-06-02"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <span class="sep">›</span>}
+      {category && <a href={`/blog/${category.id}`}>{category.name}</a>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
+    <article>
+
+<h1>Меняется ли вкус после протезирования: что говорят исследования</h1>
+<div class="meta">2 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Съёмный протез закрывает нёбо, где находятся вкусовые рецепторы. Чувствительность к горькому падает на 30–40%, к сладкому — почти не меняется. Через полгода большинство пациентов перестают замечать разницу. Объясняем, почему так происходит.</p>
+
+<h2>Где живут вкусовые рецепторы</h2>
+
+<p>На языке около 10 000 вкусовых сосочков. Каждый содержит 50–150 вкусовых клеток. Но рецепторы есть не только на языке — около 20% вкусовых луковиц расположены на мягком и твёрдом нёбе. Исследование Chemical Senses (2020) показало: плотность вкусовых рецепторов на нёбе составляет 5–10 на см² — примерно как на корне языка.</p>
+
+<p>Когда базис протеза закрывает нёбо, эти рецепторы оказываются изолированы от пищи. Молекулы вкусовых веществ просто не доходят до них.</p>
+
+<h2>Как протез меняет восприятие вкуса</h2>
+
+<p>Исследование Journal of Oral Rehabilitation (2022) сравнило вкусовую чувствительность 60 пациентов до и после установки полных съёмных протезов. Результаты через 1 месяц:</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Вкус</th><th>Снижение чувствительности</th><th>Восстановление через 6 мес.</th></tr>
+</thead>
+<tbody>
+<tr><td>Горький</td><td>−38%</td><td>−12%</td></tr>
+<tr><td>Кислый</td><td>−27%</td><td>−8%</td></tr>
+<tr><td>Солёный</td><td>−18%</td><td>−5%</td></tr>
+<tr><td>Сладкий</td><td>−5%</td><td>+2%</td></tr>
+<tr><td>Умами</td><td>−15%</td><td>−4%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Горький вкус страдает сильнее всех — его рецепторы (TAS2R) наиболее плотно расположены именно на нёбе. Сладкий почти не меняется — он воспринимается в основном кончиком языка.</p>
+
+<h2>Почему вкус постепенно восстанавливается</h2>
+
+<p>Через 3–6 месяцев мозг адаптируется. Происходит несколько процессов:</p>
+
+<ul>
+<li><strong>Сенсорная адаптация.</strong> Центральная нервная система учится компенсировать недостаток сигнала с нёба за счёт усиления сигналов с языка.</li>
+<li><strong>Обонятельная компенсация.</strong> До 80% того, что мы считаем вкусом, на самом деле — запах. Нюх остаётся неизменным, и со временем пациент начинает больше «нюхать» еду, меньше «пробовать» нёбом.</li>
+<li><strong>Температурная и тактильная чувствительность.</strong> Протез снижает ощущение температуры и текстуры пищи во рту, но через 2–3 месяца пациент привыкает.</li>
+</ul>
+
+<div class="translation">Еда кажется безвкусной первые 2–4 недели после протезирования. Это нормально. Вкус вернётся — не тот же самый, но достаточный для комфортной жизни.</div>
+
+<h2>Когда вкус не восстанавливается</h2>
+
+<p>У 10–15% пациентов вкусовые ощущения остаются сниженными даже через год. Факторы риска:</p>
+
+<ul>
+<li><strong>Курение.</strong> Никотин угнетает регенерацию вкусовых клеток. У курильщиков адаптация идёт в 2 раза дольше.</li>
+<li><strong>Нехватка цинка.</strong> Цинк необходим для обновления вкусовых рецепторов. Дефицит цинка — причина обратимого снижения вкуса у 5% пожилых пациентов.</li>
+<li><strong>Диабет.</strong> Диабетическая нейропатия может затрагивать вкусовые нервы.</li>
+</ul>
+
+<h2>Что можно сделать</h2>
+
+<ul>
+<li><strong>Безнёбные протезы.</strong> Для верхней челюсти существуют конструкции без перекрытия нёба — бюгельные протезы или протезы на имплантах с балочной фиксацией.</li>
+<li><strong>Усиление вкуса.</strong> В первые недели — более насыщенные блюда, специи (если нет противопоказаний по ЖКТ).</li>
+<li><strong>Контроль обоняния.</strong> Хороший нюх частично компенсирует потерю вкуса.</li>
+</ul>
+
+<h2>Вывод</h2>
+
+<p>Снижение вкуса после установки съёмного протеза — временное явление. Через 3–6 месяцев мозг адаптируется. Если вкус не восстанавливается дольше года — стоит проверить уровень цинка и исключить неврологические причины.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Есть вопросы по адаптации к протезу?</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

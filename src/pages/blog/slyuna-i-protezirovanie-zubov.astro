@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'slyuna-i-protezirovanie-zubov';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Как слюна влияет на фиксацию и срок службы зубных протезов", "description": "Состав слюны, её вязкость и pH напрямую влияют на то, как держится протез и сколько он прослужит. Ксеростомия — главный враг фиксации.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-02", "dateModified": "2026-06-02", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/slyuna-i-protezirovanie-zubov/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+---
+
+<BaseLayout
+  title="Как слюна влияет на фиксацию зубных протезов | Никитина М.Г."
+  description="Состав слюны, её вязкость и pH напрямую влияют на то, как держится протез и сколько он прослужит. Ксеростомия — главный враг фиксации."
+  breadcrumbTitle="Как слюна влияет на фиксацию зубных протезов"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-02"
+  dateModified="2026-06-02"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <span class="sep">›</span>}
+      {category && <a href={`/blog/${category.id}`}>{category.name}</a>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
+    <article>
+
+<h1>Как слюна влияет на фиксацию и срок службы зубных протезов</h1>
+<div class="meta">2 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Слюна — не просто вода во рту. Это сложная биологическая жидкость, от состава которой зависит, насколько хорошо будет держаться протез и как долго прослужат коронки. Разбираем, что происходит со слюной после протезирования и почему ксеростомия — проблема для каждого второго пациента с протезами.</p>
+
+<h2>Что такое слюна и зачем она нужна</h2>
+
+<p>Слюна на 99% состоит из воды. Оставшийся 1% — белки, ферменты, электролиты и муцин — гликопротеин, который придаёт слюне вязкость. В сутки слюнные железы вырабатывают 0.5–1.5 литра слюны. В норме pH слюны — 6.2–7.6, вязкость — 1.1–3.5 мПа·с (миллипаскаль-секунда).</p>
+
+<p>Для протезирования важны три функции слюны:</p>
+
+<ul>
+<li><strong>Смачивание.</strong> Слюна создаёт плёнку между протезом и слизистой — за счёт поверхностного натяжения протез «присасывается» к нёбу.</li>
+<li><strong>Смазка.</strong> Муцин снижает трение между протезом и тканью — меньше натирания и раздражения.</li>
+<li><strong>Антибактериальная защита.</strong> Ферменты лизоцим и лактоферрин подавляют рост бактерий под протезом.</li>
+</ul>
+
+<h2>Ксеростомия — сухость во рту после протезирования</h2>
+
+<p>Ксеростомия — снижение выработки слюны. У пациентов со съёмными протезами она встречается в 2 раза чаще, чем у людей без протезов. Исследование Journal of Prosthodontics (2021) показало: 47% пациентов с полными съёмными протезами жалуются на сухость во рту.</p>
+
+<p>Причин несколько:</p>
+
+<ul>
+<li><strong>Возраст.</strong> С возрастом слюнные железы атрофируются. После 65 лет выработка слюны снижается на 30–40%.</li>
+<li><strong>Лекарства.</strong> Антигистаминные, диуретики, антидепрессанты — более 400 препаратов вызывают сухость во рту.</li>
+<li><strong>Перекрытие нёба.</strong> Базис протеза закрывает протоки малых слюнных желёз на нёбе, снижая общую секрецию.</li>
+</ul>
+
+<div class="translation">При сухости во рту адгезивные кремы работают хуже — им не хватает воды для активации. Фиксация протеза падает на 40–60%.</div>
+
+<h2>Как состав слюны влияет на фиксацию</h2>
+
+<p>Фиксация съёмного протеза основана на трёх механизмах: адгезия (прилипание), когезия (сцепление молекул жидкости) и периферический клапан (герметизация края). Все три зависят от слюны.</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Параметр слюны</th><th>Норма</th><th>При нарушении</th></tr>
+</thead>
+<tbody>
+<tr><td>Вязкость</td><td>1.1–3.5 мПа·с</td><td>Слишком жидкая — не держит вакуум. Слишком густая — не распределяется равномерно</td></tr>
+<tr><td>pH</td><td>6.2–7.6</td><td>Кислая среда (pH < 5.5) разрушает акрил, вымывает минералы из эмали опорных зубов</td></tr>
+<tr><td>Объём</td><td>0.5–1.5 л/сут</td><td>Меньше 0.3 л/сут — фиксация протеза практически отсутствует</td></tr>
+<tr><td>Состав муцина</td><td>MUC5B, MUC7</td><td>Снижение муцина уменьшает вязкость и смазывающую способность</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Влияние слюны на материалы протезов</h2>
+
+<p>Акриловые протезы впитывают воду — это нормально. За первый год акрил впитывает до 0.7% влаги от своей массы. Но состав слюны влияет на то, как долго прослужит протез:</p>
+
+<ul>
+<li><strong>Кислая слюна</strong> (pH < 5.5) — ускоряет гидролиз акрила, протез становится хрупким через 3–4 года вместо 5–7.</li>
+<li><strong>Щелочная слюна</strong> (pH > 8.0) — способствует отложению зубного камня на протезе, пористость материала растёт.</li>
+<li><strong>Высокое содержание муцина</strong> — улучшает фиксацию, но создаёт благоприятную среду для бактерий.</li>
+</ul>
+
+<h2>Что делать при сухости во рту</h2>
+
+<ul>
+<li><strong>Увлажняющие гели.</strong> Гели на основе карбоксиметилцеллюлозы (Oralbalance, Biotène) — наносить на протез перед фиксацией.</li>
+<li><strong>Стимуляция слюноотделения.</strong> Жевательная резинка без сахара, кислые леденцы — если нет противопоказаний.</li>
+<li><strong>Фиксирующие кремы с увеличенной адгезией.</strong> Protefix, Corega — они работают даже при сниженном слюноотделении.</li>
+<li><strong>Питьевой режим.</strong> До 2 литров воды в день — мелкими глотками.</li>
+</ul>
+
+<h2>Вывод</h2>
+
+<p>Слюна — невидимый, но критически важный фактор успешного протезирования. Пациентам с сухостью во рту нужны особые средства фиксации и более частые осмотры, чтобы скорректировать посадку протеза по мере изменения слизистой.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Есть вопросы по фиксации протеза?</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.translation { font-style: italic; color: var(--color-text); background: var(--color-bg-alt); padding: 0.75rem; border-radius: 8px; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
