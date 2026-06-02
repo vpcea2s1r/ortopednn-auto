@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'keramicheskie-ili-metallicheskie-brekety-chto-vybrat';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"image":"https://ortopednn.ru/og-image.svg","datePublished":"2026-06-02","description":"Металлические брекеты прочнее и дешевле, керамические — незаметнее, но дороже. Сравнение по эстетике, цене, сроку лечения.","@type":"Article","dateModified":"2026-06-02","headline":"Керамические или металлические брекеты: что выбрать?","author":{"medicalSpecialty":"Prosthodontics","name":"Никитина М.Г., стоматолог-ортопед","@type":"Person"},"@context":"https://schema.org","mainEntityOfPage":{"@type":"WebPage","@id":"https://ortopednn.ru/blog/keramicheskie-ili-metallicheskie-brekety-chto-vybrat/"},"publisher":{"name":"Ортопед","@type":"Organization"}};
+---
+
+<BaseLayout
+  title="Керамические или металлические брекеты: что выбрать?"
+  description="Металлические брекеты прочнее и дешевле, керамические — незаметнее, но дороже. Сравнение по эстетике, цене, сроку лечения."
+  breadcrumbTitle="Керамические или металлические брекеты: что выбрать?"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-02"
+  dateModified="2026-06-02"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← В блог</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <span class="sep">></span>}
+      {category && <a href={`/blog/${category.id}`}>{category.name}</a>}
+      <span class="sep">></span><span>{articleData?.title}</span>
+    </nav>
+
+    <article>
+
+<h1>Керамические или металлические брекеты: что выбрать?</h1>
+<div class="meta">2 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Пациенты часто спрашивают, какие брекеты лучше: металлические или керамические? Однозначного ответа нет. Обе системы эффективны. Разница в эстетике, цене и комфорте. В этой статье разберем ключевые отличия.</p>
+
+<h2>Металлические брекеты: надежность и скорость</h2>
+<p>Металлические системы считаются проверенным вариантом. Конструкция прочная и надежная. Дуга скользит в пазах с минимальным трением. Это позволяет быстрее перемещать зубы. Срок лечения часто сокращается. Вариант подходит для любых аномалий прикуса. Цена металлических брекетов ниже. Главный минус: заметность на зубах. Многие пациенты относятся к этому спокойно.</p>
+
+<h2>Керамические брекеты: эстетика и комфорт</h2>
+<p>Керамические брекеты подбираются под цвет эмали. Они почти незаметны на зубах. Это важно для взрослых пациентов. Керамика прочная, но уступает металлу. При сильном давлении возможны сколы. Пациенту нужно отказаться от твердой пищи. Стоимость керамических систем выше. Прозрачные лигатуры могут окрашиваться от чая и кофе. Их меняют на каждом приеме у ортодонта.</p>
+
+<h2>Сравнение и выбор</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Критерий</th><th>Металл</th><th>Керамика</th></tr>
+</thead>
+<tbody>
+<tr><td>Эстетика</td><td>Заметны</td><td>Незаметны</td></tr>
+<tr><td>Прочность</td><td>Высокая</td><td>Средняя</td></tr>
+<tr><td>Стоимость</td><td>Ниже</td><td>Выше</td></tr>
+<tr><td>Срок лечения</td><td>Часто короче</td><td>Стандартный</td></tr>
+<tr><td>Уход</td><td>Стандартный</td><td>Более аккуратный</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Ключевые факторы выбора</h2>
+<ul>
+<li><strong>Образ жизни и работа.</strong> Публичные профессии требуют эстетики.</li>
+<li><strong>Финансовый бюджет.</strong> Металл доступнее по цене.</li>
+<li><strong>Сложность аномалии.</strong> В сложных случаях металл надежнее.</li>
+<li><strong>Готовность к уходу.</strong> Керамика требует ограничений в еде.</li>
+</ul>
+<p>Выбор зависит от ваших приоритетов. Если эстетика на первом месте, присмотритесь к керамике. Если важны надежность и бюджет, выбирайте металл. Часто пациенты комбинируют системы. На верхнюю челюсть ставят керамику, на нижнюю металл. Это снижает стоимость и сохраняет эстетику улыбки.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
+      <div class="cta">
+        <p>Нужна консультация? Запишитесь на прием к Никитиной М.Г.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
