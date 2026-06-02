@@ -15,10 +15,10 @@ const GH_OWNER = 'vpcea2s1r';
 const GH_REPO = 'stomatolog';
 const CHANNEL_ID = process.env.TELEGRAM_CHANNEL || '@ortopednn';
 
-const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
+const TRANSLIT = { 'Р°':'a','Р±':'b','РІ':'v','Рі':'g','Рґ':'d','Рµ':'e','С‘':'e','Р¶':'zh','Р·':'z','Рё':'i','Р№':'y','Рє':'k','Р»':'l','Рј':'m','РЅ':'n','Рѕ':'o','Рї':'p','СЂ':'r','СЃ':'s','С‚':'t','Сѓ':'u','С„':'f','С…':'kh','С†':'ts','С‡':'ch','С€':'sh','С‰':'shch','СЉ':'','С‹':'y','СЊ':'','СЌ':'e','СЋ':'yu','СЏ':'ya' };
 function makeSlug(text) {
   return text.toLowerCase().trim()
-    .replace(/[а-яё]/g, c => TRANSLIT[c] || c)
+    .replace(/[Р°-СЏС‘]/g, c => TRANSLIT[c] || c)
     .replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').substring(0, 80);
 }
 
@@ -116,7 +116,7 @@ function stripH1(html) {
 }
 
 function formatDate(iso) {
-  const m = { '01':'января','02':'февраля','03':'марта','04':'апреля','05':'мая','06':'июня','07':'июля','08':'августа','09':'сентября','10':'октября','11':'ноября','12':'декабря' };
+  const m = { '01':'СЏРЅРІР°СЂСЏ','02':'С„РµРІСЂР°Р»СЏ','03':'РјР°СЂС‚Р°','04':'Р°РїСЂРµР»СЏ','05':'РјР°СЏ','06':'РёСЋРЅСЏ','07':'РёСЋР»СЏ','08':'Р°РІРіСѓСЃС‚Р°','09':'СЃРµРЅС‚СЏР±СЂСЏ','10':'РѕРєС‚СЏР±СЂСЏ','11':'РЅРѕСЏР±СЂСЏ','12':'РґРµРєР°Р±СЂСЏ' };
   const [y, month, d] = iso.split('-');
   return `${parseInt(d,10)} ${m[month]||month} ${y}`;
 }
@@ -147,9 +147,9 @@ a{color:#4a90d9}
 </head>
 <body>
 <h1>${title}</h1>
-<div class="meta">${formatDate(date)} — Никитина Марина Георгиевна, стоматолог-ортопед</div>
+<div class="meta">${formatDate(date)} вЂ” РќРёРєРёС‚РёРЅР° РњР°СЂРёРЅР° Р“РµРѕСЂРіРёРµРІРЅР°, СЃС‚РѕРјР°С‚РѕР»РѕРі-РѕСЂС‚РѕРїРµРґ</div>
 ${body}
-<div class="cta"><p>Нужна консультация?</p><a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a></div>
+<div class="cta"><p>РќСѓР¶РЅР° РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЏ?</p><a href="tel:+79202537317" class="btn">РџРѕР·РІРѕРЅРёС‚СЊ: +7 (920) 253-73-17</a></div>
 </body>
 </html>`;
 }
@@ -174,20 +174,20 @@ const ldArticle = {
   "dateModified": "${date}",
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+  "publisher": { "@type": "Organization", "name": "РћСЂС‚РѕРїРµРґРќРќ" }
 };
 ---
 <BaseLayout title="${e(title)}" description="${e(description)}" breadcrumbTitle="${e(title)}" doctor={doctor} noindex={${noindex}}>
   <Navbar />
   <main class="container">
-    <a href="/blog" class="back">← К статьям</a>
+    <a href="/blog" class="back">в†ђ Рљ СЃС‚Р°С‚СЊСЏРј</a>
     <article>
       <h1>${e(title)}</h1>
-      <div class="meta">${formatDate(date)} — ${e(author)}, стоматолог-ортопед</div>
+      <div class="meta">${formatDate(date)} вЂ” ${e(author)}, СЃС‚РѕРјР°С‚РѕР»РѕРі-РѕСЂС‚РѕРїРµРґ</div>
 ${bodyClean}
       <div class="cta">
-        <p>Нужна консультация?</p>
-        <a href={\`tel:\${doctor.phone}\`} class="btn">Позвонить: {doctor.phoneDisplay}</a>
+        <p>РќСѓР¶РЅР° РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЏ?</p>
+        <a href={\`tel:\${doctor.phone}\`} class="btn">РџРѕР·РІРѕРЅРёС‚СЊ: {doctor.phoneDisplay}</a>
       </div>
     </article>
   </main>
@@ -215,7 +215,7 @@ th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
 }
 
 async function callAI(prompt) {
-  const system = 'Ответь только JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
+  const system = 'РћС‚РІРµС‚СЊ С‚РѕР»СЊРєРѕ JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
   const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
     method: 'POST', signal: AbortSignal.timeout(300000),
     headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
@@ -255,24 +255,24 @@ async function checkPerf() {
   const resp = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2Fortopednn.ru&strategy=mobile`, { signal: AbortSignal.timeout(30000) });
   const data = await resp.json();
   const lh = data?.lighthouseResult?.categories;
-  const perf = lh?.performance?.score != null ? Math.round(lh.performance.score * 100) : '—';
-  const seo = lh?.seo?.score != null ? Math.round(lh.seo.score * 100) : '—';
-  const a11y = lh?.accessibility?.score != null ? Math.round(lh.accessibility.score * 100) : '—';
+  const perf = lh?.performance?.score != null ? Math.round(lh.performance.score * 100) : 'вЂ”';
+  const seo = lh?.seo?.score != null ? Math.round(lh.seo.score * 100) : 'вЂ”';
+  const a11y = lh?.accessibility?.score != null ? Math.round(lh.accessibility.score * 100) : 'вЂ”';
   const crux = data?.loadingExperience?.metrics || {};
   const fmt = (m) => m?.percentile != null ? m.percentile : null;
   const lcp = fmt(crux.LARGEST_CONTENTFUL_PAINT_MS);
   const cls = fmt(crux.CUMULATIVE_LAYOUT_SHIFT_SCORE);
   const fid = fmt(crux.FIRST_INPUT_DELAY_MS);
-  const emoji = (s) => s >= 90 ? '🟢' : s >= 50 ? '🟡' : '🔴';
+  const emoji = (s) => s >= 90 ? 'рџџў' : s >= 50 ? 'рџџЎ' : 'рџ”ґ';
   return [
-    `⚡ *Performance*: ${emoji(perf)} ${perf}`,
-    `🔍 *SEO*: ${emoji(seo)} ${seo}`,
-    `♿ *A11y*: ${emoji(a11y)} ${a11y}`,
+    `вљЎ *Performance*: ${emoji(perf)} ${perf}`,
+    `рџ”Ќ *SEO*: ${emoji(seo)} ${seo}`,
+    `в™ї *A11y*: ${emoji(a11y)} ${a11y}`,
     ``,
-    `👤 *Real Users*`,
-    lcp ? `  LCP: ${(lcp/1000).toFixed(1)}s ${lcp <= 2500 ? '🟢' : lcp <= 4000 ? '🟡' : '🔴'}` : '',
-    cls !== null ? `  CLS: ${cls.toFixed(2)} ${cls <= 0.1 ? '🟢' : cls <= 0.25 ? '🟡' : '🔴'}` : '',
-    fid ? `  FID: ${fid}ms ${fid <= 100 ? '🟢' : fid <= 300 ? '🟡' : '🔴'}` : '',
+    `рџ‘¤ *Real Users*`,
+    lcp ? `  LCP: ${(lcp/1000).toFixed(1)}s ${lcp <= 2500 ? 'рџџў' : lcp <= 4000 ? 'рџџЎ' : 'рџ”ґ'}` : '',
+    cls !== null ? `  CLS: ${cls.toFixed(2)} ${cls <= 0.1 ? 'рџџў' : cls <= 0.25 ? 'рџџЎ' : 'рџ”ґ'}` : '',
+    fid ? `  FID: ${fid}ms ${fid <= 100 ? 'рџџў' : fid <= 300 ? 'рџџЎ' : 'рџ”ґ'}` : '',
   ].filter(Boolean).join('\n');
 }
 
@@ -299,28 +299,28 @@ async function searchPubMed(query) {
 async function rewrite(url, sourceText) {
   const text = sourceText || await extractText(url);
   console.log('Rewrite started, source length:', text.length, 'url:', url ? url.substring(0,80) : 'raw');
-  const buildPrompt = (extra) => `Ты стоматолог-ортопед. Перепиши исходный текст для блога на русском. Пиши языком врача — просто, без воды, без штампов.
+  const buildPrompt = (extra) => `РўС‹ СЃС‚РѕРјР°С‚РѕР»РѕРі-РѕСЂС‚РѕРїРµРґ. РџРµСЂРµРїРёС€Рё РёСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚ РґР»СЏ Р±Р»РѕРіР° РЅР° СЂСѓСЃСЃРєРѕРј. РџРёС€Рё СЏР·С‹РєРѕРј РІСЂР°С‡Р° вЂ” РїСЂРѕСЃС‚Рѕ, Р±РµР· РІРѕРґС‹, Р±РµР· С€С‚Р°РјРїРѕРІ.
 
-ТРЕБОВАНИЯ:
-- lead (абзац-введение с сутью) в начале
-- 2-3 подзаголовка h2
-- таблица сравнения или классификации (обязательно)
-- один список ul/ol  
-- блок FAQ: 3-5 вопросов с ответами
-- без h1
-- 2000-3000 символов body
-- экранируй кавычки, только JSON
+РўР Р•Р‘РћР’РђРќРРЇ:
+- lead (Р°Р±Р·Р°С†-РІРІРµРґРµРЅРёРµ СЃ СЃСѓС‚СЊСЋ) РІ РЅР°С‡Р°Р»Рµ
+- 2-3 РїРѕРґР·Р°РіРѕР»РѕРІРєР° h2
+- С‚Р°Р±Р»РёС†Р° СЃСЂР°РІРЅРµРЅРёСЏ РёР»Рё РєР»Р°СЃСЃРёС„РёРєР°С†РёРё (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)
+- РѕРґРёРЅ СЃРїРёСЃРѕРє ul/ol  
+- Р±Р»РѕРє FAQ: 3-5 РІРѕРїСЂРѕСЃРѕРІ СЃ РѕС‚РІРµС‚Р°РјРё
+- Р±РµР· h1
+- 2000-3000 СЃРёРјРІРѕР»РѕРІ body
+- СЌРєСЂР°РЅРёСЂСѓР№ РєР°РІС‹С‡РєРё, С‚РѕР»СЊРєРѕ JSON
 
-ЗАПРЕЩЕНО:
-- не выдумывай ссылки на исследования, PMID, DOI, источники
-- не придумывай названия продуктов, материалов или технологий
-- не используй эти слова: delve, tapestry, meticulous, robust, leverage, groundbreaking, seamless, transformative, empower, revolutionize, synergy, holistic, intricate, testament, foster, showcase, pivotal, underscore, interplay, garner, bolster, elevate, unlock, paradigm
-- не используй фразы: когда речь заходит о, стоит отметить, важно подчеркнуть, играет важную роль, современные реалии, не только но и, позволяет не только, в заключение, в конечном счёте, решая задачу, открывает возможности
-- без длинных причастных оборотов в конце предложений (обеспечивая, позволяя, создавая)
-- без тире (—) в каждом абзаце
-- пиши короткими предложениями, без канцелярита
+Р—РђРџР Р•Р©Р•РќРћ:
+- РЅРµ РІС‹РґСѓРјС‹РІР°Р№ СЃСЃС‹Р»РєРё РЅР° РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ, PMID, DOI, РёСЃС‚РѕС‡РЅРёРєРё
+- РЅРµ РїСЂРёРґСѓРјС‹РІР°Р№ РЅР°Р·РІР°РЅРёСЏ РїСЂРѕРґСѓРєС‚РѕРІ, РјР°С‚РµСЂРёР°Р»РѕРІ РёР»Рё С‚РµС…РЅРѕР»РѕРіРёР№
+- РЅРµ РёСЃРїРѕР»СЊР·СѓР№ СЌС‚Рё СЃР»РѕРІР°: delve, tapestry, meticulous, robust, leverage, groundbreaking, seamless, transformative, empower, revolutionize, synergy, holistic, intricate, testament, foster, showcase, pivotal, underscore, interplay, garner, bolster, elevate, unlock, paradigm
+- РЅРµ РёСЃРїРѕР»СЊР·СѓР№ С„СЂР°Р·С‹: РєРѕРіРґР° СЂРµС‡СЊ Р·Р°С…РѕРґРёС‚ Рѕ, СЃС‚РѕРёС‚ РѕС‚РјРµС‚РёС‚СЊ, РІР°Р¶РЅРѕ РїРѕРґС‡РµСЂРєРЅСѓС‚СЊ, РёРіСЂР°РµС‚ РІР°Р¶РЅСѓСЋ СЂРѕР»СЊ, СЃРѕРІСЂРµРјРµРЅРЅС‹Рµ СЂРµР°Р»РёРё, РЅРµ С‚РѕР»СЊРєРѕ РЅРѕ Рё, РїРѕР·РІРѕР»СЏРµС‚ РЅРµ С‚РѕР»СЊРєРѕ, РІ Р·Р°РєР»СЋС‡РµРЅРёРµ, РІ РєРѕРЅРµС‡РЅРѕРј СЃС‡С‘С‚Рµ, СЂРµС€Р°СЏ Р·Р°РґР°С‡Сѓ, РѕС‚РєСЂС‹РІР°РµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё
+- Р±РµР· РґР»РёРЅРЅС‹С… РїСЂРёС‡Р°СЃС‚РЅС‹С… РѕР±РѕСЂРѕС‚РѕРІ РІ РєРѕРЅС†Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№ (РѕР±РµСЃРїРµС‡РёРІР°СЏ, РїРѕР·РІРѕР»СЏСЏ, СЃРѕР·РґР°РІР°СЏ)
+- Р±РµР· С‚РёСЂРµ (вЂ”) РІ РєР°Р¶РґРѕРј Р°Р±Р·Р°С†Рµ
+- РїРёС€Рё РєРѕСЂРѕС‚РєРёРјРё РїСЂРµРґР»РѕР¶РµРЅРёСЏРјРё, Р±РµР· РєР°РЅС†РµР»СЏСЂРёС‚Р°
 
-ИСХОДНЫЙ ТЕКСТ:
+РРЎРҐРћР”РќР«Р™ РўР•РљРЎРў:
 ${text.substring(0, 5000)}
 
 ${extra || ''}
@@ -333,7 +333,7 @@ UUID: ${Date.now()}
   const maxAttempts = 4;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    const extra = (attempt > 1 && lastJson) ? `Предыдущая попытка отклонена из-за AI-стиля. Исправь:\n${checkAiTells(lastJson.body).map(t => '- ' + t.tag).join('\n')}\nПиши естественнее.` : '';
+    const extra = (attempt > 1 && lastJson) ? `РџСЂРµРґС‹РґСѓС‰Р°СЏ РїРѕРїС‹С‚РєР° РѕС‚РєР»РѕРЅРµРЅР° РёР·-Р·Р° AI-СЃС‚РёР»СЏ. РСЃРїСЂР°РІСЊ:\n${checkAiTells(lastJson.body).map(t => '- ' + t.tag).join('\n')}\nРџРёС€Рё РµСЃС‚РµСЃС‚РІРµРЅРЅРµРµ.` : '';
     const prompt = buildPrompt(extra);
     const raw = await callAI(prompt);
     lastRaw = raw;
@@ -349,10 +349,20 @@ UUID: ${Date.now()}
     if (existingSlugs.has(slug) || isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
 
     const date = new Date().toISOString().split('T')[0];
-    const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body, noindex: true });
+    const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'РќРёРєРёС‚РёРЅР° РњР°СЂРёРЅР° Р“РµРѕСЂРіРёРµРІРЅР°', date, body: json.body, noindex: true });
     if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
     writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
     writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft', repo: 'ortopednn-auto' }, null, 2), 'utf-8');
+
+    // Push draft JSON for preview system
+    try {
+      const draftBody = extractBodyFromAstro(article);
+      const draftMeta = { slug, title: json.title, date, description: json.description, body: draftBody };
+      const existing = await ghFetch(`data/drafts/${slug}.json`);
+      await ghPut(`data/drafts/${slug}.json`, JSON.stringify(draftMeta, null, 2), `draft: ${slug} [preview]`, existing?.sha);
+    } catch (e) {
+      console.error('Preview draft push error:', e.message);
+    }
 
     const htmlContent = htmlTemplate({ title: json.title, date, body: json.body });
     const enc = Buffer.from(htmlContent, 'utf-8').toString('base64');
@@ -362,7 +372,7 @@ UUID: ${Date.now()}
     if (existing?.sha) req.sha = existing.sha;
     await fetch(ghUrl, { method: 'PUT', headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' }, body: JSON.stringify(req) });
 
-    return { slug, title: json.title, tells: tells.length };
+    return { slug, title: json.title, tells: tells.length, previewUrl: `https://ortopednn.ru/preview/${slug}/` };
   }
   return { error: true, response: lastRaw, tells: lastJson ? checkAiTells(lastJson.body) : [] };
 }
@@ -382,7 +392,7 @@ function extractBodyFromAstro(astroContent) {
 async function pushToStomatolog(slug) {
   const draftPath = join(DRAFTS_DIR, `${slug}.astro`);
   const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
-  if (!existsSync(draftPath)) return { error: 'Файл не найден' };
+  if (!existsSync(draftPath)) return { error: 'Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ' };
   const astroContent = readFileSync(draftPath, 'utf-8');
   const meta = existsSync(metaPath) ? JSON.parse(readFileSync(metaPath, 'utf-8')) : {};
   const body = extractBodyFromAstro(astroContent);
@@ -403,7 +413,7 @@ async function pushToStomatolog(slug) {
 
 async function publishToOrtopednn(slug) {
   const draftPath = join(DRAFTS_DIR, `${slug}.astro`);
-  if (!existsSync(draftPath)) return { error: 'Файл не найден' };
+  if (!existsSync(draftPath)) return { error: 'Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ' };
   const content = readFileSync(draftPath, 'utf-8');
   const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
   const meta = existsSync(metaPath) ? JSON.parse(readFileSync(metaPath, 'utf-8')) : {};
@@ -444,7 +454,7 @@ async function publishToOrtopednn(slug) {
           const m = l.match(/^\|\s*(\d+)\s*\|/);
           return m ? Math.max(max, parseInt(m[1])) : max;
         }, 0);
-        const newLine = `| ${lastNum + 1} | ${meta.title || ''} | ${meta.date || ''} ✅ |`;
+        const newLine = `| ${lastNum + 1} | ${meta.title || ''} | ${meta.date || ''} вњ… |`;
         const lastRow = lines.map((l, i) => ({ l, i })).filter(({ l }) => l.startsWith('|') && l.match(/^\|\s*\d+\s*\|/)).pop();
         if (lastRow) {
           contentMd = lines.slice(0, lastRow.i + 1).join('\n') + '\n' + newLine + '\n' + lines.slice(lastRow.i + 1).join('\n');
@@ -495,7 +505,7 @@ async function postToChannel(title, slug, domain = 'https://ortopednn.ru') {
   try {
     await tg('sendMessage', {
       chat_id: CHANNEL_ID,
-      text: `📄 *${title}*\n\nЧитать на сайте: ${domain}/blog/${slug}/`,
+      text: `рџ“„ *${title}*\n\nР§РёС‚Р°С‚СЊ РЅР° СЃР°Р№С‚Рµ: ${domain}/blog/${slug}/`,
       parse_mode: 'Markdown',
       disable_web_page_preview: true
     });
@@ -507,9 +517,9 @@ async function postToChannel(title, slug, domain = 'https://ortopednn.ru') {
 function mainMenu() {
   return {
     inline_keyboard: [
-      [{ text: '📊 Производительность', callback_data: 'menu:perf' }],
-      [{ text: '📝 Черновики', callback_data: 'menu:drafts' }],
-      [{ text: '🔬 PubMed рерайт', callback_data: 'menu:research' }]
+      [{ text: 'рџ“Љ РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ', callback_data: 'menu:perf' }],
+      [{ text: 'рџ“ќ Р§РµСЂРЅРѕРІРёРєРё', callback_data: 'menu:drafts' }],
+      [{ text: 'рџ”¬ PubMed СЂРµСЂР°Р№С‚', callback_data: 'menu:research' }]
     ]
   };
 }
@@ -517,11 +527,11 @@ function mainMenu() {
 function draftButtons(slug, repo) {
   const buttons = [];
   if (repo === 'ortopednn-auto') {
-    buttons.push({ text: 'На сайт', callback_data: `pub:${slug}` });
+    buttons.push({ text: 'РќР° СЃР°Р№С‚', callback_data: `pub:${slug}` });
   } else {
-    buttons.push({ text: 'Опубликовать', callback_data: `pub:${slug}` });
+    buttons.push({ text: 'РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ', callback_data: `pub:${slug}` });
   }
-  buttons.push({ text: 'Удалить', callback_data: `del:${slug}` });
+  buttons.push({ text: 'РЈРґР°Р»РёС‚СЊ', callback_data: `del:${slug}` });
   return { inline_keyboard: [buttons] };
 }
 
@@ -537,9 +547,9 @@ async function handleCallback(cb) {
   if (data.startsWith('menu:')) {
     const action = data.slice(5);
     if (action === 'perf') {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📊 Проверяю...', reply_markup: { inline_keyboard: [] } });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'рџ“Љ РџСЂРѕРІРµСЂСЏСЋ...', reply_markup: { inline_keyboard: [] } });
       try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
-      catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
+      catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РћС€РёР±РєР°: ${e.message.slice(0, 200)}` }); }
     } else if (action === 'drafts') {
       console.log('DRAFTS_DIR:', DRAFTS_DIR, 'exists:', existsSync(DRAFTS_DIR));
       const draftsList = existsSync(DRAFTS_DIR)
@@ -548,49 +558,50 @@ async function handleCallback(cb) {
           }).filter(Boolean) : [];
       console.log('Drafts count:', draftsList.length);
       if (!draftsList.length) {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Нет черновиков.', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'РќРµС‚ С‡РµСЂРЅРѕРІРёРєРѕРІ.', reply_markup: { inline_keyboard: [[{ text: 'В« РќР°Р·Р°Рґ', callback_data: 'menu:back' }]] } });
       } else {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📝 ${draftsList.length} черновиков:`, reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `рџ“ќ ${draftsList.length} С‡РµСЂРЅРѕРІРёРєРѕРІ:`, reply_markup: { inline_keyboard: [[{ text: 'В« РќР°Р·Р°Рґ', callback_data: 'menu:back' }]] } });
         for (const d of draftsList) {
           try {
             const isPipeline = d.repo === 'ortopednn-auto';
-            const statusIcon = isPipeline ? '🔄' : '📄';
-            const statusText = isPipeline ? 'На рассмотрении' : 'Черновик';
+            const statusIcon = isPipeline ? 'рџ”„' : 'рџ“„';
+            const statusText = isPipeline ? 'РќР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё' : 'Р§РµСЂРЅРѕРІРёРє';
+            const previewLink = d.repo === 'ortopednn-auto' ? `https://ortopednn.ru/preview/${d.slug}/` : `https://stomatolog.ortopednn.ru/blog/${d.slug}.html`;
             await tg('sendMessage', {
               chat_id: chatId,
-              text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}\nstomatolog.ortopednn.ru/blog/${d.slug}.html`,
+              text: `${d.title}\nрџ“… ${d.date}\n${statusIcon} ${statusText}\nрџ‘Ђ РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ: ${previewLink}`,
               reply_markup: draftButtons(d.slug, d.repo)
             });
           } catch (e) { console.error('Send draft error:', e.message); }
         }
       }
     } else if (action === 'research') {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Напиши: /research тема', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'РќР°РїРёС€Рё: /research С‚РµРјР°', reply_markup: { inline_keyboard: [[{ text: 'В« РќР°Р·Р°Рґ', callback_data: 'menu:back' }]] } });
     } else if (action === 'back') {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Меню управления ботом:', reply_markup: mainMenu() });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'РњРµРЅСЋ СѓРїСЂР°РІР»РµРЅРёСЏ Р±РѕС‚РѕРј:', reply_markup: mainMenu() });
     }
     return;
   }
   if (data.startsWith('pubmed:')) {
     const pmid = data.slice(7);
     const pmidUrl = `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
-    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📄 Читаю PubMed...' });
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'рџ“„ Р§РёС‚Р°СЋ PubMed...' });
     try {
       const result = await rewrite(pmidUrl);
       if (result?.error) {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${result.response?.substring(0, 200) || result.error}` });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РћС€РёР±РєР°: ${result.response?.substring(0, 200) || result.error}` });
       } else if (result?.duplicate) {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Дубликат: ${result.title}` });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Р”СѓР±Р»РёРєР°С‚: ${result.title}` });
       } else {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Сохранён: ${result.title}`, reply_markup: draftButtons(result.slug) });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вњ… РЎРѕС…СЂР°РЅС‘РЅ: ${result.title}`, reply_markup: draftButtons(result.slug) });
       }
     } catch (e) {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РћС€РёР±РєР°: ${e.message.slice(0, 200)}` });
     }
     return;
   }
   if (data.startsWith('pub:')) {
-    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Публикую ${slug}...` });
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РџСѓР±Р»РёРєСѓСЋ ${slug}...` });
     const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
     let result;
     if (existsSync(metaPath)) {
@@ -611,11 +622,11 @@ async function handleCallback(cb) {
       result = await pushToStomatolog(slug);
     }
     if (result.error) {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${result.error}` });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РћС€РёР±РєР°: ${result.error}` });
     } else {
       await tg('editMessageText', {
         chat_id: chatId, message_id: msgId,
-        text: `Опубликовано! ${result.url}`,
+        text: `РћРїСѓР±Р»РёРєРѕРІР°РЅРѕ! ${result.url}`,
         reply_markup: { inline_keyboard: [] }
       });
     }
@@ -637,9 +648,9 @@ async function handleCallback(cb) {
         }
       }
       deleteDraft(slug);
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Удалён.', reply_markup: { inline_keyboard: [] } });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'РЈРґР°Р»С‘РЅ.', reply_markup: { inline_keyboard: [] } });
     } catch (e) {
-      await tg('answerCallbackQuery', { callback_query_id: cb.id, text: 'Ошибка: ' + e.message.slice(0, 50), show_alert: true });
+      await tg('answerCallbackQuery', { callback_query_id: cb.id, text: 'РћС€РёР±РєР°: ' + e.message.slice(0, 50), show_alert: true });
     }
   }
 }
@@ -652,16 +663,45 @@ async function handleUpdate(upd) {
   const text = (msg.text || msg.caption || '').trim();
   const isUrl = text.match(/https?:\/\/[^\s]+/);
   const isCmd = text.startsWith('/');
-  if (isCmd && (text === '/start' || text === '/menu')) {
-    const isStart = text === '/start';
-    const intro = isStart ? 'Привет! Я бот для рерайта статей и управления контентом ortopednn.ru.\n\nКидай ссылку — я перепишу её для блога. Или форвардни сообщение из канала.\n\n' : '';
-    await tg('sendMessage', { chat_id: chatId, text: intro + 'Меню управления ботом:', reply_markup: mainMenu() });
+  if (isCmd && text.startsWith('/start')) {
+    const payload = text.split(' ').slice(1).join(' ').trim();
+    if (payload.startsWith('publish_')) {
+      const slug = payload.slice(8);
+      const msg = await tg('sendMessage', { chat_id: chatId, text: `РџСѓР±Р»РёРєСѓСЋ ${slug}...` });
+      const msgId = msg.ok ? msg.result.message_id : null;
+      try {
+        const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
+        let result;
+        if (existsSync(metaPath)) {
+          const meta = JSON.parse(readFileSync(metaPath, 'utf-8'));
+          result = meta.repo === 'ortopednn-auto' ? await publishToOrtopednn(slug) : await pushToStomatolog(slug);
+        } else {
+          result = await publishToOrtopednn(slug);
+        }
+        if (result.ok && msgId) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вњ… РћРїСѓР±Р»РёРєРѕРІР°РЅРѕ: ${result.url}` });
+        else if (msgId) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вќЊ ${result.error || 'РћС€РёР±РєР°'}` });
+      } catch (e) {
+        if (msgId) tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вќЊ ${e.message.slice(0, 200)}` });
+      }
+    } else if (payload.startsWith('delete_')) {
+      const slug = payload.slice(7);
+      try {
+        deleteDraft(slug);
+        await tg('sendMessage', { chat_id: chatId, text: `РЈРґР°Р»С‘РЅ: ${slug}` });
+      } catch (e) {
+        await tg('sendMessage', { chat_id: chatId, text: `РћС€РёР±РєР°: ${e.message.slice(0, 200)}` });
+      }
+    } else {
+      const isStart = text === '/start';
+      const intro = isStart ? 'РџСЂРёРІРµС‚! РЇ Р±РѕС‚ РґР»СЏ СЂРµСЂР°Р№С‚Р° СЃС‚Р°С‚РµР№ Рё СѓРїСЂР°РІР»РµРЅРёСЏ РєРѕРЅС‚РµРЅС‚РѕРј ortopednn.ru.\n\nРљРёРґР°Р№ СЃСЃС‹Р»РєСѓ вЂ” СЏ РїРµСЂРµРїРёС€Сѓ РµС‘ РґР»СЏ Р±Р»РѕРіР°. РР»Рё С„РѕСЂРІР°СЂРґРЅРё СЃРѕРѕР±С‰РµРЅРёРµ РёР· РєР°РЅР°Р»Р°.\n\n' : '';
+      await tg('sendMessage', { chat_id: chatId, text: intro + 'РњРµРЅСЋ СѓРїСЂР°РІР»РµРЅРёСЏ Р±РѕС‚РѕРј:', reply_markup: mainMenu() });
+    }
   } else if (isCmd && text === '/perf') {
-    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '📊 Проверяю производительность...' });
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: 'рџ“Љ РџСЂРѕРІРµСЂСЏСЋ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ...' });
     const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
     if (!msgId) return;
     try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
-    catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
+    catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РћС€РёР±РєР°: ${e.message.slice(0, 200)}` }); }
   } else if (isCmd && text === '/drafts') {
     const drafts = existsSync(DRAFTS_DIR)
       ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')).map(f => {
@@ -669,48 +709,48 @@ async function handleUpdate(upd) {
         }).filter(Boolean)
       : [];
     if (drafts.length === 0) {
-      await tg('sendMessage', { chat_id: chatId, text: 'Нет черновиков.' });
+      await tg('sendMessage', { chat_id: chatId, text: 'РќРµС‚ С‡РµСЂРЅРѕРІРёРєРѕРІ.' });
     } else {
       for (const d of drafts) {
         const isPipeline = d.repo === 'ortopednn-auto';
         const domain = 'stomatolog.ortopednn.ru';
-        const statusIcon = isPipeline ? '🔄' : '📄';
-        const statusText = isPipeline ? 'На рассмотрении' : 'Черновик';
+        const statusIcon = isPipeline ? 'рџ”„' : 'рџ“„';
+        const statusText = isPipeline ? 'РќР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё' : 'Р§РµСЂРЅРѕРІРёРє';
         const urlPart = isPipeline ? '' : `\n${domain}/blog/${d.slug}.html`;
         await tg('sendMessage', {
           chat_id: chatId,
-          text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}${urlPart}`,
+          text: `${d.title}\nрџ“… ${d.date}\n${statusIcon} ${statusText}${urlPart}`,
           reply_markup: draftButtons(d.slug, d.repo)
         });
       }
     }
   } else if (isCmd && text.startsWith('/autogen ')) {
     const query = text.slice(9).trim();
-    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `Запускаю пайплайн: ${query}...` });
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `Р—Р°РїСѓСЃРєР°СЋ РїР°Р№РїР»Р°Р№РЅ: ${query}...` });
     const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
     if (!msgId) return;
     try {
       await addTopic(query);
       runPipelineManual(query).then(async (result) => {
-        if (result.error) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка на этапе "${result.stage}": ${result.error}` });
+        if (result.error) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вќЊ РћС€РёР±РєР° РЅР° СЌС‚Р°РїРµ "${result.stage}": ${result.error}` });
         else {
-          await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Черновик готов: ${result.draft.title}`, reply_markup: draftButtons(result.draft.slug) });
+          await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вњ… Р§РµСЂРЅРѕРІРёРє РіРѕС‚РѕРІ: ${result.draft.title}`, reply_markup: draftButtons(result.draft.slug) });
           await postToChannel(result.draft.title, result.draft.slug);
         }
-      }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` }));
+      }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вќЊ РћС€РёР±РєР°: ${e.message.slice(0, 200)}` }));
     } catch (e) {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РћС€РёР±РєР°: ${e.message.slice(0, 200)}` });
     }
   } else if (isCmd && text === '/horizon') {
-    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '🌐 Запускаю Horizon пайплайн...' });
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: 'рџЊђ Р—Р°РїСѓСЃРєР°СЋ Horizon РїР°Р№РїР»Р°Р№РЅ...' });
     const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
     if (!msgId) return;
     try {
       const { runHorizonPipeline } = await import('./agent-pipeline.js');
       const result = await runHorizonPipeline();
       const text = result.generated > 0
-        ? `🌐 Horizon: ${result.generated} черновиков из ${result.totalItems} новостей\n/drafts — просмотреть`
-        : `🌐 Horizon: нет новых черновиков (${result.totalItems} новостей)`;
+        ? `рџЊђ Horizon: ${result.generated} С‡РµСЂРЅРѕРІРёРєРѕРІ РёР· ${result.totalItems} РЅРѕРІРѕСЃС‚РµР№\n/drafts вЂ” РїСЂРѕСЃРјРѕС‚СЂРµС‚СЊ`
+        : `рџЊђ Horizon: РЅРµС‚ РЅРѕРІС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ (${result.totalItems} РЅРѕРІРѕСЃС‚РµР№)`;
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text });
       if (result.drafts) {
         for (const d of result.drafts) {
@@ -718,62 +758,63 @@ async function handleUpdate(upd) {
         }
       }
     } catch (e) {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вќЊ РћС€РёР±РєР°: ${e.message.slice(0, 200)}` });
     }
   } else if (isCmd && text.startsWith('/research ')) {
     const query = text.slice(10).trim();
-    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `🔍 Ищу PubMed: ${query}...` });
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `рџ”Ќ РС‰Сѓ PubMed: ${query}...` });
     const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
     if (!msgId) return;
     try {
       const results = await searchPubMed(query);
       if (!results.length) {
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Ничего не найдено.' });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ.' });
       } else {
         const text = results.map((r, i) => `${i+1}. ${r.title}\n_${r.source}, ${r.pubdate}_`).join('\n\n');
         const buttons = results.map(r => ([{ text: r.title.substring(0, 40), callback_data: `pubmed:${r.id}` }]));
         await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: text, parse_mode: 'Markdown', reply_markup: { inline_keyboard: buttons } });
       }
     } catch (e) {
-      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `РћС€РёР±РєР°: ${e.message.slice(0, 200)}` });
     }
   } else if (isUrl) {
     const url = text.match(/https?:\/\/[^\s]+/)[0];
     console.log(`URL received: ${url} from ${chatId}`);
-    const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
+    const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Р§РёС‚Р°СЋ СЃС‚Р°С‚СЊСЋ...' });
     const msgId = statusResp.ok ? statusResp.result.message_id : null;
     if (!msgId) return;
-    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '⏳ Рерайт... до 5 мин. Бот отвечает на команды.' });
+    await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'вЏі Р РµСЂР°Р№С‚... РґРѕ 5 РјРёРЅ. Р‘РѕС‚ РѕС‚РІРµС‡Р°РµС‚ РЅР° РєРѕРјР°РЅРґС‹.' });
     const progress = setInterval(async () => {
-      try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '⏳ Всё ещё работаю...' }); } catch {}
+      try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'вЏі Р’СЃС‘ РµС‰С‘ СЂР°Р±РѕС‚Р°СЋ...' }); } catch {}
     }, 120000);
     rewrite(url).then(async (result) => {
       clearInterval(progress);
       const edit = (t, extra) => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: t, ...(extra || {}) });
       if (result?.error) {
-        let msg = `❌ ${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`;
-        if (result.tells?.length) msg += `\nAI-маркеры: ${result.tells.map(t => t.tag).join(', ')}`;
+        let msg = `вќЊ ${(result.response || '').replace(/\n/g, ' ').substring(0, 200)}`;
+        if (result.tells?.length) msg += `\nAI-РјР°СЂРєРµСЂС‹: ${result.tells.map(t => t.tag).join(', ')}`;
         edit(msg);
       } else if (result?.duplicate) {
-        edit(`⚠️ Дубликат: ${result.title}`);
+        edit(`вљ пёЏ Р”СѓР±Р»РёРєР°С‚: ${result.title}`);
       } else {
         try {
           const draftFile = readFileSync(join(DRAFTS_DIR, `${result.slug}.astro`), 'utf-8');
           const text = draftFile.replace(/<[^>]+>/g, ' ').replace(/&[#a-zA-Z0-9]+;/g, ' ').replace(/\s+/g, ' ').trim();
           const full = text.substring(0, 3000);
-          await tg('sendMessage', { chat_id: chatId, text: `📄 *${result.title}*\n\n${full}\n\n[Читать на stomatolog](https://stomatolog.ortopednn.ru/blog/${result.slug}.html)`, parse_mode: 'Markdown', disable_web_page_preview: true });
-          edit(`✅ Готово`, { reply_markup: draftButtons(result.slug) });
-        } catch { edit(`✅ Сохранён: ${result.title}`, { reply_markup: draftButtons(result.slug) }); }
+          const previewLink = result.previewUrl || `https://stomatolog.ortopednn.ru/blog/${result.slug}.html`;
+          await tg('sendMessage', { chat_id: chatId, text: `рџ“„ *${result.title}*\n\n${full.substring(0, 1000)}\n\nрџ‘Ђ РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ: ${previewLink}`, parse_mode: 'Markdown', disable_web_page_preview: true });
+          edit(`вњ… Р“РѕС‚РѕРІРѕ`, { reply_markup: draftButtons(result.slug) });
+        } catch { edit(`вњ… РЎРѕС…СЂР°РЅС‘РЅ: ${result.title}`, { reply_markup: draftButtons(result.slug) }); }
       }
     }).catch(e => {
       clearInterval(progress);
-      tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message.includes('aborted') ? 'AI не ответил за 5 мин.' : e.message.slice(0, 200)}` });
+      tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вќЊ ${e.message.includes('aborted') ? 'AI РЅРµ РѕС‚РІРµС‚РёР» Р·Р° 5 РјРёРЅ.' : e.message.slice(0, 200)}` });
     });
   } else if (isCmd) {
-    await tg('sendMessage', { chat_id: chatId, text: 'Неизвестная команда. /menu — меню управления.' });
+    await tg('sendMessage', { chat_id: chatId, text: 'РќРµРёР·РІРµСЃС‚РЅР°СЏ РєРѕРјР°РЅРґР°. /menu вЂ” РјРµРЅСЋ СѓРїСЂР°РІР»РµРЅРёСЏ.' });
   } else if (text.trim()) {
     console.log('PLAIN TEXT from', chatId, ':', text.substring(0, 60));
-    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '🔍 Ищу PubMed по теме и делаю рерайт...' });
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: 'рџ”Ќ РС‰Сѓ PubMed РїРѕ С‚РµРјРµ Рё РґРµР»Р°СЋ СЂРµСЂР°Р№С‚...' });
     const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
     if (!msgId) return;
     try {
@@ -781,21 +822,21 @@ async function handleUpdate(upd) {
       if (results.length) {
         const firstResult = results[0];
         console.log('PubMed found:', firstResult.title);
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📄 Нашёл: ${firstResult.title}\n\n⏳ Рерайт... до 5 мин.` });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `рџ“„ РќР°С€С‘Р»: ${firstResult.title}\n\nвЏі Р РµСЂР°Р№С‚... РґРѕ 5 РјРёРЅ.` });
         var result = await rewrite(firstResult.url);
       } else {
         console.log('PubMed 0 results, using raw text:', text.substring(0, 60));
-        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '⏳ Рерайт текста... до 5 мин.' });
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'вЏі Р РµСЂР°Р№С‚ С‚РµРєСЃС‚Р°... РґРѕ 5 РјРёРЅ.' });
         var result = await rewrite(null, text);
       }
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: result.error
-        ? `❌ ${result.response ? result.response.substring(0, 300) : 'Ошибка рерайта'}`
+        ? `вќЊ ${result.response ? result.response.substring(0, 300) : 'РћС€РёР±РєР° СЂРµСЂР°Р№С‚Р°'}`
         : result.duplicate
-          ? `⚠️ Дубликат: ${result.title}`
-          : `✅ Готово: ${result.title}\n/drafts — черновики` });
+          ? `вљ пёЏ Р”СѓР±Р»РёРєР°С‚: ${result.title}`
+          : `вњ… Р“РѕС‚РѕРІРѕ: ${result.title}\n/drafts вЂ” С‡РµСЂРЅРѕРІРёРєРё\nрџ‘Ђ РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ: ${result.previewUrl || `https://ortopednn.ru/preview/${result.slug}/`}` });
     } catch (e) {
       console.error('PubMed rewrite error:', e.message?.substring(0, 200));
-      tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message?.slice(0, 200) || 'неизвестная ошибка'}` });
+      tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `вќЊ ${e.message?.slice(0, 200) || 'РЅРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°'}` });
     }
   }
 }
@@ -816,10 +857,10 @@ export async function startBot(webhookMode = false) {
     return;
   }
   await tg('setMyCommands', { commands: [
-    { command: 'menu', description: 'Меню управления' },
-    { command: 'perf', description: 'Производительность сайта' },
-    { command: 'research', description: 'Поиск PubMed + рерайт' },
-    { command: 'drafts', description: 'Черновики статей' }
+    { command: 'menu', description: 'РњРµРЅСЋ СѓРїСЂР°РІР»РµРЅРёСЏ' },
+    { command: 'perf', description: 'РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ СЃР°Р№С‚Р°' },
+    { command: 'research', description: 'РџРѕРёСЃРє PubMed + СЂРµСЂР°Р№С‚' },
+    { command: 'drafts', description: 'Р§РµСЂРЅРѕРІРёРєРё СЃС‚Р°С‚РµР№' }
   ]});
   console.log('Polling mode (every 10s)...');
   let offset = 0;
@@ -832,7 +873,7 @@ export async function startBot(webhookMode = false) {
           handleUpdate(upd).catch(e => {
             console.error('Update error:', e.message);
             const chatId = upd.message?.chat?.id || upd.callback_query?.message?.chat?.id;
-            if (chatId) tg('sendMessage', { chat_id: chatId, text: `Ошибка: ${e.message.slice(0, 200)}` }).catch(() => {});
+            if (chatId) tg('sendMessage', { chat_id: chatId, text: `РћС€РёР±РєР°: ${e.message.slice(0, 200)}` }).catch(() => {});
           });
         }
       }
