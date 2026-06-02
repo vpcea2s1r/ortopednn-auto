@@ -13,6 +13,7 @@ const API = `https://api.telegram.org/bot${TOKEN}`;
 const GH_TOKEN = process.env.GH_TOKEN || '';
 const GH_OWNER = 'vpcea2s1r';
 const GH_REPO = 'stomatolog';
+const CHANNEL_ID = process.env.TELEGRAM_CHANNEL || '@ortopednn';
 
 const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
 function makeSlug(text) {
@@ -483,6 +484,20 @@ async function tg(method, body) {
   return await resp.json();
 }
 
+async function postToChannel(title, slug, domain = 'https://ortopednn.ru') {
+  if (!CHANNEL_ID) return;
+  try {
+    await tg('sendMessage', {
+      chat_id: CHANNEL_ID,
+      text: `📄 *${title}*\n\nЧитать на сайте: ${domain}/blog/${slug}/`,
+      parse_mode: 'Markdown',
+      disable_web_page_preview: true
+    });
+  } catch (e) {
+    console.error('Channel post error:', e.message);
+  }
+}
+
 function mainMenu() {
   return {
     inline_keyboard: [
@@ -670,7 +685,10 @@ async function handleUpdate(upd) {
       await addTopic(query);
       runPipelineManual(query).then(async (result) => {
         if (result.error) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка на этапе "${result.stage}": ${result.error}` });
-        else await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Черновик готов: ${result.draft.title}`, reply_markup: draftButtons(result.draft.slug) });
+        else {
+          await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Черновик готов: ${result.draft.title}`, reply_markup: draftButtons(result.draft.slug) });
+          await postToChannel(result.draft.title, result.draft.slug);
+        }
       }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` }));
     } catch (e) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
@@ -686,6 +704,11 @@ async function handleUpdate(upd) {
         ? `🌐 Horizon: ${result.generated} черновиков из ${result.totalItems} новостей\n/drafts — просмотреть`
         : `🌐 Horizon: нет новых черновиков (${result.totalItems} новостей)`;
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text });
+      if (result.drafts) {
+        for (const d of result.drafts) {
+          await postToChannel(d.title, d.slug);
+        }
+      }
     } catch (e) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
     }
