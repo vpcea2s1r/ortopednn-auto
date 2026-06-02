@@ -178,7 +178,7 @@ async function draftAgent(article) {
   }, null, 2), 'utf-8');
 
   // Push draft JSON to repo for preview on ortopednn.ru/preview/<slug>/
-  const draftJson = { slug, title, date, desc: description, body, category: 'uncategorized' };
+  const draftJson = { slug, title, date, description, body, category: 'uncategorized' };
   writeFileSync(join(draftsDir, `${slug}.json`), JSON.stringify(draftJson, null, 2), 'utf-8');
   try {
     const existing = await ghFetch(`data/drafts/${slug}.json`);
@@ -219,7 +219,7 @@ a{color:#4a90d9}
 </head>
 <body>
 <h1>${title.replace(/"/g, '&quot;')}</h1>
-<div class="meta">${formatDate(date)} — Никитина Марина Георгиевна, стоматолог-ортопед</div>
+<div class="meta">${stomatologFormatDate(date)} — Никитина Марина Георгиевна, стоматолог-ортопед</div>
 ${body}
 <div class="cta"><p>Нужна консультация?</p><a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a></div>
 </body>
@@ -583,11 +583,11 @@ export async function runPipelineManual(topic) {
     if (reviewed.warning) result.review.warning = 'quality concerns after max retries';
 
     result.stage = 'draft';
-    const draftInfo = await draftAgent(reviewed.article);
+    const draftInfo = await draftAgent({ ...seo, ...reviewed.article });
     result.draft = draftInfo;
 
     result.stage = 'stomatolog';
-    const stomUrl = await stomatologPublisherAgent(reviewed.article);
+    const stomUrl = await stomatologPublisherAgent({ ...seo, ...reviewed.article });
     result.stomatologUrl = stomUrl.url;
 
     result.stage = 'done';
@@ -682,7 +682,7 @@ export async function runHorizonPipeline() {
   return { file: latest, totalItems: items.length, generated: results.length, results };
 }
 
-export { ghPut, ghFetch, checkAiTells, runHorizonPipeline, horizonWriterAgent };
+export { ghPut, ghFetch, checkAiTells, horizonWriterAgent };
 
 export async function addTopic(topic) {
   const topics = loadTopics();
