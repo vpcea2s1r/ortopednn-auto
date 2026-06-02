@@ -641,10 +641,9 @@ async function handleCallback(cb) {
 async function handleUpdate(upd) {
   if (upd.callback_query) return handleCallback(upd.callback_query);
   const msg = upd.message;
-  if (!msg || (!msg.text && !msg.caption)) { console.log('DROP no text/caption', upd.update_id); return; }
+  if (!msg || (!msg.text && !msg.caption)) return;
   const chatId = msg.chat.id;
   const text = (msg.text || msg.caption || '').trim();
-  console.log('MSG', upd.update_id, 'chat', chatId, 'hasUrl', !!text.match(/https?:\/\/[^\s]+/), 'text:', text.substring(0,80));
   const isUrl = text.match(/https?:\/\/[^\s]+/);
   const isCmd = text.startsWith('/');
   if (isCmd && (text === '/start' || text === '/menu')) {
@@ -766,6 +765,28 @@ async function handleUpdate(upd) {
     });
   } else if (isCmd) {
     await tg('sendMessage', { chat_id: chatId, text: 'Неизвестная команда. /menu — меню управления.' });
+  } else if (text.trim()) {
+    console.log('PLAIN TEXT from', chatId, ':', text.substring(0, 60));
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '🔍 Ищу PubMed по теме и делаю рерайт...' });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
+    if (!msgId) return;
+    try {
+      const results = await searchPubMed(text);
+      if (!results.length) {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Ничего не найдено по теме.' });
+        return;
+      }
+      const firstResult = results[0];
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `📄 Нашёл: ${firstResult.title}\n\n⏳ Рерайт... до 5 мин.` });
+      const result = await rewrite(firstResult.url);
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: result.error
+        ? `❌ ${result.response ? result.response.substring(0, 300) : 'Ошибка рерайта'}`
+        : result.duplicate
+          ? `⚠️ Дубликат: ${result.title}`
+          : `✅ Готово: ${result.title}\n/drafts — черновики` });
+    } catch (e) {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message.slice(0, 200)}` });
+    }
   }
 }
 
