@@ -420,6 +420,102 @@ function parseJSON(raw) {
 
 const DENTAL_TERMS = ['зуб', 'коронк', 'протез', 'имплант', 'мост', 'винир', 'керамик', 'циркони', 'металлокерамик', 'стоматолог', 'ортопед', 'десн', 'челюст', 'прикус', 'пломб', 'абатмент', 'культ', 'слепок', 'бюгель', 'нейлон', 'акрил', 'CAD/CAM', '3D', 'окклюзи', 'периодонт', 'пародонт', 'гингивит', 'пульпит', 'эмал', 'дентин', 'цемент', 'фиксаци', 'адгезив'];
 
+/* --- HUMANIZER: Russian AI pattern fixes --- */
+
+const RU_AI_PHRASES = [
+  'стоит отметить', 'следует отметить', 'важно подчеркнуть', 'необходимо подчеркнуть',
+  'при этом важно', 'в заключение хочется', 'подводя итог', 'резюмируя вышесказанное',
+  'таким образом мы видим', 'таким образом,', 'однако стоит отметить',
+  'когда речь заходит о', 'в современном мире', 'в современной стоматологии',
+  'играет важную роль', 'играет ключевую роль', 'играет решающую роль',
+  'играет огромную роль', 'нельзя забывать', 'тем не менее',
+  'эксперты считают', 'по мнению специалистов', 'исследователи отмечают',
+  'ряд аналитиков', 'по мнению экспертов',
+  'открывает возможности', 'позволяет не только',
+  'в конечном счёте', 'решая задачу',
+  'является свидетельством', 'знаменует собой', 'подчёркивает важность',
+  'закладывает фундамент', 'поворотный момент',
+  'будущее выглядит многообещающим',
+];
+
+const RU_AI_WORDS = [
+  'безусловно', 'инновационный', 'инновационная', 'инновационное', 'инновационные',
+  'комплексный', 'комплексная', 'комплексное', 'комплексные', 'комплексно',
+  'многогранный', 'многогранная',
+  'является', 'представляет собой', 'выступает в качестве',
+  'уникальный', 'уникальная', 'уникальное', 'уникальные',
+  'революционный', 'революционная', 'революционное',
+  'передовой', 'передовая', 'передовые',
+];
+
+const RU_AI_PATTERNS = [
+  { re: /не\s+(?:только\s+)?[а-яё][а-яё\s,']{2,60}?\s*,\s*но\s+и\s+[а-яё]/i, tag: 'ru_not_only_but' },
+  { re: /,\s+(?:обеспечивая|позволяя|создавая|способствуя|демонстрируя|отражая|символизируя|подчёркивая|гарантируя|предотвращая|улучшая|снижая|повышая)\s+/i, tag: 'ru_participle' },
+  { re: /возможно,\s+в\s+некоторых\s+случаях/i, tag: 'ru_cascade_soften' },
+  { re: /в\s+целом,\s+по\s+сути/i, tag: 'ru_puffery' },
+  { re: /(?:от\s+[а-яё]{3,}\s+до\s+[а-яё]{3,}\s+и\s+от\s+[а-яё]{3,}\s+до\s+[а-яё]{3,})/i, tag: 'ru_merism' },
+];
+
+function humanize(text) {
+  if (!text) return text;
+  let result = text;
+
+  const removePhrases = [
+    'стоит отметить, что ', 'стоит отметить, что', 'следует отметить, что ', 'следует отметить, что',
+    'важно подчеркнуть, что ', 'важно подчеркнуть, что', 'необходимо подчеркнуть, что ',
+    'при этом важно понимать, что ', 'при этом важно отметить, что ',
+    'в заключение хочется отметить, что ', 'в заключение стоит отметить, что ',
+    'подводя итог, можно сказать, что ', 'подводя итог, ',
+    'резюмируя вышесказанное, ', 'таким образом, мы видим, что ', 'таким образом, ',
+    'однако стоит отметить, что ', 'однако стоит отметить,',
+    'когда речь заходит о ', 'в современном мире ',
+    'нельзя забывать, что ', 'тем не менее, ',
+    'эксперты считают, что ', 'по мнению специалистов, ',
+    'исследователи отмечают, что ', 'по мнению экспертов, ',
+  ];
+  for (const phrase of removePhrases) {
+    const re = new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    result = result.replace(re, '');
+  }
+
+  const pufferyWords = ['инновационный', 'инновационная', 'инновационное', 'инновационные',
+    'революционный', 'революционная', 'революционное',
+    'передовой', 'передовая', 'передовые',
+    'уникальный', 'уникальная', 'уникальное', 'уникальные'];
+  for (const word of pufferyWords) {
+    const re = new RegExp('\\b' + word + '\\b', 'gi');
+    result = result.replace(re, '');
+  }
+
+  result = result.replace(/представляет собой\s+/gi, '— это ');
+  result = result.replace(/выступает в качестве\s+/gi, '');
+  result = result.replace(/\bявляется\s+/gi, '');
+  result = result.replace(/безусловно,\s+/gi, '');
+  result = result.replace(/крайне важно,\s+/gi, '');
+  result = result.replace(/кроме того,\s+/gi, '');
+  result = result.replace(/более того,\s+/gi, '');
+  result = result.replace(/в целом,\s+/gi, '');
+  result = result.replace(/по сути,\s+/gi, '');
+
+  result = result.replace(/играет (?:важную|ключевую|решающую|огромную) роль[.,;]?\s*/gi, '');
+
+  const emDashCount = (result.match(/—/g) || []).length;
+  const pCount = (result.match(/<p>/g) || []).length;
+  if (emDashCount > pCount * 1.5) {
+    const dashes = result.match(/—/g);
+    if (dashes && dashes.length > 2) {
+      let count = 0;
+      result = result.replace(/—/g, () => { count++; return count % 2 === 0 ? ',' : '—'; });
+    }
+  }
+
+  result = result.replace(/,{2,}/g, ',');
+  result = result.replace(/\s{2,}/g, ' ');
+  result = result.replace(/>\s+</g, '><');
+
+  return result;
+}
+
 /* ai-tells-validator: detect AI-sounding patterns in text */
 
 const AI_BANNED_WORDS = [
@@ -488,12 +584,70 @@ function checkAiTells(body) {
     }
   }
 
+  /* Russian AI patterns */
+  for (const phrase of RU_AI_PHRASES) {
+    if (lower.includes(phrase)) {
+      tells.push({ tag: 'ru_phrase:' + phrase.substring(0, 30) });
+    }
+  }
+
+  for (const word of RU_AI_WORDS) {
+    const re = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\-]/g, '\\$&') + '\\b', 'i');
+    if (re.test(text)) tells.push({ tag: 'ru_word:' + word.substring(0, 20) });
+  }
+
+  for (const p of RU_AI_PATTERNS) {
+    if (p.re.test(text)) tells.push({ tag: 'ru_pattern:' + p.tag });
+  }
+
   const emDashes = (text.match(/—/g) || []).length;
   if (emDashes > 1) tells.push({ tag: 'ai_em_dash_overuse', detail: `${emDashes} em-dashes` });
 
   if (/[“”‘’]/.test(text)) tells.push({ tag: 'ai_smart_quotes' });
 
   return tells;
+}
+
+const KNOWN_DENTAL_JOURNALS = [
+  'journal of dental research', 'journal of dentistry', 'journal of prosthetic dentistry',
+  'journal of oral rehabilitation', 'clinical oral implants research', 'clinical oral investigations',
+  'international journal of oral and maxillofacial implants', 'international journal of prosthodontics',
+  'dental materials', 'journal of prosthodontics', 'european journal of oral implantology',
+  'journal of periodontology', 'journal of clinical periodontology', 'journal of oral science',
+  'journal of prosthodontic research', 'journal of applied oral science', 'operative dentistry',
+  'journal of endodontics', 'journal of esthetic and restorative dentistry',
+  'international dental journal', 'british dental journal', 'community dentistry and oral epidemiology',
+  'caries research', 'oral diseases', 'gerodontology', 'journal of oral and maxillofacial surgery',
+  'international journal of periodontics and restorative dentistry', 'implant dentistry',
+  'journal of cranio-maxillofacial surgery', 'head and face medicine', 'bmc oral health'
+];
+
+function extractCitations(text) {
+  const citations = [];
+  const patterns = [
+    /(?:согласно|по данным|исследование|результаты|показал(?:о|и)?|сообщается)\s[^.]{0,30}?(Journal\s+of\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+\(\d{4}\))?)/gi,
+    /(Journal\s+of\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*[\(,]\s*(\d{4})/gi,
+    /([A-Z][a-z]+(?:\s+(?:of|and|in|for)\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+\(\d{4}\)/g
+  ];
+  for (const re of patterns) {
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      const journal = m[1] || m[0];
+      const year = m[2] || '';
+      citations.push({ journal: journal.trim(), year: year.trim(), match: m[0].substring(0, 80) });
+    }
+  }
+  return citations;
+}
+
+function verifyCitations(text) {
+  const citations = extractCitations(text);
+  if (citations.length === 0) return { pass: true, citations: [], suspicious: [] };
+  const suspicious = citations.filter(c => {
+    const j = c.journal.toLowerCase();
+    return !KNOWN_DENTAL_JOURNALS.some(k => j.includes(k) || k.includes(j));
+  });
+  return { pass: suspicious.length === 0, citations, suspicious };
 }
 
 function reviewArticle(article, topic) {
@@ -518,8 +672,12 @@ function reviewArticle(article, topic) {
   scores.aiTells = tells;
   scores.aiPass = tells.length === 0;
 
+  const citationResult = verifyCitations(article.body);
+  scores.citations = citationResult;
+  scores.citationPass = citationResult.pass;
+
   const failCount = [!scores.lengthPass, !scores.h2Pass, !scores.hasList, !scores.hasFAQ, scores.relevance === 'weak'].filter(Boolean).length;
-  scores.pass = failCount <= 1 && scores.aiPass;
+  scores.pass = failCount <= 1 && scores.aiPass && scores.citationPass;
 
   return scores;
 }
@@ -540,6 +698,10 @@ async function reviewAgent(article, topic, maxRetries = 2) {
       const tags = [...new Set(scores.aiTells.map(t => t.tag))];
       fixes.push(`убрать AI-маркеры: ${tags.join(', ')}. Пиши естественным русским языком, без шаблонных фраз и штампов`);
     }
+    if (!scores.citationPass && scores.citations.suspicious.length > 0) {
+      const fake = scores.citations.suspicious.map(c => c.match.substring(0, 50)).join(', ');
+      fixes.push(`удали вымышленные ссылки на журналы: ${fake}. Замени на общие утверждения без указания конкретных журналов и годов. Никогда не выдумывай ссылки на научные журналы`);
+    }
 
     const prompt = `Перепиши эту статью для блога стоматолога-ортопеда. Исправь: ${fixes.join('; ')}.
 
@@ -552,6 +714,7 @@ ${article.body}
     const raw = await callAI(prompt);
     const improved = parseJSON(raw);
     if (improved?.title && improved?.description && improved?.body) {
+      improved.body = humanize(improved.body);
       article = improved;
     }
   }
@@ -571,6 +734,7 @@ export async function runPipelineManual(topic) {
 
     result.stage = 'write';
     const article = await writerAgent(topic, research);
+    if (article?.body) article.body = humanize(article.body);
     result.article = article;
 
     result.stage = 'seo';
@@ -682,7 +846,7 @@ export async function runHorizonPipeline() {
   return { file: latest, totalItems: items.length, generated: results.length, results };
 }
 
-export { ghPut, ghFetch, checkAiTells, horizonWriterAgent };
+export { ghPut, ghFetch, checkAiTells, humanize, horizonWriterAgent };
 
 export async function addTopic(topic) {
   const topics = loadTopics();
