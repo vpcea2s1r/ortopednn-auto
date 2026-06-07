@@ -24,6 +24,11 @@
 | [Контент-план](project/content-plan.md) | План контента и статей | ✏️ Черновик |
 | [Управление wiki](project/wiki-guide.md) | Команды и правила работы с wiki | ✅ Готово |
 | [Яндекс.Дзен](project/dzen.md) | Канал Дзен, RSS, авто-публикация | ✏️ Черновик |
+| [Push Artifacts Check](project/push-artifacts-check.md) | Верификация push через GitHub API | ✅ Готово |
+| [Bot Plain Text Rewrite](project/bot-plaintext-rewrite.md) | Рерайт текста без PubMed для forwarded messages | ✅ Готово |
+| [Humanizer Integration](project/humanizer-integration.md) | Удаление AI-паттернов из статей на русском | ✅ Готово |
+| [Yandex Indexing](project/yandex-indexing.md) | Проблемы индексации в Яндексе | ✏️ Черновик |
+| [Service Content Depth](project/service-content-depth.md) | Стратегия наполнения страниц услуг | ✅ Готово |
 
 ### Raw источники
 
@@ -31,4 +36,4 @@
 
 ---
 
-> Последнее обновление: 2026-05-31
+> Последнее обновление: 2026-06-07
