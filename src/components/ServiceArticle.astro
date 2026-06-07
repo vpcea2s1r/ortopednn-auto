@@ -14,6 +14,12 @@ export interface Props {
   breadcrumbName: string;
   datePublished?: string;
   dateModified?: string;
+  faq?: { question: string; answer: string }[];
+  procedure?: string[];
+  care?: string[];
+  stats?: { value: string; label: string }[];
+  materials?: { name: string; desc: string; features: string[] }[];
+  comparison?: { name: string; pros: string[]; cons: string[] }[];
 }
 
 const {
@@ -22,6 +28,12 @@ const {
   breadcrumbName,
   datePublished,
   dateModified,
+  faq = [],
+  procedure = [],
+  care = [],
+  stats = [],
+  materials = [],
+  comparison = [],
 } = Astro.props;
 
 const today = new Date().toISOString().split('T')[0];
@@ -80,6 +92,104 @@ const medicalWebPage = {
       </div>
     </article>
 
+    {procedure.length > 0 && (
+      <section class="service-section service-section--alt">
+        <div class="container">
+          <h2>Как это делается</h2>
+          <ol class="procedure-list">
+            {procedure.map(step => <li>{step}</li>)}
+          </ol>
+        </div>
+      </section>
+    )}
+
+    {materials.length > 0 && (
+      <section class="service-section">
+        <div class="container">
+          <h2>Используемые материалы</h2>
+          <div class="materials-grid">
+            {materials.map(m => (
+              <div class="material-card">
+                <h3>{m.name}</h3>
+                <p>{m.desc}</p>
+                {m.features.length > 0 && (
+                  <ul>
+                    {m.features.map(f => <li>{f}</li>)}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {stats.length > 0 && (
+      <section class="service-section service-section--alt">
+        <div class="container">
+          <h2>Цифры и факты</h2>
+          <div class="stats-grid">
+            {stats.map(s => (
+              <div class="stat-card">
+                <span class="stat-value">{s.value}</span>
+                <span class="stat-label">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {care.length > 0 && (
+      <section class="service-section">
+        <div class="container">
+          <h2>Уход и рекомендации</h2>
+          <ul class="care-list">
+            {care.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    {faq.length > 0 && (
+      <section class="service-section service-section--alt">
+        <div class="container">
+          <h2>Частые вопросы</h2>
+          <div class="faq-list">
+            {faq.map(item => (
+              <details class="faq-item">
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {comparison.length > 0 && (
+      <section class="service-section">
+        <div class="container">
+          <h2>Сравнение вариантов</h2>
+          <div class="comparison-grid">
+            {comparison.map(c => (
+              <div class="comparison-card">
+                <h3>{c.name}</h3>
+                <div class="comparison-pros">
+                  <h4>Плюсы</h4>
+                  <ul>{c.pros.map(p => <li>{p}</li>)}</ul>
+                </div>
+                <div class="comparison-cons">
+                  <h4>Минусы</h4>
+                  <ul>{c.cons.map(p => <li>{p}</li>)}</ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <script type="application/ld+json" set:html={JSON.stringify(medicalWebPage)} />
 
     <CtaBlock variant="service" />
@@ -132,6 +242,44 @@ const medicalWebPage = {
     .service-body :global(p) { color: var(--color-text-muted); line-height: 1.7; }
     .service-body :global(ul) { padding-left: var(--space-lg); }
     .service-body :global(li) { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
+
+    .service-section { padding: var(--space-3xl) 0; }
+    .service-section--alt { background: var(--color-bg-alt); }
+    .service-section h2 { font-size: var(--text-2xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
+
+    .procedure-list { counter-reset: step; list-style: none; padding: 0; }
+    .procedure-list li { counter-increment: step; padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-sm); background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); color: var(--color-text-muted); line-height: 1.6; position: relative; padding-left: 4rem; }
+    .procedure-list li::before { content: counter(step); position: absolute; left: var(--space-md); top: var(--space-md); width: 2rem; height: 2rem; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--text-sm); }
+
+    .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+    .material-card { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+    .material-card h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .material-card p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; margin-bottom: var(--space-sm); }
+    .material-card ul { list-style: disc; padding-left: var(--space-lg); font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+    .stat-card { text-align: center; background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+    .stat-value { display: block; font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
+    .stat-label { display: block; font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    .care-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+    .care-list li { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-md); color: var(--color-text-muted); line-height: 1.6; position: relative; padding-left: 3rem; }
+    .care-list li::before { content: "✓"; position: absolute; left: var(--space-md); top: var(--space-md); color: var(--color-primary); font-weight: 700; font-size: var(--text-lg); }
+
+    .faq-list { max-width: 800px; }
+    .faq-item { margin-bottom: var(--space-xs); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; background: white; }
+    .faq-item summary { padding: var(--space-md) var(--space-lg); cursor: pointer; font-weight: 600; color: var(--color-text); display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::after { content: "+"; font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { padding: 0 var(--space-lg) var(--space-lg); color: var(--color-text-muted); line-height: 1.6; }
+
+    .comparison-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+    .comparison-card { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+    .comparison-card h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); padding-bottom: var(--space-sm); border-bottom: 1px solid var(--color-border); }
+    .comparison-pros h4, .comparison-cons h4 { font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-xs); }
+    .comparison-pros ul, .comparison-cons ul { padding-left: var(--space-lg); font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-sm); }
+    .comparison-cons ul { color: var(--color-danger, #e74c3c); }
+
     .related-services { padding: var(--space-3xl) 0; background: var(--color-bg-alt); }
     .related-services h2 { font-size: var(--text-2xl); margin-bottom: var(--space-lg); color: var(--color-primary); }
     .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
@@ -150,6 +298,10 @@ const medicalWebPage = {
     .article-link-arrow { font-size: var(--text-sm); color: var(--color-primary); font-weight: 600; }
     @media (max-width: 768px) {
       .service-header { flex-direction: column; }
+      .materials-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .care-list { grid-template-columns: 1fr; }
+      .comparison-grid { grid-template-columns: 1fr; }
       .related-grid { grid-template-columns: 1fr; }
       .articles-grid { grid-template-columns: 1fr; }
     }
