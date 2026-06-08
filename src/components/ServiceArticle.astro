@@ -192,6 +192,53 @@ const medicalWebPage = {
 
     <script type="application/ld+json" set:html={JSON.stringify(medicalWebPage)} />
 
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://ortopednn.ru/#doctor",
+      "name": "Никитина Марина Георгиевна",
+      "jobTitle": "Стоматолог-ортопед",
+      "url": "https://ortopednn.ru/about/",
+      "telephone": "+79202537317",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Октябрьской Революции, д. 43",
+        "addressLocality": "Нижний Новгород",
+        "addressCountry": "RU"
+      },
+      "worksFor": {
+        "@id": "https://ortopednn.ru/#organization"
+      },
+      "sameAs": [
+        "https://t.me/nikitina_ortoped"
+      ],
+      "knowsAbout": ["Протезирование зубов", "Ортопедическая стоматология", "Циркониевые коронки", "Металлокерамические коронки", "Бюгельные протезы", "Съёмные протезы"],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Нижегородский государственный медицинский институт"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "certificate",
+        "name": "Сертификат специалиста по стоматологии ортопедической"
+      }
+    })} />
+
+    {faq.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faq.map(item => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
+      })}/>
+    )}
+
     <CtaBlock variant="service" />
 
     {related.length > 0 && (
