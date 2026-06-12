@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'fiksaciya-koronki-cena';
+const pageUrl = `https://ortopednn.ru/blog/fiksaciya-koronki-cena/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Фиксация коронки — цена и этапы",
+  "description": "Фиксация коронки на цемент — виды цементов, когда нужна временная и постоянная фиксация, как проходит процедура.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Фиксация коронки — цена и этапы | Никитина М.Г."
+  description="Фиксация коронки на цемент — виды цементов, когда нужна временная и постоянная фиксация, как проходит процедура."
+  breadcrumbTitle="Фиксация коронки цена"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Фиксация коронки цена</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Фиксация — завершающий этап протезирования. От качества фиксации зависит, как долго прослужит коронка. Цена зависит от материала цемента и сложности работы.</p>
+        <section id="цена-фиксации-коронки"><h2>Цена фиксации коронки</h2>
+        <p>Стоимость фиксации зависит от выбранного цемента. Стеклоиономерный цемент Fuji — бюджетный вариант с профилактикой кариеса. Композитный цемент Maxcem — более высокая прочность для современных конструкций. Временная фиксация Temp-Bond — для диагностического периода. Цена включает подготовку коронки и зуба, замешивание цемента и фиксацию с контролем прикуса. Постоянная фиксация выполняется после того, как коронка проверена и откорректирована по прикусу.</p></section>
+        <section id="виды-цементов"><h2>Виды цементов</h2>
+        <p><strong>Стеклоиономерный (Fuji)</strong> — выделяет фтор, профилактика вторичного кариеса. Используется для большинства коронок. Преимущество: химическая адгезия к тканям зуба без протравливания.</p>
+        <p><strong>Композитный (Maxcem)</strong> — более высокая прочность, самопротравливающий. Рекомендуется для циркониевых коронок и безметалловых конструкций. Обеспечивает максимальную адгезию к керамике.</p>
+        <p><strong>Временный (Temp-Bond)</strong> — для временных коронок или диагностического периода. Легко удаляется при необходимости.</p></section>
+        <section id="как-проходит-фиксация"><h2>Как проходит фиксация</h2>
+        <p>Врач очищает коронку и зуб, наносит цемент, надевает коронку, просит пациента сомкнуть зубы. После схватывания цемента удаляются излишки, проверяются окклюзионные контакты. Процедура занимает 15–20 минут.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

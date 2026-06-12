@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'koronka-na-zhevatelnyj-zub';
+const pageUrl = `https://ortopednn.ru/blog/koronka-na-zhevatelnyj-zub/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Коронка на жевательный зуб — какую выбрать",
+  "description": "Какую коронку лучше поставить на жевательный зуб. Сравнение металлокерамики, циркония, цельнолитых коронок для боковых зубов.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Коронка на жевательный зуб — какую выбрать | Никитина М.Г."
+  description="Какую коронку лучше поставить на жевательный зуб. Сравнение металлокерамики, циркония, цельнолитых коронок для боковых зубов."
+  breadcrumbTitle="Коронка на жевательный зуб"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Коронка на жевательный зуб</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Жевательные зубы (моляры и премоляры) принимают основную нагрузку при пережёвывании пищи — до 70% всей жевательной силы. Поэтому материал коронки должен быть максимально прочным.</p>
+        <section id="какие-коронки-подходят-для-жевательных-зубов"><h2>Какие коронки подходят для жевательных зубов</h2>
+        <p><strong>Металлокерамика.</strong> Оптимальный выбор: прочная, доступная по цене, эстетичнее цельнолитой. Выдерживает жевательное давление до 800 МПа. Срок службы 10–15 лет.</p>
+        <p><strong>Цирконий.</strong> Прочнее металлокерамики (1200 МПа). Полностью биосовместим, не даёт реакции на холодное/горячее. Рекомендуется при бруксизме и аллергии на металл.</p>
+        <p><strong>Цельнолитая коронка.</strong> Самая прочная, но неэстетичная — металлического цвета. Подходит для самых дальних зубов, незаметных при улыбке.</p>
+        <p><strong>E-MAX.</strong> Высокая эстетика, но для жевательных зубов прочность (400 МПа) ниже, чем у циркония. Лучше использовать для передних зубов.</p></section>
+        <section id="что-влияет-на-выбор"><h2>Что влияет на выбор</h2>
+        <p>Высота зуба — для металлокерамики нужно 1,5–2 мм обточки. Наличие бруксизма — цирконий предпочтительнее. Аллергия на металлы — только цирконий. Бюджет — цельнолитая или металлокерамика. Исследования долгосрочной выживаемости показывают, что для жевательных зубов металлокерамика и цирконий имеют сопоставимые показатели (92–96% за 10 лет).</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'koronka-na-perednij-zub';
+const pageUrl = `https://ortopednn.ru/blog/koronka-na-perednij-zub/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Коронка на передний зуб — цена и выбор",
+  "description": "Коронка на передний зуб — какую лучше поставить. Цена циркония, металлокерамики, E-MAX для передних зубов.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Коронка на передний зуб — цена и выбор | Никитина М.Г."
+  description="Коронка на передний зуб — какую лучше поставить. Цена циркония, металлокерамики, E-MAX для передних зубов."
+  breadcrumbTitle="Коронка на передний зуб"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Коронка на передний зуб</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Передние зубы — зона улыбки. Здесь эстетика важнее прочности. Главные требования: полупрозрачность, цвет, отсутствие тёмной линии у десны.</p>
+        <section id="какие-коронки-ставят-на-передние-зубы"><h2>Какие коронки ставят на передние зубы</h2>
+        <p><strong>Циркониевая коронка.</strong> Лучший выбор для передних зубов. Полупрозрачный материал, имитирующий натуральную эмаль. Не даёт тёмной линии у десны. Биосовместим — не вызывает аллергии. Прочность 1200 МПа.</p>
+        <p><strong>Металлокерамика.</strong> Бюджетный вариант. Эстетика хорошая, но со временем у десны может появиться тёмная полоса — просвечивает металлический каркас. Для передних зубов не рекомендуется при высоких требованиях к эстетике.</p>
+        <p><strong>Цельнолитая коронка.</strong> Только для жевательных зубов. На передние не ставится — неэстетична.</p></section>
+        <section id="как-подбирают-цвет"><h2>Как подбирают цвет</h2>
+        <p>Цвет коронки подбирается по шкале Vita — от A1 (самый светлый) до D4. Врач сравнивает образцы с соседними зубами пациента. Для передних зубов важно учесть не только цвет, но и прозрачность, возрастные изменения соседних зубов. Современные керамические массы позволяют воспроизвести все оптические свойства натурального зуба.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

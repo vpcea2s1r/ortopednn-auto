@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'cemu-spat-v-proteze';
+const pageUrl = `https://ortopednn.ru/blog/cemu-spat-v-proteze/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Можно ли спать в съёмном протезе",
+  "description": "Можно ли спать в съёмном протезе — рекомендации стоматологов. Когда нужно снимать на ночь, а когда можно оставлять.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Можно ли спать в съёмном протезе | Никитина М.Г."
+  description="Можно ли спать в съёмном протезе — рекомендации стоматологов. Когда нужно снимать на ночь, а когда можно оставлять."
+  breadcrumbTitle="Спать в протезе"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Спать в протезе</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Мнения стоматологов разделяются. В период адаптации — можно и нужно. После привыкания — рекомендуется снимать.</p>
+        <section id="период-адаптации-первые-23-недели"><h2>Период адаптации (первые 2–3 недели)</h2>
+        <p>Врачи рекомендуют не снимать протез на ночь в первые 2 недели. Это ускоряет привыкание: мозг быстрее перестаёт воспринимать протез как инородное тело. Кроме того, ночное ношение помогает выявить точки давления — утром десна будет более отёчной, и врач точнее определит, где нужна коррекция.</p></section>
+        <section id="после-адаптации"><h2>После адаптации</h2>
+        <p>После привыкания протез рекомендуется снимать на ночь. Слизистая оболочка должна отдыхать от давления. Протез нужно промыть и поместить в воду или специальный раствор. Это продлевает срок службы материала и предотвращает размножение бактерий на поверхности протеза.</p></section>
+        <section id="когда-можно-оставлять"><h2>Когда можно оставлять</h2>
+        <p>На имплантатах с аттачменами — протез можно не снимать, он фиксирован и не травмирует слизистую. При частичных протезах — можно оставлять, если нет воспаления десны под кламмерами. Главное правило: если снимаете — чистите и храните правильно.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'protez-skripit-pri-zhevanii';
+const pageUrl = `https://ortopednn.ru/blog/protez-skripit-pri-zhevanii/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Скрипит протез при жевании — что делать",
+  "description": "Съёмный протез скрипит при жевании — причины: неправильная посадка, износ материала, деформация. Коррекция у стоматолога.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Скрипит протез при жевании — что делать | Никитина М.Г."
+  description="Съёмный протез скрипит при жевании — причины: неправильная посадка, износ материала, деформация. Коррекция у стоматолога."
+  breadcrumbTitle="Скрипит протез при жевании"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Скрипит протез при жевании</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Скрежет или скрип при жевании — сигнал, что протез контактирует с зубами-антагонистами неравномерно или смещается при нагрузке.</p>
+        <section id="причины-скрипа"><h2>Причины скрипа</h2>
+        <p><strong>Неравномерный прикус</strong> — протез соприкасается с зубами на другой челюсти не во всех точках. Возникает точечный контакт, который создаёт скрип. <strong>Смещение протеза</strong> — при слабой фиксации протез двигается при жевании, создавая трение. <strong>Износ материала</strong> — искусственные зубы со временем стираются, меняется угол смыкания. <strong>Деформация базиса</strong> — при неравномерной нагрузке пластмассовый базис может деформироваться.</p></section>
+        <section id="что-делать"><h2>Что делать</h2>
+        <p>Коррекция прикуса — стоматолог подтачивает точки избыточного контакта. Занимает 10–15 минут. Если скрип вызван смещением протеза — перебазировка или замена фиксирующего материала. При значительном износе — замена искусственных зубов или всего протеза.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

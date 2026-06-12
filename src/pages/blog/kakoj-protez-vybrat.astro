@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'kakoj-protez-vybrat';
+const pageUrl = `https://ortopednn.ru/blog/kakoj-protez-vybrat/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Какой протез лучше выбрать — сравнение",
+  "description": "Какой протез выбрать при отсутствии зубов. Сравнение съёмных, несъёмных, бюгельных, нейлоновых. Советы ортопеда.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Какой протез лучше выбрать — сравнение | Никитина М.Г."
+  description="Какой протез выбрать при отсутствии зубов. Сравнение съёмных, несъёмных, бюгельных, нейлоновых. Советы ортопеда."
+  breadcrumbTitle="Какой протез лучше выбрать"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Какой протез лучше выбрать</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Выбор протеза зависит от количества отсутствующих зубов, состояния опорных зубов, бюджета и эстетических требований. Разберём основные варианты.</p>
+
+          <section id="если-отсутствует-1-зуб">
+            <h2>Если отсутствует 1 зуб</h2>
+            <p>Лучший вариант — имплантат. Но если имплантация невозможна или нежелательна — мостовидный протез с опорой на соседние зубы. Адгезивный мост — щадящий вариант с минимальной обточкой.</p>
+
+            <h2>Если отсутствует 2–3 зуба подряд</h2>
+            <p>Мостовидный протез из металлокерамики — оптимальное соотношение цены и качества. Циркониевый мост — если важна максимальная эстетика. Бюгельный протез — если опорные зубы недостаточно крепкие для моста.</p>
+
+            <h2>Если отсутствует более 3 зубов</h2>
+            <p>Бюгельный протез — самый физиологичный съёмный вариант. Частичный съёмный протез из акрила или нейлона — если бюджет ограничен. Имплантация с последующим протезированием — максимальное качество, но дороже.</p>
+
+            <h2>При полном отсутствии зубов</h2>
+            <p>Полный съёмный протез — базовый вариант. Выбор материала: акрил (бюджетно), AcryFree или нейлон (комфортнее). Протез на имплантатах — наилучшая фиксация, не снимается, комфорт максимальный, но требуется операция.</p>
+          </section>
+
+          <section id="сравнение-материалов-коронок">
+            <h2>Сравнение материалов коронок</h2>
+            <p><strong>Металлокерамика</strong> — прочно, доступно, эстетично для жевательных зубов. <strong>Цирконий</strong> — прочнее, эстетичнее, гипоаллергенен, дороже. <strong>Цельнолитая</strong> — максимально прочная, неэстетичная, для жевательных зубов. <strong>E-MAX</strong> — высокая эстетика, для передних зубов.</p>
+          </section>
+
+          <section id="что-выбрать-в-итоге">
+            <h2>Что выбрать в итоге</h2>
+            <p>Если вы хотите максимальную надёжность по доступной цене — металлокерамические коронки и мосты. Если комфорт и эстетика — цирконий. Если нужно съёмное решение — бюгель предпочтительнее акрила по комфорту и сроку службы. Нейлон — если аллергия на акрил или чувствительная слизистая. Для временного решения подойдёт акриловый протез или иммедиат-протез после удаления.</p>
+          </section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

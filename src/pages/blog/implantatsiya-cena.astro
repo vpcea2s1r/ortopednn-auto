@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'implantatsiya-cena';
+const pageUrl = `https://ortopednn.ru/blog/implantatsiya-cena/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протезирование на имплантах — цены",
+  "description": "Протезирование на имплантах в Нижнем Новгороде. Стоимость под ключ, All-on-4, съёмные протезы на имплантах.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Протезирование на имплантах — цены | Никитина М.Г."
+  description="Протезирование на имплантах в Нижнем Новгороде. Стоимость под ключ, All-on-4, съёмные протезы на имплантах."
+  breadcrumbTitle="Протезирование на имплантах"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Протезирование на имплантах</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Протезирование с опорой на имплантаты — наиболее физиологичный способ восстановления зубов. Имплант замещает корень зуба, передавая нагрузку на кость и предотвращая её атрофию.</p>
+
+          <section id="виды-протезов-на-имплантах">
+            <h2>Виды протезов на имплантах</h2>
+            <p><strong>Одиночная коронка на имплантате</strong> — при отсутствии одного зуба. Полноценный зуб, не затрагивающий соседние. Срок службы имплантата 20+ лет.</p>
+            <p><strong>Мост на имплантатах</strong> — при отсутствии нескольких зубов подряд. Устанавливается на 2 имплантата. Дешевле, чем ставить имплантат на каждый зуб.</p>
+            <p><strong>All-on-4 (все на 4-х имплантатах)</strong> — методика полного протезирования челюсти на 4 имплантатах. Позволяет восстановить все зубы за 1 день. Меньше имплантатов, ниже стоимость, меньше хирургии.</p>
+            <p><strong>Съёмный протез на имплантатах</strong> — на 2–4 имплантатах фиксируется съёмная конструкция с помощью кнопочных аттачменов или балочной системы. Фиксация значительно лучше, чем у обычного съёмного протеза.</p>
+          </section>
+
+          <section id="цена-протезирования-на-имплантах">
+            <h2>Цена протезирования на имплантах</h2>
+            <p>Стоимость складывается из трёх составляющих: имплантата (выбор производителя — от бюджетных Dentium и Osstem до премиальных Straumann и Nobel), абатмента (соединительный элемент) и коронки (металлокерамика или цирконий). Чем премиальнее бренд имплантата и чем сложнее конструкция (All-on-4 требует меньше имплантатов, но больше планирования), тем выше итоговая стоимость.</p>
+          </section>
+
+          <section id="преимущества-имплантации">
+            <h2>Преимущества имплантации</h2>
+            <ul>
+              <li>Не требует обточки соседних зубов — сохраняет здоровые ткани</li>
+              <li>Предотвращает атрофию кости — имплант передаёт нагрузку</li>
+              <li>Срок службы 20+ лет, а коронку можно заменить при износе</li>
+              <li>Максимальный комфорт и фиксация — несъёмная конструкция</li>
+              <li>Эстетика неотличима от натуральных зубов</li>
+            </ul>
+          </section>
+
+          <section id="имплантация-или-мост">
+            <h2>Имплантация или мост</h2>
+            <p>Мост требует обточки соседних здоровых зубов. Имплантат — нет. Мост быстрее — 2–3 недели. Имплантация — 3–6 месяцев с учётом приживления. Мост дешевле на старте. Имплантат дороже, но служит дольше и не вредит соседним зубам. При хорошем состоянии соседних зубов имплантат — выбор на будущее.</p>
+          </section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'desna-otoshla-ot-koronki';
+const pageUrl = `https://ortopednn.ru/blog/desna-otoshla-ot-koronki/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Десна отошла от коронки — что делать",
+  "description": "Десна отошла от коронки — причины: плохая гигиена, травма, некачественная коронка. Лечение и профилактика.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Десна отошла от коронки — что делать | Никитина М.Г."
+  description="Десна отошла от коронки — причины: плохая гигиена, травма, некачественная коронка. Лечение и профилактика."
+  breadcrumbTitle="Десна отошла от коронки"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Десна отошла от коронки</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Обнажение края коронки и рецессия десны — не только эстетическая проблема. Открытая граница коронки становится местом скопления налёта и бактерий.</p>
+        <section id="почему-десна-отходит"><h2>Почему десна отходит</h2>
+        <p><strong>Плохая гигиена</strong> — налёт у края коронки вызывает хроническое воспаление, десна опускается. Самая частая причина.</p>
+        <p><strong>Травма краем коронки</strong> — если коронка слишком выступает или имеет острый край, она механически травмирует десну.</p>
+        <p><strong>Некачественная коронка</strong> — плохое краевое прилегание, зазор между коронкой и зубом.</p>
+        <p><strong>Пародонтит</strong> — системное заболевание десны, при котором десна опускается на всех зубах, в том числе под коронками.</p></section>
+        <section id="чем-опасно"><h2>Чем опасно</h2>
+        <p>В образовавшийся карман попадает пища и бактерии. Начинается воспаление, которое может перейти на корень зуба. Со временем кость вокруг зуба разрушается, и коронка может потерять устойчивость.</p></section>
+        <section id="что-делать"><h2>Что делать</h2>
+        <p>Визит к стоматологу — обязательно. Врач оценит глубину кармана, состояние кости на рентгене, качество коронки. Если коронка качественная — профессиональная гигиена и противовоспалительная терапия. Если коронка не прилегает — замена. Самостоятельное лечение бесполезно — причину (налёт или некачественную коронку) вы не устраните.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

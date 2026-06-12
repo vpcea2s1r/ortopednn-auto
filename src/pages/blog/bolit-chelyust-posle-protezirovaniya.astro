@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'bolit-chelyust-posle-protezirovaniya';
+const pageUrl = `https://ortopednn.ru/blog/bolit-chelyust-posle-protezirovaniya/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Болит челюсть после протезирования — что делать",
+  "description": "Болит челюсть после протезирования зубов — норма или патология. Сроки адаптации, когда обращаться к врачу.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Болит челюсть после протезирования — что делать | Никитина М.Г."
+  description="Болит челюсть после протезирования зубов — норма или патология. Сроки адаптации, когда обращаться к врачу."
+  breadcrumbTitle="Болит челюсть после протезирования"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Болит челюсть после протезирования</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Дискомфорт после установки протеза — норма в первые дни. Но есть признаки, когда нужна срочная коррекция.</p>
+        <section id="нормальные-ощущения-после-протезирования"><h2>Нормальные ощущения после протезирования</h2>
+        <p>В первые 3–7 дней возможны: лёгкая болезненность десны в местах прилегания протеза, повышенное слюноотделение, незначительное нарушение дикции, чувство давления на челюсть. Это связано с адаптацией тканей к новой конструкции. Исследования показывают, что полная адаптация к съёмному протезу занимает от 2 до 4 недель.</p></section>
+        <section id="когда-нужно-обратиться"><h2>Когда нужно обратиться</h2>
+        <p>Острая боль, не проходящая через 5–7 дней. Отёк десны или щеки. Кровоточивость при надевании протеза. Невозможность сомкнуть челюсти. Протез натирает до язв. В этих случаях требуется коррекция — стоматолог подтачивает давящие участки.</p></section>
+        <section id="как-ускорить-адаптацию"><h2>Как ускорить адаптацию</h2>
+        <p>Начинайте с мягкой пищи. Не снимайте протез на ночь первые 2 недели. Читайте вслух для восстановления дикции. При натирании — сразу на коррекцию, не терпите. Чем раньше скорректирована посадка, тем быстрее пройдёт привыкание.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

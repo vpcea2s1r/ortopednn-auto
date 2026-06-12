@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'polnyj-semnyj-protez';
+const pageUrl = `https://ortopednn.ru/blog/polnyj-semnyj-protez/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Полный съёмный протез — цена, виды",
+  "description": "Цена полного съёмного протеза в Нижнем Новгороде. Акриловые, нейлоновые, AcryFree — сравнение стоимости и материалов.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Полный съёмный протез — цена, виды | Никитина М.Г."
+  description="Цена полного съёмного протеза в Нижнем Новгороде. Акриловые, нейлоновые, AcryFree — сравнение стоимости и материалов."
+  breadcrumbTitle="Полный съёмный протез цена"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Полный съёмный протез цена</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">При полном отсутствии зубов на одной или обеих челюстях съёмный протез остаётся основным способом восстановления жевательной функции. Современные материалы и методики позволяют сделать конструкцию комфортной и эстетичной.</p>
+
+          <section id="цена-полного-съёмного-протеза">
+            <h2>Цена полного съёмного протеза</h2>
+            <p>Стоимость зависит от материала и сложности изготовления. Акриловый полный протез — бюджетный вариант. Протез AcryFree — из современного термопласта без мономера. Нейлоновый — гибкий и эстетичный. Иммедиат-протез — временная конструкция сразу после удаления. Полный протез на имплантатах — наиболее комфортный, но самый сложный вариант. Цена включает изготовление в лаборатории, постановку зубов, примерки и фиксацию.</p>
+          </section>
+
+          <section id="какой-полный-протез-выбрать">
+            <h2>Какой полный протез выбрать</h2>
+            <p><strong>Акриловый</strong> — бюджетный вариант. Жёсткий базис, привычная конструкция. Требует привыкания, может натирать. Срок службы 5–7 лет.</p>
+            <p><strong>AcryFree</strong> — полужёсткий термопласт без мономера. Комфортнее акрила, гипоаллергенный. Ремонтопригоден. Срок службы 5–7 лет.</p>
+            <p><strong>Нейлоновый</strong> — мягкий и гибкий. Не вызывает аллергии, минимальный период адаптации. Сложнее в ремонте. Срок службы 3–5 лет.</p>
+            <p><strong>На имплантатах</strong> — фиксируется на 2–4 имплантах. Максимальная стабильность, не снимается без помощи врача. Значительно дороже, но комфорт несравнимо выше.</p>
+          </section>
+
+          <section id="как-происходит-изготовление">
+            <h2>Как происходит изготовление</h2>
+            <p>Процесс включает 5–7 визитов к врачу. Снимаются слепки, изготавливается индивидуальная ложка, определяются прикус и центральное соотношение челюстей, проводится постановка зубов, примерка восковой модели и финальная замена акрилом. Общий срок — 2–4 недели.</p>
+          </section>
+
+          <section id="как-привыкнуть-к-полному-протезу">
+            <h2>Как привыкнуть к полному протезу</h2>
+            <p>Период адаптации — от нескольких дней до 3 недель. Рекомендуется не снимать протез на ночь первые 2 недели, начинать с мягкой пищи, читать вслух для восстановления дикции. При натирании — обязательная коррекция у стоматолога, не пытайтесь подтачивать протез самостоятельно.</p>
+          </section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

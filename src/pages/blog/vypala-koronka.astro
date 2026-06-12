@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'vypala-koronka';
+const pageUrl = `https://ortopednn.ru/blog/vypala-koronka/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Выпала коронка — что делать?",
+  "description": "Выпала коронка с зуба — причины, первая помощь, когда срочно к врачу. Как временно зафиксировать коронку в домашних условиях.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Выпала коронка — что делать? | Никитина М.Г."
+  description="Выпала коронка с зуба — причины, первая помощь, когда срочно к врачу. Как временно зафиксировать коронку в домашних условиях."
+  breadcrumbTitle="Выпала коронка что делать"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Выпала коронка что делать</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Если коронка отклеилась или выпала вместе со штифтом — не паникуйте. В большинстве случаев её можно установить обратно, если обратиться к стоматологу вовремя.</p>
+
+          <section id="почему-коронка-может-выпасть">
+            <h2>Почему коронка может выпасть</h2>
+            <p>Основная причина — ослабление фиксирующего цемента. Стеклоиономерные цементы со временем растворяются под воздействием слюны. Другие причины: вторичный кариес под коронкой, слишком большая жевательная нагрузка, неправильный прикус, трещина культи зуба. В среднем около 5–7% коронок требуют повторной фиксации в течение первых 5 лет после установки.</p>
+          </section>
+
+          <section id="первая-помощь-в-домашних-условиях">
+            <h2>Первая помощь в домашних условиях</h2>
+            <ul>
+              <li>Сохраните коронку — не теряйте, не грызите</li>
+              <li>Осмотрите коронку и зуб под ней: есть ли боль, кровь, видимые повреждения</li>
+              <li>Прополощите рот тёплой водой — удалите остатки цемента</li>
+              <li>Если коронка чистая и не повреждена — можно надеть её обратно на зуб для временной фиксации (не прикусывать сильно)</li>
+              <li>Не используйте суперклей или стоматологический цемент из аптеки — это может повредить зуб и коронку</li>
+              <li>Запишитесь к стоматологу в ближайшие 1–2 дня</li>
+            </ul>
+          </section>
+
+          <section id="чего-делать-нельзя">
+            <h2>Чего делать нельзя</h2>
+            <p>Не клейте коронку самостоятельно — неправильная фиксация приведёт к нарушению прикуса, воспалению десны и потере зуба. Не пытайтесь сточить край коронки. Не жуйте на стороне выпавшей коронки. Не оставляйте зуб без коронки надолго — соседние зубы могут сместиться, и коронка уже не встанет на место.</p>
+          </section>
+
+          <section id="что-сделает-врач">
+            <h2>Что сделает врач</h2>
+            <p>Стоматолог осмотрит зуб и коронку, удалит остатки старого цемента, при необходимости проведёт лечение кариеса и зафиксирует коронку заново. Если коронка повреждена или не подходит по размеру из-за изменения десны, потребуется изготовление новой. Повторная фиксация возможна, если зуб под коронкой здоров.</p>
+          </section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

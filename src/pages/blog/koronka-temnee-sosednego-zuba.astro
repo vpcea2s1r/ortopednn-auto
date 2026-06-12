@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'koronka-temnee-sosednego-zuba';
+const pageUrl = `https://ortopednn.ru/blog/koronka-temnee-sosednego-zuba/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Коронка темнее соседнего зуба — что делать",
+  "description": "Коронка темнее соседних зубов — причины и решения. Можно ли осветлить, когда нужна замена.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Коронка темнее соседнего зуба — что делать | Никитина М.Г."
+  description="Коронка темнее соседних зубов — причины и решения. Можно ли осветлить, когда нужна замена."
+  breadcrumbTitle="Коронка темнее соседнего зуба"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Коронка темнее соседнего зуба</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Разница в цвете между коронкой и соседними зубами — одна из частых жалоб. Причина может быть в материале коронки или в изменении цвета соседних зубов.</p>
+        <section id="почему-коронка-темнее-зубов"><h2>Почему коронка темнее зубов</h2>
+        <p>Металлокерамика со временем может давать сероватый оттенок у десны — просвечивает металлический каркас. Соседние зубы могли пожелтеть, а коронка сохранила первоначальный цвет — разница стала заметна. Коронка могла быть изначально подобрана неправильно. Зуб под коронкой потемнел изнутри и просвечивает через керамику.</p></section>
+        <section id="варианты-решения"><h2>Варианты решения</h2>
+        <p>Если проблема в соседних зубах — отбеливание решит вопрос, коронка останется той же. Если проблема в коронке — отбеливание не поможет (керамика не отбеливается). Единственное решение — замена коронки на более эстетичный материал: цирконий или керамику. Замена металлокерамики на цирконий полностью устраняет проблему тёмной линии у десны.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

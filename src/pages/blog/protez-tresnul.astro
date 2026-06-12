@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'protez-tresnul';
+const pageUrl = `https://ortopednn.ru/blog/protez-tresnul/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протез треснул — что делать?",
+  "description": "Треснул съёмный протез — возможен ли ремонт. Причины поломок, когда можно починить, а когда нужна замена.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Протез треснул — что делать? | Никитина М.Г."
+  description="Треснул съёмный протез — возможен ли ремонт. Причины поломок, когда можно починить, а когда нужна замена."
+  breadcrumbTitle="Протез треснул что делать"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Протез треснул что делать</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Трещина в съёмном протезе — не повод покупать новый. В большинстве случаев конструкцию можно отремонтировать за 1–2 дня. Главное — не пытаться склеить самостоятельно.</p>
+        <section id="почему-трескаются-протезы"><h2>Почему трескаются протезы</h2>
+        <p>Акриловые протезы ломаются чаще нейлоновых из-за жёсткости материала. Основные причины: падение протеза на твёрдую поверхность, неравномерная нагрузка при жевании, естественный износ материала (после 3–5 лет), неправильная посадка из-за атрофии кости. Исследования показывают, что около 30% акриловых протезов требуют ремонта в течение первых 5 лет эксплуатации.</p></section>
+        <section id="можно-ли-починить"><h2>Можно ли починить</h2>
+        <p>Небольшая трещина — ремонт возможен. Стоматолог проводит склейку акрилом в лаборатории, шов почти незаметен. Если трещина проходит через искусственный зуб — зуб заменяется отдельно. Если протез раскололся на несколько частей — ремонт возможен, но может потребоваться армирование. Если база протеза разрушена на 30% и более — рекомендуется замена, так как ремонт будет ненадёжным.</p></section>
+        <section id="чего-нельзя-делать"><h2>Чего нельзя делать</h2>
+        <p>Не клейте протез суперклеем — он токсичен для слизистой. Не используйте эпоксидную смолу — она даёт усадку и нарушает посадку. Не пытайтесь носить треснутый протез — острый край травмирует десну и язык. Не подтачивайте край трещины самостоятельно.</p></section>
+        <section id="стоимость-ремонта"><h2>Стоимость ремонта</h2>
+        <p>Склейка трещины — доступный ремонт. Замена сломанного зуба в протезе — дешевле изготовления нового зуба. Армирование протеза металлической сеткой — при значительных повреждениях. В большинстве случаев ремонт дешевле и быстрее, чем изготовление нового протеза.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

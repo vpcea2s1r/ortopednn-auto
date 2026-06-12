@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'mostovidnyj-protez-cena';
+const pageUrl = `https://ortopednn.ru/blog/mostovidnyj-protez-cena/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Мостовидный протез — цены и виды",
+  "description": "Мостовидные протезы в Нижнем Новгороде — металлокерамика, цирконий, адгезивные мосты. Показания, срок службы, сравнение с имплантатами.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Мостовидный протез — цены и виды | Никитина М.Г."
+  description="Мостовидные протезы в Нижнем Новгороде — металлокерамика, цирконий, адгезивные мосты. Показания, срок службы, сравнение с имплантатами."
+  breadcrumbTitle="Мостовидный протез цена"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Мостовидный протез цена</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Мостовидный протез (мост) — несъёмная конструкция для замещения одного или нескольких отсутствующих зубов. Фиксируется на соседних опорных зубах. Это альтернатива имплантации, не требующая хирургического вмешательства.</p>
+
+          <section id="цена-мостовидного-протеза">
+            <h2>Цена мостовидного протеза</h2>
+            <p>Стоимость зависит от материала и количества единиц. Металлокерамические мосты — классический вариант с оптимальным соотношением цены и качества. Циркониевые мосты — премиальный вариант с максимальной эстетикой. Адгезивные мосты — щадящий вариант с минимальной обточкой соседних зубов. Мост на имплантатах рассчитывается индивидуально. Металлокерамика остаётся самым популярным вариантом для мостов — оптимальное соотношение цены, прочности и эстетики.</p>
+          </section>
+
+          <section id="показания">
+            <h2>Показания</h2>
+            <ul>
+              <li>Отсутствие одного или нескольких зубов подряд</li>
+              <li>Здоровые опорные зубы с обеих сторон дефекта</li>
+              <li>Невозможность или нежелание проводить имплантацию</li>
+              <li>Достаточная высота опорных зубов для препарирования</li>
+            </ul>
+          </section>
+
+          <section id="срок-службы-моста">
+            <h2>Срок службы моста</h2>
+            <p>Металлокерамический мост служит 10–15 лет при правильном уходе. Циркониевый — 15–20 лет. Основная причина потери — не износ конструкции, а кариес опорных зубов под коронками. Поэтому гигиена зоны моста — ирригатор, зубная нить, регулярные осмотры — критически важны для долговечности.</p>
+          </section>
+
+          <section id="мост-или-имплантат">
+            <h2>Мост или имплантат</h2>
+            <p>Имплантат — более физиологичное решение: он замещает и корень зуба, сохраняя объём кости. Мост быстрее и дешевле, но требует обточки соседних здоровых зубов. Если соседние зубы уже имеют коронки или разрушены, мост — рациональный выбор. Если соседние зубы здоровы, предпочтительнее имплантат, чтобы не травмировать здоровые ткани.</p>
+          </section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>

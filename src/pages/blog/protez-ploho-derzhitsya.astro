@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'protez-ploho-derzhitsya';
+const pageUrl = `https://ortopednn.ru/blog/protez-ploho-derzhitsya/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протез плохо держится — что делать",
+  "description": "Съёмный протез плохо держится во рту — причины и решения. Кремы для фиксации, перебазировка, имплантация.",
+  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-16",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+};
+---
+
+<BaseLayout 
+  title="Протез плохо держится — что делать | Никитина М.Г."
+  description="Съёмный протез плохо держится во рту — причины и решения. Кремы для фиксации, перебазировка, имплантация."
+  breadcrumbTitle="Протез плохо держится"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-01-15"
+  dateModified="2026-05-16"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <article>
+      <header class="article-header">
+        <h1>Протез плохо держится</h1>
+        <time>15 января 2026</time>
+      </header>
+
+      <p class="lead">Съёмный протез со временем начинает хуже держаться. Это естественный процесс — кость под протезом атрофируется, и посадка меняется.</p>
+        <section id="причины-плохой-фиксации"><h2>Причины плохой фиксации</h2>
+        <p><strong>Атрофия кости</strong> — без нагрузки на зубы костная ткань уменьшается. Протез перестаёт совпадать с рельефом десны. За первые 5 лет высота альвеолярного гребня может уменьшиться на 30–50%. Протез нужно перебазировать.</p>
+        <p><strong>Износ кламмеров</strong> — металлические крючки со временем ослабевают и перестают плотно охватывать опорные зубы.</p>
+        <p><strong>Изменение десны</strong> — десна может отекать или, наоборот, сокращаться, меняя рельеф.</p></section>
+        <section id="что-можно-сделать"><h2>Что можно сделать</h2>
+        <p><strong>Фиксирующий крем</strong> — Corega, Protefix, FittyDent. Временное решение на 4–8 часов. Подходит для повседневного использования.</p>
+        <p><strong>Перебазировка протеза</strong> — стоматолог добавляет слой пластмассы на внутреннюю поверхность, восстанавливая точность посадки.</p>
+        <p><strong>Замена кламмеров</strong> — если конструкция позволяет, старые крючки заменяются новыми.</p>
+        <p><strong>Имплантация с протезом на аттачменах</strong> — радикальное решение: 2–4 имплантата обеспечивают надёжную фиксацию.</p></section>
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .article-header { margin-bottom: var(--space-xl); }
+  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); }
+  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
+  h2:first-of-type { margin-top: 0; }
+  strong { color: var(--color-text); }
+</style>
