@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'mrt-s-koronkami';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context":"https://schema.org","@type":"Article","headline":"Можно ли делать МРТ с коронками на зубах","description":"Зубные коронки и МРТ: какие коронки безопасны, какие дают артефакты. Металлокерамика, цирконий, E-max — совместимость с магнитно-резонансной томографией.","author":{"@type":"Person","name":"Никитина Марина Георгиевна","medicalSpecialty":"Prosthodontics"},"datePublished":"2026-06-09","dateModified":"2026-06-09","mainEntityOfPage":{"@type":"WebPage","@id":pageUrl},"image":"https://ortopednn.ru/og-image.svg","publisher":{"@type":"Organization","name":"ОртопедНН"}};
+---
+
+<BaseLayout 
+  title="Можно ли делать МРТ с коронками на зубах | Никитина М.Г."
+  description="Зубные коронки и МРТ: какие коронки безопасны, какие дают артефакты. Металлокерамика, цирконий, E-max — совместимость с магнитно-резонансной томографией."
+  breadcrumbTitle="Можно ли делать МРТ с коронками на зубах"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-09"
+  dateModified="2026-06-09"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+
+<h1>Можно ли делать МРТ с коронками на зубах</h1>
+<div class="meta">9 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Да, в большинстве случаев МРТ с коронками безопасно. Но тип материала коронки определяет, будет ли артефакт на снимке. Цирконий и керамика — без проблем. Металлокерамика и цельный металл — могут исказить изображение в области челюсти.</p>
+
+<h2>Как коронки ведут себя в магнитном поле</h2>
+
+<p>МРТ работает через мощное магнитное поле (1.5–3 Тесла) и радиоволны. Металлические предметы внутри тела могут вести себя по-разному: намагничиваться, нагреваться или создавать помехи на снимке. Стоматологические коронки делятся на три группы по реакции на магнитное поле.</p>
+
+<p><strong>Безопасные (диамагнетики и парамагнетики):</strong> цирконий (ZrO₂), E-max (литий-дисиликат керамики), чистая керамика, титан. Эти материалы не взаимодействуют с магнитным полем МРТ. Снимок не искажается, пациент ничего не чувствует.</p>
+
+<p><strong>Условно безопасные:</strong> металлокерамика с подструктурой из кобальт-хрома или никель-хрома. Металлическая основа может создавать небольшие артефакты на снимке челюсти, но не представляет угрозы для здоровья.</p>
+
+<p><strong>Проблемные:</strong> цельнолитые коронки из нержавеющей стали, старые штампованные коронки. Сильные артефакты на снимке, особенно при МРТ головы и шеи.</p>
+
+<h2>Какие коронки дают артефакты</h2>
+
+<p>Артефакт — это искажение на снимке, которое мешает врачу увидеть реальную картину. Коронка из металлокерамики с кобальт-хромовой основой может создавать «тень» на снимке мягких тканей вокруг зуба. Это не опасно, но снижает информативность исследования в области челюсти.</p>
+
+<p>Циркониевые коронки не создают артефактов. Исследования показывают, что артефакты от циркония сравнимы с артефактами от собственных зубов — то есть практически отсутствуют.</p>
+
+<p>E-max коронки (керамические) тоже безопасны. Литий-дисиликат не содержит металла, магнитное поле его не затрагивает.</p>
+
+<h2>Зависит ли от зоны обследования</h2>
+
+<p>Да. Если вам делают МРТ брюшной полости, коленного сустава, позвоночника или таза — коронки во рту вообще не имеют значения. Магнитное поле не «доходит» до челюсти с такой силой, чтобы повлиять на снимок.</p>
+
+<p>Проблемы возможны только при МРТ головного мозга, околоносовых пазух, височно-нижнечелюстного сустава или шеи. В этих случаях металлическая коронка в зоне обследования может исказить часть снимка.</p>
+
+<h2>Что сказать врачу перед МРТ</h2>
+
+<ul>
+<li>Скажите, что у вас есть зубные коронки. Уточните материал, если знаете.</li>
+<li>Если коронка из циркония или керамики — проблем не будет.</li>
+<li>Если металлокерамика или цельный металл — врач оценит, повлияет ли это на снимок в вашем случае.</li>
+<li>При МРТ головного мозга артефакты от металлической коронки могут закрыть часть изображения. Врач может назначить КТ как альтернативу.</li>
+</ul>
+
+<h2>Коронки и КТ (компьютерная томография)</h2>
+
+<p>КТ использует рентгеновские лучи, а не магнитное поле. Коронки из любого материала не мешают КТ. Единственное исключение — КТ с контрастом, где металлические коронки могут давать небольшие помехи в зоне челюсти, но это редкость.</p>
+
+<h2>Частые вопросы</h2>
+
+<details>
+<summary>Можно ли делать МРТ с металлокерамическими коронками?</summary>
+<p>Да. Металлокерамическая коронка содержит металлическую подструктуру (кобальт-хром или никель-хром), но современные сплавы не ферромагнитны. Коронка не сдвинется и не нагреется. Возможны небольшие артефакты на снимке челюсти, но не на снимке мозга или тела.</p>
+</details>
+
+<details>
+<summary>МРТ головного мозга с коронками — опасно ли?</summary>
+<p>Не опасно. Коронка не является противопоказанием к МРТ головного мозга. Но если коронка из металла и находится в зоне обследования, снимок может быть частично искажён. Врач решит, достаточна ли информативность снимка или нужна альтернатива.</p>
+</details>
+
+<details>
+<summary>Что лучше — МРТ или КТ при наличии коронок?</summary>
+<p>Для обследования тела, суставов, позвоночника — без разницы, коронки не мешают ни МРТ, ни КТ. Для обследования головы при наличии металлических коронок КТ может дать более чёткую картину, так как не использует магнитное поле.</p>
+</details>
+
+<details>
+<summary>Нужно ли снимать коронку перед МРТ?</summary>
+<p>Нет. Коронку снимают только по медицинским показаниям (воспаление, разрушение зуба), а не для МРТ. Если коронка мешает снимку, врач просто зафиксирует это в заключении и при необходимости назначит КТ.</p>
+</details>
+
+    </article>
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+
+    {relatedArticles.length > 0 && (
+      <RelatedArticles articles={relatedArticles} />
+    )}
+    <RelatedServices services={getRelatedServices(slug, catId)} />
+  </main>
+</BaseLayout>
+
+<style>
+  .back { display: inline-block; margin-bottom: var(--space-md); color: var(--color-primary); text-decoration: none; font-size: var(--text-sm); }
+  .back:hover { text-decoration: underline; }
+  .breadcrumbs { margin-bottom: var(--space-xl); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs .sep { margin: 0 var(--space-xs); }
+  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
+  .meta { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-xl); }
+  .lead { font-size: var(--text-lg); color: var(--color-text); line-height: 1.7; margin-bottom: var(--space-xl); }
+  h2 { font-size: var(--text-2xl); margin: var(--space-2xl) 0 var(--space-md); color: var(--color-primary); }
+  p { line-height: 1.8; margin-bottom: var(--space-md); color: var(--color-text-muted); }
+  ul { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
+  li { line-height: 1.7; margin-bottom: var(--space-xs); color: var(--color-text-muted); }
+  strong { color: var(--color-text); }
+  details { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); margin-bottom: var(--space-sm); overflow: hidden; }
+  summary { padding: var(--space-md); cursor: pointer; font-weight: 600; color: var(--color-text); }
+  details p { padding: 0 var(--space-md) var(--space-md); margin: 0; }
+</style>
