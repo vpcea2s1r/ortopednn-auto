@@ -29,6 +29,7 @@
 | [Humanizer Integration](project/humanizer-integration.md) | Удаление AI-паттернов из статей на русском | ✅ Готово |
 | [Yandex Indexing](project/yandex-indexing.md) | Проблемы индексации в Яндексе | ✏️ Черновик |
 | [Service Content Depth](project/service-content-depth.md) | Стратегия наполнения страниц услуг | ✅ Готово |
+| [Low-Freq Keywords](project/low-freq-keywords.md) | Исследование низкочастотных запросов | ✅ Готово |
 
 ### Raw источники
 
