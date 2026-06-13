@@ -1,1 +1,48 @@
-aW1wb3J0IHsgYXJ0aWNsZXMgfSBmcm9tICcuLi8uLi9kYXRhL2Jsb2ctYXJ0aWNsZXMnOwppbXBvcnQgeyBnZXREemVuSXRlbURhdGEgfSBmcm9tICcuLi91dGlscy9yc3MtdXRpbHMnOwoKZXhwb3J0IGNvbnN0IEdFVCA9IGFzeW5jICgpID0+IHsKICBjb25zdCBzb3J0ZWRBcnRpY2xlcyA9IFsuLi5hcnRpY2xlc10uc29ydCgKICAgIChhLCBiKSA9PiBuZXcgRGF0ZShiLmRhdGUpLmdldFRpbWUoKSAtIG5ldyBEYXRlKGEuZGF0ZSkuZ2V0VGltZSgpCiAgKTsKCiAgY29uc3QgaXRlbXMgPSBzb3J0ZWRBcnRpY2xlcy5tYXAoKGFydGljbGUpID0+IHsKICAgIGNvbnN0IGR6ZW4gPSBnZXREemVuSXRlbURhdGEoYXJ0aWNsZS5zbHVnLCBhcnRpY2xlLnRpdGxlKTsKICAgIGNvbnN0IHB1YkRhdGUgPSBuZXcgRGF0ZShhcnRpY2xlLmRhdGUpLnRvVVRDU3RyaW5nKCk7CiAgICBjb25zdCBhcnRpY2xlVXJsID0gYGh0dHBzOi8vb3J0b3BlZG5uLnJ1L2Jsb2cvJHthcnRpY2xlLnNsdWd9L2A7CgogICAgcmV0dXJuIGA8aXRlbT4KICA8dGl0bGU+PCFbQ0RBVEFbJHthcnRpY2xlLnRpdGxlfV1dPjwvdGl0bGU+CiAgPGxpbms+JHthcnRpY2xlVXJsfTwvbGluaz4KICA8cGRhbGluaz4ke2FydGljbGVVcmx9PC9wZGFsaW5rPgogIDxndWlkPiR7YXJ0aWNsZS5zbHVnfTwvZ3VpZD4KICA8cHViRGF0ZT4ke3B1YkRhdGV9PC9wdWJEYXRlPgogIDxkZXNjcmlwdGlvbj48IVtDREFUQVske2FydGljbGUuZGVzY31dXT48L2Rlc2NyaXB0aW9uPgogIDxlbmNsb3N1cmUgdXJsPSIke2R6ZW4uZW5jbG9zdXJlLnVybH0iIHR5cGU9IiR7ZHplbi5lbmNsb3N1cmUudHlwZX0iIGxlbmd0aD0iJHtkemVuLmVuY2xvc3VyZS5sZW5ndGh9Ii8+CiAgPGNhdGVnb3J5Pm5hdGl2ZS1kcmFmdDwvY2F0ZWdvcnk+CiAgPGNhdGVnb3J5PmZvcm1hdC1hcnRpY2xlPC9jYXRlZ29yeT4KICA8bWVkaWE6cmF0aW5nIHNjaGVtZT0idXJuOnNpbXBsZSI+bm9uYWR1bHQ8L21lZGlhOnJhdGluZz4KICA8Y29udGVudDplbmNvZGVkPjwhW0NEQVRBWyR7ZHplbi5jb250ZW50fV1dPjwvY29udGVudDplbmNvZGVkPgo8L2l0ZW0+YDsKICB9KS5qb2luKCdcbicpOwoKICBjb25zdCByc3MgPSBgPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJzcyB2ZXJzaW9uPSIyLjAiCiAgeG1sbnM6Y29udGVudD0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAvbW9kdWxlcy9jb250ZW50LyIKICB4bWxuczptZWRpYT0iaHR0cDovL3NlYXJjaC55YWhvby5jb20vbXJzcy8iPgo8Y2hhbm5lbD4KICA8dGl0bGU+0JHQu9C+0LMg0YHRgtC+0LzQsNGC0L7Qu9C+0LPQsC3QvtGA0YLQvtC/0LXQtNCwIHwg0J3QuNC60LjRgtC40L3QsCDQnC7Qky4gfCDQndC40LbQvdC40Lkg0J3QvtCy0LPQvtGA0L7QtDwvdGl0bGU+CiAgPGxpbms+aHR0cHM6Ly9vcnRvcGVkbm4ucnUvPC9saW5rPgogIDxsYW5ndWFnZT5ydTwvbGFuZ3VhZ2U+CiAgPGRlc2NyaXB0aW9uPtCf0L7Qu9C10LfQvdGL0LUg0YHRgtCw0YLRjNC4INC+INC/0YDQvtGC0LXQt9C40YDQvtCy0LDQvdC40Lgg0LfRg9Cx0L7Qsiwg0LjQvNC/0LvQsNC90YLQsNGG0LjQuCwg0LrQvtGA0L7QvdC60LDRhSwg0YHRitGR0LzQvdGL0YUg0Lgg0LHRjtCz0LXQu9GM0L3Ri9GFINC/0YDQvtGC0LXQt9Cw0YUuPC9kZXNjcmlwdGlvbj4KJHtpdGVtc30KPC9jaGFubmVsPgo8L3Jzcz5gOwoKICByZXR1cm4gbmV3IFJlc3BvbnNlKHJzcywgewogICAgaGVhZGVyczogewogICAgICAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL3Jzcyt4bWw7IGNoYXJzZXQ9dXRmLTgnLAogICAgICAnQ2FjaGUtQ29udHJvbCc6ICdwdWJsaWMsIG1heC1hZ2U9MzYwMCcsCiAgICB9LAogIH0pOwp9Owo=
+import { articles } from '../../data/blog-articles';
+import { getDzenItemData } from '../utils/rss-utils';
+
+export const GET = async () => {
+  const sortedArticles = [...articles].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const items = sortedArticles.map((article) => {
+    const dzen = getDzenItemData(article.slug, article.title);
+    const pubDate = new Date(article.date).toUTCString();
+    const articleUrl = `https://ortopednn.ru/blog/${article.slug}/`;
+
+    return `<item>
+  <title><![CDATA[${article.title}]]></title>
+  <link>${articleUrl}</link>
+  <pdalink>${articleUrl}</pdalink>
+  <guid>${article.slug}</guid>
+  <pubDate>${pubDate}</pubDate>
+  <description><![CDATA[${article.desc}]]></description>
+  <enclosure url="${dzen.enclosure.url}" type="${dzen.enclosure.type}" length="${dzen.enclosure.length}"/>
+  <category>native-draft</category>
+  <category>format-article</category>
+  <media:rating scheme="urn:simple">nonadult</media:rating>
+  <content:encoded><![CDATA[${dzen.content}]]></content:encoded>
+</item>`;
+  }).join('\n');
+
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+  <title>Блог стоматолога-ортопеда | Никитина М.Г. | Нижний Новгород</title>
+  <link>https://ortopednn.ru/</link>
+  <language>ru</language>
+  <description>Полезные статьи о протезировании зубов, имплантации, коронках, съёмных и бюгельных протезах.</description>
+${items}
+</channel>
+</rss>`;
+
+  return new Response(rss, {
+    headers: {
+      'Content-Type': 'application/rss+xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+    },
+  });
+};
