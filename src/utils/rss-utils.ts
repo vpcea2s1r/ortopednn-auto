@@ -1,1 +1,117 @@
-aW1wb3J0IGZzIGZyb20gJ2ZzJzsKaW1wb3J0IHBhdGggZnJvbSAncGF0aCc7Cgpjb25zdCBBUlRJQ0xFU19ESVIgPSBwYXRoLnJlc29sdmUocHJvY2Vzcy5jd2QoKSwgJ3NyYy9wYWdlcy9ibG9nJyk7CgpleHBvcnQgZnVuY3Rpb24gZ2V0QXJ0aWNsZUJvZHkoc2x1Zzogc3RyaW5nKTogc3RyaW5nIHwgbnVsbCB7CiAgY29uc3QgZmlsZVBhdGggPSBwYXRoLmpvaW4oQVJUSUNMRVNfRElSLCBgJHtzbHVnfS5hc3Ryb2ApOwogIGlmICghZnMuZXhpc3RzU3luYyhmaWxlUGF0aCkpIHJldHVybiBudWxsOwoKICBjb25zdCBjb250ZW50ID0gZnMucmVhZEZpbGVTeW5jKGZpbGVQYXRoLCAndXRmLTgnKTsKCiAgY29uc3QgYXJ0aWNsZU1hdGNoID0gY29udGVudC5tYXRjaCgvPGFydGljbGU+KFtcc1xTXSo/KTxcL2FydGljbGU+Lyk7CiAgaWYgKCFhcnRpY2xlTWF0Y2gpIHJldHVybiBudWxsOwoKICBsZXQgYm9keSA9IGFydGljbGVNYXRjaFsxXTsKCiAgLy8gUmVtb3ZlIEFzdHJvIGNvbXBvbmVudCB0YWdzIChsaW5lcyBzdGFydGluZyB3aXRoIDwgb3IgY29udGFpbmluZyBBc3RybyBjb21wb25lbnRzKQogIGJvZHkgPSBib2R5LnJlcGxhY2UoLzxSZWxhdGVkQXJ0aWNsZXNbXHNcU10qP1wvPi9nLCAnJyk7CiAgYm9keSA9IGJvZHkucmVwbGFjZSgvPFJlbGF0ZWRTZXJ2aWNlc1tcc1xTXSo/XC8+L2csICcnKTsKICBib2R5ID0gYm9keS5yZXBsYWNlKC88ZGl2IGNsYXNzPSJjdGEiW1xzXFNdKj88XC9kaXY+L2csICcnKTsKCiAgLy8gUmVtb3ZlIDwhLS0gLS0+IEhUTUwgY29tbWVudHMKICBib2R5ID0gYm9keS5yZXBsYWNlKC88IS0tW1xzXFNdKj8tLT4vZywgJycpOwoKICAvLyBUcmltIHdoaXRlc3BhY2UKICBib2R5ID0gYm9keS50cmltKCk7CgogIHJldHVybiBib2R5IHx8IG51bGw7Cn0KCi8vIER6ZW4tY29tcGF0aWJsZSBIVE1MIHNhbml0aXplcgovLyBBbGxvd2VkIHRhZ3M6IHAsIGEsIGIsIGksIHUsIHMsIGgxLWg0LCBibG9ja3F1b3RlLCB1bC9vbCBsaSwgZmlndXJlLCBpbWcsIHN0cm9uZywgZW0KZnVuY3Rpb24gc2FuaXRpemVGb3JEemVuKGh0bWw6IHN0cmluZyk6IHN0cmluZyB7CiAgbGV0IHJlc3VsdCA9IGh0bWw7CgogIC8vIFJlbW92ZSB1bnN1cHBvcnRlZCBlbGVtZW50czogZGV0YWlscywgc3VtbWFyeSwgdGFibGUsIGRpdi50YWJsZS13cmFwLCBkaXYudHJhbnNsYXRpb24sIGRpdi5tZXRhLCBzcGFuCiAgcmVzdWx0ID0gcmVzdWx0LnJlcGxhY2UoLzxkZXRhaWxzW1xzXFNdKj88XC9kZXRhaWxzPi9naSwgJycpOwogIHJlc3VsdCA9IHJlc3VsdC5yZXBsYWNlKC88c3VtbWFyeVtcc1xTXSo/PFwvc3VtbWFyeT4vZ2ksICcnKTsKCiAgLy8gQ29udmVydCB0YWJsZXMgdG8gbGlzdHMKICByZXN1bHQgPSByZXN1bHQucmVwbGFjZSgvPGRpdiBjbGFzcz0idGFibGUtd3JhcCI+XHMqPHRhYmxlPihbXHNcU10qPyk8XC90YWJsZT5ccyo8XC9kaXY+L2dpLCAoXywgdGFibGVDb250ZW50KSA9PiB7CiAgICBjb25zdCByb3dzOiBzdHJpbmdbXSA9IFtdOwogICAgY29uc3Qgcm93UmVnZXggPSAvPHRyPihbXHNcU10qPyk8XC90cj4vZ2k7CiAgICBsZXQgcm93TWF0Y2g7CiAgICB3aGlsZSAoKHJvd01hdGNoID0gcm93UmVnZXguZXhlYyh0YWJsZUNvbnRlbnQpKSAhPT0gbnVsbCkgewogICAgICBjb25zdCBjZWxsczogc3RyaW5nW10gPSBbXTsKICAgICAgY29uc3QgY2VsbFJlZ2V4ID0gLzx0W2RoXVtePl0qPihbXHNcU10qPyk8XC90W2RoXT4vZ2k7CiAgICAgIGxldCBjZWxsTWF0Y2g7CiAgICAgIHdoaWxlICgoY2VsbE1hdGNoID0gY2VsbFJlZ2V4LmV4ZWMocm93TWF0Y2hbMV0pKSAhPT0gbnVsbCkgewogICAgICAgIGNlbGxzLnB1c2goY2VsbE1hdGNoWzFdLnJlcGxhY2UoLzxbXj5dKz4vZywgJycpLnRyaW0oKSk7CiAgICAgIH0KICAgICAgaWYgKGNlbGxzLmxlbmd0aCA+IDApIHJvd3MucHVzaChjZWxscy5qb2luKCcg4oCUICcpKTsKICAgIH0KICAgIHJldHVybiAnPHVsPicgKyByb3dzLm1hcChyID0+IGA8bGk+JHtyfTwvbGk+YCkuam9pbignJykgKyAnPC91bD4nOwogIH0pOwoKICAvLyBSZW1vdmUgc3RhbmRhbG9uZSB0YWJsZXMKICByZXN1bHQgPSByZXN1bHQucmVwbGFjZSgvPHRhYmxlPihbXHNcU10qPyk8XC90YWJsZT4vZ2ksIChfLCB0YWJsZUNvbnRlbnQpID0+IHsKICAgIGNvbnN0IHJvd3M6IHN0cmluZ1tdID0gW107CiAgICBjb25zdCByb3dSZWdleCA9IC88dHI+KFtcc1xTXSo/KTxcL3RyPi9naTsKICAgIGxldCByb3dNYXRjaDsKICAgIHdoaWxlICgocm93TWF0Y2ggPSByb3dSZWdleC5leGVjKHRhYmxlQ29udGVudCkpICE9PSBudWxsKSB7CiAgICAgIGNvbnN0IGNlbGxzOiBzdHJpbmdbXSA9IFtdOwogICAgICBjb25zdCBjZWxsUmVnZXggPSAvPHRbZGhdW14+XSo+KFtcc1xTXSo/KTxcL3RbZGhdPi9naTsKICAgICAgbGV0IGNlbGxNYXRjaDsKICAgICAgd2hpbGUgKChjZWxsTWF0Y2ggPSBjZWxsUmVnZXguZXhlYyhyb3dNYXRjaFsxXSkpICE9PSBudWxsKSB7CiAgICAgICAgY2VsbHMucHVzaChjZWxsTWF0Y2hbMV0ucmVwbGFjZSgvPFtePl0rPi9nLCAnJykudHJpbSgpKTsKICAgICAgfQogICAgICBpZiAoY2VsbHMubGVuZ3RoID4gMCkgcm93cy5wdXNoKGNlbGxzLmpvaW4oJyDigJQgJykpOwogICAgfQogICAgcmV0dXJuICc8dWw+JyArIHJvd3MubWFwKHIgPT4gYDxsaT4ke3J9PC9saT5gKS5qb2luKCcnKSArICc8L3VsPic7CiAgfSk7CgogIC8vIENvbnZlcnQgZGl2LnRyYW5zbGF0aW9uIHRvIGJsb2NrcXVvdGUKICByZXN1bHQgPSByZXN1bHQucmVwbGFjZSgvPGRpdiBjbGFzcz0idHJhbnNsYXRpb24iPihbXHNcU10qPyk8XC9kaXY+L2dpLCAnPGJsb2NrcXVvdGU+JDE8L2Jsb2NrcXVvdGU+Jyk7CgogIC8vIFJlbW92ZSBkaXYubWV0YQogIHJlc3VsdCA9IHJlc3VsdC5yZXBsYWNlKC88ZGl2IGNsYXNzPSJtZXRhIj5bXHNcU10qPzxcL2Rpdj4vZ2ksICcnKTsKCiAgLy8gUmVtb3ZlIGFueSByZW1haW5pbmcgZGl2IHRhZ3MgKGJ1dCBrZWVwIGNvbnRlbnQpCiAgcmVzdWx0ID0gcmVzdWx0LnJlcGxhY2UoLzxcLz9kaXZbXj5dKj4vZ2ksICcnKTsKCiAgLy8gUmVtb3ZlIHNwYW4gdGFncyAoa2VlcCBjb250ZW50KQogIHJlc3VsdCA9IHJlc3VsdC5yZXBsYWNlKC88XC8/c3BhbltePl0qPi9naSwgJycpOwoKICAvLyBSZW1vdmUgPHN0cm9uZz4gaW5zaWRlIDxsaT4gKGtlZXAgY29udGVudCwgc2ltcGxpZnkpCiAgLy8gQWN0dWFsbHkga2VlcCBzdHJvbmcvZW0g4oCUIHRoZXkncmUgYWxsb3dlZAoKICAvLyBSZW1vdmUgZW1wdHkgcGFyYWdyYXBocwogIHJlc3VsdCA9IHJlc3VsdC5yZXBsYWNlKC88cD5ccyo8XC9wPi9naSwgJycpOwoKICAvLyBSZW1vdmUgaDEgdGFncyAoRHplbiB1c2VzIHRpdGxlIGZyb20gPHRpdGxlPiwgaDEgaXMgcmVkdW5kYW50KQogIHJlc3VsdCA9IHJlc3VsdC5yZXBsYWNlKC88XC8/aDFbXj5dKj4vZ2ksICcnKTsKCiAgcmV0dXJuIHJlc3VsdC50cmltKCk7Cn0KCmV4cG9ydCBmdW5jdGlvbiBnZXREemVuSXRlbURhdGEoc2x1Zzogc3RyaW5nLCB0aXRsZTogc3RyaW5nKSB7CiAgY29uc3QgYm9keSA9IGdldEFydGljbGVCb2R5KHNsdWcpOwogIGNvbnN0IGltYWdlVXJsID0gJ2h0dHBzOi8vb3J0b3BlZG5uLnJ1L29nLWltYWdlLWR6ZW4ucG5nJzsKICBjb25zdCBhcnRpY2xlVXJsID0gYGh0dHBzOi8vb3J0b3BlZG5uLnJ1L2Jsb2cvJHtzbHVnfS9gOwoKICBjb25zdCBzYW5pdGl6ZWRCb2R5ID0gYm9keSA/IHNhbml0aXplRm9yRHplbihib2R5KSA6ICcnOwoKICByZXR1cm4gewogICAgdGl0bGUsCiAgICBndWlkOiBzbHVnLAogICAgZW5jbG9zdXJlOiB7IHVybDogaW1hZ2VVcmwsIHR5cGU6ICdpbWFnZS9wbmcnLCBsZW5ndGg6IDU0NjQ3IH0sCiAgICBjb250ZW50OiBzYW5pdGl6ZWRCb2R5CiAgICAgID8gYDxwPiR7dGl0bGV9PC9wPiR7c2FuaXRpemVkQm9keX08cD48YSBocmVmPSIke2FydGljbGVVcmx9Ij7Qp9C40YLQsNGC0Ywg0L3QsCDRgdCw0LnRgtC1IG9ydG9wZWRubi5ydTwvYT48L3A+YAogICAgICA6IGA8cD4ke3RpdGxlfTwvcD48cD48YSBocmVmPSIke2FydGljbGVVcmx9Ij7Qp9C40YLQsNGC0Ywg0L3QsCDRgdCw0LnRgtC1IG9ydG9wZWRubi5ydTwvYT48L3A+YCwKICAgIGN1c3RvbURhdGE6IGAKICAgICAgPGNhdGVnb3J5Pm5hdGl2ZS1kcmFmdDwvY2F0ZWdvcnk+CiAgICAgIDxjYXRlZ29yeT5mb3JtYXQtYXJ0aWNsZTwvY2F0ZWdvcnk+CiAgICBgLnRyaW0oKSwKICB9Owp9Cg==
+import fs from 'fs';
+import path from 'path';
+
+const ARTICLES_DIR = path.resolve(process.cwd(), 'src/pages/blog');
+
+export function getArticleBody(slug: string): string | null {
+  const filePath = path.join(ARTICLES_DIR, `${slug}.astro`);
+  if (!fs.existsSync(filePath)) return null;
+
+  const content = fs.readFileSync(filePath, 'utf-8');
+
+  const articleMatch = content.match(/<article>([\s\S]*?)<\/article>/);
+  if (!articleMatch) return null;
+
+  let body = articleMatch[1];
+
+  // Remove Astro component tags (lines starting with < or containing Astro components)
+  body = body.replace(/<RelatedArticles[\s\S]*?\/>/g, '');
+  body = body.replace(/<RelatedServices[\s\S]*?\/>/g, '');
+  body = body.replace(/<div class="cta"[\s\S]*?<\/div>/g, '');
+
+  // Remove <!-- --> HTML comments
+  body = body.replace(/<!--[\s\S]*?-->/g, '');
+
+  // Trim whitespace
+  body = body.trim();
+
+  return body || null;
+}
+
+// Dzen-compatible HTML sanitizer
+// Allowed tags: p, a, b, i, u, s, h1-h4, blockquote, ul/ol li, figure, img, strong, em
+function sanitizeForDzen(html: string): string {
+  let result = html;
+
+  // Remove unsupported elements: details, summary, table, div.table-wrap, div.translation, div.meta, span
+  result = result.replace(/<details[\s\S]*?<\/details>/gi, '');
+  result = result.replace(/<summary[\s\S]*?<\/summary>/gi, '');
+
+  // Convert tables to lists
+  result = result.replace(/<div class="table-wrap">\s*<table>([\s\S]*?)<\/table>\s*<\/div>/gi, (_, tableContent) => {
+    const rows: string[] = [];
+    const rowRegex = /<tr>([\s\S]*?)<\/tr>/gi;
+    let rowMatch;
+    while ((rowMatch = rowRegex.exec(tableContent)) !== null) {
+      const cells: string[] = [];
+      const cellRegex = /<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi;
+      let cellMatch;
+      while ((cellMatch = cellRegex.exec(rowMatch[1])) !== null) {
+        cells.push(cellMatch[1].replace(/<[^>]+>/g, '').trim());
+      }
+      if (cells.length > 0) rows.push(cells.join(' — '));
+    }
+    return '<ul>' + rows.map(r => `<li>${r}</li>`).join('') + '</ul>';
+  });
+
+  // Remove standalone tables
+  result = result.replace(/<table>([\s\S]*?)<\/table>/gi, (_, tableContent) => {
+    const rows: string[] = [];
+    const rowRegex = /<tr>([\s\S]*?)<\/tr>/gi;
+    let rowMatch;
+    while ((rowMatch = rowRegex.exec(tableContent)) !== null) {
+      const cells: string[] = [];
+      const cellRegex = /<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi;
+      let cellMatch;
+      while ((cellMatch = cellRegex.exec(rowMatch[1])) !== null) {
+        cells.push(cellMatch[1].replace(/<[^>]+>/g, '').trim());
+      }
+      if (cells.length > 0) rows.push(cells.join(' — '));
+    }
+    return '<ul>' + rows.map(r => `<li>${r}</li>`).join('') + '</ul>';
+  });
+
+  // Convert div.translation to blockquote
+  result = result.replace(/<div class="translation">([\s\S]*?)<\/div>/gi, '<blockquote>$1</blockquote>');
+
+  // Remove div.meta
+  result = result.replace(/<div class="meta">[\s\S]*?<\/div>/gi, '');
+
+  // Remove any remaining div tags (but keep content)
+  result = result.replace(/<\/?div[^>]*>/gi, '');
+
+  // Remove span tags (keep content)
+  result = result.replace(/<\/?span[^>]*>/gi, '');
+
+  // Remove <strong> inside <li> (keep content, simplify)
+  // Actually keep strong/em — they're allowed
+
+  // Remove empty paragraphs
+  result = result.replace(/<p>\s*<\/p>/gi, '');
+
+  // Remove h1 tags (Dzen uses title from <title>, h1 is redundant)
+  result = result.replace(/<\/?h1[^>]*>/gi, '');
+
+  return result.trim();
+}
+
+export function getDzenItemData(slug: string, title: string) {
+  const body = getArticleBody(slug);
+  const imageUrl = 'https://ortopednn.ru/og-image-dzen.png';
+  const articleUrl = `https://ortopednn.ru/blog/${slug}/`;
+
+  const sanitizedBody = body ? sanitizeForDzen(body) : '';
+
+  return {
+    title,
+    guid: slug,
+    enclosure: { url: imageUrl, type: 'image/png', length: 54647 },
+    content: sanitizedBody
+      ? `<p>${title}</p>${sanitizedBody}<p><a href="${articleUrl}">Читать на сайте ortopednn.ru</a></p>`
+      : `<p>${title}</p><p><a href="${articleUrl}">Читать на сайте ortopednn.ru</a></p>`,
+    customData: `
+      <category>native-draft</category>
+      <category>format-article</category>
+    `.trim(),
+  };
+}
