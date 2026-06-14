@@ -1,6 +1,7 @@
 ﻿import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import fs from 'fs'
+import Database from 'better-sqlite3'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', '..', 'data')
@@ -10,7 +11,6 @@ let db
 export function getDb() {
   if (db) return db
   fs.mkdirSync(join(DATA_DIR, 'admin'), { recursive: true })
-  const Database = require('better-sqlite3')
   db = new Database(join(DATA_DIR, 'admin', 'content_factory.db'))
   db.pragma('journal_mode = WAL')
   return db
