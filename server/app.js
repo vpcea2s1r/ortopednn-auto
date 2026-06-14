@@ -21,10 +21,20 @@ function getDb() {
     db.pragma('journal_mode = WAL');
     db.exec(`CREATE TABLE IF NOT EXISTS stat_snapshots (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      date TEXT UNIQUE, source TEXT,
+      date TEXT, source TEXT, UNIQUE(date, source),
       total_indexed INTEGER, total_errors INTEGER,
       clicks INTEGER, impressions INTEGER, avg_position REAL,
       raw TEXT
+    )`);
+    db.exec(`CREATE TABLE IF NOT EXISTS keyword_positions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT, keyword TEXT, UNIQUE(date, keyword),
+      clicks INTEGER, impressions INTEGER, position REAL, ctr REAL
+    )`);
+    db.exec(`CREATE TABLE IF NOT EXISTS cwv_snapshots (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT, url TEXT, UNIQUE(date, url),
+      lcp REAL, cls REAL, inp REAL, fcp REAL, ttfb REAL, score REAL, raw TEXT
     )`);
     return db;
   } catch {
@@ -170,8 +180,11 @@ app.get('/api/drafts', (req, res) => {
 });
 
 app.get('/api/stats', (req, res) => {
-  const rows = getDb().prepare('SELECT * FROM stat_snapshots ORDER BY date DESC LIMIT 60').all();
-  res.json(rows);
+  const db2 = getDb();
+  const snapshots = db2.prepare('SELECT * FROM stat_snapshots ORDER BY date DESC LIMIT 60').all();
+  const keywords = db2.prepare('SELECT * FROM keyword_positions ORDER BY date DESC, position ASC LIMIT 100').all();
+  const cwv = db2.prepare('SELECT * FROM cwv_snapshots ORDER BY date DESC LIMIT 10').all();
+  res.json({ snapshots, keywords, cwv });
 });
 
 app.post('/api/horizon/run', async (req, res) => {

@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { pickAndRun, runPipelineManual, addTopic, listTopics, listState, ghPut, ghFetch, checkAiTells } from './agent-pipeline.js';
+import { pickAndRun, runPipelineManual, addTopic, listTopics, listState, ghPut, ghFetch, checkAiTells, humanize } from './agent-pipeline.js';
 
 const __dirname = fileURLToPath(import.meta.url);
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
@@ -13,6 +13,15 @@ const API = `https://api.telegram.org/bot${TOKEN}`;
 const GH_TOKEN = process.env.GH_TOKEN || '';
 const GH_OWNER = 'vpcea2s1r';
 const GH_REPO = 'stomatolog';
+const CHANNEL_ID = process.env.TELEGRAM_CHANNEL || '@ortopednn';
+const STATS_DB = join(DATA_DIR, 'stats', 'stats.db');
+
+function getStatsDb() {
+  try {
+    const Database = require('better-sqlite3');
+    return new Database(STATS_DB, { readonly: true });
+  } catch { return null; }
+}
 
 const TRANSLIT = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
 function makeSlug(text) {
@@ -215,30 +224,30 @@ th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
 
 async function callAI(prompt) {
   const system = 'Ответь только JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
+  const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
+    method: 'POST', signal: AbortSignal.timeout(300000),
+    headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
+    body: JSON.stringify({
+      messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
+      model: 'deepseek-v4-flash-free'
+    })
+  });
+  if (!resp.ok) console.error('AI API non-200:', resp.status);
+  const text = await Promise.race([
+    resp.text(),
+    new Promise((_, reject) => setTimeout(() => reject(new Error('body timeout')), 60000))
+  ]);
+  if (!text.trim()) throw new Error('Empty AI response');
   try {
-    const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
-      method: 'POST', signal: AbortSignal.timeout(300000),
-      headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
-      body: JSON.stringify({
-        messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-        model: 'deepseek-v4-flash-free'
-      })
-    });
-    const text = await Promise.race([
-      resp.text(),
-      new Promise((_, reject) => setTimeout(() => reject(new Error('body timeout')), 60000))
-    ]);
-    if (!text.trim()) throw new Error('Empty response');
     if (text.trim().startsWith('{')) {
       const data = JSON.parse(text);
       return data.choices?.[0]?.message?.content || text;
     }
-    const ct = resp.headers.get('content-type') || '';
-    if (!ct.includes('json')) {
-      console.error('AI non-JSON response:', text.substring(0, 300));
-    }
-    return text;
-  } catch (e) { throw e; }
+  } catch (e) {
+    console.error('AI JSON parse error:', e.message, 'response starts:', text.substring(0, 100));
+    throw e;
+  }
+  return text;
 }
 
 async function extractText(url) {
@@ -276,22 +285,28 @@ async function checkPerf() {
 }
 
 async function searchPubMed(query) {
-  const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=5&retmode=json`;
+  const keywords = query.split(/[\s,;:?!()]+/).filter(w => w.length > 2).slice(0, 6).join(' ');
+  const safeQuery = encodeURIComponent(keywords || query.substring(0, 100));
+  const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${safeQuery}&retmax=5&retmode=json`;
   const searchResp = await fetch(searchUrl, { signal: AbortSignal.timeout(15000) });
+  if (!searchResp.ok) { console.error('PubMed search non-200:', searchResp.status, query.substring(0, 60)); return []; }
   const searchData = await searchResp.json();
   const ids = searchData?.esearchresult?.idlist || [];
   if (!ids.length) return [];
   const summaryUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(',')}&retmode=json`;
   const sumResp = await fetch(summaryUrl, { signal: AbortSignal.timeout(15000) });
-  const sumData = await sumResp.json();
+  if (!sumResp.ok) { console.error('PubMed summary non-200:', sumResp.status); return []; }
+  let sumData;
+  try { sumData = await sumResp.json(); } catch (e) { console.error('PubMed summary parse error:', e.message); return []; }
   return ids.map(id => {
     const r = sumData?.result?.[id] || {};
     return { id, title: r.title || '', source: r.source || '', pubdate: r.pubdate || '', url: `https://pubmed.ncbi.nlm.nih.gov/${id}/` };
   });
 }
 
-async function rewrite(url) {
-  const text = await extractText(url);
+async function rewrite(url, sourceText) {
+  const text = sourceText || await extractText(url);
+  console.log('Rewrite started, source length:', text.length, 'url:', url ? url.substring(0,80) : 'raw');
   const buildPrompt = (extra) => `Ты стоматолог-ортопед. Перепиши исходный текст для блога на русском. Пиши языком врача — просто, без воды, без штампов.
 
 ТРЕБОВАНИЯ:
@@ -337,6 +352,8 @@ UUID: ${Date.now()}
     const tells = checkAiTells(json.body);
     if (tells.length > 0 && attempt < maxAttempts) continue;
 
+    json.body = humanize(json.body);
+
     const existingSlugs = loadExistingSlugs();
     const slug = makeSlug(json.title);
     if (existingSlugs.has(slug) || isDuplicateTitle(json.title)) return { duplicate: true, title: json.title };
@@ -345,7 +362,17 @@ UUID: ${Date.now()}
     const article = astroTemplate({ slug, title: json.title, description: json.description, author: 'Никитина Марина Георгиевна', date, body: json.body, noindex: true });
     if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
     writeFileSync(join(DRAFTS_DIR, `${slug}.astro`), article, 'utf-8');
-    writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft' }, null, 2), 'utf-8');
+    writeFileSync(join(DRAFTS_DIR, `${slug}.meta.json`), JSON.stringify({ slug, title: json.title, description: json.description, date, status: 'draft', repo: 'ortopednn-auto' }, null, 2), 'utf-8');
+
+    // Push draft JSON for preview system
+    try {
+      const draftBody = extractBodyFromAstro(article);
+      const draftMeta = { slug, title: json.title, date, description: json.description, body: draftBody };
+      const existing = await ghFetch(`data/drafts/${slug}.json`);
+      await ghPut(`data/drafts/${slug}.json`, JSON.stringify(draftMeta, null, 2), `draft: ${slug} [preview]`, existing?.sha);
+    } catch (e) {
+      console.error('Preview draft push error:', e.message);
+    }
 
     const htmlContent = htmlTemplate({ title: json.title, date, body: json.body });
     const enc = Buffer.from(htmlContent, 'utf-8').toString('base64');
@@ -355,7 +382,7 @@ UUID: ${Date.now()}
     if (existing?.sha) req.sha = existing.sha;
     await fetch(ghUrl, { method: 'PUT', headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' }, body: JSON.stringify(req) });
 
-    return { slug, title: json.title, tells: tells.length };
+    return { slug, title: json.title, tells: tells.length, previewUrl: `https://ortopednn.ru/preview/${slug}/` };
   }
   return { error: true, response: lastRaw, tells: lastJson ? checkAiTells(lastJson.body) : [] };
 }
@@ -483,14 +510,51 @@ async function tg(method, body) {
   return await resp.json();
 }
 
+async function postToChannel(title, slug, domain = 'https://ortopednn.ru') {
+  if (!CHANNEL_ID) return;
+  try {
+    await tg('sendMessage', {
+      chat_id: CHANNEL_ID,
+      text: `📄 *${title}*\n\nЧитать на сайте: ${domain}/blog/${slug}/`,
+      parse_mode: 'Markdown',
+      disable_web_page_preview: true
+    });
+  } catch (e) {
+    console.error('Channel post error:', e.message);
+  }
+}
+
 function mainMenu() {
   return {
     inline_keyboard: [
-      [{ text: '📊 Производительность', callback_data: 'menu:perf' }],
+      [{ text: '📊 Статистика', callback_data: 'menu:stats' }, { text: '⚡ Перфоманс', callback_data: 'menu:perf' }],
       [{ text: '📝 Черновики', callback_data: 'menu:drafts' }],
       [{ text: '🔬 PubMed рерайт', callback_data: 'menu:research' }]
     ]
   };
+}
+
+async function fetchGitHubDrafts() {
+  try {
+    const contents = await ghFetch('data/drafts/');
+    if (!contents || !Array.isArray(contents)) return [];
+    const metaFiles = contents.filter(f => f.name.endsWith('.meta.json') && f.type === 'file');
+    if (!metaFiles.length) return [];
+    const drafts = [];
+    for (const file of metaFiles) {
+      try {
+        const data = await ghFetch(`data/drafts/${file.name}`);
+        if (data?.content) {
+          const decoded = Buffer.from(data.content, 'base64').toString('utf-8');
+          const draft = JSON.parse(decoded);
+          if (draft.slug) drafts.push(draft);
+        }
+      } catch {}
+    }
+    return drafts;
+  } catch {
+    return [];
+  }
 }
 
 function draftButtons(slug, repo) {
@@ -519,13 +583,52 @@ async function handleCallback(cb) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📊 Проверяю...', reply_markup: { inline_keyboard: [] } });
       try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
       catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
+    } else if (action === 'stats') {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📊 Собираю статистику...', reply_markup: { inline_keyboard: [] } });
+      try {
+        const sdb = getStatsDb();
+        if (!sdb) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '❌ БД статистики недоступна', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } }); return; }
+        const latest = sdb.prepare('SELECT * FROM stat_snapshots ORDER BY date DESC LIMIT 2').all();
+        const kw = sdb.prepare('SELECT keyword, position, clicks, impressions FROM keyword_positions WHERE date = (SELECT MAX(date) FROM keyword_positions) ORDER BY position ASC LIMIT 10').all();
+        const cwv = sdb.prepare('SELECT url, lcp, cls, inp, score FROM cwv_snapshots WHERE date = (SELECT MAX(date) FROM cwv_snapshots) LIMIT 1').all();
+        const days = sdb.prepare('SELECT COUNT(DISTINCT date) as cnt FROM stat_snapshots').get();
+        sdb.close();
+
+        let report = `📊 *Статистика ortopednn.ru*\n\n`;
+        if (latest.length) {
+          const gsc = latest.find(r => r.source === 'google');
+          const yx = latest.find(r => r.source === 'yandex');
+          const met = latest.find(r => r.source === 'metrika');
+          if (gsc) report += `*Google:* ${gsc.clicks||0} кликов · ${gsc.impressions||0} показов · поз. ${(gsc.avg_position||0).toFixed(1)}\n`;
+          if (yx) {
+            const raw = JSON.parse(yx.raw || '{}');
+            report += `*Яндекс:* ${yx.total_indexed||0} индекс. · ⚠️ ${yx.total_errors||0}\n`;
+            if (raw.queries) report += `_Топ:_ ${raw.queries.slice(0,3).join(', ')}\n`;
+          }
+          if (met) {
+            const raw = JSON.parse(met.raw || '{}');
+            report += `*Метрика:* 👥${raw.users||'?'} · 📄${raw.pageviews||'?'} · ⏱${raw.avgDuration||'?'}с\n`;
+          }
+        } else { report += '_Нет данных_\n'; }
+        if (kw.length) {
+          report += `\n*Ключевые слова:*\n`;
+          report += kw.map(k => `${k.keyword}: поз.${k.position.toFixed(1)} (${k.clicks}↗ ${k.impressions}👁)`).join('\n');
+        }
+        if (cwv.length) {
+          const c = cwv[0];
+          report += `\n*CWV:* LCP:${c.lcp}с CLS:${c.cls} INP:${c.inp}мс\n`;
+        }
+        report += `\n_${days?.cnt||0} дн. в базе_`;
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: report, parse_mode: 'Markdown', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+      } catch (e) {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message.slice(0, 200)}`, reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
+      }
     } else if (action === 'drafts') {
-      console.log('DRAFTS_DIR:', DRAFTS_DIR, 'exists:', existsSync(DRAFTS_DIR));
-      const draftsList = existsSync(DRAFTS_DIR)
+      let draftsList = existsSync(DRAFTS_DIR)
         ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')).map(f => {
             try { const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf8')); return d; } catch { return null; }
           }).filter(Boolean) : [];
-      console.log('Drafts count:', draftsList.length);
+      if (!draftsList.length) draftsList = await fetchGitHubDrafts();
       if (!draftsList.length) {
         await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Нет черновиков.', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
       } else {
@@ -535,9 +638,10 @@ async function handleCallback(cb) {
             const isPipeline = d.repo === 'ortopednn-auto';
             const statusIcon = isPipeline ? '🔄' : '📄';
             const statusText = isPipeline ? 'На рассмотрении' : 'Черновик';
+            const previewLink = d.repo === 'ortopednn-auto' ? `https://ortopednn.ru/preview/${d.slug}/` : `https://stomatolog.ortopednn.ru/blog/${d.slug}.html`;
             await tg('sendMessage', {
               chat_id: chatId,
-              text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}\nstomatolog.ortopednn.ru/blog/${d.slug}.html`,
+              text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}\n👀 Предпросмотр: ${previewLink}`,
               reply_markup: draftButtons(d.slug, d.repo)
             });
           } catch (e) { console.error('Send draft error:', e.message); }
@@ -626,13 +730,44 @@ async function handleCallback(cb) {
 async function handleUpdate(upd) {
   if (upd.callback_query) return handleCallback(upd.callback_query);
   const msg = upd.message;
-  if (!msg || !msg.text) return;
+  if (!msg || (!msg.text && !msg.caption)) return;
   const chatId = msg.chat.id;
-  const text = msg.text.trim();
+  const text = (msg.text || msg.caption || '').trim();
   const isUrl = text.match(/https?:\/\/[^\s]+/);
   const isCmd = text.startsWith('/');
-  if (isCmd && (text === '/start' || text === '/menu')) {
-    await tg('sendMessage', { chat_id: chatId, text: 'Меню управления ботом:', reply_markup: mainMenu() });
+  if (isCmd && text.startsWith('/start')) {
+    const payload = text.split(' ').slice(1).join(' ').trim();
+    if (payload.startsWith('publish_')) {
+      const slug = payload.slice(8);
+      const msg = await tg('sendMessage', { chat_id: chatId, text: `Публикую ${slug}...` });
+      const msgId = msg.ok ? msg.result.message_id : null;
+      try {
+        const metaPath = join(DRAFTS_DIR, `${slug}.meta.json`);
+        let result;
+        if (existsSync(metaPath)) {
+          const meta = JSON.parse(readFileSync(metaPath, 'utf-8'));
+          result = meta.repo === 'ortopednn-auto' ? await publishToOrtopednn(slug) : await pushToStomatolog(slug);
+        } else {
+          result = await publishToOrtopednn(slug);
+        }
+        if (result.ok && msgId) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Опубликовано: ${result.url}` });
+        else if (msgId) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${result.error || 'Ошибка'}` });
+      } catch (e) {
+        if (msgId) tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message.slice(0, 200)}` });
+      }
+    } else if (payload.startsWith('delete_')) {
+      const slug = payload.slice(7);
+      try {
+        deleteDraft(slug);
+        await tg('sendMessage', { chat_id: chatId, text: `Удалён: ${slug}` });
+      } catch (e) {
+        await tg('sendMessage', { chat_id: chatId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+      }
+    } else {
+      const isStart = text === '/start';
+      const intro = isStart ? 'Привет! Я бот для рерайта статей и управления контентом ortopednn.ru.\n\nКидай ссылку — я перепишу её для блога. Или форвардни сообщение из канала.\n\n' : '';
+      await tg('sendMessage', { chat_id: chatId, text: intro + 'Меню управления ботом:', reply_markup: mainMenu() });
+    }
   } else if (isCmd && text === '/perf') {
     const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '📊 Проверяю производительность...' });
     const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
@@ -640,11 +775,12 @@ async function handleUpdate(upd) {
     try { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: await checkPerf(), parse_mode: 'Markdown' }); }
     catch (e) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` }); }
   } else if (isCmd && text === '/drafts') {
-    const drafts = existsSync(DRAFTS_DIR)
+    let drafts = existsSync(DRAFTS_DIR)
       ? readdirSync(DRAFTS_DIR).filter(f => f.endsWith('.meta.json')).map(f => {
           try { return JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf8')); } catch { return null; }
         }).filter(Boolean)
       : [];
+    if (!drafts.length) drafts = await fetchGitHubDrafts();
     if (drafts.length === 0) {
       await tg('sendMessage', { chat_id: chatId, text: 'Нет черновиков.' });
     } else {
@@ -653,9 +789,10 @@ async function handleUpdate(upd) {
         const domain = 'stomatolog.ortopednn.ru';
         const statusIcon = isPipeline ? '🔄' : '📄';
         const statusText = isPipeline ? 'На рассмотрении' : 'Черновик';
+        const urlPart = isPipeline ? '' : `\n${domain}/blog/${d.slug}.html`;
         await tg('sendMessage', {
           chat_id: chatId,
-          text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}\n${domain}/blog/${d.slug}.html`,
+          text: `${d.title}\n📅 ${d.date}\n${statusIcon} ${statusText}${urlPart}`,
           reply_markup: draftButtons(d.slug, d.repo)
         });
       }
@@ -669,7 +806,10 @@ async function handleUpdate(upd) {
       await addTopic(query);
       runPipelineManual(query).then(async (result) => {
         if (result.error) await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка на этапе "${result.stage}": ${result.error}` });
-        else await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Черновик готов: ${result.draft.title}`, reply_markup: draftButtons(result.draft.slug) });
+        else {
+          await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `✅ Черновик готов: ${result.draft.title}`, reply_markup: draftButtons(result.draft.slug) });
+          await postToChannel(result.draft.title, result.draft.slug);
+        }
       }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` }));
     } catch (e) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
@@ -685,6 +825,57 @@ async function handleUpdate(upd) {
         ? `🌐 Horizon: ${result.generated} черновиков из ${result.totalItems} новостей\n/drafts — просмотреть`
         : `🌐 Horizon: нет новых черновиков (${result.totalItems} новостей)`;
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text });
+      if (result.drafts) {
+        for (const d of result.drafts) {
+          await postToChannel(d.title, d.slug);
+        }
+      }
+    } catch (e) {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
+    }
+  } else if (isCmd && text === '/stats') {
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '📊 Собираю статистику...' });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
+    if (!msgId) return;
+    try {
+      const sdb = getStatsDb();
+      if (!sdb) { await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '❌ БД статистики недоступна' }); return; }
+      const latest = sdb.prepare('SELECT * FROM stat_snapshots ORDER BY date DESC LIMIT 2').all();
+      const kw = sdb.prepare('SELECT keyword, position, clicks, impressions FROM keyword_positions WHERE date = (SELECT MAX(date) FROM keyword_positions) ORDER BY position ASC LIMIT 10').all();
+      const cwv = sdb.prepare('SELECT url, lcp, cls, inp, score FROM cwv_snapshots WHERE date = (SELECT MAX(date) FROM cwv_snapshots) LIMIT 1').all();
+      const days = sdb.prepare('SELECT COUNT(DISTINCT date) as cnt FROM stat_snapshots').get();
+      sdb.close();
+
+      let report = `📊 *Статистика ortopednn.ru*\n_Обновлено: ${new Date().toISOString().slice(0,16)}_\n\n`;
+
+      if (latest.length) {
+        const gsc = latest.find(r => r.source === 'google');
+        const yx = latest.find(r => r.source === 'yandex');
+        const met = latest.find(r => r.source === 'metrika');
+        if (gsc) report += `*Google Search Console*\n📈 ${gsc.clicks||0} кликов · ${gsc.impressions||0} показов · поз. ${(gsc.avg_position||0).toFixed(1)}\n`;
+        if (yx) {
+          const raw = JSON.parse(yx.raw || '{}');
+          report += `*Яндекс*\n🔍 ${yx.total_indexed||0} проиндексировано · ⚠️ ${yx.total_errors||0} ошибок\n`;
+          if (raw.queries) report += `_Топ-запросы:_ ${raw.queries.slice(0,3).join(', ')}\n`;
+        }
+        if (met) {
+          const raw = JSON.parse(met.raw || '{}');
+          report += `*Метрика*\n👥 ${raw.users||'?'} посетителей · 📄 ${raw.pageviews||'?'} просмотров · ⏱ ${raw.avgDuration||'?'} сек\n`;
+        }
+      } else { report += '_Нет данных. Запустите collection: `node collector.js`_\n'; }
+
+      if (kw.length) {
+        report += `\n*Топ ключевых слов:*\n`;
+        report += kw.map(k => `${k.keyword}: поз.${k.position.toFixed(1)} (${k.clicks}↗ ${k.impressions}👁)`).join('\n');
+      }
+
+      if (cwv.length) {
+        const c = cwv[0];
+        report += `\n*Core Web Vitals*\nLCP: ${c.lcp}с · CLS: ${c.cls} · INP: ${c.inp}мс · Score: ${c.score}\n`;
+      }
+
+      report += `\n_Дней в базе: ${days?.cnt || 0}_`;
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: report, parse_mode: 'Markdown' });
     } catch (e) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
     }
@@ -707,6 +898,7 @@ async function handleUpdate(upd) {
     }
   } else if (isUrl) {
     const url = text.match(/https?:\/\/[^\s]+/)[0];
+    console.log(`URL received: ${url} from ${chatId}`);
     const statusResp = await tg('sendMessage', { chat_id: chatId, text: 'Читаю статью...' });
     const msgId = statusResp.ok ? statusResp.result.message_id : null;
     if (!msgId) return;
@@ -728,7 +920,8 @@ async function handleUpdate(upd) {
           const draftFile = readFileSync(join(DRAFTS_DIR, `${result.slug}.astro`), 'utf-8');
           const text = draftFile.replace(/<[^>]+>/g, ' ').replace(/&[#a-zA-Z0-9]+;/g, ' ').replace(/\s+/g, ' ').trim();
           const full = text.substring(0, 3000);
-          await tg('sendMessage', { chat_id: chatId, text: `📄 *${result.title}*\n\n${full}\n\n[Читать на stomatolog](https://stomatolog.ortopednn.ru/blog/${result.slug}.html)`, parse_mode: 'Markdown', disable_web_page_preview: true });
+          const previewLink = result.previewUrl || `https://stomatolog.ortopednn.ru/blog/${result.slug}.html`;
+          await tg('sendMessage', { chat_id: chatId, text: `📄 *${result.title}*\n\n${full.substring(0, 1000)}\n\n👀 Предпросмотр: ${previewLink}`, parse_mode: 'Markdown', disable_web_page_preview: true });
           edit(`✅ Готово`, { reply_markup: draftButtons(result.slug) });
         } catch { edit(`✅ Сохранён: ${result.title}`, { reply_markup: draftButtons(result.slug) }); }
       }
@@ -738,6 +931,22 @@ async function handleUpdate(upd) {
     });
   } else if (isCmd) {
     await tg('sendMessage', { chat_id: chatId, text: 'Неизвестная команда. /menu — меню управления.' });
+  } else if (text.trim()) {
+    console.log('PLAIN TEXT from', chatId, ':', text.substring(0, 60));
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '⏳ Рерайт текста... до 5 мин.' });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
+    if (!msgId) return;
+    try {
+      const result = await rewrite(null, text);
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: result.error
+        ? `❌ ${result.response ? result.response.substring(0, 300) : 'Ошибка рерайта'}`
+        : result.duplicate
+          ? `⚠️ Дубликат: ${result.title}`
+          : `✅ Готово: ${result.title}\n/drafts — черновики\n👀 Предпросмотр: ${result.previewUrl || `https://ortopednn.ru/preview/${result.slug}/`}` });
+    } catch (e) {
+      console.error('Rewrite error:', e.message?.substring(0, 200));
+      tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ ${e.message?.slice(0, 200) || 'неизвестная ошибка'}` });
+    }
   }
 }
 
