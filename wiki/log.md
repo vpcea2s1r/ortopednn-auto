@@ -129,6 +129,12 @@
 - **РљРѕРЅС‚РµР№РЅРµСЂ**: РїРµСЂРµСЃРѕР±СЂР°РЅ Рё РїРµСЂРµР·Р°РїСѓС‰РµРЅ РЅР° VPS
 - **Wiki**: `wiki/project/bot-plaintext-rewrite.md`
 
+## 2026-06-14 (v2) — Content Factory VPS deploy
+- **VPS deploy**: pulled code to 94.183.155.147, resolved git conflict (bot.js), built admin service on Docker
+- **Bugfixes**: fixed SQL backtick corruption in 5 route files (PowerShell mangled backtick chars + `${}` template literals)
+- **Status**: admin container running on VPS port 3001, needs Nginx config for admin.ortopednn.ru
+- **Wiki**: log and index updated
+
 ## 2026-06-14 — Stats pipeline + Dzen generator + Duplicate fix + Content Factory
 - **Stats pipeline (Phase 1-2)**: `collector.js` — collectMetrika(), collectKeywordPositions(), collectCwv(). Bot: `/stats` command, menu:stats callback. Cron: 8:00 collect - 9:00 digest. DB: keyword_positions, cwv_snapshots tables.
 - **Dzen generator**: `dzen-generator.js` — 4-5k char articles, Triple validation (length≥3500, 0 AI tells, 0 fake citations). Bot: `/dzen <topic>`, menu:dzen button. Cron: 10:00 MSK daily.
