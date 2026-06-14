@@ -14,7 +14,7 @@ router.get('/:projectId', (req, res) => {
   const db = getDb()
   const project = db.prepare('SELECT * FROM projects WHERE id = ?').get(req.params.projectId)
   if (!project) return res.status(404).redirect('/admin/projects')
-  const drafts = db.prepare(SELECT * FROM drafts WHERE project_id = ? ORDER BY created_at DESC).all(req.params.projectId)
+  const drafts = db.prepare(`SELECT * FROM drafts WHERE project_id = ? ORDER BY created_at DESC`).all(req.params.projectId)
   res.render('drafts', { user: req.user, project, drafts })
 })
 
@@ -36,7 +36,7 @@ const api = Router()
 api.get('/:projectId', (req, res) => {
   const db = getDb()
   const status = req.query.status
-  const q = status ? SELECT * FROM drafts WHERE project_id = ? AND status = ? ORDER BY created_at DESC : SELECT * FROM drafts WHERE project_id = ? ORDER BY created_at DESC
+  const q = status ? `SELECT * FROM drafts WHERE project_id = ? AND status = ? ORDER BY created_at DESC` : `SELECT * FROM drafts WHERE project_id = ? ORDER BY created_at DESC`
   const params = status ? [req.params.projectId, status] : [req.params.projectId]
   res.json(db.prepare(q).all(...params))
 })
