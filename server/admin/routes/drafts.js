@@ -79,12 +79,14 @@ api.post('/:id/delete', async (req, res) => {
   if (!draft) return res.status(404).json({ error: 'Draft not found' })
   try {
     const pipeline = await import('../../agent-pipeline.js')
-    const existing = await pipeline.ghFetch(data/drafts/.json).catch(() => null)
+    const token = process.env.GH_TOKEN || ''
+    const slug = draft.slug
+    const existing = await pipeline.ghFetch(`data/drafts/${slug}.json`).catch(() => null)
     if (existing?.sha) {
-      await fetch(https://api.github.com/repos/vpcea2s1r/ortopednn-auto/contents/data/drafts/.json, {
+      await fetch(`https://api.github.com/repos/vpcea2s1r/ortopednn-auto/contents/data/drafts/${slug}.json`, {
         method: 'DELETE',
-        headers: { Authorization: 	oken  },
-        body: JSON.stringify({ message: draft:  [deleted], sha: existing.sha, branch: 'master' })
+        headers: { 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify({ message: `draft ${slug} deleted`, sha: existing.sha, branch: 'master' })
       })
     }
   } catch {}
