@@ -26,7 +26,7 @@ if (hasDrafts) {
   })
 }
 %>
-<%- include('layout', { title: 'Дашборд', user, project, body: `
+<%- include('layout', { path: '/stats/dashboard/', title: 'Дашборд', user, project, body: `
 <div class="max-w-7xl mx-auto">
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-2xl font-bold">📊 ${project ? project.name : 'Дашборд'}</h1>
