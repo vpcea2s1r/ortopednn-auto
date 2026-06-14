@@ -2,7 +2,7 @@
 import { getDb } from '../db.js'
 
 const router = Router()
-router.get('/:projectId', (req, res) => {
+router.get('/:projectId', async (req, res) => {
   const db = getDb()
   const project = db.prepare('SELECT * FROM projects WHERE id = ?').get(req.params.projectId)
   if (!project) return res.status(404).redirect('/admin/projects')
