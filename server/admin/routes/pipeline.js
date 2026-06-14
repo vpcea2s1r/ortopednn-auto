@@ -6,7 +6,7 @@ router.get('/:projectId', (req, res) => {
   const db = getDb()
   const project = db.prepare('SELECT * FROM projects WHERE id = ?').get(req.params.projectId)
   if (!project) return res.status(404).redirect('/admin/projects')
-  const topics = db.prepare(SELECT * FROM topics WHERE project_id = ? ORDER BY created_at DESC).all(req.params.projectId)
+  const topics = db.prepare(`SELECT * FROM topics WHERE project_id = ? ORDER BY created_at DESC`).all(req.params.projectId)
   const state = {}
   try {
     const pipeline = await import('../../agent-pipeline.js')
@@ -18,7 +18,7 @@ router.get('/:projectId', (req, res) => {
 const api = Router()
 api.get('/topics/:projectId', (req, res) => {
   const db = getDb()
-  res.json(db.prepare(SELECT * FROM topics WHERE project_id = ? ORDER BY created_at DESC).all(req.params.projectId))
+  res.json(db.prepare(`SELECT * FROM topics WHERE project_id = ? ORDER BY created_at DESC`).all(req.params.projectId))
 })
 
 api.post('/topics', (req, res) => {
