@@ -1,6 +1,6 @@
 ﻿<% const p = typeof project !== 'undefined' ? project : null %>
 <% const path = '/projects' + (p ? '/' + p.id + '/edit' : '/new') %>
-<%- include('layout', { title: p ? 'Редактировать проект' : 'Новый проект', user, body: `
+<%- include('layout', { path: '/projects', title: p ? 'Редактировать проект' : 'Новый проект', user, body: `
 <div class="max-w-2xl mx-auto">
   <div class="flex items-center gap-2 mb-6">
     <a href="/admin/projects" class="text-gray-400 hover:text-gray-600">← Проекты</a>
