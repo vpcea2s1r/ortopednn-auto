@@ -2,6 +2,7 @@
 import { dirname, join } from 'path'
 import fs from 'fs'
 import Database from 'better-sqlite3'
+import crypto from 'crypto'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', '..', 'data')
@@ -96,7 +97,6 @@ export function seedAdmin() {
   const db = getDb()
   const existing = db.prepare('SELECT id FROM users WHERE username = ?').get('admin')
   if (!existing) {
-    const crypto = require('crypto')
     const hash = crypto.createHash('sha256').update('admin123').digest('hex')
     db.prepare('INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)').run('admin', hash, 'admin')
     console.log('[admin] Default user created: admin / admin123')
