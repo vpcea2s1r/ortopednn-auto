@@ -32,8 +32,8 @@ api.post('/post', async (req, res) => {
       if (platform === 'telegram' && project.telegram_bot_token && project.telegram_chat_id) {
         const botToken = project.telegram_bot_token
         const chatId = project.telegram_chat_id
-        const text = **\n\n...
-        const resp = await fetch(https://api.telegram.org/bot/sendMessage, {
+        const text = `${draft.title}\n\n${(draft.body || '').substring(0, 1000)}...`
+        const resp = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown', disable_web_page_preview: false })
         })
@@ -46,8 +46,8 @@ api.post('/post', async (req, res) => {
       if (platform === 'vk' && project.vk_group_id) {
         const token = process.env.VK_ACCESS_TOKEN
         if (token) {
-          const msg = ${draft.title}\n\n...
-          const resp = await fetch(https://api.vk.com/method/wall.post?access_token=&v=5.131, {
+          const msg = `${draft.title}\n\n${(draft.body || '').substring(0, 1000)}...`
+          const resp = await fetch(`https://api.vk.com/method/wall.post?access_token=${token}&v=5.131`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ owner_id: -Math.abs(Number(project.vk_group_id)), message: msg })
           })
