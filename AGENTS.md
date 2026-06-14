@@ -10,6 +10,7 @@
 - **Telegram fix:** `extra_hosts: api.telegram.org → 149.154.167.220` в docker-compose.yml (блокировка Telegram в РФ)
 - **Docker registry mirror:** `mirror.gcr.io` в `/etc/docker/daemon.json`
 - **Хостинг бота:** `docs/hosting.md` — документация по портированию бота
+- **Веб-панель (Content Factory):** `server/admin/` — Express + HTMX + SQLite, порт 3001, admin.ortopednn.ru (JWT auth, Chart.js dashboard)
 - **Репозиторий:** `github.com/vpcea2s1r/ortopednn-auto`
 - **Старый репозиторий (Next.js):** `C:\opencode\ortopednn\` — устаревший код, НЕ используется на live, подлежит удалению
 - **Тестовый поддомен (Astro):** `C:\opencode\stomatolog\` — stomatolog.ortopednn.ru (GitHub Pages)
@@ -35,6 +36,14 @@
 
 7. **Article tracking in CONTENT.md** — перед написанием статьи прочитать CONTENT.md (список статей), после написания статьи добавить её в CONTENT.md, затем push.
 8. **Review-before-publish (Hard Rule)** — ни одна статья не публикуется без одобрения пользователя. Пайплайн сохраняет черновики в `/data/drafts/`. Пользователь читает через `/drafts` в Telegram боте или на preview.ortopednn.ru/preview/<slug>/ (noindex, banner). Нажимает "Опубликовать" или "Удалить". Прямая публикация через GitHub API (publisherAgent) запрещена — только через review flow.
+
+9. **Удаление файлов через GitHub API (Hard Rule)** — GitHub Content API (PUT) НЕ поддерживает удаление файлов. Git Trees API (base_tree + tree items) НЕ удаляет — SHA не меняется из-за content-addressing. **ЕДИНСТВЕННЫЙ рабочий способ** — Content API DELETE для каждого файла:
+   ```
+   DELETE /repos/{owner}/{repo}/contents/{path}
+   Body: { "message": "...", "sha": "<file_sha>" }
+   ```
+   Скрипт: `.\scripts\delete-files.ps1 -Paths "path1","path2" -Message "reason"`
+   **При миграции/переименовании:** после создания новых файлов ОБЯЗАТЕЛЬНО удалить старые через DELETE. Проверять: `git/trees/master?recursive=1` → фильтр по паттерну → подсчёт оставшихся файлов.
 
 ## Available Skills
 
@@ -123,18 +132,18 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 | `TELEGRAM_CHAT_ID` | Чат Юрия для уведомлений |
 | `GH_PAT` | GitHub Personal Access Token |
 
-### LIVE-сайт (ortopednn.ru) — структура (2026-05-28)
+### LIVE-сайт (ortopednn.ru) — структура (2026-06-14)
 
-**Sitemap:** `sitemap-0.xml`, всего **151 pages** (build 2026-05-29, 0 errors)
+**Sitemap:** `sitemap-0.xml`, всего **196 pages** (build 2026-06-14, 0 errors)
 
 | Раздел | Кол-во | Описание |
 |--------|--------|---------|
 | `/` | 1 | Главная с FAQ, контактами |
 | `/about/` | 1 | О враче |
-| `/blog/` | 1 + **35 статей** | Блог (статьи от авто-пайплайна) |
+| `/blog/` | 1 + **~148 статей** | Блог (статьи от авто-пайплайна + 25 migrated from checkup) |
 | `/compare/` | 1 | Сравнение конструкций |
 | `/materials/` | 1 | Материалы |
-| `/services/` | 1 + **63 услуги** | Услуги с описанием (цены удалены) |
+| `/services/` | 1 + **62 услуги** | Услуги (удалены metallokeramicheskaya-koronka, vradecheskaya-vkladka) |
 
 ### Astro Features (current config)
 
@@ -174,30 +183,33 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 
 ## Next Steps
 
-1. **Google Search Console** — верифицировать ortopednn.ru (HTML tag) для доступа к API
-2. **Interactive Telegram Bot** — добавить команды `/check`, `/ssl`, `/perf`, `/stats` (GitHub Actions → Telegram)
-2. **Яндекс.Вебмастер интеграция** — ✅ OAuth-токен получен (2026-05-22). Права: webmaster:hostinfo + webmaster:verify. Можно добавить права Yandex.Direct API
-3. **Core Web Vitals** — реальные LCP/CLS/INP через CrUX API
+1. **Google Search Console** — refresh OAuth token (expired, needs OAuth Playground)
+2. **Яндекс.Вебмастер интеграция** — ✅ OAuth-токен получен (2026-05-22). Права: webmaster:hostinfo. Нужно добавить metrika:read для Metrika API.
+3. **Content Factory deploy** — npm install on VPS, Nginx reverse proxy for admin.ortopednn.ru, seed admin user
 4. **Алерты реального времени** — мгновенный Telegram при падении perf < 50 или битых ссылках
-5. **Weekly digest** — динамика метрик за неделю
-6. **Бенчмарк конкурентов** — сравнение perf/seo с конкурентами
-7. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
-8. **Редизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
-9. **Cleanup: main branch** — `main` ветка устарела и расходится с `master`. Нужно удалить или пересоздать.
-10. **n8n Telegram credentials** — настроить Telegram API key для n8n workflow (бот токен). Низкий приоритет.
-11. **Queue dedup** — проверять существующие статьи перед генерацией, чтобы избежать дубликатов.
+5. **Бенчмарк конкурентов** — сравнение perf/seo с конкурентами
+6. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
+7. **Редизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
+8. **Cleanup: main branch** — `main` ветка устарела и расходится с `master`. Нужно удалить или пересоздать.
+9. **n8n Telegram credentials** — настроить Telegram API key для n8n workflow (бот токен). Низкий приоритет.
+10. **Queue dedup** — проверять существующие статьи перед генерацией, чтобы избежать дубликатов.
+11. **26 service pages** — rewrite thin pages with standardized ServiceArticle props (procedure, care, stats, materials, faq, comparison)
 
 ## Telegram SEO Monitor Bot (`@ortopednn52_bot`)
 
 Бот работает на VPS (94.183.155.147) в Docker-контейнере, polling mode, порт 3000.
 
 ### Что умеет сейчас
-- **Инлайн-меню** (`/menu`): Производительность, Черновики, PubMed-рерайт
+- **Инлайн-меню** (`/menu`): Производительность, Статистика, Черновики, Дзен, PubMed-рерайт
 - `/perf` — Lighthouse + CrUX (PageSpeed API, без ключа)
 - `/research <тема>` — поиск PubMed, inline-выбор статьи → рерайт → черновик
-- `/drafts` — черновики с inline-кнопками: опубликовать (→ stomatolog.ortopednn.ru) / удалить
+- `/drafts` — черновики с inline-кнопками: опубликовать (→ ortopednn.ru) / удалить
+- `/stats` — полный отчёт: GSC (клики, показы, позиции), Yandex (индекс, ошибки), Metrika (визиты, просмотры), CWV (LCP, CLS, INP), топ-10 ключевых слов
+- `/dzen <тема>` — генерация статьи для Яндекс.Дзен (4-5k символов, humanized)
 - **URL-рерайт** — кидаешь ссылку → бот читает, AI переписывает для блога → черновик
-- **Daily cron** (8:00 MSK) — сбор статистики GSC + Яндекс в SQLite
+- **Daily cron** (8:00 MSK) — сбор статистики GSC + Yandex + Metrika + CWV + keyword positions в SQLite
+- **Daily digest** (9:00 MSK) — Telegram с ключевыми метриками за день
+- **Dzen cron** (10:00 MSK) — генерация статей для Дзен из очереди тем
 - **Auto-content pipeline** (cron 7:00 MSK) — Multi-Agent генерация (Research→Writer→Review→SEO→**Draft**)
 - **Review flow** — статьи не публикуются сразу. Сохраняются в `/data/drafts/` как черновик. Уведомление в Telegram. Публикация — через кнопку "Опубликовать" в `/drafts`
 - `/autogen <тема>` — ручной запуск пайплайна, сохраняет как черновик
@@ -217,9 +229,10 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 | `/menu` | ✅ | Инлайн-меню |
 | `/drafts` | ✅ | Черновики: "На сайт" (→ ortopednn.ru) или "Удалить" |
 | `/ssl` | ❌ | Сколько дней до истечения сертификата |
-| `/stats` | ❌ | Яндекс.Вебмастер статистика |
-| `/digest` | ❌ | Weekly digest по динамике метрик |
+| `/stats` | ✅ | Полный отчёт (GSC + Yandex + Metrika + CWV + keywords) |
+| `/digest` | ✅ | Daily digest (9:00 MSK, отправляется автоматически) |
 | `/autogen` | ✅ | Multi-Agent генерация статьи |
+| `/dzen` | ✅ | Генерация статьи для Яндекс.Дзен (4-5k chars) |
 
 ## Build Stability Rule
 - Любое изменение кода (структуры JSON, компонентов, маршрутов, схем) должно быть совместимо с существующими данными в репозитории (`data/`, `content/`)
@@ -243,6 +256,71 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 - Проверка: регистр, якоря, регулярность, позиция, перекоррекция. Смотреть (не запрет): delve/leverage/seamless, it's important to note, unnamed experts, unsupported causality.
 
 Скилл подгружается через `skill` tool по триггеру "writing".
+
+## LLM Wiki Schema (Karpathy pattern)
+
+### Что это
+Постоянно пополняемая markdown-вики, которую LLM-агент сам ведёт. В отличие от RAG, знания не «достаются» каждый раз заново — они накапливаются, перелинковываются и обновляются в структурированных страницах.
+
+### Где
+`wiki/` в корне проекта.
+
+### Структура
+```
+wiki/
+  index.md    — каталог ВСЕХ страниц (ссылка + 1 строка описания)
+  log.md      — хронология всех операций (формат: ## [YYYY-MM-DD] ingest|query|lint | Тема)
+  raw/        — сырые источники (неизменяемы, read-only для агента)
+  medical/    — стоматологическая база знаний
+  project/    — проектная документация
+```
+
+### Формат страницы
+- Заголовок `# Название`
+- Раздел `## Описание`
+- Секции по смыслу: `## Плюсы/Минусы/Сравнение`
+- `## Источники` — ссылки на raw/** или внешние источники
+- `## Связанные страницы` — ссылки на другие wiki-страницы
+- Внутренние ссылки: относительные `[текст](page.md)`
+- Внешние ссылки: полные URL
+
+### Когда обновлять wiki
+1. **После ingest** нового источника — создать/обновить страницы, перелинковать, записать в log.md
+2. **После ответа на вопрос** — если ответ содержал новые инсайты, сохранить их в wiki (не давать полезной информации исчезнуть в истории чата)
+3. **После lint** — исправить противоречия, обновить index.md, починить битые ссылки
+4. **После любой сессии** — зафиксировать ключевые выводы и решения
+
+### Операции
+
+**Ingest (добавление источника):**
+1. Прочитать источник
+2. Обсудить ключевые выводы (если нужно)
+3. Создать/обновить wiki-страницы в `medical/` или `project/`
+4. Обновить index.md (каталог)
+5. Добавить запись в log.md
+
+**Query (вопрос к вики):**
+1. Прочитать index.md — найти релевантные страницы
+2. Прочитать найденные страницы
+3. Синтезировать ответ со ссылками на страницы
+4. Если в ответе появились новые ценные данные — сохранить их в wiki
+
+**Lint (проверка здоровья вики):**
+- Противоречия между страницами
+- Устаревшие утверждения (проверить даты)
+- Страницы без обратных ссылок (orphans)
+- Упоминаемые концепции без своей страницы
+- Битые внутренние ссылки
+- Обновить index.md
+
+### Правила
+- Raw-источники НЕ изменять (только читать)
+- Файлы в `medical/` и `project/` — LLM пишет полностью
+- При обновлении страницы: сохранить всё ценное из старой версии, добавить новое
+- index.md — всегда актуален (обновлять при любом изменении)
+- log.md — append-only, не редактировать старые записи
+- Дата в log.md: YYYY-MM-DD
+- Битые ссылки не создавать
 
 ## Setup After Clone
 

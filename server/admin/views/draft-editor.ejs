@@ -1,0 +1,106 @@
+﻿<% const d = typeof draft !== 'undefined' ? draft : null %>
+<% const path = '/content/' + (project?.id || '') + '/' + (d?.id || 'new') %>
+<%- include('layout', { title: d ? d.title : 'Новый черновик', user, project, body: `
+<div class="max-w-4xl mx-auto">
+  <div class="flex items-center gap-2 mb-6">
+    <a href="/admin/content/${project?.id}" class="text-gray-400 hover:text-gray-600">← Контент</a>
+    <span class="text-gray-300">/</span>
+    <h1 class="text-xl font-bold">${d ? d.title : 'Новый черновик'}</h1>
+  </div>
+  <div class="bg-white p-6 rounded-xl shadow-sm">
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Заголовок</label>
+        <input type="text" id="title" value="${d ? d.title : ''}" class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+      </div>
+      <div class="grid grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Slug</label>
+          <input type="text" id="slug" value="${d ? d.slug : ''}" class="mt-1 block w-full border rounded px-3 py-2 text-sm text-gray-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Категория</label>
+          <select id="category" class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+            <option value="">Без категории</option>
+            <option value="koronki" ${d?.category === 'koronki' ? 'selected' : ''}>Коронки</option>
+            <option value="semnye-protezy" ${d?.category === 'semnye-protezy' ? 'selected' : ''}>Съёмные протезы</option>
+            <option value="byugelnye-protezy" ${d?.category === 'byugelnye-protezy' ? 'selected' : ''}>Бюгельные</option>
+            <option value="mosty" ${d?.category === 'mosty' ? 'selected' : ''}>Мосты</option>
+            <option value="implanty" ${d?.category === 'implanty' ? 'selected' : ''}>Импланты</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Платформа</label>
+          <select id="platform" class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+            <option value="blog" ${d?.platform === 'blog' || !d ? 'selected' : ''}>Блог</option>
+            <option value="dzen" ${d?.platform === 'dzen' ? 'selected' : ''}>Дзен</option>
+            <option value="social" ${d?.platform === 'social' ? 'selected' : ''}>Соцсети</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <label class="block text-sm font-medium text-gray-700">Текст (поддерживает HTML)</label>
+          <button type="button" onclick="togglePreview()" class="text-xs text-teal-600 hover:underline">👁 Предпросмотр</button>
+        </div>
+        <textarea id="body" rows="20" class="mt-1 block w-full border rounded px-3 py-2 text-sm font-mono">${d ? (d.body || '') : ''}</textarea>
+      </div>
+      <div id="preview" class="hidden border rounded-lg p-4 bg-gray-50 prose prose-sm max-w-none"></div>
+      <div class="flex gap-2">
+        <button onclick="saveDraft('${d?.id || ''}')" class="bg-teal-600 text-white px-6 py-2 rounded text-sm hover:bg-teal-700">${d ? 'Сохранить' : 'Создать черновик'}</button>
+        <% if (d && d.status !== 'published') { %>
+        <button onclick="publishDraft(${d.id})" class="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700">📤 Опубликовать</button>
+        <button onclick="postDraft(${d.id})" class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700">📱 В соцсети</button>
+        <button onclick="deleteDraft(${d.id})" class="bg-red-500 text-white px-4 py-2 rounded text-sm hover:bg-red-600">Удалить</button>
+        <% } %>
+      </div>
+      <div id="result" class="text-sm"></div>
+    </div>
+  </div>
+</div>
+<script>
+function slugify(text) { return text.toLowerCase().replace(/[^а-яa-z0-9]+/g, '-').replace(/^-|-$/g, '') }
+document.getElementById('title')?.addEventListener('input', function() {
+  const slug = document.getElementById('slug')
+  if (!slug.dataset.edited) slug.value = slugify(this.value)
+})
+document.getElementById('slug')?.addEventListener('input', function() { this.dataset.edited = 'true' })
+
+function saveDraft(id) {
+  const data = {
+    project_id: ${project?.id},
+    slug: document.getElementById('slug').value,
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value,
+    category: document.getElementById('category').value,
+    platform: document.getElementById('platform').value
+  }
+  const method = id ? 'PUT' : 'POST'
+  const url = id ? '/api/admin/content/' + id : '/api/admin/content'
+  fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(id ? { title: data.title, body: data.body, category: data.category } : data) })
+    .then(r => r.json()).then(r => {
+      document.getElementById('result').innerHTML = r.ok ? '<span class="text-green-600">✅ Сохранено</span>' : '<span class="text-red-600">❌ ' + r.error + '</span>'
+      if (!id && r.id) setTimeout(() => window.location.href = '/admin/content/${project?.id}/' + r.id, 500)
+    })
+}
+function publishDraft(id) {
+  fetch('/api/admin/content/' + id + '/publish', { method: 'POST' })
+    .then(r => r.json()).then(r => {
+      document.getElementById('result').innerHTML = r.ok ? '<span class="text-green-600">✅ Опубликовано: <a href="' + r.url + '" class="underline" target="_blank">' + r.url + '</a></span>' : '<span class="text-red-600">❌ ' + r.error + '</span>'
+    })
+}
+function deleteDraft(id) {
+  if (!confirm('Удалить черновик?')) return
+  fetch('/api/admin/content/' + id + '/delete', { method: 'POST' })
+    .then(r => r.json()).then(r => { if (r.ok) window.location.href = '/admin/content/${project?.id}' })
+}
+function postDraft(id) {
+  window.location.href = '/admin/social/${project?.id}?draft=' + id
+}
+function togglePreview() {
+  const preview = document.getElementById('preview')
+  preview.classList.toggle('hidden')
+  preview.innerHTML = document.getElementById('body').value
+}
+</script>
+`}) %>

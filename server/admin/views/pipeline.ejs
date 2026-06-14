@@ -1,0 +1,53 @@
+﻿<% const path = '/pipeline/' + (project?.id || '') %>
+<%- include('layout', { title: 'Пайплайн', user, project, body: `
+<div class="max-w-4xl mx-auto">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold">⚙️ Пайплайн — ${project?.name}</h1>
+  </div>
+  <div class="grid grid-cols-2 gap-6 mb-6">
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <h3 class="font-medium mb-4">Добавить тему</h3>
+      <form hx-post="/api/admin/pipeline/topics" hx-target="#queueResult" hx-swap="innerHTML" class="flex gap-2">
+        <input type="hidden" name="project_id" value="${project?.id}">
+        <input type="text" name="topic" required placeholder="Введите тему..." class="flex-1 border rounded px-3 py-2 text-sm">
+        <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded text-sm hover:bg-teal-700">+ Добавить</button>
+      </form>
+      <div id="queueResult" class="mt-2 text-sm"></div>
+      <div class="mt-4">
+        <button onclick="runPipeline()" class="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700">▶ Запустить (первая в очереди)</button>
+      </div>
+    </div>
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <h3 class="font-medium mb-4">Статус</h3>
+      <div class="text-sm space-y-2">
+        <div class="flex justify-between"><span>Генераций сегодня</span><span class="font-medium">${state?.done?.generatedToday || 0}</span></div>
+        <div class="flex justify-between"><span>Ошибок</span><span class="font-medium text-red-600">${state?.done?.errors || 0}</span></div>
+        <div class="flex justify-between"><span>Последний запуск</span><span class="font-medium">${state?.done?.lastRun ? state.done.lastRun.substring(0, 16) : '—'}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white p-5 rounded-xl shadow-sm">
+    <h3 class="font-medium mb-4">Очередь тем</h3>
+    <table class="w-full text-sm">
+      <thead><tr class="text-left text-gray-400 border-b"><th class="pb-2">Тема</th><th class="pb-2">Статус</th><th class="pb-2">Создана</th><th class="pb-2"></th></tr></thead>
+      <tbody>
+        <% (typeof topics !== 'undefined' ? topics : []).map(t => { %>
+        <tr class="border-b border-gray-50"><td class="py-2">${t.topic}</td><td class="py-2"><span class="text-xs px-2 py-0.5 rounded ${t.status === 'done' ? 'bg-green-100 text-green-700' : t.status === 'processing' ? 'bg-blue-100 text-blue-700' : t.status === 'failed' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}">${t.status}</span></td><td class="py-2 text-gray-400">${t.created_at?.substring(0, 10) || ''}</td><td class="py-2"><% if (t.status === 'pending') { %><button onclick="deleteTopic(${t.id})" class="text-xs text-red-500 hover:underline">удалить</button><% } %></td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+function runPipeline() {
+  fetch('/api/admin/pipeline/run/${project?.id}', { method: 'POST' }).then(r => r.json()).then(r => {
+    alert(r.ok ? '✅ Пайплайн завершён' : '❌ ' + (r.error || 'Ошибка'))
+    window.location.reload()
+  })
+}
+function deleteTopic(id) {
+  if (!confirm('Удалить тему?')) return
+  fetch('/api/admin/pipeline/topics/' + id, { method: 'DELETE' }).then(() => window.location.reload())
+}
+</script>
+`}) %>

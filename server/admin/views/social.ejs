@@ -1,0 +1,66 @@
+﻿<% const path = '/social/' + (project?.id || '') %>
+<%- include('layout', { title: 'Соцсети', user, project, body: `
+<div class="max-w-5xl mx-auto">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold">📱 Соцсети — ${project?.name}</h1>
+  </div>
+  <div class="grid grid-cols-2 gap-6 mb-6">
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <h3 class="font-medium mb-4">Опубликовать черновик</h3>
+      <div class="space-y-3">
+        <select id="draftSelect" class="w-full border rounded px-3 py-2 text-sm">
+          <option value="">Выберите черновик...</option>
+          <% (typeof drafts !== 'undefined' ? drafts : []).forEach(d => { %>
+          <option value="${d.id}" ${d.id === Number(req?.query?.draft) ? 'selected' : ''}>${d.title}</option>
+          <% }) %>
+        </select>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="tgCheck" checked class="rounded"> Telegram</label>
+          <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="dzCheck" class="rounded"> Dzen</label>
+          <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="vkCheck" class="rounded"> VK</label>
+          <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="okCheck" class="rounded"> OK</label>
+        </div>
+        <button onclick="postToSocial()" class="bg-teal-600 text-white px-4 py-2 rounded text-sm hover:bg-teal-700">📤 Отправить</button>
+        <div id="postResult" class="text-sm"></div>
+      </div>
+    </div>
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <h3 class="font-medium mb-4">Настройки соцсетей</h3>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between"><span>Telegram</span><span class="${project?.telegram_bot_token ? 'text-green-600' : 'text-red-500'}">${project?.telegram_bot_token ? '✅ Подключён' : '❌ Не настроен'}</span></div>
+        <div class="flex justify-between"><span>Dzen</span><span class="text-green-600">✅ RSS активен</span></div>
+        <div class="flex justify-between"><span>VK</span><span class="${process.env.VK_ACCESS_TOKEN ? 'text-green-600' : 'text-yellow-600'}">${process.env.VK_ACCESS_TOKEN ? '✅ Токен есть' : '⚠️ Нет токена'}</span></div>
+        <div class="flex justify-between"><span>OK</span><span class="${process.env.OK_ACCESS_TOKEN ? 'text-green-600' : 'text-yellow-600'}">${process.env.OK_ACCESS_TOKEN ? '✅ Токен есть' : '⚠️ Нет токена'}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white p-5 rounded-xl shadow-sm">
+    <h3 class="font-medium mb-4">История постов</h3>
+    <table class="w-full text-sm">
+      <thead><tr class="text-left text-gray-400 border-b"><th class="pb-2">Платформа</th><th class="pb-2">Статус</th><th class="pb-2">Когда</th></tr></thead>
+      <tbody>
+        <% (typeof posts !== 'undefined' ? posts : []).map(p => { %>
+        <tr class="border-b border-gray-50"><td class="py-2">${p.platform}</td><td class="py-2"><span class="text-xs px-2 py-0.5 rounded ${p.status === 'posted' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${p.status}</span></td><td class="py-2 text-gray-400">${p.posted_at || p.created_at?.substring(0, 10) || ''}</td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+function postToSocial() {
+  const draft_id = document.getElementById('draftSelect').value
+  if (!draft_id) return alert('Выберите черновик')
+  const platforms = []
+  if (document.getElementById('tgCheck').checked) platforms.push('telegram')
+  if (document.getElementById('dzCheck').checked) platforms.push('dzen')
+  if (document.getElementById('vkCheck').checked) platforms.push('vk')
+  if (document.getElementById('okCheck').checked) platforms.push('ok')
+  fetch('/api/admin/social/post', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ project_id: ${project?.id}, draft_id: Number(draft_id), platforms }) })
+    .then(r => r.json()).then(r => {
+      const results = r.results?.map(p => '<span class="' + (p.status === 'posted' ? 'text-green-600' : 'text-red-600') + '">' + p.platform + ': ' + p.status + '</span>').join('<br>')
+      document.getElementById('postResult').innerHTML = r.ok ? results : 'Ошибка'
+      setTimeout(() => window.location.reload(), 2000)
+    })
+}
+</script>
+`}) %>

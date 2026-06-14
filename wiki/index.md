@@ -30,6 +30,8 @@
 | [Yandex Indexing](project/yandex-indexing.md) | Проблемы индексации в Яндексе | ✏️ Черновик |
 | [Service Content Depth](project/service-content-depth.md) | Стратегия наполнения страниц услуг | ✅ Готово |
 | [Low-Freq Keywords](project/low-freq-keywords.md) | Исследование низкочастотных запросов | ✅ Готово |
+| [Content Factory](project/content-factory.md) | Веб-панель управления контентом (Express + HTMX + SQLite) | ✏️ Черновик |
+| [Dzen Article Format](project/dzen-article-format.md) | Формат статей для Яндекс.Дзен (исследование) | ✅ Готово |
 
 ### Raw источники
 
@@ -37,4 +39,4 @@
 
 ---
 
-> Последнее обновление: 2026-06-07
+> Последнее обновление: 2026-06-14

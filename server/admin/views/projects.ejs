@@ -1,0 +1,41 @@
+﻿<% const path = '/projects' %>
+<%- include('layout', { title: 'Проекты', user, body: `
+<div class="max-w-4xl mx-auto">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold">📁 Проекты</h1>
+    <a href="/admin/projects/new" class="bg-teal-600 text-white px-4 py-2 rounded text-sm hover:bg-teal-700">+ Добавить сайт</a>
+  </div>
+  <div class="grid gap-4">
+    <% (typeof projects !== 'undefined' ? projects : []).map(p => { %>
+    <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition">
+      <div class="flex items-start justify-between">
+        <div>
+          <a href="/admin/stats/dashboard/${p.id}" class="text-lg font-semibold text-teal-700 hover:underline">${p.name}</a>
+          <p class="text-sm text-gray-500 mt-1">
+            <span class="inline-block">${p.domain}</span>
+            <% if (p.niche) { %><span class="inline-block ml-3 text-xs bg-gray-100 px-2 py-0.5 rounded">${p.niche}</span><% } %>
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs px-2 py-1 rounded ${p.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}">${p.active ? 'Активен' : 'Неактивен'}</span>
+          <a href="/admin/projects/${p.id}/edit" class="text-xs text-teal-600 hover:underline">Изменить</a>
+        </div>
+      </div>
+      <div class="flex gap-4 mt-3 text-xs text-gray-400">
+        <a href="/admin/stats/dashboard/${p.id}" class="hover:text-teal-600">📊 Статистика</a>
+        <a href="/admin/content/${p.id}" class="hover:text-teal-600">✍️ Контент</a>
+        <a href="/admin/social/${p.id}" class="hover:text-teal-600">📱 Соцсети</a>
+        <a href="/admin/pipeline/${p.id}" class="hover:text-teal-600">⚙️ Пайплайн</a>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <% if (typeof projects === 'undefined' || projects.length === 0) { %>
+  <div class="text-center py-12 text-gray-400">
+    <p class="text-4xl mb-3">📁</p>
+    <p class="text-lg">Нет проектов</p>
+    <p class="text-sm mt-1">Добавьте первый сайт</p>
+  </div>
+  <% } %>
+</div>
+`}) %>

@@ -1,4 +1,4 @@
-services:
+﻿services:
   bot:
     build:
       context: ./server
@@ -8,14 +8,14 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-      - GH_TOKEN=${GH_TOKEN}
-      - GSC_CLIENT_ID=${GSC_CLIENT_ID}
-      - GSC_CLIENT_SECRET=${GSC_CLIENT_SECRET}
-      - GSC_REFRESH_TOKEN=${GSC_REFRESH_TOKEN}
-      - YANDEX_OAUTH_TOKEN=${YANDEX_OAUTH_TOKEN}
-      - YANDEX_CLIENT_ID=${YANDEX_CLIENT_ID}
-      - YANDEX_CLIENT_SECRET=${YANDEX_CLIENT_SECRET}
+      - TELEGRAM_BOT_TOKEN=\
+      - GH_TOKEN=\
+      - GSC_CLIENT_ID=\
+      - GSC_CLIENT_SECRET=\
+      - GSC_REFRESH_TOKEN=\
+      - YANDEX_OAUTH_TOKEN=\
+      - YANDEX_CLIENT_ID=\
+      - YANDEX_CLIENT_SECRET=\
       - DATA_DIR=/data
       - PORT=3000
       - TZ=Europe/Moscow
@@ -45,12 +45,46 @@ services:
       - N8N_PROTOCOL=http
       - N8N_HOST=localhost
       - WEBHOOK_URL=http://94.183.155.147:5678/
-      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - N8N_ENCRYPTION_KEY=\
       - TZ=Europe/Moscow
     volumes:
       - n8n_data:/home/node/.n8n
     labels:
-      - "com.ortopednn.description=n8n workflow orchestrator for content automation"
+      - "com.ortopednn.description=n8n workflow orchestrator"
+
+  admin:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: ortopednn-admin
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - ADMIN_PORT=3001
+      - GH_TOKEN=\
+      - GSC_CLIENT_ID=\
+      - GSC_CLIENT_SECRET=\
+      - GSC_REFRESH_TOKEN=\
+      - YANDEX_OAUTH_TOKEN=\
+      - YANDEX_CLIENT_ID=\
+      - YANDEX_CLIENT_SECRET=\
+      - VK_ACCESS_TOKEN=\
+      - OK_ACCESS_TOKEN=\
+      - OK_APPLICATION_KEY=\
+      - DATA_DIR=/data
+      - ADMIN_JWT_SECRET=\
+      - TZ=Europe/Moscow
+    volumes:
+      - bot_data:/data
+    depends_on:
+      bot:
+        condition: service_started
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   bot_data:

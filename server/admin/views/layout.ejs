@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title + ' — ' : '' %>Фабрика контента</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/admin/style.css">
+</head>
+<body class="bg-gray-50">
+<div class="flex h-screen">
+  <% if (typeof user !== 'undefined' && user) { %>
+  <aside class="w-64 bg-white border-r shrink-0">
+    <div class="p-4 border-b">
+      <h1 class="text-lg font-bold text-teal-700">Фабрика контента</h1>
+      <p class="text-xs text-gray-400"><%= user.username %></p>
+    </div>
+    <nav class="p-2 space-y-1">
+      <a href="/admin/projects" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-sm <%= path?.startsWith('/projects') ? 'bg-teal-50 text-teal-700 font-medium' : 'text-gray-700' %>">
+        <span>📁</span> Проекты
+      </a>
+      <% if (typeof project !== 'undefined' && project) { %>
+      <div class="ml-4 pt-2 text-xs text-gray-400 uppercase tracking-wider"><%= project.name %></div>
+      <a href="/admin/stats/dashboard/<%= project.id %>" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-sm <%= path === '/stats/dashboard/' + project.id ? 'bg-teal-50 text-teal-700 font-medium' : 'text-gray-700' %>">
+        <span>📊</span> Дашборд
+      </a>
+      <a href="/admin/content/<%= project.id %>" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-sm <%= path?.startsWith('/content/') ? 'bg-teal-50 text-teal-700 font-medium' : 'text-gray-700' %>">
+        <span>✍️</span> Контент
+      </a>
+      <a href="/admin/social/<%= project.id %>" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-sm <%= path?.startsWith('/social/') ? 'bg-teal-50 text-teal-700 font-medium' : 'text-gray-700' %>">
+        <span>📱</span> Соцсети
+      </a>
+      <a href="/admin/pipeline/<%= project.id %>" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-sm <%= path?.startsWith('/pipeline/') ? 'bg-teal-50 text-teal-700 font-medium' : 'text-gray-700' %>">
+        <span>⚙️</span> Пайплайн
+      </a>
+      <% } %>
+      <hr class="my-2">
+      <a href="/admin/settings" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-sm text-gray-700">
+        <span>🔧</span> Настройки
+      </a>
+      <a href="/admin/logout" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-sm text-gray-700">
+        <span>🚪</span> Выход
+      </a>
+    </nav>
+  </aside>
+  <% } %>
+  <main class="flex-1 overflow-auto p-6">
+    <%- body %>
+  </main>
+</div>
+</body>
+</html>

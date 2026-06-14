@@ -1,0 +1,65 @@
+﻿<% const p = typeof project !== 'undefined' ? project : null %>
+<% const path = '/projects' + (p ? '/' + p.id + '/edit' : '/new') %>
+<%- include('layout', { title: p ? 'Редактировать проект' : 'Новый проект', user, body: `
+<div class="max-w-2xl mx-auto">
+  <div class="flex items-center gap-2 mb-6">
+    <a href="/admin/projects" class="text-gray-400 hover:text-gray-600">← Проекты</a>
+    <span class="text-gray-300">/</span>
+    <h1 class="text-2xl font-bold">${p ? 'Редактировать: ' + p.name : 'Новый проект'}</h1>
+  </div>
+  <div class="bg-white p-6 rounded-xl shadow-sm">
+    <form hx-${p ? 'put="/api/admin/projects/' + p.id + '"' : 'post="/api/admin/projects"'} hx-target="#result" hx-swap="innerHTML" class="space-y-4" hx-on::after-request="handleSubmit(event)">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Название</label>
+          <input type="text" name="name" value="${p ? p.name : ''}" required class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Домен</label>
+          <input type="text" name="domain" value="${p ? p.domain : ''}" required placeholder="example.ru" class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">GitHub репозиторий</label>
+          <input type="text" name="github_repo" value="${p ? p.github_repo || '' : ''}" placeholder="owner/repo" class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Ветка</label>
+          <input type="text" name="github_branch" value="${p ? p.github_branch || 'master' : 'master'}" class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Ниша/Тематика</label>
+        <input type="text" name="niche" value="${p ? p.niche || '' : ''}" placeholder="стоматология, медицина..." class="mt-1 block w-full border rounded px-3 py-2 text-sm">
+      </div>
+      <details class="text-sm">
+        <summary class="cursor-pointer text-teal-600 font-medium">🔑 API ключи (GSC, Yandex, соцсети)</summary>
+        <div class="mt-3 space-y-3 border-t pt-3">
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-xs text-gray-500">GSC Property</label><input type="text" name="gsc_property" value="${p ? p.gsc_property || '' : ''}" class="mt-0.5 block w-full border rounded px-2 py-1 text-xs"></div>
+            <div><label class="block text-xs text-gray-500">Yandex Host</label><input type="text" name="yandex_host" value="${p ? p.yandex_host || '' : ''}" class="mt-0.5 block w-full border rounded px-2 py-1 text-xs"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-xs text-gray-500">Metrika Counter ID</label><input type="text" name="metrika_counter" value="${p ? p.metrika_counter || '' : ''}" class="mt-0.5 block w-full border rounded px-2 py-1 text-xs"></div>
+            <div><label class="block text-xs text-gray-500">Telegram Bot Token</label><input type="text" name="telegram_bot_token" value="${p ? p.telegram_bot_token || '' : ''}" class="mt-0.5 block w-full border rounded px-2 py-1 text-xs"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="block text-xs text-gray-500">Telegram Chat ID</label><input type="text" name="telegram_chat_id" value="${p ? p.telegram_chat_id || '' : ''}" class="mt-0.5 block w-full border rounded px-2 py-1 text-xs"></div>
+            <div><label class="block text-xs text-gray-500">VK Group ID</label><input type="text" name="vk_group_id" value="${p ? p.vk_group_id || '' : ''}" class="mt-0.5 block w-full border rounded px-2 py-1 text-xs"></div>
+          </div>
+          <div><label class="block text-xs text-gray-500">OK Group ID</label><input type="text" name="ok_group_id" value="${p ? p.ok_group_id || '' : ''}" class="mt-0.5 block w-full border rounded px-2 py-1 text-xs"></div>
+        </div>
+      </details>
+      <button type="submit" class="bg-teal-600 text-white px-6 py-2 rounded text-sm hover:bg-teal-700">${p ? 'Сохранить' : 'Создать проект'}</button>
+      <div id="result"></div>
+    </form>
+  </div>
+</div>
+<script>
+function handleSubmit(event) {
+  const resp = JSON.parse(event.detail.xhr.responseText)
+  if (resp.ok && !resp.error) { window.location.href = '/admin/projects' }
+}
+</script>
+`}) %>

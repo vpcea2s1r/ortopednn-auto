@@ -1,0 +1,42 @@
+﻿<% const path = '/settings' %>
+<%- include('layout', { title: 'Настройки', user, body: `
+<div class="max-w-3xl mx-auto">
+  <h1 class="text-2xl font-bold mb-6">🔧 Настройки</h1>
+  <div class="grid gap-6">
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <h3 class="font-medium mb-4">Пользователи</h3>
+      <table class="w-full text-sm">
+        <thead><tr class="text-left text-gray-400 border-b"><th class="pb-2">Имя</th><th class="pb-2">Роль</th><th class="pb-2">Создан</th></tr></thead>
+        <tbody>
+          <% (typeof users !== 'undefined' ? users : []).map(u => { %>
+          <tr class="border-b border-gray-50"><td class="py-2">${u.username} ${u.id === user?.id ? '<span class="text-xs text-gray-400">(это вы)</span>' : ''}</td><td class="py-2">${u.role}</td><td class="py-2 text-gray-400">${u.created_at?.substring(0, 10) || ''}</td></tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <h3 class="font-medium mb-4">Сменить пароль</h3>
+      <form hx-post="/api/admin/settings/password" hx-target="#pwdResult" class="space-y-3 max-w-sm">
+        <input type="password" name="current" placeholder="Текущий пароль" class="block w-full border rounded px-3 py-2 text-sm">
+        <input type="password" name="password" placeholder="Новый пароль" class="block w-full border rounded px-3 py-2 text-sm">
+        <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded text-sm hover:bg-teal-700">Сменить</button>
+        <div id="pwdResult" class="text-sm"></div>
+      </form>
+    </div>
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <h3 class="font-medium mb-4">Системная конфигурация</h3>
+      <table class="w-full text-sm">
+        <tbody>
+          <tr class="border-b border-gray-50"><td class="py-2 text-gray-500">Порт</td><td class="py-2">${config?.port || 3001}</td></tr>
+          <tr class="border-b border-gray-50"><td class="py-2 text-gray-500">Data Directory</td><td class="py-2">${config?.dataDir || './data'}</td></tr>
+          <tr class="border-b border-gray-50"><td class="py-2 text-gray-500">JWT Secret</td><td class="py-2 font-mono text-xs">${config?.jwtSecret || '—'}</td></tr>
+          <tr class="border-b border-gray-50"><td class="py-2 text-gray-500">GitHub Token</td><td class="py-2 font-mono text-xs">${config?.ghToken || '—'}</td></tr>
+          <tr class="border-b border-gray-50"><td class="py-2 text-gray-500">VK Access Token</td><td class="py-2 font-mono text-xs">${config?.vkToken || '—'}</td></tr>
+          <tr class="border-b border-gray-50"><td class="py-2 text-gray-500">OK Access Token</td><td class="py-2 font-mono text-xs">${config?.okToken || '—'}</td></tr>
+          <tr><td class="py-2 text-gray-500">OK Application Key</td><td class="py-2 font-mono text-xs">${config?.okAppKey || '—'}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`}) %>

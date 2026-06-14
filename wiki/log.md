@@ -129,6 +129,13 @@
 - **РљРѕРЅС‚РµР№РЅРµСЂ**: РїРµСЂРµСЃРѕР±СЂР°РЅ Рё РїРµСЂРµР·Р°РїСѓС‰РµРЅ РЅР° VPS
 - **Wiki**: `wiki/project/bot-plaintext-rewrite.md`
 
+## 2026-06-14 — Stats pipeline + Dzen generator + Duplicate fix + Content Factory
+- **Stats pipeline (Phase 1-2)**: `collector.js` — collectMetrika(), collectKeywordPositions(), collectCwv(). Bot: `/stats` command, menu:stats callback. Cron: 8:00 collect - 9:00 digest. DB: keyword_positions, cwv_snapshots tables.
+- **Dzen generator**: `dzen-generator.js` — 4-5k char articles, Triple validation (length≥3500, 0 AI tells, 0 fake citations). Bot: `/dzen <topic>`, menu:dzen button. Cron: 10:00 MSK daily.
+- **Yandex duplicate fix**: deleted 6 true duplicates (2 service + 4 blog), added canonical tags to 8 near-duplicate blog files. BaseLayout.astro now accepts `canonical` prop.
+- **Content Factory**: `server/admin/` — Express + HTMX + SQLite, port 3001. Auth (JWT), Projects, Dashboard (Chart.js), Drafts (GitHub API publish), Social (TG/VK/Dzen/OK), Pipeline, Settings. Docker compose: admin service.
+- **Pushed**: 6 commits to master (stats + Dzen + duplicate fixes + Content Factory).
+
 ## 2026-06-07 — ServiceArticle refactor + wiki
 - **ServiceArticle.astro** — added 6 optional standardized section props: procedure, care, stats, materials, aq, comparison
 - **Props interface**: all optional (default []), backward compatible

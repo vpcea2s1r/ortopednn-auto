@@ -1,15 +1,19 @@
-{
-  "name": "ortopednn-server",
-  "type": "module",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "node app.js",
-    "bot-only": "node bot.js"
-  },
-  "dependencies": {
-    "better-sqlite3": "^11.0.0",
-    "express": "^4.21.0",
-    "node-cron": "^3.0.3",
-    "node-fetch": "^3.3.2"
-  }
+﻿{
+    "name":  "ortopednn-server",
+    "type":  "module",
+    "version":  "1.0.0",
+    "scripts":  {
+                    "start":  "node app.js",
+                    "bot-only":  "node bot.js",
+                    "admin":  "node admin/app.js"
+                },
+    "dependencies":  {
+                         "better-sqlite3":  "^11.0.0",
+                         "express":  "^4.21.0",
+                         "node-cron":  "^3.0.3",
+                         "node-fetch":  "^3.3.2",
+                         "ejs":  "^3.1.10",
+                         "cookie-parser":  "^1.4.7",
+                         "jsonwebtoken":  "^9.0.2"
+                     }
 }

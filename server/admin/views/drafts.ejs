@@ -1,0 +1,48 @@
+﻿<% const path = '/content/' + (project?.id || '') %>
+<%- include('layout', { title: 'Контент', user, project, body: `
+<div class="max-w-5xl mx-auto">
+  <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center gap-2">
+      <h1 class="text-2xl font-bold">✍️ Контент</h1>
+      <select id="statusFilter" class="text-sm border rounded px-2 py-1" onchange="filterDrafts()">
+        <option value="">Все</option>
+        <option value="draft">Черновики</option>
+        <option value="review">На ревью</option>
+        <option value="published">Опубликовано</option>
+        <option value="archived">Архив</option>
+      </select>
+    </div>
+    <a href="/admin/content/${project?.id}/new" class="bg-teal-600 text-white px-4 py-2 rounded text-sm hover:bg-teal-700">+ Новый черновик</a>
+  </div>
+  <div class="bg-white rounded-xl shadow-sm">
+    <% if (typeof drafts !== 'undefined' && drafts.length > 0) { %>
+    <div class="divide-y">
+      <% drafts.map(d => { %>
+      <div class="p-4 hover:bg-gray-50 flex items-center justify-between">
+        <div class="flex-1">
+          <a href="/admin/content/${project?.id}/${d.id}" class="font-medium text-teal-700 hover:underline">${d.title}</a>
+          <div class="flex gap-3 text-xs text-gray-400 mt-1">
+            <span>${d.slug}</span>
+            <span>${d.category || 'без категории'}</span>
+            <span>${d.char_count || 0} символов</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs px-2 py-1 rounded ${d.status === 'published' ? 'bg-green-100 text-green-700' : d.status === 'draft' ? 'bg-yellow-100 text-yellow-700' : d.status === 'review' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500'}">${d.status}</span>
+          <span class="text-xs text-gray-400">${d.created_at?.substring(0, 10) || ''}</span>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <% } else { %>
+    <div class="text-center py-12 text-gray-400"><p class="text-lg">Нет черновиков</p><p class="text-sm mt-1">Создайте первый черновик</p></div>
+    <% } %>
+  </div>
+</div>
+<script>
+function filterDrafts() {
+  const status = document.getElementById('statusFilter').value
+  window.location.href = status ? '/admin/content/${project?.id}?status=' + status : '/admin/content/${project?.id}'
+}
+</script>
+`}) %>
