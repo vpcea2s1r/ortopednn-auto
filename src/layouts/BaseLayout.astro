@@ -3,7 +3,8 @@ import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
-const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle, ogImage = '/og-image.svg', noindex = false, clientRouter = false } = Astro.props;
+const { title = '', description = '', region, doctor = {}, socials = [], pageType = 'website', datePublished, dateModified, breadcrumbTitle, ogImage = '/og-image.svg', noindex = false, clientRouter = false, canonical } = Astro.props;
+const canonicalUrl = canonical || `https://ortopednn.ru${Astro.url.pathname}`;
 const titleWithCity = title.includes('Нижний Новгород') ? title : `${title} | Нижний Новгород`;
 const truncatedTitle = titleWithCity.length > 60 ? titleWithCity.slice(0, 57) + '...' : titleWithCity;
 const truncatedDesc = description.length > 160 ? description.slice(0, 157) + '...' : description;
@@ -68,7 +69,7 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
   <Font cssVariable="--font-inter" preload/>
   {clientRouter && <ClientRouter/>}
   
-  <link rel="canonical" href={`https://ortopednn.ru${Astro.url.pathname}`}/>
+  <link rel="canonical" href={canonicalUrl}/>
   <meta property="og:type" content={pageType}/>
   <meta property="og:url" content={Astro.url.href}/>
   <meta property="og:title" content={truncatedTitle}/>
