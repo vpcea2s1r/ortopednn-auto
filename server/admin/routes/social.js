@@ -6,15 +6,15 @@ router.get('/:projectId', (req, res) => {
   const db = getDb()
   const project = db.prepare('SELECT * FROM projects WHERE id = ?').get(req.params.projectId)
   if (!project) return res.status(404).redirect('/admin/projects')
-  const posts = db.prepare(SELECT * FROM social_posts WHERE project_id = ? ORDER BY created_at DESC LIMIT 50).all(req.params.projectId)
-  const drafts = db.prepare(SELECT id, title, slug FROM drafts WHERE project_id = ? AND status = 'draft' ORDER BY created_at DESC LIMIT 20).all(req.params.projectId)
+  const posts = db.prepare(`SELECT * FROM social_posts WHERE project_id = ? ORDER BY created_at DESC LIMIT 50`).all(req.params.projectId)
+  const drafts = db.prepare(`SELECT id, title, slug FROM drafts WHERE project_id = ? AND status = 'draft' ORDER BY created_at DESC LIMIT 20`).all(req.params.projectId)
   res.render('social', { user: req.user, project, posts, drafts })
 })
 
 const api = Router()
 api.get('/posts/:projectId', (req, res) => {
   const db = getDb()
-  res.json(db.prepare(SELECT * FROM social_posts WHERE project_id = ? ORDER BY created_at DESC LIMIT 50).all(req.params.projectId))
+  res.json(db.prepare(`SELECT * FROM social_posts WHERE project_id = ? ORDER BY created_at DESC LIMIT 50`).all(req.params.projectId))
 })
 
 api.post('/post', async (req, res) => {
