@@ -1,5 +1,5 @@
 ﻿<% const path = '/content/' + (project?.id || '') %>
-<%- include('layout', { title: 'Контент', user, project, body: `
+<%- include('layout', { path: '/content/', title: 'Контент', user, project, body: `
 <div class="max-w-5xl mx-auto">
   <div class="flex items-center justify-between mb-6">
     <div class="flex items-center gap-2">
