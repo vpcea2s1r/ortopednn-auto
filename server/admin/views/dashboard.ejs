@@ -1,4 +1,31 @@
 ﻿<% const path = '/stats/dashboard/' + (project?.id || '') %>
+<%
+const hasCwv = typeof cwv !== 'undefined' && cwv.length > 0
+const keywordsList = typeof keywords !== 'undefined' ? keywords : []
+const hasDrafts = typeof recentDrafts !== 'undefined' && recentDrafts.length > 0
+const snapshotsJson = JSON.stringify(typeof snapshots !== 'undefined' ? snapshots : [])
+const cwvDataJson = JSON.stringify(typeof cwv !== 'undefined' ? cwv : [])
+let cwvCards = ''
+if (hasCwv) {
+  cwvCards = '<div class="grid grid-cols-5 gap-4 mb-6">' +
+    '<div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">LCP</div><div class="text-lg font-bold mt-1">' + (cwv[0].lcp || 0).toFixed(1) + 's</div></div>' +
+    '<div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">CLS</div><div class="text-lg font-bold mt-1">' + (cwv[0].cls || 0).toFixed(2) + '</div></div>' +
+    '<div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">INP</div><div class="text-lg font-bold mt-1">' + (cwv[0].inp || 0).toFixed(0) + 'ms</div></div>' +
+    '<div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">FCP</div><div class="text-lg font-bold mt-1">' + (cwv[0].fcp || 0).toFixed(1) + 's</div></div>' +
+    '<div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">Score</div><div class="text-lg font-bold mt-1">' + Math.round(cwv[0].score || 0) + '</div></div></div>'
+}
+let kwRows = ''
+keywordsList.slice(0, 15).forEach(k => {
+  kwRows += '<tr class="border-b border-gray-50 hover:bg-gray-50"><td class="py-2">' + k.keyword + '</td><td class="py-2">' + (Math.round(k.position * 10) / 10) + '</td><td class="py-2">' + k.clicks + '</td><td class="py-2">' + k.impressions + '</td><td class="py-2">' + (k.ctr * 100).toFixed(1) + '%</td></tr>'
+})
+let draftItems = ''
+if (hasDrafts) {
+  recentDrafts.forEach(d => {
+    const statusClass = d.status === 'published' ? 'bg-green-100 text-green-700' : d.status === 'draft' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-700'
+    draftItems += '<a href="/admin/content/' + (project?.id || '') + '/' + d.id + '" class="flex items-center justify-between p-2 hover:bg-gray-50 rounded"><span class="text-sm">' + d.title + '</span><span class="text-xs px-2 py-0.5 rounded ' + statusClass + '">' + d.status + '</span></a>'
+  })
+}
+%>
 <%- include('layout', { title: 'Дашборд', user, project, body: `
 <div class="max-w-7xl mx-auto">
   <div class="flex items-center justify-between mb-6">
@@ -12,19 +39,7 @@
       <a href="/admin/content/${project?.id}" class="bg-teal-600 text-white px-4 py-1.5 rounded text-sm hover:bg-teal-700">✍️ Новый черновик</a>
     </div>
   </div>
-
-  <!-- CWV Cards -->
-  <% if (typeof cwv !== 'undefined' && cwv.length > 0) { %>
-  <div class="grid grid-cols-5 gap-4 mb-6">
-    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">LCP</div><div class="text-lg font-bold mt-1">${(cwv[0].lcp || 0).toFixed(1)}s</div></div>
-    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">CLS</div><div class="text-lg font-bold mt-1">${(cwv[0].cls || 0).toFixed(2)}</div></div>
-    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">INP</div><div class="text-lg font-bold mt-1">${(cwv[0].inp || 0).toFixed(0)}ms</div></div>
-    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">FCP</div><div class="text-lg font-bold mt-1">${(cwv[0].fcp || 0).toFixed(1)}s</div></div>
-    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="text-xs text-gray-500">Score</div><div class="text-lg font-bold mt-1">${Math.round(cwv[0].score || 0)}</div></div>
-  </div>
-  <% } %>
-
-  <!-- Charts -->
+  ${cwvCards}
   <div class="grid grid-cols-2 gap-6 mb-6">
     <div class="bg-white p-4 rounded-xl shadow-sm"><h3 class="text-sm font-medium text-gray-500 mb-2">Поисковый трафик (GSC)</h3><canvas id="gscChart" height="200"></canvas></div>
     <div class="bg-white p-4 rounded-xl shadow-sm"><h3 class="text-sm font-medium text-gray-500 mb-2">Посещения (Метрика)</h3><canvas id="metrikaChart" height="200"></canvas></div>
@@ -33,100 +48,43 @@
     <div class="bg-white p-4 rounded-xl shadow-sm"><h3 class="text-sm font-medium text-gray-500 mb-2">Средняя позиция</h3><canvas id="positionChart" height="200"></canvas></div>
     <div class="bg-white p-4 rounded-xl shadow-sm"><h3 class="text-sm font-medium text-gray-500 mb-2">Core Web Vitals</h3><canvas id="cwvChart" height="200"></canvas></div>
   </div>
-
-  <!-- Keywords Table -->
   <div class="bg-white p-4 rounded-xl shadow-sm mb-6">
     <h3 class="text-sm font-medium text-gray-500 mb-3">Ключевые слова</h3>
     <div class="overflow-x-auto">
       <table class="w-full text-sm">
         <thead><tr class="text-left text-gray-400 border-b"><th class="pb-2">Ключевое слово</th><th class="pb-2">Позиция</th><th class="pb-2">Клики</th><th class="pb-2">Показы</th><th class="pb-2">CTR</th></tr></thead>
-        <tbody>
-          <% (typeof keywords !== 'undefined' ? keywords : []).slice(0,15).forEach(k => { %>
-          <tr class="border-b border-gray-50 hover:bg-gray-50"><td class="py-2">${k.keyword}</td><td class="py-2">${Math.round(k.position * 10) / 10}</td><td class="py-2">${k.clicks}</td><td class="py-2">${k.impressions}</td><td class="py-2">${(k.ctr * 100).toFixed(1)}%</td></tr>
-          <% }) %>
-        </tbody>
+        <tbody>${kwRows}</tbody>
       </table>
     </div>
   </div>
-
-  <!-- Recent Drafts -->
   <div class="bg-white p-4 rounded-xl shadow-sm">
     <h3 class="text-sm font-medium text-gray-500 mb-3">Последние черновики</h3>
-    <% if (typeof recentDrafts !== 'undefined' && recentDrafts.length > 0) { %>
-    <div class="space-y-2">
-      <% recentDrafts.forEach(d => { %>
-      <a href="/admin/content/${project?.id}/${d.id}" class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
-        <span class="text-sm">${d.title}</span>
-        <span class="text-xs px-2 py-0.5 rounded ${d.status === 'published' ? 'bg-green-100 text-green-700' : d.status === 'draft' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-700'}">${d.status}</span>
-      </a>
-      <% }) %>
-    </div>
-    <% } else { %>
-    <p class="text-sm text-gray-400">Нет черновиков</p>
-    <% } %>
+    ${hasDrafts ? '<div class="space-y-2">' + draftItems + '</div>' : '<p class="text-sm text-gray-400">Нет черновиков</p>'}
   </div>
 </div>
 
 <script>
-const snapshots = ${JSON.stringify(typeof snapshots !== 'undefined' ? snapshots : [])};
-const cwvData = ${JSON.stringify(typeof cwv !== 'undefined' ? cwv : [])};
+const snapshots = ${snapshotsJson};
+const cwvData = ${cwvDataJson};
 
 function refreshCharts() {
   const period = document.getElementById('period').value
   fetch('/api/admin/stats/' + ${project?.id} + '/trend?period=' + period)
     .then(r => r.json()).then(d => updateCharts(d))
 }
-
 function updateCharts(d) {
   const gsc = d.snapshots?.filter(s => s.source === 'google') || []
-  const yand = d.snapshots?.filter(s => s.source === 'yandex') || []
   const metr = d.snapshots?.filter(s => s.source === 'metrika') || []
   const cwv = d.cwv || []
-
   if (window.gscChart) window.gscChart.destroy()
   if (window.metrikaChart) window.metrikaChart.destroy()
   if (window.positionChart) window.positionChart.destroy()
   if (window.cwvChart) window.cwvChart.destroy()
-
-  window.gscChart = new Chart(document.getElementById('gscChart'), {
-    type: 'line', data: {
-      labels: gsc.map(s => s.date?.substring(5)),
-      datasets: [
-        { label: 'Клики', data: gsc.map(s => s.clicks), borderColor: '#0d9488', tension: 0.3 },
-        { label: 'Показы', data: gsc.map(s => s.impressions), borderColor: '#0284c7', tension: 0.3 }
-      ]
-    }, options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
-  })
-
-  window.metrikaChart = new Chart(document.getElementById('metrikaChart'), {
-    type: 'bar', data: {
-      labels: metr.map(s => s.date?.substring(5)),
-      datasets: [
-        { label: 'Визиты', data: metr.map(s => JSON.parse(s.raw || '{}').visits || 0), backgroundColor: '#0d9488' }
-      ]
-    }, options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
-  })
-
-  window.positionChart = new Chart(document.getElementById('positionChart'), {
-    type: 'line', data: {
-      labels: gsc.map(s => s.date?.substring(5)),
-      datasets: [
-        { label: 'Средняя позиция', data: gsc.map(s => s.avg_position), borderColor: '#f59e0b', tension: 0.3 }
-      ]
-    }, options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y: { reverse: true } } }
-  })
-
-  window.cwvChart = new Chart(document.getElementById('cwvChart'), {
-    type: 'line', data: {
-      labels: cwv.map(s => s.date?.substring(5)),
-      datasets: [
-        { label: 'Score', data: cwv.map(s => s.score), borderColor: '#0d9488', tension: 0.3 },
-        { label: 'LCP (s)', data: cwv.map(s => s.lcp), borderColor: '#ef4444', tension: 0.3, yAxisID: 'y1' }
-      ]
-    }, options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y1: { position: 'right', grid: { drawOnChartArea: false } } } }
-  })
+  window.gscChart = new Chart(document.getElementById('gscChart'), { type: 'line', data: { labels: gsc.map(s => s.date?.substring(5)), datasets: [{ label: 'Клики', data: gsc.map(s => s.clicks), borderColor: '#0d9488', tension: 0.3 }, { label: 'Показы', data: gsc.map(s => s.impressions), borderColor: '#0284c7', tension: 0.3 }] }, options: { responsive: true, plugins: { legend: { position: 'bottom' } } } })
+  window.metrikaChart = new Chart(document.getElementById('metrikaChart'), { type: 'bar', data: { labels: metr.map(s => s.date?.substring(5)), datasets: [{ label: 'Визиты', data: metr.map(s => JSON.parse(s.raw || '{}').visits || 0), backgroundColor: '#0d9488' }] }, options: { responsive: true, plugins: { legend: { position: 'bottom' } } } })
+  window.positionChart = new Chart(document.getElementById('positionChart'), { type: 'line', data: { labels: gsc.map(s => s.date?.substring(5)), datasets: [{ label: 'Средняя позиция', data: gsc.map(s => s.avg_position), borderColor: '#f59e0b', tension: 0.3 }] }, options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y: { reverse: true } } } })
+  window.cwvChart = new Chart(document.getElementById('cwvChart'), { type: 'line', data: { labels: cwv.map(s => s.date?.substring(5)), datasets: [{ label: 'Score', data: cwv.map(s => s.score), borderColor: '#0d9488', tension: 0.3 }, { label: 'LCP (s)', data: cwv.map(s => s.lcp), borderColor: '#ef4444', tension: 0.3, yAxisID: 'y1' }] }, options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y1: { position: 'right', grid: { drawOnChartArea: false } } } } })
 }
-
 document.addEventListener('DOMContentLoaded', () => updateCharts({ snapshots, cwv: cwvData }))
 </script>
 `}) %>
