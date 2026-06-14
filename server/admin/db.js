@@ -95,10 +95,10 @@ export function migrate() {
 
 export function seedAdmin() {
   const db = getDb()
-  const existing = db.prepare('SELECT id FROM users WHERE username = ?').get('admin')
+  const existing = db.prepare('SELECT id FROM users WHERE username = ?').get('nikitin')
   if (!existing) {
     const hash = crypto.createHash('sha256').update('admin123').digest('hex')
-    db.prepare('INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)').run('admin', hash, 'admin')
-    console.log('[admin] Default user created: admin / admin123')
+    db.prepare('INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)').run('nikitin', hash, 'admin')
+    console.log('[admin] Default user created: nikitin / admin123')
   }
 }
