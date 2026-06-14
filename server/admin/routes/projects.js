@@ -48,7 +48,7 @@ api.put('/:id', (req, res) => {
   const { name, domain, github_repo, niche, github_branch, telegram_bot_token, telegram_chat_id, vk_group_id, ok_group_id, gsc_property, yandex_host, metrika_counter, active } = req.body || {}
   const db = getDb()
   try {
-    db.prepare(UPDATE projects SET name=coalesce(?,name), domain=coalesce(?,domain), github_repo=coalesce(?,github_repo), niche=coalesce(?,niche), github_branch=coalesce(?,github_branch), telegram_bot_token=coalesce(?,telegram_bot_token), telegram_chat_id=coalesce(?,telegram_chat_id), vk_group_id=coalesce(?,vk_group_id), ok_group_id=coalesce(?,ok_group_id), gsc_property=coalesce(?,gsc_property), yandex_host=coalesce(?,yandex_host), metrika_counter=coalesce(?,metrika_counter), active=coalesce(?,active) WHERE id=?)
+    db.prepare(`UPDATE projects SET name=coalesce(?,name), domain=coalesce(?,domain), github_repo=coalesce(?,github_repo), niche=coalesce(?,niche), github_branch=coalesce(?,github_branch), telegram_bot_token=coalesce(?,telegram_bot_token), telegram_chat_id=coalesce(?,telegram_chat_id), vk_group_id=coalesce(?,vk_group_id), ok_group_id=coalesce(?,ok_group_id), gsc_property=coalesce(?,gsc_property), yandex_host=coalesce(?,yandex_host), metrika_counter=coalesce(?,metrika_counter), active=coalesce(?,active) WHERE id=?`)
       .run(name, domain, github_repo, niche, github_branch, telegram_bot_token, telegram_chat_id, vk_group_id, ok_group_id, gsc_property, yandex_host, metrika_counter, active, req.params.id)
     res.json({ ok: true })
   } catch (e) {
