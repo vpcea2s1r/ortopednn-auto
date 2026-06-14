@@ -57,6 +57,7 @@
       context: ./server
       dockerfile: Dockerfile
     container_name: ortopednn-admin
+    command: ["node", "admin/app.js"]
     restart: unless-stopped
     ports:
       - "3001:3001"
