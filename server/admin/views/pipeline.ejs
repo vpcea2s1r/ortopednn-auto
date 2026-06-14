@@ -1,5 +1,5 @@
 ﻿<% const path = '/pipeline/' + (project?.id || '') %>
-<%- include('layout', { title: 'Пайплайн', user, project, body: `
+<%- include('layout', { path: '/pipeline/', title: 'Пайплайн', user, project, body: `
 <div class="max-w-4xl mx-auto">
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-2xl font-bold">⚙️ Пайплайн — ${project?.name}</h1>
