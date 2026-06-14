@@ -1,4 +1,11 @@
-﻿## 2026-06-09 — Low-Frequency Keywords Research
+﻿## 2026-06-14 — Content Factory VPS deploy + Cloudflare DNS
+- **VPS deploy**: docker-compose admin service (port 3001, CMD node admin/app.js), npm install, Nginx reverse proxy admin.ortopednn.ru → localhost:3001
+- **Fixes**: 15+ corrupted template literals (backtick + ${} mangled by WriteAllText), SQL backticks, ESM imports (require→import), EJS templates, login.ejs rewritten as standalone HTML
+- **Cloudflare**: A record admin.ortopednn.ru → 94.183.155.147 (TTL 120), API token for DNS management
+- **Credentials**: nikitin / 4338365Q!, login POST works with url-encoded
+- **Status**: admin container running, login 200/302, dashboard 500 (EJS close tag in layout.ejs — needs rebuild)
+
+## 2026-06-09 — Low-Frequency Keywords Research
 - **Ingest**: Исследование низкочастотных запросов через веб-поиск
 - **Создана страница**: `project/low-freq-keywords.md` — 10 тем, разделённых по приоритету
 - **Высокий приоритет** (5 тем): протез в отпуске, горячая пища, алкоголь, коронка+МРТ, беременность
