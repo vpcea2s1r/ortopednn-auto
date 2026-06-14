@@ -11,6 +11,7 @@
 - **Docker registry mirror:** `mirror.gcr.io` в `/etc/docker/daemon.json`
 - **Хостинг бота:** `docs/hosting.md` — документация по портированию бота
 - **Веб-панель (Content Factory):** `server/admin/` — Express + HTMX + SQLite, порт 3001, admin.ortopednn.ru (JWT auth, Chart.js dashboard)
+- **Cloudflare:** admin.ortopednn.ru → A record 94.183.155.147, API токен в cloudflare-token.md (gitignored)
 - **Репозиторий:** `github.com/vpcea2s1r/ortopednn-auto`
 - **Старый репозиторий (Next.js):** `C:\opencode\ortopednn\` — устаревший код, НЕ используется на live, подлежит удалению
 - **Тестовый поддомен (Astro):** `C:\opencode\stomatolog\` — stomatolog.ortopednn.ru (GitHub Pages)
