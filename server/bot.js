@@ -528,7 +528,7 @@ function mainMenu() {
   return {
     inline_keyboard: [
       [{ text: '📊 Статистика', callback_data: 'menu:stats' }, { text: '⚡ Перфоманс', callback_data: 'menu:perf' }],
-      [{ text: '📝 Черновики', callback_data: 'menu:drafts' }],
+      [{ text: '📝 Черновики', callback_data: 'menu:drafts' }, { text: '📰 Дзен', callback_data: 'menu:dzen' }],
       [{ text: '🔬 PubMed рерайт', callback_data: 'menu:research' }]
     ]
   };
@@ -647,6 +647,8 @@ async function handleCallback(cb) {
           } catch (e) { console.error('Send draft error:', e.message); }
         }
       }
+    } else if (action === 'dzen') {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: '📰 Генерация статьи для Дзена\n\nНапиши: /dzen тема\n\nФормат: 4-5к символов, оптимизировано под алгоритм Дзена.', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
     } else if (action === 'research') {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: 'Напиши: /research тема', reply_markup: { inline_keyboard: [[{ text: '« Назад', callback_data: 'menu:back' }]] } });
     } else if (action === 'back') {
@@ -813,6 +815,27 @@ async function handleUpdate(upd) {
       }).catch(e => tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` }));
     } catch (e) {
       await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `Ошибка: ${e.message.slice(0, 200)}` });
+    }
+  } else if (isCmd && text.startsWith('/dzen ')) {
+    const query = text.slice(6).trim();
+    const statusMsg = await tg('sendMessage', { chat_id: chatId, text: `📝 Генерирую статью для Дзена: ${query}...` });
+    const msgId = statusMsg.ok ? statusMsg.result.message_id : null;
+    if (!msgId) return;
+    try {
+      const { runDzenPipeline } = await import('./dzen-generator.js');
+      const result = await runDzenPipeline(query);
+      if (result.error) {
+        await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${result.error}` });
+      } else {
+        const chars = result.draft.charCount || '?';
+        await tg('editMessageText', {
+          chat_id: chatId, message_id: msgId,
+          text: `✅ Дзен-статья готова: ${result.draft.title}\n📊 ${chars} символов\n🏷 ${result.draft.slug}`,
+          reply_markup: draftButtons(result.draft.slug)
+        });
+      }
+    } catch (e) {
+      await tg('editMessageText', { chat_id: chatId, message_id: msgId, text: `❌ Ошибка: ${e.message.slice(0, 200)}` });
     }
   } else if (isCmd && text === '/horizon') {
     const statusMsg = await tg('sendMessage', { chat_id: chatId, text: '🌐 Запускаю Horizon пайплайн...' });

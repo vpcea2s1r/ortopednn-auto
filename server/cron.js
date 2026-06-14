@@ -58,7 +58,11 @@ export function setupCron(getDb, dir) {
     console.log('Daily 9:00: sending stats digest');
     sendDailyDigest();
   });
-  console.log('Cron: content 7:00, stats 8:00, digest 9:00 daily, sitemap 9:00 Monday');
+  cron.schedule('0 10 * * *', () => {
+    console.log('Daily 10:00: Dzen article generation');
+    generateDzenArticle();
+  });
+  console.log('Cron: content 7:00, stats 8:00, digest 9:00, dzen 10:00 daily, sitemap 9:00 Monday');
 }
 
 async function checkSitemap() {
@@ -87,6 +91,55 @@ function parseSslDays(resp) {
   if (!cert) return '?';
   const expiry = new Date(cert);
   return Math.ceil((expiry - new Date()) / 86400000);
+}
+
+async function generateDzenArticle() {
+  const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const CHAT_ID = process.env.TELEGRAM_CHAT_ID || '45185475';
+  try {
+    const topicsPath = join(dataDir || join(process.cwd(), 'data'), 'topics.json');
+    const topics = fs.existsSync(topicsPath) ? JSON.parse(fs.readFileSync(topicsPath, 'utf-8')) : [];
+    const pending = topics.filter(t => t.status === 'pending');
+    if (!pending.length) {
+      console.log('Dzen: no pending topics');
+      return;
+    }
+    const topic = pending[0];
+    topic.status = 'running';
+    fs.writeFileSync(topicsPath, JSON.stringify(topics, null, 2));
+
+    const { runDzenPipeline } = await import('./dzen-generator.js');
+    const result = await runDzenPipeline(topic.topic);
+
+    if (result.error) {
+      topic.status = 'error';
+      topic.error = result.error;
+      fs.writeFileSync(topicsPath, JSON.stringify(topics, null, 2));
+      console.error('Dzen pipeline error:', result.error);
+      if (TOKEN) {
+        await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: `❌ Дзен-статья не сгенерирована: ${result.error}` })
+        }).catch(() => {});
+      }
+    } else {
+      topic.status = 'done';
+      topic.slug = result.draft.slug;
+      fs.writeFileSync(topicsPath, JSON.stringify(topics, null, 2));
+      console.log(`Dzen: generated "${result.draft.title}" (${result.draft.charCount} chars)`);
+      if (TOKEN) {
+        await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: `📰 Дзен-статья готова:\n${result.draft.title}\n📊 ${result.draft.charCount} символов\n🏷 ${result.draft.slug}\n\n/drafts — просмотреть`
+          })
+        }).catch(() => {});
+      }
+    }
+  } catch (e) {
+    console.error('Dzen cron error:', e.message);
+  }
 }
 
 async function sendDailyDigest() {
