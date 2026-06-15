@@ -164,3 +164,11 @@ async function sendDailyDigest() {
     console.log('Daily digest sent');
   } catch (e) { console.error('Digest error:', e.message); }
 }
+
+if (process.argv.includes('--mode=pipeline')) {
+  import('./agent-pipeline.js').then(m => m.pickAndRun()).then(r => {
+    if (r.info) console.log(r.info);
+    else console.log('Pipeline:', JSON.stringify(r, null, 2));
+    process.exit(0);
+  }).catch(e => { console.error(e); process.exit(1); });
+}
