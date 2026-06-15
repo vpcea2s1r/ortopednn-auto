@@ -141,7 +141,7 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 |--------|--------|---------|
 | `/` | 1 | Главная с FAQ, контактами |
 | `/about/` | 1 | О враче |
-| `/blog/` | 1 + **~148 статей** | Блог (статьи от авто-пайплайна + 25 migrated from checkup) |
+| `/blog/` | 1 + **137 статей** | Блог (статьи от авто-пайплайна + 25 migrated from checkup) |
 | `/compare/` | 1 | Сравнение конструкций |
 | `/materials/` | 1 | Материалы |
 | `/services/` | 1 + **62 услуги** | Услуги (удалены metallokeramicheskaya-koronka, vradecheskaya-vkladka) |
