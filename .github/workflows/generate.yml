@@ -1,0 +1,42 @@
+name: Weekly Content Generation
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'  # every Monday 04:00 UTC = 07:00 MSK
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Topic to generate (empty = pick from queue)'
+        required: false
+        default: ''
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci --prefix server
+
+      - name: Generate article
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.topic }}" ]; then
+            node server/agent-pipeline.js "${{ github.event.inputs.topic }}"
+          else
+            node server/cron.js --mode=pipeline
+          fi
+
+      - name: Commit and push drafts
+        run: |
+          git config user.name "Content Bot"
+          git config user.email "bot@ortopednn.ru"
+          git add data/drafts/
+          git diff --staged --quiet || git commit -m "auto: new article draft [skip ci]"
+          git push

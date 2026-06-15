@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import fetch from 'node-fetch';
-import fs from 'fs';
 import { join } from 'path';
+import { dequeue } from './bridge.js';
 
 let db, dataDir;
 
@@ -97,24 +97,13 @@ async function generateDzenArticle() {
   const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const CHAT_ID = process.env.TELEGRAM_CHAT_ID || '45185475';
   try {
-    const topicsPath = join(dataDir || join(process.cwd(), 'data'), 'topics.json');
-    const topics = fs.existsSync(topicsPath) ? JSON.parse(fs.readFileSync(topicsPath, 'utf-8')) : [];
-    const pending = topics.filter(t => t.status === 'pending');
-    if (!pending.length) {
-      console.log('Dzen: no pending topics');
-      return;
-    }
-    const topic = pending[0];
-    topic.status = 'running';
-    fs.writeFileSync(topicsPath, JSON.stringify(topics, null, 2));
+    const task = await dequeue();
+    if (!task) { console.log('Dzen: no pending topics'); return; }
 
     const { runDzenPipeline } = await import('./dzen-generator.js');
-    const result = await runDzenPipeline(topic.topic);
+    const result = await runDzenPipeline(task.topic);
 
     if (result.error) {
-      topic.status = 'error';
-      topic.error = result.error;
-      fs.writeFileSync(topicsPath, JSON.stringify(topics, null, 2));
       console.error('Dzen pipeline error:', result.error);
       if (TOKEN) {
         await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
@@ -123,9 +112,6 @@ async function generateDzenArticle() {
         }).catch(() => {});
       }
     } else {
-      topic.status = 'done';
-      topic.slug = result.draft.slug;
-      fs.writeFileSync(topicsPath, JSON.stringify(topics, null, 2));
       console.log(`Dzen: generated "${result.draft.title}" (${result.draft.charCount} chars)`);
       if (TOKEN) {
         await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {

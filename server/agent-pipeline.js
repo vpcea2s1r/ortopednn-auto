@@ -4,9 +4,9 @@ import { join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(import.meta.url);
+import { humanize, checkAiTells, score_ai, score_seo, composite_score, pass_plan, pass_fetch, RULES } from './pipeline-utils.js';
+import { enqueue, dequeue, listQueue, seedFromExisting, dedupAdd, loadState as bridgeLoadState, saveState as bridgeSaveState } from './bridge.js';
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
-const TOPICS_FILE = join(DATA_DIR, 'topics.json');
-const STATE_FILE = join(DATA_DIR, 'pipeline-state.json');
 const GH_TOKEN = process.env.GH_TOKEN || '';
 const GH_OWNER = 'vpcea2s1r';
 const GH_REPO = 'ortopednn-auto';
@@ -40,26 +40,10 @@ async function ghPut(path, content, message, sha) {
 
 /* --- Topics Queue --- */
 
-function loadTopics() {
-  if (!existsSync(TOPICS_FILE)) return [];
-  return JSON.parse(readFileSync(TOPICS_FILE, 'utf-8'));
-}
+/* --- Pipeline State (via Redis bridge) --- */
 
-function saveTopics(topics) {
-  mkdirSync(join(DATA_DIR), { recursive: true });
-  writeFileSync(TOPICS_FILE, JSON.stringify(topics, null, 2), 'utf-8');
-}
-
-/* --- Pipeline State --- */
-
-function loadState() {
-  if (!existsSync(STATE_FILE)) return { lastRun: null, generatedToday: 0, errors: [] };
-  return JSON.parse(readFileSync(STATE_FILE, 'utf-8'));
-}
-
-function saveState(state) {
-  writeFileSync(STATE_FILE, JSON.stringify(state, null, 2), 'utf-8');
-}
+function loadState() { return bridgeLoadState(); }
+function saveState(state) { return bridgeSaveState(state); }
 
 /* --- RESEARCH AGENT --- */
 
@@ -418,209 +402,7 @@ function parseJSON(raw) {
 
 /* --- REVIEW AGENT --- */
 
-const DENTAL_TERMS = ['зуб', 'коронк', 'протез', 'имплант', 'мост', 'винир', 'керамик', 'циркони', 'металлокерамик', 'стоматолог', 'ортопед', 'десн', 'челюст', 'прикус', 'пломб', 'абатмент', 'культ', 'слепок', 'бюгель', 'нейлон', 'акрил', 'CAD/CAM', '3D', 'окклюзи', 'периодонт', 'пародонт', 'гингивит', 'пульпит', 'эмал', 'дентин', 'цемент', 'фиксаци', 'адгезив'];
-
-/* --- HUMANIZER: Russian AI pattern fixes --- */
-
-const RU_AI_PHRASES = [
-  'стоит отметить', 'следует отметить', 'важно подчеркнуть', 'необходимо подчеркнуть',
-  'при этом важно', 'в заключение хочется', 'подводя итог', 'резюмируя вышесказанное',
-  'таким образом мы видим', 'таким образом,', 'однако стоит отметить',
-  'когда речь заходит о', 'в современном мире', 'в современной стоматологии',
-  'играет важную роль', 'играет ключевую роль', 'играет решающую роль',
-  'играет огромную роль', 'нельзя забывать', 'тем не менее',
-  'эксперты считают', 'по мнению специалистов', 'исследователи отмечают',
-  'ряд аналитиков', 'по мнению экспертов',
-  'открывает возможности', 'позволяет не только',
-  'в конечном счёте', 'решая задачу',
-  'является свидетельством', 'знаменует собой', 'подчёркивает важность',
-  'закладывает фундамент', 'поворотный момент',
-  'будущее выглядит многообещающим',
-];
-
-const RU_AI_WORDS = [
-  'безусловно', 'инновационный', 'инновационная', 'инновационное', 'инновационные',
-  'комплексный', 'комплексная', 'комплексное', 'комплексные', 'комплексно',
-  'многогранный', 'многогранная',
-  'является', 'представляет собой', 'выступает в качестве',
-  'уникальный', 'уникальная', 'уникальное', 'уникальные',
-  'революционный', 'революционная', 'революционное',
-  'передовой', 'передовая', 'передовые',
-];
-
-const RU_AI_PATTERNS = [
-  { re: /не\s+(?:только\s+)?[а-яё][а-яё\s,']{2,60}?\s*,\s*но\s+и\s+[а-яё]/i, tag: 'ru_not_only_but' },
-  { re: /,\s+(?:обеспечивая|позволяя|создавая|способствуя|демонстрируя|отражая|символизируя|подчёркивая|гарантируя|предотвращая|улучшая|снижая|повышая)\s+/i, tag: 'ru_participle' },
-  { re: /возможно,\s+в\s+некоторых\s+случаях/i, tag: 'ru_cascade_soften' },
-  { re: /в\s+целом,\s+по\s+сути/i, tag: 'ru_puffery' },
-  { re: /(?:от\s+[а-яё]{3,}\s+до\s+[а-яё]{3,}\s+и\s+от\s+[а-яё]{3,}\s+до\s+[а-яё]{3,})/i, tag: 'ru_merism' },
-];
-
-function humanize(text) {
-  if (!text) return text;
-  let result = text;
-
-  const removePhrases = [
-    'стоит отметить, что ', 'стоит отметить, что', 'следует отметить, что ', 'следует отметить, что',
-    'важно подчеркнуть, что ', 'важно подчеркнуть, что', 'необходимо подчеркнуть, что ',
-    'при этом важно понимать, что ', 'при этом важно отметить, что ',
-    'в заключение хочется отметить, что ', 'в заключение стоит отметить, что ',
-    'подводя итог, можно сказать, что ', 'подводя итог, ',
-    'резюмируя вышесказанное, ', 'таким образом, мы видим, что ', 'таким образом, ',
-    'однако стоит отметить, что ', 'однако стоит отметить,',
-    'когда речь заходит о ', 'в современном мире ',
-    'нельзя забывать, что ', 'тем не менее, ',
-    'эксперты считают, что ', 'по мнению специалистов, ',
-    'исследователи отмечают, что ', 'по мнению экспертов, ',
-  ];
-  for (const phrase of removePhrases) {
-    const re = new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-    result = result.replace(re, '');
-  }
-
-  const pufferyWords = ['инновационный', 'инновационная', 'инновационное', 'инновационные',
-    'революционный', 'революционная', 'революционное',
-    'передовой', 'передовая', 'передовые',
-    'уникальный', 'уникальная', 'уникальное', 'уникальные'];
-  for (const word of pufferyWords) {
-    const re = new RegExp('\\b' + word + '\\b', 'gi');
-    result = result.replace(re, '');
-  }
-
-  result = result.replace(/представляет собой\s+/gi, '— это ');
-  result = result.replace(/выступает в качестве\s+/gi, '');
-  result = result.replace(/\bявляется\s+/gi, '');
-  result = result.replace(/безусловно,\s+/gi, '');
-  result = result.replace(/крайне важно,\s+/gi, '');
-  result = result.replace(/кроме того,\s+/gi, '');
-  result = result.replace(/более того,\s+/gi, '');
-  result = result.replace(/в целом,\s+/gi, '');
-  result = result.replace(/по сути,\s+/gi, '');
-
-  result = result.replace(/играет (?:важную|ключевую|решающую|огромную) роль[.,;]?\s*/gi, '');
-
-  const emDashCount = (result.match(/—/g) || []).length;
-  const pCount = (result.match(/<p>/g) || []).length;
-  if (emDashCount > pCount * 1.5) {
-    const dashes = result.match(/—/g);
-    if (dashes && dashes.length > 2) {
-      let count = 0;
-      result = result.replace(/—/g, () => { count++; return count % 2 === 0 ? ',' : '—'; });
-    }
-  }
-
-  result = result.replace(/,{2,}/g, ',');
-  result = result.replace(/\s{2,}/g, ' ');
-  result = result.replace(/>\s+</g, '><');
-
-  return result;
-}
-
-/* ai-tells-validator: detect AI-sounding patterns in text */
-
-const AI_BANNED_WORDS = [
-  'delve', 'delving', 'tapestry', 'meticulous', 'meticulously', 'pivotal',
-  'robust', 'underscore', 'underscores', 'underscoring', 'showcase', 'showcases', 'showcasing',
-  'testament', 'intricate', 'intricacies', 'enduring', 'fostering', 'foster', 'fostered',
-  'garner', 'bolster', 'bolstered', 'interplay',
-  'leverage', 'leverages', 'leveraging', 'streamline', 'streamlines', 'streamlining',
-  'transformative', 'transformational', 'groundbreaking', 'cutting-edge',
-  'seamless', 'seamlessly', 'elevate', 'elevates', 'elevating',
-  'unlock', 'unlocks', 'unlocking', 'empower', 'empowers', 'empowering',
-  'revolutionize', 'revolutionizes', 'revolutionary', 'paradigm', 'synergy', 'synergies',
-  'holistic', 'holistically'
-];
-
-const AI_BANNED_PHRASES = [
-  'i hope this email finds you well', 'i hope this finds you well',
-  'just checking in', 'circling back', 'touching base',
-  'reaching out to', 'wanted to reach out',
-  'in conclusion', 'in summary', 'to summarize',
-  'it is important to note', "it's important to note",
-  'it is worth noting', 'needless to say',
-  'at the end of the day',
-  "in today's fast-paced", "in today's digital age",
-  'plays a vital role', 'plays a crucial role', 'plays a key role',
-  'navigate the complexities', 'navigating the complexities',
-  'when it comes to', 'at its core',
-  'a powerful tool', 'best-in-class', 'world-class',
-  'next-generation', 'mission-critical', 'value proposition',
-  'thought leader', 'thought leadership',
-  'best practices', 'enhance your', 'optimize your',
-  'unlock the power', 'harness the power',
-  'let me know your thoughts', 'looking forward to hearing',
-  'forward to hearing from you'
-];
-
-const AI_PATTERNS = [
-  { re: /\bnot\s+(?:just\s+|merely\s+|simply\s+|only\s+)?[a-z][a-z\s,'-]{2,60}?,?\s+but\s+(?:also\s+|rather\s+)?[a-z]/i, tag: 'not_just_but' },
-  { re: /,\s+(?:reinforcing|ensuring|fostering|enabling|driving|empowering|enhancing|cultivating|underscoring|highlighting|contributing|paving|setting)\s+/i, tag: 'participle_tail' },
-  { re: /\bwhether\s+you\s*['']?\s*re\b/i, tag: 'whether_youre' },
-  { re: /\bexcited\s+to\b/i, tag: 'excited_to' },
-];
-
-function checkAiTells(body) {
-  if (!body) return [];
-  const text = body.replace(/<[^>]+>/g, '');
-  const lower = text.toLowerCase();
-  const tells = [];
-
-  for (const word of AI_BANNED_WORDS) {
-    const re = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\-]/g, '\\$&') + '\\b', 'i');
-    if (re.test(text)) {
-      tells.push({ tag: 'ai_word:' + word });
-    }
-  }
-
-  for (const phrase of AI_BANNED_PHRASES) {
-    if (lower.includes(phrase)) {
-      tells.push({ tag: 'ai_phrase:' + phrase });
-    }
-  }
-
-  for (const p of AI_PATTERNS) {
-    if (p.re.test(text)) {
-      tells.push({ tag: 'ai_pattern:' + p.tag });
-    }
-  }
-
-  /* Russian AI patterns */
-  for (const phrase of RU_AI_PHRASES) {
-    if (lower.includes(phrase)) {
-      tells.push({ tag: 'ru_phrase:' + phrase.substring(0, 30) });
-    }
-  }
-
-  for (const word of RU_AI_WORDS) {
-    const re = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\-]/g, '\\$&') + '\\b', 'i');
-    if (re.test(text)) tells.push({ tag: 'ru_word:' + word.substring(0, 20) });
-  }
-
-  for (const p of RU_AI_PATTERNS) {
-    if (p.re.test(text)) tells.push({ tag: 'ru_pattern:' + p.tag });
-  }
-
-  const emDashes = (text.match(/—/g) || []).length;
-  if (emDashes > 1) tells.push({ tag: 'ai_em_dash_overuse', detail: `${emDashes} em-dashes` });
-
-  if (/[“”‘’]/.test(text)) tells.push({ tag: 'ai_smart_quotes' });
-
-  return tells;
-}
-
-const KNOWN_DENTAL_JOURNALS = [
-  'journal of dental research', 'journal of dentistry', 'journal of prosthetic dentistry',
-  'journal of oral rehabilitation', 'clinical oral implants research', 'clinical oral investigations',
-  'international journal of oral and maxillofacial implants', 'international journal of prosthodontics',
-  'dental materials', 'journal of prosthodontics', 'european journal of oral implantology',
-  'journal of periodontology', 'journal of clinical periodontology', 'journal of oral science',
-  'journal of prosthodontic research', 'journal of applied oral science', 'operative dentistry',
-  'journal of endodontics', 'journal of esthetic and restorative dentistry',
-  'international dental journal', 'british dental journal', 'community dentistry and oral epidemiology',
-  'caries research', 'oral diseases', 'gerodontology', 'journal of oral and maxillofacial surgery',
-  'international journal of periodontics and restorative dentistry', 'implant dentistry',
-  'journal of cranio-maxillofacial surgery', 'head and face medicine', 'bmc oral health'
-];
+const DENTAL_TERMS = RULES.dental_terms;
 
 function extractCitations(text) {
   const citations = [];
@@ -645,7 +427,7 @@ function verifyCitations(text) {
   if (citations.length === 0) return { pass: true, citations: [], suspicious: [] };
   const suspicious = citations.filter(c => {
     const j = c.journal.toLowerCase();
-    return !KNOWN_DENTAL_JOURNALS.some(k => j.includes(k) || k.includes(j));
+    return !RULES.known_journals.some(k => j.includes(k) || k.includes(j));
   });
   return { pass: suspicious.length === 0, citations, suspicious };
 }
@@ -676,8 +458,17 @@ function reviewArticle(article, topic) {
   scores.citations = citationResult;
   scores.citationPass = citationResult.pass;
 
+  /* scorers */
+  const aiScoreResult = score_ai(article.body);
+  scores.aiScore = aiScoreResult.score;
+  scores.seoScoreResult = score_seo(article.body, topic);
+
+  const comp = composite_score(article.body, topic);
+  scores.composite = comp;
+  scores.auditPass = comp.audit.pass;
+
   const failCount = [!scores.lengthPass, !scores.h2Pass, !scores.hasList, !scores.hasFAQ, scores.relevance === 'weak'].filter(Boolean).length;
-  scores.pass = failCount <= 1 && scores.aiPass && scores.citationPass;
+  scores.pass = (failCount <= 1) && scores.aiPass && scores.citationPass && scores.auditPass;
 
   return scores;
 }
@@ -728,6 +519,15 @@ ${article.body}
 export async function runPipelineManual(topic) {
   const result = { stage: '', topic, startedAt: new Date().toISOString() };
   try {
+    result.stage = 'check';
+    const format = pass_plan(topic);
+    result.format = format.key;
+
+    result.stage = 'dedup';
+    const dupCheck = await pass_fetch(topic);
+    if (dupCheck.exists) return { ...result, error: `duplicate: ${dupCheck.slug}`, stage: 'dedup' };
+    result.dedup = dupCheck;
+
     result.stage = 'research';
     const research = await researchAgent(topic);
     result.research = research;
@@ -763,27 +563,14 @@ export async function runPipelineManual(topic) {
 }
 
 export async function pickAndRun() {
-  const topics = loadTopics();
-  const pending = topics.find(t => t.status === 'pending');
-  if (!pending) return { info: 'No pending topics in queue' };
-  pending.status = 'running';
-  saveTopics(topics);
-  const result = await runPipelineManual(pending.topic);
-  if (result.error) {
-    pending.status = 'error';
-    pending.error = result.error;
-  } else {
-    pending.status = 'on_stomatolog';
-    pending.slug = result.draft?.slug;
-    pending.url = result.stomatologUrl;
-    pending.completedAt = result.completedAt;
-  }
-  const state = loadState();
+  const task = await dequeue();
+  if (!task) return { info: 'No pending topics in queue' };
+  const result = await runPipelineManual(task.topic);
+  const state = await loadState();
   state.lastRun = new Date().toISOString();
   state.generatedToday = (state.generatedToday || 0) + (result.error ? 0 : 1);
   if (result.error) state.errors = (state.errors || []).concat(result.error).slice(-20);
-  saveState(state);
-  saveTopics(topics);
+  await saveState(state);
   return result;
 }
 
@@ -846,19 +633,16 @@ export async function runHorizonPipeline() {
   return { file: latest, totalItems: items.length, generated: results.length, results };
 }
 
-export { ghPut, ghFetch, checkAiTells, humanize, horizonWriterAgent };
+export { ghPut, ghFetch, checkAiTells, humanize, score_ai, score_seo, composite_score, pass_plan, pass_fetch, horizonWriterAgent };
 
 export async function addTopic(topic) {
-  const topics = loadTopics();
-  const existing = topics.find(t => t.topic === topic);
+  const existing = (await listQueue()).find(t => t.topic === topic);
   if (existing) return { info: 'Topic already in queue', topic };
-  topics.push({ topic, added: new Date().toISOString(), status: 'pending' });
-  saveTopics(topics);
-  return { ok: true, topic };
+  return enqueue(topic);
 }
 
 export async function listTopics() {
-  return loadTopics();
+  return listQueue();
 }
 
 export async function listState() {
@@ -866,9 +650,9 @@ export async function listState() {
 }
 
 export async function clearErrors() {
-  const state = loadState();
+  const state = await loadState();
   state.errors = [];
-  saveState(state);
+  await saveState(state);
   return { ok: true };
 }
 
