@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'protezirovanie-pri-parodontite';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протезирование при пародонтите — можно ли ставить протезы при воспалении дёсен",
+  "description": "Особенности протезирования зубов при пародонтите. Подготовка, выбор конструкции, сроки. Советы стоматолога-ортопеда.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Протезирование при пародонтите в Нижнем Новгороде"
+  description="Можно ли ставить протезы при пародонтите. Подготовка, сроки, выбор конструкций. Запись +7 (920) 253-73-17."
+  breadcrumbTitle="Протезирование при пародонтите"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-15"
+  dateModified="2026-06-15"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Протезирование при пародонтите</h1>
+      <div class="meta">15 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>Короткий ответ:</strong> ставить протезы при активном пародонтите нельзя — сначала нужно снять воспаление. После лечения пародонтита протезирование возможно, но с ограничениями. Выбор конструкции зависит от степени потери костной ткани.</p>
+
+      <h2>Пародонтит и протезирование — почему важна очерёдность</h2>
+      <p>Пародонтит — воспаление тканей вокруг зуба. Десна опускается, кость рассасывается, зуб начинает шататься. Если установить протез на нездоровые зубы, конструкция быстро расшатается, а воспаление усилится.</p>
+      <p>По данным исследований, у пациентов с нелеченым пародонтитом риск неудачи имплантации выше в 3–4 раза (<em>Journal of Periodontology</em>, 2020).</p>
+
+      <h2>Этап 1: Лечение пародонтита</h2>
+      <p>Перед протезированием нужно провести:</p>
+      <ul>
+        <li>профессиональную чистку зубов — снять налёт и камень</li>
+        <li>закрытый кюретаж — чистку пародонтальных карманов</li>
+        <li>противовоспалительную терапию — антисептики, антибиотики по показаниям</li>
+        <li>шинирование подвижных зубов — если есть подвижность 1–2 степени</li>
+      </ul>
+      <p>Только после стабилизации — отсутствия крови, гноя, глубины карманов меньше 4 мм — можно начинать протезирование.</p>
+
+      <h2>Какие протезы подходят при пародонтите</h2>
+      <h3>Бюгельные протезы</h3>
+      <p>Оптимальный выбор при пародонтите. Металлический каркас распределяет нагрузку на все зубы, а кламмеры не травмируют десну. Можно добавить шинирующие элементы для фиксации подвижных зубов.</p>
+
+      <h3>Нейлоновые протезы</h3>
+      <p>Мягкие, не давят на десну, подходят при чувствительной слизистой. Минус — не фиксируют подвижные зубы.</p>
+
+      <h3>Мостовидные протезы</h3>
+      <p>Только если опорные зубы здоровы, без подвижности и с достаточным объёмом кости. При пародонтите мосты ставят с осторожностью.</p>
+
+      <h3>Имплантация</h3>
+      <p>Возможна после полного излечения пародонтита и при стабильном состоянии кости. Риск мукозита и периимплантита у пациентов с пародонтитом в анамнезе выше, поэтому гигиена должна быть безупречной.</p>
+
+      <h2>Чего нельзя делать при пародонтите</h2>
+      <ul>
+        <li>Устанавливать протезы на непролеченные зубы</li>
+        <li>Использовать жёсткие съёмные протезы без амортизации</li>
+        <li>Ставить импланты в очаг активного воспаления</li>
+        <li>Игнорировать гигиену вокруг протезов</li>
+      </ul>
+
+      <h2>Рекомендации пациентам с пародонтитом</h2>
+      <p>После протезирования нужен особый уход:</p>
+      <ul>
+        <li>ирригатор — ежедневно, минимум 1 раз</li>
+        <li>зубная нить и ёршики — для чистки межзубных промежутков</li>
+        <li>осмотры каждые 3–4 месяца, а не раз в полгода</li>
+        <li>при появлении крови или запаха — сразу к врачу</li>
+      </ul>
+
+      <p>Пародонтит не приговор для протезирования. При правильном лечении и уходе протезы служат 5–10 лет и дольше.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Нужна консультация по протезированию при пародонтите?</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить: +7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+a { color: #4a90d9; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

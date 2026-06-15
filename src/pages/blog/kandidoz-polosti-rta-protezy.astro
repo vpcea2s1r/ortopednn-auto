@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'kandidoz-polosti-rta-protezy';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Кандидоз полости рта у пациентов с зубными протезами",
+  "description": "Причины молочницы под протезом, симптомы, лечение. Как отличить кандидоз от других воспалений. Профилактика при ношении протезов.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Кандидоз полости рта при зубных протезах в Нижнем Новгороде"
+  description="Молочница под протезом — симптомы, причины, лечение. Профилактика грибковой инфекции для пациентов с зубными протезами. Запись +7 (920) 253-73-17."
+  breadcrumbTitle="Кандидоз и зубные протезы"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-15"
+  dateModified="2026-06-15"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Кандидоз полости рта у пациентов с зубными протезами</h1>
+      <div class="meta">15 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>Протезный кандидоз</strong> (молочница) — грибковое воспаление слизистой под съёмным протезом. Возникает у 30–65% пациентов, особенно пожилых. Без лечения переходит в хроническую форму, поражает углы рта и язык.</p>
+
+      <h2>Почему под протезом появляется грибок</h2>
+      <p>Грибок Candida albicans живёт во рту у большинства людей. В норме иммунитет и слюна сдерживают его размножение. Протез создаёт условия для роста:</p>
+      <ul>
+        <li><strong>Парниковый эффект</strong> — под протезом тепло, влажно, нет доступа воздуха</li>
+        <li><strong>Микротравмы</strong> — плохо прилегающий протез травмирует слизистую, грибок проникает глубже</li>
+        <li><strong>Плохая гигиена</strong> — налёт на протезе становится питательной средой для Candida</li>
+      </ul>
+
+      <h2>Кто в группе риска</h2>
+      <ul>
+        <li>Носите съёмных протезов (особенно акриловых) — под ними грибок размножается активнее</li>
+        <li>Пациенты с сахарным диабетом — повышенный сахар в слюне питает грибок</li>
+        <li>После антибиотиков — погибает полезная микрофлора, Candida занимает её место</li>
+        <li>Курильщики — никотин сушит слизистую, снижает местный иммунитет</li>
+        <li>Пациенты с ксеростомией — слюна не сдерживает грибок</li>
+      </ul>
+
+      <h2>Симптомы</h2>
+      <ul>
+        <li>Красные пятна на нёбе и десне под протезом — самый частый признак</li>
+        <li>Белый налёт, который счищается, оставляя красную эрозию</li>
+        <li>Боль и жжение под протезом, особенно при кислой и острой еде</li>
+        <li>Трещины в уголках рта (ангулярный хейлит)</li>
+        <li>Неприятный запах изо рта</li>
+      </ul>
+
+      <h2>Лечение</h2>
+      <p>Лечение комплексное — местное и системное:</p>
+      <h3>Местное</h3>
+      <ul>
+        <li>Противогрибковые мази (клотримазол, нистатин) — наносятся на протез и слизистую</li>
+        <li>Антисептические полоскания (хлоргексидин 0,05%, мирамистин) — 2–3 раза в день</li>
+        <li>Обработка протеза противогрибковыми растворами ежедневно</li>
+      </ul>
+      <h3>Системное</h3>
+      <ul>
+        <li>Флуконазол (Дифлюкан) внутрь — курс 7–14 дней по назначению врача</li>
+        <li>Коррекция основного заболевания — контроль сахара при диабете</li>
+      </ul>
+
+      <h2>Профилактика</h2>
+      <ul>
+        <li>Регулярная чистка протеза — утром и вечером мягкой щёткой с мылом</li>
+        <li>Дезинфекция таблетками (Corega, Protefix) — 2–3 раза в неделю</li>
+        <li>Снимайте протез на ночь — слизистая должна отдыхать и дышать</li>
+        <li>Не носите протез круглосуточно — минимум 6 часов перерыва в сутки</li>
+        <li>При диабете — контроль уровня сахара и визиты к стоматологу каждые 6 месяцев</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Может ли грибок перейти с протеза на здоровые зубы?</h3>
+      <p>Да, Candida поражает и естественные зубы — вызывает кариес корня и воспаление дёсен. Поэтому чистить нужно и протез, и свои зубы.</p>
+      <h3>Помогает ли сода от кандидоза?</h3>
+      <p>Полоскание содой (1 ч.л. на стакан) даёт временный эффект — изменяет pH и замедляет рост грибка. Но не лечит причину. При симптомах нужен врач.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Беспокоит жжение или налёт под протезом?</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить: +7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+a { color: #4a90d9; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

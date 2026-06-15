@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'antikoagulyanty-i-stomatologiya';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Антикоагулянты и стоматология — особенности лечения и протезирования",
+  "description": "Можно ли удалять зубы и ставить протезы при приёме антикоагулянтов. Риск кровотечений, подготовка, взаимодействие с препаратами крови.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Антикоагулянты и стоматология в Нижнем Новгороде"
+  description="Приём кроворазжижающих препаратов и стоматологические процедуры — риски, подготовка, протезирование. Запись +7 (920) 253-73-17."
+  breadcrumbTitle="Антикоагулянты и стоматология"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-15"
+  dateModified="2026-06-15"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Антикоагулянты и стоматология</h1>
+      <div class="meta">15 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>Короткий ответ:</strong> приём антикоагулянтов (варфарин, ксарелто, эликвис) — не противопоказание к стоматологическому лечению. Большинство процедур можно проводить без отмены препарата. При удалении зубов и хирургии нужен МНО-контроль.</p>
+
+      <h2>Какие препараты разжижают кровь</h2>
+      <ul>
+        <li><strong>Антикоагулянты</strong> — варфарин, ривароксабан (Ксарелто), апиксабан (Эликвис), дабигатран (Прадакса)</li>
+        <li><strong>Антиагреганты</strong> — аспирин, клопидогрель (Плавикс), тикагрелор (Брилинта)</li>
+      </ul>
+      <p>Эти препараты назначают при мерцательной аритмии, тромбозах, после инсульта, при искусственных клапанах сердца и стентах.</p>
+
+      <h2>Можно ли отменять антикоагулянты перед визитом к стоматологу</h2>
+      <p><strong>Нет, без согласования с кардиологом или неврологом.</strong> Отмена повышает риск тромбоза и инсульта — это опаснее, чем кровотечение во рту.</p>
+      <p>Современные стоматологические протоколы (European Society of Cardiology, International Journal of Oral Surgery) рекомендуют:</p>
+      <ul>
+        <li>Простые процедуры (осмотр, слепки, коронки, чистка зубов) — без отмены</li>
+        <li>Хирургия (удаление, имплантация) — оценить МНО перед процедурой</li>
+        <li>При МНО 2,5–3,5 — местный гемостаз (губки, швы) без системной отмены</li>
+        <li>При МНО выше 4,0 — отложить процедуру до консультации с врачом</li>
+      </ul>
+
+      <h2>Как подготовиться к протезированию</h2>
+      <ul>
+        <li>Предупредите стоматолога о всех принимаемых препаратах — включая аспирин, ибупрофен и травы (гинкго, женьшень)</li>
+        <li>Сдайте МНО (для варфарина) — норма 2,0–3,0 для большинства показаний</li>
+        <li>Перед имплантацией — консультация кардиолога и согласование режима</li>
+        <li>Не принимайте дополнительно аспирин, ибупрофен и НПВС за 2 дня до процедуры</li>
+      </ul>
+
+      <h2>Что будет делать врач</h2>
+      <p>Стоматолог-ортопед при работе с пациентами на антикоагулянтах:</p>
+      <ul>
+        <li>Минимизирует травматизацию дёсен — аккуратные края коронок, качественная полировка</li>
+        <li>Использует гемостатические средства — губки, фибрин, аминокапроновая кислота</li>
+        <li>При съёмных протезах — тщательная коррекция, чтобы протез не травмировал слизистую</li>
+        <li>После процедуры — контроль гемостаза в течение 20–30 минут</li>
+      </ul>
+
+      <h2>Когда к врачу срочно</h2>
+      <ul>
+        <li>Кровотечение не останавливается через 2 часа</li>
+        <li>Кровь сворачивается крупными сгустками</li>
+        <li>Гематома на щеке или шее быстро увеличивается</li>
+        <li>Кровь в слюне сохраняется больше суток</li>
+      </ul>
+
+      <h2>Таблица: стоматологические процедуры и антикоагулянты</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Процедура</th>
+              <th>Отмена</th>
+              <th>Особенности</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Осмотр, слепки, припасовка</td>
+              <td>Не нужна</td>
+              <td>Без ограничений</td>
+            </tr>
+            <tr>
+              <td>Обточка, временные коронки</td>
+              <td>Не нужна</td>
+              <td>Аккуратная ретракция десны</td>
+            </tr>
+            <tr>
+              <td>Удаление зуба</td>
+              <td>Индивидуально</td>
+              <td>МНО ≤ 3,0, местный гемостаз</td>
+            </tr>
+            <tr>
+              <td>Имплантация</td>
+              <td>Решение кардиолога</td>
+              <td>Риск кровотечения оценивается индивидуально</td>
+            </tr>
+            <tr>
+              <td>Профессиональная чистка</td>
+              <td>Не нужна</td>
+              <td>Щадящий режим</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Принимаете препараты для разжижения крови и планируете протезирование?</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить: +7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+a { color: #4a90d9; }
+.table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e0e8f0; color: #5a7a9a; }
+th { background: #f0f6fb; color: #1e3a5f; font-weight: 600; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

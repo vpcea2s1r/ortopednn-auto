@@ -29,6 +29,14 @@
 2. **Если CI упал** — не делать повторный push в ту же ветку без проверки состояния tree
 3. **Проверить live-сайт** — открыть 2-3 ключевые страницы после деплоя
 
+### Проверка кодировки (UTF-8)
+1. **Проверить BOM** — UTF-8 файлы НЕ должны иметь BOM (EF BB BF). PowerShell `>` и `Set-Content` добавляют UTF-16 LE BOM (FF FE).
+2. **Проверить содержимое** — после записи файла с кириллицей прочитать его обратно: `[System.Text.Encoding]::UTF8.GetString($bytes)` — должен содержать символы `[char]0x0410-0x042F` (русские буквы), а не `╨` (0x2568, CP1251-отображение UTF-8 байтов).
+3. **Проверить размер** — сверить `$bytes.Length` с ожидаемым. Если файл вдвое меньше ожидаемого — encoding потерян (UTF-16 → ASCII без конвертации).
+4. **Записывать через .NET** — использовать `[System.IO.File]::WriteAllText($path, $content, [System.Text.UTF8Encoding]::new($false))` вместо `Set-Content` или `Out-File`. Для бинарной верности: `[System.IO.File]::WriteAllBytes($path, $bytes)`.
+5. **Перед commit** — проверить кодировку изменённых файлов: `scripts/encoding-verify.ps1` (если существует).
+6. **`git show` и Node.js** — если `git show` через PowerShell теряет newlines или кодировку, использовать `node -e "execSync('git show <commit>:<file>')"` и `fs.writeFileSync()` для гарантии бинарной верности.
+
 ### Аварийное восстановление
 Если push создал "грязное" дерево (stale entries, битые blobs):
 1. Получить SHA коммита ДО проблемы (`git log` на локальной копии или через API)

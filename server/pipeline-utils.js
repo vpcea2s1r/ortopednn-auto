@@ -337,5 +337,24 @@ export function checkAiTells(body) {
   return tells;
 }
 
+/* ponytail: crude Russian readability — avg sentence length + avg char/word */
+export function score_readability(text) {
+  const clean = text.replace(/<[^>]+>/g, '');
+  const sentences = splitSentences(clean);
+  if (sentences.length < 2) return { score: 0.5, label: 'unknown', avgSentenceWords: 0, avgWordChars: 0 };
+  const words = clean.match(/[а-яёa-z]+/gi) || [];
+  if (words.length === 0) return { score: 0.5, label: 'unknown', avgSentenceWords: 0, avgWordChars: 0 };
+  const avgSentenceWords = words.length / sentences.length;
+  const avgWordChars = words.reduce((a, w) => a + w.length, 0) / words.length;
+  /* Russian: ideal ~10 words/sentence, ~6-7 chars/word. Formula awards higher for shorter sentences/words. */
+  const sentenceScore = Math.max(0, 1 - Math.abs(avgSentenceWords - 10) / 20);
+  const wordScore = avgWordChars <= 7 ? 1 : Math.max(0, 1 - (avgWordChars - 7) / 8);
+  const score = Math.round((sentenceScore * 0.5 + wordScore * 0.5) * 100) / 100;
+  let label = 'hard';
+  if (score >= 0.7 && avgSentenceWords <= 14) label = 'normal';
+  if (score >= 0.85 && avgSentenceWords <= 11) label = 'easy';
+  return { score, label, avgSentenceWords: Math.round(avgSentenceWords * 10) / 10, avgWordChars: Math.round(avgWordChars * 10) / 10 };
+}
+
 /* re-export rules for other modules */
 export { RULES };

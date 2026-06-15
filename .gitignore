@@ -11,4 +11,7 @@ scripts
 wordstat
 .wrangler
 .keystatic
+pnpm-lock.yaml
+pnpm-workspace.yaml
+*.orig.*
 .astro

@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'stress-i-zuby';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Влияние стресса на зубы и десны — бруксизм, стираемость, сухость во рту",
+  "description": "Как стресс влияет на здоровье полости рта. Бруксизм (скрежет зубами), стираемость эмали, сухость, пародонтит. Советы врача при стрессе.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Влияние стресса на зубы и десны в Нижнем Новгороде"
+  description="Стресс разрушает зубы — бруксизм, кариес, пародонтит. Как защитить зубы при стрессе. Запись +7 (920) 253-73-17."
+  breadcrumbTitle="Влияние стресса на зубы"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-15"
+  dateModified="2026-06-15"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Влияние стресса на зубы и десны</h1>
+      <div class="meta">15 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead"><strong>Короткий ответ:</strong> стресс напрямую влияет на здоровье полости рта — вызывает бруксизм (скрежет зубами), сухость, воспаление дёсен, повышает риск кариеса. У пациентов с хроническим стрессом потери зубов на 20% больше, чем у спокойных.</p>
+
+      <h2>Бруксизм — главная проблема</h2>
+      <p>Бруксизм — бессознательное сжатие челюстей и скрежет зубами во сне. В момент стресса человек сжимает челюсти с силой до 100 кг/см² — это в 5 раз больше, чем при жевании. У 70% пациентов с бруксизмом стресс — основная причина.</p>
+      <p>Последствия бруксизма:</p>
+      <ul>
+        <li>стираемость эмали на 1–2 мм за 3–5 лет (в норме — 0.3 мм за 10 лет)</li>
+        <li>сколы и трещины зубов, особенно на передних</li>
+        <li>боль в височно-нижнечелюстном суставе (ВНЧС)</li>
+        <li>головная боль по утрам</li>
+        <li>расшатывание зубов</li>
+      </ul>
+
+      <h2>Как стресс влияет на дёсны</h2>
+      <p>Кортизол — гормон стресса — подавляет иммунитет. Десны становятся уязвимее к бактериям. Исследование в <em>Journal of Periodontology</em> показало: у людей с хроническим стрессом пародонтит встречается в 2 раза чаще, и лечение даёт худшие результаты.</p>
+      <p>Стресс также ухудшает заживление тканей после стоматологических процедур — после удаления зуба или имплантации восстановление идёт дольше.</p>
+
+      <h2>Сухость во рту при стрессе</h2>
+      <p>При волнении слюна становится гуще, её вырабатывается меньше. Слюна — естественная защита от кариеса (смывает налёт, нейтрализует кислоты). При сухости риск кариеса растёт в 2–3 раза. Пациенты, принимающие антидепрессанты, тоже часто жалуются на сухость — это побочный эффект препаратов.</p>
+
+      <h2>Что делать</h2>
+      <h3>При бруксизме</h3>
+      <ul>
+        <li>капа (ночная защита) — снижает нагрузку на зубы</li>
+        <li>избегать жевательной резинки и твёрдой пищи вечером</li>
+        <li>расслабляющие процедуры перед сном</li>
+        <li>при болях в ВНЧС — консультация гнатолога</li>
+      </ul>
+
+      <h3>Для дёсен</h3>
+      <ul>
+        <li>усиленная гигиена в периоды стресса</li>
+        <li>ирригатор — минимум 1 раз в день</li>
+        <li>ополаскиватели с хлоргексидином (курсами, не постоянно)</li>
+        <li>контрольные осмотры каждые 3 месяца</li>
+      </ul>
+
+      <h3>От сухости</h3>
+      <ul>
+        <li>пить воду маленькими глотками в течение дня</li>
+        <li>леденцы без сахара для стимуляции слюноотделения</li>
+        <li>увлажняющие гели для полости рта (по назначению врача)</li>
+      </ul>
+
+      <h2>Протезирование при бруксизме</h2>
+      <p>Если зубы уже стёрлись из-за стресса, нужно их восстанавливать. Варианты:</p>
+      <ul>
+        <li><strong><a href="/services/keramicheskaya-koronka">Керамические коронки</a></strong> — если стёрто 30–50% зуба</li>
+        <li><strong><a href="/services/metallokeramicheskaya-koronka">Металлокерамика</a></strong> — прочнее керамики, выдерживает бруксизм</li>
+        <li>Виниры — при лёгкой стираемости передних зубов</li>
+      </ul>
+      <p>Важно: при активном бруксизме сначала изготавливают капу, а потом протезируют. Иначе протезы сотрутся или сломаются.</p>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Стираются зубы от стресса? Помогу подобрать правильное лечение.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">Позвонить: +7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: #1e3a5f; margin-bottom: 0.5rem; }
+.meta { color: #7a9ab8; font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
+h2 { color: #2e6ab3; margin: 2rem 0 1rem; font-size: 1.3rem; }
+h3 { color: #1e3a5f; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+p { color: #5a7a9a; line-height: 1.7; margin-bottom: 1rem; }
+ul { color: #5a7a9a; padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+a { color: #4a90d9; }
+.cta { text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; }
+.btn { display: inline-block; background: #4a90d9; color: white; padding: 0.75rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

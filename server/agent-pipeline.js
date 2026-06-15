@@ -4,7 +4,7 @@ import { join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(import.meta.url);
-import { humanize, checkAiTells, score_ai, score_seo, composite_score, pass_plan, pass_fetch, RULES } from './pipeline-utils.js';
+import { humanize, checkAiTells, score_ai, score_seo, composite_score, score_readability, pass_plan, pass_fetch, RULES } from './pipeline-utils.js';
 import { enqueue, dequeue, listQueue, seedFromExisting, dedupAdd, loadState as bridgeLoadState, saveState as bridgeSaveState } from './bridge.js';
 const DATA_DIR = process.env.DATA_DIR || join(__dirname, '..', 'data');
 const GH_TOKEN = process.env.GH_TOKEN || '';
@@ -76,25 +76,38 @@ async function writerAgent(topic, research) {
     ? research.pubmedResults.map(r => `- ${r.title} (${r.source})`).join('\n')
     : '';
 
-  const prompt = `Напиши экспертную статью для блога стоматолога-ортопеда на тему: "${topic}"
+  const voiceSpec = `Ты — Марина Георгиевна, стоматолог-ортопед с 15-летним опытом из Нижнего Новгорода. Твой голос:
+- Короткие предложения, простые русские слова
+- Конкретика: цифры, сроки, названия материалов
+- Делишься наблюдениями из практики ("часто вижу, что...", "ко мне приходят с...")
+- Без обобщений, без "современная стоматология", без "врачи рекомендуют"
+- Никаких восклицаний, никаких призывов "запишитесь"
+- Ты объясняешь коллеге-врачу, а не рекламируешь`;
 
-${pubmedContext ? 'Научный контекст из PubMed (используй для аргументации):\n' + pubmedContext : ''}
+  const prompt = `Напиши статью для блога стоматолога-ортопеда. Тема: "${topic}"
 
-Ключевые параметры:
-- 2000-3000 символов
-- Первый абзац — ответ на главный вопрос пациента (без общих фраз)
-- Каждый h2 — конкретный аспект темы
-- Раздел "Сравнение" с таблицей (методы/материалы/сроки)
-- FAQ: 3-5 вопросов с короткими предметными ответами
-- Стиль: естественный русский, как говорит опытный врач коллеге. Без канцелярита, без "следует отметить", "необходимо подчеркнуть"
-- Без h1, без "запишитесь к нам", без восклицательных знаков
-- HTML: только p, h2, ul/ol, table (с thead/tbody), strong
+${pubmedContext ? 'Используй эти источники для аргументации (если уместно):\n' + pubmedContext : ''}
+
+${voiceSpec}
+
+Структура:
+- Первый абзац: ответ на главный вопрос пациента
+- 2-3 подзаголовка h2 по теме
+- Таблица сравнения или классификации
+- FAQ: 3-5 коротких вопрос-ответ
+- Без h1
+
+Технически:
+- 2000-3000 символов body
+- HTML: только p, h2, ul/ol, table (thead/tbody), strong
+- Без ссылок на исследования, PMID, DOI, журналы (не выдумывай)
+- Без названий продуктов, которые не в теме
 
 Ответь ТОЛЬКО JSON:
 {"title":"","description":"150-160 символов","body":"полный HTML"}`;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
-    const raw = await callAI(prompt);
+    const raw = await callAI(prompt, { temperature: 0.7 });
     const json = parseJSON(raw);
     if (json?.title && json?.description && json?.body) return json;
   }
@@ -128,7 +141,7 @@ ${allContext}
 {"title":"","description":"150-160 символов","body":"полный HTML в русском переводе"}`;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
-    const raw = await callAI(prompt);
+    const raw = await callAI(prompt, { temperature: 0.7 });
     const json = parseJSON(raw);
     if (json?.title && json?.description && json?.body) return json;
   }
@@ -343,14 +356,15 @@ async function publisherAgent(article) {
 
 /* --- AI Helpers --- */
 
-async function callAI(prompt) {
+async function callAI(prompt, options = {}) {
   const system = 'Ответь только JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
   const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
     method: 'POST', signal: AbortSignal.timeout(300000),
     headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-pipeline/1.0' },
     body: JSON.stringify({
       messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-      model: 'deepseek-v4-flash-free'
+      model: 'deepseek-v4-flash-free',
+      temperature: options.temperature ?? 0.5
     })
   });
   const text = await resp.text();
@@ -494,7 +508,11 @@ async function reviewAgent(article, topic, maxRetries = 2) {
       fixes.push(`удали вымышленные ссылки на журналы: ${fake}. Замени на общие утверждения без указания конкретных журналов и годов. Никогда не выдумывай ссылки на научные журналы`);
     }
 
-    const prompt = `Перепиши эту статью для блога стоматолога-ортопеда. Исправь: ${fixes.join('; ')}.
+    const prompt = `Перепиши статью для блога стоматолога-ортопеда. Исправь только указанные проблемы, не меняй остальное.
+
+Что исправить: ${fixes.join('; ')}
+
+Голос: короткие предложения, простые слова, конкретика (цифры, сроки, материалы). Без штампов, без обобщений.
 
 Оригинал:
 ${article.body}
@@ -502,7 +520,7 @@ ${article.body}
 Ответь ТОЛЬКО JSON:
 {"title":"${article.title}","description":"${article.description}","body":"полный HTML"}`;
 
-    const raw = await callAI(prompt);
+    const raw = await callAI(prompt, { temperature: 0.3 });
     const improved = parseJSON(raw);
     if (improved?.title && improved?.description && improved?.body) {
       improved.body = humanize(improved.body);
@@ -512,6 +530,44 @@ ${article.body}
 
   const finalScores = reviewArticle(article, topic);
   return { article, scores: finalScores, retries: maxRetries - 1, warning: !finalScores.pass };
+}
+
+async function factCheckAgent(article) {
+  const prompt = `Проверь факты в статье стоматолога-ортопеда. Найди только то, что явно неверно или выдумано (ложные названия материалов, несуществующие методы, сроки, которые не соответствуют реальности). Игнорируй общие утверждения — лови только конкретные фактологические ошибки.
+
+Статья:
+${article.body}
+
+Ответь ТОЛЬКО JSON со списком проблем:
+{"issues":[{"claim":"цитата с ошибкой","fix":"как исправить"}]}
+Если ошибок нет: {"issues":[]}`;
+
+  const raw = await callAI(prompt, { temperature: 0.2 });
+  try {
+    const result = JSON.parse(raw);
+    return result.issues || [];
+  } catch {
+    return [];
+  }
+}
+
+async function adversarialReviewAgent(article) {
+  const prompt = `Ты скептически настроенный стоматолог. Найди в статье слабые места: преувеличения, голословные утверждения без конкретики, неподтверждённые обещания, размытые формулировки. Для каждого укажи конкретную цитату и что с ней не так.
+
+Статья:
+${article.body}
+
+Ответь ТОЛЬКО JSON:
+{"issues":[{"quote":"цитата","problem":"что не так","fix":"как исправить"}]}
+Если всё нормально: {"issues":[]}`;
+
+  const raw = await callAI(prompt, { temperature: 0.3 });
+  try {
+    const result = JSON.parse(raw);
+    return result.issues || [];
+  } catch {
+    return [];
+  }
 }
 
 /* --- MAIN PIPELINE --- */
@@ -545,6 +601,16 @@ export async function runPipelineManual(topic) {
     const reviewed = await reviewAgent(seo, topic);
     result.review = reviewed.scores;
     if (reviewed.warning) result.review.warning = 'quality concerns after max retries';
+
+    result.stage = 'factcheck';
+    const factIssues = await factCheckAgent(reviewed.article || seo);
+    result.factCheck = factIssues;
+    if (factIssues.length > 0) result.review.warning = (result.review.warning || '') + '; fact-check: ' + factIssues.length + ' issues';
+
+    result.stage = 'adversarial';
+    const advIssues = await adversarialReviewAgent(reviewed.article || seo);
+    result.adversarial = advIssues;
+    if (advIssues.length > 0) result.review.warning = (result.review.warning || '') + '; adversarial: ' + advIssues.length + ' issues';
 
     result.stage = 'draft';
     const draftInfo = await draftAgent({ ...seo, ...reviewed.article });

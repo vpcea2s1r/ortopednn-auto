@@ -222,14 +222,15 @@ th { background: #f5f8fc; color: #1e3a5f; font-weight: 600; }
 </style>`;
 }
 
-async function callAI(prompt) {
+async function callAI(prompt, options = {}) {
   const system = 'Ответь только JSON. {"title":"...","description":"...","body":"<p>...</p>"}';
   const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
     method: 'POST', signal: AbortSignal.timeout(300000),
     headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-bot/1.0' },
     body: JSON.stringify({
       messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-      model: 'deepseek-v4-flash-free'
+      model: 'deepseek-v4-flash-free',
+      temperature: options.temperature ?? 0.5
     })
   });
   if (!resp.ok) console.error('AI API non-200:', resp.status);
@@ -307,29 +308,34 @@ async function searchPubMed(query) {
 async function rewrite(url, sourceText) {
   const text = sourceText || await extractText(url);
   console.log('Rewrite started, source length:', text.length, 'url:', url ? url.substring(0,80) : 'raw');
-  const buildPrompt = (extra) => `Ты стоматолог-ортопед. Перепиши исходный текст для блога на русском. Пиши языком врача — просто, без воды, без штампов.
+  const voiceSpec = `Ты — Марина Георгиевна, стоматолог-ортопед. Перепиши текст для блога. Твой голос:
+- Короткие предложения, простые слова
+- Конкретика: цифры, сроки, материалы
+- Делишься наблюдениями из опыта
+- Без обобщений и штампов
+- Никаких восклицаний и "запишитесь"`;
 
-ТРЕБОВАНИЯ:
-- lead (абзац-введение с сутью) в начале
-- 2-3 подзаголовка h2
-- таблица сравнения или классификации (обязательно)
-- один список ul/ol  
-- блок FAQ: 3-5 вопросов с ответами
-- без h1
-- 2000-3000 символов body
-- экранируй кавычки, только JSON
+  const buildPrompt = (extra) => `${voiceSpec}
 
-ЗАПРЕЩЕНО:
-- не выдумывай ссылки на исследования, PMID, DOI, источники
-- не придумывай названия продуктов, материалов или технологий
-- не используй эти слова: delve, tapestry, meticulous, robust, leverage, groundbreaking, seamless, transformative, empower, revolutionize, synergy, holistic, intricate, testament, foster, showcase, pivotal, underscore, interplay, garner, bolster, elevate, unlock, paradigm
-- не используй фразы: когда речь заходит о, стоит отметить, важно подчеркнуть, играет важную роль, современные реалии, не только но и, позволяет не только, в заключение, в конечном счёте, решая задачу, открывает возможности
-- без длинных причастных оборотов в конце предложений (обеспечивая, позволяя, создавая)
-- без тире (—) в каждом абзаце
-- пиши короткими предложениями, без канцелярита
-
-ИСХОДНЫЙ ТЕКСТ:
+Исходник:
 ${text.substring(0, 5000)}
+
+Структура:
+- Lead-абзац с сутью
+- 2-3 подзаголовка h2
+- Обязательно таблица сравнения или классификации
+- Один список ul/ol
+- FAQ: 3-5 вопросов с ответами
+- Без h1
+- 2000-3000 символов
+
+Запрещено:
+- Ссылки на исследования, PMID, DOI (не выдумывай)
+- Вымышленные названия продуктов/материалов
+- Слова: delve, tapestry, meticulous, robust, leverage, groundbreaking, seamless, transformative, empower, revolutionize, synergy, holistic, intricate, testament, foster, showcase, pivotal, underscore, interplay, garner, bolster, elevate, unlock, paradigm
+- Фразы: когда речь заходит о, стоит отметить, важно подчеркнуть, играет важную роль, современные реалии, не только но и, в заключение, в конечном счёте
+- Причастные обороты в конце (обеспечивая, позволяя, создавая)
+- Тире (—) в каждом абзаце
 
 ${extra || ''}
 UUID: ${Date.now()}
@@ -343,7 +349,8 @@ UUID: ${Date.now()}
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     const extra = (attempt > 1 && lastJson) ? `Предыдущая попытка отклонена из-за AI-стиля. Исправь:\n${checkAiTells(lastJson.body).map(t => '- ' + t.tag).join('\n')}\nПиши естественнее.` : '';
     const prompt = buildPrompt(extra);
-    const raw = await callAI(prompt);
+    const temp = attempt === 1 ? 0.7 : 0.3;
+    const raw = await callAI(prompt, { temperature: temp });
     lastRaw = raw;
     const json = parseAny(raw);
     if (!json || !json.title || !json.description || !json.body) continue;
