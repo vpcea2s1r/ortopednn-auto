@@ -550,9 +550,13 @@ export async function runPipelineManual(topic) {
     const draftInfo = await draftAgent({ ...seo, ...reviewed.article });
     result.draft = draftInfo;
 
-    result.stage = 'stomatolog';
-    const stomUrl = await stomatologPublisherAgent({ ...seo, ...reviewed.article });
-    result.stomatologUrl = stomUrl.url;
+    try {
+      const stomUrl = await stomatologPublisherAgent({ ...seo, ...reviewed.article });
+      result.stomatologUrl = stomUrl.url;
+    } catch (stomErr) {
+      console.error('Stomatolog stage (non-fatal):', stomErr.message);
+      result.stomatologWarning = stomErr.message;
+    }
 
     result.stage = 'done';
     result.completedAt = new Date().toISOString();
