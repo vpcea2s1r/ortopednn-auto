@@ -83,58 +83,72 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
   
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "ОртопедНН — Никитина Марина Георгиевна",
-    "description": "Стоматолог-ортопед с 1994 года. Специализируется на протезировании зубов: коронки, съёмные и бюгельные протезы.",
-    "url": "https://ortopednn.ru",
-    "image": "https://ortopednn.ru/og-image.svg",
-    "telephone": "+79202537317",
-    "priceRange": "По записи",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ул. Октябрьской Революции, д. 43",
-      "addressLocality": "Нижний Новгород",
-      "addressRegion": "Нижегородская область",
-      "postalCode": "603000",
-      "addressCountry": "RU"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 56.294,
-      "longitude": 43.936
-    },
-    "openingHoursSpecification": [
+    "@graph": [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      }
-    ],
-    "medicalSpecialty": "Prosthodontics",
-    "alumni": [
-      {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "degree",
-        "name": "Высшее медицинское образование",
-        "educationalInstitution": {
-          "@type": "CollegeOrUniversity",
-          "name": "Нижегородский государственный медицинский институт"
+        "@type": "MedicalClinic",
+        "@id": "https://ortopednn.ru/#clinic",
+        "name": "ОртопедНН — Никитина Марина Георгиевна",
+        "description": "Стоматолог-ортопед с 1994 года. Специализируется на протезировании зубов: коронки, съёмные и бюгельные протезы.",
+        "url": "https://ortopednn.ru",
+        "image": "https://ortopednn.ru/og-image.svg",
+        "telephone": "+79202537317",
+        "priceRange": "По записи",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ул. Октябрьской Революции, д. 43",
+          "addressLocality": "Нижний Новгород",
+          "addressRegion": "Нижегородская область",
+          "postalCode": "603000",
+          "addressCountry": "RU"
         },
-        "dateOfGraduation": "1995"
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 56.294,
+          "longitude": 43.936
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
+        ],
+        "medicalSpecialty": "Prosthodontics",
+        "memberOf": [
+          {
+            "@type": "MedicalClinic",
+            "name": "Стоматологическая клиника",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "ул. Октябрьской Революции, д. 43",
+              "addressLocality": "Нижний Новгород",
+              "addressCountry": "RU"
+            }
+          }
+        ],
+        "physician": { "@id": "https://ortopednn.ru/#doctor" },
+        "sameAs": [
+          "https://dzen.ru/ortopednn",
+          "https://t.me/nikitina_ortoped"
+        ]
       },
       {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "certificate",
-        "name": "Сертификат специалиста по специальности: стоматология ортопедическая",
-        "validIn": {
-          "@type": "Place",
-          "name": "Россия"
-        },
-        "validThrough": "2025"
+        "@type": "Physician",
+        "@id": "https://ortopednn.ru/#doctor",
+        "name": "Никитина Марина Георгиевна",
+        "description": "Стоматолог-ортопед с 1994 года",
+        "medicalSpecialty": "Prosthodontics",
+        "worksFor": { "@id": "https://ortopednn.ru/#clinic" },
+        "url": "https://ortopednn.ru/about/",
+        "telephone": "+79202537317",
+        "image": "https://ortopednn.ru/og-image.svg",
+        "sameAs": [
+          "https://dzen.ru/ortopednn",
+          "https://t.me/nikitina_ortoped"
+        ]
       }
-    ],
-    "sameAs": []
+    ]
   })}/>
 
   {isHomepage && (

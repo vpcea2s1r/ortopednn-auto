@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -18,12 +18,12 @@ const ldArticle = {
   "@type": "Article",
   "headline": "Коронка из диоксида циркония — плюсы, минусы, особенности",
   "description": "Коронки из диоксида циркония: прочность, эстетика, биосовместимость. Из чего делают, сколько служат, кому подходят.",
-  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-05-26",
   "dateModified": "2026-05-26",
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 ---
 

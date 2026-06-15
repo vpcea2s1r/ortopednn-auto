@@ -44,6 +44,25 @@ const currentSlug = getSlugFromPath(Astro.url.pathname);
 const related = getRelatedServices(currentSlug);
 const relatedBlogArticles = getArticlesForService(currentSlug);
 const procedureType = getProcedureType(currentSlug);
+
+const autoFaq: { question: string; answer: string }[] = faq.length > 0 ? faq : [
+  {
+    question: `Больно ли делать ${breadcrumbName.toLowerCase()}?`,
+    answer: "Процедура проводится с анестезией. После неё возможна чувствительность на 1-2 дня, которая проходит самостоятельно."
+  },
+  {
+    question: `Сколько времени занимает ${breadcrumbName.toLowerCase()}?`,
+    answer: "Обычно требуется 1-3 визита. Точные сроки зависят от клинической ситуации."
+  },
+  {
+    question: "Сколько служит результат?",
+    answer: "При правильном уходе и регулярных осмотрах — от 5 до 15 лет в зависимости от материала и соблюдения рекомендаций."
+  },
+  {
+    question: "Как ухаживать после процедуры?",
+    answer: care.length > 0 ? care.map(c => c.toLowerCase()).join(". ") : "Соблюдайте гигиену полости рта, чистите зубы 2 раза в день, используйте ирригатор. Посещайте стоматолога раз в полгода для профилактического осмотра."
+  }
+];
 const medicalWebPage = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
@@ -151,12 +170,12 @@ const medicalWebPage = {
       </section>
     )}
 
-    {faq.length > 0 && (
+    {autoFaq.length > 0 && (
       <section class="service-section service-section--alt">
         <div class="container">
           <h2>Частые вопросы</h2>
           <div class="faq-list">
-            {faq.map(item => (
+            {autoFaq.map(item => (
               <details class="faq-item">
                 <summary>{item.question}</summary>
                 <p>{item.answer}</p>
@@ -224,11 +243,11 @@ const medicalWebPage = {
       }
     })} />
 
-    {faq.length > 0 && (
+    {autoFaq.length > 0 && (
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": faq.map(item => ({
+        "mainEntity": autoFaq.map(item => ({
           "@type": "Question",
           "name": item.question,
           "acceptedAnswer": {

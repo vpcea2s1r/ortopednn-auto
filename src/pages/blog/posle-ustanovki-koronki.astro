@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -18,11 +18,7 @@ const ldArticle = {
   "@type": "Article",
   "headline": "Через сколько можно есть после установки коронки?",
   "description": "Через сколько можно есть после фиксации коронки — зависит от цемента. Временная на Temp-Bond: 2 часа. Постоянная на стеклоиономерном (Fuji) или композитном (Maxcem): 1–2 часа. Таблица сроков, что можно и нельзя в первый день.",
-  "author": {
-    "@type": "Person",
-    "name": "Никитина Марина Георгиевна",
-    "medicalSpecialty": "Prosthodontics"
-  },
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-05-22",
   "dateModified": "2026-05-22",
   "mainEntityOfPage": {
@@ -30,10 +26,7 @@ const ldArticle = {
     "@id": pageUrl
   },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": {
-    "@type": "Organization",
-    "name": "ОртопедНН"
-  }
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 ---
 

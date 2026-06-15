@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -9,12 +9,12 @@ const ldArticle = {
   "@type": "Article",
   "headline": "Бруксизм и протезирование зубов: выбор тактики и материалов",
   "description": "Узнайте, как правильно протезировать зубы при бруксизме. Разбираем влияние на пародонт и импланты, выбираем материалы и планируем лечение. Ответы на частые вопросы.",
-  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-06-01",
   "dateModified": "2026-06-01",
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 ---
 <BaseLayout title="Бруксизм и протезирование зубов: выбор тактики и материалов" description="Узнайте, как правильно протезировать зубы при бруксизме. Разбираем влияние на пародонт и импланты, выбираем материалы и планируем лечение. Ответы на частые вопросы." breadcrumbTitle="Бруксизм и протезирование зубов: выбор тактики и материалов" doctor={doctor} noindex={true}>

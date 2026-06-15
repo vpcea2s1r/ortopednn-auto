@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -14,7 +14,7 @@ const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
 const catId = category ? category.id : null;
-const ldArticle = {"@context":"https://schema.org","@type":"Article","headline":"Можно ли делать МРТ с коронками на зубах","description":"Зубные коронки и МРТ: какие коронки безопасны, какие дают артефакты. Металлокерамика, цирконий, E-max — совместимость с магнитно-резонансной томографией.","author":{"@type":"Person","name":"Никитина Марина Георгиевна","medicalSpecialty":"Prosthodontics"},"datePublished":"2026-06-09","dateModified":"2026-06-09","mainEntityOfPage":{"@type":"WebPage","@id":pageUrl},"image":"https://ortopednn.ru/og-image.svg","publisher":{"@type":"Organization","name":"ОртопедНН"}};
+const ldArticle = {"@context":"https://schema.org","@type":"Article","headline":"Можно ли делать МРТ с коронками на зубах","description":"Зубные коронки и МРТ: какие коронки безопасны, какие дают артефакты. Металлокерамика, цирконий, E-max — совместимость с магнитно-резонансной томографией.","author": { "@id": "https://ortopednn.ru/#doctor" },"datePublished":"2026-06-09","dateModified":"2026-06-09","mainEntityOfPage":{"@type":"WebPage","@id":pageUrl},"image":"https://ortopednn.ru/og-image.svg","publisher": { "@id": "https://ortopednn.ru/#clinic" }};
 ---
 
 <BaseLayout 

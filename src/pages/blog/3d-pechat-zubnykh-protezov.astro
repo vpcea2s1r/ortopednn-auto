@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -14,7 +14,7 @@ const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
 const catId = category ? category.id : null;
-const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "3D печать зубных протезов — технологии в стоматологии", "description": "3D-печать в стоматологии: диагностические модели, хирургические шаблоны, временные коронки, базисы протезов. Как работает цифровой протокол.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/3d-pechat-zubnykh-protezov/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "3D печать зубных протезов — технологии в стоматологии", "description": "3D-печать в стоматологии: диагностические модели, хирургические шаблоны, временные коронки, базисы протезов. Как работает цифровой протокол.", "author": { "@id": "https://ortopednn.ru/#doctor" }, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/3d-pechat-zubnykh-protezov/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": { "@id": "https://ortopednn.ru/#clinic" }};
 ---
 
 <BaseLayout 

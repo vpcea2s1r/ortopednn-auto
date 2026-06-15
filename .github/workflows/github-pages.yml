@@ -33,6 +33,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"ortopednn.ru\",\"key\":\"f6a8c2d1e9b4a7c3f5e8d2b1a4c7f9e0\",\"urlList\":[\"https://ortopednn.ru/\"]}"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

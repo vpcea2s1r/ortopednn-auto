@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -18,12 +18,12 @@ const ldArticle = {
   "@type": "Article",
   "headline": "Какой протез лучше выбрать — сравнение",
   "description": "Какой протез выбрать при отсутствии зубов. Сравнение съёмных, несъёмных, бюгельных, нейлоновых. Советы ортопеда.",
-  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-01-15",
   "dateModified": "2026-05-16",
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 ---
 

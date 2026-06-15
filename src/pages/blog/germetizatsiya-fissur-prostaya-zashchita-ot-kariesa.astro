@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -9,12 +9,12 @@ const ldArticle = {
   "@type": "Article",
   "headline": "Герметизация фиссур: простая защита от кариеса",
   "description": "Герметизация фиссур это процедура, закрывающая углубления на зубах для предотвращения кариеса. Без боли и сверления.",
-  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-06-02",
   "dateModified": "2026-06-02",
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 ---
 <BaseLayout title="Герметизация фиссур: простая защита от кариеса" description="Герметизация фиссур это процедура, закрывающая углубления на зубах для предотвращения кариеса. Без боли и сверления." breadcrumbTitle="Герметизация фиссур: простая защита от кариеса" doctor={doctor} noindex={true}>

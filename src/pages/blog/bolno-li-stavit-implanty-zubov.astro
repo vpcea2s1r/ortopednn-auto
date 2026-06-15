@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -18,11 +18,7 @@ const ldArticle = {
   "@type": "Article",
   "headline": "Больно ли ставить импланты зубов?",
   "description": "Имплантация под местной анестезией — больно только при уколе. Сама операция проходит без боли. Восстановление — 2–3 дня с лёгким дискомфортом.",
-  "author": {
-    "@type": "Person",
-    "name": "Никитина Марина Георгиевна",
-    "medicalSpecialty": "Prosthodontics"
-  },
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-06-01",
   "dateModified": "2026-06-01",
   "mainEntityOfPage": {
@@ -30,10 +26,7 @@ const ldArticle = {
     "@id": pageUrl
   },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": {
-    "@type": "Organization",
-    "name": "ОртопедНН"
-  }
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 ---
 

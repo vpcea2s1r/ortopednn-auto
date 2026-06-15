@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -18,12 +18,12 @@ const ldArticle = {
   "@type": "Article",
   "headline": "Цены на протезирование зубов в Нижнем Новгороде — обзор",
   "description": "Что влияет на стоимость протезирования: материал, лаборатория, квалификация врача, оборудование клиники.",
-  "author": { "@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics" },
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-05-25",
   "dateModified": "2026-05-25",
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
   "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@type": "Organization", "name": "ОртопедНН" }
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 ---
 

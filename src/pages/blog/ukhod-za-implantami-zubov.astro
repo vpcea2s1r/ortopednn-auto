@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -14,7 +14,7 @@ const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
 const catId = category ? category.id : null;
-const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Уход за имплантами зубов — правила, средства, частота", "description": "Как ухаживать за имплантами: ежедневная гигиена, ирригатор, профессиональная чистка, что нельзя делать. Срок службы импланта зависит от ухода.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/ukhod-za-implantami-zubov/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Уход за имплантами зубов — правила, средства, частота", "description": "Как ухаживать за имплантами: ежедневная гигиена, ирригатор, профессиональная чистка, что нельзя делать. Срок службы импланта зависит от ухода.", "author": { "@id": "https://ortopednn.ru/#doctor" }, "datePublished": "2026-06-01", "dateModified": "2026-06-01", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/ukhod-za-implantami-zubov/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": { "@id": "https://ortopednn.ru/#clinic" }};
 ---
 
 <BaseLayout 

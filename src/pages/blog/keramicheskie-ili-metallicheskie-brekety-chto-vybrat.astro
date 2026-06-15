@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -14,7 +14,7 @@ const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
 const catId = category ? category.id : null;
-const ldArticle = {"image":"https://ortopednn.ru/og-image.svg","datePublished":"2026-06-02","description":"Металлические брекеты прочнее и дешевле, керамические — незаметнее, но дороже. Сравнение по эстетике, цене, сроку лечения.","@type":"Article","dateModified":"2026-06-02","headline":"Керамические или металлические брекеты: что выбрать?","author":{"medicalSpecialty":"Prosthodontics","name":"Никитина М.Г., стоматолог-ортопед","@type":"Person"},"@context":"https://schema.org","mainEntityOfPage":{"@type":"WebPage","@id":"https://ortopednn.ru/blog/keramicheskie-ili-metallicheskie-brekety-chto-vybrat/"},"publisher":{"name":"Ортопед","@type":"Organization"}};
+const ldArticle = {"image":"https://ortopednn.ru/og-image.svg","datePublished":"2026-06-02","description":"Металлические брекеты прочнее и дешевле, керамические — незаметнее, но дороже. Сравнение по эстетике, цене, сроку лечения.","@type":"Article","dateModified":"2026-06-02","headline":"Керамические или металлические брекеты: что выбрать?","author": { "@id": "https://ortopednn.ru/#doctor" },"@context":"https://schema.org","mainEntityOfPage":{"@type":"WebPage","@id":"https://ortopednn.ru/blog/keramicheskie-ili-metallicheskie-brekety-chto-vybrat/"},"publisher": { "@id": "https://ortopednn.ru/#clinic" }};
 ---
 
 <BaseLayout

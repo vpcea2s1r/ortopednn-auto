@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import doctor from '../../../data/doctor.json';
@@ -14,7 +14,7 @@ const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
 const catId = category ? category.id : null;
-const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Как распределяется жевательная нагрузка: импланты против съёмных протезов", "description": "Импланты передают до 90% жевательного давления на кость, съёмные протезы — только 20–30%. Разница в биомеханике определяет комфорт, атрофию кости и срок службы.", "author": {"@type": "Person", "name": "Никитина Марина Георгиевна", "medicalSpecialty": "Prosthodontics"}, "datePublished": "2026-06-02", "dateModified": "2026-06-02", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/raspredelenie-nagruzki-implanty-semnye-protezy/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": {"@type": "Organization", "name": "ОртопедНН"}};
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Как распределяется жевательная нагрузка: импланты против съёмных протезов", "description": "Импланты передают до 90% жевательного давления на кость, съёмные протезы — только 20–30%. Разница в биомеханике определяет комфорт, атрофию кости и срок службы.", "author": { "@id": "https://ortopednn.ru/#doctor" }, "datePublished": "2026-06-02", "dateModified": "2026-06-02", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/raspredelenie-nagruzki-implanty-semnye-protezy/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": { "@id": "https://ortopednn.ru/#clinic" }};
 ---
 
 <BaseLayout
