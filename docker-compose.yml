@@ -33,6 +33,7 @@
       - DATA_DIR=/data
       - PORT=3000
       - TZ=Europe/Moscow
+      - REDIS_URL=redis://redis:6379
     extra_hosts:
       - "api.telegram.org:149.154.167.220"
     volumes:
