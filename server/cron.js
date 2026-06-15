@@ -166,9 +166,17 @@ async function sendDailyDigest() {
 }
 
 if (process.argv.includes('--mode=pipeline')) {
-  import('./agent-pipeline.js').then(m => m.pickAndRun()).then(r => {
-    if (r.info) console.log(r.info);
-    else console.log('Pipeline:', JSON.stringify(r, null, 2));
+  const batchArg = process.argv.find(a => a.startsWith('--batch='));
+  const count = batchArg ? parseInt(batchArg.split('=')[1], 10) : 1;
+  import('./agent-pipeline.js').then(async m => {
+    const results = [];
+    for (let i = 0; i < count; i++) {
+      const r = await m.pickAndRun();
+      results.push(r);
+      console.log(`[${i+1}/${count}]`, r.info || r.draft?.slug || r.error?.slice(0,80) || 'done');
+      if (r.info) break; // no more topics
+    }
+    console.log('Batch done:', results.length, 'items');
     process.exit(0);
   }).catch(e => { console.error(e); process.exit(1); });
 }
