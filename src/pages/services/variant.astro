@@ -1,172 +1,116 @@
 ﻿---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Navbar from '../../components/Navbar.astro';
-const doctor = { name: 'Никитина Марина Георгиевна', phone: '+79202537317', phoneDisplay: '7 920 253 73 17' };
-const socials = [];
+import ServiceArticle from '../../components/ServiceArticle.astro';
 ---
 
-<BaseLayout title="Варианты протезирования | Никитина М.Г." description="Варианты зубного протезирования — съёмные и несъёмные конструкции, показания и особенности." doctor={doctor} socials={socials}>
-  <Navbar />
-  <main class="service-page">
-    <nav class="breadcrumbs"><div class="container"><a href="/">Главная</a><span>/</span><a href="/services">Услуги</a><span>/</span><span>Варианты протезирования</span></div></nav>
-    <article class="service-content"><div class="container">
-        <header class="service-header">
-          <h1 class="service-header__title">Варианты протезирования</h1>
-        </header>
-        <div class="service-body">
-          <section class="info-section">
-            <h2>Какие бывают протезы</h2>
-            <p>Современная стоматология предлагает множество вариантов восстановления утраченных зубов. Выбор зависит от количества отсутствующих зубов, состояния полости рта, бюджета и пожеланий пациента.</p>
-            <p>Все конструкции делятся на три большие группы: несъёмные, съёмные и условно-съёмные протезы.</p>
-          </section>
-          <section class="info-section">
-            <h2>Несъёмное протезирование</h2>
-            <p><strong>Коронки:</strong> одиночные конструкции, надеваются на обточенный зуб. Металлокерамика, керамика, цирконий.</p>
-            <p><strong>Мостовидные протезы:</strong> несколько коронок, соединённых вместе. Опираются на соседние зубы или имплантаты.</p>
-            <p><strong>Вкладки:</strong> микропротезы для восстановления части зуба. Альтернатива пломбам.</p>
-          </section>
-          <section class="info-section">
-            <h2>Съёмное протезирование</h2>
-            <p><strong>Полные съёмные:</strong> при отсутствии всех зубов. Опираются на слизистую.</p>
-            <p><strong>Частичные съёмные:</strong> при отсутствии нескольких зубов. Фиксируются на оставшихся зубах.</p>
-            <p><strong>Бюгельные:</strong> протезы с дугой (бюгелем). Распределяют нагрузку равномерно.</p>
-            <p><strong>Термопластичные:</strong> гибкие протезы из нейлона или AcryFree. Мягче и комфортнее.</p>
-          </section>
-          <section class="info-section">
-            <h2>Условно-съёмные конструкции</h2>
-            <p><strong>Протезы на имплантатах:</strong> съёмная конструкция с фиксацией на имплантатах. Снимается для чистки, но надёжно держится.</p>
-            <p><strong>Балочные конструкции:</strong> металлическая балка соединяет имплантаты, на неё фиксируется протез.</p>
-            <p><strong>Кнопочная фиксация:</strong> замковый механизм на имплантатах.</p>
-          </section>
-          <div class="info-grid">
-            <section class="info-block info-block--pros"><h3>Когда выбирают несъёмные</h3><ul>
-              <li>Хорошее состояние опорных зубов</li>
-              <li>Отсутствие 1-3 зубов</li>
-              <li>Желание постоянного решения</li>
-              <li>Высокие эстетические требования</li>
-              <li>Возможность обточки зубов</li>
-            </ul></section>
-            <section class="info-block info-block--pros"><h3>Когда выбирают съёмные</h3><ul>
-              <li>Отсутствие многих зубов</li>
-              <li>Нет возможности для имплантации</li>
-              <li>Противопоказания к обточке</li>
-              <li>Ограниченный бюджет</li>
-              <li>Временное решение</li>
-            </ul></section>
-          </div>
-          <div class="materials-grid">
-            <h2 class="section-title">Сравнение вариантов</h2>
-            <div class="materials-cards">
-              <div class="material-card">
-                <div class="material-card__header"><span class="material-icon">🦷</span><h3>Несъёмные</h3></div>
-                <div class="material-card__body">
-                  <p>Фиксируются на зубах и снимаются только врачом. Максимальный комфорт и эстетика.</p>
-                  <ul>
-                    <li>Коронки: 1-2 недели</li>
-                    <li>Мосты: 2-3 недели</li>
-                    <li>Виниры: 1-2 недели</li>
-                    <li>Срок службы: 10-15 лет</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="material-card">
-                <div class="material-card__header"><span class="material-icon">🔧</span><h3>Съёмные</h3></div>
-                <div class="material-card__body">
-                  <p>Пациент снимает и надевает самостоятельно. Подходят при большом количестве отсутствующих зубов.</p>
-                  <ul>
-                    <li>Акриловые: 2-4 недели</li>
-                    <li>Бюгельные: 3-4 недели</li>
-                    <li>Нейлоновые: 2-3 недели</li>
-                    <li>Срок службы: 5-7 лет</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="material-card">
-                <div class="material-card__header"><span class="material-icon">🔩</span><h3>На имплантатах</h3></div>
-                <div class="material-card__body">
-                  <p>Съёмные протезы с фиксацией на имплантатах. Лучше держатся, чем обычные съёмные.</p>
-                  <ul>
-                    <li>Срок: 3-6 месяцев</li>
-                    <li>Минимум 2 имплантата</li>
-                    <li>Срок службы: 15-20 лет</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-card__value">3</div>
-              <div class="stat-card__label">группы протезов</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card__value">10+</div>
-              <div class="stat-card__label">видов конструкций</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card__value">15+ лет</div>
-              <div class="stat-card__label">срок службы циркония</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card__value">100%</div>
-              <div class="stat-card__label">восстановление жевания</div>
-            </div>
-          </div>
-          <section class="info-section"><h2>Как выбрать оптимальный вариант</h2>
-            <p>Выбор метода протезирования — это совместное решение врача и пациента. Учитываются: состояние зубов и дёсен, общее здоровье, образ жизни, эстетические пожелания и финансовые возможности.</p>
-            <p>Запишитесь на консультацию для получения индивидуального плана лечения и точного расчёта стоимости.</p>
-          </section>
-          <section class="info-section"><h2>Что влияет на выбор</h2>
-          <p><strong>Количество зубов:</strong> при отсутствии 1-3 зубов — мост или имплантат. При отсутствии многих — съёмный протез.</p>
-          <p><strong>Состояние опорных зубов:</strong> если зубы здоровые и крепкие — несъёмные конструкции. Если слабые — съёмные или имплантаты.</p>
-          <p><strong>Бюджет:</strong> акриловые протезы — самый доступный вариант. Цирконий и имплантаты — дороже, но долговечнее.</p>
-          <p><strong>Эстетика:</strong> для зоны улыбки — керамика, цирконий. Для жевательных зубов — металлокерамика.</p>
-          </section>
-        </div>
-        <div class="service-cta"><p>Нужна консультация?</p><div class="cta-buttons"><a href="tel:+79202537317" class="btn">Позвонить</a><a href="https://t.me/nikitina_ortoped" class="btn btn--secondary">Telegram</a></div></div>
-    </div></article>
-  </main>
-</BaseLayout>
+<ServiceArticle
+  title="Варианты протезирования — Никитина М.Г."
+  description="Варианты зубного протезирования в Нижнем Новгороде: съёмные и несъёмные конструкции, сравнение по срокам, надёжности и эстетике. Как выбрать подходящий вид протеза."
+  breadcrumbName="Варианты протезирования"
+  datePublished="2026-01-15"
+  dateModified="2026-06-16"
+  procedure={[
+    "Консультация — осмотр полости рта, обсуждение жалоб и пожеланий, оценка состояния зубов и дёсен.",
+    "Диагностика — КТ или панорамный снимок для оценки костной ткани, корней зубов и скрытых проблем.",
+    "Определение критериев — учёт количества отсутствующих зубов, состояния опорных зубов, бюджета, эстетических требований.",
+    "Выбор конструкции — врач предлагает 2-3 подходящих варианта с объяснением плюсов и минусов каждого.",
+    "Составление плана — согласование сроков, материалов, этапов лечения и подготовительных процедур."
+  ]}
+  stats={[
+    { value: "10+", label: "видов конструкций" },
+    { value: "15+ лет", label: "срок службы циркония" },
+    { value: "3", label: "группы протезов" },
+    { value: "2-4 нед", label: "адаптация к съёмным" }
+  ]}
+  materials={[
+    {
+      name: "Цирконий (диоксид циркония)",
+      desc: "Современный материал для коронок, мостов и вкладок. Прочность до 1200 МПа, белый цвет, отличная эстетика и биосовместимость. Подходит для передних и жевательных зубов.",
+      features: ["Прочность 1000-1200 МПа", "Эстетика, полупрозрачность", "Срок службы 15-20 лет"]
+    },
+    {
+      name: "Металлокерамика",
+      desc: "Традиционный и самый распространённый материал. Основа — металлический сплав, покрытый керамикой. Проверенная технология, доступная цена, хорошее соотношение прочности и эстетики.",
+      features: ["Проверенная технология, 50+ лет", "Доступная стоимость", "Прочный металлический каркас"]
+    },
+    {
+      name: "Нейлон и акрил",
+      desc: "Материалы для съёмных протезов. Нейлон — гибкий и эластичный, не имеет металлических кламмеров. Акрил — жёсткий, самый доступный вариант для полных и частичных протезов.",
+      features: ["Нейлон — гибкий, неломающийся", "Акрил — доступная цена", "Без металлических элементов (нейлон)"]
+    }
+  ]}
+  comparison={[
+    { name: "Несъёмные конструкции", pros: ["Надёжная фиксация", "100% восстановление жевания", "Срок службы 10-20 лет", "Высокая эстетика", "Не требуется адаптация"], cons: ["Требуется обточка зубов", "Выше стоимость", "Не подходит при отсутствии многих зубов", "Сложнее чистить под мостом"] },
+    { name: "Съёмные конструкции", pros: ["Подходит при отсутствии любых зубов", "Не требует обточки здоровых зубов", "Доступная цена", "Можно как временное решение", "Простой уход"], cons: ["Менее надёжная фиксация", "Нужна адаптация 2-4 недели", "Перекрывает нёбо (полные протезы)", "Срок службы 5-7 лет", "Может натирать десну"] }
+  ]}
+  faq={[
+    {
+      question: "Какие бывают варианты протезирования зубов?",
+      answer: "Все варианты делятся на три группы: несъёмные (коронки, мосты, вкладки, виниры), съёмные (полные, частичные, бюгельные, нейлоновые протезы) и условно-съёмные (протезы на имплантатах). Выбор зависит от количества отсутствующих зубов, состояния оставшихся зубов и пожеланий пациента."
+    },
+    {
+      question: "Что лучше — съёмный или несъёмный протез?",
+      answer: "Несъёмные протезы комфортнее, эстетичнее и служат дольше — до 15-20 лет. Съёмные протезы предпочтительны при большом количестве отсутствующих зубов, когда нет опоры для моста или есть противопоказания к имплантации."
+    },
+    {
+      question: "Как выбрать материал для коронки?",
+      answer: "Для передних зубов лучше всего подходит цирконий или керамика E-max — они полупрозрачные и максимально естественные. Для жевательных — цирконий или металлокерамика. Металлокерамика прочнее и дешевле, цирконий эстетичнее и биосовместимее."
+    },
+    {
+      question: "Сколько служат разные виды протезов?",
+      answer: "Циркониевые коронки — 15-20 лет, металлокерамика — 10-15 лет, мосты — 7-12 лет, бюгельные протезы — 5-8 лет, акриловые протезы — 3-5 лет. Срок службы сильно зависит от качества гигиены и регулярности осмотров."
+    },
+    {
+      question: "Можно ли переделать съёмный протез на несъёмный?",
+      answer: "Да, если позволяет состояние полости рта. Часто съёмное протезирование служит временным или этапным решением. Впоследствии можно установить имплантаты и сделать несъёмную конструкцию."
+    },
+    {
+      question: "Что такое бюгельный протез?",
+      answer: "Бюгельный протез — это съёмная конструкция с металлической дугой (бюгелем), которая распределяет жевательную нагрузку между оставшимися зубами и слизистой. Он надёжнее фиксируется, чем обычный акриловый протез, и частично сохраняет вкусовую чувствительность."
+    },
+    {
+      question: "Как привыкнуть к съёмному протезу?",
+      answer: "Адаптация занимает 2-4 недели. В первую неделю возможны трудности с дикцией и жеванием, слюнотечение, чувство дискомфорта. Рекомендуется начинать с мягкой пищи, читать вслух для восстановления речи. При натирании необходима коррекция у врача."
+    }
+  ]}
+>
+  <section>
+    <h2>Какие бывают протезы?</h2>
+    <p>Современная стоматология предлагает множество вариантов восстановления утраченных зубов. Все конструкции делятся на три большие группы: несъёмные, съёмные и условно-съёмные протезы. Выбор зависит от количества отсутствующих зубов, состояния полости рта и индивидуальных предпочтений.</p>
+    <p>На консультации стоматолог-ортопед Никитина М.Г. подбирает оптимальный вариант с учётом клинической ситуации, эстетических требований и бюджета.</p>
+  </section>
 
-<style>
-.service-page { min-height: 100vh; }
-.breadcrumbs { padding: var(--space-sm) 0; background: white; border-bottom: 1px solid var(--color-border); }
+  <section>
+    <h2>Несъёмные конструкции</h2>
+    <ul>
+      <li><strong>Коронки</strong> — одиночные конструкции на обточенный зуб. Изготавливаются из металлокерамики, циркония, керамики E-max.</li>
+      <li><strong>Мостовидные протезы</strong> — несколько коронок, соединённых в блок. Опираются на соседние зубы или имплантаты. Восстанавливают 1-3 отсутствующих зуба.</li>
+      <li><strong>Вкладки</strong> — микропротезы для восстановления разрушенной части зуба (inlay, onlay). Альтернатива пломбам при значительных дефектах.</li>
+      <li><strong>Виниры</strong> — тонкие накладки на переднюю поверхность зубов для коррекции формы и цвета.</li>
+    </ul>
+  </section>
 
-.breadcrumbs a { color: var(--color-primary); }
-.service-content { padding: var(--space-3xl) 0; }
-.service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-md); }
-.service-header__title { font-size: var(--text-3xl); color: var(--color-text); }
-.service-header__price { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-xl); }
-.info-section { margin-bottom: var(--space-xl); }
-.info-section h2 { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-md); }
-.info-section p { color: var(--color-text-muted); line-height: 1.7; }
-.info-section ul { padding-left: var(--space-lg); }
-.info-section li { color: var(--color-text-muted); margin-bottom: var(--space-xs); line-height: 1.6; }
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
-.info-block { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); }
-.info-block h3 { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-md); }
-.info-block ul { list-style: none; padding: 0; }
-.info-block li { color: var(--color-text-muted); padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-bg); }
-.materials-grid { margin-bottom: var(--space-xl); }
-.section-title { font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--space-lg); }
-.materials-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
-.material-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-border); overflow: hidden; }
-.material-card__header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%); color: white; padding: var(--space-lg); display: flex; align-items: center; gap: var(--space-md); }
-.material-card__header .material-icon { font-size: var(--text-2xl); }
-.material-card__header h3 { font-size: var(--text-lg); font-weight: 600; margin: 0; }
-.material-card__body { padding: var(--space-lg); }
-.material-card__body p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md); }
-.material-card__body ul { list-style: none; padding: 0; }
-.material-card__body li { color: var(--color-text-muted); padding: var(--space-xs) 0; padding-left: var(--space-md); border-left: 3px solid var(--color-primary); margin-bottom: var(--space-xs); font-size: var(--text-sm); }
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); margin-bottom: var(--space-xl); }
-.stat-card { background: white; padding: var(--space-lg); border-radius: var(--radius-xl); border: 1px solid var(--color-border); text-align: center; }
-.stat-card__value { font-size: var(--text-2xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-xs); }
-.stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
-.service-cta { text-align: center; padding: var(--space-2xl); background: var(--color-bg-alt); border-radius: var(--radius-xl); margin-top: var(--space-xl); }
-.service-cta p { color: var(--color-text-muted); margin-bottom: var(--space-md); }
-.cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--color-primary); color: white; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-fast); }
-.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); text-decoration: none; }
-.btn--secondary { background: white; color: var(--color-primary); border: 1px solid var(--color-primary); }
-@media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .materials-cards { grid-template-columns: 1fr; } .service-header { flex-direction: column; } .service-header__price { width: 100%; text-align: center; } }
-</style>
+  <section>
+    <h2>Съёмные конструкции</h2>
+    <ul>
+      <li><strong>Полные съёмные протезы</strong> — применяются при полном отсутствии зубов на челюсти. Опираются на слизистую оболочку.</li>
+      <li><strong>Частичные съёмные протезы</strong> — фиксируются на оставшихся зубах с помощью кламмеров. Используются при отсутствии нескольких зубов.</li>
+      <li><strong>Бюгельные протезы</strong> — содержат металлическую дугу, равномерно распределяющую нагрузку. Более комфортные и надёжные, чем акриловые.</li>
+      <li><strong>Нейлоновые протезы</strong> — гибкие, эластичные, без металлических элементов. Комфортнее при адаптации, но менее прочные.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Условно-съёмные конструкции на имплантатах</h2>
+    <ul>
+      <li><strong>Протезы с кнопочной фиксацией</strong> — защёлкиваются на имплантатах, легко снимаются для чистки, надёжно держатся при ношении.</li>
+      <li><strong>Балочные конструкции</strong> — металлическая балка соединяет имплантаты, на неё фиксируется протез. Максимальная стабильность и распределение нагрузки.</li>
+      <li><strong>All-on-4 / All-on-6</strong> — полный несъёмный протез на 4 или 6 имплантатах. Восстанавливает полный зубной ряд за один этап.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Как выбрать оптимальный вариант?</h2>
+    <p>Выбор метода протезирования — совместное решение врача и пациента. На приёме Никитина М.Г. учитывает: количество и состояние опорных зубов, объём костной ткани, общее здоровье, образ жизни, эстетические пожелания.</p>
+    <p>При отсутствии 1-3 зубов и хороших опорных зубах рекомендуются несъёмные конструкции. При отсутствии многих зубов или слабых опорных зубах предпочтительны съёмные протезы или имплантация. Оптимальное решение предлагается после полной диагностики.</p>
+  </section>
+</ServiceArticle>
