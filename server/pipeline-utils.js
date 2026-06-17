@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
@@ -227,9 +227,23 @@ export async function pass_fetch(topic, existingArticles) {
       );
       if (!resp.ok) return { exists: false, error: 'github_unavailable' };
       const data = await resp.json();
-      existingArticles = (data.tree || [])
+      const tree = data.tree || [];
+      existingArticles = tree
         .filter(t => t.path.startsWith('src/pages/blog/') && t.path.endsWith('.astro'))
         .map(t => t.path.replace('src/pages/blog/', '').replace('.astro', ''));
+      const draftArticles = tree
+        .filter(t => t.path.startsWith('data/drafts/') && t.path.endsWith('.json'))
+        .map(t => t.path.replace('data/drafts/', '').replace('.json', ''));
+      existingArticles.push(...draftArticles);
+      /* also check local drafts dir (may have unpushed drafts) */
+      const localDraftsDir = join(__dirname, '..', 'data', 'drafts');
+      if (existsSync(localDraftsDir)) {
+        const localDrafts = readdirSync(localDraftsDir)
+          .filter(f => f.endsWith('.json'))
+          .map(f => f.replace('.json', ''));
+        existingArticles.push(...localDrafts);
+      }
+      existingArticles = [...new Set(existingArticles)];
     } catch {
       return { exists: false, error: 'github_unavailable' };
     }

@@ -180,3 +180,16 @@
   - Batch C (6 articles, 4147-4986 → 5.8-6.5k): koronka-ili-most, fiksaciya-koronki, implantatsiya-nn-cena, skolko-delayut, dezinfektsiya, koronka-metallokeramicheskaya
 - **Build**: 188 pages, 0 errors (25.66s)
 - **Pushed**: commit 3af7cf8 to master
+
+## 2026-06-17 — 6 service pages: 4 thin pages rewritten, 2 enhanced
+- **4 thin pages rewritten** with full ServiceArticle props: byugelnyj-klammery.astro (9-step procedure, 6 care, 4 stats, 3 materials, 2 comparison, 6 FAQ), immediat-implakril.astro (6-step, 6 care, 4 stats, 2 materials, 2 comparison, 5 FAQ), implakril.astro (6-step, 6 care, 4 stats, 2 materials, 2 comparison, 6 FAQ), sjemnyj-protez-implakril.astro (8-step, 6 care, 4 stats, 2 materials, 2 comparison, 6 FAQ)
+- **2 enhanced**: condition.astro (added care + materials), variant.astro (added care)
+- **Service page compliance**: 28/28 pages now have full 6/6 ServiceArticle props (100%)
+- **Build**: 188 pages, 0 errors (60.70s)
+- **Pushed**: commit 7aa2aaa to master
+
+## 2026-06-17 — Queue dedup: check blog + drafts before generation
+- **pass_fetch()** (pipeline-utils.js): now also checks `data/drafts/*.json` from GitHub tree + local dir
+- **addTopic()** (agent-pipeline.js): calls `pass_fetch()` before enqueuing, returns duplicate info
+- **Build**: 188 pages, 0 errors (57.68s)
+- **Pushed**: (see commit below)

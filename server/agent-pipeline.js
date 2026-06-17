@@ -708,6 +708,8 @@ export { ghPut, ghFetch, checkAiTells, humanize, score_ai, score_seo, composite_
 export async function addTopic(topic) {
   const existing = (await listQueue()).find(t => t.topic === topic);
   if (existing) return { info: 'Topic already in queue', topic };
+  const dupCheck = await pass_fetch(topic);
+  if (dupCheck.exists) return { info: `duplicate: ${dupCheck.slug}`, topic, duplicate: dupCheck.slug };
   return enqueue(topic);
 }
 
