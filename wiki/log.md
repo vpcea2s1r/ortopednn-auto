@@ -157,3 +157,13 @@
 - **Build**: 199 pages, 0 errors (21.66s)
 - **Wiki**: wiki/project/service-content-depth.md — strategy doc with required pattern, props table, priority list
 - **Next**: rewrite remaining 38 thin pages
+
+## 2026-06-17 — Service page cleanup: 33 lab pages deleted, 24 clinical pages rewritten
+- **Lab/technical pages deleted**: 33 pages removed (otlisk-*, privarka-*, perebazirovka-*, snatie-*, fiksaciya-*, prikusnoj-* models, prototype, razbornaya-vkladka, and others)
+- **services.ts updated**: removed 3 categories (Диагностика и слепки, Фиксация и ремонт), added orphan files (byugelnyj-klammery, immediat-implakril, sjemnyj-protez-implakril). Now 4 categories / 28 entries.
+- **24 clinical pages rewritten** with full ServiceArticle props (procedure, care, stats, materials, comparison, faq + h2 content sections):
+  - Коронки (10): metallokeramika, celnolitaya-koronka, celnolitaya-koronka-ni-cr, celnolitaya-koronka-na-vkladke, razbornaya-celnolitaya-koronka, metallokeramicheskaya-koronka-na-vkladke, metalloplastmassovaya-koronka, byugelnaya-koronka, iskusstvennaya-desna, vremennaya-koronka
+  - Съёмные/бюгельные (9): byugelnyj, byugelnyj-zamki, dentaldi, acryfree, nejlonovyj-protez, chastichny-sjemny-protez, polny-sjemny-protez, sjemny-protez, immediat-protez
+  - Вкладки/инфо (5): czirkon-titan-mzp, vkladka, vrachebnaya-vkladka, condition, variant
+- **Build**: 187 pages, 0 errors
+- **Pushed**: commit c6122a6 to master
