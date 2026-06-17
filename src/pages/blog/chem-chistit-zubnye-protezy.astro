@@ -9,15 +9,16 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'chem-chistit-zubnye-protezy';
-const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const pageUrl = 'https://ortopednn.ru/blog/chem-chistit-zubnye-protezy/';
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Чем чистить зубные протезы: средства, пасты, таблетки",
-  "description": "Чем чистить зубные протезы: пасты, щётки, таблетки для дезинфекции, ирригаторы. Какие средства подходят, какие нельзя использовать.",
+  "description": "Чем чистить зубные протезы: пасты, щётки, таблетки для дезинфекции, ирригаторы. Какие средства подходят для съёмных и несъёмных протезов, какие нельзя использовать.",
   "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-05-26",
   "dateModified": "2026-05-26",
@@ -35,14 +36,13 @@ const ldArticle = {
   socials={socials}
   datePublished="2026-05-26"
   dateModified="2026-05-26"
-  canonical="https://ortopednn.ru/blog/kak-chistit-semnye-protezy/"
 >
   <Navbar />
   <main class="container container--w800">
     <a href="/blog" class="back">← К статьям</a>
     <nav class="breadcrumbs">
       <a href="/blog">Блог</a>
-      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      {category && <><span class="sep">›</span><a href={'/blog/' + category.id}>{category.name}</a></>}
       <span class="sep">›</span><span>{articleData?.title}</span>
     </nav>
     
@@ -53,33 +53,84 @@ const ldArticle = {
       <p class="lead">Съёмные и несъёмные протезы чистят разными средствами. Для съёмных — специальные пасты без абразива и дезинфицирующие таблетки. Для несъёмных — обычная паста, ирригатор и флосс. Простое правило: паста для живых зубов царапает акрил протеза.</p>
 
       <h2>Средства для съёмных протезов</h2>
-
       <h3>Пасты для протезов</h3>
-      <p>Специальные пасты — Corega, Protefix, Lacalut Denture, Fittydent. Они не содержат грубых абразивов, не царапают акрил, нейлон и нейлоновые протезы. Чистят налёт, не повреждая поверхность. Наносятся на мягкую щётку.</p>
+      <p>Специальные пасты — Corega, Protefix, Lacalut Denture, Fittydent. Они не содержат грубых абразивов, не царапают акрил и нейлон. Чистят налёт, не повреждая поверхность. Наносятся на мягкую щётку. Обычная зубная паста содержит абразив (диоксид кремния), который оставляет микроцарапины на протезе.</p>
 
       <h3>Дезинфицирующие таблетки</h3>
-      <p>Растворимые таблетки — Corega, Protefix, Dentipur. Протез замачивают на 10–15 минут ежедневно или на 30 минут раз в неделю. Таблетки убивают бактерии, убирают запах и налёт в труднодоступных местах. Не заменяют механическую чистку: после таблеток протез нужно ополоснуть.</p>
+      <p>Растворимые таблетки — Corega, Protefix, Dentipur. Протез замачивают на 10–15 минут ежедневно или на 30 минут раз в неделю. Таблетки убивают бактерии, убирают запах и налёт в труднодоступных местах. Не заменяют механическую чистку: после таблеток протез нужно ополоснуть и почистить щёткой.</p>
 
-      <h3>Щётки</h3>
-      <p>Специальная щётка для протезов — с одной стороны мягкая щетина, с другой — более жёсткая. Можно использовать и обычную мягкую зубную щётку. Жёсткая щетина царапает акрил.</p>
+      <h3>Щётки для протезов</h3>
+      <p>Специальная щётка для протезов — с одной стороны мягкая щетина, с другой — более жёсткая для очистки рельефа. Можно использовать обычную мягкую зубную щётку. Жёсткая щетина царапает акрил. Меняйте щётку каждые 3 месяца.</p>
 
       <h2>Средства для несъёмных протезов</h2>
-      <p>Коронки и мосты чистят обычной зубной пастой и щёткой. Дополнительно — ирригатор (Waterpik, B.Well, AquaJet). Струя воды вымывает остатки из-под коронок и мостов. Зубная нить — для промежутков между коронками.</p>
+      <p>Коронки и мосты чистят обычной зубной пастой и щёткой. Дополнительно — ирригатор (Waterpik, B.Well, AquaJet). Струя воды вымывает остатки из-под коронок и мостов. Зубная нить (суперфлосс) — для промежутков между коронками и под телом моста.</p>
+
+      <h2>Сравнение средств для чистки</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Средство</th><th>Для каких протезов</th><th>Как использовать</th><th>Частота</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Специальная паста (Corega и др.)</td><td>Съёмные</td><td>Мягкая щётка, круговые движения</td><td>2 раза в день</td></tr>
+          <tr><td>Дезинфицирующие таблетки</td><td>Съёмные</td><td>Растворить в воде, замочить протез</td><td>Ежедневно или 1 раз в неделю</td></tr>
+          <tr><td>Ирригатор</td><td>Несъёмные (коронки, мосты)</td><td>Направить струю в межзубные промежутки</td><td>После каждой еды</td></tr>
+          <tr><td>Зубная нить (суперфлосс)</td><td>Несъёмные</td><td>Провести под мостом, между коронками</td><td>1 раз в день</td></tr>
+        </tbody>
+      </table>
+      </div>
 
       <h2>Чего нельзя использовать</h2>
       <ul>
         <li><strong>Отбеливающие пасты</strong> — абразив царапает протез</li>
         <li><strong>Соду, соль, уксус</strong> — разрушают материал</li>
-        <li><strong>Хлорсодержащие средства</strong> — обесцвечивают</li>
+        <li><strong>Хлорсодержащие средства</strong> — обесцвечивают протез</li>
         <li><strong>Металлические щётки</strong> — царапают поверхность</li>
         <li><strong>Зубной порошок</strong> — слишком грубый абразив</li>
+        <li><strong>Горячую воду</strong> — акрил и нейлон деформируются при температуре выше 60°C</li>
       </ul>
 
+      <h2>Профессиональная чистка протезов</h2>
+      <p>Раз в год рекомендуется профессиональная чистка протеза у стоматолога. Врач использует ультразвуковую ванночку, которая удаляет налёт и камень из всех пор, недоступных домашней чистке. После чистки протез полируется и обрабатывается антисептиком.</p>
+
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Можно ли чистить протез обычной зубной пастой?</h3>
+          <p>Для съёмных — не рекомендуется, абразив царапает акрил. Для несъёмных (коронок и мостов) — можно.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как часто нужно менять таблетки для протезов?</h3>
+          <p>Используйте одну таблетку на один приём. Не храните раствор — готовьте новый каждый раз.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Нужно ли чистить протез после таблеток?</h3>
+          <p>Да. Таблетки дезинфицируют, но не удаляют налёт полностью. После замачивания почистите протез щёткой с пастой.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли использовать ирригатор для съёмного протеза?</h3>
+          <p>Можно для очистки самого протеза снаружи. Для очистки полости рта без протеза ирригатор тоже полезен.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как хранить съёмный протез на ночь?</h3>
+          <p>В контейнере с водой или специальным раствором. Не оставляйте насухо — акрил может деформироваться. Не используйте горячую воду.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Почему от протеза появился запах?</h3>
+          <p>Причина — бактерии в порах протеза из-за недостаточной чистки. Используйте дезинфицирующие таблетки и посетите врача для профессиональной чистки.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как часто нужно менять щётку для протеза?</h3>
+          <p>Каждые 3 месяца. Изношенная щётка чистит хуже и накапливает бактерии.</p>
+        </div>
+      </div>
+
+      <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
+
       <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
       <div class="cta">
         <p>Не знаете, чем чистить протез? Спросите меня на приёме — покажу и расскажу.</p>
-        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
       </div>
 
     </article>
@@ -89,23 +140,31 @@ const ldArticle = {
 <script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
 
 <style>
-  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
-  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
-  .back:hover { text-decoration: underline; }
-  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
-  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
-  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
-  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  .back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+  article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+  .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  .lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+  h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
   h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
-  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
-  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
-  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
-  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
-  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
-  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.5rem; line-height: 1.6; }
+  .table-wrap { overflow-x: auto; margin: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+  td { color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+  .faq-item p { margin-bottom: 0; }
+  .cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+  .cta p { margin-bottom: 1rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
   .btn:hover { background: var(--color-primary-hover); }
-.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
-.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
-.breadcrumbs a:hover { text-decoration: underline; }
-.sep { color: var(--color-text-muted); }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .sep { color: var(--color-text-muted); }
 </style>

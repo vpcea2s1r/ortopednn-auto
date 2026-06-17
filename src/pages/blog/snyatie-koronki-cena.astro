@@ -9,15 +9,16 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'snyatie-koronki-cena';
-const pageUrl = `https://ortopednn.ru/blog/snyatie-koronki-cena/`;
+const pageUrl = 'https://ortopednn.ru/blog/snyatie-koronki-cena/';
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Снятие коронки с зуба — цена",
-  "description": "Снятие коронки с зуба — когда нужно снимать, как проходит процедура, можно ли установить ту же коронку обратно.",
+  "headline": "Снятие коронки с зуба — цена, показания, этапы",
+  "description": "Снятие коронки с зуба — когда нужно снимать, как проходит процедура, можно ли установить ту же коронку обратно. Стоимость снятия разных типов коронок.",
   "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-01-15",
   "dateModified": "2026-05-16",
@@ -28,7 +29,7 @@ const ldArticle = {
 ---
 
 <BaseLayout 
-  title="Снятие коронки с зуба — цена | Никитина М.Г."
+  title="Снятие коронки с зуба — цена, показания, этапы | Никитина М.Г."
   description="Снятие коронки с зуба — когда нужно снимать, как проходит процедура, можно ли установить ту же коронку обратно."
   breadcrumbTitle="Снятие коронки цена"
   doctor={doctor}
@@ -38,40 +39,123 @@ const ldArticle = {
 >
   <Navbar />
   <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={'/blog/' + category.id}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
     <article>
-      <header class="article-header">
-        <h1>Снятие коронки цена</h1>
-        <time>15 января 2026</time>
-      </header>
+      <h1>Снятие коронки с зуба — цена, показания, этапы</h1>
+      <div class="meta">15 января 2026 — Никитина М.Г., стоматолог-ортопед</div>
 
-      <p class="lead">Снятие коронки может потребоваться при боли, вторичном кариесе или замене конструкции. Процедура несложная и недорогая.</p>
-        <section id="когда-нужно-снимать-коронку"><h2>Когда нужно снимать коронку</h2>
-        <ul><li>Боль под коронкой — необходимо лечение зуба</li><li>Вторичный кариес на границе коронки</li><li>Скол керамики</li><li>Плановое замена старой коронки</li><li>Изменение цвета десны вокруг коронки</li></ul></section>
-        <section id="цена-снятия-коронки"><h2>Цена снятия коронки</h2>
-        <p>Стоимость снятия коронки зависит от её типа и материала. Снятие простой штампованной коронки дешевле, цельнолитой — дороже. Снятие коронки на имплантате рассчитывается индивидуально. После снятия врач оценивает состояние зуба и принимает решение: лечить и фиксировать заново или изготавливать новую коронку.</p></section>
-        <section id="как-проходит-снятие"><h2>Как проходит снятие</h2>
-        <p>Врач использует ультразвуковой скалер или специальный коронкосниматель (крючок). Аппарат создаёт вибрацию, нарушающую сцепление цемента, после чего коронка аккуратно снимается. Процедура занимает 10–20 минут. В большинстве случаев анестезия не требуется, так как воздействие идёт на коронку, а не на зуб.</p></section>
-        <section id="можно-ли-поставить-ту-же-коронку-обратно"><h2>Можно ли поставить ту же коронку обратно</h2>
-        <p>Если коронка не повреждена и зуб под ней здоров — да, врач очищает её и фиксирует заново. Если коронка деформирована при снятии или зуб требует лечения — потребуется новая.</p></section>
-    </article>
+      <p class="lead">Снятие коронки может потребоваться при боли, вторичном кариесе или плановой замене конструкции. Процедура несложная, занимает 10–20 минут и в большинстве случаев не требует анестезии.</p>
 
-    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+      <h2>Когда нужно снимать коронку</h2>
+      <ul>
+        <li><strong>Боль под коронкой</strong> — кариес или воспаление нерва требуют лечения зуба</li>
+        <li><strong>Вторичный кариес на границе коронки</strong> — бактерии проникли под коронку, разрушают зуб</li>
+        <li><strong>Скол керамики</strong> — если скол обширный, ремонт невозможен, нужна замена</li>
+        <li><strong>Плановая замена</strong> — коронка отслужила свой срок (10–15 лет)</li>
+        <li><strong>Изменение цвета десны</strong> — просвечивание металла или воспаление</li>
+        <li><strong>Разгерметизация</strong> — коронка шатается, под неё попадает пища</li>
+      </ul>
 
-    {relatedArticles.length > 0 && (
+      <h2>Как проходит снятие коронки</h2>
+      <p>Врач использует ультразвуковой скалер или специальный коронкосниматель. Ультразвук создаёт вибрацию, которая нарушает сцепление цемента. После этого коронка аккуратно снимается крючком-коронкоснимателем. Процедура занимает 10–20 минут. В большинстве случаев анестезия не требуется, так как воздействие идёт на коронку, а не на зуб. При снятии коронки на имплантате используется специальный инструмент, чтобы не повредить имплант.</p>
+
+      <h2>Можно ли поставить ту же коронку обратно</h2>
+      <p>Если коронка не повреждена, зуб под ней здоров, а каналы не требуют перелечивания — да, врач очищает коронку от старого цемента и фиксирует заново. Если коронка деформирована при снятии, на ней есть трещины или зуб требует лечения — потребуется новая коронка. Перефиксация возможна 1–2 раза, после чего краевое прилегание ухудшается.</p>
+
+      <h2>Сравнение: сохранение или замена коронки</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Критерий</th><th>Снятие с сохранением</th><th>Снятие с заменой</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Состояние коронки</td><td>Целая, без повреждений</td><td>Скол, трещина, износ</td></tr>
+          <tr><td>Состояние зуба</td><td>Здоров, каналы пролечены</td><td>Кариес, воспаление</td></tr>
+          <tr><td>Визитов</td><td>1–2</td><td>2–3</td></tr>
+          <tr><td>Экономия</td><td>Не нужна новая коронка</td><td>Расходы на новую коронку</td></tr>
+          <tr><td>Срок службы</td><td>3–5 лет</td><td>10–15 лет</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Риски при снятии коронки</h2>
+      <p>Основной риск — повреждение зуба при снятии. Если коронка сидит плотно, а зуб под ней ослаблен кариесом, возможен перелом стенки зуба. В таком случае потребуется восстановление культи или удаление зуба. Риск выше при снятии цельнолитых коронок и коронок, зафиксированных на стеклоиономерный цемент.</p>
+
+      <h2>Профилактика проблем с коронкой</h2>
+      <p>Регулярная гигиена полости рта с использованием ирригатора. Осмотры раз в 6 месяцев для контроля краевого прилегания. Своевременное обращение при первых признаках дискомфорта. Профессиональная чистка раз в год для удаления налёта на границе коронки.</p>
+
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Больно ли снимать коронку?</h3>
+          <p>Нет. Процедура безболезненная. Лишь в редких случаях, когда коронка сидит очень плотно, может потребоваться анестезия.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько стоит снятие коронки?</h3>
+          <p>Стоимость зависит от сложности: простая штампованная коронка — дешевле, цельнолитая — дороже. Коронка на имплантате рассчитывается индивидуально.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Что делать, если коронка сломалась при снятии?</h3>
+          <p>Коронку удаляют по частям. Зуб при этом обычно не страдает. После удаления врач оценивает возможность изготовления новой коронки.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Может ли зуб сломаться при снятии коронки?</h3>
+          <p>Риск существует, если зуб ослаблен кариесом. Врач оценивает состояние зуба на рентгене перед процедурой.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как долго можно ходить без коронки?</h3>
+          <p>Временную коронку ставят сразу после снятия. Ходить без коронки нельзя — зуб может сместиться или разрушиться.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько раз можно переустанавливать одну коронку?</h3>
+          <p>Обычно 1–2 раза. При каждом снятии краевое прилегание ухудшается.</p>
+        </div>
+      </div>
+
+      <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
+
       <RelatedArticles articles={relatedArticles} />
-    )}
-    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
+      <div class="cta">
+        <p>Нужно снять коронку? Запишитесь на приём — проведём аккуратно и без боли.</p>
+        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
   </main>
 </BaseLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
 <style>
-  .article-header { margin-bottom: var(--space-xl); }
-  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
-  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
-  p { line-height: 1.8; margin-bottom: var(--space-md); }
-  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
-  li { line-height: 1.7; margin-bottom: var(--space-xs); }
-  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
-  h2:first-of-type { margin-top: 0; }
-  strong { color: var(--color-text); }
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.faq { margin-bottom: 1.5rem; }
+.faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+.faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+.faq-item p { margin-bottom: 0; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
 </style>

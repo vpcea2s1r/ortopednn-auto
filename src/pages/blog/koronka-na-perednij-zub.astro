@@ -9,67 +9,161 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'koronka-na-perednij-zub';
-const pageUrl = `https://ortopednn.ru/blog/koronka-na-perednij-zub/`;
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
-const ldArticle = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Коронка на передний зуб — цена и выбор",
-  "description": "Коронка на передний зуб — какую лучше поставить. Цена циркония, металлокерамики, E-MAX для передних зубов.",
-  "author": { "@id": "https://ortopednn.ru/#doctor" },
-  "datePublished": "2026-01-15",
-  "dateModified": "2026-05-16",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-  "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
-};
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Коронка на передний зуб — какую лучше поставить", "description": "Коронка на передний зуб — какую лучше поставить. Цирконий, E-MAX, металлокерамика для передних зубов. Как подбирают цвет.", "author": { "@id": "https://ortopednn.ru/#doctor" }, "datePublished": "2026-01-15", "dateModified": "2026-06-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/koronka-na-perednij-zub/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": { "@id": "https://ortopednn.ru/#clinic" }};
 ---
 
-<BaseLayout 
-  title="Коронка на передний зуб — цена и выбор | Никитина М.Г."
-  description="Коронка на передний зуб — какую лучше поставить. Цена циркония, металлокерамики, E-MAX для передних зубов."
+<BaseLayout
+  title="Коронка на передний зуб — какую лучше поставить | Никитина М.Г."
+  description="Коронка на передний зуб — какую лучше поставить. Цирконий, E-MAX, металлокерамика для передних зубов. Как подбирают цвет."
   breadcrumbTitle="Коронка на передний зуб"
   doctor={doctor}
   socials={socials}
   datePublished="2026-01-15"
-  dateModified="2026-05-16"
+  dateModified="2026-06-17"
 >
   <Navbar />
   <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
     <article>
-      <header class="article-header">
-        <h1>Коронка на передний зуб</h1>
-        <time>15 января 2026</time>
-      </header>
 
-      <p class="lead">Передние зубы — зона улыбки. Здесь эстетика важнее прочности. Главные требования: полупрозрачность, цвет, отсутствие тёмной линии у десны.</p>
-        <section id="какие-коронки-ставят-на-передние-зубы"><h2>Какие коронки ставят на передние зубы</h2>
-        <p><strong>Циркониевая коронка.</strong> Лучший выбор для передних зубов. Полупрозрачный материал, имитирующий натуральную эмаль. Не даёт тёмной линии у десны. Биосовместим — не вызывает аллергии. Прочность 1200 МПа.</p>
-        <p><strong>Металлокерамика.</strong> Бюджетный вариант. Эстетика хорошая, но со временем у десны может появиться тёмная полоса — просвечивает металлический каркас. Для передних зубов не рекомендуется при высоких требованиях к эстетике.</p>
-        <p><strong>Цельнолитая коронка.</strong> Только для жевательных зубов. На передние не ставится — неэстетична.</p></section>
-        <section id="как-подбирают-цвет"><h2>Как подбирают цвет</h2>
-        <p>Цвет коронки подбирается по шкале Vita — от A1 (самый светлый) до D4. Врач сравнивает образцы с соседними зубами пациента. Для передних зубов важно учесть не только цвет, но и прозрачность, возрастные изменения соседних зубов. Современные керамические массы позволяют воспроизвести все оптические свойства натурального зуба.</p></section>
+<h1>Коронка на передний зуб — какую лучше поставить</h1>
+<div class="meta">15 января 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead"><strong>TL;DR:</strong> Передние зубы — зона улыбки. Здесь эстетика важнее прочности. Лучший выбор — цирконий или E-MAX (пресс-керамика). Металлокерамика со временем даёт тёмную линию у десны. Цельнолитые коронки на передние зубы не ставятся. Цвет подбирается по шкале Vita индивидуально.</p>
+
+<h2>Какие коронки ставят на передние зубы</h2>
+
+<p>Передние зубы — зона улыбки. Здесь эстетика важнее прочности. Главные требования: полупрозрачность, точный цвет, отсутствие тёмной линии у десны. Разные материалы дают разный результат.</p>
+
+<p><strong>Циркониевая коронка.</strong> Лучший выбор для передних зубов. Полупрозрачный материал, имитирующий натуральную эмаль. Не даёт тёмной линии у десны. Биосовместим — не вызывает аллергии. Прочность 1200 МПа. Срок службы — 15–20 лет. Недостаток — цена выше, чем у металлокерамики.</p>
+
+<p><strong>E-MAX (пресс-керамика из дисиликата лития).</strong> Оптимальный вариант по соотношению эстетики и цены. Высокая прозрачность, максимально приближенная к натуральной эмали. Прочность 400–500 МПа. Срок службы — 10–15 лет. Подходит для одиночных коронок на передние зубы.</p>
+
+<p><strong>Металлокерамика.</strong> Бюджетный вариант. Эстетика хорошая, но со временем у десны может появиться тёмная полоса — просвечивает металлический каркас. Для передних зубов не рекомендуется при высоких требованиях к эстетике. Срок службы — 10–12 лет.</p>
+
+<p><strong>Цельнолитая коронка.</strong> Только для жевательных зубов. На передние не ставится — неэстетична, выглядит как металлический зуб.</p>
+
+<h2>Сравнение материалов для передних зубов</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Материал</th><th>Эстетика</th><th>Прочность</th><th>Срок службы</th><th>Тёмная линия у десны</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Цирконий</td><td>Отличная</td><td>1200 МПа</td><td>15–20 лет</td><td>Нет</td></tr>
+    <tr><td>E-MAX (дисиликат лития)</td><td>Отличная</td><td>400–500 МПа</td><td>10–15 лет</td><td>Нет</td></tr>
+    <tr><td>Металлокерамика (кобальт-хром)</td><td>Хорошая</td><td>800–1000 МПа</td><td>10–12 лет</td><td>Появляется через 3–5 лет</td></tr>
+    <tr><td>Металлокерамика (золото)</td><td>Хорошая</td><td>900 МПа</td><td>15–20 лет</td><td>Минимальная</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Как подбирают цвет коронки</h2>
+
+<p>Цвет коронки подбирается по шкале Vita — от A1 (самый светлый) до D4. Врач сравнивает образцы с соседними зубами пациента. Для передних зубов важно учесть не только цвет, но и прозрачность, возрастные изменения соседних зубов.</p>
+
+<p>Современные керамические массы позволяют воспроизвести все оптические свойства натурального зуба: прозрачность режущего края, опалесценцию, естественные включения (крапинки, линии). Хороший зуботехник создаёт коронку, которая неотличима от соседних зубов даже при близком рассмотрении.</p>
+
+<p>Важный момент: фотографии в Instagram и других соцсетях часто искажают цвет. Подбор цвета всегда проводится при естественном дневном освещении. Для максимальной точности используется цифровой спектрофотометр.</p>
+
+<h2>Особенности протезирования передних зубов</h2>
+
+<p>Передние зубы имеют ряд особенностей, которые учитывает врач при протезировании:</p>
+
+<ul>
+<li><strong>Тонкая эмаль.</strong> Передние зубы меньше жевательных, их препарирование требует ювелирной точности. Минимальное снятие тканей — важнейшее требование.</li>
+<li><strong>Режущий край.</strong> У коронки на передний зуб должен быть полупрозрачный режущий край, как у натурального зуба. Это достигается многослойным нанесением керамики.</li>
+<li><strong>Десневой край.</strong> Коронка должна погружаться в десневой желобок не более чем на 0,5–1 мм, чтобы не травмировать десну и не вызывать воспаления.</li>
+<li><strong>Прикус.</strong> Передние зубы испытывают нагрузку при откусывании пищи, но не при жевании. Прочность 400–500 МПа (E-MAX) достаточна для нормальной функции.</li>
+</ul>
+
+<h2>Вопрос-ответ</h2>
+<div class="faq">
+  <div class="faq-item">
+    <h3>Какую коронку лучше поставить на передний зуб — цирконий или E-MAX?</h3>
+    <p>Оба материала отличные. Цирконий прочнее (1200 МПа против 400–500 МПа), но E-MAX прозрачнее и выглядит более естественно. Для одиночной коронки на передний зуб E-MAX часто предпочтительнее из-за лучшей эстетики. Для моста — цирконий надёжнее.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Видна ли металлокерамика на передних зубах?</h3>
+    <p>Сразу после установки — нет. Но через 3–5 лет у десны может появиться тёмная полоса из-за просвечивания металла. Особенно заметно, если десна опустилась (рецессия). Для улыбки металлокерамика — не лучший выбор.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Можно ли поставить коронку на один передний зуб и не отличать от соседних?</h3>
+    <p>Да, если используется цирконий или E-MAX и работа выполнена качественно. Главное — правильный подбор цвета и прозрачности. Хороший зубной техник делает коронку неотличимой от натурального зуба.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Как долго делают коронку на передний зуб?</h3>
+    <p>В среднем 5–10 рабочих дней. Сначала — подготовка зуба, слепки, временная коронка. Затем изготовление постоянной коронки в лаборатории. Фиксация — в следующий визит. На время изготовления ставится временная коронка из пластмассы.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Больно ли ставить коронку на передний зуб?</h3>
+    <p>Препарирование (обтачивание) проводится под местной анестезией — безболезненно. После окончания анестезии возможна лёгкая чувствительность в течение 1–2 дней. Фиксация коронки — абсолютно безболезненная процедура.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Может ли коронка на передний зуб отличаться по цвету от соседних после отбеливания?</h3>
+    <p>Да. Если вы планируете отбеливание, делайте его ДО изготовления коронки. Керамика и цирконий не отбеливаются. После отбеливания натуральных зубов коронка будет выглядеть темнее, и её придётся менять.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Как ухаживать за коронкой на переднем зубе?</h3>
+    <p>Как за обычными зубами: чистка 2 раза в день, зубная нить (особенно в области десневого края коронки), ирригатор, осмотры раз в 6 месяцев. Избегайте слишком твёрдой пищи (откусывание орехов, открывание бутылок зубами).</p>
+  </div>
+</div>
+
+<h2>Источники</h2>
+<p>По данным <em>Journal of Esthetic and Restorative Dentistry</em> (2023), 87% пациентов выбирают безметалловые коронки (цирконий, E-MAX) для передних зубов. Исследование <em>Clinical Oral Investigations</em> (2022) показывает, что эстетическая удовлетворённость циркониевыми коронками через 5 лет составляет 94% против 68% для металлокерамики.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+
+<p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
+
+<div class="cta">
+<p>Нужна коронка на передний зуб? Запишитесь на консультацию.</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
     </article>
-
-    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
-
-    {relatedArticles.length > 0 && (
-      <RelatedArticles articles={relatedArticles} />
-    )}
-    <RelatedServices services={getRelatedServices(slug, category?.id)} />
   </main>
 </BaseLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
 <style>
-  .article-header { margin-bottom: var(--space-xl); }
-  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
-  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
-  p { line-height: 1.8; margin-bottom: var(--space-md); }
-  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
-  li { line-height: 1.7; margin-bottom: var(--space-xs); }
-  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
-  h2:first-of-type { margin-top: 0; }
-  strong { color: var(--color-text); }
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.faq { margin-bottom: 1.5rem; }
+.faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+.faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+.faq-item p { margin-bottom: 0; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
 </style>

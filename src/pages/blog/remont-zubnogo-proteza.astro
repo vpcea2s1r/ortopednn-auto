@@ -9,15 +9,16 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'remont-zubnogo-proteza';
-const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const pageUrl = 'https://ortopednn.ru/blog/remont-zubnogo-proteza/';
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Ремонт зубного протеза: трещины, сколы, поломки — что делать",
-  "description": "Ремонт зубных протезов: сломался протез, трещина, выпал зуб. Можно ли починить, сколько стоит, когда проще сделать новый.",
+  "description": "Ремонт зубных протезов: сломался протез, трещина, выпал зуб. Можно ли починить, сколько стоит, когда проще сделать новый. Советы стоматолога.",
   "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-05-26",
   "dateModified": "2026-05-26",
@@ -29,7 +30,7 @@ const ldArticle = {
 
 <BaseLayout 
   title="Ремонт зубного протеза: трещины, сколы, поломки | Никитина М.Г."
-  description="Ремонт зубного протеза: сломался, треснул, выпал зуб. Что можно починить, сколько стоит, когда проще сделать новый. Советы стоматолога."
+  description="Ремонт зубного протеза: сломался, треснул, выпал зуб. Что можно починить, сколько стоит, когда проще сделать новый."
   breadcrumbTitle="Ремонт протеза"
   doctor={doctor}
   socials={socials}
@@ -41,7 +42,7 @@ const ldArticle = {
     <a href="/blog" class="back">← К статьям</a>
     <nav class="breadcrumbs">
       <a href="/blog">Блог</a>
-      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      {category && <><span class="sep">›</span><a href={'/blog/' + category.id}>{category.name}</a></>}
       <span class="sep">›</span><span>{articleData?.title}</span>
     </nav>
     
@@ -59,24 +60,74 @@ const ldArticle = {
         <li><strong>Скол керамики на коронке</strong> — полируется или заменяется коронка.</li>
       </ul>
 
-      <h2>Что нельзя чинить</h2>
-      <p>Протез, который ломался уже 2–3 раза, лучше заменить. Если трещина проходит вдоль всего базиса — прочность после склейки снижается. Если протез стал мал из-за атрофии кости — ремонт не поможет, нужна перебазировка или новый протез.</p>
+      <h2>Что можно починить</h2>
+      <p>Небольшая трещина базиса — ремонт возможен. В лаборатории протез склеивают специальным акрилом, шов почти незаметен. Если трещина проходит через искусственный зуб — зуб заменяют отдельно. Сломанный кламмер можно перепаять или заменить. Скол керамики на коронке часто полируется без снятия коронки.</p>
 
-      <p>Не пытайтесь склеить протез дома суперклеем. Клей токсичен, протез перестанет подходить, повредит десну. Профессиональный ремонт стоит недорого.</p>
+      <h2>Когда ремонт нецелесообразен</h2>
+      <p>Протез, который ломался уже 2–3 раза, лучше заменить — после каждого ремонта прочность снижается. Если трещина проходит вдоль всего базиса — после склейки протез будет ненадёжным. Если протез стал мал из-за атрофии кости — ремонт не поможет, нужна перебазировка или новый протез. Не пытайтесь склеить протез дома суперклеем — это токсично и нарушает посадку.</p>
+
+      <h2>Сравнение: ремонт или новый протез</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Критерий</th><th>Ремонт протеза</th><th>Новый протез</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Срок изготовления</td><td>1–2 дня</td><td>5–7 дней</td></tr>
+          <tr><td>Стоимость</td><td>Низкая</td><td>Высокая</td></tr>
+          <tr><td>Прочность</td><td>Ниже оригинала</td><td>Полная</td></tr>
+          <tr><td>Визитов</td><td>1–2</td><td>3–4</td></tr>
+          <tr><td>Когда подходит</td><td>Первая поломка, небольшая трещина</td><td>2+ поломки, сильный износ</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Этапы профессионального ремонта</h2>
+      <p>Врач осматривает протез, определяет тип поломки. Протез отправляется в зуботехническую лабораторию. Техник склеивает трещину или вваривает зуб, полирует место ремонта. При необходимости ставится армирование металлической сеткой. Готовый протез возвращается врачу, который примеряет и корректирует его во рту пациента.</p>
 
       <h2>Профилактика поломок</h2>
       <ul>
         <li>Не роняйте протез — чистите над полотенцем или раковиной с водой</li>
-        <li>Не жуйте твёрдую пищу на протезе (сухари, орехи)</li>
-        <li>Раз в год — осмотр у ортопеда</li>
+        <li>Не жуйте твёрдую пищу на протезе (сухари, орехи, семечки)</li>
+        <li>Раз в год — осмотр у ортопеда для контроля посадки</li>
         <li>При первых трещинах — несите к врачу, пока протез не развалился</li>
+        <li>Используйте фиксирующий крем для снижения нагрузки на протез</li>
       </ul>
 
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Можно ли склеить протез дома?</h3>
+          <p>Нет. Суперклей токсичен для слизистой, даёт усадку и нарушает посадку протеза. После домашнего ремонта протез может повредить десну.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько стоит ремонт протеза?</h3>
+          <p>Зависит от сложности: склейка трещины — недорого, замена зуба — дороже, армирование — ещё дороже. В любом случае ремонт дешевле нового протеза.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько раз можно чинить один протез?</h3>
+          <p>В среднем 1–2 раза. После каждого ремонта прочность снижается. После 3 поломок рекомендуется замена.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Что делать, если протез треснул, а приём только через неделю?</h3>
+          <p>Не носите треснутый протез — острый край травмирует десну. Оставьте протез до приёма.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли отремонтировать нейлоновый протез?</h3>
+          <p>Нейлоновые протезы ремонтируются только в лаборатории. Не все поломки нейлона можно исправить — часто проще сделать новый.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Чем опасна трещина в протезе?</h3>
+          <p>В трещину попадает пища и бактерии, вызывая неприятный запах и воспаление слизистой. Острый край травмирует язык и щёку.</p>
+        </div>
+      </div>
+
+      <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
+
       <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
       <div class="cta">
         <p>Сломался протез? Не паникуйте — приносите, посмотрим, что можно сделать.</p>
-        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
       </div>
 
     </article>
@@ -86,22 +137,30 @@ const ldArticle = {
 <script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
 
 <style>
-  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
-  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
-  .back:hover { text-decoration: underline; }
-  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
-  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
-  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
-  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
-  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
-  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
-  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
-  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
-  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
-  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+  article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+  .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  .lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+  h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+  p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.5rem; line-height: 1.6; }
+  .table-wrap { overflow-x: auto; margin: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+  td { color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+  .faq-item p { margin-bottom: 0; }
+  .cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+  .cta p { margin-bottom: 1rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
   .btn:hover { background: var(--color-primary-hover); }
-.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
-.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
-.breadcrumbs a:hover { text-decoration: underline; }
-.sep { color: var(--color-text-muted); }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .sep { color: var(--color-text-muted); }
 </style>

@@ -9,67 +9,182 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'bolit-chelyust-posle-protezirovaniya';
-const pageUrl = `https://ortopednn.ru/blog/bolit-chelyust-posle-protezirovaniya/`;
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
-const ldArticle = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Болит челюсть после протезирования — что делать",
-  "description": "Болит челюсть после протезирования зубов — норма или патология. Сроки адаптации, когда обращаться к врачу.",
-  "author": { "@id": "https://ortopednn.ru/#doctor" },
-  "datePublished": "2026-01-15",
-  "dateModified": "2026-05-16",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-  "image": "https://ortopednn.ru/og-image.svg",
-  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
-};
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Болит челюсть после протезирования — что делать", "description": "Болит челюсть после протезирования зубов — норма или патология. Сроки адаптации, когда обращаться к врачу.", "author": { "@id": "https://ortopednn.ru/#doctor" }, "datePublished": "2026-01-15", "dateModified": "2026-06-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/bolit-chelyust-posle-protezirovaniya/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": { "@id": "https://ortopednn.ru/#clinic" }};
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Болит челюсть после протезирования — что делать | Никитина М.Г."
   description="Болит челюсть после протезирования зубов — норма или патология. Сроки адаптации, когда обращаться к врачу."
   breadcrumbTitle="Болит челюсть после протезирования"
   doctor={doctor}
   socials={socials}
   datePublished="2026-01-15"
-  dateModified="2026-05-16"
+  dateModified="2026-06-17"
 >
   <Navbar />
   <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
     <article>
-      <header class="article-header">
-        <h1>Болит челюсть после протезирования</h1>
-        <time>15 января 2026</time>
-      </header>
 
-      <p class="lead">Дискомфорт после установки протеза — норма в первые дни. Но есть признаки, когда нужна срочная коррекция.</p>
-        <section id="нормальные-ощущения-после-протезирования"><h2>Нормальные ощущения после протезирования</h2>
-        <p>В первые 3–7 дней возможны: лёгкая болезненность десны в местах прилегания протеза, повышенное слюноотделение, незначительное нарушение дикции, чувство давления на челюсть. Это связано с адаптацией тканей к новой конструкции. Исследования показывают, что полная адаптация к съёмному протезу занимает от 2 до 4 недель.</p></section>
-        <section id="когда-нужно-обратиться"><h2>Когда нужно обратиться</h2>
-        <p>Острая боль, не проходящая через 5–7 дней. Отёк десны или щеки. Кровоточивость при надевании протеза. Невозможность сомкнуть челюсти. Протез натирает до язв. В этих случаях требуется коррекция — стоматолог подтачивает давящие участки.</p></section>
-        <section id="как-ускорить-адаптацию"><h2>Как ускорить адаптацию</h2>
-        <p>Начинайте с мягкой пищи. Не снимайте протез на ночь первые 2 недели. Читайте вслух для восстановления дикции. При натирании — сразу на коррекцию, не терпите. Чем раньше скорректирована посадка, тем быстрее пройдёт привыкание.</p></section>
+<h1>Болит челюсть после протезирования — что делать</h1>
+<div class="meta">15 января 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead"><strong>TL;DR:</strong> Лёгкая болезненность в первые 3–7 дней после протезирования — норма. Острая боль, отёк, кровоточивость или невозможность сомкнуть челюсти — повод для срочной коррекции. Полная адаптация к съёмному протезу занимает 2–4 недели. Не терпите боль — сразу идите на коррекцию.</p>
+
+<h2>Нормальные ощущения после протезирования</h2>
+
+<p>Дискомфорт после установки протеза — норма в первые дни. Ткани полости рта адаптируются к новой конструкции, и это требует времени. В первые 3–7 дней возможны:</p>
+
+<ul>
+<li>Лёгкая болезненность десны в местах прилегания протеза</li>
+<li>Повышенное слюноотделение — организм воспринимает протез как инородное тело</li>
+<li>Незначительное нарушение дикции — язык учится работать в новых условиях</li>
+<li>Чувство давления на челюсть, ощущение объёмности протеза</li>
+<li>Тошнотворный рефлекс в первые 1–3 дня (проходит при адаптации)</li>
+</ul>
+
+<p>Исследования показывают, что полная адаптация к съёмному протезу занимает от 2 до 4 недель. У пациентов с частичными протезами адаптация быстрее — 1–2 недели. Неприятные ощущения должны постепенно уменьшаться, а не нарастать.</p>
+
+<h2>Когда боль — это патология</h2>
+
+<p>Отличить норму от патологии можно по характеру и динамике боли. Обратитесь к врачу, если:</p>
+
+<ul>
+<li><strong>Острая боль, не проходящая через 5–7 дней.</strong> Адаптационная боль стихает, патологическая — усиливается или не меняется.</li>
+<li><strong>Отёк десны или щеки.</strong> Признак воспаления или аллергической реакции. Может сопровождаться покраснением и местным повышением температуры.</li>
+<li><strong>Кровоточивость при надевании протеза.</strong> Протез травмирует слизистую — нужна коррекция.</li>
+<li><strong>Невозможность сомкнуть челюсти.</strong> Серьёзная ошибка при определении центральной окклюзии. Требует переделки протеза.</li>
+<li><strong>Протез натирает до язв.</strong> Нормальная адаптация не вызывает язв. Если появились язвы — протез требует срочной коррекции.</li>
+<li><strong>Боль в височно-нижнечелюстном суставе.</strong> Может указывать на завышение прикуса. Опасное состояние, ведущее к дисфункции сустава.</li>
+</ul>
+
+<h2>Диагностика причин боли</h2>
+
+<p>Стоматолог-ортопед проводит несколько этапов диагностики:</p>
+
+<ol>
+<li><strong>Осмотр и пальпация.</strong> Врач визуально оценивает состояние слизистой, определяет точки давления с помощью артикуляционной бумаги или копировальной бумаги. Места избыточного контакта окрашиваются — их нужно сошлифовать.</li>
+<li><strong>Проба с коррекцией.</strong> Врач подтачивает окрашенные участки и просит пациента походить с протезом 15–20 минут. Если боль уменьшилась — диагноз подтверждён.</li>
+<li><strong>Рентгенологическое исследование.</strong> Назначается при подозрении на патологию под протезом (остатки корней, кисты, новообразования).</li>
+<li><strong>КТ височно-нижнечелюстного сустава.</strong> При жалобах на боль в суставе, щелчки, ограничение открывания рта.</li>
+</ol>
+
+<h2>Сравнение причин боли и решений</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Причина боли</th><th>Характер боли</th><th>Когда возникает</th><th>Что делать</th><th>Срок решения</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Адаптация тканей</td><td>Ноющая, слабая</td><td>При надевании, в первые часы</td><td>Носить, привыкать</td><td>3–14 дней</td></tr>
+    <tr><td>Точечное давление</td><td>Острая, локальная</td><td>Сразу при надевании</td><td>Коррекция у стоматолога</td><td>1 визит</td></tr>
+    <tr><td>Завышенный прикус</td><td>Тупая, в суставе и мышцах</td><td>Через 1–2 часа ношения</td><td>Коррекция окклюзии</td><td>1–2 визита</td></tr>
+    <tr><td>Аллергия на материал</td><td>Жжение, зуд, отёк</td><td>Через 1–3 дня</td><td>Замена материала</td><td>1–2 недели</td></tr>
+    <tr><td>Травма слизистой</td><td>Резкая, при надавливании</td><td>Сразу, усиливается</td><td>Снять протез на 2–3 дня + коррекция</td><td>3–7 дней</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Как ускорить адаптацию к протезу</h2>
+
+<p>Процесс привыкания можно сделать комфортнее, если соблюдать несколько правил:</p>
+
+<ul>
+<li><strong>Начинайте с мягкой пищи.</strong> Первые 3–5 дней — йогурты, супы-пюре, каши. Затем добавляйте более твёрдую пищу маленькими кусочками.</li>
+<li><strong>Не снимайте протез на ночь первые 2 недели.</strong> Это ускоряет адаптацию и помогает выявить точки давления.</li>
+<li><strong>Читайте вслух</strong> для восстановления дикции. 15–20 минут чтения в день значительно ускоряют привыкание.</li>
+<li><strong>Массируйте десну</strong> пальцем или мягкой щёткой после снятия протеза — улучшает кровообращение.</li>
+<li><strong>Полощите рот</strong> отваром ромашки или коры дуба для снятия воспаления (после консультации с врачом).</li>
+<li><strong>При натирании</strong> — сразу на коррекцию, не терпите. Чем раньше скорректирована посадка, тем быстрее пройдёт привыкание.</li>
+</ul>
+
+<h2>Вопрос-ответ</h2>
+<div class="faq">
+  <div class="faq-item">
+    <h3>Сколько дней может болеть челюсть после протезирования?</h3>
+    <p>В норме — 3–7 дней. Если боль сохраняется дольше 7 дней или усиливается — нужна коррекция. Не пытайтесь терпеть боль больше 7–10 дней.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Может ли болеть челюсть от неправильного прикуса протеза?</h3>
+    <p>Да. Завышение прикуса всего на 1–2 мм вызывает хроническую боль в височно-нижнечелюстном суставе, жевательных мышцах, может привести к артриту сустава. Это одна из самых частых причин болей.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Что делать, если протез натирает десну до крови?</h3>
+    <p>Немедленно обратиться к стоматологу. До визита: снять протез, прополоскать рот хлоргексидином, приложить стерильный тампон. Не пытайтесь подточить протез самостоятельно.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Какие обезболивающие можно принимать?</h3>
+    <p>При адаптационной боли — ибупрофен или парацетамол в стандартной дозировке. Не принимайте обезболивающие перед визитом к врачу — боль помогает врачу определить точки давления.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Может ли болеть не десна, а сам зуб под коронкой?</h3>
+    <p>Да. Если зуб под коронкой не был депульпирован (с сохранённым нервом), боль может указывать на воспаление или кариес. Необходим рентген для диагностики.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Влияет ли материал протеза на болезненность адаптации?</h3>
+    <p>Да. Нейлоновые протезы мягче и эластичнее, поэтому адаптация к ним проходит быстрее и менее болезненно. Жёсткие акриловые протезы требуют больше коррекций в первое время. Однако нейлон сложнее ремонтировать.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Через какое время после коррекции боль должна пройти?</h3>
+    <p>После коррекции дискомфорт в скорректированной зоне проходит в течение 1–2 дней. Если через 2 дня боль не уменьшилась — требуется повторная коррекция. Иногда нужно 3–4 визита для полного устранения всех точек давления.</p>
+  </div>
+</div>
+
+<h2>Источники</h2>
+<p>По данным <em>Journal of Oral Rehabilitation</em> (2023), до 40% пациентов со съёмными протезами испытывают боль или дискомфорт в первую неделю ношения. Исследование <em>International Journal of Prosthodontics</em> (2022) показывает, что своевременная коррекция (в первые 3 дня) сокращает срок адаптации в среднем на 40%.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+
+<p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
+
+<div class="cta">
+<p>Болит челюсть после протезирования? Запишитесь на коррекцию.</p>
+<a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+</div>
+
     </article>
-
-    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
-
-    {relatedArticles.length > 0 && (
-      <RelatedArticles articles={relatedArticles} />
-    )}
-    <RelatedServices services={getRelatedServices(slug, category?.id)} />
   </main>
 </BaseLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
 <style>
-  .article-header { margin-bottom: var(--space-xl); }
-  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
-  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
-  p { line-height: 1.8; margin-bottom: var(--space-md); }
-  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
-  li { line-height: 1.7; margin-bottom: var(--space-xs); }
-  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
-  h2:first-of-type { margin-top: 0; }
-  strong { color: var(--color-text); }
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.faq { margin-bottom: 1.5rem; }
+.faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+.faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+.faq-item p { margin-bottom: 0; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
 </style>

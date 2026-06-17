@@ -9,15 +9,16 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'koronka-na-zhevatelnyj-zub';
-const pageUrl = `https://ortopednn.ru/blog/koronka-na-zhevatelnyj-zub/`;
+const pageUrl = 'https://ortopednn.ru/blog/koronka-na-zhevatelnyj-zub/';
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Коронка на жевательный зуб — какую выбрать",
-  "description": "Какую коронку лучше поставить на жевательный зуб. Сравнение металлокерамики, циркония, цельнолитых коронок для боковых зубов.",
+  "description": "Какую коронку лучше поставить на жевательный зуб. Сравнение металлокерамики, циркония, цельнолитых коронок и E-max для боковых зубов. Прочность, срок службы, цена.",
   "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-01-15",
   "dateModified": "2026-05-16",
@@ -29,7 +30,7 @@ const ldArticle = {
 
 <BaseLayout 
   title="Коронка на жевательный зуб — какую выбрать | Никитина М.Г."
-  description="Какую коронку лучше поставить на жевательный зуб. Сравнение металлокерамики, циркония, цельнолитых коронок для боковых зубов."
+  description="Какую коронку лучше поставить на жевательный зуб. Сравнение металлокерамики, циркония, цельнолитых коронок и E-max для боковых зубов. Прочность, срок службы, цена."
   breadcrumbTitle="Коронка на жевательный зуб"
   doctor={doctor}
   socials={socials}
@@ -38,39 +39,120 @@ const ldArticle = {
 >
   <Navbar />
   <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={'/blog/' + category.id}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
     <article>
-      <header class="article-header">
-        <h1>Коронка на жевательный зуб</h1>
-        <time>15 января 2026</time>
-      </header>
+      <h1>Коронка на жевательный зуб — какую выбрать</h1>
+      <div class="meta">15 января 2026 — Никитина М.Г., стоматолог-ортопед</div>
 
-      <p class="lead">Жевательные зубы (моляры и премоляры) принимают основную нагрузку при пережёвывании пищи — до 70% всей жевательной силы. Поэтому материал коронки должен быть максимально прочным.</p>
-        <section id="какие-коронки-подходят-для-жевательных-зубов"><h2>Какие коронки подходят для жевательных зубов</h2>
-        <p><strong>Металлокерамика.</strong> Оптимальный выбор: прочная, доступная по цене, эстетичнее цельнолитой. Выдерживает жевательное давление до 800 МПа. Срок службы 10–15 лет.</p>
-        <p><strong>Цирконий.</strong> Прочнее металлокерамики (1200 МПа). Полностью биосовместим, не даёт реакции на холодное/горячее. Рекомендуется при бруксизме и аллергии на металл.</p>
-        <p><strong>Цельнолитая коронка.</strong> Самая прочная, но неэстетичная — металлического цвета. Подходит для самых дальних зубов, незаметных при улыбке.</p>
-        <p><strong>E-MAX.</strong> Высокая эстетика, но для жевательных зубов прочность (400 МПа) ниже, чем у циркония. Лучше использовать для передних зубов.</p></section>
-        <section id="что-влияет-на-выбор"><h2>Что влияет на выбор</h2>
-        <p>Высота зуба — для металлокерамики нужно 1,5–2 мм обточки. Наличие бруксизма — цирконий предпочтительнее. Аллергия на металлы — только цирконий. Бюджет — цельнолитая или металлокерамика. Исследования долгосрочной выживаемости показывают, что для жевательных зубов металлокерамика и цирконий имеют сопоставимые показатели (92–96% за 10 лет).</p></section>
-    </article>
+      <p class="lead">Жевательные зубы (моляры и премоляры) принимают основную нагрузку при пережёвывании пищи — до 70% всей жевательной силы. Поэтому материал коронки должен быть максимально прочным. Рассмотрим основные варианты.</p>
 
-    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+      <h2>Какие коронки подходят для жевательных зубов</h2>
+      <p><strong>Металлокерамика.</strong> Оптимальный выбор: прочная, доступная по цене, эстетичнее цельнолитой. Выдерживает жевательное давление до 800 МПа. Срок службы 10–15 лет. Минус — со временем у десны может появиться тёмная полоса из-за металлического каркаса.</p>
+      <p><strong>Цирконий.</strong> Прочнее металлокерамики (1200 МПа). Полностью биосовместим, не даёт реакции на холодное/горячее. Рекомендуется при бруксизме и аллергии на металл. Срок службы 15–20 лет.</p>
+      <p><strong>Цельнолитая коронка.</strong> Самая прочная, но неэстетичная — металлического цвета. Подходит для самых дальних зубов, незаметных при улыбке. Выдерживает нагрузку до 1000 МПа.</p>
+      <p><strong>E-MAX.</strong> Высокая эстетика, прочность 400 МПа. Для жевательных зубов подходит ограниченно — лучше для передних зубов или премоляров при небольшой нагрузке.</p>
 
-    {relatedArticles.length > 0 && (
+      <h2>Что влияет на выбор коронки</h2>
+      <p>Высота зуба — для металлокерамики нужно 1,5–2 мм обточки. Наличие бруксизма — цирконий предпочтительнее из-за максимальной прочности. Аллергия на металлы — только цирконий, так как в металлокерамике есть металлический каркас. Бюджет — цельнолитая дешевле, металлокерамика — средний вариант, цирконий — премиум. Исследования долгосрочной выживаемости показывают, что для жевательных зубов металлокерамика и цирконий имеют сопоставимые показатели (92–96% за 10 лет).</p>
+
+      <h2>Сравнение материалов для жевательной группы</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Критерий</th><th>Металлокерамика</th><th>Цирконий</th><th>Цельнолитая</th><th>E-MAX</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Прочность (МПа)</td><td>800</td><td>1200</td><td>1000</td><td>400</td></tr>
+          <tr><td>Срок службы</td><td>10–15 лет</td><td>15–20 лет</td><td>15+ лет</td><td>10–12 лет</td></tr>
+          <tr><td>Эстетика</td><td>Средняя</td><td>Высокая</td><td>Низкая</td><td>Максимальная</td></tr>
+          <tr><td>Биосовместимость</td><td>Средняя</td><td>Высокая</td><td>Средняя</td><td>Высокая</td></tr>
+          <tr><td>Для каких зубов</td><td>Любые жевательные</td><td>Любые жевательные</td><td>Дальние моляры</td><td>Премоляры</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Этапы изготовления коронки</h2>
+      <p>Процесс занимает 3–5 рабочих дней. Первый визит — препарирование зуба (обточка), снятие слепков, фиксация временной коронки. Второй визит — примерка каркаса (для металлокерамики) или готовой коронки. Третий визит — фиксация постоянной коронки на цемент. При использовании цифровых технологий (CAD/CAM) коронку могут изготовить за 1 день.</p>
+
+      <h2>Уход за коронкой на жевательном зубе</h2>
+      <p>Чистить зубы дважды в день мягкой щёткой. Использовать ирригатор для очистки придесневой области. Избегать чрезмерно твёрдой пищи (леденцы, сухари) — особенно в первые недели после фиксации. Регулярные осмотры раз в полгода для контроля краевого прилегания и состояния цемента.</p>
+
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Что лучше на жевательный зуб — металлокерамика или цирконий?</h3>
+          <p>Оба варианта надёжны. Цирконий прочнее, эстетичнее и не даёт тёмной полосы у десны. Металлокерамика доступнее по цене. Выбор зависит от бюджета.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько служит коронка на жевательном зубе?</h3>
+          <p>Металлокерамика — 10–15 лет, цирконий — 15–20 лет, цельнолитая — 15 и более лет.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли ставить E-MAX на жевательный зуб?</h3>
+          <p>E-MAX подходит для премоляров при умеренной нагрузке. На первый и второй моляры лучше ставить металлокерамику или цирконий.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Больно ли обтачивать зуб под коронку?</h3>
+          <p>Нет, процедура проводится под местной анестезией. После прекращения анестезии возможна небольшая чувствительность в течение 1–2 дней.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Нужно ли лечить каналы перед коронкой?</h3>
+          <p>Если зуб живой и здоров — депульпировать не обязательно. Если кариес глубокий — проводится лечение каналов перед протезированием.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Какая коронка самая дешёвая?</h3>
+          <p>Цельнолитая металлическая коронка — самый бюджетный вариант. Затем металлокерамика. Цирконий — самый дорогой.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Может ли коронка треснуть при жевании?</h3>
+          <p>Цирконий и цельнолитая коронка практически исключают трещины. У металлокерамики возможен скол керамики при сильной нагрузке.</p>
+        </div>
+      </div>
+
+      <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
+
       <RelatedArticles articles={relatedArticles} />
-    )}
-    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
+      <div class="cta">
+        <p>Нужна коронка на жевательный зуб? Приходите на консультацию — подберём лучший вариант.</p>
+        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
   </main>
 </BaseLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
 <style>
-  .article-header { margin-bottom: var(--space-xl); }
-  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
-  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
-  p { line-height: 1.8; margin-bottom: var(--space-md); }
-  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
-  li { line-height: 1.7; margin-bottom: var(--space-xs); }
-  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
-  h2:first-of-type { margin-top: 0; }
-  strong { color: var(--color-text); }
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.faq { margin-bottom: 1.5rem; }
+.faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+.faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+.faq-item p { margin-bottom: 0; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
 </style>

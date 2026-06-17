@@ -9,15 +9,16 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'protez-tresnul';
-const pageUrl = `https://ortopednn.ru/blog/protez-tresnul/`;
+const pageUrl = 'https://ortopednn.ru/blog/protez-tresnul/';
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Протез треснул — что делать?",
-  "description": "Треснул съёмный протез — возможен ли ремонт. Причины поломок, когда можно починить, а когда нужна замена.",
+  "description": "Треснул съёмный протез — возможен ли ремонт. Причины поломок: падение, износ, атрофия кости. Когда можно починить, а когда нужна замена.",
   "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-01-15",
   "dateModified": "2026-05-16",
@@ -29,7 +30,7 @@ const ldArticle = {
 
 <BaseLayout 
   title="Протез треснул — что делать? | Никитина М.Г."
-  description="Треснул съёмный протез — возможен ли ремонт. Причины поломок, когда можно починить, а когда нужна замена."
+  description="Треснул съёмный протез — возможен ли ремонт. Причины поломок: падение, износ, атрофия кости. Когда можно починить, а когда нужна замена."
   breadcrumbTitle="Протез треснул что делать"
   doctor={doctor}
   socials={socials}
@@ -38,40 +39,118 @@ const ldArticle = {
 >
   <Navbar />
   <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={'/blog/' + category.id}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+
     <article>
-      <header class="article-header">
-        <h1>Протез треснул что делать</h1>
-        <time>15 января 2026</time>
-      </header>
+      <h1>Протез треснул — что делать?</h1>
+      <div class="meta">15 января 2026 — Никитина М.Г., стоматолог-ортопед</div>
 
-      <p class="lead">Трещина в съёмном протезе — не повод покупать новый. В большинстве случаев конструкцию можно отремонтировать за 1–2 дня. Главное — не пытаться склеить самостоятельно.</p>
-        <section id="почему-трескаются-протезы"><h2>Почему трескаются протезы</h2>
-        <p>Акриловые протезы ломаются чаще нейлоновых из-за жёсткости материала. Основные причины: падение протеза на твёрдую поверхность, неравномерная нагрузка при жевании, естественный износ материала (после 3–5 лет), неправильная посадка из-за атрофии кости. Исследования показывают, что около 30% акриловых протезов требуют ремонта в течение первых 5 лет эксплуатации.</p></section>
-        <section id="можно-ли-починить"><h2>Можно ли починить</h2>
-        <p>Небольшая трещина — ремонт возможен. Стоматолог проводит склейку акрилом в лаборатории, шов почти незаметен. Если трещина проходит через искусственный зуб — зуб заменяется отдельно. Если протез раскололся на несколько частей — ремонт возможен, но может потребоваться армирование. Если база протеза разрушена на 30% и более — рекомендуется замена, так как ремонт будет ненадёжным.</p></section>
-        <section id="чего-нельзя-делать"><h2>Чего нельзя делать</h2>
-        <p>Не клейте протез суперклеем — он токсичен для слизистой. Не используйте эпоксидную смолу — она даёт усадку и нарушает посадку. Не пытайтесь носить треснутый протез — острый край травмирует десну и язык. Не подтачивайте край трещины самостоятельно.</p></section>
-        <section id="стоимость-ремонта"><h2>Стоимость ремонта</h2>
-        <p>Склейка трещины — доступный ремонт. Замена сломанного зуба в протезе — дешевле изготовления нового зуба. Армирование протеза металлической сеткой — при значительных повреждениях. В большинстве случаев ремонт дешевле и быстрее, чем изготовление нового протеза.</p></section>
-    </article>
+      <p class="lead">Трещина в съёмном протезе — не повод покупать новый. В большинстве случаев конструкцию можно отремонтировать за 1–2 дня. Главное — не пытаться склеить самостоятельно и как можно скорее обратиться к врачу.</p>
 
-    <script type="application/ld+json" set:html={JSON.stringify(ldArticle)}></script>
+      <h2>Почему трескаются протезы</h2>
+      <p>Акриловые протезы ломаются чаще нейлоновых из-за жёсткости материала. Основные причины: падение протеза на твёрдую поверхность, неравномерная нагрузка при жевании (если протез прилегает неплотно), естественный износ материала (после 3–5 лет), неправильная посадка из-за атрофии костной ткани. Исследования показывают, что около 30% акриловых протезов требуют ремонта в течение первых 5 лет эксплуатации.</p>
 
-    {relatedArticles.length > 0 && (
+      <h2>Виды трещин и возможность ремонта</h2>
+      <p><strong>Небольшая трещина</strong> — ремонт возможен. Стоматолог проводит склейку акрилом в лаборатории, шов почти незаметен. <strong>Трещина через искусственный зуб</strong> — зуб заменяется отдельно. <strong>Протез раскололся на несколько частей</strong> — ремонт возможен, но может потребоваться армирование металлической сеткой. <strong>Разрушение базиса более 30%</strong> — рекомендуется замена, ремонт будет ненадёжным.</p>
+
+      <h2>Чего нельзя делать при трещине</h2>
+      <ul>
+        <li>Не клейте протез суперклеем — он токсичен для слизистой</li>
+        <li>Не используйте эпоксидную смолу — она даёт усадку и нарушает посадку</li>
+        <li>Не носите треснутый протез — острый край травмирует десну и язык</li>
+        <li>Не подтачивайте край трещины самостоятельно — это ухудшит ремонт</li>
+        <li>Не замазывайте трещину воском или жевательной резинкой</li>
+      </ul>
+
+      <h2>Сравнение: ремонт или замена</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Критерий</th><th>Ремонт</th><th>Замена протеза</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Срок</td><td>1–2 дня</td><td>5–7 дней</td></tr>
+          <tr><td>Стоимость</td><td>Низкая</td><td>Высокая</td></tr>
+          <tr><td>Прочность</td><td>Снижена после ремонта</td><td>Полная</td></tr>
+          <tr><td>Показания</td><td>1–2 поломки, трещина до 30%</td><td>2+ поломок, разрушение более 30%</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Профилактика трещин</h2>
+      <p>Чистите протез над раковиной, наполненной водой, или над полотенцем — падение на кафель частая причина трещин. Раз в год посещайте ортопеда для контроля посадки — из-за атрофии кости протез перестаёт плотно прилегать, нагрузка распределяется неравномерно, и риск трещины растёт. Не жуйте твёрдую пищу на стороне протеза. При появлении микротрещины обращайтесь к врачу сразу.</p>
+
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Можно ли носить протез с трещиной?</h3>
+          <p>Нет. Острый край трещины травмирует слизистую, в трещину попадает пища, начинается воспаление. Снимите протез и обратитесь к врачу.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько стоит склейка трещины?</h3>
+          <p>Склейка трещины — недорогая процедура. Точная стоимость зависит от размера трещины и материала протеза.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько раз можно чинить один протез?</h3>
+          <p>В среднем 1–2 раза. После каждого ремонта снижается прочность. При 3-й поломке рекомендуется замена.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Акриловый или нейлоновый протез — какой прочнее?</h3>
+          <p>Акриловый жёстче и чаще трескается при падении. Нейлоновый эластичнее, но при поломке его сложнее отремонтировать.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли предотвратить трещину?</h3>
+          <p>Да. Регулярные осмотры, аккуратное обращение, своевременная перебазировка протеза снижают риск трещины.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Что делать, если протез треснул пополам?</h3>
+          <p>Возможен ремонт с армированием. Врач направит протез в лабораторию, где его склеят и укрепят металлической сеткой.</p>
+        </div>
+      </div>
+
+      <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
+
       <RelatedArticles articles={relatedArticles} />
-    )}
-    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
+      <div class="cta">
+        <p>Протез треснул? Приносите — отремонтируем за 1–2 дня.</p>
+        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
   </main>
 </BaseLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
 <style>
-  .article-header { margin-bottom: var(--space-xl); }
-  .article-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-sm); }
-  .article-header time { font-size: var(--text-sm); color: var(--color-text-muted); }
-  p { line-height: 1.8; margin-bottom: var(--space-md); }
-  ul, ol { margin-bottom: var(--space-lg); padding-left: var(--space-lg); }
-  li { line-height: 1.7; margin-bottom: var(--space-xs); }
-  h2 { font-size: var(--text-2xl); margin: var(--space-xl) 0 var(--space-md); color: var(--color-primary); }
-  h2:first-of-type { margin-top: 0; }
-  strong { color: var(--color-text); }
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.faq { margin-bottom: 1.5rem; }
+.faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+.faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+.faq-item p { margin-bottom: 0; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
 </style>

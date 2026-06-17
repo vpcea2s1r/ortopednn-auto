@@ -9,15 +9,16 @@ import RelatedServices from '../../components/RelatedServices.astro';
 import { getRelatedServices } from '../../../data/cross-links';
 
 const slug = 'vosstanovlenie-zuba-na-shtifte';
-const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const pageUrl = 'https://ortopednn.ru/blog/vosstanovlenie-zuba-na-shtifte/';
 const articleData = articles.find(a => a.slug === slug);
 const category = articleData?.category ? getCategory(articleData.category) : null;
 const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Восстановление зуба на штифте: показания, этапы, плюсы и минусы",
-  "description": "Восстановление зуба на штифте: когда нужен штифт, этапы установки, виды штифтов. Плюсы и минусы метода.",
+  "description": "Восстановление зуба на штифте: когда нужен штифт, этапы установки, виды штифтов. Плюсы и минусы метода. Сравнение с культевой вкладкой.",
   "author": { "@id": "https://ortopednn.ru/#doctor" },
   "datePublished": "2026-05-26",
   "dateModified": "2026-05-26",
@@ -29,7 +30,7 @@ const ldArticle = {
 
 <BaseLayout 
   title="Восстановление зуба на штифте: показания, этапы, плюсы и минусы | Никитина М.Г."
-  description="Восстановление зуба на штифте: показания, виды штифтов (анкерный, стекловолоконный), этапы установки, плюсы и минусы."
+  description="Восстановление зуба на штифте: когда нужен штифт, виды (анкерный, стекловолоконный), этапы установки, плюсы и минусы. Сравнение с культевой вкладкой."
   breadcrumbTitle="Восстановление зуба на штифте"
   doctor={doctor}
   socials={socials}
@@ -41,7 +42,7 @@ const ldArticle = {
     <a href="/blog" class="back">← К статьям</a>
     <nav class="breadcrumbs">
       <a href="/blog">Блог</a>
-      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      {category && <><span class="sep">›</span><a href={'/blog/' + category.id}>{category.name}</a></>}
       <span class="sep">›</span><span>{articleData?.title}</span>
     </nav>
     
@@ -52,13 +53,13 @@ const ldArticle = {
       <p class="lead">Штифт — это стержень, который фиксируется в корневом канале зуба и служит опорой для восстановления коронковой части. Когда от зуба остался только корень, а коронка разрушена — штифт позволяет сохранить зуб.</p>
 
       <h2>Когда нужен штифт</h2>
-      <p>Зуб разрушен более чем на 50%, корень здоров, каналы пролечены. Пломба не держится, а культевая вкладка не подходит из-за тонких стенок зуба. Штифт вкручивается или вклеивается в канал, после чего на него наращивается культя под коронку.</p>
+      <p>Зуб разрушен более чем на 50%, корень здоров, каналы пролечены. Пломба не держится, а культевая вкладка не подходит из-за тонких стенок зуба. Штифт вкручивается или вклеивается в канал, после чего на него наращивается культя под коронку. Противопоказания: искривление корневых каналов, обострение периодонтита, киста на корне.</p>
 
       <h2>Виды штифтов</h2>
       <ul>
-        <li><strong>Анкерные (металлические)</strong> — вкручиваются в канал. Прочные, но могут создавать напряжение в корне. Титановые — биосовместимы, стальные — дешевле.</li>
-        <li><strong>Стекловолоконные</strong> — эластичные, светопропускающие. Снижают риск перелома корня. Лучший выбор для передних зубов.</li>
-        <li><strong>Углеродоволоконные</strong> — прочные и упругие. Используются реже.</li>
+        <li><strong>Анкерные (металлические)</strong> — вкручиваются в канал. Прочные (титановые, латунные, стальные). Создают напряжение в корне, риск перелома корня выше.</li>
+        <li><strong>Стекловолоконные</strong> — эластичные, светопропускающие. Снижают риск перелома корня. Лучший выбор для передних зубов. Фиксируются на специальный цемент.</li>
+        <li><strong>Углеродоволоконные</strong> — прочные и упругие. Используются реже из-за высокой стоимости.</li>
         <li><strong>Парапульпарные</strong> — устанавливаются не в канал, а в дентин. Для небольших дефектов.</li>
       </ul>
 
@@ -68,17 +69,65 @@ const ldArticle = {
         <li><strong>Установка штифта</strong> — фиксация на цемент (стекловолокно) или вкручивание (анкерный)</li>
         <li><strong>Формирование культи</strong> — наращивание композитного материала вокруг штифта</li>
         <li><strong>Снятие слепков</strong> — для изготовления коронки</li>
-        <li><strong>Фиксация коронки</strong> — постоянная или временная</li>
+        <li><strong>Фиксация коронки</strong> — постоянная или временная, в зависимости от клинической ситуации</li>
       </ol>
 
       <h2>Штифт или культевая вкладка</h2>
-      <p>Если зуб разрушен сильно, лучше культевая вкладка — она изготавливается в лаборатории, точно повторяет форму канала и перераспределяет нагрузку равномернее. Штифт — более простой и быстрый вариант.</p>
+      <p>Если зуб разрушен сильно, лучше культевая вкладка — она изготавливается в лаборатории, точно повторяет форму канала и перераспределяет нагрузку равномернее. Штифт — более простой и быстрый вариант. Вкладка надёжнее для жевательных зубов, штифт чаще используют для передних.</p>
+
+      <h2>Сравнение: стекловолоконный и анкерный штифт</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Критерий</th><th>Стекловолоконный</th><th>Анкерный (металлический)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Эластичность</td><td>Высокая (как дентин)</td><td>Жёсткий</td></tr>
+          <tr><td>Риск перелома корня</td><td>Низкий</td><td>Выше</td></tr>
+          <tr><td>Эстетика</td><td>Просвечивает</td><td>Металл виден через коронку</td></tr>
+          <tr><td>Фиксация</td><td>На цемент</td><td>Вкручивание + цемент</td></tr>
+          <tr><td>Лучшее применение</td><td>Передние зубы</td><td>Жевательные зубы</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Осложнения после установки штифта</h2>
+      <p>Перфорация стенки корня — если канал искривлён или врач ошибся в направлении. Перелом корня — при использовании жёсткого анкерного штифта в ослабленном корне. Воспаление верхушечного периодонта — если канал был некачественно запломбирован. Распломбировка — неполная фиксация штифта на цемент.</p>
+
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Больно ли ставить штифт?</h3>
+          <p>Нет. Установка проводится под местной анестезией, так как зуб обычно депульпирован.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько служит зуб на штифте?</h3>
+          <p>В среднем 5–10 лет. При правильной гигиене и равномерной нагрузке может служить дольше.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Может ли штифт выпасть?</h3>
+          <p>Да, если нарушена фиксация цемента или канал был плохо подготовлен. В таком случае штифт устанавливают заново.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Какой штифт лучше — стекловолоконный или анкерный?</h3>
+          <p>Стекловолоконный — для передних зубов (эстетика, меньше риск перелома). Анкерный — для жевательных (больше прочность).</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли делать МРТ с металлическим штифтом?</h3>
+          <p>Да. Современные штифты (титан, нержавеющая сталь) не магнится, МРТ безопасно. Штифт может давать локальные артефакты.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Что делать, если зуб на штифте болит?</h3>
+          <p>Обратиться к врачу. Причина может быть в воспалении корня, перфорации или переломе штифта. Потребуется рентген.</p>
+        </div>
+      </div>
+
+      <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
 
       <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
       <div class="cta">
         <p>Зуб разрушен? Возможно, его можно сохранить на штифте. Приходите — оценю состояние.</p>
-        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
       </div>
 
     </article>
@@ -88,24 +137,30 @@ const ldArticle = {
 <script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
 
 <style>
-  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
-  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
-  .back:hover { text-decoration: underline; }
-  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
-  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
-  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
-  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
-  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
-  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
-  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
-  ol { padding-left: 1.2rem; margin-bottom: 1.5rem; }
-  ol li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
-  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
-  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
-  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+  article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+  .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  .lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+  h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+  p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.5rem; line-height: 1.6; }
+  .table-wrap { overflow-x: auto; margin: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+  td { color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--color-text); }
+  .faq-item p { margin-bottom: 0; }
+  .cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+  .cta p { margin-bottom: 1rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
   .btn:hover { background: var(--color-primary-hover); }
-.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
-.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
-.breadcrumbs a:hover { text-decoration: underline; }
-.sep { color: var(--color-text-muted); }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .sep { color: var(--color-text-muted); }
 </style>
