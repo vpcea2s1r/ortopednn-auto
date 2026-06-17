@@ -192,4 +192,4 @@
 - **pass_fetch()** (pipeline-utils.js): now also checks `data/drafts/*.json` from GitHub tree + local dir
 - **addTopic()** (agent-pipeline.js): calls `pass_fetch()` before enqueuing, returns duplicate info
 - **Build**: 188 pages, 0 errors (57.68s)
-- **Pushed**: (see commit below)
+- **Pushed**: commit e64355a to master
