@@ -33,6 +33,7 @@
 | [Content Factory](project/content-factory.md) | Веб-панель управления контентом (Express + HTMX + SQLite) | ✏️ Черновик |
 | [Dzen Article Format](project/dzen-article-format.md) | Формат статей для Яндекс.Дзен (исследование) | ✅ Готово |
 | [Cloudflare DNS](project/cloudflare-dns.md) | DNS-записи, API, управление через Cloudflare | ✅ Готово |
+| [Blog Content Standards](project/blog-content-standards.md) | Стандарты длины и структуры блог-статей | ✅ Готово |
 
 ### Raw источники
 
