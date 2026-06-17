@@ -80,6 +80,42 @@ export function migrate() {
       created_at TEXT DEFAULT (datetime('now')),
       processed_at TEXT
     );
+    CREATE TABLE IF NOT EXISTS stat_snapshots (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      project_id INTEGER REFERENCES projects(id),
+      date TEXT NOT NULL,
+      source TEXT NOT NULL DEFAULT 'google',
+      clicks INTEGER DEFAULT 0,
+      impressions INTEGER DEFAULT 0,
+      avg_position REAL DEFAULT 0,
+      ctr REAL DEFAULT 0,
+      visits INTEGER DEFAULT 0,
+      raw TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+    CREATE TABLE IF NOT EXISTS keyword_positions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      project_id INTEGER REFERENCES projects(id),
+      keyword TEXT NOT NULL,
+      position REAL DEFAULT 0,
+      clicks INTEGER DEFAULT 0,
+      impressions INTEGER DEFAULT 0,
+      ctr REAL DEFAULT 0,
+      date TEXT NOT NULL,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+    CREATE TABLE IF NOT EXISTS cwv_snapshots (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      project_id INTEGER REFERENCES projects(id),
+      date TEXT NOT NULL,
+      lcp REAL DEFAULT 0,
+      cls REAL DEFAULT 0,
+      inp REAL DEFAULT 0,
+      fcp REAL DEFAULT 0,
+      score REAL DEFAULT 0,
+      raw TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
     CREATE TABLE IF NOT EXISTS audit_log (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       project_id INTEGER REFERENCES projects(id),
