@@ -193,3 +193,9 @@
 - **addTopic()** (agent-pipeline.js): calls `pass_fetch()` before enqueuing, returns duplicate info
 - **Build**: 188 pages, 0 errors (57.68s)
 - **Pushed**: commit e64355a to master
+
+## 2026-06-17 — 2 low-frequency blog articles
+- **teleskopicheskie-koronki.astro** (category: byugelnye-protezy) — 6500+ chars, comparison table (telekopicheskie vs klammery vs zamki), 4 material types, 8-step procedure, 7 FAQ, complications
+- **kompozitnye-vkladki.astro** (category: koronki) — 6500+ chars, comparison table (vkladka vs keramika vs plomba), 4 material types, 8-step procedure, 7 FAQ, pricing
+- **Build**: 190 pages, 0 errors (59.55s)
+- **Pushed**: commit to master

@@ -49,6 +49,7 @@
 - kakoj-protez-vybrat
 - kak-privyknut-k-semnym-protezam
 - kak-vybrat-material-koronki
+- kompozitnye-vkladki
 - kandidoz-polosti-rta-protezy
 - keramicheskie-ili-metallicheskie-brekety-chto-vybrat
 - keramicheskie-vkladki-vs-koronki
@@ -116,6 +117,7 @@
 - sredstva-dlya-ukhoda-za-protezami
 - srok-sluzhby-protezov
 - stress-i-zuby
+- teleskopicheskie-koronki
 - uhod-za-byugelnym-protezom
 - uhod-za-mostom
 - uhod-za-zubnymi-protezami

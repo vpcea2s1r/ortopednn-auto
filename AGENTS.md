@@ -191,7 +191,7 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 5. **Бенчмарк конкурентов** — сравнение perf/seo с конкурентами
 6. **Удалить `C:\opencode\ortopednn`** (старый Next.js репозиторий) — после подтверждения
 7. **Редизайн stomatolog.ortopednn.ru** — пользователь не доволен текущим дизайном
-8. **Cleanup: main branch** — `main` ветка устарела и расходится с `master`. Нужно удалить или пересоздать.
+8. ~~**Cleanup: main branch** — `main` ветка устарела и расходится с `master`. Нужно удалить или пересоздать.~~ ✅ Удалена и пересоздана от master (2026-06-17)
 9. **n8n Telegram credentials** — настроить Telegram API key для n8n workflow (бот токен). Низкий приоритет.
 10. **Queue dedup** — проверять существующие статьи перед генерацией, чтобы избежать дубликатов.
 11. **26 service pages** — rewrite thin pages with standardized ServiceArticle props (procedure, care, stats, materials, faq, comparison)
