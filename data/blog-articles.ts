@@ -94,6 +94,9 @@ export const articles: BlogArticle[] = [
   { slug: 'nizhnij-protez', title: 'Нижний зубной протез: особенности и фиксация', date: '2026-03-16', desc: 'Протезирование нижней челюсти: виды конструкций, почему плохо держится, имплантация, уход.', category: 'semnye-protezy' },
   { slug: 'protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie', title: 'Протезирование нижних зубов: виды протезов и их сравнение', date: '2026-05-23', desc: 'Сравнение видов протезов нижних зубов: фиксированные, накладные, мости. Материалы, сроки изготовления, условия ношения и основные рекомендации.', category: 'semnye-protezy' },
   { slug: 'verhnij-protez', title: 'Верхний зубной протез: виды, показания и уход', date: '2026-03-15', desc: 'Клинические показания, биосовместимость материалов, адаптация и уход.', category: 'semnye-protezy' },
+  { slug: 'protezy-bez-neba', title: 'Протезы без нёба: виды, цены, отзывы', date: '2026-06-21', desc: 'Съёмные протезы без нёба: AcryFree, QuattroTi, нейлон, бюгельные. Какие бывают, сколько стоят, реальные отзывы.', category: 'semnye-protezy' },
+  { slug: 'quattrotii-protezy', title: 'QuattroTi (квадротти) протезы — что это, плюсы и минусы', date: '2026-06-21', desc: 'QuattroTi из полиоксиметилена: особенности, показания, срок службы, сравнение с AcryFree и нейлоном.', category: 'semnye-protezy' },
+  { slug: 'acryfree-vs-quattrotii', title: 'AcryFree или QuattroTi — что лучше? Сравнение безнёбных протезов', date: '2026-06-21', desc: 'Сравнение AcryFree и QuattroTi: материал, эластичность, эстетика, цена, срок службы. Таблица, кому что подходит.', category: 'semnye-protezy' },
 
   // ===== Бюгельные протезы =====
   { slug: 'byugelnyj-protez-na-zamkah', title: 'Бюгельный протез на замках — плюсы и минусы', date: '2026-05-24', desc: 'Бюгель на аттачменах: плюсы и минусы, отличие от кламмерного, кому подходит.', category: 'byugelnye-protezy' },

@@ -1,0 +1,130 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+const slug = 'quattrotii-protezy';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Квадротти (QuattroTi) протезы — что это, плюсы и минусы",
+  "description": "QuattroTi (квадротти) — протезы из полиоксиметилена. Особенности материала, показания, отзывы, срок службы.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Квадротти (QuattroTi) протезы — что это, плюсы и минусы"
+  description="QuattroTi (квадротти) — съёмные протезы из полиоксиметилена. Особенности, показания, отзывы пациентов, сравнение с аналогами."
+  breadcrumbTitle="QuattroTi (квадротти)"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-21"
+  dateModified="2026-06-21"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>QuattroTi протезы</span>
+    </nav>
+
+    <article>
+      <h1>QuattroTi (квадротти) протезы — что это, плюсы и минусы</h1>
+      <div class="meta">21 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">QuattroTi — съёмный протез из полиоксиметилена (POM). Без нёба, без мономера, с розовыми кламмерами. Разбираем особенности материала, кому подходит и сколько служит.</p>
+
+      <h2>Что такое QuattroTi</h2>
+      <p>QuattroTi (квадротти) — торговое название полиоксиметилена (POM), используемого для изготовления съёмных протезов. Материал разработан итальянской компанией Quattro Ti и представляет собой термопластичный полимер с высокой прочностью и эластичностью.</p>
+      <p>Главная особенность квадротти — розовые полупрозрачные кламмеры. В отличие от металлических, они не заметны на зубах даже вблизи. Эстетика максимальная. Протез не содержит акрила, остаточного мономера — гипоаллергенен.</p>
+
+      <h2>Плюсы QuattroTi</h2>
+      <ul>
+        <li><strong>Без нёба</strong> — открытое нёбо, полное сохранение вкуса и нормальная дикция</li>
+        <li><strong>Гипоаллергенность</strong> — не содержит акрилового мономера, подходит при аллергии на акрилаты</li>
+        <li><strong>Эстетика</strong> — розовые полупрозрачные кламмеры незаметны на зубах</li>
+        <li><strong>Прочность</strong> — полиоксиметилен выдерживает высокие жевательные нагрузки, не трескается</li>
+        <li><strong>Эластичность</strong> — материал упругий, не жёсткий, но и не мягкий как нейлон, передаёт нагрузку равномерно</li>
+        <li><strong>Быстрая адаптация</strong> — пациенты привыкают за 5-10 дней</li>
+        <li><strong>Ремонтопригодность</strong> — возможен ремонт при поломке</li>
+      </ul>
+
+      <h2>Минусы QuattroTi</h2>
+      <ul>
+        <li><strong>Цена выше средней</strong> — QuattroTi дороже акрила и нейлона, сопоставим с AcryFree</li>
+        <li><strong>Перебазировка сложнее</strong> — не все лаборатории работают с POM, перебазировка возможна не во всех случаях</li>
+        <li><strong>Доступность</strong> — не каждая клиника в Нижнем Новгороде работает с QuattroTi, мастеров меньше</li>
+        <li><strong>Не подходит при полной адентии</strong> — как и все безнёбные протезы, требует опоры на зубы или импланты</li>
+      </ul>
+
+      <h2>Показания к установке QuattroTi</h2>
+      <p>QuattroTi оптимален при частичной адентии — когда часть зубов сохранена и может служить опорой для кламмеров. Показания:</p>
+      <ul>
+        <li>Включённые и концевые дефекты зубного ряда</li>
+        <li>Необходимость максимальной эстетики на передние зубы</li>
+        <li>Аллергия на акрил или металл</li>
+        <li>Выраженный рвотный рефлекс</li>
+        <li>Необходимость прочного и гибкого протеза без металлических кламмеров</li>
+      </ul>
+
+      <h2>Срок службы и уход</h2>
+      <p>Средний срок службы QuattroTi — 5-7 лет. Материал стоек к истиранию, не впитывает влагу и запахи. Уход стандартный: ежедневная чистка мягкой щёткой, дезинфекция раз в неделю. Нельзя использовать абразивные пасты и отбеливатели.</p>
+      <p>Главное преимущество перед нейлоном — QuattroTi можно ремонтировать. Если кламмер сломался или базис треснул, протез чинят, а не заменяют полностью.</p>
+
+      <p><strong>QuattroTi — один из лучших материалов по соотношению эстетики, прочности и комфорта.</strong> Уступает AcryFree по доступности перебазировки, но выигрывает по прочности кламмеров. Оптимален для пациентов, которые хотят незаметный и прочный протез без нёба.</p>
+
+      <div class="cta">
+        <p>QuattroTi подходит не всем — нужна консультация стоматолога-ортопеда.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме: съёмные протезы" />
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
+    <div class="back-link">
+      <a href="/blog/semnye-protezy">← Все статьи о съёмных протезах</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+.back-link { margin-top: 1.5rem; }
+.back-link a { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+.back-link a:hover { text-decoration: underline; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>

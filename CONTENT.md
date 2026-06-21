@@ -137,5 +137,8 @@
 - kalcij-dlya-zubov-vzroslym
 - zuby-posle-50
 - diabet-i-zuby
+- acryfree-vs-quattrotii
+- protezy-bez-neba
+- quattrotii-protezy
 - zubnoj-kamen
 - zub-pod-koronkoj-gniet

@@ -1,0 +1,140 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+const slug = 'acryfree-vs-quattrotii';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AcryFree или QuattroTi — что лучше? Сравнение безнёбных протезов",
+  "description": "Сравнение AcryFree и QuattroTi: материал, эластичность, эстетика, цена, срок службы. Таблица, кому что подходит.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="AcryFree или QuattroTi — что лучше? Сравнение двух безнёбных протезов"
+  description="Сравнение AcryFree и QuattroTi: материал, эластичность, эстетика, цена, срок службы. Таблица, кому что подходит."
+  breadcrumbTitle="AcryFree vs QuattroTi"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-21"
+  dateModified="2026-06-21"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>AcryFree vs QuattroTi</span>
+    </nav>
+
+    <article>
+      <h1>AcryFree или QuattroTi — что лучше? Сравнение безнёбных протезов</h1>
+      <div class="meta">21 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">AcryFree и QuattroTi — два самых популярных безнёбных материала. Оба из термопластов, оба без мономера, оба без нёба. Разница в свойствах принципиальная — разбираем, для кого какой вариант.</p>
+
+      <h2>Сравнительная таблица</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Характеристика</th><th>AcryFree</th><th>QuattroTi</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Материал</td><td>Безакриловый термопласт</td><td>Полиоксиметилен (POM)</td></tr>
+          <tr><td>Нёбо</td><td>Открытое</td><td>Открытое</td></tr>
+          <tr><td>Эластичность</td><td>Упруго-эластичный</td><td>Жёстко-эластичный</td></tr>
+          <tr><td>Кламмеры</td><td>Белые или розовые</td><td>Розовые полупрозрачные</td></tr>
+          <tr><td>Прочность кламмеров</td><td>Средняя</td><td>Высокая</td></tr>
+          <tr><td>Гипоаллергенность</td><td>Да</td><td>Да</td></tr>
+          <tr><td>Перебазировка</td><td>Возможна</td><td>Сложнее (не везде)</td></tr>
+          <tr><td>Ремонт</td><td>Возможен</td><td>Возможен</td></tr>
+          <tr><td>Адаптация</td><td>5-10 дней</td><td>5-10 дней</td></tr>
+          <tr><td>Срок службы</td><td>5-7 лет</td><td>5-7 лет</td></tr>
+          <tr><td>Цена</td><td>Средняя</td><td>Средняя-высокая</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Когда выбрать AcryFree</h2>
+      <p>AcryFree — универсальный безнёбный материал. Он мягче и эластичнее QuattroTi, поэтому лучше адаптируется к микрорельефу слизистой. Показания:</p>
+      <ul>
+        <li>Частичная адентия любой протяжённости</li>
+        <li>Повышенная чувствительность слизистой — AcryFree травмирует меньше</li>
+        <li>Если в будущем может понадобиться перебазировка — с AcryFree это сделать проще</li>
+        <li>Оптимальное соотношение цены и качества</li>
+      </ul>
+
+      <h2>Когда выбрать QuattroTi</h2>
+      <p>QuattroTi — более жёсткий и прочный материал. Кламмеры из полиоксиметилена почти не ломаются, что важно при высоких жевательных нагрузках. Показания:</p>
+      <ul>
+        <li>Односторонние концевые дефекты — протез без нёба с жёстким каркасом лучше распределяет нагрузку</li>
+        <li>Необходимость тонких незаметных кламмеров — розовые полупрозрачные, эстетика максимальная</li>
+        <li>Бруксизм и повышенная нагрузка на зубы</li>
+        <li>Если пациент хочет максимально прочный протез, готовый к высоким нагрузкам</li>
+      </ul>
+
+      <h2>Вывод</h2>
+      <p>Оба материала достойны внимания. AcryFree более универсален и прощает ошибки прилегания за счёт эластичности. QuattroTi прочнее и даёт лучшую эстетику кламмеров, но перебазировать его сложнее.</p>
+      <p>Мой совет: если бюджет позволяет и нет специфических требований — QuattroTi прослужит дольше без поломок. Если важна комфортная адаптация и возможность подгонки со временем — AcryFree.</p>
+
+      <div class="cta">
+        <p>Какой материал подходит именно вам — решит врач на консультации.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме: безнёбные протезы" />
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
+    <div class="back-link">
+      <a href="/blog/semnye-protezy">← Все статьи о съёмных протезах</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+.back-link { margin-top: 1.5rem; }
+.back-link a { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+.back-link a:hover { text-decoration: underline; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>
