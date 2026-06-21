@@ -134,5 +134,8 @@
 - vypala-koronka-chto-delat
 - zapah-iz-pod-koronki
 - zdorove-polosti-rta-vliyanie-na-organizm
+- kalcij-dlya-zubov-vzroslym
+- zuby-posle-50
+- diabet-i-zuby
 - zubnoj-kamen
 - zub-pod-koronkoj-gniet
