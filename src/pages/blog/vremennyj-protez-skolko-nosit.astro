@@ -1,0 +1,104 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+const slug = 'vremennyj-protez-skolko-nosit';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Временный зубной протез — сколько можно носить, виды, уход",
+  "description": "Временный протез после удаления зуба: сколько носить, когда менять на постоянный. Иммедиат-протезы, уход, ограничения.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Временный зубной протез — сколько можно носить, виды, уход"
+  description="Временный протез: сколько можно носить после удаления зубов, когда менять на постоянный. Иммедиат-протез, правила ухода, цены."
+  breadcrumbTitle="Временный протез"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-21"
+  dateModified="2026-06-21"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>Временный протез</span>
+    </nav>
+
+    <article>
+      <h1>Временный зубной протез — сколько можно носить, виды, уход</h1>
+      <div class="meta">21 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">После удаления зубов до установки постоянного протеза проходит от 3 до 6 месяцев. Всё это время без зубов ходить нельзя — смещаются соседние зубы, атрофируется кость, страдает дикция. Временный протез решает эти проблемы.</p>
+
+      <h2>Виды временных протезов</h2>
+      <p><strong>Иммедиат-протез (бабочка)</strong> — самый распространённый вариант. Один-два зуба на акриловом базисе с кламмерами, которые цепляются за соседние зубы. Изготавливается до удаления, ставится сразу после. Название от латинского immediatus — немедленный.</p>
+      <p><strong>Частичный съёмный протез</strong> — на 3 и более зубов, используется, когда постоянное протезирование откладывается на длительный срок. Более массивный, но функциональный.</p>
+      <p><strong>Временная пластмассовая коронка</strong> — для одного зуба после лечения или в период изготовления постоянной коронки. Фиксируется на временный цемент.</p>
+
+      <h2>Сколько можно носить временный протез</h2>
+      <p>Иммедиат-протез носят 3-6 месяцев — до полного заживления лунки и формирования протезного ложа. Через 6 месяцев кость меняется настолько, что протез перестаёт плотно прилегать: появляются зазоры, он начинает натирать и балансировать.</p>
+      <p>Носить дольше 6 месяцев не рекомендуется по трём причинам:</p>
+      <ul>
+        <li>Атрофия кости под протезом прогрессирует — чем дольше ждать, тем сложнее будет постоянное протезирование</li>
+        <li>Пластмасса пористая — со временем впитывает запахи, темнеет, становится средой для бактерий</li>
+        <li>Кламмеры ослабевают — фиксация ухудшается, протез начинает слетать</li>
+      </ul>
+
+      <h2>Уход за временным протезом</h2>
+      <p>Временный протез требует такого же ухода, как постоянный: чистка щёткой с мягкой щетиной два раза в день, полоскание после еды, дезинфекция в специальном растворе раз в неделю. Не используйте абразивные пасты — они царапают пластмассу, в царапинах скапливается налёт.</p>
+      <p>На время сна протез рекомендуется снимать — слизистая должна отдыхать. Но в первую неделю после удаления зубов врач может рекомендовать не снимать протез на ночь, чтобы он работал как давящая повязка, уменьшая отёк.</p>
+
+      <h2>Цена и где изготовить</h2>
+      <p>Иммедиат-протез на один зуб стоит 3 000 - 5 000 рублей, на 2-3 зуба — 5 000 - 8 000 рублей. В эту стоимость входит снятие слепков, изготовление до удаления и фиксация сразу после.</p>
+
+      <div class="cta">
+        <p>Временный протез нужно спланировать до удаления зубов. Звоните.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме: съёмные протезы" />
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+<style>
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>

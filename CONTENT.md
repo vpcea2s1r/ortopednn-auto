@@ -138,7 +138,11 @@
 - zuby-posle-50
 - diabet-i-zuby
 - acryfree-vs-quattrotii
+- mini-implanty-dlya-protezov
+- polnaya-adenitya-protezirovanie
+- protezirovanie-pri-beremennosti
 - protezy-bez-neba
 - quattrotii-protezy
+- vremennyj-protez-skolko-nosit
 - zubnoj-kamen
 - zub-pod-koronkoj-gniet
