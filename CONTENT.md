@@ -53,6 +53,7 @@
 - kandidoz-polosti-rta-protezy
 - keramicheskie-ili-metallicheskie-brekety-chto-vybrat
 - keramicheskie-vkladki-vs-koronki
+- klammera-dlya-byugelnykh-protezov
 - koronka-cirkonievaya-otzyvy
 - koronka-ili-most
 - koronka-iz-dioksida-cirkoniya
@@ -65,6 +66,7 @@
 - koronka-temnee-sosednego-zuba
 - koronki-na-zuby-nizhnij-novgorod
 - kostnaya-plastika-pered-implantatsiej
+- krem-fiksatsii-protezov
 - kserostomiya-i-protezirovanie
 - kultevaia-vkladka-pod-koronku
 - kurenie-posle-protezirovaniya
@@ -80,6 +82,7 @@
 - natirayet-desnu-protezom
 - nejlon-acrifree-akril-kakoj-luchshe
 - nizhnij-protez
+- ogolilas-shejka-zuba-pod-koronkoj
 - oslozhneniya-posle-implantatsii
 - osteointegratsiya-kak-kost-srastaetsya-s-titanom
 - osteoporoz-i-implantatsiya
@@ -127,6 +130,7 @@
 - viniry-ili-koronki
 - visochno-nizhnechelyustnoj-sustav-protezirovanie
 - vkus-posle-protezirovaniya
+- vospalenie-desny-nad-koronkoj
 - vospalenie-desny-pod-koronkoj
 - vosstanovlenie-zuba-na-shtifte
 - vremennye-koronki-zachem-nuzhny
@@ -146,3 +150,4 @@
 - vremennyj-protez-skolko-nosit
 - zubnoj-kamen
 - zub-pod-koronkoj-gniet
+- zub-udalyat-ili-vosstanavlivat
