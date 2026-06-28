@@ -151,3 +151,8 @@
 - zubnoj-kamen
 - zub-pod-koronkoj-gniet
 - zub-udalyat-ili-vosstanavlivat
+- chto-takoe-prototipy-u-stomatologa
+- vidy-prikusnykh-shablonov
+- prikusnoy-shablon-na-zhestkom-bazise
+- snyatie-ottiska-alginatnoy-massoy
+- temp-bond-v-stomatologii
