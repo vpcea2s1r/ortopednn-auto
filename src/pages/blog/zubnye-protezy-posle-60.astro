@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'zubnye-protezy-posle-60';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Зубные протезы после 60 лет: какие лучше выбрать",
+  "description": "Какие зубные протезы лучше после 60 лет: съёмные, несъёмные, на имплантах. Особенности протезирования в пожилом возрасте, рекомендации.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+<BaseLayout 
+  title="Зубные протезы после 60 лет: какие лучше выбрать | Никитина М.Г."
+  description="Какие зубные протезы лучше после 60 лет: съёмные, несъёмные, на имплантах. Особенности протезирования в пожилом возрасте, рекомендации."
+  breadcrumbTitle="Протезы после 60 лет"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-07-12"
+  dateModified="2026-07-12"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Зубные протезы после 60 лет: какие лучше выбрать</h1>
+      <div class="meta">12 июля 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">С возрастом ткани полости рта меняются: кость челюсти становится менее плотной, слизистая — более тонкой и сухой, уменьшается количество слюны. После 60 лет протезирование требует особого подхода: конструкция должна быть не только функциональной, но и максимально щадящей для ослабленных тканей.</p>
+
+      <h2>Особенности протезирования в пожилом возрасте</h2>
+      <p>С возрастом происходят изменения, которые влияют на выбор метода протезирования:</p>
+      <ul>
+        <li><strong>Атрофия костной ткани</strong> — после потери зубов кость челюсти постепенно уменьшается. Чем дольше зуб отсутствует, тем меньше кости остаётся для фиксации импланта или протеза.</li>
+        <li><strong>Снижение плотности кости</strong> — особенно у женщин после менопаузы. Остеопороз делает кость более хрупкой, что усложняет имплантацию.</li>
+        <li><strong>Сухость слизистой (ксеростомия)</strong> — многие пожилые люди принимают лекарства, снижающие слюноотделение. Сухая слизистая хуже удерживает протез и быстрее травмируется.</li>
+        <li><strong>Снижение адаптационных возможностей</strong> — привыкание к съёмному протезу в пожилом возрасте может занять больше времени. Дикция, жевание и вкусовые ощущения восстанавливаются медленнее.</li>
+        <li><strong>Хронические заболевания</strong> — гипертония, диабет, сердечно-сосудистые патологии требуют согласования плана лечения с терапевтом.</li>
+      </ul>
+
+      <h2>Какие протезы подходят после 60 лет</h2>
+
+      <h3>Съёмные протезы из нейлона и AcryFree</h3>
+      <p>Оптимальный вариант при частичном или полном отсутствии зубов. Мягкий эластичный базис не травмирует чувствительную слизистую. Не содержат мономеров (в отличие от акрила), поэтому не вызывают аллергии. Протезы без нёба (AcryFree, QuattroTi) сохраняют вкусовую чувствительность и не нарушают дикцию. Срок службы — 5–7 лет.</p>
+
+      <h3>Бюгельные протезы с замками</h3>
+      <p>Подходят, если сохранилось несколько здоровых зубов. Металлический каркас распределяет нагрузку равномерно, замки (аттачмены) незаметны и надёжно фиксируют протез. Бюгель можно шинировать — соединить подвижные зубы в единый блок. Срок службы — 10–15 лет.</p>
+
+      <h3>Протезы на имплантах (All-on-4, покрывные)</h3>
+      <p>Самый физиологичный вариант. 4–6 имплантов фиксируют полный несъёмный протез. Не требуется съёмная конструкция — зубы восстанавливаются как «родные». Минус — нужен достаточный объём кости. При атрофии требуется костная пластика. Срок службы — 20+ лет.</p>
+
+      <h3>Мини-импланты для фиксации съёмных протезов</h3>
+      <p>Компромиссный вариант для пожилых пациентов с атрофией кости. Мини-импланты тоньше классических, устанавливаются малотравматично, не требуют костной пластики. На них фиксируется съёмный протез — он перестаёт «ездить» и натирать.</p>
+
+      <h2>Сравнительная таблица</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Вид протеза</th><th>Травматичность</th><th>Срок службы</th><th>Особенности</th><th>Цена</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Нейлоновый/AcryFree съёмный</td><td>Минимальная</td><td>5–7 лет</td><td>Мягкий базис, не натирает, без мономеров</td><td>Средняя</td></tr>
+          <tr><td>Бюгельный на замках</td><td>Умеренная</td><td>10–15 лет</td><td>Шинирование, распределение нагрузки</td><td>Выше среднего</td></tr>
+          <tr><td>All-on-4 на имплантах</td><td>Хирургическая</td><td>20+ лет</td><td>Несъёмный, требует объёма кости</td><td>Высокая</td></tr>
+          <tr><td>Покрывной на мини-имплантах</td><td>Минимальная</td><td>10–15 лет</td><td>Стабильная фиксация съёмного протеза</td><td>Средняя</td></tr>
+          <tr><td>Акриловый съёмный</td><td>Средняя</td><td>5–7 лет</td><td>Жёсткий базис, может натирать</td><td>Низкая</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Уход за протезами в пожилом возрасте</h2>
+      <ul>
+        <li>Ежедневная чистка мягкой щёткой без абразивных паст</li>
+        <li>Ирригатор — для очистки протезов на имплантах и бюгельных конструкций</li>
+        <li>Дезинфекция съёмных протезов — таблетки Corega, Protefix, ультразвуковая ванночка</li>
+        <li>Съёмные протезы снимать на ночь — слизистая должна отдыхать</li>
+        <li>Регулярные осмотры каждые 6 месяцев (съёмные протезы требуют перебазировки раз в 1–2 года)</li>
+        <li>При сухости во рту — увлажняющие гели и спреи для лучшей фиксации протеза</li>
+      </ul>
+
+      <h2>Вопрос-ответ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Какие протезы лучше всего подходят для пожилых людей?</h3>
+          <p>Зависит от состояния полости рта и общего здоровья. Нейлоновые и AcryFree протезы — самый безопасный вариант. При достаточном объёме кости и отсутствии противопоказаний — протезы на имплантах (All-on-4).</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли ставить импланты после 70 лет?</h3>
+          <p>Да, возраст не является противопоказанием. Решение принимается по состоянию здоровья, а не по паспорту. Если нет тяжёлых сердечно-сосудистых заболеваний, некомпенсированного диабета и остеопороза — имплантация возможна.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько привыкают к съёмным протезам после 60 лет?</h3>
+          <p>В среднем 2–4 недели. В пожилом возрасте адаптация может занять до 2 месяцев. Рекомендуется начинать с мягкой пищи, делать речевую гимнастику и не снимать протез в первые дни, чтобы быстрее привыкнуть.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Что делать, если протез натирает десну?</h3>
+          <p>Не терпеть и не подтачивать самостоятельно. Обратиться к врачу для коррекции. В первые недели коррекция может потребоваться 2–3 раза — это нормально.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как часто нужно менять протезы после 60 лет?</h3>
+          <p>Съёмные протезы — каждые 5–7 лет (меняется рельеф тканей). Несъёмные (коронки, мосты) — каждые 10–15 лет. Протезы на имплантах — 20+ лет (меняется только протезная часть).</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли носить протезы постоянно, не снимая?</h3>
+          <p>Съёмные протезы нужно снимать на ночь — это даёт отдых слизистой и снижает риск воспаления. Протезы на имплантах носятся постоянно, их не снимают.</p>
+        </div>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Нужна консультация по протезированию после 60 лет? Приходите — подберём вариант с учётом возраста и здоровья.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; }
+  .faq-item p { margin-bottom: 0; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

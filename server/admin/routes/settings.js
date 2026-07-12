@@ -1,7 +1,6 @@
 ﻿import { Router } from 'express'
 import { getDb, seedAdmin } from '../db.js'
 import { hashPassword } from '../auth.js'
-
 const router = Router()
 router.get('/', (req, res) => {
   const db = getDb()

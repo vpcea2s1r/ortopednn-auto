@@ -156,3 +156,8 @@
 - prikusnoy-shablon-na-zhestkom-bazise
 - snyatie-ottiska-alginatnoy-massoy
 - temp-bond-v-stomatologii
+- protezirovanie-zubov-pri-parodontoze
+- protezirovanie-perednih-zubov
+- protezirovanie-zubov-u-kuryashchih
+- sovremennye-abatmenty
+- ciprovoy-dizayn-ulybki

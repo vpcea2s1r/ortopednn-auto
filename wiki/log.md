@@ -194,7 +194,12 @@
 - **Build**: 188 pages, 0 errors (57.68s)
 - **Pushed**: commit e64355a to master
 
-## 2026-06-17 — 2 low-frequency blog articles
+## 2026-06-28 — Site audit + position check script
+- **Site audit**: проверены 137 статей блога, 62 услуги, промо-страницы. Найдено: 5 страниц с ценами, 3 битые ссылки, AI-маркеры в ~130 статьях, отсутствие FAQPage/Product/HowTo схем, 4 статьи без внутренних ссылок, дубли FAQ на 5 страницах категорий, 3 тонкие категории без введения
+- **Audit report**: `wiki/audit/2026-06-28-site-audit.md` — 154 строки, 9 разделов
+- **Position check script**: `scripts/check-positions.mjs` — GSC + Yandex Webmaster API
+- **Проблема**: оба API недоступны с локальной машины (блокировка РФ), запуск только на VPS
+- **Wiki**: index.md обновлён, создана `project/position-check.md`
 - **teleskopicheskie-koronki.astro** (category: byugelnye-protezy) — 6500+ chars, comparison table (telekopicheskie vs klammery vs zamki), 4 material types, 8-step procedure, 7 FAQ, complications
 - **kompozitnye-vkladki.astro** (category: koronki) — 6500+ chars, comparison table (vkladka vs keramika vs plomba), 4 material types, 8-step procedure, 7 FAQ, pricing
 - **Build**: 190 pages, 0 errors (59.55s)

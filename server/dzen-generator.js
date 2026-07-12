@@ -38,25 +38,29 @@ async function ghPut(path, content, message, sha) {
   return json;
 }
 
-/* --- AI --- */
-
-async function callAI(prompt) {
-  const system = 'Ты — экспертный стоматолог-ортопед с 30-летним стажем. Пиши как для Дзена: живой язык, конкретика, примеры из практики. Ответь ТОЛЬКО JSON.';
-  const resp = await fetch('https://opencode.ai/zen/v1/chat/completions', {
+async function callAI(prompt, opts = {}) {
+  const key = process.env.OPENMODEL_AI_KEY
+  if (!key) throw new Error('OPENMODEL_AI_KEY not set')
+  const resp = await fetch('https://api.openmodel.ai/v1/messages', {
     method: 'POST', signal: AbortSignal.timeout(300000),
-    headers: { 'Content-Type': 'application/json', 'User-Agent': 'ortopednn-dzen/1.0' },
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
     body: JSON.stringify({
-      messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-      model: 'deepseek-v4-flash-free'
+      model: 'deepseek-v4-flash', max_tokens: opts.maxTokens ?? 4096,
+      system: opts.system || 'Ты — экспертный стоматолог-ортопед с 30-летним стажем. Пиши как для Дзена: живой язык, конкретика, примеры из практики. Ответь ТОЛЬКО JSON.',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: opts.temperature ?? 0.5
     })
-  });
-  const text = await resp.text();
-  if (!text.trim()) throw new Error('Empty AI response');
-  if (text.trim().startsWith('{')) {
-    const data = JSON.parse(text);
-    return data.choices?.[0]?.message?.content || text;
-  }
-  return text;
+  })
+  if (!resp.ok) console.error('AI API non-200:', resp.status)
+  const text = await resp.text()
+  if (!text.trim()) throw new Error('Empty AI response')
+  try {
+    if (text.trim().startsWith('{')) {
+      const data = JSON.parse(text)
+      return data.content?.find(c => c.type === 'text')?.text || text
+    }
+  } catch {}
+  return text
 }
 
 function repairJSON(raw) {

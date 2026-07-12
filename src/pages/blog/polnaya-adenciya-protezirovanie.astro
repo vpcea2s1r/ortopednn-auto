@@ -1,0 +1,124 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+const slug = 'polnaya-adenciya-protezirovanie';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протезирование при полной адентии — варианты, этапы, цены",
+  "description": "Полная адентия — отсутствие всех зубов. Варианты протезирования: съёмные протезы, имплантация, All-on-4. Этапы, цены.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Протезирование при полной адентии — варианты, этапы, цены"
+  description="Полная адентия — отсутствие всех зубов. Съёмные протезы, имплантация, All-on-4. Что выбрать, этапы, стоимость."
+  breadcrumbTitle="Протезирование при полной адентии"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-21"
+  dateModified="2026-06-21"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>Полная адентия</span>
+    </nav>
+
+    <article>
+      <h1>Протезирование при полной адентии — варианты, этапы, цены</h1>
+      <div class="meta">21 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Полная адентия — отсутствие всех зубов на одной или обеих челюстях. Состояние, которое кардинально меняет качество жизни. Современная стоматология предлагает несколько решений: от бюджетных съёмных протезов до несъёмных конструкций на имплантах.</p>
+
+      <h2>Что такое полная адентия</h2>
+      <p>Полная адентия — вторичное отсутствие всех зубов. Кость челюсти со временем атрофируется, лицо меняет форму, нарушается дикция и питание. Пациенты вынуждены отказываться от твёрдой пищи, что ведёт к проблемам с желудочно-кишечным трактом. Психологический дискомфорт не менее серьёзный: люди перестают улыбаться, избегают общения.</p>
+
+      <h2>Варианты протезирования</h2>
+
+      <p><strong>Полный съёмный протез</strong> — классический вариант. Акриловый или нейлоновый протез, который фиксируется за счёт присасывания к слизистой. Самый бюджетный вариант. Минусы: нёбное перекрытие (на верхней челюсти), плохая фиксация на нижней, атрофия кости со временем.</p>
+
+      <p><strong>Съёмный протез на мини-имплантах</strong> — съёмный протез фиксируется на 4 мини-импланта через аттачмены. Не слетает, не натирает. Установка за один день. Дешевле классической имплантации.</p>
+
+      <p><strong>All-on-4</strong> — несъёмный протез на четырёх имплантах. Фиксируется постоянно, снимается только врачом. Максимальная жевательная эффективность, не перекрывает нёбо, не атрофирует кость. Требует достаточного объёма кости. Дороже съёмных вариантов.</p>
+
+      <p><strong>All-on-6</strong> — шесть имплантов для полного протеза. Более равномерное распределение нагрузки. Показан при высокой жевательной нагрузке и достаточном объёме кости.</p>
+
+      <h2>Что выбрать</h2>
+      <p>Выбор зависит от объёма костной ткани, бюджета и ожиданий пациента:</p>
+      <table>
+        <thead>
+          <tr><th>Вариант</th><th>Цена (ориентир)</th><th>Срок службы</th><th>Комфорт</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Полный съёмный</td><td>15 000 – 30 000 р.</td><td>3-5 лет</td><td>Низкий</td></tr>
+          <tr><td>На мини-имплантах</td><td>50 000 – 80 000 р.</td><td>5-8 лет</td><td>Средний</td></tr>
+          <tr><td>All-on-4</td><td>200 000 – 300 000 р.</td><td>15+ лет</td><td>Высокий</td></tr>
+          <tr><td>All-on-6</td><td>300 000 – 450 000 р.</td><td>20+ лет</td><td>Высокий</td></tr>
+        </tbody>
+      </table>
+
+      <p>При полной адентии важно не затягивать с протезированием. Со временем кость атрофируется, и установить импланты станет сложнее или потребуется костная пластика. Чем раньше начать — тем больше вариантов.</p>
+
+      <div class="cta">
+        <p>Полная адентия — не приговор. Современные методы позволяют восстановить функцию и эстетику.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме" />
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
+    <div class="back-link">
+      <a href="/blog/semnye-protezy">← Все статьи о съёмных протезах</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+.back-link { margin-top: 1.5rem; }
+.back-link a { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+.back-link a:hover { text-decoration: underline; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 1rem 0; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>

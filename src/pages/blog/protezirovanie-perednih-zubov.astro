@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'protezirovanie-perednih-zubov';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протезирование передних зубов: эстетические решения и выбор материала",
+  "description": "Протезирование передних зубов: какие коронки и материалы подходят для зоны улыбки. E-max, цирконий, виниры — сравнение по эстетике и сроку службы.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+<BaseLayout 
+  title="Протезирование передних зубов: эстетические решения | Никитина М.Г."
+  description="Протезирование передних зубов: коронки, виниры, вкладки для зоны улыбки. Выбор материала — E-max, цирконий, керамика. Эстетика, срок службы, цена."
+  breadcrumbTitle="Протезирование передних зубов"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-07-12"
+  dateModified="2026-07-12"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span class="sep">›</span><span>Протезирование передних зубов</span>
+    </nav>
+    <article>
+      <h1>Протезирование передних зубов: эстетические решения и выбор материала</h1>
+      <div class="meta">12 июля 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Передние зубы — лицо улыбки. К ним предъявляются最高ие требования по эстетике: цвет, прозрачность, форма, блеск. Материал коронки должен не только быть прочным, но и идеально имитировать натуральный зуб. Современная стоматология предлагает несколько решений для фронтальной группы зубов — от керамических коронок до микропротезирования винирами.</p>
+
+      <h2>Особенности протезирования передних зубов</h2>
+
+      <p>Фронтальные зубы (резцы и клыки) участвуют в улыбке, речи, откусывании пищи. К ним предъявляют три ключевых требования: эстетика — цвет и прозрачность должны совпадать с соседними зубами; биосовместимость — материал не должен вызывать аллергии или окрашивания десны; прочность — жевательная нагрузка на передние зубы меньше, чем на жевательные, но достаточна для сколов при неправильном выборе материала.</p>
+
+      <p>По данным <em>Journal of Esthetic and Restorative Dentistry</em> (2023), более 70% пациентов при протезировании передних зубов ставят эстетику на первое место. Поэтому материал коронки — ключевое решение.</p>
+
+      <h2>Материалы для коронок на передние зубы</h2>
+
+      <ul>
+        <li><strong>E-max (прессованная керамика)</strong> — золотой стандарт для фронтальных зубов. Высокая прозрачность, точная цветопередача, прочность до 400 МПа. Подходит для одиночных коронок и виниров. Срок службы — 12–15 лет.</li>
+        <li><strong>Диоксид циркония</strong> — самый прочный вариант (прочность до 1200 МПа). Мультислойный цирконий с градиентом прозрачности даёт хорошую эстетику, хотя уступает E-max в прозрачности режущего края. Срок службы — 15–20 лет. Лучший выбор при бруксизме.</li>
+        <li><strong>Металлокерамика</strong> — допустимый бюджетный вариант на жевательные зубы, но для передней зоны не рекомендуется. Металлический каркас не пропускает свет, коронка выглядит мутной, со временем может проступить тёмная полоса у десны.</li>
+        <li><strong>Пластмассовые коронки</strong> — временное решение (до 1 года). Быстро теряют цвет и форму, не подходят для постоянной реставрации.</li>
+      </ul>
+
+      <h2>Сравнение материалов для передних зубов</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Материал</th><th>Эстетика</th><th>Прочность</th><th>Прозрачность</th><th>Срок службы</th><th>Цена</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>E-max</td><td>Отличная</td><td>400 МПа</td><td>Высокая</td><td>12–15 лет</td><td>Высокая</td></tr>
+          <tr><td>Цирконий мультислойный</td><td>Хорошая</td><td>1200 МПа</td><td>Средняя</td><td>15–20 лет</td><td>Высокая</td></tr>
+          <tr><td>Металлокерамика</td><td>Средняя</td><td>600–800 МПа</td><td>Низкая</td><td>10–15 лет</td><td>Средняя</td></tr>
+          <tr><td>Пластмасса</td><td>Удовлетворительная</td><td>80–100 МПа</td><td>Средняя</td><td>До 1 года</td><td>Низкая</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Виниры или коронки</h2>
+
+      <p>Виниры — тонкие керамические накладки на переднюю поверхность зуба. Они требуют минимальной обточки (0,3–0,5 мм) и дают максимальную эстетику. Подходят, если зуб здоров, разрушен менее чем на 30–40%, и нет больших пломб.</p>
+
+      <p>Коронка покрывает зуб со всех сторон. Её устанавливают, если зуб разрушен более чем на 50%, депульпирован, стоит штифт или культевая вкладка, или требуется изменить форму зуба кардинально.</p>
+
+      <p>Исследование <em>Journal of Dentistry</em> (2022) показало: выживаемость керамических виниров за 10 лет составляет 91%, керамических коронок — 94%. Оба варианта надёжны при правильном выборе показаний.</p>
+
+      <h2>Как подбирают цвет коронки</h2>
+
+      <p>Цвет зуба определяют по шкале VITA — от A1 (самый светлый) до D4 (тёмный). Для передних зубов врач подбирает цвет при дневном освещении, учитывая не только оттенок, но и прозрачность режущего края, наличие мамелонов, индивидуальные особенности. Современные цифровые спектрофотометры (например, Vita Easyshade) исключают субъективность — прибор измеряет цвет в цифровых координатах и передаёт данные в лабораторию.</p>
+
+      <h2>Этапы протезирования переднего зуба</h2>
+      <ul>
+        <li>Консультация и диагностика — оценка состояния зуба, рентген, выбор материала</li>
+        <li>Подготовка — обточка зуба под коронку (под местной анестезией), снятие слепков</li>
+        <li>Фиксация временной коронки — на период изготовления постоянной (7–14 дней)</li>
+        <li>Примерка и коррекция цвета — при необходимости корректируют оттенок</li>
+        <li>Фиксация постоянной коронки — на стеклоиономерный или композитный цемент</li>
+      </ul>
+
+      <h2>Вопрос-ответ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Какой материал лучше для переднего зуба — E-max или цирконий?</h3>
+          <p>Для одиночной коронки на передний зуб E-max даёт лучшую эстетику. Цирконий предпочтительнее при бруксизме или необходимости высокой прочности.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Больно ли обтачивать передние зубы под коронку?</h3>
+          <p>Нет — под местной анестезией процедура безболезненна. Лёгкая чувствительность может быть в первые 2–3 дня после обточки, пока стоит временная коронка.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько служит керамическая коронка на передний зуб?</h3>
+          <p>E-max — 12–15 лет, цирконий — 15–20 лет при правильном уходе и регулярных осмотрах.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли поставить винир вместо коронки?</h3>
+          <p>Да, если зуб разрушен менее чем на 30–40% и нет депульпирования. Винир эстетичнее и требует меньше обточки.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Будет ли коронка отличаться по цвету от соседних зубов?</h3>
+          <p>Современные керамические материалы позволяют подобрать цвет с точностью до 90–95% при использовании цифровых спектрофотометров.</p>
+        </div>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug)} />
+      <div class="cta">
+        <p>Хотите красивую улыбку? Приходите — подберём материал и цвет коронки под ваши зубы.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; }
+  .faq-item p { margin-bottom: 0; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .sep { color: var(--color-text-muted); }
+</style>

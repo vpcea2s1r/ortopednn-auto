@@ -34,6 +34,8 @@
 | [Dzen Article Format](project/dzen-article-format.md) | Формат статей для Яндекс.Дзен (исследование) | ✅ Готово |
 | [Cloudflare DNS](project/cloudflare-dns.md) | DNS-записи, API, управление через Cloudflare | ✅ Готово |
 | [Blog Content Standards](project/blog-content-standards.md) | Стандарты длины и структуры блог-статей | ✅ Готово |
+| [Site Audit 2026-06-28](audit/2026-06-28-site-audit.md) | Полный аудит сайта: цены, 404, AI-маркеры, схемы, ссылки | ✅ Готово |
+| [Position Check Script](project/position-check.md) | Скрипт проверки позиций (GSC + Yandex Webmaster) | ✅ Готово |
 
 ### Raw источники
 

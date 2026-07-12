@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'skolko-stoit-koronka-nn';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Сколько стоит коронка на зуб в Нижнем Новгороде 2025–2026", "description": "Цены на коронки в Нижнем Новгороде: металлокерамика, цирконий, E-max, пластмасса. Что входит в стоимость, сравнение по материалам, цены 2025–2026.", "author": { "@id": "https://ortopednn.ru/#doctor" }, "datePublished": "2026-06-29", "dateModified": "2026-06-29", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/skolko-stoit-koronka-nn/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": { "@id": "https://ortopednn.ru/#clinic" }};
+---
+
+<BaseLayout 
+  title="Сколько стоит коронка на зуб в Нижнем Новгороде 2025–2026 | Никитина М.Г."
+  description="Цены на коронки в Нижнем Новгороде: металлокерамика, цирконий, E-max, пластмасса. Что входит в стоимость, сравнение по материалам, цены 2025–2026."
+  breadcrumbTitle="Сколько стоит коронка в НН"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-29"
+  dateModified="2026-06-29"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+
+<h1>Сколько стоит коронка на зуб в Нижнем Новгороде 2025–2026</h1>
+<div class="meta">29 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Коронка на зуб в Нижнем Новгороде стоит от 8 000 до 35 000 рублей. Разница в цене — не просто «дороже = лучше». Каждый материал решает свою задачу: металлокерамика подходит для жевательных зубов, цирконий — для тех, кто ценит эстетику, E-max — для передних зубов. Разбираем реальные цены 2025–2026.</p>
+
+<h2>Цены по материалам</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Материал</th><th>Цена в НН</th><th>Срок службы</th><th>Для каких зубов</th></tr>
+</thead>
+<tbody>
+<tr><td>Металлокерамика</td><td>8 000 – 15 000 руб.</td><td>10–15 лет</td><td>Жевательные</td></tr>
+<tr><td>Цирконий (монолитный)</td><td>18 000 – 25 000 руб.</td><td>15–20 лет</td><td>Жевательные и передние</td></tr>
+<tr><td>Цирконий (мультислойный)</td><td>25 000 – 35 000 руб.</td><td>15–20 лет</td><td>Передние</td></tr>
+<tr><td>E-max (литий-дисиликат)</td><td>20 000 – 30 000 руб.</td><td>10–15 лет</td><td>Передние</td></tr>
+<tr><td>Пластмассовая (временная)</td><td>2 000 – 5 000 руб.</td><td>1–2 года</td><td>Временная</td></tr>
+<tr><td>Золотая</td><td>25 000 – 45 000 руб.</td><td>15–20 лет</td><td>Жевательные</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Что входит в цену, а что оплачивается отдельно</h2>
+
+<p>В базовую стоимость коронки обычно входят: обточка зуба, снятие оттисков (цифровых или аналоговых), изготовление коронки в лаборатории, фиксация.</p>
+
+<p>Дополнительно оплачиваются:</p>
+
+<ul>
+<li><strong>Культевая вкладка</strong> — 3 000 – 10 000 руб. (металл или цирконий)</li>
+<li><strong>Временная коронка</strong> — 2 000 – 5 000 руб.</li>
+<li><strong>Анестезия</strong> — 500 – 1 500 руб. (часто входит в стоимость)</li>
+<li><strong>Лечение кариеса под коронкой</strong> — 3 000 – 8 000 руб.</li>
+<li><strong>Удаление нерва (депульпирование)</strong> — 3 000 – 6 000 руб.</li>
+</ul>
+
+<p>Если зуб уже леченый и есть культевая вкладка, полная стоимость одной коронки в Нижнем Новгороде — от 8 000 до 15 000 рублей. Если зуб «с нуля» — с лечением, вкладкой, временной коронкой — от 18 000 до 50 000 рублей за зуб.</p>
+
+<h2>Цены в Нижнем Новгороде vs Москва</h2>
+
+<p>Стоматология в Нижнем Новгороде дешевле московской на 20–40%. При этом качество материалов то же самое — цирконий и E-max поставляются теми же производителями (Ivoclar Vivadent, Dentsply, 3M). Разница — в стоимости работы лаборатории и аренде помещений.</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Материал</th><th>Нижний Новгород</th><th>Москва</th></tr>
+</thead>
+<tbody>
+<tr><td>Металлокерамика</td><td>8 000 – 15 000 руб.</td><td>12 000 – 25 000 руб.</td></tr>
+<tr><td>Цирконий</td><td>18 000 – 35 000 руб.</td><td>30 000 – 55 000 руб.</td></tr>
+<tr><td>E-max</td><td>20 000 – 30 000 руб.</td><td>30 000 – 50 000 руб.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Почему цены растут</h2>
+
+<p>С 2024 по 2026 год стоимость коронок в Нижнем Новгороде выросла на 15–25%. Причины:</p>
+
+<ul>
+<li>Расходные материалы (слепочные массы, цементы, керамические блоки) подорожали из-за курса валют</li>
+<li>CAD/CAM оборудование и его обслуживание в рублях выросло в цене</li>
+<li>Зарплаты зубных техников выросли — рынок лабораторий в НН сократился</li>
+</ul>
+
+<p>Это общерыночный тренд, он касается всех клиник одинаково.</p>
+
+<h2>Как не переплатить</h2>
+
+<ul>
+<li><strong>Сравните прайсы.</strong> Запросите смету в 2–3 клиниках. Цена на одинаковый материал может отличаться на 30%.</li>
+<li><strong>Уточните, что включено.</strong> В одной клинике цирконий за 25 000 — это «всё включено», в другой за 20 000 + вкладка + временная коронка = те же 25 000.</li>
+<li><strong>Не экономьте на материале.</strong> Металлокерамика за 8 000 и за 15 000 — разница в качестве керамики и работе техника.</li>
+<li><strong>Проверьте лабораторию.</strong> Хорошие лаборатории НН работают с цифровыми протоколами. Это гарантия точности прилегания.</li>
+</ul>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>Чтобы узнать точную стоимость коронки в вашем случае, запишитесь на консультацию.</p>
+<a href={`tel:${doctor.phone}`} class="btn">{doctor.phone}</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

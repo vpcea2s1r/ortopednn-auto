@@ -1,0 +1,130 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+const slug = 'srok-nosheniya-vremennogo-proteza';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Временный зубной протез — сколько можно носить, сроки замены",
+  "description": "Сколько можно носить временный протез: сроки для разных типов, почему нельзя затягивать, риски.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Временный зубной протез — сколько можно носить, когда менять на постоянный"
+  description="Сколько носят временный протез: сроки для иммедиат-протезов, временных коронок, провизорных конструкций. Почему важно не затягивать."
+  breadcrumbTitle="Временный протез: сроки"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-21"
+  dateModified="2026-06-21"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>Временный протез</span>
+    </nav>
+
+    <article>
+      <h1>Временный зубной протез — сколько можно носить, когда менять на постоянный</h1>
+      <div class="meta">21 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Временный протез ставят на период изготовления постоянного. Сколько его можно носить — зависит от типа конструкции и материала. Разбираем сроки для всех видов временных протезов и риски затягивания.</p>
+
+      <h2>Виды временных протезов и сроки ношения</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Тип</th><th>Срок ношения</th><th>Для чего</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Временная коронка (пластмасса)</td><td>2–4 недели</td><td>Пока делают постоянную коронку</td></tr>
+          <tr><td>Иммедиат-протез (бабочка)</td><td>3–6 месяцев</td><td>Пока заживает лунка после удаления</td></tr>
+          <tr><td>Провизорный мост</td><td>2–4 недели</td><td>На период изготовления постоянного моста</td></tr>
+          <tr><td>Временный съёмный протез</td><td>6–12 месяцев</td><td>Пока идёт остеоинтеграция имплантов</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Почему важно соблюдать сроки</h2>
+      <p>Временные протезы изготавливаются из менее прочных материалов и не рассчитаны на длительную жевательную нагрузку. Со временем они ломаются, меняют цвет, впитывают запахи. Пластмасса со временем выделяет остаточный мономер, который может раздражать слизистую.</p>
+      <p>При затягивании сроков меняется прикус: временный протез изнашивается, нагрузка перераспределяется, зубы-антагонисты могут смещаться. Чем дольше носите временный протез, тем сложнее врачу зафиксировать постоянную конструкцию.</p>
+
+      <h2>Можно ли продлить ношение</h2>
+      <p>Иногда — да, если временный протез в хорошем состоянии и не доставляет дискомфорта. Но продление только по согласованию с врачом. Самостоятельное ношение дольше рекомендованного срока ведёт к осложнениям: воспалению дёсен под коронкой, кариесу опорных зубов, атрофии костной ткани.</p>
+
+      <h2>Когда менять обязательно</h2>
+      <ul>
+        <li>Появился зазор между протезом и зубом/десной</li>
+        <li>Протез шатается или треснул</li>
+        <li>Под протезом воспалилась десна</li>
+        <li>Появился неприятный запах</li>
+        <li>Изменился цвет или форма протеза</li>
+      </ul>
+
+      <p>Временный протез не предназначен для постоянного ношения. Максимальный срок даже для самых прочных — 12 месяцев. После него нужна замена на постоянную конструкцию или как минимум новый временный протез.</p>
+
+      <div class="cta">
+        <p>Если носите временный протез дольше срока — запишитесь на приём.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме" />
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
+    <div class="back-link">
+      <a href="/blog/semnye-protezy">← Все статьи о съёмных протезах</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+.back-link { margin-top: 1.5rem; }
+.back-link a { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+.back-link a:hover { text-decoration: underline; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+td { color: var(--color-text-muted); }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>

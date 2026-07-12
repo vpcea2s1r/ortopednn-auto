@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'all-on-6';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "All-on-6: имплантация с опорой на 6 имплантов",
+  "description": "All-on-6 — методика полной имплантации с опорой на 6 имплантов. Показания, преимущества, этапы, отличие от All-on-4, срок службы.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+<BaseLayout 
+  title="All-on-6: имплантация с опорой на 6 имплантов | Никитина М.Г."
+  description="All-on-6 — методика полной имплантации с опорой на 6 имплантов. Показания, преимущества, этапы, отличие от All-on-4, срок службы."
+  breadcrumbTitle="All-on-6"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-07-12"
+  dateModified="2026-07-12"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>All-on-6: имплантация с опорой на 6 имплантов</h1>
+      <div class="meta">12 июля 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">All-on-6 — методика полного протезирования челюсти с фиксацией несъёмного протеза на шести имплантах. Два дополнительных импланта (по сравнению с All-on-4) обеспечивают более равномерное распределение жевательной нагрузки, снижают риск перегрузки кости и увеличивают срок службы конструкции. Метод показан при достаточном объёме костной ткани и требует минимальной костной пластики.</p>
+
+      <h2>Что такое All-on-6</h2>
+
+      <p>All-on-6 — эволюция концепции All-on-4. Шесть имплантов устанавливаются по определённой схеме: два передних — вертикально, четыре задних — под углом 30–45 градусов. Наклонные импланты позволяют обойти гайморову пазуху на верхней челюсти и нижнечелюстной канал на нижней, используя максимальный объём доступной кости.</p>
+
+      <p>Метод All-on-6 был разработан как альтернатива для случаев, когда анатомия челюсти позволяет установить больше четырёх имплантов, но не позволяет ставить 8–10 отдельных. Исследование <em>Clinical Implant Dentistry and Related Research</em> (2023) показало: выживаемость протезов All-on-6 через 5 лет составляет 99,2%, что выше, чем у All-on-4 (97,8%).</p>
+
+      <h2>Показания</h2>
+      <ul>
+        <li>Полное отсутствие зубов на одной или обеих челюстях</li>
+        <li>Достаточный объём костной ткани для 6 имплантов (длиной не менее 10 мм)</li>
+        <li>Необходимость повышенной стабильности протеза (например, при бруксизме)</li>
+        <li>Желание пациента получить максимально жёсткую и долговечную несъёмную конструкцию</li>
+        <li>Неудачный опыт All-on-4 или других съёмных протезов</li>
+      </ul>
+
+      <h2>Этапы имплантации All-on-6</h2>
+      <ol>
+        <li><strong>Диагностика</strong> — КЛКТ, анализ костной ткани, 3D-планирование положения имплантов. Врач определяет, подходит ли пациенту All-on-6 или нужен другой метод.</li>
+        <li><strong>Установка имплантов</strong> — операция под местной анестезией или седацией длится 1,5–3 часа. Шесть имплантов фиксируются в кости по заранее рассчитанной схеме.</li>
+        <li><strong>Временный протез</strong> — в день операции устанавливается временный несъёмный протез из акрила или композитного материала. Пациент уходит с зубами, может есть мягкую пищу.</li>
+        <li><strong>Остеоинтеграция</strong> — период заживления 4–6 месяцев. Импланты срастаются с костной тканью. В этот период — щадящая диета, тщательная гигиена, контрольные осмотры.</li>
+        <li><strong>Постоянный протез</strong> — изготавливается из циркония (монолитного или с керамической облицовкой) или металлокерамики. Фиксируется винтами, при необходимости снимается врачом.</li>
+      </ol>
+
+      <h2>Сравнение All-on-4 и All-on-6</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Параметр</th><th>All-on-4</th><th>All-on-6</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Количество имплантов</td><td>4</td><td>6</td></tr>
+          <tr><td>Распределение нагрузки</td><td>Среднее</td><td>Равномерное</td></tr>
+          <tr><td>Требования к кости</td><td>Меньше (обходит пазухи)</td><td>Выше (нужен достаточный объём)</td></tr>
+          <tr><td>Риск перегрузки</td><td>Выше (меньше точек опоры)</td><td>Ниже</td></tr>
+          <tr><td>Выживаемость 5 лет</td><td>97,8%</td><td>99,2%</td></tr>
+          <tr><td>Срок службы протеза</td><td>15–20 лет</td><td>20–25 лет</td></tr>
+          <tr><td>Стоимость</td><td>Ниже</td><td>Выше на 2 импланта</td></tr>
+          <tr><td>Костная пластика</td><td>Часто не нужна</td><td>Редко требуется</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Преимущества и недостатки</h2>
+
+      <p><strong>Плюсы:</strong></p>
+      <ul>
+        <li>Равномерное распределение жевательной нагрузки на 6 точек опоры</li>
+        <li>Высокая стабильность — протез не шатается, не натирает</li>
+        <li>Меньший риск отторжения: при потере одного импланта конструкция держится на пяти</li>
+        <li>Длительный срок службы — до 25 лет при правильной гигиене</li>
+        <li>Несъёмная фиксация — пациент не снимает протез, не боится его выпадения</li>
+      </ul>
+
+      <p><strong>Минусы:</strong></p>
+      <ul>
+        <li>Требуется достаточный объём костной ткани (не всем подходит)</li>
+        <li>Операция длиннее и сложнее, чем All-on-4</li>
+        <li>Выше стоимость — на 30–50% дороже All-on-4</li>
+        <li>Требуется высокая квалификация хирурга-имплантолога</li>
+        <li>Послеоперационный отёк и дискомфорт более выражены (больше имплантов)</li>
+      </ul>
+
+      <p><strong>Прогноз:</strong> при регулярной гигиене (ирригатор, ёршики, профгигиена каждые 6 месяцев) и осмотрах у стоматолога All-on-6 служит более 20 лет. Замена протеза (искусственной десны и зубов) требуется каждые 8–12 лет. Пациентам с All-on-6 рекомендуют избегать чрезмерно твёрдой пищи (орехи, семечки в скорлупе).</p>
+
+      <h2>Вопрос-ответ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Что лучше — All-on-4 или All-on-6?</h3>
+          <p>Зависит от объёма костной ткани. Если кости достаточно для 6 имплантов — All-on-6 надёжнее и служит дольше. При сильной атрофии и близости пазух All-on-4 — единственный вариант без костной пластики.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли переделать All-on-4 в All-on-6?</h3>
+          <p>Технически да — если позволяет кость. Устанавливаются два дополнительных импланта, изготавливается новый протез. Решение принимается индивидуально после КЛКТ.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько стоит All-on-6 в Нижнем Новгороде?</h3>
+          <p>Ориентировочно 300–600 тысяч рублей на одну челюсть в зависимости от бренда имплантов, материала протеза и квалификации врача. Точную цену определяют после диагностики.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Через сколько можно есть после операции?</h3>
+          <p>Временный протез устанавливается в день операции. В первые 2 недели — мягкая и жидкая пища (супы, пюре, йогурты). Через 4–6 месяцев, после фиксации постоянного протеза, можно вернуться к обычному рациону.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как ухаживать за All-on-6?</h3>
+          <p>Ирригатор обязателен — он вымывает остатки пищи под протезом. Ёршики для чистки вокруг имплантов, ополаскиватель. Профессиональная гигиена раз в полгода. Не грызть твёрдые предметы.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Кому не подходит All-on-6?</h3>
+          <p>Пациентам с выраженной атрофией кости (когда объём позволяет установить только 4 импланта), при неконтролируемом диабете, тяжёлом остеопорозе, активных воспалениях в полости рта.</p>
+        </div>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Хотите узнать, подходит ли вам All-on-6? Приходите на диагностику.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul, ol { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; }
+  .faq-item p { margin-bottom: 0; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

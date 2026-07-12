@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'protezirovanie-bez-obtochki';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Протезирование зубов без обточки соседних зубов: методы и альтернативы",
+  "description": "Можно ли поставить коронку или мост без обточки соседних зубов: адгезивный мост, имплантация, виниры. Когда возможен щадящий метод.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-24",
+  "dateModified": "2026-06-24",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout 
+  title="Протезирование зубов без обточки | Никитина М.Г."
+  description="Протезирование без обточки соседних зубов: адгезивный мост, имплантация, виниры. Когда можно обойтись без препарирования."
+  breadcrumbTitle="Протезирование без обточки"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-24"
+  dateModified="2026-06-24"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Протезирование зубов без обточки соседних зубов</h1>
+      <div class="meta">24 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Главный страх пациентов перед протезированием — что придётся обтачивать соседние здоровые зубы. Это справедливо для классического моста: опорные зубы под коронки обтачивают независимо от их состояния. Но есть методы, которые позволяют восстановить зуб без препарирования соседей.</p>
+
+      <h2>Когда нужна обточка, а когда — нет</h2>
+      <p>Обточка (препарирование) зуба — удаление слоя эмали и дентина под коронку. Без этого классическая коронка не фиксируется. Если речь об одиночной коронке на разрушенный зуб, обточить придётся сам зуб — это нормально. Вопрос возникает, когда нужно заместить отсутствующий зуб: мост требует обточки соседних зубов, а альтернативы — нет.</p>
+
+      <h2>Методы протезирования без обточки соседних зубов</h2>
+
+      <h3>Имплантация</h3>
+      <p>Самый надёжный способ восстановить один зуб без затрагивания соседних. В челюсть вживляется титановый имплант, на него — коронка. Соседние зубы остаются нетронутыми. Минус — выше цена и требуется операция. По данным исследований, успешность одиночной имплантации превышает 97%.</p>
+
+      <h3>Адгезивный мост (мост Мэриленд)</h3>
+      <p>Конструкция с «крыльями» — металлическими или стекловолоконными пластинками, которые фиксируются на соседние зубы с внутренней стороны. Обточка не нужна — достаточно лёгкой шероховатости для сцепления. Подходит для восстановления одного переднего зуба при здоровых соседях. Срок службы — 5–8 лет.</p>
+
+      <h3>Виниры</h3>
+      <p>Если зуб не разрушен полностью, а есть скол, трещина или дисколорит, можно использовать винир — тонкую керамическую накладку на переднюю поверхность. Обточка минимальна (0,3–0,5 мм эмали), соседние зубы не трогаются. Винир не заменяет отсутствующий зуб, а восстанавливает существующий.</p>
+
+      <h3>Вкладка (inlay/onlay)</h3>
+      <p>Керамическая вкладка восстанавливает разрушенный жевательный зуб без коронки. Обтачивается только дефект, соседние зубы не затрагиваются. Прочнее пломбы, срок службы — до 10–15 лет.</p>
+
+      <h2>Сравнение методов</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Метод</th><th>Обточка соседей</th><th>Показание</th><th>Срок службы</th><th>Цена</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Имплантация</td><td>Нет</td><td>Один или несколько отсутствующих зубов</td><td>20+ лет</td><td>Высокая</td></tr>
+          <tr><td>Адгезивный мост</td><td>Нет</td><td>Один отсутствующий передний зуб</td><td>5–8 лет</td><td>Средняя</td></tr>
+          <tr><td>Винир</td><td>Нет</td><td>Скол, трещина, дисколорит передних зубов</td><td>10–15 лет</td><td>Средняя</td></tr>
+          <tr><td>Керамическая вкладка</td><td>Нет</td><td>Разрушенный жевательный зуб (до 50%)</td><td>10–15 лет</td><td>Средняя</td></tr>
+          <tr><td>Классический мост</td><td>Да</td><td>Один-два отсутствующих зуба</td><td>10–15 лет</td><td>Средняя</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Когда без обточки не обойтись</h2>
+      <ul>
+        <li>Зуб разрушен больше чем на 70% — нужна культевая вкладка и коронка</li>
+        <li>Отсутствует жевательный зуб с двух сторон — мост или имплант, имплант без обточки, мост — с обточкой</li>
+        <li>Полная адентия — съёмные протезы или All-on-4, обточка не требуется</li>
+        <li>Сильное разрушение нескольких зубов подряд — бюгельный протез или мост с обточкой</li>
+      </ul>
+
+      <h2>Вопрос-ответ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Можно ли поставить коронку без обточки зуба?</h3>
+          <p>Нет, коронка надевается на обточенный зуб. Без обточки нельзя — не будет места для коронки и нарушится прикус.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Что лучше — имплант или мост?</h3>
+          <p>Имплант не требует обточки соседей, но дороже и требует операции. Мост дешевле, но соседние зубы придётся обтачивать.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Больно ли обтачивать зуб под коронку?</h3>
+          <p>Нет, процедура идёт под местной анестезией. Пациент не чувствует боли, только вибрацию. Подробнее — в статье «Больно ли обтачивать зубы под коронку».</p>
+        </div>
+        <div class="faq-item">
+          <h3>Какой метод без обточки самый надёжный?</h3>
+          <p>Имплантация. Это единственный метод, который полностью заменяет корень зуба и не нагружает соседние зубы. Срок службы — 20+ лет.</p>
+        </div>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Хотите восстановить зуб без обточки соседей? Приходите на консультацию — подберём оптимальный метод.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  h3 { font-size: 1.1rem; color: var(--color-text); margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; }
+  .faq-item p { margin-bottom: 0; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

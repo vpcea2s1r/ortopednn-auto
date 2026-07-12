@@ -1,0 +1,114 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+const slug = 'mini-implanty-protezirovanie';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Мини-импланты для протезирования — что это, плюсы, минусы",
+  "description": "Мини-импланты для фиксации съёмных протезов: особенности, показания, срок службы, цена.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Мини-импланты для протезирования — что это, плюсы и минусы"
+  description="Мини-импланты для фиксации съёмных протезов: особенности, показания, преимущества перед классическими имплантами, стоимость."
+  breadcrumbTitle="Мини-импланты"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-21"
+  dateModified="2026-06-21"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>Мини-импланты</span>
+    </nav>
+
+    <article>
+      <h1>Мини-импланты для протезирования — что это, плюсы и минусы</h1>
+      <div class="meta">21 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Мини-импланты — уменьшенная версия классических имплантов диаметром 1,8–3 мм. Используются не для одиночных коронок, а для стабилизации съёмных протезов. Разбираем, когда они нужны и чем отличаются от стандартных.</p>
+
+      <h2>Что такое мини-импланты</h2>
+      <p>Мини-импланты (MIL — mini implants) устанавливаются за одно посещение без разреза и без швов. Диаметр до 3 мм, длина до 18 мм. В отличие от классических имплантов, они не требуют костной пластики и периода остеоинтеграции в 3–6 месяцев — нагрузка даётся сразу или через 2–4 недели.</p>
+      <p>Головка мини-импланта имеет шаровидную форму или форму кнопки — на неё надевается ответная часть в базисе съёмного протеза. Протез фиксируется на 2–6 мини-имплантах и перестаёт слетать.</p>
+
+      <h2>Показания</h2>
+      <ul>
+        <li>Съёмный протез плохо держится — слетает при разговоре и еде</li>
+        <li>Атрофия костной ткани — объём кости недостаточен для классических имплантов</li>
+        <li>Противопоказания к сложной хирургии — пациент не может или не хочет делать костную пластику</li>
+        <li>Полная адентия нижней челюсти — мини-импланты стабилизируют полный съёмный протез</li>
+        <li>Безнёбные протезы — дополнительная фиксация для AcryFree и QuattroTi</li>
+      </ul>
+
+      <h2>Плюсы и минусы</h2>
+      <p><strong>Плюсы:</strong> установка за 30–60 минут без разрезов, низкая травматичность, не требуют костной пластики, нагрузка через 2–4 недели, стоимость ниже классических имплантов в 2–3 раза, подходят при атрофии кости.</p>
+      <p><strong>Минусы:</strong> меньшая прочность (не для одиночных коронок и мостов), менее стабильны при высоких жевательных нагрузках, служат 5–10 лет (классические импланты — 15+), не решают проблему атрофии кости — только фиксируют протез.</p>
+
+      <h2>Сколько стоят</h2>
+      <p>Один мини-имплант — 15 000–25 000 р. Для стабилизации полного протеза обычно нужно 4 импланта — итого 60 000–100 000 р. Это значительно дешевле классической имплантации с костной пластикой (от 200 000 р. за All-on-4).</p>
+
+      <h2>Мини-импланты vs классические</h2>
+      <p>Классические импланты несут жевательную нагрузку и дают полноценное восстановление зубов. Мини-импланты только фиксируют протез — не дают ему слетать. Если возможно установить классические импланты — это лучший вариант. Но при атрофии кости, отказе от костной пластики или ограниченном бюджете мини-импланты — разумная альтернатива, которая радикально улучшает качество жизни.</p>
+
+      <div class="cta">
+        <p>Мини-импланты подходят не всем — нужен осмотр и КТ.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме" />
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
+    <div class="back-link">
+      <a href="/blog/semnye-protezy">← Все статьи о съёмных протезах</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+.back-link { margin-top: 1.5rem; }
+.back-link a { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+.back-link a:hover { text-decoration: underline; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>

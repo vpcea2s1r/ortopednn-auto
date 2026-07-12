@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'implant-ili-protez';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Имплант или протез: что лучше выбрать",
+  "description": "Имплант или протез: сравнение методов восстановления зубов. Показания, преимущества, недостатки, срок службы, стоимость. Что выбрать.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+<BaseLayout 
+  title="Имплант или протез: что лучше выбрать | Никитина М.Г."
+  description="Имплант или протез: сравнение методов восстановления зубов. Показания, преимущества, недостатки, срок службы, стоимость. Что выбрать."
+  breadcrumbTitle="Имплант или протез"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-07-12"
+  dateModified="2026-07-12"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+      <h1>Имплант или протез: что лучше выбрать</h1>
+      <div class="meta">12 июля 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Выбор между имплантом и протезом зависит от состояния зубов, объёма костной ткани, бюджета и времени, которое пациент готов потратить на лечение. Имплантация — физиологичный и долговечный метод, но требует хирургического вмешательства и занимает 4–8 месяцев. Протезирование быстрее и дешевле, но имеет свои ограничения. Разберём плюсы и минусы каждого подхода.</p>
+
+      <h2>Сравнение имплантов и протезов</h2>
+
+      <p><strong>Зубной имплант</strong> — титановый или циркониевый винт, который вживляется в костную ткань челюсти. На него фиксируется коронка, мост или полный протез. Имплант заменяет корень зуба, передаёт жевательную нагрузку на кость, предотвращая её атрофию. Срок службы имплантов — 20–30 лет и более.</p>
+
+      <p><strong>Зубной протез</strong> — съёмная или несъёмная конструкция, которая восстанавливает отсутствующие зубы. Съёмные протезы (акриловые, нейлоновые, AcryFree, бюгельные) опираются на десну и не передают нагрузку на кость. Мостовидные протезы фиксируются на соседних зубах — их обтачивают под опорные коронки.</p>
+
+      <p>Главное различие: имплант стимулирует костную ткань, предотвращая её потерю, а протез (особенно съёмный) не даёт кости нагрузки, что со временем приводит к атрофии.</p>
+
+      <h2>Сравнительная таблица</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Параметр</th><th>Имплант</th><th>Съёмный протез</th><th>Мостовидный протез</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Хирургическое вмешательство</td><td>Да</td><td>Нет</td><td>Нет</td></tr>
+          <tr><td>Обточка соседних зубов</td><td>Не требуется</td><td>Не требуется</td><td>Требуется (2 зуба)</td></tr>
+          <tr><td>Срок лечения</td><td>4–8 месяцев</td><td>1–3 недели</td><td>2–4 недели</td></tr>
+          <tr><td>Нагрузка на кость</td><td>Есть (физиологично)</td><td>Нет (атрофия)</td><td>Нет (атрофия)</td></tr>
+          <tr><td>Срок службы</td><td>20–30 лет</td><td>5–7 лет</td><td>10–12 лет</td></tr>
+          <tr><td>Фиксация</td><td>Несъёмная</td><td>Съёмная</td><td>Несъёмная</td></tr>
+          <tr><td>Ограничения по еде</td><td>Нет</td><td>Есть (жёсткая пища)</td><td>Незначительные</td></tr>
+          <tr><td>Уход</td><td>Стандартная гигиена</td><td>Специальный уход</td><td>Тщательная гигиена</td></tr>
+          <tr><td>Стоимость (за 1 зуб)</td><td>Высокая</td><td>Низкая</td><td>Средняя</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Когда выбрать имплант</h2>
+      <ul>
+        <li><strong>Отсутствует один зуб</strong> — имплант не требует обточки соседних, сохраняет их здоровыми</li>
+        <li><strong>Потеря нескольких зубов подряд</strong> — импланты как опора для моста без обточки здоровых зубов</li>
+        <li><strong>Полное отсутствие зубов</strong> — All-on-4, All-on-6 или покрывной протез на имплантах</li>
+        <li><strong>Достаточный объём костной ткани</strong> — ключевое условие для имплантации</li>
+        <li><strong>Готовность к длительному лечению</strong> — 4–8 месяцев от операции до постоянной коронки</li>
+        <li><strong>Финансовая возможность</strong> — имплантация дороже, но служит дольше и выгоднее в долгосрочной перспективе</li>
+      </ul>
+
+      <h2>Когда выбрать протез</h2>
+      <ul>
+        <li><strong>Недостаточный объём костной ткани</strong> — если костная пластика невозможна или нежелательна</li>
+        <li><strong>Противопоказания к хирургии</strong> — неконтролируемый диабет, тяжёлый остеопороз, приём бисфосфонатов</li>
+        <li><strong>Ограниченный бюджет</strong> — съёмный протез — самый доступный способ восстановить зубы</li>
+        <li><strong>Срочная необходимость</strong> — протез изготавливается за 1–3 недели, имплант требует месяцев</li>
+        <li><strong>Пожилой возраст</strong> — при тонкой слизистой и выраженной атрофии кости съёмный протез может быть единственным вариантом</li>
+        <li><strong>Крайние зубы в ряду</strong> — если нет соседних зубов для моста и недостаточно кости для импланта</li>
+      </ul>
+
+      <p>По данным <em>International Journal of Implant Dentistry</em> (2024), пациенты с одиночными имплантами оценивают качество жизни на 35% выше, чем пациенты со съёмными протезами и на 15% выше, чем с мостовидными. Однако при правильном выборе метода и качественном изготовлении любой вид протезирования восстанавливает жевательную функцию и эстетику.</p>
+
+      <h2>Вопрос-ответ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Что дешевле — имплант или протез?</h3>
+          <p>Съёмный протез — самый доступный вариант. Мостовидный протез дороже съёмного, но дешевле импланта. Однако имплант служит 20–30 лет, а протез 5–7 лет. Если считать стоимость в пересчёте на год, имплант часто оказывается выгоднее.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли поставить имплант вместо съёмного протеза?</h3>
+          <p>Да, это частая ситуация. Пациент носит съёмный протез несколько лет, и когда финансы и состояние кости позволяют — переходит на имплантацию. Иногда требуется костная пластика, если атрофия уже произошла.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Что дольше служит — имплант или протез?</h3>
+          <p>Имплант — 20–30 лет, мост — 10–12 лет, съёмный протез — 5–7 лет. Имплант считается самым долговечным методом восстановления зубов.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Больно ли ставить имплант?</h3>
+          <p>Операция проходит под местной анестезией — пациент не чувствует боли. После операции возможны отёк и дискомфорт в течение 3–5 дней, которые снимаются обычными обезболивающими.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли сделать имплант, если нет зуба много лет?</h3>
+          <p>Да, но сначала оценивают объём костной ткани на КЛКТ. Если за годы отсутствия зуба кость атрофировалась, может потребоваться костная пластика. В некоторых случаях ставят имплант без наращивания.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Кому категорически нельзя ставить импланты?</h3>
+          <p>Абсолютные противопоказания: неконтролируемый сахарный диабет, тяжёлый остеопороз, онкология в активной фазе, приём бисфосфонатов, психические расстройства. В остальных случаях решение принимается индивидуально.</p>
+        </div>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+      <div class="cta">
+        <p>Не знаете, что выбрать? Позвоните — разберём вашу ситуацию.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; }
+  .faq-item p { margin-bottom: 0; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>

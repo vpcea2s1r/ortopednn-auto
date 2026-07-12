@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'ciprovoy-dizayn-ulybki';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const relatedArticles = getRelatedArticles(slug);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Цифровой дизайн улыбки (DSD): что это, этапы, применение в стоматологии",
+  "description": "Цифровой дизайн улыбки (DSD — Digital Smile Design): что это, этапы создания, как используется в ортопедической стоматологии для планирования протезирования.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+<BaseLayout 
+  title="Цифровой дизайн улыбки (DSD): что это, этапы | Никитина М.Г."
+  description="Цифровой дизайн улыбки (DSD): технология планирования протезирования. Этапы: фото, видео, цифровой прототип, силиконовый шаблон. Как DSD помогает в эстетической стоматологии."
+  breadcrumbTitle="Цифровой дизайн улыбки"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-07-12"
+  dateModified="2026-07-12"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span class="sep">›</span><span>Цифровой дизайн улыбки (DSD)</span>
+    </nav>
+    <article>
+      <h1>Цифровой дизайн улыбки (DSD): что это, этапы, применение в стоматологии</h1>
+      <div class="meta">12 июля 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Digital Smile Design (DSD) — метод планирования эстетического лечения с помощью цифровых технологий. Врач создаёт виртуальный прототип будущей улыбки на основе фотографий и видео пациента, согласовывает результат до начала лечения. DSD применяется при протезировании передних зубов, винирах, реставрациях, ортодонтии и комплексной реабилитации.</p>
+
+      <h2>Что такое DSD</h2>
+
+      <p>DSD — это протокол, разработанный бразильским стоматологом Кристианом Коучманом (Christian Coachman). Суть метода: на цифровых фотографиях лица и зубов моделируется будущая улыбка с учётом анатомии, пропорций лица, возраста и пожеланий пациента. Пациент видит результат до того, как началось лечение.</p>
+
+      <p>Технология включает съёмку лица в естественном освещении, внутриротовое сканирование или цифровые слепки, совмещение данных в специализированном ПО (Keynote, PowerPoint, DSD specific software, Exocad). Результат — цифровой макет, который переводится в силиконовый шаблон для переноса в полость рта.</p>
+
+      <h2>Этапы цифрового дизайна улыбки</h2>
+
+      <h3>1. Фото- и видеосъёмка</h3>
+      <p>Стоматолог делает серию снимков: портрет с улыбкой (анфас и в профиль), внутриротовые снимки зубов в смыкании, снимок с разведёнными губами для оценки линии улыбки. Записывается видео — для анализа динамики улыбки. Важны естественное освещение, контрастный фон, стандартизация положения головы.</p>
+
+      <h3>2. Цифровой анализ</h3>
+      <p>Врач наносит на фотографии разметку: среднюю линию лица, горизонтальные линии зрачков, линию улыбки, окклюзионную плоскость. Оценивает пропорции зубов — соотношение ширины к высоте, симметрию, наклон. На этом этапе выявляются асимметрии, несоответствие линии улыбки, дефекты прикуса.</p>
+
+      <h3>3. Создание цифрового прототипа</h3>
+      <p>В программе моделируется новый контур зубов (Mock-up). Врач подбирает форму центральных резцов, длину, пропорции, наклон. Учитываются пол пациента (мужские зубы более квадратные, женские — округлые), возраст (с возрастом зубы укорачиваются), тип лица. Создаётся виртуальный прототип, который накладывается на фотографию лица.</p>
+
+      <h3>4. Клинический Mock-up</h3>
+      <p>Цифровой прототип переносится в полость рта через силиконовый шаблон (Key-Index). В шаблон заливается композитный материал, и он фиксируется на зубы пациента. Пациент видит и ощущает будущие зубы прямо во рту. Если нужно — корректирует форму, длину, цвет. Этот этап совмещает диагностику и мотивацию.</p>
+
+      <h2>Для чего применяется DSD</h2>
+      <ul>
+        <li><strong>Протезирование передних зубов</strong> — подбор формы, размера, цвета коронок и виниров</li>
+        <li><strong>Планирование имплантации</strong> — оценка эстетики будущей реставрации до установки импланта</li>
+        <li><strong>Комплексная реабилитация</strong> — при множественных реставрациях DSD позволяет согласовать все элементы улыбки</li>
+        <li><strong>Ортодонтия</strong> — визуализация результата до и после лечения, планирование положения зубов</li>
+        <li><strong>Обучение и коммуникация</strong> — пациент понимает план лечения, что снижает количество споров по результату</li>
+      </ul>
+
+      <h2>Сравнение DSD и традиционного планирования</h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Параметр</th><th>Традиционное планирование</th><th>DSD (цифровой протокол)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Визуализация результата</td><td>Словесное описание, гипсовые модели</td><td>Фотореалистичный цифровой макет</td></tr>
+          <tr><td>Участие пациента</td><td>Минимальное — решение принимает врач</td><td>Высокое — пациент видит и корректирует</td></tr>
+          <tr><td>Точность переноса</td><td>Зависит от техника</td><td>Силиконовый шаблон по цифровому макету</td></tr>
+          <tr><td>Время планирования</td><td>1–2 визита</td><td>2–3 визита (согласование дольше)</td></tr>
+          <tr><td>Прогнозируемость</td><td>Средняя — возможны коррекции</td><td>Высокая — всё видно заранее</td></tr>
+          <tr><td>Стоимость</td><td>Ниже</td><td>Выше (за счёт цифрового этапа)</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Преимущества DSD</h2>
+
+      <p>Пациент видит будущую улыбку до начала лечения — риск неудовлетворённости результатом снижается почти до нуля. Врач получает чёткий план: известна длина, форма, цвет каждого зуба, нужна ли коррекция десны, где сделать разрез, как расположить имплант. Лаборатория получает точные параметры для изготовления коронок и виниров — меньше переделок, выше качество.</p>
+
+      <p>Исследование <em>Journal of Esthetic and Restorative Dentistry</em> (2023) показало: использование DSD повышает удовлетворённость пациентов результатом протезирования на 34% по сравнению с традиционным планированием.</p>
+
+      <h2>Вопрос-ответ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Что такое DSD в стоматологии?</h3>
+          <p>Digital Smile Design — цифровой метод планирования улыбки по фотографиям и видео. Пациент видит будущий результат на экране до лечения.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько стоит DSD?</h3>
+          <p>Цифровое планирование улыбки — от 5 000 до 15 000 руб в зависимости от объёма. В некоторых клиниках включено в стоимость протезирования.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Долго ли делать DSD?</h3>
+          <p>Съёмка и анализ — 1 визит (30–60 минут). Создание прототипа — 2–5 дней. Клинический Mock-up — второй визит (30–40 минут).</p>
+        </div>
+        <div class="faq-item">
+          <h3>Всем ли нужен DSD?</h3>
+          <p>В первую очередь — для передних зубов и эстетических реставраций. Для одиночной коронки на жевательный зуб DSD избыточен.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли сделать DSD самостоятельно?</h3>
+          <p>Нет. Разметку, анализ и создание прототипа выполняет врач с учётом окклюзии, прикуса и функциональных параметров, которые не видны на фотографии.</p>
+        </div>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug)} />
+      <div class="cta">
+        <p>Хотите увидеть свою улыбку до лечения? Приходите — покажем, как будет выглядеть результат.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; }
+  .faq-item p { margin-bottom: 0; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .sep { color: var(--color-text-muted); }
+</style>

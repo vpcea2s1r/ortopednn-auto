@@ -1,0 +1,108 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+const slug = 'polnaya-adentiya';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = getCategory('semnye-protezy');
+const related = getRelatedArticles(slug, 3);
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Полная адентия — протезирование при полном отсутствии зубов",
+  "description": "Полная адентия: причины, методы протезирования — съёмные протезы, All-on-4, покрывные протезы на имплантах.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title="Полная адентия — протезирование при полном отсутствии зубов"
+  description="Полная адентия (полное отсутствие зубов): методы восстановления — съёмные протезы, All-on-4, протезы на имплантах."
+  breadcrumbTitle="Полная адентия"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-21"
+  dateModified="2026-06-21"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/blog/semnye-protezy">{category?.name || 'Съёмные протезы'}</a>
+      <span>/</span>
+      <span>Полная адентия</span>
+    </nav>
+
+    <article>
+      <h1>Полная адентия — протезирование при полном отсутствии зубов</h1>
+      <div class="meta">21 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+      <p class="lead">Полная адентия — отсутствие всех зубов на одной или обеих челюстях. Состояние влияет на питание, дикцию, внешность и общее здоровье. Современная стоматология предлагает несколько вариантов восстановления — от съёмных протезов до несъёмных на имплантах.</p>
+
+      <h2>Причины полной адентии</h2>
+      <p>Полная потеря зубов чаще связана не с кариесом, а с заболеваниями пародонта. Пародонтит разрушает связочный аппарат зуба — зубы становятся подвижными и выпадают. Другие причины: запущенный кариес, травмы, системные заболевания (сахарный диабет, остеопороз), возрастные изменения.</p>
+      <p>После потери всех зубов костная ткань челюсти начинает атрофироваться — без корней зубов кость не получает жевательной нагрузки и уменьшается. Скорость атрофии максимальна в первые 6–12 месяцев, затем замедляется. Чем раньше начато протезирование, тем больше кости сохраняется для имплантации.</p>
+
+      <h2>Методы протезирования при полной адентии</h2>
+
+      <p><strong>Полный съёмный протез</strong> — классика. Нёбная пластина на верхней челюсти обеспечивает вакуумную фиксацию. Бюджетный вариант, но есть минусы: перекрытие вкусовых рецепторов, нарушение дикции, рвотный рефлекс. Альтернатива — безнёбные протезы AcryFree или QuattroTi, но они требуют хорошего состояния альвеолярного гребня или дополнительной фиксации на имплантах.</p>
+
+      <p><strong>Покрывной протез на имплантах</strong> — на 2–4 импланта фиксируется съёмный протез с аттачменами. Протез не слетает, жевательная эффективность выше, чем у обычного съёмного. Доступная цена при хорошем результате. Вариант: протез на мини-имплантах при атрофии кости.</p>
+
+      <p><strong>All-on-4</strong> — несъёмный протез на четырёх имплантах. Два передних импланта устанавливаются вертикально, два задних — под углом, что позволяет обойти зоны атрофии. Жевательная нагрузка максимальная, комфорт как у своих зубов.</p>
+
+      <p><strong>All-on-6</strong> — шесть имплантов для более равномерного распределения нагрузки. Показан при достаточном объёме кости. Считается самым надёжным вариантом полного протезирования.</p>
+
+      <h2>Что выбрать</h2>
+      <p>При полной адентии выбор протеза зависит от объёма кости, бюджета и общего здоровья. Полный съёмный протез — если нет средств или противопоказана имплантация. All-on-4 — если есть 200 000+ р. и достаточный объём кости. Покрывной протез на мини-имплантах — золотая середина, когда нужна стабильная фиксация без сложной хирургии.</p>
+
+      <div class="cta">
+        <p>При полной адентии важно не откладывать протезирование — кость атрофируется.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+
+    <RelatedArticles articles={related} title="Читайте по теме" />
+    <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
+    <div class="back-link">
+      <a href="/blog/semnye-protezy">← Все статьи о съёмных протезах</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+.back-link { margin-top: 1.5rem; }
+.back-link a { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+.back-link a:hover { text-decoration: underline; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+</style>

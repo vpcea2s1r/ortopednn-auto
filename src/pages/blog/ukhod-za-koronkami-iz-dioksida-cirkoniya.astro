@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'ukhod-za-koronkami-iz-dioksida-cirkoniya';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {"@context": "https://schema.org", "@type": "Article", "headline": "Как ухаживать за коронками из диоксида циркония", "description": "Правила ухода за циркониевыми коронками: чем чистить, какие щётки и пасты подходят, чего нельзя делать, как продлить срок службы до 20 лет.", "author": { "@id": "https://ortopednn.ru/#doctor" }, "datePublished": "2026-06-29", "dateModified": "2026-06-29", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ortopednn.ru/blog/ukhod-za-koronkami-iz-dioksida-cirkoniya/"}, "image": "https://ortopednn.ru/og-image.svg", "publisher": { "@id": "https://ortopednn.ru/#clinic" }};
+---
+
+<BaseLayout 
+  title="Как ухаживать за коронками из диоксида циркония | Никитина М.Г."
+  description="Правила ухода за циркониевыми коронками: чем чистить, какие щётки и пасты подходят, чего нельзя делать, как продлить срок службы до 20 лет."
+  breadcrumbTitle="Уход за коронками из диоксида циркония"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-06-29"
+  dateModified="2026-06-29"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    
+    <article>
+
+<h1>Как ухаживать за коронками из диоксида циркония</h1>
+<div class="meta">29 июня 2026 — Никитина М.Г., стоматолог-ортопед</div>
+
+<p class="lead">Циркониевые коронки не требуют специального ухода — достаточно стандартной гигиены полости рта. Но есть нюансы: неправильная чистка или неподходящие средства могут сократить срок службы коронки. Рассказываю, как ухаживать, чтобы коронка прослужила 15–20 лет.</p>
+
+<h2>Ежедневный уход</h2>
+
+<p>Цирконий — керамика, а не натуральная эмаль. На нём не образуется кариес, но он не защищён от налёта и зубного камня. Бактериальный налёт накапливается так же, как на соседних зубах, и может вызвать воспаление десны вокруг коронки.</p>
+
+<ul>
+<li><strong>Чистите зубы дважды в день</strong> щёткой средней жёсткости. Цирконий не царапается, поэтому пасты с абразивными частицами не опасны для самой коронки, но могут повредить эмаль соседних зубов.</li>
+<li><strong>Используйте ирригатор</strong> — он вымывает остатки пищи из-под коронки, где щётка не достаёт. Достаточно одного раза в день, вечером.</li>
+<li><strong>Зубная нить (флосс)</strong> — обязательна для межзубных промежутков. Особенно важно, если коронка граничит с соседним зубом.</li>
+<li><strong>Ополаскиватель</strong> с антисептиком (хлоргексидин, цетилпиридин) — по необходимости, курсами по 7–10 дней. Постоянное использование не требуется.</li>
+</ul>
+
+<h2>Чего нельзя делать</h2>
+
+<ul>
+<li><strong>Не грызите твёрдые предметы.</strong> Цирконий прочный (900–1200 МПа), но при точечной нагрузке может треснуть — как и натуральный зуб.</li>
+<li><strong>Не используйте соду и лимонную кислоту</strong> для отбеливания — они не отбелят коронку (она не меняет цвет), но могут повредить эмаль соседних зубов.</li>
+<li><strong>Избегайте ультразвуковой чистки</strong> в домашних условиях — портативные ультразвуковые приборы не предназначены для коронок.</li>
+</ul>
+
+<h2>Профессиональная гигиена</h2>
+
+<p>Посещайте гигиениста раз в 6–12 месяцев. Во время профессиональной чистки врач убирает зубной камень с поверхности коронки и из-под десны. Ультразвуковой скейлер не вредит цирконию — современные насадки с керамическим наконечником безопасны.</p>
+
+<p>На приёме врач также проверяет край коронки: нет ли уступки, не отошла ли от зуба. Если между коронкой и зубом появился зазор — внутрь попадёт слюна и бактерии, начнётся вторичный кариес.</p>
+
+<h2>Нужны ли специальные средства</h2>
+
+<p>Специальных паст для циркониевых коронок не существует — и не нужно. Подходит любая качественная паста с фтором. Для ежедневного ухода достаточно стандартного набора: щётка, паста, нить, ирригатор.</p>
+
+<p>Единственное, на что стоит обратить внимание — пасты для чувствительных зубов. Если после установки коронки зуб реагирует на холодное или сладкое, это может говорить о том, что коронка не полностью изолирует зуб. Покажитесь врачу.</p>
+
+<h2>Как продлить срок службы</h2>
+
+<ul>
+<li>Регулярные визиты к стоматологу — раз в полгода</li>
+<li>Не откладывайтеProfessional cleaning — камень на коронке портит десну</li>
+<li>При скрежете зубами (бруксизме) — используйте ночную капу</li>
+<li>Не проверяйте коронку на прочность — не открывайте бутылки зубами</li>
+</ul>
+
+<p>При правильном уходе циркониевая коронка служит 15–20 лет. Без ухода — может потребовать замены уже через 5–7 лет из-за воспаления десны или вторичного кариеса зуба под коронкой.</p>
+
+<RelatedArticles articles={relatedArticles} />
+<RelatedServices services={getRelatedServices(slug, catId)} />
+<div class="cta">
+<p>У вас стоит циркониевая коронка и десна вокруг неё воспалилась? Запишитесь на осмотр.</p>
+<a href={`tel:${doctor.phone}`} class="btn">{doctor.phone}</a>
+</div>
+
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+.back { color: var(--color-primary); margin-bottom: 1rem; display: inline-block; }
+article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+h2 { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+ul, ol { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; line-height: 1.6; }
+.cta { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+.cta p { margin-bottom: 1rem; color: var(--color-text); }
+.btn { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+.btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
