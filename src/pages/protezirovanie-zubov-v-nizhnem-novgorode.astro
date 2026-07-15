@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import doctor from '../../data/doctor.json';
+import socials from '../../data/socials.json';
+import { articles, categories } from '../../data/blog-articles';
+
+const pageUrl = 'https://ortopednn.ru/protezirovanie-zubov-v-nizhnem-novgorode/';
+const faqItems = [
+  {
+    question: 'Сколько стоит протезирование зубов в Нижнем Новгороде?',
+    answer: 'Стоимость зависит от материала и типа конструкции. Металлокерамическая коронка — от 16 800 ₽, циркониевая — от 24 000 ₽, съёмный протез — от 15 000 ₽. Точная цена — после осмотра и диагностики. Звоните: +7 (920) 253-73-17.'
+  },
+  {
+    question: 'Какой стоматолог-ортопед лучше в Нижнем Новгороде?',
+    answer: 'При выборе стоматолога-ортопеда обращайте внимание на стаж, отзывы и используемые материалы. Никитина М.Г. работает с 1994 года, специализируется на протезировании любой сложности: металлокерамика, цирконий, съёмные и бюгельные протезы.'
+  },
+  {
+    question: 'Сколько времени занимает протезирование зубов?',
+    answer: 'Сроки зависят от типа протеза. Коронка — 2 визита за 7–14 дней. Съёмный протез — 2–3 недели. Протезирование на имплантах — от 3 до 6 месяцев с учётом приживления. Быстрее всего — временные конструкции за 1 день.'
+  },
+  {
+    question: 'Что лучше: имплант или протез?',
+    answer: 'Имплант — более физиологичный вариант, заменяет корень зуба. Протез — менее травматичный и доступный по цене. Выбор зависит от состояния кости, количества отсутствующих зубов и бюджета. Консультация поможет определить оптимальный вариант.'
+  },
+  {
+    question: 'Можно ли ставить протезы при диабете?',
+    answer: 'Да, при компенсированном сахарном диабете протезирование возможно. Выбор конструкции зависит от уровня глюкозы и состояния слизистой. При диабете лучше избегать металлокерамики, отдавая предпочтение диоксиду циркония.'
+  },
+  {
+    question: 'Какие коронки лучше ставить — металлокерамику или цирконий?',
+    answer: 'Циркониевые коронки прочнее, биосовместимы и выглядят естественнее. Металлокерамика дешевле, но может вызывать серую полоску на десне. Для передних зубов рекомендуется цирконий, для жевательных — металлокерамика или циркон.'
+  }
+];
+
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "headline": "Протезирование зубов в Нижнем Новгороде",
+  "description": "Протезирование зубов в Нижнем Новгороде: коронки, съёмные и бюгельные протезы, импланты. Стоматолог-ортопед Никитина М.Г., стаж с 1994 года.",
+  "url": pageUrl,
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+};
+
+const ldLocalBusiness = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Никитина М.Г. — стоматолог-ортопед",
+  "description": "Протезирование зубов в Нижнем Новгороде",
+  "url": "https://ortopednn.ru/",
+  "telephone": "+79202537317",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Октябрьской Революции, 43",
+    "addressLocality": "Нижний Новгород",
+    "addressRegion": "Нижегородская область",
+    "postalCode": "603087",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 56.294,
+    "longitude": 43.936
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Нижний Новгород"
+  },
+  "priceRange": "₽₽",
+  "openingHours": "Mo-Fr 09:00-19:00",
+  "founder": {
+    "@type": "Person",
+    "name": "Никитина Марина Георгиевна",
+    "jobTitle": "Стоматолог-ортопед",
+    "knowsAbout": ["Протезирование зубов", "Имплантация", "Ортопедическая стоматология"]
+  }
+};
+
+const topArticles = articles.filter(a => 
+  ['metallokeramika', 'cirkonievaya-koronka', 'polny-sjemny-protez', 'byugelnyj', 'viniry-ili-koronki', 'implant-ili-protez'].includes(a.slug)
+);
+---
+
+<BaseLayout 
+  title="Протезирование зубов в Нижнем Новгороде — цены и виды"
+  description="Протезирование зубов в Нижнем Новгороде: металлокерамика, цирконий, съёмные и бюгельные протезы. Стоматолог-ортопед Никитина М.Г., стаж с 1994 года."
+  breadcrumbTitle="Протезирование зубов в Нижнем Новгороде"
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main id="main">
+    <section class="hero">
+      <div class="container container--w900">
+        <h1>Протезирование зубов в&nbsp;Нижнем&nbsp;Новгороде</h1>
+        <p class="hero-sub">Стоматолог-ортопед Никитина М.Г. — восстановление зубов любой сложности</p>
+        <p class="hero-doctor">Стаж с 1994 года · Металлокерамика · Цирконий · Съёмные и бюгельные протезы</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </section>
+
+    <section class="overview">
+      <div class="container container--w800">
+        <h2>Виды протезирования</h2>
+        <p>Протезирование зубов — это восстановление отсутствующих или повреждённых зубов. Выбор конструкции зависит от количества потерянных зубов, состояния кости и бюджета.</p>
+
+        <div class="types-grid">
+          <a href="/services/metallokeramika/" class="type-card">
+            <h3>Металлокерамические коронки</h3>
+            <p>Проверенный материал: металлический каркас + керамическое покрытие. Надёжно и доступно.</p>
+          </a>
+          <a href="/services/cirkonievaya-koronka/" class="type-card">
+            <h3>Циркониевые коронки</h3>
+            <p>Безметалловый каркас из диоксида циркония. Максимальная эстетика и биосовместимость.</p>
+          </a>
+          <a href="/services/byugelnyj/" class="type-card">
+            <h3>Бюгельные протезы</h3>
+            <p>Съёмная конструкция на металлическом каркасе с замками или кламмерами.</p>
+          </a>
+          <a href="/services/polny-sjemny-protez/" class="type-card">
+            <h3>Полные съёмные протезы</h3>
+            <p>Замещают все зубы на челюсти. Акриловые, нейлоновые, AcryFree.</p>
+          </a>
+          <a href="/services/chastichny-sjemny-protez/" class="type-card">
+            <h3>Частичные съёмные протезы</h3>
+            <p>Замещают несколько отсутствующих зубов. Несколько зубов — несколько вариантов протезирования</p>
+          </a>
+          <a href="/services/sjemny-protez/" class="type-card">
+            <h3>Съёмные протезы</h3>
+            <p>Несколько вариантов протезирования: AcryFree, нейлон, акрил</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section">
+      <div class="container container--w800">
+        <h2>Статьи о протезировании</h2>
+        <p>Подробные материалы о видах протезирования, материалах и уходе за конструкцией.</p>
+        <div class="blog-grid">
+          {topArticles.map(a => (
+            <a href={`/blog/${a.slug}/`} class="blog-card">
+              <h3>{a.title}</h3>
+              <p>{a.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container container--w800">
+        <h2>Частые вопросы о протезировании</h2>
+        {faqItems.map(item => (
+          <div class="faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container container--w800">
+        <h2>Записаться на протезирование</h2>
+        <p>Позвоните — подберём оптимальный вариант для вашего случая.</p>
+        <p>{doctor.address}</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+        <p class="cta-hint">Звоните с 9 до 19</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+<script type="application/ld+json" set:html={JSON.stringify(ldLocalBusiness)} />
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a5a8a 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 0 2rem;
+  }
+  .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .hero-sub { font-size: 1.2rem; opacity: 0.9; margin-bottom: 0.5rem; }
+  .hero-doctor { font-size: 1rem; opacity: 0.8; margin-bottom: 1.5rem; }
+  .btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: var(--color-primary-hover); }
+  .overview { padding: 2rem 0; }
+  h2 { font-size: 1.5rem; color: #1e3a5f; margin-bottom: 1rem; }
+  h3 { font-size: 1.15rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+  p { line-height: 1.7; color: #4a6a8a; margin-bottom: 1rem; }
+  .types-grid { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+  .type-card {
+    background: #f0f4f8;
+    padding: 1.2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .type-card:hover { background: #e0e8f0; text-decoration: none; }
+  .type-card p { margin-bottom: 0; font-size: 0.95rem; }
+  .blog-section { background: #f0f4f8; padding: 2rem 0; }
+  .blog-grid { display: grid; gap: 1rem; }
+  .blog-card {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid #dce4ec;
+    transition: all 0.2s;
+  }
+  .blog-card:hover { border-color: var(--color-primary); text-decoration: none; }
+  .blog-card p { margin-bottom: 0; font-size: 0.9rem; }
+  .faq-section { padding: 2rem 0; }
+  .faq-item { margin-bottom: 1.2rem; }
+  .faq-item h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .faq-item p { margin-bottom: 0; font-size: 0.95rem; }
+  .cta-section { text-align: center; padding: 2.5rem 0; background: #f0f4f8; }
+  .cta-section h2 { margin-bottom: 0.8rem; }
+  .cta-hint { font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem; }
+</style>

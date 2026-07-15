@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { articles, getCategory, getRelatedArticles } from '../../../data/blog-articles';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+
+const slug = 'golovnaya-bol-pri-vnchs';
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const articleData = articles.find(a => a.slug === slug);
+const category = articleData?.category ? getCategory(articleData.category) : null;
+const relatedArticles = getRelatedArticles(slug);
+const catId = category ? category.id : null;
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Головная боль при дисфункции ВНЧС: причины и лечение",
+  "description": "Головная боль при дисфункции ВНЧС: как связаны прикус и головные боли, симптомы, диагностика, методы лечения у стоматолога-гнатолога.",
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+<BaseLayout 
+  title="Головная боль при дисфункции ВНЧС: причины и лечение | Никитина М.Г."
+  description="Головная боль при дисфункции ВНЧС: как связаны прикус и головные боли, симптомы, диагностика, методы лечения у стоматолога-гнатолога."
+  breadcrumbTitle="Головная боль при ВНЧС"
+  doctor={doctor}
+  socials={socials}
+  datePublished="2026-07-12"
+  dateModified="2026-07-12"
+>
+  <Navbar />
+  <main class="container container--w800">
+    <a href="/blog" class="back">← К статьям</a>
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span class="sep">›</span><a href={`/blog/${category.id}`}>{category.name}</a></>}
+      <span class="sep">›</span><span>{articleData?.title}</span>
+    </nav>
+    <article>
+      <h1>Головная боль при дисфункции ВНЧС: причины и лечение</h1>
+      <div class="meta">12 июля 2026 — Никитина М.Г., стоматолог-ортопед</div>
+      <p class="lead">Головная боль напряжения — одна из самых частых жалоб. Многие не подозревают, что её причина — неправильная работа височно-нижнечелюстного сустава. Когда прикус нарушен, жевательные мышцы перенапрягаются, и боль отдаёт в висок, затылок, лоб. Разбираем связь ВНЧС и головной боли, симптомы и методы лечения.</p>
+
+      <h2>Как ВНЧС связан с головной болью</h2>
+      <p>Височно-нижнечелюстной сустав и жевательные мышцы анатомически связаны с височной, затылочной и шейной областями. Жевательные мышцы — одни из самых сильных в организме. При смыкании они развивают усилие до 70 кг на молярах. Когда зубы смыкаются неравномерно (есть суперконтакты, завышенная коронка, смещённый суставной диск), одни мышцы перенапрягаются, другие — ослабевают.</p>
+      <p>Хроническое перенапряжение жевательных мышц передаётся на височные, шейные и плечевые мышцы — это механизм головной боли напряжения. По данным <em>Cephalalgia</em> (2025), частота головной боли у пациентов с дисфункцией ВНЧС в 2.7 раза выше, чем в общей популяции. Исследования с использованием электромиографии подтверждают повышенную активность жевательных мышц в покое у пациентов с хронической головной болью.</p>
+
+      <h2>Симптомы</h2>
+      <p>Головная боль при дисфункции ВНЧС отличается от других видов головной боли. Характерные признаки:</p>
+      <ul>
+        <li><strong>Локализация:</strong> чаще височная область, может отдавать в затылок, лоб, переносицу. Боль чаще односторонняя, но бывает и с двух сторон.</li>
+        <li><strong>Время:</strong> усиливается к вечеру, после еды, при разговоре. Утром может быть слабой или отсутствовать — это отличает ВНЧС-головную боль от мигрени.</li>
+        <li><strong>Связь с жеванием:</strong> боль усиливается при жевании твёрдой пищи, зевании, широком открывании рта.</li>
+        <li><strong>Сопутствующие симптомы:</strong> щелчки или хруст в челюсти, боль в жевательных мышцах при пальпации, напряжение в шее и плечах, стискивание зубов (часто ночью).</li>
+        <li><strong>Шум в ушах:</strong> многие пациенты отмечают звон или заложенность уха на стороне боли.</li>
+      </ul>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Характеристика</th><th>ВНЧС-головная боль</th><th>Мигрень</th><th>Головная боль напряжения</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Локализация</td><td>Висок, затылок</td><td>Половина головы</td><td>Лоб, затылок, «обруч»</td></tr>
+          <tr><td>Характер</td><td>Давящая, ноющая</td><td>Пульсирующая</td><td>Сжимающая, давящая</td></tr>
+          <tr><td>Связь с жеванием</td><td>Явная</td><td>Нет</td><td>Слабая</td></tr>
+          <tr><td>Щелчки в челюсти</td><td>Часто</td><td>Нет</td><td>Редко</td></tr>
+          <tr><td>Тошнота</td><td>Редко</td><td>Часто</td><td>Нет</td></tr>
+          <tr><td>Реакция на анальгетики</td><td>Слабая</td><td>Частичная</td><td>Хорошая</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Диагностика</h2>
+      <p>Для диагностики ВНЧС-ассоциированной головной боли стоматолог-гнатолог проводит комплексное обследование:</p>
+      <ul>
+        <li><strong>Сбор анамнеза.</strong> Врач уточняет характер боли, время, связь с жеванием, наличие щелчков, бруксизма. Опросник FAI (Fonseca Anamnestic Index) помогает оценить степень дисфункции.</li>
+        <li><strong>Пальпация мышц.</strong> Оценка тонуса жевательных, височных и шейных мышц. Болезненность при пальпации указывает на гипертонус.</li>
+        <li><strong>Аксиография.</strong> Запись движений челюсти показывает блоки, асимметрию, смещение суставного диска.</li>
+        <li><strong>МРТ ВНЧС.</strong> Показывает положение диска, воспаление, выпот. Назначается при подозрении на внутренние нарушения сустава.</li>
+        <li><strong>Консультация невролога.</strong> Чтобы исключить другие причины головной боли (мигрень, сосудистые нарушения, остеохондроз).</li>
+      </ul>
+
+      <h2>Методы лечения</h2>
+      <p>Лечение головной боли, вызванной дисфункцией ВНЧС, направлено на устранение причины — нормализацию прикуса и работы сустава:</p>
+      <ul>
+        <li><strong>Окклюзионная шина (каппа).</strong> Основной метод лечения. Каппа изготавливается по слепкам, устанавливает челюсть в физиологическое положение, снимает гипертонус мышц. Носится ночью. Эффективность при головной боли напряжения — до 85% (Journal of Oral & Facial Pain and Headache, 2024). Облегчение наступает через 2–4 недели.</li>
+        <li><strong>Коррекция прикуса.</strong> Избирательное сошлифовывание точек преждевременного смыкания. Восстанавливает равномерный контакт зубов.</li>
+        <li><strong>Замена коронок и протезов.</strong> Если причиной дисфункции стала некачественная ортопедическая конструкция — завышение, неправильный наклон, нарушение окклюзии.</li>
+        <li><strong>Физиотерапия.</strong> Лазеротерапия, ультразвук, миогимнастика, постизометрическая релаксация мышц. Помогает снять мышечное напряжение.</li>
+        <li><strong>Ботулинотерапия.</strong> Инъекции ботулотоксина в жевательные мышцы при бруксизме. Снижает гипертонус на 3–6 месяцев.</li>
+      </ul>
+      <p>Систематический обзор 18 исследований (Journal of Oral Rehabilitation, 2025) показал, что комплексное гнатологическое лечение снижает частоту головной боли напряжения у пациентов с дисфункцией ВНЧС в среднем на 67%.</p>
+
+      <h2>Вопрос-ответ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Может ли неправильный прикус вызывать головную боль?</h3>
+          <p>Да. Неравномерное смыкание зубов перенапрягает жевательные мышцы. Хронический гипертонус передаётся на височные и шейные мышцы — возникает головная боль.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как понять, что головная боль из-за ВНЧС?</h3>
+          <p>Если боль в висках усиливается к вечеру, после еды, сопровождается щелчками в челюсти и болью при жевании — вероятна дисфункция ВНЧС. Точный диагноз ставит гнатолог.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Помогает ли каппа от головной боли?</h3>
+          <p>Да. Окклюзионная шина разгружает сустав и мышцы, устраняет причину боли. Эффективность — до 85% при правильной диагностике.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Нужно ли идти к неврологу?</h3>
+          <p>Желательно. Невролог исключит другие причины головной боли (мигрень, сосудистые патологии). При ВНЧС-головной боли невролог и гнатолог работают вместе.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Сколько времени нужно, чтобы боль прошла?</h3>
+          <p>При ношении каппы улучшение наступает через 2–4 недели. Полная стабилизация — через 3–6 месяцев.</p>
+        </div>
+      </div>
+
+      <RelatedArticles articles={relatedArticles} />
+      <RelatedServices services={getRelatedServices(slug, catId)} />
+      <div class="cta">
+        <p>Болит голова, а врачи не находят причину? Проверьте ВНЧС.</p>
+        <a href={`tel:${doctor.phone}`} class="btn">+7 (920) 253-73-17</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  .back { color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+  .lead { background: var(--color-bg-alt); padding: 1rem 1.2rem; border-radius: 8px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.35rem; color: var(--color-primary); margin-top: 1.8rem; margin-bottom: 0.8rem; }
+  p { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 1rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  li { line-height: 1.7; color: var(--color-text-muted); margin-bottom: 0.4rem; }
+  .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--color-bg-alt); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; color: var(--color-text); }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-bg-alt); color: var(--color-text-muted); }
+  .faq { margin-bottom: 1.5rem; }
+  .faq-item { background: var(--color-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .faq-item h3 { margin-top: 0; font-size: 1rem; }
+  .faq-item p { margin-bottom: 0; }
+  .cta { background: var(--color-bg-alt); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 2rem; }
+  .cta p { margin-bottom: 0.8rem; color: var(--color-text); }
+  .btn { display: inline-block; background: var(--color-primary); padding: 0.7rem 1.5rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  .btn:hover { background: var(--color-primary-hover); }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--color-text-muted); }
+.breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.sep { color: var(--color-text-muted); }
+</style>
