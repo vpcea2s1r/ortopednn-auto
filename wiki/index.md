@@ -36,6 +36,7 @@
 | [Blog Content Standards](project/blog-content-standards.md) | Стандарты длины и структуры блог-статей | ✅ Готово |
 | [Site Audit 2026-06-28](audit/2026-06-28-site-audit.md) | Полный аудит сайта: цены, 404, AI-маркеры, схемы, ссылки | ✅ Готово |
 | [Position Check Script](project/position-check.md) | Скрипт проверки позиций (GSC + Yandex Webmaster) | ✅ Готово |
+| [НЧ-статьи + хаб 2026-07](project/nh-content-2026-07.md) | 10 НЧ-статей, хаб-страница, schema improvements | ✅ Готово |
 
 ### Raw источники
 
@@ -43,4 +44,4 @@
 
 ---
 
-> Последнее обновление: 2026-06-17
+> Последнее обновление: 2026-07-15

@@ -1,4 +1,18 @@
-﻿## 2026-06-14 — Content Factory VPS deploy + Cloudflare DNS
+﻿## 2026-07-12 — 10 НЧ-статей + хаб-страница + schema improvements
+- **10 НЧ-статей**: shiniruyushchij-byugel, most-na-3-zuba, klkt-pered-protezirovaniem, vnutrirotovoe-skanirovanie, neyroseti-dlya-analiza-snimkov, ii-dlya-planirovaniya-implantatsii, gnotologiya-diagnostika-lechenie, golovnaya-bol-pri-vnchs, artrit-visochno-nizhnechelyustnogo-sustava, irrigator-dlya-polosti-rta
+- **Хаб-страница**: `/protezirovanie-zubov-v-nizhnem-novgorode/` — FAQPage (6 вопросов) + Dentist LocalBusiness schema
+- **Schema**: areaServed добавлен в MedicalClinic (BaseLayout.astro:130)
+- **Build**: 256 pages, 0 errors
+- **Push**: commit `18d50f5` → master
+- **Wiki**: `project/nh-content-2026-07.md` создана
+
+## 2026-07-14 — SEO-позиции + ещё 10 НЧ-статей
+- **SEO-позиции**: #1 по "стоматолог-ортопед нижний новгород", НЕ в топ-10 по "протезирование зубов нижний новгород"
+- **Конкуренты**: artdentnn.ru (4 клиники, цены), implant-nn.com, drdentnn.ru (3 клиники), dentnn.ru, skv-nn.ru (35 лет), mhdent.ru
+- **Ещё 10 НЧ-статей**: sravnenie-sistem-implantov, implantatsiya-pri-kurenii, zubnye-protezy-posle-60, implantatsiya-pri-parodontite, protezirovanie-pri-parodontoze, mikoprotezirovanie, all-on-6, psikhologicheskaya-adaptatsiya, implant-ili-protez, koronka-na-implant
+- **Итого НЧ**: 20 статей, ~157 всего в блоге
+
+## 2026-06-14 — Content Factory VPS deploy + Cloudflare DNS
 - **VPS deploy**: docker-compose admin service (port 3001, CMD node admin/app.js), npm install, Nginx reverse proxy admin.ortopednn.ru → localhost:3001
 - **Fixes**: 15+ corrupted template literals (backtick + ${} mangled by WriteAllText), SQL backticks, ESM imports (require→import), EJS templates, login.ejs rewritten as standalone HTML
 - **Cloudflare**: A record admin.ortopednn.ru → 94.183.155.147 (TTL 120), API token for DNS management

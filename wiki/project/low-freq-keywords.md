@@ -141,14 +141,14 @@ grep -i "ключевая фраза" src/pages/ --include="*.astro" -r
 | Протезирование при пародонтите | protezirovanie-pri-parodontite | ✅ |
 | Седация и наркоз | sedatsiya-i-narkoz | ✅ |
 | Стресс и зубы | stress-i-zuby | ✅ |
-| Коронка на имплант | ❌ | ❌ |
-| Имплант или протез | ❌ | ❌ |
-| AcryFree vs QuattroTi | ❌ | ❌ |
-| All-on-6 | ❌ | ❌ |
-| Съёмные протезы без нёба | ❌ | ❌ |
-| Мини-импланты | ❌ | ❌ |
-| Микропротезирование | ❌ | ❌ |
-| Психологическая адаптация | ❌ | ❌ |
+| Коронка на имплант | ✅ | koronka-na-implant |
+| Имплант или протез | ✅ | implant-ili-protez |
+| AcryFree vs QuattroTi | ❌ | — |
+| All-on-6 | ✅ | all-on-6 |
+| Съёмные протезы без нёба | ✅ | protezy-bez-neba |
+| Мини-импланты | ❌ | — |
+| Микропротезирование | ✅ | mikoprotezirovanie |
+| Психологическая адаптация | ✅ | psikhologicheskaya-adaptatsiya |
 
 ## Рекомендация
 
