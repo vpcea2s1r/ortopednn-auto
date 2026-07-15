@@ -14,9 +14,15 @@ import pricing from '../../data/pricing.json';
         <summary class="spec-block__category">{section.category}</summary>
         <div class="spec-block__items">
           {section.items.map(item => (
-            <a href={item.link} class="spec-item">
-              <span class="spec-item__name">{item.name}</span>
-            </a>
+            item.link ? (
+              <a href={item.link} class="spec-item">
+                <span class="spec-item__name">{item.name}</span>
+              </a>
+            ) : (
+              <span class="spec-item">
+                <span class="spec-item__name">{item.name}</span>
+              </span>
+            )
           ))}
         </div>
       </details>

@@ -3,6 +3,74 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import doctor from '../../data/doctor.json';
 import socials from '../../data/socials.json';
+import { articles } from '../../data/blog-articles';
+
+const pageUrl = 'https://ortopednn.ru/about/';
+
+const ldPhysician = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "@id": "https://ortopednn.ru/#doctor",
+  "name": "Никитина Марина Георгиевна",
+  "alternateName": "Никитина М.Г.",
+  "description": "Стоматолог-ортопед с 30+ летним опытом работы. Специализация — протезирование зубов любой сложности: коронки, мосты, съёмные и бюгельные протезы.",
+  "medicalSpecialty": "Prosthodontics",
+  "jobTitle": "Стоматолог-ортопед",
+  "url": pageUrl,
+  "telephone": "+79202537317",
+  "email": "t.me/nikitina_ortoped",
+  "image": "https://ortopednn.ru/og-image.svg",
+  "gender": "Female",
+  "knowsLanguage": ["ru"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Октябрьской Революции, д. 43",
+    "addressLocality": "Нижний Новгород",
+    "addressRegion": "Нижегородская область",
+    "postalCode": "603087",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 56.294,
+    "longitude": 43.936
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Нижегородский государственный медицинский институт",
+    "url": "https://nsmu.ru/"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Сертификат специалиста",
+      "educationalLevel": "Профессиональная переподготовка",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Минздрав Российской Федерации"
+      }
+    }
+  ],
+  "worksFor": {
+    "@id": "https://ortopednn.ru/#clinic"
+  },
+  "availableService": [
+    "Протезирование зубов",
+    "Коронки металлокерамические",
+    "Коронки из диоксида циркония",
+    "Мостовидные протезы",
+    "Съёмные протезы",
+    "Бюгельные протезы",
+    "Протезирование на имплантах",
+    "Протезирование при пародонтите",
+    "Протезирование при диабете"
+  ],
+  "sameAs": [
+    "https://t.me/nikitina_ortoped"
+  ]
+};
+
+const latestArticles = articles.slice(0, 12);
 ---
 
 <BaseLayout 
@@ -10,7 +78,6 @@ import socials from '../../data/socials.json';
   description="Стоматолог-ортопед Никитина Марина Георгиевна в Нижнем Новгороде. Стаж 30+ лет, специализация — протезирование зубов. Запись по телефону +7 (920) 253-73-17."
   breadcrumbTitle="О враче"
   doctor={doctor} 
-  cfToken="YOUR_CF_TOKEN" 
   socials={socials}
 >
   <Navbar />
@@ -19,6 +86,12 @@ import socials from '../../data/socials.json';
     <h1>{doctor.name}</h1>
     <p class="lead">Занимаюсь ортопедической стоматологией с 1994 года. Помогаю пациентам восстановить зубы, вернуть комфорт и уверенность в улыбке.</p>
     
+    <div class="doctor-badge">
+      <span>30+ лет практики</span>
+      <span>Нижний Новгород</span>
+      <span>Протезирование любой сложности</span>
+    </div>
+
     <h2>Образование</h2>
     <ul>
       <li>1995 — Нижегородский государственный медицинский институт, специальность «Стоматология»</li>
@@ -28,6 +101,7 @@ import socials from '../../data/socials.json';
 
     <h2>Специализация</h2>
     <p>Протезирование зубов любой сложности: коронки (металлокерамика, цирконий, E-max), мостовидные протезы, съёмные и бюгельные протезы, протезирование на имплантах.</p>
+    <p>Работаю с пациентами с сопутствующими заболеваниями: сахарный диабет, пародонтит, остеопороз. Подбираю конструкции с учётом состояния здоровья и индивидуальных особенностей.</p>
 
     <h2>Подход к работе</h2>
     <p>Каждый случай рассматриваю индивидуально. Подбираю конструкцию и материалы исходя из клинической ситуации, пожеланий и бюджета пациента. Объясняю на понятном языке, показываю на моделях.</p>
@@ -35,11 +109,57 @@ import socials from '../../data/socials.json';
 
     <h2>Почему мне доверяют</h2>
     <ul>
-      <li>30+ лет клинической практики</li>
+      <li>30+ лет клинической практики — с 1994 года</li>
+      <li>Более 3000 изготовленных коронок и протезов</li>
       <li>Индивидуальный подход к каждому пациенту</li>
-      <li>Современные материалы и оборудование</li>
+      <li>Современные материалы: цирконий, AcryFree, термопласты</li>
       <li>Прозрачное ценообразование до начала работ</li>
+      <li>Полная диагностика перед протезированием</li>
     </ul>
+
+    <h2>Районы Нижнего Новгорода, где принимаю пациентов</h2>
+    <p>Пациенты приезжают из всех районов города: <strong>Советский</strong>, <strong>Автозаводский</strong>, <strong>Канавинский</strong>, <strong>Нижегородский</strong>, <strong>Ленинский</strong>, <strong>Приокский</strong>. Клиника расположена рядом с метро «Ленинская» и «Чкаловская» — удобный подъезд из любой части города.</p>
+
+    <div class="cta-box">
+      <p>Запишитесь на бесплатную консультацию</p>
+      <a href={`tel:${doctor.phone}`} class="btn">{doctor.phone}</a>
+    </div>
   </article>
   </main>
 </BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldPhysician)} />
+
+<style>
+  .doctor-badge {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+  .doctor-badge span {
+    background: #f0f4f8;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #1e3a5f;
+    font-weight: 500;
+  }
+  .cta-box {
+    background: #f0f4f8;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .cta-box .btn {
+    display: inline-block;
+    background: var(--color-primary, #1e3a5f);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+</style>
