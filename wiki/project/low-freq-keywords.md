@@ -54,6 +54,10 @@
 - Цены в НН
 - Диабет
 - Курение
+- Замена коронки
+- Отбеливание + протезирование
+- Протезирование после удаления зуба мудрости
+- Протезирование для пожилых (All-on-4 vs съёмный)
 
 ### Научпоп
 - Микробиом
@@ -149,6 +153,10 @@ grep -i "ключевая фраза" src/pages/ --include="*.astro" -r
 | Мини-импланты | ❌ | — |
 | Микропротезирование | ✅ | mikoprotezirovanie |
 | Психологическая адаптация | ✅ | psikhologicheskaya-adaptatsiya |
+| Замена коронки на зуб | ✅ | zamena-koronki |
+| Отбеливание до/после протезирования | ✅ | otbelivanie-do-ili-posle-protezirovaniya |
+| Протезирование после удаления зуба мудрости | ✅ | protezirovanie-posle-udaleniya-zuba-mudrosti |
+| Протезирование для пожилых (All-on-4 vs съёмный) | ✅ | protezirovanie-dlya-pozhilykh |
 
 ## Рекомендация
 

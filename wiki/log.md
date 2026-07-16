@@ -6,6 +6,34 @@
 - **Push**: commit `18d50f5` → master
 - **Wiki**: `project/nh-content-2026-07.md` создана
 
+## 2026-07-16 — 4 НЧ-статей + broken link audit + SEO-аудит 5 статей
+
+### Новые НЧ-статьи (4)
+- **zamena-koronki** — Замена коронки на зуб: когда нужна и как проходит (koronki, how-to)
+- **otbelivanie-do-ili-posle-protezirovaniya** — Отбеливание до или после протезирования (how-to)
+- **protezirovanie-posle-udaleniya-zuba-mudrosti** — Протезирование после удаления зуба мудрости (condition)
+- **protezirovanie-dlya-pozhilykh** — Протезирование зубов для пожилых: All-on-4 vs съёмный (comparison)
+
+### Broken link audit (37+ исправлений)
+- **8 blog-статей**: bisfosfonaty, allergiya, kurenie, kserostomiya, vospalenie-desny, posle-ustanovki-koronki, stress-i-zuby, osteoporoz — битые ссылки на сервисные страницы
+- **dzen.ru удалён**: BaseLayout, about, index, stomatolog-ortoped — JSON-LD sameAs + footer
+- **pricing.json**: удалены 25+ мёртвых `link` полей (neсуществующие сервисы)
+- **PriceList.astro**: `<span>` вместо `<a>` при отсутствии `link`
+- **VNChS хаб**: создана `src/pages/blog/vnchs/index.astro` (категория была без индекса)
+- **og-image**: kappy-ot-bruksizma → `/og-blog-default.jpg` заменён на `/og-image.svg`
+
+### SEO-аудит 5 статей (writer.md v2.0)
+- **byugelnyj-protez-chto-eto**: удалена цена из description
+- **all-on-6**: удалены цены (300–600K), списки 5→4, добавлен FAQPage JSON-LD
+- **cirkonij-ili-metallokeramika**: добавлена «| Никитина М.Г.» в title, удалена «цена» из desc, город, FAQ (4 Q&A), FAQPage JSON-LD
+- **implant-ili-protez**: город, FAQPage JSON-LD (6 Q&A)
+- **protezirovanie-pri-saharnom-diabete**: город, FAQPage JSON-LD (6 Q&A)
+
+### Метрики
+- **Итого НЧ**: 24 статьи
+- **Build**: 261 страница, 0 ошибок, ~64s
+- **Push**: `d189038` → master
+
 ## 2026-07-14 — SEO-позиции + ещё 10 НЧ-статей
 - **SEO-позиции**: #1 по "стоматолог-ортопед нижний новгород", НЕ в топ-10 по "протезирование зубов нижний новгород"
 - **Конкуренты**: artdentnn.ru (4 клиники, цены), implant-nn.com, drdentnn.ru (3 клиники), dentnn.ru, skv-nn.ru (35 лет), mhdent.ru

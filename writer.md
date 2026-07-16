@@ -9,6 +9,7 @@
 - Build-stability: `npm run build` без ошибок перед каждым push
 - Запрет на цены — нигде: текст, подписи, JSON-LD, ссылки
 - Кодировка UTF-8 — `[System.IO.File]::WriteAllText($path, $content, [System.Text.Encoding]::UTF8)`
+- Нет китайских иероглифов в тексте — проверять перед публикацией (UUID + WriteAllText ломают кодировку)
 - Город: «Нижний Новгород» 1–2 раза естественно
 - Телефон: +7 (920) 253-73-17 (Никитина М.Г.)
 - Источники: PubMed, Cochrane, стоматологические сайты. Факты подаются без ссылок на источники
@@ -430,6 +431,11 @@ const ldFAQ = {
 - [ ] `data/blog-articles.ts` — карточка статьи
 - [ ] `npm run build` — 0 ошибок
 - [ ] Push → master → GitHub Actions деплой
+
+### Кодировка и символы
+- [ ] Нет китайских иероглифов (Unicode U+4E00–U+9FFF) — `Get-ChildItem src -Recurse -Include *.astro | % { if ([IO.File]::ReadAllText($_.FullName) -match '[\u4e00-\u9fff]') { $_.FullName } }`
+- [ ] UTF-8: `[System.IO.File]::WriteAllText` с `[System.Text.Encoding]::UTF8`
+- [ ] Нет мёртвых байт (размер файла ≈ ожидаемому)
 
 ---
 

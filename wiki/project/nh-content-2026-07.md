@@ -50,6 +50,15 @@ SEO-позиции (2026-07-14): ortopednn.ru занимает **#1** по "ст
 | 19 | implant-ili-protez | implanty | Имплант или протез |
 | 20 | koronka-na-implant | implanty | Коронка на имплант |
 
+### НЧ-статьи батч 3 (2026-07-16)
+
+| # | Slug | Категория | Тема |
+|---|------|-----------|------|
+| 21 | zamena-koronki | koronki | Замена коронки на зуб |
+| 22 | otbelivanie-do-ili-posle-protezirovaniya | — | Отбеливание до или после протезирования |
+| 23 | protezirovanie-posle-udaleniya-zuba-mudrosti | — | Протезирование после удаления зуба мудрости |
+| 24 | protezirovanie-dlya-pozhilykh | — | Протезирование зубов для пожилых: All-on-4 vs съёмный |
+
 ## Schema-улучшения
 
 - **BaseLayout.astro:130** — `areaServed` добавлен в MedicalClinic schema:
@@ -59,16 +68,16 @@ SEO-позиции (2026-07-14): ortopednn.ru занимает **#1** по "ст
 
 ## Build
 
-- **256 pages** (было 255, +1 хаб-страница)
+- **261 pages** (было 256, +5: 4 новые статьи + VNChS хаб)
 - **0 ошибок**
-- **Commit:** `feat: 10 NH articles + hub page + schema improvements` (13 files, 1922 insertions)
-- **Push:** `bf3ab47..18d50f5 master -> master`
+- **Commit:** `d189038` (2026-07-16, 4 НЧ + broken links + SEO audit + dzen removal)
+- **Push:** master
 
 ## Метрики
 
-- Всего статей в блоге: ~157 (137 + 20 новых НЧ)
-- Всего страниц: 256
-- Категории с НЧ-статьями: implanty (7), semnye-protezy (4), vnchs (3), diagnostika (2), ai (2), byugelnye-protezy (1), mosty (1), koronki (1)
+- Всего статей в блоге: ~161 (137 + 24 новых НЧ)
+- Всего страниц: 261
+- Категории с НЧ-статьями: implanty (7), semnye-protezy (4), vnchs (3), diagnostika (2), ai (2), byugelnye-protezy (1), mosty (1), koronki (2)
 
 ## Связанные страницы
 
