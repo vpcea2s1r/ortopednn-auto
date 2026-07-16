@@ -89,6 +89,29 @@ const ldLocalBusiness = {
 const topArticles = articles.filter(a => 
   ['metallokeramika', 'cirkonievaya-koronka', 'polny-sjemny-protez', 'byugelnyj', 'viniry-ili-koronki', 'implant-ili-protez'].includes(a.slug)
 );
+
+const popularArticles = articles.filter(a =>
+  ['cirkonievye-koronki-cena-nn', 'skolko-stoit-koronka-nn', 'etapy-protezirovaniya-zubov', 'podgotovka-k-protezirovaniyu', 'zub-udalyat-ili-vosstanavlivat', 'byugelnyj-protez-klammery', 'kurenie-posle-protezirovaniya', 'ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii', 'protezirovanie-pri-saharnom-diabete', 'sravnenie-sistem-implantov', 'implantatsiya-pri-kurenii', 'all-on-6', 'implant-ili-protez', 'koronka-na-implant', 'kappy-ot-bruksizma', 'golovnaya-bol-pri-vnchs', 'irrigator-dlya-polosti-rta', 'zubnye-protezy-posle-60'].includes(a.slug)
+);
+
+const allServicePages = [
+  { href: '/services/metallokeramika/', name: 'Металлокерамическая коронка' },
+  { href: '/services/cirkonievaya-koronka/', name: 'Циркониевая коронка' },
+  { href: '/services/celnolitaya-koronka/', name: 'Цельнолитая коронка' },
+  { href: '/services/celnolitaya-koronka-na-vkladke/', name: 'Коронка на вкладке' },
+  { href: '/services/byugelnyj/', name: 'Бюгельный протез' },
+  { href: '/services/byugelnyj-zamki/', name: 'Бюгельный протез на замках' },
+  { href: '/services/polny-sjemny-protez/', name: 'Полный съёмный протез' },
+  { href: '/services/acryfree/', name: 'Протез AcryFree' },
+  { href: '/services/nejlonovyj-protez/', name: 'Нейлоновый протез' },
+  { href: '/services/immediat-protez/', name: 'Иммедиат-протез' },
+  { href: '/services/sjemnyj-protez-implakril/', name: 'Протез из Имплакрила' },
+  { href: '/services/dentaldi/', name: 'Бюгель ДенталДи' },
+  { href: '/services/chastichny-sjemny-protez/', name: 'Частичный съёмный протез' },
+  { href: '/services/vrachebnaya-vkladka/', name: 'Врачебная вкладка' },
+  { href: '/services/czirkon-titan-mzp/', name: 'Коронка на имплант' },
+  { href: '/services/metallokeramicheskaya-koronka-na-vkladke/', name: 'Металлокерамика на вкладке' },
+];
 ---
 
 <BaseLayout 
