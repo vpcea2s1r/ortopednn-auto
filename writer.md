@@ -433,7 +433,7 @@ const ldFAQ = {
 - [ ] Push → master → GitHub Actions деплой
 
 ### Кодировка и символы
-- [ ] Нет китайских иероглифов (Unicode U+4E00–U+9FFF) — `Get-ChildItem src -Recurse -Include *.astro | % { if ([IO.File]::ReadAllText($_.FullName) -match '[\u4e00-\u9fff]') { $_.FullName } }`
+- [ ] **Обязательно**: Нет китайских иероглифов (Unicode U+4E00–U+9FFF) — `Get-ChildItem src -Recurse -Include *.astro | % { if ([IO.File]::ReadAllText($_.FullName) -match '[\u4e00-\u9fff]') { $_.FullName } }`
 - [ ] UTF-8: `[System.IO.File]::WriteAllText` с `[System.Text.Encoding]::UTF8`
 - [ ] Нет мёртвых байт (размер файла ≈ ожидаемому)
 
