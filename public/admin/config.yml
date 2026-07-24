@@ -1,0 +1,86 @@
+backend:
+  name: github
+  repo: vpcea2s1r/ortopednn-auto
+  branch: master
+  base_url: https://api.decapcms.org
+  auth_endpoint: oauth
+
+site_url: https://ortopednn.ru
+site_domain: ortopednn.ru
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: blog
+    label: Статьи блога
+    label_singular: Статья
+    folder: src/content/blog
+    create: true
+    delete: true
+    extension: md
+    slug: "{{slug}}"
+    format: yaml-frontmatter
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [date, title]
+    view_filters:
+      - label: Категория
+        field: category
+        pattern: koronki
+      - label: Категория
+        field: category
+        pattern: semnye-protezy
+      - label: Категория
+        field: category
+        pattern: byugelnye-protezy
+      - label: Категория
+        field: category
+        pattern: implanty
+      - label: Категория
+        field: category
+        pattern: mosty
+      - label: Категория
+        field: category
+        pattern: vnchs
+      - label: Категория
+        field: category
+        pattern: materialy
+      - label: Категория
+        field: category
+        pattern: uhod
+    fields:
+      - label: URL-идентификатор
+        name: slug
+        widget: string
+        hint: "Например: kappy-ot-bruksizma"
+        pattern: ["^[a-z0-9-]+$", "Только латиница и дефисы"]
+      - label: Заголовок
+        name: title
+        widget: string
+      - label: Описание
+        name: desc
+        widget: text
+        hint: "Для поисковой выдачи — 1-2 предложения"
+      - label: Дата
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
+      - label: Категория
+        name: category
+        widget: select
+        options:
+          - { label: Коронки, value: koronki }
+          - { label: Съёмные протезы, value: semnye-protezy }
+          - { label: Бюгельные протезы, value: byugelnye-protezy }
+          - { label: Импланты, value: implanty }
+          - { label: Мостовидные протезы, value: mosty }
+          - { label: ВНЧС / бруксизм, value: vnchs }
+          - { label: Материалы, value: materialy }
+          - { label: Уход / гигиена, value: uhod }
+      - label: Содержание
+        name: body
+        widget: markdown
+        hint: "HTML-разметка. Заголовки h2/h3, абзацы, списки"

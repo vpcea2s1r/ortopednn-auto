@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getRelatedServices } from '../../../data/cross-links';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+import { getCategory, getRelatedArticles } from '../../../data/blog-articles.ts';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog');
+  return entries.map(entry => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+export interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const slug = data.slug;
+const pageUrl = `https://ortopednn.ru/blog/${slug}/`;
+const category = data.category ? getCategory(data.category) : undefined;
+const related = getRelatedArticles(slug, 3);
+const body = entry.body.trim();
+
+const ldArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": data.title,
+  "description": data.desc,
+  "author": { "@id": "https://ortopednn.ru/#doctor" },
+  "datePublished": data.date,
+  "dateModified": data.date,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "image": "https://ortopednn.ru/og-image.svg",
+  "publisher": { "@id": "https://ortopednn.ru/#clinic" }
+};
+---
+
+<BaseLayout
+  title={`${data.title} | Никитина М.Г.`}
+  description={data.desc}
+  breadcrumbTitle={data.title}
+  doctor={doctor}
+  socials={socials}
+  datePublished={data.date}
+  dateModified={data.date}
+>
+  <Navbar />
+  <main class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      {category && <><span>/</span><a href={`/blog/${category.slug}`}>{category.name}</a></>}
+      <span>/</span>
+      <span>{data.title}</span>
+    </nav>
+
+    <article>
+      <h1>{data.title}</h1>
+      <div class="meta">{data.date} — Никитина М.Г., стоматолог-ортопед</div>
+      <fragment set:html={body} />
+    </article>
+
+    <RelatedArticles articles={related} />
+    {data.category && <RelatedServices services={getRelatedServices(slug, data.category)} />}
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+
+<style>
+  .breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+  article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+  .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  article :global(.lead) { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+  article :global(h2) { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+  article :global(p) { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  article :global(ul), article :global(ol) { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+  article :global(li) { margin-bottom: 0.5rem; line-height: 1.6; }
+  article :global(.table-wrap) { overflow-x: auto; margin: 1rem 0; }
+  article :global(table) { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  article :global(th), article :global(td) { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  article :global(th) { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+  article :global(td) { color: var(--color-text-muted); }
+  article :global(.cta) { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+  article :global(.cta p) { margin-bottom: 1rem; color: var(--color-text); }
+  article :global(.btn) { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  article :global(.btn:hover) { background: var(--color-primary-hover); }
+</style>
