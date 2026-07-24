@@ -2,25 +2,24 @@ backend:
   name: github
   repo: vpcea2s1r/ortopednn-auto
   branch: master
-local_backend: true
+  base_url: https://admin.ortopednn.ru
+  auth_endpoint: auth
 publish_mode: editorial_workflow
 media_folder: public/images
 public_folder: /images
 collections:
   - name: blog
-    label: Blog
-    label_singular: Article
+    label: Статьи
+    label_singular: Статья
     folder: src/content/blog
     create: true
-    format: frontmatter
     slug: '{{slug}}'
-    summary: '{{title}} — {{date}}'
+    preview_path: blog/{{slug}}
     fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Slug, name: slug, widget: string, hint: 'e.g. "zubnaya-implantatsiya"' }
-      - { label: Description, name: description, widget: text }
-      - { label: Date, name: date, widget: datetime }
-      - { label: Image, name: image, widget: image, required: false, default: '/images/og-default.jpg' }
-      - { label: Category, name: category, widget: select, options: [lechenie-zubov, implantatsiya, protezirovanie, gigiena, obshee] }
-      - { label: Tags, name: tags, widget: list, required: false }
-      - { label: Body, name: body, widget: markdown }
+      - { label: Заголовок, name: title, widget: string }
+      - { label: Описание, name: description, widget: string }
+      - { label: Slug, name: slug, hint: 'Часть URL (например: vybor-zubnogo-proteza)', pattern: ['^[a-z0-9-]+$', 'Только латиница, цифры и дефисы'] }
+      - { label: Категория, name: category, widget: select, options: [protezirovanie, implanty, lechenie, gospitalizaciya, obzory, uhod, stomatologiya] }
+      - { label: Дата, name: date, widget: datetime, format: YYYY-MM-DD }
+      - { label: Изображение, name: image, widget: image, required: false }
+      - { label: Содержание, name: body, widget: markdown }
