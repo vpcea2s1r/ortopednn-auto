@@ -10,6 +10,7 @@ import { router as draftsRouter, api as draftsApi } from './routes/drafts.js'
 import { router as socialRouter, api as socialApi } from './routes/social.js'
 import { router as pipelineRouter, api as pipelineApi } from './routes/pipeline.js'
 import { router as settingsRouter, api as settingsApi } from './routes/settings.js'
+import { oauthRouter } from './oauth.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const PORT = process.env.ADMIN_PORT || 3001
@@ -23,6 +24,7 @@ app.set('views', join(__dirname, 'views'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use('/', oauthRouter())
 app.use('/admin', express.static(join(__dirname, 'public')))
 
 // Auth routes (no middleware)
