@@ -9,44 +9,42 @@
   </style>
 </head>
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-  CMS.init({
-    config: {
-      backend: {
-        name: 'github',
-        repo: 'vpcea2s1r/ortopednn-auto',
-        branch: 'master',
-        base_url: 'https://admin.ortopednn.ru',
-        site_domain: 'ortopednn.ru'
-      },
-      publish_mode: 'editorial_workflow',
-      media_folder: 'public/images',
-      public_folder: '/images',
-      collections: [
-        {
-          name: 'blog',
-          label: 'Blog',
-          label_singular: 'Article',
-          folder: 'src/content/blog',
-          create: true,
-          format: 'frontmatter',
-          slug: '{{slug}}',
-          summary: '{{title}} — {{date}}',
-          fields: [
-            { label: 'Title', name: 'title', widget: 'string' },
-            { label: 'Slug', name: 'slug', widget: 'string', hint: 'URL-friendly name (e.g. "zubnaya-implantatsiya")' },
-            { label: 'Description', name: 'description', widget: 'text' },
-            { label: 'Date', name: 'date', widget: 'datetime' },
-            { label: 'Image', name: 'image', widget: 'image', required: false, default: '/images/og-default.jpg' },
-            { label: 'Category', name: 'category', widget: 'select', options: ['lechenie-zubov', 'implantatsiya', 'protezirovanie', 'gigiena', 'obshee'] },
-            { label: 'Tags', name: 'tags', widget: 'list', required: false },
-            { label: 'Body', name: 'body', widget: 'markdown' }
-          ]
-        }
-      ]
-    }
-  })
+  window.CMS_CONFIG = {
+    backend: {
+      name: 'github',
+      repo: 'vpcea2s1r/ortopednn-auto',
+      branch: 'master',
+      base_url: 'https://admin.ortopednn.ru',
+      site_domain: 'ortopednn.ru'
+    },
+    publish_mode: 'editorial_workflow',
+    media_folder: 'public/images',
+    public_folder: '/images',
+    collections: [
+      {
+        name: 'blog',
+        label: 'Blog',
+        label_singular: 'Article',
+        folder: 'src/content/blog',
+        create: true,
+        format: 'frontmatter',
+        slug: '{{slug}}',
+        summary: '{{title}} — {{date}}',
+        fields: [
+          { label: 'Title', name: 'title', widget: 'string' },
+          { label: 'Slug', name: 'slug', widget: 'string', hint: 'e.g. "zubnaya-implantatsiya"' },
+          { label: 'Description', name: 'description', widget: 'text' },
+          { label: 'Date', name: 'date', widget: 'datetime' },
+          { label: 'Image', name: 'image', widget: 'image', required: false, default: '/images/og-default.jpg' },
+          { label: 'Category', name: 'category', widget: 'select', options: ['lechenie-zubov', 'implantatsiya', 'protezirovanie', 'gigiena', 'obshee'] },
+          { label: 'Tags', name: 'tags', widget: 'list', required: false },
+          { label: 'Body', name: 'body', widget: 'markdown' }
+        ]
+      }
+    ]
+  };
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
