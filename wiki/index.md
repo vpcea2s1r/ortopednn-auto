@@ -37,6 +37,7 @@
 | [Site Audit 2026-06-28](audit/2026-06-28-site-audit.md) | Полный аудит сайта: цены, 404, AI-маркеры, схемы, ссылки | ✅ Готово |
 | [Position Check Script](project/position-check.md) | Скрипт проверки позиций (GSC + Yandex Webmaster) | ✅ Готово |
 | [НЧ-статьи + хаб 2026-07](project/nh-content-2026-07.md) | 10 НЧ-статей, хаб-страница, schema improvements | ✅ Готово |
+| [Скорость индексации и AI](project/indexing-speed-alice.md) | Ускорение индексации в Яндексе (IndexNow, переобход), AI-видимость в Алисе (ЭПОС, AI Traffic) | ✅ Готово |
 
 ### Raw источники
 

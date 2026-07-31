@@ -1,4 +1,10 @@
-﻿## 2026-07-12 — 10 НЧ-статей + хаб-страница + schema improvements
+﻿# Журнал операций
+
+## 2026-08-01 — ingest | Индексация в Яндексе и AI-видимость
+- **Источник:** https://habr.com/ru/articles/1065514/ (ig_novvv, 2026)
+- **Wiki:** `project/indexing-speed-alice.md` создана — 4 инструмента ускорения индексации (переобход, IndexNow, sitemap, Метрика), последовательность публикации, детали IndexNow (202-код, urlList 10k), ЭПОС, сегмент AI Traffic, применимость к ortopednn (IndexNow из GitHub Actions)
+
+## 2026-07-12 — 10 НЧ-статей + хаб-страница + schema improvements
 - **10 НЧ-статей**: shiniruyushchij-byugel, most-na-3-zuba, klkt-pered-protezirovaniem, vnutrirotovoe-skanirovanie, neyroseti-dlya-analiza-snimkov, ii-dlya-planirovaniya-implantatsii, gnotologiya-diagnostika-lechenie, golovnaya-bol-pri-vnchs, artrit-visochno-nizhnechelyustnogo-sustava, irrigator-dlya-polosti-rta
 - **Хаб-страница**: `/protezirovanie-zubov-v-nizhnem-novgorode/` — FAQPage (6 вопросов) + Dentist LocalBusiness schema
 - **Schema**: areaServed добавлен в MedicalClinic (BaseLayout.astro:130)
