@@ -95,5 +95,5 @@ category: semnye-protezy
 <RelatedServices services={getRelatedServices(slug, category?.id)} />
 <div class="cta">
   <p>Треснул протез? Не клейте сами — профессиональный ремонт надёжнее и продлевает срок службы протеза.</p>
-  <a href={	el:+7 (920) 253-73-17} class="btn">+7 (920) 253-73-17</a>
+  <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
 </div>

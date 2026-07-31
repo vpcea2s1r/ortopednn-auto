@@ -62,5 +62,5 @@ category: prostezirovanie
 <RelatedServices services={getRelatedServices(slug, category?.id)} />
 <div class="cta">
   <p>Не уверены, подойдёт ли безпрепарированный винир? Приходите на консультацию — оценим толщину эмали и пригодность за 30 минут.</p>
-  <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+  <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
 </div>

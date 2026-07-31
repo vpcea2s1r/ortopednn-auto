@@ -75,5 +75,5 @@ category: semnye-protezy
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Адаптация к протезу — временный этап. В Нижнем Новгороде я помогу пройти его с минимальным дискомфортом.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

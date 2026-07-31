@@ -85,5 +85,5 @@ category: koronki
       <RelatedServices services={getRelatedServices(slug, catId)} />
       <div class="cta">
         <p>Зуб разрушен? Возможно, его можно сохранить на штифте. Приходите — оценю состояние.</p>
-        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

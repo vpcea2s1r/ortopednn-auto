@@ -103,5 +103,5 @@ desc: "Протезирование зубов для пожилых: All-on-4 �
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Не знаете, какой протез подойдёт? Приходите на консультацию — расскажем о вариантах и подберём лучший.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

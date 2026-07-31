@@ -91,5 +91,5 @@ category: vnchs
       <RelatedServices services={getRelatedServices(slug, catId)} />
       <div class="cta">
         <p>Щёлкает челюсть, болит висок или стираются зубы? Приходите на консультацию.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

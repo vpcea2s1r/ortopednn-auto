@@ -68,5 +68,5 @@ desc: "Молочница во рту при ношении протезов: п
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Беспокоит жжение или налёт под протезом?</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">Позвонить: +7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>
       </div>

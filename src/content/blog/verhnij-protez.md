@@ -96,5 +96,5 @@ category: semnye-protezy
 <RelatedServices services={getRelatedServices(slug, category?.id)} />
 <div class="cta">
   <p>Не знаете, какой протез подойдёт вам на верхнюю челюсть? Приходите на консультацию — подберём вариант по вашей ситуации.</p>
-  <a href={$+7 (920) 253-73-17} class="btn">+7 (920) 253-73-17</a>
+  <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
 </div>

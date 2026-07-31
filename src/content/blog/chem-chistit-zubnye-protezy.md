@@ -88,5 +88,5 @@ category: semnye-protezy
       <RelatedServices services={getRelatedServices(slug, catId)} />
       <div class="cta">
         <p>Не знаете, чем чистить протез? Спросите меня на приёме — покажу и расскажу.</p>
-        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

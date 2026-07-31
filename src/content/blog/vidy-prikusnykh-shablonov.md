@@ -12,5 +12,5 @@ category: diagnostika
 
       <div class="cta">
         <p>Нужна консультация? Приходите, разберём вашу ситуацию.</p>
-        <a href={'tel:' + doctor.phone} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

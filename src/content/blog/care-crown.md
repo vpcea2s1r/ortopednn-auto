@@ -74,5 +74,5 @@ category: koronki
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Когда последний раз вы были на осмотре?</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">Записаться</a>
+        <a href="tel:+79202537317" class="btn">Записаться</a>
       </div>

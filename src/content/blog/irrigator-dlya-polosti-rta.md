@@ -86,5 +86,5 @@ category: semnye-protezy
       <RelatedServices services={getRelatedServices(slug, catId)} />
       <div class="cta">
         <p>Есть коронки, мосты или импланты? Ирригатор продлит их срок службы. Приходите на консультацию — расскажу, какой уход нужен именно вам.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

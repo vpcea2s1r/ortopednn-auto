@@ -111,5 +111,5 @@ category: semnye-protezy
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Проблемы с фиксацией протеза? Приходите на консультацию — возможно, нужна перебазировка или замена конструкции.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

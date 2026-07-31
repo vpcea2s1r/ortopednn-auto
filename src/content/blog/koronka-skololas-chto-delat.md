@@ -96,5 +96,5 @@ category: koronki
 <RelatedServices services={getRelatedServices(slug, category?.id)} />
 <div class="cta">
   <p>Скололась коронка? Не ждите — чем раньше почините, тем дешевле.</p>
-  <a href={	el:+7 (920) 253-73-17} class="btn">+7 (920) 253-73-17</a>
+  <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
 </div>

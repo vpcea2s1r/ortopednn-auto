@@ -78,5 +78,5 @@ category: koronki
 <RelatedServices services={getRelatedServices(slug, category?.id)} />
 <div class="cta">
   <p>Десна опустилась, оголились корни или край коронки? Расскажу, что подойдёт именно вам.</p>
-  <a href={$+7 (920) 253-73-17} class="btn">+7 (920) 253-73-17</a>
+  <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
 </div>

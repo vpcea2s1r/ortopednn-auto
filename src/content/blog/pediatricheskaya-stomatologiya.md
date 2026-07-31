@@ -63,5 +63,5 @@ category: prostezirovanie
 <RelatedServices services={getRelatedServices(slug, category?.id)} />
 <div class="cta">
   <p>Запишите ребёнка на первый осмотр — «ознакомительный визит» без обработки. Возраст 12 месяцев — минимум.</p>
-  <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+  <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
 </div>

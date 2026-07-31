@@ -97,5 +97,5 @@ category: koronki
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Воспалилась десна после протезирования? Приходите на осмотр — определим причину и устраним проблему.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>

@@ -69,5 +69,5 @@ category: koronki
 <RelatedServices services={getRelatedServices(slug, catId)} />
 <div class="cta">
 <p>Золотая коронка — клинически проверенный вариант для жевательных зубов с максимальной биосовместимостью.</p>
-<a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+<a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
 </div>

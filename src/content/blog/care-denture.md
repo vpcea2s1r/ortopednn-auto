@@ -71,5 +71,5 @@ category: semnye-protezy
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Есть вопросы по уходу за протезом? Позвоните — отвечу.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">Позвонить</a>
+        <a href="tel:+79202537317" class="btn">Позвонить</a>
       </div>

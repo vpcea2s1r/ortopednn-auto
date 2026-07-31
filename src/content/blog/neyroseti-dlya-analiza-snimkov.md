@@ -86,5 +86,5 @@ category: ai
       <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Диагностика с точностью до миллиметра. Приходите — проверим зубы на современном оборудовании.</p>
-        <a href={`tel:$+7 (920) 253-73-17`} class="btn">+7 (920) 253-73-17</a>
+        <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
       </div>
