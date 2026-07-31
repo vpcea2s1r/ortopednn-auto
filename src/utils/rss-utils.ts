@@ -1,18 +1,19 @@
 import fs from 'fs';
 import path from 'path';
 
-const ARTICLES_DIR = path.resolve(process.cwd(), 'src/pages/blog');
+const ARTICLES_DIR = path.resolve(process.cwd(), 'src/content/blog');
 
 export function getArticleBody(slug: string): string | null {
-  const filePath = path.join(ARTICLES_DIR, `${slug}.astro`);
+  const filePath = path.join(ARTICLES_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
 
-  const content = fs.readFileSync(filePath, 'utf-8');
+  let content = fs.readFileSync(filePath, 'utf-8');
+  content = content.replace(/^\uFEFF/, '');
 
-  const articleMatch = content.match(/<article>([\s\S]*?)<\/article>/);
-  if (!articleMatch) return null;
+  // Cut frontmatter (--- ... ---)
+  content = content.replace(/^---[\s\S]*?---\s*/, '');
 
-  let body = articleMatch[1];
+  let body = content;
 
   // Remove Astro component tags (lines starting with < or containing Astro components)
   body = body.replace(/<RelatedArticles[\s\S]*?\/>/g, '');
