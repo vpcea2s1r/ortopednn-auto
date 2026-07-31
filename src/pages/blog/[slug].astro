@@ -29,6 +29,16 @@ const category = data.category ? getCategory(data.category) : undefined;
 const related = getRelatedArticles(slug, 3);
 const body = entry.body.trim();
 
+// Извлекаем FAQ из h3-вопросов статьи (h3 + следующий p) для FAQPage schema.
+// ponytail: только вопросы с вопросительным знаком, макс. 8 — как в BaseLayout.
+const faqItems = (() => {
+  const blocks = [...body.matchAll(/<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/gs)]
+    .map(m => ({ q: m[1].replace(/<[^>]+>/g, '').trim(), a: m[2].replace(/<[^>]+>/g, '').trim() }))
+    .filter(i => i.q.includes('?') && i.a.length > 20)
+    .slice(0, 8);
+  return blocks;
+})();
+
 const ldArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -41,6 +51,18 @@ const ldArticle = {
   "image": "https://ortopednn.ru/og-image.svg",
   "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
+
+const ldFaq = faqItems.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(i => ({
+        "@type": "Question",
+        "name": i.q,
+        "acceptedAnswer": { "@type": "Answer", "text": i.a }
+      }))
+    }
+  : null;
 ---
 
 <BaseLayout
@@ -73,6 +95,7 @@ const ldArticle = {
 </BaseLayout>
 
 <script type="application/ld+json" set:html={JSON.stringify(ldArticle)} />
+{ldFaq && <script type="application/ld+json" set:html={JSON.stringify(ldFaq)} />}
 
 <style>
   .breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
