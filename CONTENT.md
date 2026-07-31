@@ -173,3 +173,7 @@
 - kak-snimat-semnye-protezy
 - nepriyatnyj-zapah-ot-proteza
 - kak-pravilno-est-s-protezami
+
+## Batch 5 (2026-07-31) — НЧ по Wordstat НН
+- keramicheskaya-desna (запросы: керамическая десна 23, керамическая десна на коронке 4)
+- posle-ustanovki-koronki (обновлён title: можно ли есть после коронки 26, после установки коронки 15)
