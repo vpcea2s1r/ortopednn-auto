@@ -30,6 +30,19 @@ const category = data.category ? getCategory(data.category) : undefined;
 const related = getRelatedArticles(slug, 3);
 const body = entry.body.trim();
 
+const words = body.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length;
+const readMinutes = Math.max(1, Math.round(words / 180));
+
+const headings = [...body.matchAll(/<h2>(.*?)<\/h2>/g)]
+  .map(m => m[1].replace(/<[^>]+>/g, '').trim())
+  .filter(Boolean);
+
+let h2Index = 0;
+const bodyWithAnchors = body.replace(/<h2>(.*?)<\/h2>/g, (m, text) => {
+  const id = 'toc-' + h2Index++;
+  return `<h2 id="${id}">${text}</h2>`;
+});
+
 // Термины глоссария, реально встречающиеся в тексте статьи (без тегов).
 // ponytail: только использованные термины — на странице 5–15, не все 58.
 const usedGlossary = (() => {
@@ -93,6 +106,7 @@ const ldFaq = faqItems.length
   dateModified={data.date}
 >
   <Navbar />
+  <div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
   <main class="container container--w800">
     <nav class="breadcrumbs">
       <a href="/blog">Блог</a>
@@ -103,8 +117,16 @@ const ldFaq = faqItems.length
 
     <article>
       <h1>{data.title}</h1>
-      <div class="meta">{data.date} — Никитина М.Г., стоматолог-ортопед</div>
-      <fragment set:html={body} />
+      <div class="meta">{data.date} — Никитина М.Г., стоматолог-ортопед · {readMinutes} мин чтения</div>
+      {headings.length > 1 && (
+        <nav class="toc" aria-label="Содержание статьи">
+          <strong>Содержание</strong>
+          <ol>
+            {headings.map((h, i) => <li><a href={`#toc-${i}`}>{h}</a></li>)}
+          </ol>
+        </nav>
+      )}
+      <fragment set:html={bodyWithAnchors} />
     </article>
 
     <RelatedArticles articles={related} />
@@ -119,8 +141,35 @@ const ldFaq = faqItems.length
 <script>
   import '../../../src/scripts/glossary-tooltip.ts';
 </script>
+<script>
+  const fill = document.getElementById('progress-fill');
+  if (fill) {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const total = doc.scrollHeight - doc.clientHeight;
+      fill.style.width = total > 0 ? `${(doc.scrollTop / total) * 100}%` : '0%';
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+</script>
 
 <style>
+  .progress-bar {
+    position: sticky;
+    top: 0;
+    z-index: 150;
+    height: 3px;
+    background: transparent;
+  }
+  .progress-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #0e4998, #0891b2);
+    box-shadow: 0 0 8px rgba(8, 145, 178, 0.6);
+    transition: width 0.1s linear;
+  }
   .breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
   .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
   .breadcrumbs a:hover { text-decoration: underline; }
@@ -128,6 +177,19 @@ const ldFaq = faqItems.length
   article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
   h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
   .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  .toc {
+    background: var(--color-bg-alt);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--color-primary);
+  }
+  .toc strong { display: block; color: var(--color-text); margin-bottom: 0.5rem; }
+  .toc ol { margin: 0; padding-left: 1.25rem; }
+  .toc li { margin-bottom: 0.35rem; font-size: 0.9rem; }
+  .toc a { color: var(--color-primary); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  article :global(h2[id]) { scroll-margin-top: 3.5rem; }
   article :global(.lead) { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
   article :global(h2) { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
   article :global(p) { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
