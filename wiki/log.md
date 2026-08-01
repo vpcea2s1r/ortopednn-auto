@@ -1,3 +1,9 @@
+## 2026-08-01 - ingest | 8 статей опубликованы из черновиков
+- **Публикация**: 8 черновиков `data/drafts/*.json` конвертированы в `src/content/blog/*.md` (коммит `b69811a`): koronka-na-peredniy-zub-kak-vybrat, kultevaya-vkladka, podgotovka-k-ustanovke-koronki-etapy-materialy-i-sroki, prikus-posle-protezirovaniya, syonmyj-protez-na-odin-zub, vidy-prikusov-i-ikh-vliyanie-na-protezirovanie, vliyanie-vospaleniya-na-metabolizm-psikhotropnykh-preparatov-vzglyad-stomatologa, vosstanovlenie-zuba-pri-polnom-razrushenii-koronkovoy-chasti-sovremennye-protoko
+- **Вручную** (бот на VPS отключён): JSON (поле `description`, не `desc`) → MD, запись в `data/blog-articles.ts` (category: koronki/vnchs/semnye-protezy), `CONTENT.md`, `git rm` черновиков, `npm run build` (242 pages), commit+push
+- **Mojibake fix**: черновики vliyanie-vospaleniya и vosstanovlenie-zuba были в двойной кодировке (UTF-8 → CP866 → UTF-8). Декодирование: `CP866.GetBytes → UTF8.GetString`. Проверка: `[\u0400-\u04FF]` (кириллица), `[\u2500-\u25FF]` (mojibake)
+- **Дубли удалены**: 2026, vypala-koronka-chto-delat-sovety, restavratsiya-zubov-kompozitnymi, neyrogenez (решение пользователя)
+
 ﻿# Журнал операций
 
 ## 2026-08-01 — ingest | Индексация в Яндексе и AI-видимость

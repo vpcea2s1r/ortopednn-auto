@@ -36,7 +36,7 @@
    - **ПЕРЕД PUSH**: запустить `.\scripts\encoding-verify.ps1`
 
 7. **Article tracking in CONTENT.md** — перед написанием статьи прочитать CONTENT.md (список статей), после написания статьи добавить её в CONTENT.md, затем push.
-8. **Review-before-publish (Hard Rule)** — ни одна статья не публикуется без одобрения пользователя. Пайплайн сохраняет черновики в `/data/drafts/`. Пользователь читает через `/drafts` в Telegram боте или на preview.ortopednn.ru/preview/<slug>/ (noindex, banner). Нажимает "Опубликовать" или "Удалить". Прямая публикация через GitHub API (publisherAgent) запрещена — только через review flow.
+8. **Review-before-publish (Hard Rule)** — ни одна статья не публикуется без одобрения пользователя. Пайплайн сохраняет черновики в `data/drafts/<slug>.json`. Пользователь читает через `/drafts` в Telegram боте или на preview.ortopednn.ru/preview/<slug>/ (noindex, banner). Нажимает "Опубликовать" или "Удалить". **Текущий способ публикации (бот на VPS отключён/недоступен) — вручную:** после одобрения пользователем конвертировать `data/drafts/<slug>.json` → `src/content/blog/<slug>.md` (UTF-8 без BOM через `[System.IO.File]::WriteAllText`), добавить запись в `data/blog-articles.ts` (поле JSON — `description`, а НЕ `desc`), обновить `CONTENT.md`, удалить черновик `git rm data/drafts/<slug>.json`, `npm run build`, коммит + push. Проверять кодовые точки кириллицы (`[\u0400-\u04FF]`) и отсутствие mojibake (`[\u2500-\u25FF]` — признак двойного кодирования CP866).
 
 9. **Удаление файлов через GitHub API (Hard Rule)** — GitHub Content API (PUT) НЕ поддерживает удаление файлов. Git Trees API (base_tree + tree items) НЕ удаляет — SHA не меняется из-за content-addressing. **ЕДИНСТВЕННЫЙ рабочий способ** — Content API DELETE для каждого файла:
    ```
@@ -170,15 +170,15 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 
 ### Preview System (Draft Review on ortopednn.ru)
 
-**Status:** ✅ Frontend on Astro — created
-**Flow:** Bot generates draft → pushes `data/drafts/<slug>.json` to repo → GitHub Actions rebuilds → preview at `ortopednn.ru/preview/<slug>/` (noindex, banner) → user reads + publishes via Telegram /drafts
+**Status:** ✅ Frontend on Astro — created. **Публикация вручную** (бот на VPS отключён): после одобрения пользователя черновик `data/drafts/<slug>.json` конвертируется в `src/content/blog/<slug>.md` и пушится (см. правило 8). В `data/drafts/` сейчас пусто (только `.gitkeep`) — все 19 черновиков опубликованы или удалены 01.08.2026.
+**Flow:** Bot generates draft → pushes `data/drafts/<slug>.json` to repo → GitHub Actions rebuilds → preview at `ortopednn.ru/preview/<slug>/` (noindex, banner) → user reads + publishes (вручную: JSON → MD → commit+push)
 **Files:**
 - `data/draft-types.ts` — DraftMeta interface (slug, title, date, desc, body, category)
 - `src/pages/preview/...slug.astro` — dynamic route (BaseLayout, noindex, preview banner, publish/delete buttons)
 - `data/drafts/.gitkeep` — directory for draft JSONs
 - `astro.config.mjs` — `/preview/` excluded from sitemap
 
-**Need on VPS:**
+**Need on VPS (если бот вернётся):**
 1. Bot to push `data/drafts/<slug>.json` to repo after generation
 2. Two API routes on bot: `/api/preview/publish` and `/api/preview/delete`
 
@@ -212,7 +212,7 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 - **Daily digest** (9:00 MSK) — Telegram с ключевыми метриками за день
 - **Dzen cron** (10:00 MSK) — генерация статей для Дзен из очереди тем
 - **Auto-content pipeline** (cron 7:00 MSK) — Multi-Agent генерация (Research→Writer→Review→SEO→**Draft**)
-- **Review flow** — статьи не публикуются сразу. Сохраняются в `/data/drafts/` как черновик. Уведомление в Telegram. Публикация — через кнопку "Опубликовать" в `/drafts`
+- **Review flow** — статьи не публикуются сразу. Сохраняются в `/data/drafts/` как черновик. Уведомление в Telegram. Публикация — через кнопку "Опубликовать" в `/drafts` (бот отключён — публикация вручную, см. правило 8)
 - `/autogen <тема>` — ручной запуск пайплайна, сохраняет как черновик
 - **n8n workflow** (дублирующий триггер 7:00 MSK) — HTTP → bot API, Telegram-уведомления
 - **Polling** (каждые 10с) — порт 3000, healthcheck

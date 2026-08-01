@@ -1,189 +1,188 @@
 # Content Inventory
 
-- - acryfree-vs-quattrotii
-- - ai-v-ortopedicheskoy-stomatologii
-- - allergiya-na-metall-stomatologiya
-- - allergiya-na-protez
-- - all-on-4
-- - all-on-6
-- - alternativy-syomnym-protezam
-- - antikoagulyanty-i-stomatologiya
-- - artrit-visochno-nizhnechelyustnogo-sustava
-- - atrofiya-kostnoj-tkani-chelyusti
-- - bezmetallovye-koronki
-- - bisfosfonaty-i-osteonekroz
-- - bolit-chelyust-posle-protezirovaniya
-- - bolit-zub-pod-koronkoj
-- - bolno-li-menyat-koronki
-- - bolno-li-obachivat-zuby
-- - bolno-li-stavit-koronku
-- - bruksizm-i-protezirovanie
-- - byugelnyj-ili-semnyj-protez
-- - byugelnyj-protez-klammery
-- - byugelnyj-protez-na-zamkah
-- - care-crown
-- - care-denture
-- - ceny-na-protezirovanie-v-nn
-- - chem-chistit-zubnye-protezy
-- - chem-krepit-semnye-protezy
-- - cherez-skolko-est-posle-implantatsii
-- - chto-takoe-prototipy-u-stomatologa
-- - ciprovoy-dizayn-ulybki
-- - cirkonievye-koronki-cena-nn
-- - cirkonievye-koronki-cena-nn (переработан под «циркониевая коронка на жевательный зуб» 41 / циркониевые или металлокерамика на жевательные 17; цены убраны)
-- - cirkonij-ili-metallokeramika
-- - desna-opuhla-vokrug-koronki
-- - desna-otoshla-ot-koronki
-- - dezinfektsiya-proteza
-- - diabet-i-zuby
-- - e-max-koronki-plyusy-minusy
-- - etapy-protezirovaniya-zubov
-- - first-visit
-- - geneticheskoe-testirovanie-apoe4-stomatologiya
-- - gnotologiya-diagnostika-lechenie
-- - golovnaya-bol-pri-vnchs
-- - ii-dlya-planirovaniya-implantatsii
-- - immediat-protezy-chto-eto-pokazaniya
-- - implantatsiya-pri-kurenii
-- - implantatsiya-pri-parodontite
-- - implantatsiya-pri-saharnom-diabete
-- - implant-ili-protez
-- - implanty-protivopokazaniya
-- - irrigator-dlya-polosti-rta
-- - kak-chistit-semnye-protezy
-- - kakie-semnye-protezy-luchshe (запросы: какие съемные протезы лучше 865, съемные зубные протезы какие лучше 397 и др. — кластер ~4100)
-- - kak-pravilno-est-s-protezami
-- - kak-privyknut-k-semnym-protezam
-- - kak-snimat-semnye-protezy
-- - kak-vybrat-material-koronki
-- - kak-vybrat-stomatologiyu-dlya-protezirovaniya
-- - kalcij-dlya-zubov-vzroslym
-- - kandidoz-polosti-rta-protezy
-- - kappy-ot-bruksizma
-- - keramicheskaya-desna (запросы: керамическая десна 23, керамическая десна на коронке 4)
-- - keramicheskie-vkladki-vs-koronki
-- - klammera-dlya-byugelnykh-protezov
-- - klkt-pered-protezirovaniem
-- - kofe-i-koronki
-- - kompozitnye-vkladki
-- - koren-zuba-pod-koronkoj (запросы: корень зуба под коронкой 212, киста на корне под коронкой 36, воспаление корня 34 и др. — кластер ~430)
-- - koronka-cirkonievaya-otzyvy
-- - koronka-ili-most
-- - koronka-iz-dioksida-cirkoniya
-- - koronka-metallokeramicheskaya-otzyvy
-- - koronka-na-implant
-- - koronka-na-zhivoj-zub
-- - koronka-shataetsya-chto-delat
-- - koronka-skololas-chto-delat
-- - koronka-za-odin-vizit-cersec
-- - kostnaya-plastika-pered-implantatsiej
-- - krem-fiksatsii-protezov
-- - krem-fiksatsii-protezov (добавлен FAQ: чем закрепить съемный протез 3)
-- - kserostomiya-i-protezirovanie
-- - kultevaya-vkladka (запросы: культевая вкладка, что такое культевая вкладка, вкладка под коронку)
-- - kurenie-posle-protezirovaniya
-- - lazernaya-stomatologiya
-- - lyuminary-na-zuby
-- - mikroprotezirovanie
-- - mini-implanty-dlya-protezov
-- - most-na-3-zuba
-- - most-na-implantah
-- - mostovidnyj-protez-vidy-plyusy-minusy
-- - mozhno-li-spat-s-protezom (запросы: можно ли спать с протезом 21, с зубными протезами 8, с протезами съемными 6 — кластер ~35)
-- - mrt-s-koronkami
-- - naraschivanie-zuba
-- - natirayet-desnu-protezom
-- - nejlon-acrifree-akril-kakoj-luchshe
-- - nepriyatnyj-zapah-ot-proteza
-- - neyroseti-dlya-analiza-snimkov
-- - nizhnij-protez
-- - ogolilas-shejka-zuba-pod-koronkoj
-- - ortodontiya-dlya-vzroslyh
-- - oslozhneniya-posle-implantatsii
-- - osteoporoz-i-implantatsiya
-- - otbelivanie-bez-chuvstvitelnosti
-- - otbelivanie-do-ili-posle-protezirovaniya
-- - otbelivanie-koronok
-- - otbelivanie-zubov-zoom-4
-- - parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu
-- - parodontit-lechenie
-- - patologicheskaya-stiraemost-zubov-lechenie
-- - pediatricheskaya-stomatologiya
-- - perebazirovka-proteza
-- - periimplantit
-- - plastmassovaya-koronka-cena
-- - podgotovka-k-protezirovaniyu
-- - polnaya-adenitya-protezirovanie
-- - posle-ustanovki-koronki
-- - posle-ustanovki-koronki (обновлён title: можно ли есть после коронки 26, после установки коронки 15)
-- - prikusnoy-shablon-na-zhestkom-bazise
-- - prikus-posle-protezirovaniya (запросы: изменился прикус после коронки, завышенный прикус после протезирования, прикус после протеза)
-- - protezirovanie-bez-implantov
-- - protezirovanie-bez-obtochki-sosednikh-zubov
-- - protezirovanie-dlya-pozhilykh
-- - protezirovanie-na-implantah
-- - protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie
-- - protezirovanie-perednih-zubov
-- - protezirovanie-posle-udaleniya-zuba-mudrosti
-- - protezirovanie-pri-beremennosti
-- - protezirovanie-pri-parodontite
-- - protezirovanie-pri-parodontoze
-- - protezirovanie-pri-saharnom-diabete
-- - protezirovanie-zubov-pri-parodontoze
-- - protezirovanie-zubov-u-kuryashchih
-- - protez-ploho-derzhitsya
-- - protez-tresnul
-- - protezy-bez-neba
-- - psikhologicheskaya-adaptatsiya
-- - quattrotii-protezy
-- - remont-zubnogo-proteza
-- - restavratsiya-zubov
-- - sedatsiya-i-narkoz
-- - shiniruyushchij-byugel
-- - skolko-delayut-koronku
-- - skolko-stoit-koronka-nn
-- - snyatie-ottiska-alginatnoy-massoy
-- - sovremennye-abatmenty
-- - sravnenie-sistem-implantov
-- - srok-sluzhby-protezov
-- - stress-i-zuby
-- - syonmyj-protez-na-odin-zub (запросы: съемный протез на один зуб, протез бабочка на 1 зуб)
-- - teleskopicheskie-koronki
-- - temneet-zub-pod-koronkoj
-- - temp-bond-v-stomatologii
-- - tsifrovaya-ulibka-dsd
-- - uhod-za-byugelnym-protezom
-- - uhod-za-mostom
-- - uhod-za-zubnymi-implantami
-- - uhod-za-zubnymi-protezami
-- - ukhod-za-koronkami-iz-dioksida-cirkoniya
-- - ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii
-- - verhnij-protez
-- - verhnij-protez (переработан под кластер «протез на верхнюю челюсть» 3239 / съемный протез на верхнюю челюсть 1345)
-- - vidy-prikusnykh-shablonov
-- - viniry-bez-priparerovaniya
-- - viniry-ili-koronki
-- - viniry-na-perednie-zuby
-- - viniry-na-perednie-zuby (цены убраны из таблицы и блока «сколько стоят» — SEO.md №1.1)
-- - visochno-nizhnechelyustnoj-sustav-protezirovanie
-- - vnutrirotovoe-skanirovanie
-- - vospalenie-desny-nad-koronkoj
-- - vospalenie-desny-pod-koronkoj
-- - vosstanovlenie-odnogo-zuba-metody
-- - vosstanovlenie-zuba-na-shtifte
-- - vremennye-koronki-zachem-nuzhny
-- - vremennyj-protez-skolko-nosit
-- - vypala-koronka-chto-delat
-- - zamena-koronki
-- - zapah-iz-pod-koronki
-- - zdorove-polosti-rta-vliyanie-na-organizm
-- - zolotye-koronki-na-zhevatelnye-zuby
-- - zubnoj-kamen
-- - zubnye-protezy-posle-60
-- - zub-pod-koronkoj-gniet
-- - zub-udalyat-ili-vosstanavlivat
-- - zuby-posle-50
-- - Все три — в `/data/drafts/`, ждут одобрения через /drafts
+- acryfree-vs-quattrotii
+- ai-v-ortopedicheskoy-stomatologii
+- allergiya-na-metall-stomatologiya
+- allergiya-na-protez
+- all-on-4
+- all-on-6
+- alternativy-syomnym-protezam
+- antikoagulyanty-i-stomatologiya
+- artrit-visochno-nizhnechelyustnogo-sustava
+- atrofiya-kostnoj-tkani-chelyusti
+- bezmetallovye-koronki
+- bisfosfonaty-i-osteonekroz
+- bolit-chelyust-posle-protezirovaniya
+- bolit-zub-pod-koronkoj
+- bolno-li-menyat-koronki
+- bolno-li-obachivat-zuby
+- bolno-li-stavit-koronku
+- bruksizm-i-protezirovanie
+- byugelnyj-ili-semnyj-protez
+- byugelnyj-protez-klammery
+- byugelnyj-protez-na-zamkah
+- care-crown
+- care-denture
+- ceny-na-protezirovanie-v-nn
+- chem-chistit-zubnye-protezy
+- chem-krepit-semnye-protezy
+- cherez-skolko-est-posle-implantatsii
+- chto-takoe-prototipy-u-stomatologa
+- ciprovoy-dizayn-ulybki
+- cirkonievye-koronki-cena-nn
+- cirkonievye-koronki-cena-nn (переработан под «циркониевая коронка на жевательный зуб» 41 / циркониевые или металлокерамика на жевательные 17; цены убраны)
+- cirkonij-ili-metallokeramika
+- desna-opuhla-vokrug-koronki
+- desna-otoshla-ot-koronki
+- dezinfektsiya-proteza
+- diabet-i-zuby
+- e-max-koronki-plyusy-minusy
+- etapy-protezirovaniya-zubov
+- first-visit
+- geneticheskoe-testirovanie-apoe4-stomatologiya
+- gnotologiya-diagnostika-lechenie
+- golovnaya-bol-pri-vnchs
+- ii-dlya-planirovaniya-implantatsii
+- immediat-protezy-chto-eto-pokazaniya
+- implantatsiya-pri-kurenii
+- implantatsiya-pri-parodontite
+- implantatsiya-pri-saharnom-diabete
+- implant-ili-protez
+- implanty-protivopokazaniya
+- irrigator-dlya-polosti-rta
+- kak-chistit-semnye-protezy
+- kakie-semnye-protezy-luchshe (запросы: какие съемные протезы лучше 865, съемные зубные протезы какие лучше 397 и др. — кластер ~4100)
+- kak-pravilno-est-s-protezami
+- kak-privyknut-k-semnym-protezam
+- kak-snimat-semnye-protezy
+- kak-vybrat-material-koronki
+- kak-vybrat-stomatologiyu-dlya-protezirovaniya
+- kalcij-dlya-zubov-vzroslym
+- kandidoz-polosti-rta-protezy
+- kappy-ot-bruksizma
+- keramicheskaya-desna (запросы: керамическая десна 23, керамическая десна на коронке 4)
+- keramicheskie-vkladki-vs-koronki
+- klammera-dlya-byugelnykh-protezov
+- klkt-pered-protezirovaniem
+- kofe-i-koronki
+- kompozitnye-vkladki
+- koren-zuba-pod-koronkoj (запросы: корень зуба под коронкой 212, киста на корне под коронкой 36, воспаление корня 34 и др. — кластер ~430)
+- koronka-cirkonievaya-otzyvy
+- koronka-ili-most
+- koronka-iz-dioksida-cirkoniya
+- koronka-metallokeramicheskaya-otzyvy
+- koronka-na-implant
+- koronka-na-zhivoj-zub
+- koronka-shataetsya-chto-delat
+- koronka-skololas-chto-delat
+- koronka-za-odin-vizit-cersec
+- kostnaya-plastika-pered-implantatsiej
+- krem-fiksatsii-protezov
+- krem-fiksatsii-protezov (добавлен FAQ: чем закрепить съемный протез 3)
+- kserostomiya-i-protezirovanie
+- kultevaya-vkladka (запросы: культевая вкладка, что такое культевая вкладка, вкладка под коронку)
+- kurenie-posle-protezirovaniya
+- lazernaya-stomatologiya
+- lyuminary-na-zuby
+- mikroprotezirovanie
+- mini-implanty-dlya-protezov
+- most-na-3-zuba
+- most-na-implantah
+- mostovidnyj-protez-vidy-plyusy-minusy
+- mozhno-li-spat-s-protezom (запросы: можно ли спать с протезом 21, с зубными протезами 8, с протезами съемными 6 — кластер ~35)
+- mrt-s-koronkami
+- naraschivanie-zuba
+- natirayet-desnu-protezom
+- nejlon-acrifree-akril-kakoj-luchshe
+- nepriyatnyj-zapah-ot-proteza
+- neyroseti-dlya-analiza-snimkov
+- nizhnij-protez
+- ogolilas-shejka-zuba-pod-koronkoj
+- ortodontiya-dlya-vzroslyh
+- oslozhneniya-posle-implantatsii
+- osteoporoz-i-implantatsiya
+- otbelivanie-bez-chuvstvitelnosti
+- otbelivanie-do-ili-posle-protezirovaniya
+- otbelivanie-koronok
+- otbelivanie-zubov-zoom-4
+- parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu
+- parodontit-lechenie
+- patologicheskaya-stiraemost-zubov-lechenie
+- pediatricheskaya-stomatologiya
+- perebazirovka-proteza
+- periimplantit
+- plastmassovaya-koronka-cena
+- podgotovka-k-protezirovaniyu
+- polnaya-adenitya-protezirovanie
+- posle-ustanovki-koronki
+- posle-ustanovki-koronki (обновлён title: можно ли есть после коронки 26, после установки коронки 15)
+- prikusnoy-shablon-na-zhestkom-bazise
+- prikus-posle-protezirovaniya (запросы: изменился прикус после коронки, завышенный прикус после протезирования, прикус после протеза)
+- protezirovanie-bez-implantov
+- protezirovanie-bez-obtochki-sosednikh-zubov
+- protezirovanie-dlya-pozhilykh
+- protezirovanie-na-implantah
+- protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie
+- protezirovanie-perednih-zubov
+- protezirovanie-posle-udaleniya-zuba-mudrosti
+- protezirovanie-pri-beremennosti
+- protezirovanie-pri-parodontite
+- protezirovanie-pri-parodontoze
+- protezirovanie-pri-saharnom-diabete
+- protezirovanie-zubov-pri-parodontoze
+- protezirovanie-zubov-u-kuryashchih
+- protez-ploho-derzhitsya
+- protez-tresnul
+- protezy-bez-neba
+- psikhologicheskaya-adaptatsiya
+- quattrotii-protezy
+- remont-zubnogo-proteza
+- restavratsiya-zubov
+- sedatsiya-i-narkoz
+- shiniruyushchij-byugel
+- skolko-delayut-koronku
+- skolko-stoit-koronka-nn
+- snyatie-ottiska-alginatnoy-massoy
+- sovremennye-abatmenty
+- sravnenie-sistem-implantov
+- srok-sluzhby-protezov
+- stress-i-zuby
+- syonmyj-protez-na-odin-zub (запросы: съемный протез на один зуб, протез бабочка на 1 зуб)
+- teleskopicheskie-koronki
+- temneet-zub-pod-koronkoj
+- temp-bond-v-stomatologii
+- tsifrovaya-ulibka-dsd
+- uhod-za-byugelnym-protezom
+- uhod-za-mostom
+- uhod-za-zubnymi-implantami
+- uhod-za-zubnymi-protezami
+- ukhod-za-koronkami-iz-dioksida-cirkoniya
+- ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii
+- verhnij-protez
+- verhnij-protez (переработан под кластер «протез на верхнюю челюсть» 3239 / съемный протез на верхнюю челюсть 1345)
+- vidy-prikusnykh-shablonov
+- viniry-bez-priparerovaniya
+- viniry-ili-koronki
+- viniry-na-perednie-zuby
+- viniry-na-perednie-zuby (цены убраны из таблицы и блока «сколько стоят» — SEO.md №1.1)
+- visochno-nizhnechelyustnoj-sustav-protezirovanie
+- vnutrirotovoe-skanirovanie
+- vospalenie-desny-nad-koronkoj
+- vospalenie-desny-pod-koronkoj
+- vosstanovlenie-odnogo-zuba-metody
+- vosstanovlenie-zuba-na-shtifte
+- vremennye-koronki-zachem-nuzhny
+- vremennyj-protez-skolko-nosit
+- vypala-koronka-chto-delat
+- zamena-koronki
+- zapah-iz-pod-koronki
+- zdorove-polosti-rta-vliyanie-na-organizm
+- zolotye-koronki-na-zhevatelnye-zuby
+- zubnoj-kamen
+- zubnye-protezy-posle-60
+- zub-pod-koronkoj-gniet
+- zub-udalyat-ili-vosstanavlivat
+- zuby-posle-50
 - koronka-na-peredniy-zub-kak-vybrat
 - podgotovka-k-ustanovke-koronki-etapy-materialy-i-sroki
 - vidy-prikusov-i-ikh-vliyanie-na-protezirovanie
