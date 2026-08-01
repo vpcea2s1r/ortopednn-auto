@@ -21,11 +21,6 @@ import socials from '../../data/socials.json';
   socials={socials}
 >
   <Navbar />
-  <nav class="breadcrumbs" aria-label="Хлебные крошки">
-    <div class="container">
-      <a href="/">Главная</a>
-    </div>
-  </nav>
   <main id="main">
     <HeroSection doctor={doctor}/>
     <section class="ai-intro">
@@ -64,14 +59,6 @@ import socials from '../../data/socials.json';
   </footer>
 </BaseLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://ortopednn.ru/" }
-  ]
-})} />
-
 <style>
 .visually-hidden {
   position: absolute;
@@ -83,18 +70,6 @@ import socials from '../../data/socials.json';
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-.breadcrumbs {
-  padding: var(--space-sm) 0;
-  background: white;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.breadcrumbs a {
-  color: var(--color-primary);
-  font-size: var(--text-sm);
-  font-weight: 500;
 }
 
 .site-footer {

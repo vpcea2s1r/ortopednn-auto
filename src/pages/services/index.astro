@@ -30,9 +30,9 @@ const socials = [];
         <p class="services-intro">Перед протезированием провожу полную диагностику: оцениваю состояние опорных зубов, слизистой, прикуса. Если нужен пародонтолог или терапевт — направляю к проверенным специалистам. Моя задача — чтобы конструкция служила годы, а не создавала новых проблем.</p>
         <p class="services-intro">Ниже — каталог услуг с ценами. Если не нашли что-то — позвоните, уточню.</p>
         
-        {categories.map(cat => (
-          <div class="services-category">
-            <h2 class="category-title">{cat.name}</h2>
+        {categories.map((cat, i) => (
+          <details class="services-category" open={i === 0}>
+            <summary class="category-title">{cat.name}</summary>
             <div class="services-grid">
               {cat.items.map(item => (
                 <a href={`/services/${item.slug}`} class="service-card">
@@ -41,7 +41,7 @@ const socials = [];
                 </a>
               ))}
             </div>
-          </div>
+          </details>
         ))}
         
         <div class="services-cta">
@@ -74,14 +74,33 @@ const socials = [];
 }
 
 .services-category {
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-lg);
 }
 
 .category-title {
   font-size: var(--text-2xl);
   margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-xs);
-  border-bottom: 2px solid var(--color-primary);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  user-select: none;
+  border-bottom: none;
+  list-style: none;
+}
+
+.category-title::-webkit-details-marker {
+  display: none;
+}
+
+.category-title::after {
+  content: '▾';
+  float: right;
+  transition: transform var(--transition-fast);
+}
+
+details[open] .category-title::after {
+  transform: rotate(180deg);
 }
 
 .services-intro {
