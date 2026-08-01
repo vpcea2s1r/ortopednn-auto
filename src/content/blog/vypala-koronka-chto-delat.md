@@ -73,8 +73,7 @@ category: koronki
 <h3>Сколько стоит поставить коронку обратно?</h3>
 <p>Только фиксация — от 1 000 до 3 000 рублей. Если нужно новое лечение — стоимость выше.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Выпала коронка? Не пытайтесь приклеить её сами. </p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

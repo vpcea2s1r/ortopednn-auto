@@ -73,8 +73,6 @@ desc: "Когда эмаль стирается быстрее нормы: пр�
 
       <p>Чем раньше обратиться, тем меньше потери тканей и проще лечение.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Запишитесь на консультацию к стоматологу-ортопеду.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

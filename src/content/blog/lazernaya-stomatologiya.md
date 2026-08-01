@@ -42,8 +42,7 @@ category: diagnostika
   </tbody>
 </table>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Запишитесь на лазерную дезинфекцию десен или консультацию по лазерному лечению кариеса.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

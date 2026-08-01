@@ -47,8 +47,6 @@ category: semnye-protezy
 
       <p>Если через месяц натирание не прошло — протез требует перебазировки (коррекции внутренней поверхности). Это стандартная процедура, она делается за одно посещение.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Протез натирает, не даёт покоя? Приходите на коррекцию. Это быстро и не больно.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

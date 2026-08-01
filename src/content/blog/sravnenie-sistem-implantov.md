@@ -80,8 +80,7 @@ category: implanty
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Нужна консультация по выбору системы имплантов? Запишитесь на приём — подберём вариант под ваш бюджет и клиническую ситуацию.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

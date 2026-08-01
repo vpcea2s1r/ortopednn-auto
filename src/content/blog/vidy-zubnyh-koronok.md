@@ -80,8 +80,7 @@ category: koronki
 <h3>Сколько служат зубные коронки?</h3>
 <p>Металлокерамика и E-max — 10–15 лет, цирконий и металл — 15–20 лет, металлопластмасса — 3–5 лет, временная пластмасса — до 1 года. Срок зависит от гигиены и нагрузки.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Нужна коронка, но не знаете, какой материал выбрать? Проконсультируем и подберём вариант.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

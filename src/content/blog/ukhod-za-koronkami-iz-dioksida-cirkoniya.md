@@ -52,8 +52,7 @@ category: koronki
 
 <p>При правильном уходе циркониевая коронка служит 15–20 лет. Без ухода — может потребовать замены уже через 5–7 лет из-за воспаления десны или вторичного кариеса зуба под коронкой.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, catId)} />
+
 <div class="cta">
 <p>У вас стоит циркониевая коронка и десна вокруг неё воспалилась? Запишитесь на осмотр.</p>
 <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

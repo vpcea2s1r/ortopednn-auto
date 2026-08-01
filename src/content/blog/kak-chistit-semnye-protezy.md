@@ -80,8 +80,6 @@ category: semnye-protezy
       <h3>Сколько служит съёмный протез?</h3>
       <p>В среднем 5 лет для акрилового протеза. При хорошем уходе — до 7 лет. После этого атрофия кости и износ материала ухудшают фиксацию.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Протез натирает или плохо держится?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

@@ -67,8 +67,6 @@ category: semnye-protezy
       <p>According to prosthodontic literature, the average lifespan of acrylic dentures is 5-7 years. After this period, bone resorption and material degradation significantly reduce fit and function.</p>
       <p class="translation">Средний срок службы акрилового протеза — 5-7 лет. После этого атрофия кости и износ материала значительно снижают качество.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Есть вопросы по уходу за протезом? Позвоните — отвечу.</p>
         <a href="tel:+79202537317" class="btn">Позвонить</a>

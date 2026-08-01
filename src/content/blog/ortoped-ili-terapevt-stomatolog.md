@@ -86,8 +86,7 @@ category: diagnostika
 <h3>С какого врача начать, если не знаю, что со зубами?</h3>
 <p>С терапевта — он осмотрит, вылечит то, что лечится, и направит к ортопеду, если нужен протез. Это стандартный путь.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Нужна консультация ортопеда по протезированию? Запишитесь — разберём вашу ситуацию.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

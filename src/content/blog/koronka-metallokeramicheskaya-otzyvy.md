@@ -99,8 +99,7 @@ category: koronki
 
       <p class="source">Источники: Pjetursson B.E. et al. «All-ceramic or metal-ceramic tooth-supported FDPs: a systematic review», Journal of Dental Research, 2020; Семенюк В.М. «Металлокерамика в стоматологии: современный взгляд», Стоматологический вестник, 2021; Sailer I. et al. «Survival and complications of metal-ceramic vs. all-ceramic crowns», Clinical Oral Implants Research, 2020.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Сомневаетесь между металлокерамикой и цирконием? Приходите — посмотрим вашу ситуацию и подберём вариант.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

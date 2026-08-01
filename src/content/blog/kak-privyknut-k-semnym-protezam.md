@@ -71,8 +71,6 @@ category: semnye-protezy
         <li>Чистить абразивной пастой или щёткой с жёсткой щетиной</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Адаптация к протезу — временный этап. В Нижнем Новгороде я помогу пройти его с минимальным дискомфортом.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

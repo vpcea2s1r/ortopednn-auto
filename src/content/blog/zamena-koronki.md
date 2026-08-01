@@ -64,8 +64,7 @@ category: koronki
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Старая коронка потрескалась или болит зуб под ней? Приходите — разберёмся и заменим.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

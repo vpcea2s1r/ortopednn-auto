@@ -97,8 +97,7 @@ category: mosty
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Не хотите обтачивать здоровые зубы? Приходите на консультацию — подберём метод, который сохранит ваши зубы.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

@@ -84,8 +84,7 @@ desc: "Можно ли протезировать зубы при сахарно
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Есть диабет, но нужны зубы? Приходите — оценим риски и подберём вариант.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

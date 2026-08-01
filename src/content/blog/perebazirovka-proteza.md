@@ -85,8 +85,7 @@ category: semnye-protezy
       <h2>Источники</h2>
       <p>По данным <em>Journal of Prosthodontics</em> (2022), регулярная перебазировка съёмных протезов снижает риск травматизации слизистой на 40% и улучшает качество жизни пациентов с полной адентией. Исследование <em>Clinical Oral Investigations</em> (2021) подтверждает, что своевременная коррекция протеза замедляет атрофию костной ткани.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Протез болтается или натирает? Приходите — сделаем перебазировку или решим, что лучше.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

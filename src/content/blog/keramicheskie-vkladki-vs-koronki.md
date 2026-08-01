@@ -110,8 +110,6 @@ category: koronki
         <li>Противопоказания для коронки: короткая клиническая коронка (требуется хирургическое удлинение), аллергия на материалы каркаса</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Запишитесь на консультацию — определим, что подходит вашему зубу: вкладка или коронка.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

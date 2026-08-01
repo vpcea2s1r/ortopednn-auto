@@ -82,8 +82,7 @@ category: koronki
 <li><strong>Проверьте лабораторию.</strong> Хорошие лаборатории НН работают с цифровыми протоколами. Это гарантия точности прилегания.</li>
 </ul>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, catId)} />
+
 <div class="cta">
 <p>Чтобы узнать точную стоимость коронки в вашем случае, запишитесь на консультацию.</p>
 <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

@@ -104,8 +104,7 @@ desc: "Как подготовиться к консультации и что �
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Есть вопросы? Позвоните — отвечу на всё.</p>
         <a href="tel:+79202537317" class="btn">Позвонить</a>

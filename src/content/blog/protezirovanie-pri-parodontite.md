@@ -56,8 +56,7 @@ category: parodontologiya
 
       <p>Пародонтит не приговор для протезирования. При правильном лечении и уходе протезы служат 5–10 лет и дольше.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Нужна консультация по протезированию при пародонтите?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

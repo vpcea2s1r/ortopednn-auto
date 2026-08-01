@@ -91,8 +91,7 @@ category: semnye-protezy
 <h3>Можно ли сделать протез, который не треснет?</h3>
 <p>Нейлоновые (AcryFree, QuattroTi) протезы более эластичны и реже трескаются. Но они хуже фиксируются и сложнее в ремонте.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Треснул протез? Не клейте сами — профессиональный ремонт надёжнее и продлевает срок службы протеза.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

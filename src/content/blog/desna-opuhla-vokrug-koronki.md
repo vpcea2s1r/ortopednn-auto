@@ -96,8 +96,7 @@ category: koronki
 <h3>Нужно ли снимать коронку?</h3>
 <p>В 70% случаев — нет. Достаточно убрать причину воспаления. Коронку снимают только при кариесе под ней или аллергии на материал.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Опухла десна вокруг коронки? Не ждите, пока пройдёт само. </p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

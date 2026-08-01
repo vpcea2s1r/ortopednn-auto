@@ -57,8 +57,6 @@ category: koronki
 
 <p>E-max — золотой стандарт для эстетических реставраций передних зубов. Для жевательных зубов многие врачи предпочитают цирконий из-за большей прочности.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, catId)} />
 <div class="cta">
 <p>Какая коронка подходит вашему случаю?</p>
 <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

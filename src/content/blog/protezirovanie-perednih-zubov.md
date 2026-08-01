@@ -84,8 +84,7 @@ desc: "Протезирование передних зубов: какие ко
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug)} />
+
       <div class="cta">
         <p>Хотите красивую улыбку? Приходите — подберём материал и цвет коронки под ваши зубы.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

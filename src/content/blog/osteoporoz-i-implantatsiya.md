@@ -48,8 +48,7 @@ desc: "Можно ли ставить импланты при остеопоро
         <li>После имплантации — регулярные осмотры каждые 6 месяцев</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Нужна консультация по протезированию при остеопорозе?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

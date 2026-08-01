@@ -51,8 +51,7 @@ desc: "Как бисфосфонаты влияют на челюстную ко
         <li>Гигиена полости рта на фоне бисфосфонатов критически важна</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Принимаете бисфосфонаты и планируете протезирование?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

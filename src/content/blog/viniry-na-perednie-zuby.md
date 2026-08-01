@@ -61,8 +61,6 @@ category: koronki
 
 <p>Стоимость виниров на передние зубы зависит от материала, количества единиц и сложности случая. Точную цену врач называет после осмотра и диагностики — запишитесь на консультацию в клинике Никитиной М.Г. в Нижнем Новгороде.</p>
 
-<RelatedArticles articles={getRelatedArticles('viniry-na-perednie-zuby', 'koronki')} />
-<RelatedServices services={getRelatedServices('viniry-na-perednie-zuby', 4)} />
 
 <div class="faq">
 <div class="faq-item">

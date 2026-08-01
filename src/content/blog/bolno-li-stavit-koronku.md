@@ -125,8 +125,6 @@ category: koronki
       <h3>Больно ли ставить коронки детям?</h3>
       <p>Тем же алгоритмом: анестезия → обточка. Для детей используют детские дозировки и более короткие иглы.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Боитесь боли? Запишитесь на консультацию — я расскажу, как сделаем процедуру комфортной.</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

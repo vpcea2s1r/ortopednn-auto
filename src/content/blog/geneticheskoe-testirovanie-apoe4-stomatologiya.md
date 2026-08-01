@@ -59,8 +59,6 @@ desc: "Ген APOE4 связан с риском пародонтита и ос�
       <li><strong>Можно ли изменить APOE-статус?</strong> Нет, генетический профиль не меняется в течение жизни. Но можно скорректировать образ жизни и лечение с учетом этого фактора риска.</li>
       </ol>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Есть вопросы? Позвоните — отвечу на всё.</p>
         <a href="tel:+79202537317" class="btn">Позвонить</a>

@@ -91,8 +91,7 @@ desc: "Приём разжижающих кровь препаратов и ст
         </table>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Принимаете препараты для разжижения крови и планируете протезирование?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

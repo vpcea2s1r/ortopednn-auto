@@ -81,8 +81,7 @@ category: koronki
 
       <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, catId)} />
+
       <div class="cta">
         <p>Зуб разрушен? Возможно, его можно сохранить на штифте. Приходите — оценю состояние.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

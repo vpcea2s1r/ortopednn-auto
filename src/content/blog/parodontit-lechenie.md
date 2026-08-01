@@ -58,8 +58,6 @@ category: parodontologiya
 <li>Шинирование подвижного зуба (Ribbond) — от 3 500 ₽</li>
 </ul>
 
-<RelatedArticles articles={getRelatedArticles('parodontit-lechenie', 'diagnostika')} />
-<RelatedServices services={getRelatedServices('parodontit-lechenie', 4)} />
 
 <div class="faq">
 <div class="faq-item">

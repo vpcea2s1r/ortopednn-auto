@@ -72,8 +72,7 @@ category: semnye-protezy
 <h3>Можно ли есть горячую еду сразу после нанесения крема?</h3>
 <p>Нежелательно. Горячая пища размягчает крем в первые минуты. Подождите 2–3 минуты после надевания протеза, чтобы фиксация «схватилась».</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Протез плохо держится? Возможно, нужна коррекция или новый протез. Запишитесь на осмотр.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

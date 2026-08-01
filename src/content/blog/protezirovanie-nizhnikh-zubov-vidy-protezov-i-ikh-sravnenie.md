@@ -82,5 +82,4 @@ category: semnye-protezy
 <h2>Источники</h2>
 <p>Исследование <em>Journal of Oral Rehabilitation</em> (2022) показывает, что пациенты с протезами на имплантах нижней челюсти оценивают качество жизни на 40% выше, чем со съёмными протезами. <em>Clinical Oral Implants Research</em> (2023) подтверждает эффективность методики All-on-4 для нижней челюсти с выживаемостью имплантов 96% через 5 лет.</p>
       </div>
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+

@@ -82,8 +82,7 @@ category: ai
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Диагностика с точностью до миллиметра. Приходите — проверим зубы на современном оборудовании.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

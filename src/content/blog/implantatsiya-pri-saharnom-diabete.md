@@ -78,8 +78,6 @@ category: implanty
 <li><a href="/articles/kostnaya-plastika-pered-implantatsiej">Костная пластика перед имплантацией</a> — показания и методики GBR</li>
 </ul>
 
-<RelatedArticles articles={getRelatedArticles('implantatsiya-pri-saharnom-diabete', 'implanty')} />
-<RelatedServices services={getRelatedServices('implantatsiya-pri-saharnom-diabete', 6)} />
 
 <div class="faq">
 <div class="faq-item">

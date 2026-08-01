@@ -57,8 +57,6 @@ category: byugelnye-protezy
 
       <p>Каркас — 10+ лет. Замки требуют замены каждые 5-7 лет. Раз в год — осмотр и активация замков (подтяжка). При поломке одного замка его можно заменить без замены всего протеза.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Нужна консультация по бюгельному протезированию?</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

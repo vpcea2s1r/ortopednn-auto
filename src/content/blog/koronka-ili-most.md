@@ -90,8 +90,7 @@ category: mosty
 
       <p class="source">Источники: Tan W.C. et al. «Systematic review of the survival of fixed partial dentures», European Journal of Oral Sciences, 2021; Pjetursson B.E. et al. «A systematic review of the survival and complication rates of FPDs», Clinical Oral Implants Research, 2020; Арутюнов С.Д. «Ортопедическая стоматология», Москва, 2023.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Не знаете, что выбрать — коронку на импланте или мост? Приходите на консультацию, разберёмся.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

@@ -81,8 +81,7 @@ desc: "Восстановление одного зуба: сравнение в
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Не знаете, какой метод подходит вашему зубу? Приходите на консультацию — определим вариант за один приём.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

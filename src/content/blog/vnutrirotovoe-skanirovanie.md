@@ -81,8 +81,7 @@ category: diagnostika
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Хотите попробовать цифровой слепок? Приходите — покажем, как это работает.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

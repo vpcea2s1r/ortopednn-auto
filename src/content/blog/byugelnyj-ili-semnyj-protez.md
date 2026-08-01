@@ -61,8 +61,6 @@ category: byugelnye-protezy
 
       <p>Окончательный выбор делает врач после осмотра: оценивается количество и состояние опорных зубов, степень атрофии кости, прикус, бюджет и пожелания пациента.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Нужна консультация — какой протез выбрать?</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

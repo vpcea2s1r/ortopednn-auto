@@ -70,8 +70,6 @@ category: koronki
       </ul>
       <p>Regular maintenance and annual check-ups can extend these estimates significantly.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Когда последний раз вы были на осмотре?</p>
         <a href="tel:+79202537317" class="btn">Записаться</a>

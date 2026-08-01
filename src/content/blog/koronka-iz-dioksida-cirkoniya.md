@@ -101,8 +101,6 @@ category: koronki
         <li>Вы хотите максимально естественный вид без серой полосы</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Циркониевые коронки — долгосрочное вложение в здоровье зубов. Запишитесь на консультацию, чтобы понять, подходит ли вам этот материал.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

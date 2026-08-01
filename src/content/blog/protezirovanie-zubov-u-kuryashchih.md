@@ -92,8 +92,7 @@ desc: "Протезирование зубов у курящих: как кур�
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug)} />
+
       <div class="cta">
         <p>Курите, но нужны зубы? Приходите — подберём вариант с минимальными рисками.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

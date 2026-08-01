@@ -71,8 +71,7 @@ desc: "Как выбрать стоматологию для протезиро�
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Протезирование — решение на годы. Не ошибитесь с выбором с первого раза. Приходите на консультацию в Нижнем Новгороде — посмотрим на вашу ситуацию, расскажем о вариантах, покажем работы.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

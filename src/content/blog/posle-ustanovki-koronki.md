@@ -102,8 +102,6 @@ category: koronki
       <h3>Через сколько можно есть после временной коронки?</h3>
       <p>Временный цемент слабее — 2 часа строго без еды, потом только мягкое. Твёрдое — через 24 часа.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Поставили коронку и не уверены, всё ли в порядке?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

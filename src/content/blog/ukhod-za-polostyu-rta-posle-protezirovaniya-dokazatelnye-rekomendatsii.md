@@ -35,8 +35,6 @@ desc: "Срок службы протезов напрямую зависит о
       <li><strong>Что делать, если коронка потемнела?</strong> Обратиться к врачу для полировки. Причина обычно во внешнем окрашивании, которое удаляется за один визит.</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Есть вопросы? Позвоните — отвечу на всё.</p>
         <a href="tel:+79202537317" class="btn">Позвонить</a>

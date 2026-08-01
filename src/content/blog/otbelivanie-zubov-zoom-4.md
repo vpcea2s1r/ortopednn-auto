@@ -60,8 +60,6 @@ category: diagnostika
 <h2>Уход после отбеливания</h2>
 <p>Первые 48 часов — «белая диета»: только белые продукты (рис, курица, рыба, картофель, бананы, творог). Никаких красящих напитков. Далее — использование отбеливающей пасты 1 раз в день, поддерживающие капы 1 раз в месяц. Результат держится 12–18 месяцев при соблюдении рекомендаций.</p>
 
-<RelatedArticles articles={getRelatedArticles('otbelivanie-zubov-zoom-4', 'diagnostika')} />
-<RelatedServices services={getRelatedServices('otbelivanie-zubov-zoom-4', 4)} />
 
 <div class="faq">
 <div class="faq-item">

@@ -98,8 +98,7 @@ desc: "Можно ли протезировать зубы при пародон
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug)} />
+
       <div class="cta">
         <p>Пародонтоз — не приговор для зубов. Приходите на консультацию — оценим состояние и подберём вариант.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

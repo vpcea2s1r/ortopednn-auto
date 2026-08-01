@@ -90,8 +90,6 @@ category: koronki
       <h3>Если коронка стоит давно, а десна воспалилась?</h3>
       <p>Чаще всего — скопился налёт. Пройдите гигиеническую чистку, купите ирригатор. Если не помогает — возможна трещина в коронке или кариес под ней.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Воспалилась десна под коронкой? Не ждите, пока пройдёт само.</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

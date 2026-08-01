@@ -64,8 +64,6 @@ category: implanty
         <li>Кровотечение, не останавливающееся через 3 часа</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Беспокоит состояние импланта? Запишитесь на осмотр.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

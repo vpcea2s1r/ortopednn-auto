@@ -93,8 +93,7 @@ category: implanty
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Курите, но нужны импланты? Приходите на консультацию — оценим риски и подберём оптимальную тактику.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

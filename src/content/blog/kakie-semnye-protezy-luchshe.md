@@ -84,8 +84,7 @@ category: semnye-protezy
 <h3>Сколько служат съёмные протезы?</h3>
 <p>Акрил и AcryFree — 5–7 лет, нейлон — 3–4 года, QuattroTi — около 5 лет, бюгель — 7–10 лет. Реальный срок зависит от ухода и атрофии кости: со временем протез «проседает» и требует перебазировки.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Не знаете, какой съёмный протез подойдёт вам? Приходите на консультацию — разберём варианты по вашей ситуации.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

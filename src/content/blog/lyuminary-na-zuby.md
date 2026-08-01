@@ -56,8 +56,6 @@ category: koronki
 <h2>Цена люминиров в Нижнем Новгороде</h2>
 <p>Стоимость одного люминира в клинике Никитиной М.Г. — от 27 000 ₽ за единицу. В стоимость включены: слепок, цифровое планирование, изготовление в лаборатории Cerinate (США), установка и гарантия 12 месяцев. Полный комплект на 6 верхних зубов — от 145 000 ₽.</p>
 
-<RelatedArticles articles={getRelatedArticles('lyuminary-na-zuby', 'koronki')} />
-<RelatedServices services={getRelatedServices('lyuminary-na-zuby', 3)} />
 
 <div class="faq">
 <div class="faq-item">

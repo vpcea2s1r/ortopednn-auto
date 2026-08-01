@@ -84,8 +84,7 @@ category: semnye-protezy
 
       <p><em>Автор: Никитина М.Г., стоматолог-ортопед. Статья носит информационный характер, обратитесь к врачу для консультации.</em></p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, catId)} />
+
       <div class="cta">
         <p>Не знаете, чем чистить протез? Спросите меня на приёме — покажу и расскажу.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

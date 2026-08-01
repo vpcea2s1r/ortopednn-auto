@@ -75,8 +75,7 @@ category: koronki
 <h3>Может ли коронка выпасть из-за рецессии?</h3>
 <p>Может. Если десна отошла, цемент между коронкой и зубом вымывается — фиксация ослабевает, коронка шатается.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Десна отошла от коронки? Не ждите, пока начнётся кариес.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

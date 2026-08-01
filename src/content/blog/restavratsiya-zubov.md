@@ -64,8 +64,6 @@ category: koronki
 <li>Винир керамический — от 16 000 ₽</li>
 </ul>
 
-<RelatedArticles articles={getRelatedArticles('restavratsiya-zubov', 'koronki')} />
-<RelatedServices services={getRelatedServices('restavratsiya-zubov', 3)} />
 
 <div class="faq">
 <div class="faq-item">

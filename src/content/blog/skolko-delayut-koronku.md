@@ -86,8 +86,7 @@ category: koronki
 
       <p class="source">Источники: Beuer F. et al. «CAD/CAM in dentistry: a review», Journal of the American Dental Association, 2021; Лебеденко И.Ю., Арутюнов С.Д. «Зуботехническое материаловедение», 2022; Sailer I. et al. «All-ceramic or metal-ceramic tooth-supported FDPs», Journal of Dental Research, 2020.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Нужна коронка? Приходите — обточим, поставим временную, закажем постоянную.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

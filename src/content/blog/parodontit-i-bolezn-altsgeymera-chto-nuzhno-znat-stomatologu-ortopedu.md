@@ -40,8 +40,6 @@ desc: "Подтвержденная связь между пародонтито
       <li><strong>Как часто посещать стоматолога при риске болезни Альцгеймера?</strong> Рекомендуются визиты не реже двух раз в год с обязательным мониторингом пародонта и протезных конструкций.</li>
       </ol>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Есть вопросы? Позвоните — отвечу на всё.</p>
         <a href="tel:+79202537317" class="btn">Позвонить</a>

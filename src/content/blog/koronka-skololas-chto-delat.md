@@ -92,8 +92,7 @@ category: koronki
 <h3>Что делать, если скол случился ночью?</h3>
 <p>До утра — не есть твёрдую пищу, не трогать языком, можно приложить холод, если есть отёк.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Скололась коронка? Не ждите — чем раньше почините, тем дешевле.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

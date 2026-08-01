@@ -60,8 +60,7 @@ desc: "Почему образуется зубной камень, чем он 
 
       <p>Зубной камень — не косметический дефект, а причина потери зубов. Одна профессиональная чистка в полгода стоит меньше, чем лечение пародонтита.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Давно не были на профессиональной чистке?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

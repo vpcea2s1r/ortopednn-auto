@@ -81,8 +81,7 @@ category: koronki
 <h3>Что будет, если не лечить гниющий зуб под коронкой?</h3>
 <p>Инфекция перейдёт на кость — разовьётся периодонтит, затем киста или абсцесс. Потеря зуба — вопрос времени.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Запах или потемнение под коронкой? Не ждите, пока зуб разрушится. </p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

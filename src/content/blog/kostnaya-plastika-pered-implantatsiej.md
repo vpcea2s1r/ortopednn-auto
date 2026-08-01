@@ -78,8 +78,7 @@ category: implanty
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Хотите поставить имплант, но не знаете, нужна ли костная пластика? Приходите на консультацию — сделаем КТ и составим план.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

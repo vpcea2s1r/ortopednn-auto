@@ -79,8 +79,7 @@ category: koronki
 
       <p class="source">Источники: Манапов Р.А. «Современные временные коронки: обзор материалов и методов», Стоматология, 2022; Burns D.R. et al. «Provisional restorations in fixed prosthodontics», Journal of Prosthetic Dentistry, 2020; ГОСТ Р 56924-2016 «Материалы стоматологические полимерные восстановительные».</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Нужна временная или постоянная коронка? Разберём варианты по цене и качеству.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

@@ -35,8 +35,6 @@ category: koronki
 
       <p>Запах после фиксации новой коронки в первые дни — норма. Это запах стоматологических материалов, он проходит за 2–3 дня. Если запах держится дольше недели — покажитесь врачу.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Пахнет из-под коронки? Не откладывайте — чем раньше проверить, тем больше шансов сохранить коронку.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

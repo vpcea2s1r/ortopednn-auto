@@ -60,8 +60,7 @@ desc: "Стресс разрушает зубы: бруксизм, кариес,
       </ul>
       <p>Важно: при активном бруксизме сначала изготавливают капу, а потом протезируют. Иначе протезы сотрутся или сломаются.</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Стираются зубы от стресса? Помогу подобрать правильное лечение.</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

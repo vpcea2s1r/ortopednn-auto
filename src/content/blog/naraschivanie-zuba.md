@@ -64,8 +64,6 @@ category: koronki
         <li>Зуб разрушен, но корень сохранён</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
       <div class="cta">
         <p>Восстановить зуб, а не удалять — лучший сценарий. Запишитесь на осмотр, чтобы оценить состояние зуба и выбрать метод.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

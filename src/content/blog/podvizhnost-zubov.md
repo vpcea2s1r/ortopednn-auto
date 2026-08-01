@@ -88,8 +88,7 @@ category: parodontologiya
 <h3>Можно ли протезировать подвижные зубы?</h3>
 <p>Непосредственно — нет. Сначала зубы лечат и шинируют, затем протезируют. Подробнее — в статье о протезировании при пародонтите.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Зуб начал шататься? Запишитесь на осмотр — на ранней стадии его можно сохранить.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

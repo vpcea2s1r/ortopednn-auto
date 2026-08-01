@@ -70,8 +70,7 @@ category: ai
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, catId)} />
+
       <div class="cta">
         <p>Нужна консультация по имплантации? Приходите — оценим ситуацию и подберём оптимальный план.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

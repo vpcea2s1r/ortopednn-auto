@@ -52,8 +52,7 @@ desc: "Аллергическая реакция на металл в корон
         <li>Можно сделать аллергопробу до фиксации — врач наклеит небольшой образец сплава на слизистую</li>
       </ul>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Подозреваете аллергию на коронку?</p>
         <a href="tel:+79202537317" class="btn">Позвонить: +7 (920) 253-73-17</a>

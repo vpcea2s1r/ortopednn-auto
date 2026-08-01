@@ -95,8 +95,7 @@ category: semnye-protezy
 
       <p class="source">Источники: Johnson G.H. et al. «Disinfection of removable dental prostheses: a systematic review», Journal of Prosthodontics, 2021; Фадеев Р.А. «Гигиена съёмных протезов», Стоматология, 2022; ГОСТ Р 57226-2016 «Средства гигиены для зубных протезов. Требования безопасности».</p>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Не знаете, как ухаживать за протезом? Расскажу на приёме, покажу средства.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

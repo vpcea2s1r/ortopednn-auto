@@ -87,8 +87,7 @@ category: implanty
 <h3>Когда атрофия считается критической?</h3>
 <p>Когда высота кости менее 4 мм или ширина менее 2 мм. Стандартная имплантация невозможна.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Потеряли зуб и боитесь атрофии кости? Не откладывайте — костная пластика решает проблему.</p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

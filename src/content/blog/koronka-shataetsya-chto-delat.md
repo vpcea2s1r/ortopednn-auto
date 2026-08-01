@@ -90,8 +90,7 @@ category: koronki
 <h3>Коронку можно приклеить обратно?</h3>
 <p>Да, если она целая и снялась вместе с культёй. Врач очистит, обработает и зафиксирует заново.</p>
 
-<RelatedArticles articles={relatedArticles} />
-<RelatedServices services={getRelatedServices(slug, category?.id)} />
+
 <div class="cta">
   <p>Шатается коронка? Не ждите, пока выпадет. </p>
   <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>

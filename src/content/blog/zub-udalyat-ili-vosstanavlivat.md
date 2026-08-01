@@ -100,8 +100,7 @@ desc: "Когда зуб можно спасти, а когда лучше уд�
         </div>
       </div>
 
-      <RelatedArticles articles={relatedArticles} />
-      <RelatedServices services={getRelatedServices(slug, category?.id)} />
+
       <div class="cta">
         <p>Сомневаетесь, удалять или лечить зуб? Приходите на диагностику — сделаем КТ и подберём оптимальный вариант.</p>
         <a href="tel:+79202537317" class="btn">+7 (920) 253-73-17</a>
