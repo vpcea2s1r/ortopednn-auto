@@ -38,6 +38,15 @@ import socials from '../../data/socials.json';
     <Specializations />
     <PriceList />
     <FAQ />
+    <section class="reviews">
+      <div class="container">
+        <h2 class="reviews__title">Отзывы пациентов</h2>
+        <div class="reviews__widget">
+          <a class="visually-hidden" href="https://ya.ru/medicine/doctor/nikitina_marina_e0b5kJDyqNudw">Все отзывы</a>
+          <iframe src="https://reviews.yandex.ru/ugcpub/reviews-widget?app_id=reviews-widget&otype=Hum&object=doce0b5kJDyqNudw&variant=cards&theme=blue&linkedObjectId=/sprav/1104228137" width="100%" height="340" frameborder="0" loading="lazy" title="Отзывы пациентов на Яндекс.Картах"></iframe>
+        </div>
+      </div>
+    </section>
     <div id="location"><LocationBlock /></div>
   </main>
   <footer class="site-footer">
@@ -144,6 +153,23 @@ import socials from '../../data/socials.json';
   font-size: var(--text-lg);
   color: var(--color-text);
   line-height: 1.7;
+}
+
+.reviews {
+  padding: var(--space-xl) 0;
+  background: white;
+  border-top: 1px solid var(--color-border);
+}
+
+.reviews__title {
+  margin-bottom: var(--space-lg);
+}
+
+.reviews__widget {
+  max-width: 880px;
+  margin: 0 auto;
+  border-radius: 32px;
+  overflow: hidden;
 }
 
 @media (max-width: 640px) {
