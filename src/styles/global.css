@@ -36,6 +36,8 @@ h3 { font-size: var(--text-xl); }
 
 p { margin-bottom: var(--space-md); }
 
+p, li, td, th, h1, h2, h3, h4, h5, h6, span { overflow-wrap: break-word; word-break: break-word; }
+
 a { 
   color: var(--color-primary); 
   text-decoration: none; 

@@ -43,6 +43,21 @@ const bodyWithAnchors = body.replace(/<h2>(.*?)<\/h2>/g, (m, text) => {
   return `<h2 id="${id}">${text}</h2>`;
 });
 
+// Обёртка для голых таблиц (без .table-wrap) — иначе они вылезают за экран на мобильных.
+const bodySafe = (() => {
+  let out = '';
+  let last = 0;
+  const re = /<table[^>]*>([\s\S]*?)<\/table>/g;
+  let m;
+  while ((m = re.exec(bodyWithAnchors)) !== null) {
+    out += bodyWithAnchors.slice(last, m.index);
+    const alreadyWrapped = /<div class="table-wrap">\s*$/.test(bodyWithAnchors.slice(last, m.index));
+    out += alreadyWrapped ? m[0] : `<div class="table-wrap">${m[0]}</div>`;
+    last = re.lastIndex;
+  }
+  return out + bodyWithAnchors.slice(last);
+})();
+
 // Термины глоссария, реально встречающиеся в тексте статьи (без тегов).
 // ponytail: только использованные термины — на странице 5–15, не все 58.
 const usedGlossary = (() => {
@@ -126,7 +141,7 @@ const ldFaq = faqItems.length
           </ol>
         </nav>
       )}
-      <fragment set:html={bodyWithAnchors} />
+      <fragment set:html={bodySafe} />
     </article>
 
     <RelatedArticles articles={related} />
