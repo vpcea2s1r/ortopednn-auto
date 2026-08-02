@@ -264,6 +264,157 @@ const hasBreadcrumbs = breadcrumbItems.length > 1;
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109258289" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+<script is:inline>
+(function () {
+  var DICT = {
+    'цирконий': 'Диоксид циркония — прочный безметалловый материал для коронок. Не вызывает аллергии, белые и долговечные.',
+    'циркониевая коронка': 'Коронка из диоксида циркония: прочная, точная, без металла. Популярна для передних и боковых зубов.',
+    'металлокерамика': 'Комбинация металлического каркаса и керамической облицовки. Прочная классика, выглядит менее естественно, чем диоксид.',
+    'e.max': 'E.max (литиевая силикатная керамика) — безметалловый материал высокой эстетики. Часто ставится на передние зубы.',
+    'полевошпатная керамика': 'Классическая керамическая масса, наносится слоями вручную или методом CAD/CAM. Природная естественность, дешевле E-max.',
+    'акрил': 'Акриловый протез — пластмассовый съёмный, недорогой и быстрый. Менее гибкий, может со временем натирать.',
+    'нейлон': 'Нейлоновый (термопластичный) протез — гибкий и эластичный. Дороже акрила, выглядит естественнее, без опорных коронок.',
+    'acryfree': 'Термопластичный протез AcryFree — гибкий, без жёстких базисов. Удобный, но требует бережного ухода.',
+    'денталди': 'ДенталДи — белый нейлоновый бюгель-протез на «невидимых» кламмерах. Эстетичное решение для передних зубов.',
+    'кобальт-хром': 'Металлический сплав кобальт-хрома для цельнолитых и бюгельных протезов. Прочный и недорогой.',
+    'никель-хром': 'Металлический сплав никель-хром, дешевле кобальт-хрома. Может вызывать аллергию у чувствительных пациентов.',
+    'cad/cam': 'Цифровой метод изготовления: компьютер моделирует конструкцию, станок вытачивает её из блока.',
+    'винир': 'Тонкая керамическая накладка на переднюю поверхность зуба — для цвета и формы.',
+  };
+
+  function escapeRegExp(s) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function processWords(root) {
+    var terms = Object.keys(DICT).sort(function (a, b) { return b.length - a.length; });
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode;
+        while (p) {
+          if (p.classList && (p.classList.contains('term') || p.tagName === 'A' || p.tagName === 'SCRIPT' || p.tagName === 'STYLE' || p.tagName === 'NOSCRIPT' || p.classList.contains('toc') || p.classList.contains('breadcrumbs')))
+            return NodeFilter.FILTER_REJECT;
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [];
+    var n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function (textNode) {
+      var text = textNode.nodeValue;
+      if (!text) return;
+      for (var i = 0; i < terms.length; i++) {
+        var term = terms[i];
+        var r = new RegExp('(?![\\wА-Яа-яЁё])(' + escapeRegExp(term) + ')(?![\\wА-Яа-яЁё])', 'gi');
+        if (r.test(text)) {
+          var frag = document.createDocumentFragment();
+          var last = 0, m;
+          r.lastIndex = 0;
+          while ((m = r.exec(text))) {
+            if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+            var span = document.createElement('span');
+            span.className = 'term';
+            span.setAttribute('data-term', m[0].toLowerCase());
+            span.setAttribute('tabindex', '0');
+            span.textContent = m[0];
+            frag.appendChild(span);
+            last = m.index + m[0].length;
+          }
+          if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+          textNode.parentNode.replaceChild(frag, textNode);
+          break;
+        }
+      }
+    });
+  }
+
+  function initTooltips() {
+    var d = document;
+    if (d.querySelector('#term-tip')) return;
+    var tip = d.createElement('div');
+    tip.id = 'term-tip';
+    tip.setAttribute('role', 'tooltip');
+    document.body.appendChild(tip);
+    function show(t) {
+      var key = (t.getAttribute('data-term') || '').toLowerCase();
+      var text = DICT[key];
+      if (!text) return false;
+      tip.textContent = text;
+      tip.classList.add('show');
+      var rect = t.getBoundingClientRect();
+      var top = rect.top + window.scrollY - tip.offsetHeight - 8;
+      if (top < 0) top = rect.bottom + window.scrollY + 8;
+      tip.style.top = top + 'px';
+      tip.style.left = rect.left + window.scrollX + rect.width / 2 + 'px';
+      return true;
+    }
+    function hide() { tip.classList.remove('show'); }
+    d.addEventListener('mouseover', function (e) {
+      var t = e.target.closest ? e.target.closest('.term') : null;
+      if (t) show(t);
+    });
+    d.addEventListener('mouseout', function (e) {
+      var t = e.target.closest ? e.target.closest('.term') : null;
+      if (t) hide();
+    });
+    d.addEventListener('focusin', function (e) {
+      var t = e.target.classList && e.target.classList.contains('term') ? e.target : null;
+      if (t) show(t);
+    });
+    d.addEventListener('focusout', function (e) {
+      var t = e.target.classList && e.target.classList.contains('term') ? e.target : null;
+      if (t) hide();
+    });
+    d.addEventListener('click', function (e) {
+      var t = e.target.closest ? e.target.closest('.term') : null;
+      if (t && tip.classList.contains('show')) hide(); else if (t) show(t);
+    });
+  }
+
+  function boot() {
+    processWords(document.querySelector('main') || document.body);
+    initTooltips();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+<style>
+  .term {
+    position: relative;
+    border-bottom: 1px dotted var(--color-primary);
+    cursor: help;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  #term-tip {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    max-width: 300px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    transform: translateX(-50%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  #term-tip.show { display: block; opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    #term-tip { transition: none; }
+  }
+</style>
 </body>
 <style>
   .legal-disclaimer {

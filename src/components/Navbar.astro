@@ -35,13 +35,41 @@ const navLinks = [
 (function() {
   var toggle = document.querySelector('.navbar__toggle');
   var menu = document.getElementById('navbar-menu');
-  if (toggle && menu) {
-    toggle.addEventListener('click', function() {
-      var expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !expanded);
-      menu.classList.toggle('navbar__bottom--open');
-    });
+  var overlay = document.createElement('div');
+  overlay.className = 'navbar__overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(overlay);
+  if (!toggle || !menu) return;
+
+  function close() {
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('navbar__bottom--open');
+    document.body.classList.remove('menu-open');
   }
+
+  function setOpen(open) {
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menu.classList.toggle('navbar__bottom--open', open);
+    document.body.classList.toggle('menu-open', open);
+  }
+
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    setOpen(!expanded);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  overlay.addEventListener('click', close);
+
+  document.querySelectorAll('.navbar__link').forEach(function(link) {
+    link.addEventListener('click', close);
+  });
 })();
 </script>
 
@@ -103,6 +131,21 @@ const navLinks = [
   transition: transform 0.2s;
 }
 
+.navbar__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  z-index: calc(var(--z-sticky) - 1);
+  transition: opacity 0.25s;
+}
+
+body.menu-open .navbar__overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .navbar__bottom {
   border-top: 1px solid var(--color-border);
 }
@@ -154,6 +197,12 @@ const navLinks = [
 
   .navbar__bottom {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: var(--z-modal);
   }
 
   .navbar__bottom--open {
@@ -162,12 +211,18 @@ const navLinks = [
 
   .navbar__links {
     flex-direction: column;
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-md) var(--space-lg) var(--space-xl);
   }
 
   .navbar__link {
-    padding: var(--space-sm) 0;
+    padding: var(--space-md) 0;
     border-bottom: none;
+    font-size: var(--text-lg);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__overlay { transition: none; }
+  .navbar__toggle-bar { transition: none; }
 }
 </style>
