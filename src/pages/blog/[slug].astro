@@ -122,7 +122,7 @@ const ldFaq = faqItems.length
 >
   <Navbar />
   <div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
-  <main class="container container--w800">
+  <main id="main" class="container container--w800">
     <nav class="breadcrumbs">
       <a href="/blog">Блог</a>
       {category && <><span>/</span><a href={`/blog/${category.slug}`}>{category.name}</a></>}
