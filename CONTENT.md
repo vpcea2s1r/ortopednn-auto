@@ -188,3 +188,6 @@
 - vidy-prikusov-i-ikh-vliyanie-na-protezirovanie
 - vliyanie-vospaleniya-na-metabolizm-psikhotropnykh-preparatov-vzglyad-stomatologa
 - vosstanovlenie-zuba-pri-polnom-razrushenii-koronkovoy-chasti-sovremennye-protoko
+- viniry-chto-eto
+- akrilovyj-protez
+- nejlonovyj-protez
