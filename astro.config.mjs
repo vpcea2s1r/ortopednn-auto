@@ -11,6 +11,7 @@ export default defineConfig({
     '/services/byugelnye-protezy/': '/services/',
     '/services/vradecheskaya-vkladka/': '/services/vrachebnaya-vkladka/',
     '/services/korrekciya-semnogo/': '/services/korrekciya/',
+    '/blog/implantatsiya-zubov-nizhnij-novgorod-cena/': '/blog/implant-ili-protez/',
   },
   prefetch: {
     prefetchAll: false,
@@ -20,7 +21,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         if (page.includes('/preview/')) return false;
-        return !page.match(/\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo)\/?$/);
+        return !page.match(/\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo|implantatsiya-zubov-nizhnij-novgorod-cena)\/?$/);
       }
     })
   ],
