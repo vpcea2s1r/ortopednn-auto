@@ -199,3 +199,4 @@
 - alkogol-i-zdorove-polosti-rta (PubMed: алкоголь, кариес, пародонтит, потеря зубов — Front Nutr 2021, J Periodontol 2015)
 - gingivit-krovotochivost-desen (PubMed: гингивит, кровоточивость, World Workshop 2017, распространённость)
 - recessiya-desny-ogolenie-kornya (PubMed: рецессия десны, этиология, распространённость — JADA 2003, Oral Dis 2023)
+- eroziya-emali-chuvstvitelnost-zubov (PubMed: эрозия эмали, гиперчувствительность, лазеры — J Dent 2024, Clin Oral Investig 2025)
