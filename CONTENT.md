@@ -191,3 +191,5 @@
 - viniry-chto-eto
 - akrilovyj-protez
 - nejlonovyj-protez
+- protezy-i-pnevmoniya (PubMed: аспирационная пневмония у пожилых и гигиена протезов — систематические обзоры 2013/2022/2025)
+- kachestvo-zhizni-s-protezami (PubMed: OHIP, 3D-печать протезов, окклюзия, протезы на имплантах — RCT 2022-2024)
