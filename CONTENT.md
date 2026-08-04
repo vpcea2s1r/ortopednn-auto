@@ -195,3 +195,5 @@
 - kachestvo-zhizni-s-protezami (PubMed: OHIP, 3D-печать протезов, окклюзия, протезы на имплантах — RCT 2022-2024)
 - protezy-i-apnoe-sna (PubMed: ночное ношение протезов и апноэ сна — обзоры 2022/2025, RCT Sleep 2021)
 - protezy-i-pitanie-pozhilyh (PubMed: беззубость, нутритивный статус, недоедание пожилых — обзоры 2022/2023)
+- rak-polosti-rta-skrining-i-predrakovye-sostoyaniya (PubMed: скрининг рака полости рта, лейкоплакия/эритроплакия, WHO 2021, метаанализы 2020/2025)
+- alkogol-i-zdorove-polosti-rta (PubMed: алкоголь, кариес, пародонтит, потеря зубов — Front Nutr 2021, J Periodontol 2015)
