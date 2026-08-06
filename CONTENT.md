@@ -89,6 +89,7 @@
 - most-na-3-zuba
 - most-na-implantah
 - mostovidnyj-protez-vidy-plyusy-minusy
+- akrilovyj-mostovidnyj-protez
 - mozhno-li-spat-s-protezom (запросы: можно ли спать с протезом 21, с зубными протезами 8, с протезами съемными 6 — кластер ~35)
 - mrt-s-koronkami
 - naraschivanie-zuba
