@@ -123,6 +123,7 @@
 - protezirovanie-bez-obtochki-sosednikh-zubov
 - protezirovanie-dlya-pozhilykh
 - protezirovanie-na-implantah
+- protez-na-balke
 - protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie
 - protezirovanie-perednih-zubov
 - protezirovanie-posle-udaleniya-zuba-mudrosti
