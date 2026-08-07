@@ -137,6 +137,7 @@
 - protezirovanie-zubov-pri-parodontoze
 - protezirovanie-zubov-u-kuryashchih
 - protez-ploho-derzhitsya
+- protez-skripit-pri-zhevanii (восстановлена; приносила трафик 3 клика/14 показов)
 - protez-tresnul
 - protezy-bez-neba
 - psikhologicheskaya-adaptatsiya
@@ -144,10 +145,12 @@
 - remont-zubnogo-proteza
 - restavratsiya-zubov
 - sedatsiya-i-narkoz
+- schel-mezhdu-koronkoj-i-zubom (восстановлена; приносила трафик 6 кликов/200 показов)
 - shiniruyushchij-byugel
 - skolko-delayut-koronku
 - skolko-stoit-koronka-nn
 - snyatie-ottiska-alginatnoy-massoy
+- slyuna-i-protezirovanie-zubov (восстановлена; приносила трафик 4 клика/174 показа)
 - sovremennye-abatmenty
 - sravnenie-sistem-implantov
 - srok-sluzhby-protezov
