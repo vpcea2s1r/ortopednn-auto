@@ -14,6 +14,7 @@ export default defineConfig({
     '/services/korrekciya-semnogo/': '/services/korrekciya/',
     '/blog/implantatsiya-zubov-nizhnij-novgorod-cena/': '/blog/implant-ili-protez/',
     '/blog/protezirovanie-zubov-nizhnij-novgorod-ceny/': '/blog/ceny-na-protezirovanie-v-nn/',
+    '/blog/nav-schel-mezhdu-koronki/': '/blog/schel-mezhdu-koronkoj-i-zubom/',
   },
   prefetch: {
     prefetchAll: false,
