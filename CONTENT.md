@@ -75,6 +75,7 @@
 - koronka-na-zhivoj-zub
 - koronka-shataetsya-chto-delat
 - koronka-skololas-chto-delat
+- koronka-temnee-sosednego-zuba (восстановлена; приносила трафик 3 клика/251 показ)
 - koronka-za-odin-vizit-cersec
 - kostnaya-plastika-pered-implantatsiej
 - krem-fiksatsii-protezov
@@ -117,6 +118,7 @@
 - polnaya-adenitya-protezirovanie
 - posle-ustanovki-koronki
 - posle-ustanovki-koronki (обновлён title: можно ли есть после коронки 26, после установки коронки 15)
+- privkus-metalla-ot-koronki (восстановлена; приносила трафик 8 кликов/252 показа)
 - prikusnoy-shablon-na-zhestkom-bazise
 - prikus-posle-protezirovaniya (запросы: изменился прикус после коронки, завышенный прикус после протезирования, прикус после протеза)
 - protezirovanie-bez-implantov

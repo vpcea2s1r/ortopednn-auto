@@ -13,6 +13,7 @@ export default defineConfig({
     '/services/vradecheskaya-vkladka/': '/services/vrachebnaya-vkladka/',
     '/services/korrekciya-semnogo/': '/services/korrekciya/',
     '/blog/implantatsiya-zubov-nizhnij-novgorod-cena/': '/blog/implant-ili-protez/',
+    '/blog/protezirovanie-zubov-nizhnij-novgorod-ceny/': '/blog/ceny-na-protezirovanie-v-nn/',
   },
   prefetch: {
     prefetchAll: false,

@@ -15,4 +15,5 @@ pnpm-lock.yaml
 pnpm-workspace.yaml
 *.orig.*
 .astro
-cloudflare-token.mdgh_out.json
+cloudflare-token.md
+gh_out.json
