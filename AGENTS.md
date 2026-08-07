@@ -112,8 +112,7 @@ Dashboard: http://localhost:20128 (пароль: `123456`)
 | Scope | `https://www.googleapis.com/auth/webmasters` |
 | Status | ✅ Site verified, sitemap submitted (0 errors, 0 warnings) |
 | GSC properties | `https://ortopednn.ru/` (URL-prefix) + `sc-domain:ortopednn.ru` (domain) — siteOwner |
-| Refresh rotation | Test user auth expires every 7 days |
-| Credentials file | `C:\opencode\ortopednn-auto\google-oauth.md` |
+| Refresh rotation | Refresh-token обновлён 2026-08-07 (test user auth expires every 7 days). Токен хранится в `scripts/check-positions.mjs`. |
 
 ### Yandex OAuth (Webmaster API) — обновлено 30.05.2026
 

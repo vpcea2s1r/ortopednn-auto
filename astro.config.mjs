@@ -1,5 +1,6 @@
 import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import compress from '@playform/compress';
 
 export default defineConfig({
   site: 'https://ortopednn.ru',
@@ -18,11 +19,18 @@ export default defineConfig({
     hover: true
   },
   integrations: [
-    sitemap({
+sitemap({
       filter: (page) => {
         if (page.includes('/preview/')) return false;
         return !page.match(/\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo|implantatsiya-zubov-nizhnij-novgorod-cena)\/?$/);
       }
+    }),
+    compress({
+      HTML: { removeComments: true },
+      CSS: true,
+      JS: true,
+      Image: false,
+      SVG: false,
     })
   ],
   image: {

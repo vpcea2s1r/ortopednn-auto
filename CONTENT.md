@@ -131,6 +131,7 @@
 - protezirovanie-pri-parodontite
 - protezirovanie-pri-parodontoze
 - protezirovanie-pri-saharnom-diabete
+- protezirovanie-pri-vich
 - protezirovanie-zubov-pri-parodontoze
 - protezirovanie-zubov-u-kuryashchih
 - protez-ploho-derzhitsya
@@ -162,6 +163,7 @@
 - ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii
 - verhnij-protez
 - verhnij-protez (переработан под кластер «протез на верхнюю челюсть» 3239 / съемный протез на верхнюю челюсть 1345)
+- vkus-posle-protezirovaniya (запросы: меняется ли вкус после протезирования, почему еда безвкусная после протеза; восстановлена, приносила трафик 17 кликов/466 показов, позиция 5.3)
 - vidy-prikusnykh-shablonov
 - viniry-bez-priparerovaniya
 - viniry-ili-koronki

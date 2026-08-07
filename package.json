@@ -24,6 +24,7 @@
     "ssh2": "^1.17.0"
   },
   "devDependencies": {
+    "@playform/compress": "^0.2.5",
     "lighthouse": "^13.3.0",
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.12.0"
