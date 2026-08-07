@@ -258,3 +258,12 @@
 - **kompozitnye-vkladki.astro** (category: koronki) — 6500+ chars, comparison table (vkladka vs keramika vs plomba), 4 material types, 8-step procedure, 7 FAQ, pricing
 - **Build**: 190 pages, 0 errors (59.55s)
 - **Pushed**: commit to master
+
+## 2026-08-07 - Restored 3 traffic pages
+- **schel-mezhdu-koronkoj-i-zubom** (koronki) - restored with PubMed sources (marginal gap/crown fit: Cureus 2026, Bioinformation 2026, Open Dent J 2018, Saudi Dent J 2025)
+- **slyun-a-protezirovanie-zubov** (semnye-protezy) - restored with PubMed sources (xerostomia/denture retention: J Prosthet Dent 1992, Gerodontology 2000, Cureus 2024)
+- **protez-skripit-pri-zhevanii** (semnye-protezy) - restored with PubMed sources (occlusion/remount): J Prosthet Dent 2008, Nihon Hotetsu 2006, Gerodontology 2012
+- **CONTENT.md**: 3 slugs added alphabetically with traffic restore notes
+- **data/blog-articles.ts**: 3 entries added (line 313-315)
+- **Build**: 267 pages (was 264), 0 errors
+- **Pushed**: commit ec0ba9e to master, live all 200·
