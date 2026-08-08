@@ -6,6 +6,12 @@
 
 ﻿# Журнал операций
 
+## 2026-08-08 — audit + wiki | Тех.аудит сайта и еженедельное ревью
+- **Тех.аудит 267 URL** (скрипты `Temp/opencode/audit.mjs` + `checklinks.mjs`): все 267 = 200, без redirects; canonical на каждой странице (важно: у сайта атрибуты в canonical `href` ДО `rel`, regex должен это учитывать); TTFB 60–390 мс, размер 29–53 KB; PageSpeed API вернул 429 (без ключа лимит исчерпан)
+- **Битые ссылки**: найдено 3 `href="/articles/*"` в `src/content/blog/implantatsiya-pri-saharnom-diabete.md` (пр. /articles/osteoporoz-i-implantatsiya → должен быть /blog/) → исправлены, build 271 pages OK, коммит `c3f049b`
+- **Ложные срабатывания**: `/blog/${o}/` и `/blog/${i}/` — template literal в JS глоссария (`glossary-tooltip.ts:25`), ловятся как `href` из бандла. Не ошибка.
+- **Wiki**: `project/weekly-review.md` создана — еженедельный чеклист ревью сайта (статусы, битые ссылки, canonical, кодировка, скорость, индексация), история прогонов
+
 ## 2026-08-01 — ingest | Индексация в Яндексе и AI-видимость
 - **Источник:** https://habr.com/ru/articles/1065514/ (ig_novvv, 2026)
 - **Wiki:** `project/indexing-speed-alice.md` создана — 4 инструмента ускорения индексации (переобход, IndexNow, sitemap, Метрика), последовательность публикации, детали IndexNow (202-код, urlList 10k), ЭПОС, сегмент AI Traffic, применимость к ortopednn (IndexNow из GitHub Actions)
