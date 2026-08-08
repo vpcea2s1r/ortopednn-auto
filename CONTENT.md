@@ -214,3 +214,4 @@
 - gingivit-krovotochivost-desen (PubMed: гингивит, кровоточивость, World Workshop 2017, распространённость)
 - recessiya-desny-ogolenie-kornya (PubMed: рецессия десны, этиология, распространённость — JADA 2003, Oral Dis 2023)
 - eroziya-emali-chuvstvitelnost-zubov (PubMed: эрозия эмали, гиперчувствительность, лазеры — J Dent 2024, Clin Oral Investig 2025)
+- fluks-opuhol-na-desne (Wordstat: опухоль в зубе 1153, снять опухоль в зубе 223, снять опухоль зуба в домашних 213, опухоль в десне зуба 158, снять опухоль зуба в домашних условиях 139; периостит/флюс)
