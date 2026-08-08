@@ -51,6 +51,7 @@
 - implanty-protivopokazaniya
 - irrigator-dlya-polosti-rta
 - kak-chistit-semnye-protezy
+- kak-portitsya-zub (запросы: как портится зуб 333, как быстро портятся зубы 33, как начинает портится зуб 22, как портятся зубы под коронками 16, от сладкого 15, у детей 14, от семечек 8, от курения 7)
 - kakie-semnye-protezy-luchshe (запросы: какие съемные протезы лучше 865, съемные зубные протезы какие лучше 397 и др. — кластер ~4100)
 - kak-pravilno-est-s-protezami
 - kak-privyknut-k-semnym-protezam
