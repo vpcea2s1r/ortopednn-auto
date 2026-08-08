@@ -70,9 +70,9 @@ category: implanty
 
 <h2>Читать подробнее</h2>
 <ul>
-<li><a href="/articles/osteoporoz-i-implantatsiya">Остеопороз и имплантация зубов</a> — особенности работы с остеопорозом в сочетании с диабетом</li>
-<li><a href="/articles/antikoagulyanty-i-stomatologiya">Антикоагулянты и стоматология</a> — управление приёмом антикоагулянтов при имплантации</li>
-<li><a href="/articles/kostnaya-plastika-pered-implantatsiej">Костная пластика перед имплантацией</a> — показания и методики GBR</li>
+<li><a href="/blog/osteoporoz-i-implantatsiya">Остеопороз и имплантация зубов</a> — особенности работы с остеопорозом в сочетании с диабетом</li>
+<li><a href="/blog/antikoagulyanty-i-stomatologiya">Антикоагулянты и стоматология</a> — управление приёмом антикоагулянтов при имплантации</li>
+<li><a href="/blog/kostnaya-plastika-pered-implantatsiej">Костная пластика перед имплантацией</a> — показания и методики GBR</li>
 </ul>
 
 
