@@ -204,6 +204,7 @@
 - akrilovyj-protez
 - nejlonovyj-protez
 - silikonovyj-protez
+- yaponskij-protez (Wordstat: японский протез 242, японский зубной протез 113, японские съемные протезы 38, японские съемные зубные протезы купить 10, сплав японский для бюгельного протеза 7)
 - protezy-i-pnevmoniya (PubMed: аспирационная пневмония у пожилых и гигиена протезов — систематические обзоры 2013/2022/2025)
 - kachestvo-zhizni-s-protezami (PubMed: OHIP, 3D-печать протезов, окклюзия, протезы на имплантах — RCT 2022-2024)
 - protezy-i-apnoe-sna (PubMed: ночное ношение протезов и апноэ сна — обзоры 2022/2025, RCT Sleep 2021)
