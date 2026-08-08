@@ -112,7 +112,7 @@
 - otbelivanie-zubov-zoom-4
 - parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu
 - parodontit-lechenie
-- patologicheskaya-stiraemost-zubov-lechenie
+- patologicheskaya-stiraemost-zubov-lechenie (расширена 08.08.2026: секции «Можно ли восстановить стёршуюся эмаль» + «Как понять, что зубы стираются»; покрывает запросы: как стираются зубы 467, как стирается эмаль 99, стёрлись зубы как восстановить 83, как понять что зубы стираются 68, передние зубы стёрлись 36, стёрлись зубы как лечить 35)
 - pediatricheskaya-stomatologiya
 - perebazirovka-proteza
 - periimplantit
