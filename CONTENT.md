@@ -24,7 +24,7 @@
 - care-crown
 - care-denture
 - ceny-na-protezirovanie-v-nn
-- chem-chistit-zubnye-protezy
+- chem-chistit-zubnye-protezy (запросы: зубная паста для акриловых протезов 55, чистка нейлоновых протезов 38, зубная паста для виниров и керамических 33)
 - chem-krepit-semnye-protezy
 - cherez-skolko-est-posle-implantatsii
 - chto-takoe-prototipy-u-stomatologa
