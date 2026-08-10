@@ -22,9 +22,15 @@ export default defineConfig({
   },
   integrations: [
 sitemap({
+      lastmod: new Date(),
+      changefreq: 'weekly',
       filter: (page) => {
         if (page.includes('/preview/')) return false;
-        return !page.match(/\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo|implantatsiya-zubov-nizhnij-novgorod-cena)\/?$/);
+        const u = new URL(page);
+        const p = u.pathname;
+        if (/^\/services\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo)\/?$/.test(p)) return false;
+        if (/^\/blog\/(implantatsiya-zubov-nizhnij-novgorod-cena|protezirovanie-zubov-nizhnij-novgorod-ceny|nav-schel-mezhdu-koronki)\/?$/.test(p)) return false;
+        return true;
       }
     }),
     compress({
