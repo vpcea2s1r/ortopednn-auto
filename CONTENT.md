@@ -1,5 +1,6 @@
 # Content Inventory
 
+- 10-voprosov-stomatologu-ortopedu (запросы: что спросить у стоматолога-ортопеда, вопросы на консультации у ортопеда)
 - acryfree-vs-quattrotii
 - ai-v-ortopedicheskoy-stomatologii
 - allergiya-na-metall-stomatologiya
@@ -67,6 +68,7 @@
 - keramicheskie-vkladki-vs-koronki
 - klammera-dlya-byugelnykh-protezov
 - klkt-pered-protezirovaniem
+- koncevoj-defekt-zubnogo-ryada (запросы: концевой дефект, отсутствие последних жевательных зубов, нет жевательных зубов что делать — кластер по конкурентам)
 - kofe-i-koronki
 - kompozitnye-vkladki
 - koren-zuba-pod-koronkoj (запросы: корень зуба под коронкой 212, киста на корне под коронкой 36, воспаление корня 34 и др. — кластер ~430)
@@ -96,6 +98,7 @@
 - akrilovyj-mostovidnyj-protez
 - mozhno-li-spat-s-protezom (запросы: можно ли спать с протезом 21, с зубными протезами 8, с протезами съемными 6 — кластер ~35)
 - mrt-s-koronkami
+- mrt-s-implantami (запросы: мрт с имплантами, можно ли делать мрт с имплантами, титан мрт зубные импланты)
 - naraschivanie-zuba
 - natirayet-desnu-protezom
 - nejlon-acrifree-akril-kakoj-luchshe
@@ -200,6 +203,7 @@
 - vidy-prikusov-i-ikh-vliyanie-na-protezirovanie
 - vliyanie-vospaleniya-na-metabolizm-psikhotropnykh-preparatov-vzglyad-stomatologa
 - vosstanovlenie-zuba-pri-polnom-razrushenii-koronkovoy-chasti-sovremennye-protoko
+- uhod-za-vinirami (запросы: как ухаживать за винирами, уход за винирами после установки, чем чистить виниры)
 - viniry-chto-eto
 - akrilovyj-protez
 - nejlonovyj-protez
