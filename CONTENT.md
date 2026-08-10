@@ -19,6 +19,7 @@
 - bolno-li-obachivat-zuby
 - bolno-li-stavit-koronku
 - bruksizm-i-protezirovanie
+- bazalnaya-implantaciya (запросы: базальная имплантация зубов цена отзывы 284, базальная имплантация цена под ключ 216, цены на сегодня 165 — кластер ~925)
 - byugelnyj-ili-semnyj-protez
 - byugelnyj-protez-klammery
 - byugelnyj-protez-na-zamkah
@@ -65,6 +66,7 @@
 - kandidoz-polosti-rta-protezy
 - kappy-ot-bruksizma
 - keramicheskaya-desna (запросы: керамическая десна 23, керамическая десна на коронке 4)
+- keramicheskie-ili-kompozitnye-viniry (запросы: композитные и керамические виниры 204, керамические виниры e-max 201, до и после виниров 192, керамические виниры стоимость 192, отзывы 133 — кластер ~1500)
 - keramicheskie-vkladki-vs-koronki
 - klammera-dlya-byugelnykh-protezov
 - klkt-pered-protezirovaniem
