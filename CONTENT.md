@@ -237,3 +237,41 @@
 - stomatit (академические источники Mayo/Cleveland; замена srok-sluzhby-koronki — каннибализация)
 - suhost-vo-rtu (академические источники Mayo/Cleveland/ADA; общая ксеростомия vs kserostomiya-i-protezirovanie)
 - zubnoj-nalet (академические источники; замена implantatsiya-pri-kurenii — дубль существующей статьи)
+- kak-snyat-zubnuyu-bol
+- kak-pravilno-chistit-zuby
+- kak-chasto-poseshchat-stomatologa
+- kak-vybrat-zubnuyu-schetku
+- bolit-zub-pri-nakusyvanii
+- lechenie-kariesa
+- zachem-chistit-yazyk
+- bolit-zub-pod-plomboy
+- pulpit-lechenie
+- bolit-zub-mudrosti
+- slyuna-gustaya
+- lechenie-zubov-vo-sne
+- hrustit-chelyust
+- poloskanie-posle-udaleniya
+- bolit-zub-posle-udaleniya
+- plomba-vypala
+- ftor-v-zubnoy-paste
+- periodontit-lechenie
+- implant-ne-prizhilsya
+- zachem-nuzhen-implantat
+- protezirovanie-bez-obtachki
+- koronka-vremennaya-bolit
+- otkrytyy-prikus
+- chto-luchshe-implant-ili-most
+- implantat-vypal-chto-delat
+- implant-shataetsya
+- anesteziya-pri-implantacii
+- bolit-posle-implantacii
+- otek-posle-implantacii
+- srok-okonchatelnoy-nagruzki
+- implanty-sroki
+- implantaciya-vizitov
+- koronka-pod-desnu
+- pokryvnoy-protez
+- protez-babochka
+- attachmeny
+- protez-tsvet
+- protez-pyatna
