@@ -21,6 +21,15 @@
 - **Метрика**: Yandex searchable-индекс (было 59 на 15.08.2026) + позиции по GSC — замер через 3–4 недели (≈ 2026-09-12). Базовая линия зафиксирована в AGENTS.md «Experiment: thin article expansion»
 - **Правила**: в AGENTS.md добавлены №11 (Article length target: medium 7–10k) и №12 (Autonomy)
 
+## 2026-08-15 - ingest | Wave 2 расширения тонких статей завершена
+- **Цель**: продолжить эксперимент — ещё 10 тонких статей (<5.5k) со спросом из подсказок Яндекса расширены до 7–10k
+- **10 статей расширены и опубликованы в один день** (среднее 4.0k → 7.4k знаков): koronka-shataetsya-chto-delat (3716→7557), implant-shataetsya (2966→7113), zubnoj-kamen (5468→7627), hrustit-chelyust (3829→7097), slyuna-gustaya (3678→7179), vypala-koronka-chto-delat (3520→7558), otbelivanie-zubov-zoom-4 (3732→7725), shinirovanie-zubov (5176→7356), cherneet-desna-vokrug-koronki (3824→7600), koronka-skololas-chto-delat (3711→7016)
+- **Метод**: тот же пайплайн, что в Wave 1 (каннибализация → черновик → валидация → build+preview → публикация), автономно по правилу 12
+- **Отбор**: вручную по ядру подсказок из `%TEMP%\opencode\suggestions-all.json`. `scripts/rank-thin-demand.mjs` (грубый матчинг по словам) даёт 3–4 результата — низкая точность, для волны не использовался как основной фильтр
+- **Каннибализация-решения**: koronka-shataetsya (на зубе) vs implant-shataetsya (на импланте) vs vypala-koronka (выпала) vs koronka-skololas (скол) — раздельные интенты; zubnoj-kamen vs zubnoj-nalet (твёрдый vs мягкий налёт); hrustit-chelyust (симптом) vs ВНЧС-статьи; slyuna-gustaya (симптом) vs slyuna-i-protezirovanie (протезы). Пропущены из-за риска каннибализации: desna-opuhla-vokrug-koronki, byugelnyj-protez-klammery, viniry-chto-eto
+- **Находки**: у `koronka-shataetsya-chto-delat`, `vypala-koronka-chto-delat`, `koronka-skololas-chto-delat` не было записей в `data/blog-articles.ts` (статьи существовали вне индекса) — добавлены. У `shinirovanie-zubov` и `zubnoj-kamen` не было внутренних ссылок — добавлены. Битые ссылки: `implant-shataetsya` (periimplantit-lechenie→periimplantit, yorshiki-dlya-zubov→irrigator-dlya-polosti-rta), `slyuna-gustaya` (убрана ссылка на несуществующую vospalenie-slyunnyh-zhelez)
+- **Метрика**: общая с Wave 1 — Yandex searchable-индекс (было 59) + позиции по GSC, замер ≈ 2026-09-12
+
 ## 2026-08-01 — ingest | Индексация в Яндексе и AI-видимость
 - **Источник:** https://habr.com/ru/articles/1065514/ (ig_novvv, 2026)
 - **Wiki:** `project/indexing-speed-alice.md` создана — 4 инструмента ускорения индексации (переобход, IndexNow, sitemap, Метрика), последовательность публикации, детали IndexNow (202-код, urlList 10k), ЭПОС, сегмент AI Traffic, применимость к ortopednn (IndexNow из GitHub Actions)

@@ -86,6 +86,25 @@
 
 **Эксперимент завершён 2026-08-15.** Все 10 статей расширены до 7.2–9.3k знаков (среднее ~8.3k, было ~4.6k), опубликованы в один день. Метрика: сравнить Yandex searchable-индекс (было 59) и позиции по GSC через 3–4 недели (≈ 2026-09-12). Прочие находки: у `bolit-chelyust-posle-protezirovaniya` не было записи в `data/blog-articles.ts` — добавлена.
 
+### Wave 2 (2026-08-15): ещё 10 тонких статей со спросом
+
+Отбор по подсказкам Яндекса из `%TEMP%\opencode\suggestions-all.json` (темы с 10–24 подсказками: «коронка шатается», «замена коронки», «бюгельный», «виниры», «зуб мудрости», «привкус металла», «слетела коронка», «хрустит челюсть»). `scripts/rank-thin-demand.mjs` — грубый матчинг по словам даёт мало результатов, отбор делался вручную по ядру подсказок.
+
+| # | Слаг | Было | Стало | Статус |
+|---|------|------|-------|--------|
+| 1 | koronka-shataetsya-chto-delat | 3716 | 7557 | ✅ live 2026-08-15 (0e845a2) |
+| 2 | implant-shataetsya | 2966 | 7113 | ✅ live 2026-08-15 (20caec0) |
+| 3 | zubnoj-kamen | 5468 | 7627 | ✅ live 2026-08-15 (c836503) |
+| 4 | hrustit-chelyust | 3829 | 7097 | ✅ live 2026-08-15 (c627686) |
+| 5 | slyuna-gustaya | 3678 | 7179 | ✅ live 2026-08-15 (71d2dfd) |
+| 6 | vypala-koronka-chto-delat | 3520 | 7558 | ✅ live 2026-08-15 (6485a6f) |
+| 7 | otbelivanie-zubov-zoom-4 | 3732 | 7725 | ✅ live 2026-08-15 (8bc9c91) |
+| 8 | shinirovanie-zubov | 5176 | 7356 | ✅ live 2026-08-15 (fb3a54d) |
+| 9 | cherneet-desna-vokrug-koronki | 3824 | 7600 | ✅ live 2026-08-15 (e090795) |
+| 10 | koronka-skololas-chto-delat | 3711 | 7016 | ✅ live 2026-08-15 (96337c1) |
+
+**Wave 2 завершена 2026-08-15.** Среднее стало ~7.4k (было ~4.0k). Каннибализация-решения: `koronka-shataetsya` (на зубе) vs `implant-shataetsya` (на импланте) vs `vypala-koronka` (выпала) vs `koronka-skololas` (скол) — раздельные интенты; `zubnoj-kamen` vs `zubnoj-nalet` (твёрдый vs мягкий налёт); `hrustit-chelyust` (симптом) vs ВНЧС-статьи; `slyuna-gustaya` (симптом) vs `slyuna-i-protezirovanie` (протезы). Пропущены из-за риска каннибализации: `desna-opuhla-vokrug-koronki` (vs vospalenie-desny-nad/pod-koronkoj), `byugelnyj-protez-klammery` (vs klammera-dlya-byugelnykh-protezov), `viniry-chto-eto` (vs viniry-ili-koronki и др.). Находки: у `koronka-shataetsya-chto-delat`, `vypala-koronka-chto-delat` и `koronka-skololas-chto-delat` не было записей в `data/blog-articles.ts` (статьи существовали вне индекса) — добавлены; у `shinirovanie-zubov` и `zubnoj-kamen` не было внутренних ссылок — добавлены; исправлены битые ссылки в `implant-shataetsya` (periimplantit-lechenie→periimplantit, yorshiki-dlya-zubov→irrigator-dlya-polosti-rta) и `slyuna-gustaya` (убрана ссылка на несуществующую vospalenie-slyunnyh-zhelez).
+
 ## Available Skills
 
 22 skills from `addyosmani/agent-skills` at `.opencode/skills/<name>/SKILL.md`.
