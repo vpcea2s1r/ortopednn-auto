@@ -153,6 +153,7 @@
 - quattrotii-protezy
 - remont-zubnogo-proteza
 - restavratsiya-zubov
+- retinirovannyj-zub-mudrosti (запросы: ретинированный зуб мудрости, ретенция зуба мудрости, удаление ретинированного зуба мудрости — GAP)
 - sedatsiya-i-narkoz
 - schel-mezhdu-koronkoj-i-zubom (восстановлена; приносила трафик 6 кликов/200 показов)
 - shiniruyushchij-byugel
@@ -202,6 +203,7 @@
 - zub-pod-koronkoj-gniet
 - zub-udalyat-ili-vosstanavlivat
 - zuby-posle-50
+- zuby-po-nomeram (запросы: зубы по номерам, зубы по номерам в стоматологии — GAP)
 - koronka-na-peredniy-zub-kak-vybrat
 - podgotovka-k-ustanovke-koronki-etapy-materialy-i-sroki
 - vidy-prikusov-i-ikh-vliyanie-na-protezirovanie
