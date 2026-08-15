@@ -291,3 +291,14 @@
 - **data/blog-articles.ts**: 3 entries added (line 313-315)
 - **Build**: 267 pages (was 264), 0 errors
 - **Pushed**: commit ec0ba9e to master, live all 200·
+
+## 2026-08-15 - Thin article expansion: Wave 3 complete (10 articles)
+- Expanded 10 thin articles to 7.0-7.3k chars (avg was ~5.2k): cirkonij-ili-metallokeramika, bolit-zub-pod-koronkoj, bolit-zub-pod-plomboy, implantat-vypal-chto-delat, kakie-semnye-protezy-luchshe, byugelnyj-protez-klammery, kak-snyat-zubnuyu-bol, 10-voprosov-stomatologu-ortopedu, celnolitoy-mostovidnyj-protez, atrofiya-kostnoj-tkani-chelyusti
+- Added 6-10 internal links each, all verified against src/content/blog (no broken links)
+- Cannibalization decisions: cirkonij-ili-metallokeramika vs cirkonievye-koronki-cena-nn (both kept, linked); kakie-semnye-protezy-luchshe as overview hub; atrofiya vs kostnaya-plastika as separate intents
+- Missing index records added to data/blog-articles.ts: celnolitoy-mostovidnyj-protez, atrofiya-kostnoj-tkani-chelyusti
+- Fixed broken links: karies-pod-plomboy→lechenie-kariesa, periimplantit-lechenie→periimplantit, removed anesteziya-pri-lechenii-zubov
+- Cleaned CTA-phone tail from 10-voprosov-stomatologu-ortopedu desc in index; sinus-lifting tail left (out of scope)
+- Commits: 146999a, e501874, 117cfd7, 6ba843a, df4d605, 0bff951, b3e922d, dfcb570, 4c72a64, 271f60e
+- Wave 1+2+3 total: 30 articles expanded in one day; metrics pending (Yandex index was 59, GSC positions) ~2026-09-12
+- Workflow note: always verify link targets exist before adding; dist/preview HTML is attribute-minified so quoted-attr checks give false negatives

@@ -105,6 +105,25 @@
 
 **Wave 2 завершена 2026-08-15.** Среднее стало ~7.4k (было ~4.0k). Каннибализация-решения: `koronka-shataetsya` (на зубе) vs `implant-shataetsya` (на импланте) vs `vypala-koronka` (выпала) vs `koronka-skololas` (скол) — раздельные интенты; `zubnoj-kamen` vs `zubnoj-nalet` (твёрдый vs мягкий налёт); `hrustit-chelyust` (симптом) vs ВНЧС-статьи; `slyuna-gustaya` (симптом) vs `slyuna-i-protezirovanie` (протезы). Пропущены из-за риска каннибализации: `desna-opuhla-vokrug-koronki` (vs vospalenie-desny-nad/pod-koronkoj), `byugelnyj-protez-klammery` (vs klammera-dlya-byugelnykh-protezov), `viniry-chto-eto` (vs viniry-ili-koronki и др.). Находки: у `koronka-shataetsya-chto-delat`, `vypala-koronka-chto-delat` и `koronka-skololas-chto-delat` не было записей в `data/blog-articles.ts` (статьи существовали вне индекса) — добавлены; у `shinirovanie-zubov` и `zubnoj-kamen` не было внутренних ссылок — добавлены; исправлены битые ссылки в `implant-shataetsya` (periimplantit-lechenie→periimplantit, yorshiki-dlya-zubov→irrigator-dlya-polosti-rta) и `slyuna-gustaya` (убрана ссылка на несуществующую vospalenie-slyunnyh-zhelez).
 
+### Wave 3 (2026-08-15): ещё 10 тонких статей со спросом
+
+Отбор по подсказкам Яндекса из `%TEMP%\opencode\suggestions-all.json` (темы: «коронка vs металлокерамика», «болит под коронкой/пломбой», «выпал имплант», «съёмные протезы», «бюгельные кламмеры», «как снять боль», «вопросы ортопеду», «цельнолитой мост», «атрофия кости»). `scripts/rank-thin-demand.mjs` — грубый матчинг по словам даёт мало результатов, отбор делался вручную по ядру подсказок.
+
+| # | Слаг | Было | Стало | Статус |
+|---|------|------|-------|--------|
+| 1 | cirkonij-ili-metallokeramika | 5630 | 7030 | ✅ live 2026-08-15 (146999a) |
+| 2 | bolit-zub-pod-koronkoj | 5721 | 7009 | ✅ live 2026-08-15 (e501874) |
+| 3 | bolit-zub-pod-plomboy | 4564 | 7259 | ✅ live 2026-08-15 (117cfd7) |
+| 4 | implantat-vypal-chto-delat | 4247 | 7315 | ✅ live 2026-08-15 (6ba843a) |
+| 5 | kakie-semnye-protezy-luchshe | 6115 | 7306 | ✅ live 2026-08-15 (df4d605) |
+| 6 | byugelnyj-protez-klammery | 5698 | 7292 | ✅ live 2026-08-15 (0bff951) |
+| 7 | kak-snyat-zubnuyu-bol | 5091 | 7215 | ✅ live 2026-08-15 (b3e922d) |
+| 8 | 10-voprosov-stomatologu-ortopedu | 5872 | 7287 | ✅ live 2026-08-15 (dfcb570) |
+| 9 | celnolitoy-mostovidnyj-protez | 4846 | 7131 | ✅ live 2026-08-15 (4c72a64) |
+| 10 | atrofiya-kostnoj-tkani-chelyusti | 4876 | 7326 | ✅ live 2026-08-15 (271f60e) |
+
+**Wave 3 завершена 2026-08-15.** Среднее стало ~7.3k (было ~5.2k). Каннибализация-решения: `cirkonij-ili-metallokeramika` vs `cirkonievye-koronki-cena-nn` — оба оставлены, cirkonievye связан как детализирующий; `kakie-semnye-protezy-luchshe` — обзор-хаб (ссылки на byugelnyj-ili-semnyj-protez и др.); `byugelnyj-protez-klammery` ссылается на `klammera-dlya-byugelnykh-protezov`; `atrofiya-kostnoj-tkani-chelyusti` vs `kostnaya-plastika-pered-implantatsiej` — раздельные интенты (причины+восстановление vs этапы операции). Находки: у `celnolitoy-mostovidnyj-protez` не было записи в `data/blog-articles.ts` (статья существовала вне индекса) — добавлена; у `atrofiya-kostnoj-tkani-chelyusti` не было записи в индексе — добавлена. Исправлены битые ссылки: `karies-pod-plomboy`→`lechenie-kariesa` (bolit-zub-pod-plomboy), `periimplantit-lechenie`→`periimplantit` (implantat-vypal), удалена несуществующая `anesteziya-pri-lechenii-zubov` (kak-snyat-zubnuyu-bol); у `10-voprosov-stomatologu-ortopedu` и `sinus-lifting` в desc записи индекса остался CTA-хвост «Консультация ортопеда: +7 (920) 253-73-17.» — у 10-voprosov вычищен, у sinus-lifting оставлен (не трогали — вне scope волны).
+
 ## Available Skills
 
 22 skills from `addyosmani/agent-skills` at `.opencode/skills/<name>/SKILL.md`.
