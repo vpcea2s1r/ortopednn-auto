@@ -76,13 +76,15 @@
 | 1 | bolit-zub-pri-nakusyvanii | 4561 | 9291 | ✅ live 2026-08-15 (c671631) |
 | 2 | bolit-posle-implantacii | 3742 | 7812 | ✅ live 2026-08-15 (eda3e49) |
 | 3 | galitoz | 5028 | 8780 | ✅ live 2026-08-15 (2516f84) |
-| 4 | desna-otoshla-ot-koronki | 4192 | — | pending |
-| 5 | gingivit-krovotochivost-desen | 5218 | — | pending |
-| 6 | anesteziya-pri-implantacii | 3922 | — | pending |
-| 7 | attachmeny | 3637 | — | pending |
-| 8 | bolit-chelyust-posle-protezirovaniya | 4703 | — | pending |
-| 9 | bolit-zub-mudrosti | 4416 | — | pending |
-| 10 | implant-ne-prizhilsya | 5031 | — | pending |
+| 4 | desna-otoshla-ot-koronki | 4192 | 8264 | ✅ live 2026-08-15 (92f1b89) |
+| 5 | gingivit-krovotochivost-desen | 5218 | 8945 | ✅ live 2026-08-15 (273200d) |
+| 6 | anesteziya-pri-implantacii | 3922 | 7388 | ✅ live 2026-08-15 (9f7532e) |
+| 7 | attachmeny | 3637 | 7193 | ✅ live 2026-08-15 (3f09af9) |
+| 8 | bolit-chelyust-posle-protezirovaniya | 4703 | 8404 | ✅ live 2026-08-15 (481e958) |
+| 9 | bolit-zub-mudrosti | 4416 | 8135 | ✅ live 2026-08-15 (754cab5) |
+| 10 | implant-ne-prizhilsya | 5031 | 8544 | ✅ live 2026-08-15 (07ed1f0) |
+
+**Эксперимент завершён 2026-08-15.** Все 10 статей расширены до 7.2–9.3k знаков (среднее ~8.3k, было ~4.6k), опубликованы в один день. Метрика: сравнить Yandex searchable-индекс (было 59) и позиции по GSC через 3–4 недели (≈ 2026-09-12). Прочие находки: у `bolit-chelyust-posle-protezirovaniya` не было записи в `data/blog-articles.ts` — добавлена.
 
 ## Available Skills
 
