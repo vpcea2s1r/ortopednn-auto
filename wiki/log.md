@@ -12,6 +12,15 @@
 - **Ложные срабатывания**: `/blog/${o}/` и `/blog/${i}/` — template literal в JS глоссария (`glossary-tooltip.ts:25`), ловятся как `href` из бандла. Не ошибка.
 - **Wiki**: `project/weekly-review.md` создана — еженедельный чеклист ревью сайта (статусы, битые ссылки, canonical, кодировка, скорость, индексация), история прогонов
 
+## 2026-08-15 - ingest | Эксперимент расширения тонких статей завершён
+- **Цель**: проверить гипотезу «расширение тонких статей (<5.5k) с реальным спросом до 7–10k улучшает индексацию/позиции»
+- **10 статей расширены и опубликованы в один день** (среднее 4.6k → 8.3k знаков): bolit-zub-pri-nakusyvanii (4561→9291), bolit-posle-implantacii (3742→7812), galitoz (5028→8780), desna-otoshla-ot-koronki (4192→8264), gingivit-krovotochivost-desen (5218→8945), anesteziya-pri-implantacii (3922→7388), attachmeny (3637→7193), bolit-chelyust-posle-protezirovaniya (4703→8404), bolit-zub-mudrosti (4416→8135), implant-ne-prizhilsya (5031→8544)
+- **Метод**: каннибализация-проверка (правило 7.1) → черновик `data/drafts/<slug>.json` → валидация (кириллица, mojibake, цены, CTA, ссылки) → build+preview → публикация. Автономно по правилу 12, без переспроса на каждом шаге
+- **Каннибализация-решения**: galitoz отделён от zachem-chistit-yazyk/zubnoj-nalet (техника чистки vs комплексный запах); bolit-posle-implantacii от implant-shataetsya (боль vs подвижность — упомянуто, не раскрыто); desna-otoshla от ogolilas-shejka/vospalenie (зазор+гигиена vs обнажение шейки vs воспаление); bolit-zub-mudrosti от retinirovannyj-zub-mudrosti (боль vs непрорезавшийся зуб); implant-ne-prizhilsya от implantat-vypal (отторжение vs механическое выпадение)
+- **Находки**: у `bolit-chelyust-posle-protezirovaniya` не было записи в `data/blog-articles.ts` (статья существовала, но не в индексе) — добавлена. Ссылка `/blog/sinus-lifting-chto-eto/` не существовала — реальный слаг `sinus-lifting` (исправлено). Ссылка `/blog/posle-udaleniya-zuba/` не существовала — заменена на `bolit-zub-posle-udaleniya`
+- **Метрика**: Yandex searchable-индекс (было 59 на 15.08.2026) + позиции по GSC — замер через 3–4 недели (≈ 2026-09-12). Базовая линия зафиксирована в AGENTS.md «Experiment: thin article expansion»
+- **Правила**: в AGENTS.md добавлены №11 (Article length target: medium 7–10k) и №12 (Autonomy)
+
 ## 2026-08-01 — ingest | Индексация в Яндексе и AI-видимость
 - **Источник:** https://habr.com/ru/articles/1065514/ (ig_novvv, 2026)
 - **Wiki:** `project/indexing-speed-alice.md` создана — 4 инструмента ускорения индексации (переобход, IndexNow, sitemap, Метрика), последовательность публикации, детали IndexNow (202-код, urlList 10k), ЭПОС, сегмент AI Traffic, применимость к ortopednn (IndexNow из GitHub Actions)
