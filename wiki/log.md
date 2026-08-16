@@ -298,7 +298,7 @@
 - Cannibalization decisions: cirkonij-ili-metallokeramika vs cirkonievye-koronki-cena-nn (both kept, linked); kakie-semnye-protezy-luchshe as overview hub; atrofiya vs kostnaya-plastika as separate intents
 - Missing index records added to data/blog-articles.ts: celnolitoy-mostovidnyj-protez, atrofiya-kostnoj-tkani-chelyusti
 - Fixed broken links: karies-pod-plomboy→lechenie-kariesa, periimplantit-lechenie→periimplantit, removed anesteziya-pri-lechenii-zubov
-- Cleaned CTA-phone tail from 10-voprosov-stomatologu-ortopedu desc in index; sinus-lifting tail left (out of scope)
+- Phone CTA in desc is INTENTIONAL (SEO.md: phone in description boosts CTR) — removal of the tail was reverted in baabf30. sinus-lifting tail also restored.
 - Commits: 146999a, e501874, 117cfd7, 6ba843a, df4d605, 0bff951, b3e922d, dfcb570, 4c72a64, 271f60e
 - Wave 1+2+3 total: 30 articles expanded in one day; metrics pending (Yandex index was 59, GSC positions) ~2026-09-12
 - Workflow note: always verify link targets exist before adding; dist/preview HTML is attribute-minified so quoted-attr checks give false negatives
