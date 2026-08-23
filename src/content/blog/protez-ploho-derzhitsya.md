@@ -1,4 +1,4 @@
-﻿---
+---
 slug: protez-ploho-derzhitsya
 title: "Протез плохо держится — что делать"
 date: "2026-07-24"

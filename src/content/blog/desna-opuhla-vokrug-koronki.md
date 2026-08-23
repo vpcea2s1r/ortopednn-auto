@@ -1,4 +1,4 @@
-﻿---
+---
 slug: desna-opuhla-vokrug-koronki
 title: "Десна опухла вокруг коронки — что делать"
 date: "2026-07-24"

@@ -1,4 +1,4 @@
-﻿---
+---
 slug: zub-pod-koronkoj-gniet
 title: "Зуб под коронкой гниет — что делать"
 date: "2026-07-24"
