@@ -6,11 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "validate": "node scripts/validate-json.js",
+    "validate": "node scripts/validate-drafts.mjs",
     "generate": "node scripts/content-constructor.js",
     "lint:astro": "astro check",
     "lint": "npm run lint:astro",
-    "format": "prettier --write \"src/**/*.{astro,js,ts,css,json}\""
+    "format": "prettier --write \"src/**/*.{astro,js,ts,css,json}\"",
+    "typo:check": "node scripts/typo-check.mjs"
   },
   "dependencies": {
     "@astrojs/compiler-rs": "^0.2.0",
