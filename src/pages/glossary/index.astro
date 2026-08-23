@@ -2,8 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import { glossary, glossaryGroups } from '../../../data/glossary.ts';
+import { glossaryPages } from '../../../data/glossary-pages.ts';
 import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
+
+const pageByTerm = new Map(glossaryPages.map(p => [p.term, p.slug]));
 
 const byGroup = glossaryGroups.map(g => ({
   name: g,
@@ -32,13 +35,17 @@ const byGroup = glossaryGroups.map(g => ({
     {byGroup.map(group => (
       <section class="group">
         <h2>{group.name}</h2>
-        {group.items.map(t => (
+        {group.items.map(t => {
+          const pageSlug = pageByTerm.get(t.term);
+          return (
           <div class="term">
-            <div class="term__name">{t.term}</div>
+            <div class="term__name">{pageSlug ? <a href={`/glossary/${pageSlug}/`}>{t.term}</a> : t.term}</div>
             <p class="term__def">{t.def}</p>
-            {t.slug && <a class="term__link" href={`/blog/${t.slug}/`}>Подробнее →</a>}
+            {!pageSlug && t.slug && <a class="term__link" href={`/blog/${t.slug}/`}>Подробнее →</a>}
+            {pageSlug && <a class="term__link" href={`/glossary/${pageSlug}/`}>Что это такое →</a>}
           </div>
-        ))}
+          );
+        })}
       </section>
     ))}
 

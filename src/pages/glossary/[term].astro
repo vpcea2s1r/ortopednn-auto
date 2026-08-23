@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { glossaryPages } from '../../../data/glossary-pages.ts';
+import { articles } from '../../../data/blog-articles.ts';
+import doctor from '../../../data/doctor.json';
+import socials from '../../../data/socials.json';
+
+export function getStaticPaths() {
+  return glossaryPages.map(page => ({
+    params: { term: page.slug },
+    props: { page },
+  }));
+}
+
+export interface Props {
+  page: (typeof glossaryPages)[number];
+}
+
+const { page } = Astro.props;
+const pageUrl = `https://ortopednn.ru/glossary/${page.slug}/`;
+
+const related = page.related
+  .map(r => articles.find(a => a.slug === r.slug))
+  .filter((a): a is (typeof articles)[number] => Boolean(a))
+  .slice(0, 3);
+
+const words = page.body.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length;
+const readMinutes = Math.max(1, Math.round(words / 180));
+
+const headings = [...page.body.matchAll(/<h2>(.*?)<\/h2>/g)]
+  .map(m => m[1].replace(/<[^>]+>/g, '').trim())
+  .filter(Boolean);
+
+let h2Index = 0;
+const bodyWithAnchors = page.body.replace(/<h2>(.*?)<\/h2>/g, (m, text) => {
+  const id = 'toc-' + h2Index++;
+  return `<h2 id="${id}">${text}</h2>`;
+});
+
+const bodySafe = (() => {
+  let out = '';
+  let last = 0;
+  const re = /<table[^>]*>([\s\S]*?)<\/table>/g;
+  let m;
+  while ((m = re.exec(bodyWithAnchors)) !== null) {
+    out += bodyWithAnchors.slice(last, m.index);
+    const alreadyWrapped = /<div class="table-wrap">\s*$/.test(bodyWithAnchors.slice(last, m.index));
+    out += alreadyWrapped ? m[0] : `<div class="table-wrap">${m[0]}</div>`;
+    last = re.lastIndex;
+  }
+  return out + bodyWithAnchors.slice(last);
+})();
+
+const faqItems = (() => {
+  const blocks = [...page.body.matchAll(/<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/gs)]
+    .map(m => ({ q: m[1].replace(/<[^>]+>/g, '').trim(), a: m[2].replace(/<[^>]+>/g, '').trim() }))
+    .filter(i => i.q.includes('?') && i.a.length > 20)
+    .slice(0, 8);
+  return blocks;
+})();
+
+const ldTerm = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": page.term,
+  "description": page.description,
+  "url": pageUrl,
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "Глоссарий стоматолога-ортопеда",
+    "url": "https://ortopednn.ru/glossary/"
+  }
+};
+
+const ldFaq = faqItems.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(i => ({
+        "@type": "Question",
+        "name": i.q,
+        "acceptedAnswer": { "@type": "Answer", "text": i.a }
+      }))
+    }
+  : null;
+---
+
+<BaseLayout
+  title={`${page.title} | Никитина М.Г.`}
+  description={page.description}
+  breadcrumbTitle={page.term}
+  doctor={doctor}
+  socials={socials}
+>
+  <Navbar />
+  <main id="main" class="container container--w800">
+    <nav class="breadcrumbs">
+      <a href="/blog">Блог</a>
+      <span>/</span>
+      <a href="/glossary/">Глоссарий</a>
+      <span>/</span>
+      <span>{page.term}</span>
+    </nav>
+
+    <article>
+      <h1>{page.title}</h1>
+      <div class="meta">Глоссарий · {page.group} · {readMinutes} мин чтения</div>
+      {headings.length > 1 && (
+        <nav class="toc" aria-label="Содержание страницы">
+          <strong>Содержание</strong>
+          <ol>
+            {headings.map((h, i) => <li><a href={`#toc-${i}`}>{h}</a></li>)}
+          </ol>
+        </nav>
+      )}
+      <fragment set:html={bodySafe} />
+    </article>
+
+    <RelatedArticles articles={related} title="Подробные статьи по теме" />
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(ldTerm)} />
+{ldFaq && <script type="application/ld+json" set:html={JSON.stringify(ldFaq)} />}
+
+<style>
+  .breadcrumbs { font-size: 0.85rem; margin-bottom: 1rem; color: #7a9ab8; }
+  .breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .breadcrumbs span { margin: 0 0.4rem; color: #ccc; }
+  article { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  h1 { color: var(--color-text); margin-bottom: 0.5rem; font-size: 1.75rem; }
+  .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  .toc {
+    background: var(--color-bg-alt);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--color-primary);
+  }
+  .toc strong { display: block; color: var(--color-text); margin-bottom: 0.5rem; }
+  .toc ol { margin: 0; padding-left: 1.25rem; }
+  .toc li { margin-bottom: 0.35rem; font-size: 0.9rem; }
+  .toc a { color: var(--color-primary); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  article :global(h2[id]) { scroll-margin-top: 3.5rem; }
+  article :global(.lead) { font-size: 1.1rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem; background: var(--color-bg-alt); padding: 1rem; border-radius: 8px; }
+  article :global(h2) { color: var(--color-primary); margin: 2rem 0 1rem; font-size: 1.3rem; }
+  article :global(h3) { color: var(--color-text); margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+  article :global(p) { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  article :global(ul), article :global(ol) { color: var(--color-text-muted); padding-left: 1.5rem; margin-bottom: 1rem; }
+  article :global(li) { margin-bottom: 0.5rem; line-height: 1.6; }
+  article :global(a) { color: var(--color-primary); }
+  article :global(.table-wrap) { overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch; }
+  article :global(.table-wrap table) { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  article :global(th), article :global(td) { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  article :global(th) { background: var(--color-bg-alt); font-weight: 600; color: var(--color-text); }
+  article :global(td) { color: var(--color-text-muted); }
+  article :global(.cta) { text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; margin-top: 2rem; }
+  article :global(.cta p) { margin-bottom: 1rem; color: var(--color-text); }
+  article :global(.btn) { display: inline-block; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: var(--radius-full); text-decoration: none; font-weight: 600; }
+  article :global(.btn:hover) { background: var(--color-primary-hover); }
+</style>
