@@ -378,3 +378,13 @@ S02.5/K03.8 травма зуба (x9), K03.0 стираемость (x4), K02.1
 K04.x пульпит, K11.7 ксеростомия, K01.1 ретенция восьмёрки, Z96.5 импланты.
 Интент справочный (код) отделён от лечебного (статьи блога) — каннибализация разведена
 ссылками. Build 411 стр. Прогресс к 1000: 353 -> 411.
+
+## [2026-08-24] create | Волна A: новые статьи по незакрытым интентам
+A1 опубликована (8747693): protezirovanie-zubov-po-oms (7.6k, кластер ОМС x2+),
+prikusil-sheku-iznutri (8.3k, прикусил щёку/язык x2+). Live 200, guard phone-desc ok.
+Остальные 8 черновиков созданы (2.1-2.8k) и ЖДУТ расширения до 7k (Hard Rule 11):
+kislaya-slyuna, rekcessiya-posle-otbelivaniya, dentofobiya, kraevoe-prileganie,
+protezirovanie-v-kitae, protivopokazaniya, sohranit-koren, implantaciya-vs-protezirovanie.
+Инцидент: вставка в blog-articles.ts попала в конец функции вместо массива — build упал,
+файл восстановлен из git через execSync (PowerShell redirect делает UTF-16!).
+Прогресс к 1000: 411 -> 421.
