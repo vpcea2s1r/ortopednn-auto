@@ -414,6 +414,7 @@ export const articles: BlogArticle[] = [
   { slug: 'protezirovanie-zubov-v-kitae', title: 'Протезирование зубов в Китае', date: '2026-08-24', desc: 'Протезирование зубов в Китае: почему медицинский туризм растёт, качество клиник, китайские импланты, риски и как готовиться. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
   { slug: 'protivopokazaniya-k-protezirovaniyu', title: 'Противопоказания к протезированию зубов', date: '2026-08-24', desc: 'Противопоказания к протезированию: когда нельзя ставить коронки, мосты и протезы, подготовка при диабете, беременности, пародонтите. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
   { slug: 'mozhno-li-sohranit-koren-zuba', title: 'Можно ли сохранить корень зуба', date: '2026-08-24', desc: 'Когда корень зуба можно сохранить вместо удаления: критерии по КЛКТ, вкладка, резекция верхушки. Честное сравнение с имплантацией. Консультация ортопеда: +7 (920) 253-73-17.', category: 'lechenie' },
+  { slug: 'chem-otlichaetsya-implantaciya-ot-protezirovaniya', title: 'Чем отличается имплантация от протезирования', date: '2026-08-24', desc: 'Разница между имплантацией и протезированием: кто какой этап делает, сроки, показания. Как связаны хирург и ортопед. Консультация ортопеда: +7 (920) 253-73-17.', category: 'implanty' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
