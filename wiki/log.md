@@ -404,3 +404,10 @@ rekcessiya-desny-posle-otbelivaniya 7.7k (a16b2ff): гель-механика, �
 Очередь на расширение (5 черновиков 2.1-2.3k): kraevoe-prileganie-koronki,
 protezirovanie-zubov-v-kitae, protivopokazaniya-k-protezirovaniyu,
 mozhno-li-sohranit-koren-zuba, chem-otlichaetsya-implantaciya-ot-protezirovaniya.
+
+## [2026-08-24] expand | Волна A ЗАВЕРШЕНА: все 10 статей live
+kraevoe-prileganie 7.8k, protezirovanie-v-kitae 7.4k, protivopokazaniya 7.5k,
+sohranit-koren 6.9k, implantaciya-vs-protezirovanie 6.9k — все опубликованы (88f6d13),
+live 200 x5. Итог волны A: 10/10 статей 6.8-8.3k зн по незакрытым интентам.
+Прогресс к 1000: 353 -> 421 (68 страниц за сессию: глоссарий-48, сравнения-9, МКБ-13,
+новые статьи-10 минус пересечения).
