@@ -342,3 +342,15 @@ Deploy success, live 200.
 винир, временная коронка, кламмер, периимплантит), средний объём 2.2k зн.
 Schema: DefinedTerm + FAQPage (h3-вопросы). Индекс перелинкован по имени термина.
 Итого 353 страницы. План: +42 термина, ~35 сравнений /compare/, ~20 МКБ-10, затем статьи по ядру.
+
+## [2026-08-23] security+ci | typo-check pipeline + утечка токена закрыта
+1. scripts/typo-check.mjs -> npm run typo:check: mixed-script слова, баланс тегов, BOM,
+   frontmatter, no-prices маркер «р.,». CI: github-pages.yml гоняет перед Build.
+   Поймал цены в koronka-na-implant.md (4-е нарушение no-prices) — удалены.
+2. Инцидент: yandex-webmaster-stats.py с токеном уехал в публичный коммит (13091af),
+   жил ~10 мин, переписан форс-пушем (69646f3). raw-кэш старого SHA живёт до GC.
+   Токены теперь ТОЛЬКО из env (scripts/.env, gitignored). TO DO: перевыпустить
+   Yandex refresh token (нужен браузер пользователя).
+3. /scripts/ был целиком в gitignore — guard-скрипты существовали только локально.
+   Добавлены whitelist-исключения: check-desc/links/positions, validate-drafts,
+   publish-single, typo-check и др. теперь в репо (без секретов).
