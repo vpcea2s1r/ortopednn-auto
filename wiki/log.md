@@ -396,3 +396,11 @@ protezirovanie-v-kitae, protivopokazaniya, sohranit-koren, implantaciya-vs-prote
 dentofobiya-lechenie-bez-straha, kraevoe-prileganie-koronki, protezirovanie-zubov-v-kitae,
 protivopokazaniya-k-protezirovaniyu, mozhno-li-sohranit-koren-zuba,
 chem-otlichaetsya-implantaciya-ot-protezirovaniya.
+
+## [2026-08-24] expand | Волна A: +2 статьи расширены и опубликованы
+rekcessiya-desny-posle-otbelivaniya 7.7k (a16b2ff): гель-механика, противопоказания,
+альтернативы отбеливанию. dentofobiya-lechenie-bez-straha 7.7k (fa7a7b6): протокол
+первого визита, самопомощь, выбор клиники. Обе live, guard phone-desc ok.
+Очередь на расширение (5 черновиков 2.1-2.3k): kraevoe-prileganie-koronki,
+protezirovanie-zubov-v-kitae, protivopokazaniya-k-protezirovaniyu,
+mozhno-li-sohranit-koren-zuba, chem-otlichaetsya-implantaciya-ot-protezirovaniya.
