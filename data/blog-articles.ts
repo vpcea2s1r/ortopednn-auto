@@ -405,6 +405,8 @@ export const articles: BlogArticle[] = [
   { slug: 'attachmeny', title: 'Аттачмены для зубных протезов: виды, что это, уход', date: '2026-08-15', desc: 'Аттачмены для съёмных зубных протезов: что это такое, виды — кнопочные, шаровидные, балочные, локаторы. Как работают, чем отличаются от кламмеров, срок службы, уход и замена. Консультация ортопеда: +7 (920) 253-73-17.', category: 'semnye-protezy' },
   { slug: 'protez-tsvet', title: 'Цвет зубных протезов: как подбирают, какой выбрать', date: '2026-08-10', desc: 'Как подбирают цвет зубных протезов и коронок: шкала VITA, естественность, подбор по соседним зубам. Что важно при выборе оттенка. Консультация ортопеда: +7 (920) 253-73-17.', category: 'semnye-protezy' },
   { slug: 'protez-pyatna', title: 'Пятна на зубном протезе: почему появляются, как убрать', date: '2026-08-10', desc: 'Пятна на зубном протезе — почему появляются: налёт, красители, грибок. Как убрать пятна с протеза в домашних условиях и в клинике, как предотвратить. Консультация ортопеда: +7 (920) 253-73-17.', category: 'semnye-protezy' },
+  { slug: 'protezirovanie-zubov-po-oms', title: 'Протезирование зубов по ОМС', date: '2026-08-24', desc: 'Протезирование зубов по полису ОМС: кому положены бесплатные услуги, какие конструкции входят в программу, как оформить квоту. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
+  { slug: 'prikusil-sheku-iznutri', title: 'Прикусил щеку изнутри: чем лечить', date: '2026-08-24', desc: 'Прикусил щеку изнутри или язык до крови: чем обработать рану, сколько заживает, почему прикусывания повторяются. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
@@ -416,7 +418,12 @@ export function getCategory(categoryId: string): BlogCategory | undefined {
 
 export function getRelatedArticles(slug: string, count: number = 4): BlogArticle[] {
   const article = articles.find(a => a.slug === slug);
-  if (!article || !article.category) return [
-  { slug: 'protezirovanie-zubov-po-oms', title: 'Протезирование зубов по ОМС', date: '2026-08-24', desc: 'Протезирование зубов по полису ОМС: кому положены бесплатные услуги, какие конструкции входят в программу, как оформить квоту. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
-  { slug: 'prikusil-sheku-iznutri', title: 'Прикусил щеку изнутри: чем лечить', date: '2026-08-24', desc: 'Прикусил щеку изнутри или язык до крови: чем обработать рану, сколько заживает, почему прикусывания повторяются. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
-];
+  if (!article || !article.category) return [];
+  return articles
+    .filter(a => a.category === article.category && a.slug !== slug)
+    .slice(0, count);
+}
+
+export function getCategoryArticleCount(categoryId: string): number {
+  return articles.filter(a => a.category === categoryId).length;
+}
