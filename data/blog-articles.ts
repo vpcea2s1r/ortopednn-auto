@@ -408,6 +408,7 @@ export const articles: BlogArticle[] = [
   { slug: 'protezirovanie-zubov-po-oms', title: 'Протезирование зубов по ОМС', date: '2026-08-24', desc: 'Протезирование зубов по полису ОМС: кому положены бесплатные услуги, какие конструкции входят в программу, как оформить квоту. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
   { slug: 'prikusil-sheku-iznutri', title: 'Прикусил щеку изнутри: чем лечить', date: '2026-08-24', desc: 'Прикусил щеку изнутри или язык до крови: чем обработать рану, сколько заживает, почему прикусывания повторяются. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
   { slug: 'kislaya-slyuna-prichiny', title: 'Кислая слюна во рту: причины', date: '2026-08-24', desc: 'Кислый привкус слюны: причины от рефлюкса до лекарств, связь с зубами, диагностика и способы нейтрализации. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
+  { slug: 'rekcessiya-desny-posle-otbelivaniya', title: 'Рецессия десны после отбеливания', date: '2026-08-24', desc: 'Опустилась десна после отбеливания зубов: почему возникает рецессия, чувствительность у шеек, методы восстановления и профилактика. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
