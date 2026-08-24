@@ -410,6 +410,7 @@ export const articles: BlogArticle[] = [
   { slug: 'kislaya-slyuna-prichiny', title: 'Кислая слюна во рту: причины', date: '2026-08-24', desc: 'Кислый привкус слюны: причины от рефлюкса до лекарств, связь с зубами, диагностика и способы нейтрализации. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
   { slug: 'rekcessiya-desny-posle-otbelivaniya', title: 'Рецессия десны после отбеливания', date: '2026-08-24', desc: 'Опустилась десна после отбеливания зубов: почему возникает рецессия, чувствительность у шеек, методы восстановления и профилактика. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
   { slug: 'dentofobiya-lechenie-bez-straha', title: 'Дентофобия: лечение без страха', date: '2026-08-24', desc: 'Дентофобия — панический страх стоматолога: почему возникает, техники снижения тревоги, седация, первый шаг без боли. Консультация ортопеда: +7 (920) 253-73-17.', category: 'diagnostika' },
+  { slug: 'kraevoe-prileganie-koronki', title: 'Краевое прилегание коронки', date: '2026-08-24', desc: 'Краевое прилегание коронки что это: плотность стыка коронки и зуба. Как проверяют, чем грозит зазор, признаки плохого прилегания. Консультация ортопеда: +7 (920) 253-73-17.', category: 'koronki' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
