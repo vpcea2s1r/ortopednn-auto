@@ -1,0 +1,10 @@
+import { readFileSync } from "fs";
+const d = JSON.parse(readFileSync("data/drafts/atrofiya-kostnoj-tkani-chelyusti.json", "utf8").replace(/^\uFEFF/, ""));
+const b = d.body;
+const text = b.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+console.log("text len:", text.length);
+console.log("h2 count:", (b.match(/<h2>/g) || []).length);
+console.log("h3 count:", (b.match(/<h3>/g) || []).length);
+console.log("cta:", b.includes("tel:+79202537317"));
+console.log("price:", /\d\s?₽|руб/i.test(b));
+console.log("links:", [...b.matchAll(/href="([^"]+)"/g)].map((m) => m[1]).join(", "));

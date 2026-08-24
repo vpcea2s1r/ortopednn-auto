@@ -7,7 +7,24 @@ dist
 data/drafts/
 9router
 openserp
-/scripts/
+# /scripts/ игнорится, но рабочие пайплайн-скрипты исключения ниже (Hard Rule: guard-скрипты должны жить в репо)
+/scripts/*
+!/scripts/check-desc.mjs
+!/scripts/check-draft.mjs
+!/scripts/check-faq.mjs
+!/scripts/check-links-file.mjs
+!/scripts/check-links.mjs
+!/scripts/check-positions.mjs
+!/scripts/delete-files.ps1
+!/scripts/expand-candidates.mjs
+!/scripts/fix-frontmatter.mjs
+!/scripts/publish-drafts.mjs
+!/scripts/publish-single.mjs
+!/scripts/rank-thin-demand.mjs
+!/scripts/typo-check.mjs
+!/scripts/validate-2.mjs
+!/scripts/validate-drafts.mjs
+!/scripts/yandex-webmaster-stats.py
 wordstat
 .wrangler
 .keystatic
