@@ -416,12 +416,7 @@ export function getCategory(categoryId: string): BlogCategory | undefined {
 
 export function getRelatedArticles(slug: string, count: number = 4): BlogArticle[] {
   const article = articles.find(a => a.slug === slug);
-  if (!article || !article.category) return [];
-  return articles
-    .filter(a => a.category === article.category && a.slug !== slug)
-    .slice(0, count);
-}
-
-export function getCategoryArticleCount(categoryId: string): number {
-  return articles.filter(a => a.category === categoryId).length;
-}
+  if (!article || !article.category) return [
+  { slug: 'protezirovanie-zubov-po-oms', title: 'Протезирование зубов по ОМС', date: '2026-08-24', desc: 'Протезирование зубов по полису ОМС: кому положены бесплатные услуги, какие конструкции входят в программу, как оформить квоту. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
+  { slug: 'prikusil-sheku-iznutri', title: 'Прикусил щеку изнутри: чем лечить', date: '2026-08-24', desc: 'Прикусил щеку изнутри или язык до крови: чем обработать рану, сколько заживает, почему прикусывания повторяются. Консультация ортопеда: +7 (920) 253-73-17.', category: 'uhod-i-profilaktika' },
+];
