@@ -412,6 +412,7 @@ export const articles: BlogArticle[] = [
   { slug: 'dentofobiya-lechenie-bez-straha', title: 'Дентофобия: лечение без страха', date: '2026-08-24', desc: 'Дентофобия — панический страх стоматолога: почему возникает, техники снижения тревоги, седация, первый шаг без боли. Консультация ортопеда: +7 (920) 253-73-17.', category: 'diagnostika' },
   { slug: 'kraevoe-prileganie-koronki', title: 'Краевое прилегание коронки', date: '2026-08-24', desc: 'Краевое прилегание коронки что это: плотность стыка коронки и зуба. Как проверяют, чем грозит зазор, признаки плохого прилегания. Консультация ортопеда: +7 (920) 253-73-17.', category: 'koronki' },
   { slug: 'protezirovanie-zubov-v-kitae', title: 'Протезирование зубов в Китае', date: '2026-08-24', desc: 'Протезирование зубов в Китае: почему медицинский туризм растёт, качество клиник, китайские импланты, риски и как готовиться. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
+  { slug: 'protivopokazaniya-k-protezirovaniyu', title: 'Противопоказания к протезированию зубов', date: '2026-08-24', desc: 'Противопоказания к протезированию: когда нельзя ставить коронки, мосты и протезы, подготовка при диабете, беременности, пародонтите. Консультация ортопеда: +7 (920) 253-73-17.', category: 'protezirovanie' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
