@@ -52,7 +52,7 @@
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - N8N_HOST=localhost
-      - WEBHOOK_URL=http://94.183.155.147:5678/
+      - WEBHOOK_URL=http://185.245.34.155:5678/
       - N8N_ENCRYPTION_KEY=\
       - TZ=Europe/Moscow
     volumes:

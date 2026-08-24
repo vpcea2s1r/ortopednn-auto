@@ -3,7 +3,7 @@
 ## Project Context
 - **LIVE-код (Astro):** `C:\opencode\ortopednn-auto\` — Astro SSG, деплоится на GitHub Pages
 - **Многосайтовая архитектура:** `docs/architecture.md` — как маштабировать проект на несколько доменов (ortopednn.ru, stomatolog.ortopednn.ru, и др.)
-- **VPS:** `94.183.155.147` — root, пароль `MX9Hip94h=KMUJcU6T`, Docker (bot + n8n), Ubuntu 24.04
+- **VPS:** `185.245.34.155` — root, пароль `ma4BNRV4`, Docker (bot + n8n). Реквизиты и SOCKS5-прокси (3proxy, порт 49187, `proxy_user`/`CEWjuOv3EWttIoDp`) — в `docs/vps.md`. ⚠️ Старый VPS `94.183.155.147` переустановлен/перевыделен (host key сменился, root-пароль и SSH-ключи не подходят, Docker-стек отсутствует) — перенос стека на новый сервер в работе
 - **VPS ветка:** `master` (совпадает с дефолтной). `main` — устарела, расходится, НЕ используется
 - **Бот на VPS:** `server/` — Docker compose, polling mode, порт 3000
 - **n8n на VPS:** порт 5678, admin@ortopednn.ru / Ortopednn2026!, workflow импортирован
@@ -11,7 +11,7 @@
 - **Docker registry mirror:** `mirror.gcr.io` в `/etc/docker/daemon.json`
 - **Хостинг бота:** `docs/hosting.md` — документация по портированию бота
 - **Веб-панель (Content Factory):** `server/admin/` — Express + HTMX + SQLite, порт 3001, admin.ortopednn.ru (JWT auth, Chart.js dashboard)
-- **Cloudflare:** admin.ortopednn.ru → A record 94.183.155.147, API токен в cloudflare-token.md (gitignored)
+- **Cloudflare:** admin.ortopednn.ru → A record 185.245.34.155 (обновлено 2026-08-16), API токен в cloudflare-token.md (gitignored)
 - **Репозиторий:** `github.com/vpcea2s1r/ortopednn-auto`
 - **Старый репозиторий (Next.js):** `C:\opencode\ortopednn\` — устаревший код, НЕ используется на live, подлежит удалению
 - **Тестовый поддомен (Astro):** `C:\opencode\stomatolog\` — stomatolog.ortopednn.ru (GitHub Pages)
@@ -274,7 +274,7 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 
 ## Telegram SEO Monitor Bot (`@ortopednn52_bot`)
 
-Бот работает на VPS (94.183.155.147) в Docker-контейнере, polling mode, порт 3000.
+Бот работал на старом VPS (94.183.155.147) в Docker-контейнере, polling mode, порт 3000. ⚠️ Старый сервер перевыделен — бот/n8n/admin переносятся на 185.245.34.155.
 
 ### Что умеет сейчас
 - **Инлайн-меню** (`/menu`): Производительность, Статистика, Черновики, Дзен, PubMed-рерайт
@@ -315,6 +315,18 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 - Любое изменение кода (структуры JSON, компонентов, маршрутов, схем) должно быть совместимо с существующими данными в репозитории (`data/`, `content/`)
 - Перед commit/push — запустить `npm run build` и убедиться что build проходит без ошибок
 - Если меняется формат данных (например, поле в JSON) — обновить все существующие файлы или обеспечить поддержку старого формата
+
+## Typo Check Rule (обязательно перед пушем)
+- `npm run typo:check` — проверка всех md/astro/ts на: латиницу внутри кириллических слов, несбалансированные HTML-теги, BOM, двойные слова, цены («р.,» маркер). Exit 1 = пушить нельзя
+- Тот же скрипт гоняется в CI (`github-pages.yml`, step «Typo check» перед Build) — упавший check ломает деплой намеренно
+- Ложные срабатывания отфильтрованы whitelist'ом (All-on-4, E-max, МКБ, инициалы М.Г., et al.)
+
+## Secrets Policy (Hard Rule — репо ПУБЛИЧНОЕ)
+- Репозиторий `vpcea2s1r/ortopednn-auto` — **public**. OAuth-токены, пароли, ключи — НИКОГДА не коммитятся
+- Все токены лежат локально в `scripts/.env` (gitignored): GSC_CLIENT_SECRET, GSC_REFRESH_TOKEN, YANDEX_OAUTH
+- Скрипты читают их через `process.env`: `node --env-file=scripts/.env scripts/check-positions.mjs`
+- При добавлении нового скрипта с доступом к API — токен только из env; проверка перед пушем: grep по y0__/GOCSPX/1\/\/0c
+- Инцидент 2026-08-23: токен Яндекса попал в публичный коммит на ~10 минут (13091af), переписан форс-пушем; raw-кэш старого SHA живёт до GC — **токен перевыпустить** (нужен вход пользователя в Яндекс OAuth)
 
 ## Writing Rules (обязательно для всех)
 
