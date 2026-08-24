@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import FAQ from '../../components/FAQ.astro';
+import { comparePages } from '../../../data/compare-pages.ts';
 import doctor from '../../../data/doctor.json';
 import socials from '../../../data/socials.json';
 ---
@@ -21,6 +22,17 @@ import socials from '../../../data/socials.json';
     <div class="intro">
       <p>Это один из самых частых вопросов, который слышу от пациентов. Постараюсь объяснить объективно, без рекламы.</p>
     </div>
+
+    {comparePages.length > 0 && (
+      <section class="compare-links">
+        <h2>Другие сравнения конструкций</h2>
+        <ul>
+          {comparePages.map(p => (
+            <li><a href={`/compare/${p.slug}/`}>{p.a} или {p.b}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <div class="comparison">
       <div class="card">
@@ -122,6 +134,11 @@ import socials from '../../../data/socials.json';
 <style>
 
 .back { color: var(--primary); margin-bottom: 1rem; display: inline-block; }
+.compare-links { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 3rem; }
+.compare-links h2 { color: #1e3a5f; font-size: 1.25rem; margin-bottom: 1rem; }
+.compare-links ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.compare-links a { color: #4a90d9; text-decoration: none; font-size: 0.95rem; }
+.compare-links a:hover { text-decoration: underline; }
 h1 { color: #1e3a5f; margin-bottom: 1rem; }
 .intro p { font-size: 1.1rem; color: #5a7a9a; margin-bottom: 2rem; }
 .comparison { display: grid; gap: 1.5rem; margin-bottom: 3rem; }
