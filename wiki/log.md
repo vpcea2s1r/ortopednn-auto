@@ -388,3 +388,11 @@ protezirovanie-v-kitae, protivopokazaniya, sohranit-koren, implantaciya-vs-prote
 Инцидент: вставка в blog-articles.ts попала в конец функции вместо массива — build упал,
 файл восстановлен из git через execSync (PowerShell redirect делает UTF-16!).
 Прогресс к 1000: 411 -> 421.
+
+## [2026-08-24] expand | kislaya-slyuna-prichiny расширена до 6.8k, опубликована (4014489)
+Добавлены: механика кислотной эрозии + ночной рефлюкс, диагностика по времени симптома,
+лекарственные дисгевзии, влияние кислой среды на протезы/коронки. Live 200.
+ОСТАЮТСЯ в очереди на расширение до 7k (черновики 2.1-2.3k): rekcessiya-posle-otbelivaniya,
+dentofobiya-lechenie-bez-straha, kraevoe-prileganie-koronki, protezirovanie-zubov-v-kitae,
+protivopokazaniya-k-protezirovaniyu, mozhno-li-sohranit-koren-zuba,
+chem-otlichaetsya-implantaciya-ot-protezirovaniya.
