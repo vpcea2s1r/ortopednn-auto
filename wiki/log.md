@@ -448,3 +448,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-26] expand | skolko-mozhno-hodit 6.2k + protez-babochka 5.9k (8429365)
 Программа расширения 80 тонких статей запущена. Live, deploy success.
+
+## [2026-08-26] expand | koronka-pod-desnu 6.5k + protez-tsvet 6k (6b140a8)
+Программа расширения тонких статей: 6 статей расширено за сессию.
