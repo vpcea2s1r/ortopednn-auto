@@ -451,3 +451,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-26] expand | koronka-pod-desnu 6.5k + protez-tsvet 6k (6b140a8)
 Программа расширения тонких статей: 6 статей расширено за сессию.
+
+## [2026-08-26] expand | protezirovanie-bez-obtachki 6.1k + otek-posle-implantacii 6k (d99ea89)
+Программа расширения: 10 статей расширено суммарно. Live, deploy success.
