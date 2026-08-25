@@ -417,6 +417,7 @@ export const articles: BlogArticle[] = [
   { slug: 'chem-otlichaetsya-implantaciya-ot-protezirovaniya', title: 'Чем отличается имплантация от протезирования', date: '2026-08-24', desc: 'Разница между имплантацией и протезированием: кто какой этап делает, сроки, показания. Как связаны хирург и ортопед. Консультация ортопеда: +7 (920) 253-73-17.', category: 'implanty' },
   { slug: 'koronki-dlya-zhevatelnyh-zubov', title: 'Коронки на жевательные зубы: какие лучше', date: '2026-08-24', desc: 'Какие коронки лучше ставить на жевательные зубы: металлокерамика, цирконий или литые — сравнение по нагрузке и сроку службы. Консультация ортопеда: +7 (920) 253-73-17.', category: 'koronki' },
   { slug: 'implantaciya-pod-klyuch', title: 'Имплантация под ключ', date: '2026-08-24', desc: 'Имплантация под ключ: полный цикл от КЛКТ до постоянной коронки одним врачом. Что входит в понятие, сроки, плюсы единого плана. Консультация ортопеда: +7 (920) 253-73-17.', category: 'implanty' },
+  { slug: 'protezy-novogo-pokoleniya', title: 'Зубные протезы нового поколения', date: '2026-08-25', desc: 'Протезы нового поколения без нёба: AcryFree, Quattro Ti, сэндвич, бюгель на замках, All-on-4. Чем современные конструкции отличаются от старых. Ортопед: +7 (920) 253-73-17.', category: 'semnye-protezy' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
