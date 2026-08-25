@@ -420,6 +420,8 @@ export const articles: BlogArticle[] = [
   { slug: 'protezy-novogo-pokoleniya', title: 'Зубные протезы нового поколения', date: '2026-08-25', desc: 'Протезы нового поколения без нёба: AcryFree, Quattro Ti, сэндвич, бюгель на замках, All-on-4. Чем современные конструкции отличаются от старых. Ортопед: +7 (920) 253-73-17.', category: 'semnye-protezy' },
   { slug: 'protez-vypadaet-pri-ede', title: 'Протез выпадает при еде: что делать', date: '2026-08-25', desc: 'Зубной протез выпадает при еде или верхний протез не держится: причины (атрофия, старый базис) и решения от перебазировки до фиксации на имплантах. Ортопед: +7 (920) 253-73-17.', category: 'semnye-protezy' },
   { slug: 'shataetsya-koronka-na-implante', title: 'Шатается коронка на импланте', date: '2026-08-25', desc: 'Почему шатается коронка на импланте: раскрутился винт, расцементировался абатмент или проблема с имплантом. Диагностика и решение. Ортопед: +7 (920) 253-73-17.', category: 'implanty' },
+  { slug: 'verhniy-protez-na-prisoskah', title: 'Верхний протез на присосках', date: '2026-08-25', desc: 'Верхний съёмный протез на присосках: принцип присасывания к нёбу, почему теряется фиксация и что делать при атрофии. Современные альтернативы. Ортопед: +7 (920) 253-73-17.', category: 'semnye-protezy' },
+  { slug: 'pochemu-natiraet-zubnoy-protez', title: 'Почему натирает зубной протез', date: '2026-08-25', desc: 'Почему натирает зубной протез: причины (посадка, камень, привыкание), первая помощь при натёртости, коррекция за один визит. Ортопед: +7 (920) 253-73-17.', category: 'semnye-protezy' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
