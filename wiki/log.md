@@ -445,3 +445,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 ## [2026-08-26] create | Волна G: skolko-sluzhit-plomba (4k) + bolit-pod-plomboy (3.5k)
 Спрос: «сколько служит пломба», «болит зуб под пломбой». Live, deploy success (b88f1eb).
 Сайт: 434 страницы.
+
+## [2026-08-26] expand | skolko-mozhno-hodit 6.2k + protez-babochka 5.9k (8429365)
+Программа расширения 80 тонких статей запущена. Live, deploy success.
