@@ -430,3 +430,7 @@ implantaciya-pod-klyuch 6.4k (спрос из ядра). Live, deploy success (a
 ## [2026-08-25] create | Волна D: verhniy-protez-na-prisoskah (5.4k) + pochemu-natiraet (5.6k)
 Спрос: «протез на присосках», «почему натирает зубной протез». Live, deploy success.
 Сайт: 428 страниц. Очередь: расширение D до 7k при следующей итерации.
+
+## [2026-08-25] create | Волна E: kak-privyknut-k-verhnemu (3.6k) + skolko-sluzhit-mk (3.5k)
+Спрос: адаптация к протезу, срок службы металлокерамики. Live, deploy success (42ed961).
+Сайт: 430 страниц. Очередь: расширение волн D-E до 7k.
