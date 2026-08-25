@@ -466,3 +466,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-26] expand | vnchs-protezirovanie 5.9k + ortodontiya-vzroslyh 6.4k (27947e0)
 Программа расширения: 18 статей закрыто. Live, deploy success.
+
+## [2026-08-26] expand | ftor-v-zubnoy-paste 6.7k + protezy-i-pitanie-pozhilyh 6.9k (a180290)
+Программа расширения: 20 статей закрыто. Live, deploy success.
