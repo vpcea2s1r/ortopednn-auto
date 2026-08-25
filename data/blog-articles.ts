@@ -424,6 +424,8 @@ export const articles: BlogArticle[] = [
   { slug: 'pochemu-natiraet-zubnoy-protez', title: 'Почему натирает зубной протез', date: '2026-08-25', desc: 'Почему натирает зубной протез: причины (посадка, камень, привыкание), первая помощь при натёртости, коррекция за один визит. Ортопед: +7 (920) 253-73-17.', category: 'semnye-protezy' },
   { slug: 'kak-privyknut-k-verhnemu-protezu', title: 'Как привыкнуть к верхнему протезу', date: '2026-08-25', desc: 'Как быстро привыкнуть к верхнему съёмному протезу: дикция, еда, рвотный рефлекс — график по дням и рабочие приёмы. Когда нужна коррекция. Ортопед: +7 (920) 253-73-17.', category: 'semnye-protezy' },
   { slug: 'skolko-sluzhit-koronka-iz-metallokeramiki', title: 'Сколько служит коронка из металлокерамики', date: '2026-08-25', desc: 'Срок службы металлокерамической коронки: реальные 10-15 лет, что сокращает срок (бруксизм, кариес края, гигиена), когда менять. Ортопед: +7 (920) 253-73-17.', category: 'koronki' },
+  { slug: 'kak-vyglyadit-litso-bez-zubov', title: 'Как выглядит лицо без зубов', date: '2026-08-25', desc: 'Лицо без зубов: провалы щёк, укороченный подбородок, старческие изменения — почему происходят и что возвращает молодость. Протезы и импланты. Ортопед: +7 (920) 253-73-17.', category: 'protezirovanie' },
+  { slug: 'kak-krepitsya-koronka-na-implante', title: 'Как крепится коронка на имплант', date: '2026-08-25', desc: 'Коронка на импланте крепится винтом или цементом на абатменте: плюсы и минусы каждого способа, когда какой выбирают, обслуживание. Ортопед: +7 (920) 253-73-17.', category: 'implanty' },
 ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);
