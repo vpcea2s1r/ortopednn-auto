@@ -457,3 +457,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-26] expand | poloskanie-posle-udaleniya 6.3k + otkrytyy-prikus 6k (68a4e91)
 Программа расширения: 12 статей закрыто. Live, deploy success.
+
+## [2026-08-26] expand | pokryvnoy-protez 5.8k + zachem-chistit-yazyk 6.1k (1dd68f4)
+Программа расширения: 14 статей закрыто. Live, deploy success.
