@@ -417,3 +417,7 @@ koronki-dlya-zhevatelnyh-zubov 6.6k (спрос: «коронки какие л�
 implantaciya-pod-klyuch 6.4k (спрос из ядра). Live, deploy success (a785af7).
 В очереди волны B: protezy-novogo-pokoleniya («зубные протезы нового поколения без неба
 цена НН» — свободный интент), implanty-vidy.
+
+## [2026-08-25] create | Волна B часть 2: protezy-novogo-pokoleniya (e892dc4)
+6.5k зн: термопластики, протезы без нёба на верхнюю челюсть, цифровое изготовление,
+карта современных решений. Live 200. Сайт: 424 страницы.
