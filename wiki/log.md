@@ -463,3 +463,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-26] expand | plomba-vypala 6.9k + srok-okonchatelnoy-nagruzki 6.3k (94ff21f)
 Программа расширения: 16 статей закрыто. Live, deploy success.
+
+## [2026-08-26] expand | vnchs-protezirovanie 5.9k + ortodontiya-vzroslyh 6.4k (27947e0)
+Программа расширения: 18 статей закрыто. Live, deploy success.
