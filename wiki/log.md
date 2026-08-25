@@ -454,3 +454,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-26] expand | protezirovanie-bez-obtachki 6.1k + otek-posle-implantacii 6k (d99ea89)
 Программа расширения: 10 статей расширено суммарно. Live, deploy success.
+
+## [2026-08-26] expand | poloskanie-posle-udaleniya 6.3k + otkrytyy-prikus 6k (68a4e91)
+Программа расширения: 12 статей закрыто. Live, deploy success.
