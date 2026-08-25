@@ -438,3 +438,6 @@ implantaciya-pod-klyuch 6.4k (спрос из ядра). Live, deploy success (a
 ## [2026-08-25] create | Волна F: litso-bez-zubov (4k) + krepitsya-koronka-na-implante (3.7k)
 Спрос: «как выглядит верхняя челюсть без зубов», «как крепится коронка на имплант».
 Live, deploy success (db3ae4f). Сайт: 432 страницы.
+
+## [2026-08-25] expand | Волны D-F расширены: mk 6.9k, privyknut 6.3k, litso 5.6k, krepitsya 4.9k
+Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.3k зн.
