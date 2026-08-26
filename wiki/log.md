@@ -493,3 +493,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | nejlon-acrifree-akril 6.9k + lazernaya-stomatologiya 6.6k (c1a0ca7)
 Программа расширения: 36 статей закрыто. Live, deploy success.
+
+## [2026-08-27] expand | periodontit-lechenie 6.9k + ortoped-ili-terapevt 6.7k (802bc19)
+Программа расширения: 38 статей закрыто. Live, deploy success.
