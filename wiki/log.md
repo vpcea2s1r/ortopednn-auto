@@ -484,3 +484,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | protez-ploho-derzhitsya 6.5k + podvizhnost-zubov 6.7k (959103e)
 Программа расширения: 30 статей закрыто. Live, deploy success.
+
+## [2026-08-27] expand | mozhno-li-spat 6.3k + pulpit-lechenie 6.6k (3c4ae1b)
+Программа расширения: 32 статьи закрыто. Live, deploy success.
