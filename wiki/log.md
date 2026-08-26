@@ -496,3 +496,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | periodontit-lechenie 6.9k + ortoped-ili-terapevt 6.7k (802bc19)
 Программа расширения: 38 статей закрыто. Live, deploy success.
+
+## [2026-08-27] expand | mrt-s-koronkami 6.6k + slyuna-i-protezirovanie 6.6k (fa2be50)
+Программа расширения: 40 статей закрыто. Live, deploy success.
