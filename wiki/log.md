@@ -511,3 +511,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | uhod-za-vinirami 6.7k + kak-pravilno-chistit-zuby 6.7k (0ee6204)
 Программа расширения: 48 статей закрыто. Live, deploy success.
+
+## [2026-08-27] expand | uhod-cirkoniya 6.7k + zdorove-rta-organizm 7k (e4a1f28)
+Программа расширения: 50 статей закрыто. Live, deploy success.
