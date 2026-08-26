@@ -472,3 +472,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | syonmyj-na-odin-zub 6.1k + parodontit-altsgeymer 6.8k (f2b2ad3)
 Программа расширения: 22 статьи закрыто. Live, deploy success.
+
+## [2026-08-27] expand | kak-chasto-poseshchat 6.5k + protezy-i-apnoe-sna 5.4k (8249ab4)
+Программа расширения: 24 статьи закрыто. Live, deploy success.
