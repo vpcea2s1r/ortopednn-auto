@@ -469,3 +469,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-26] expand | ftor-v-zubnoy-paste 6.7k + protezy-i-pitanie-pozhilyh 6.9k (a180290)
 Программа расширения: 20 статей закрыто. Live, deploy success.
+
+## [2026-08-27] expand | syonmyj-na-odin-zub 6.1k + parodontit-altsgeymer 6.8k (f2b2ad3)
+Программа расширения: 22 статьи закрыто. Live, deploy success.
