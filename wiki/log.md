@@ -487,3 +487,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | mozhno-li-spat 6.3k + pulpit-lechenie 6.6k (3c4ae1b)
 Программа расширения: 32 статьи закрыто. Live, deploy success.
+
+## [2026-08-27] expand | zub-pod-koronkoj-gniet 6.7k + ai-v-ortopedii 6.4k (3b76ed7)
+Программа расширения: 34 статьи закрыто. Live, deploy success.
