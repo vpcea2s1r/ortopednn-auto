@@ -502,3 +502,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | lechenie-kariesa 6.9k + protez-tresnul 7k (283776a)
 Программа расширения: 42 статьи закрыто. Live, deploy success.
+
+## [2026-08-27] expand | zachem-nuzhen-implantat 6.5k + zuby-posle-50 7k (ea0cf7c)
+Программа расширения: 44 статьи закрыто. Live, deploy success.
