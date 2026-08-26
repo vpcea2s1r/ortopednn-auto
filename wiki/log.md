@@ -475,3 +475,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | kak-chasto-poseshchat 6.5k + protezy-i-apnoe-sna 5.4k (8249ab4)
 Программа расширения: 24 статьи закрыто. Live, deploy success.
+
+## [2026-08-27] expand | bolit-pod-plomboy 5.5k + protez-pyatna 5.6k (782c3d8)
+Программа расширения: 26 статей закрыто. Live, deploy success.
