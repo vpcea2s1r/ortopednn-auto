@@ -514,3 +514,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | uhod-cirkoniya 6.7k + zdorove-rta-organizm 7k (e4a1f28)
 Программа расширения: 50 статей закрыто. Live, deploy success.
+
+## [2026-08-27] expand | titan-cirkonij 6.8k + recessiya 7.5k + podgotovka-koronki 7.3k + cersec 6.8k + naraschivanie 7k + otbelivanie-bez-chuvstv 7.2k (533c81d)
+Программа расширения: 56 статей закрыто. Live, deploy success.
