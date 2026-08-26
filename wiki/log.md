@@ -505,3 +505,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | zachem-nuzhen-implantat 6.5k + zuby-posle-50 7k (ea0cf7c)
 Программа расширения: 44 статьи закрыто. Live, deploy success.
+
+## [2026-08-27] expand | protezirovanie-bez-implantov 7.2k + lyuminary-na-zuby 6.4k (53a1972)
+Программа расширения: 46 статей закрыто. Live, deploy success.
