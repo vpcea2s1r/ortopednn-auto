@@ -478,3 +478,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | bolit-pod-plomboy 5.5k + protez-pyatna 5.6k (782c3d8)
 Программа расширения: 26 статей закрыто. Live, deploy success.
+
+## [2026-08-27] expand | kak-vybrat-schetku 6.6k + prikus-posle-protezirovaniya 6.1k (285de66)
+Программа расширения: 28 статей закрыто. Live, deploy success.
