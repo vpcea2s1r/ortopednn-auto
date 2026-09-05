@@ -58,8 +58,17 @@ for (const f of files) {
   if (f.endsWith(".md")) {
     for (const m of clean.matchAll(reDblPunct)) {
       const ctx = clean.slice(Math.max(0, m.index - 40), m.index + 10);
-      if (/(al\.|R\.O\.C\.S|\u041c\.\u0413|\u042e\.[,\s]|\u0414\.[,\s]|\u041a\.[,\s])/i.test(ctx)) continue;
+      if (/(al\.|R\.O\.C\.S|М\.Г|Ю\.[,\s]|Д\.[,\s]|К\.[,\s])/i.test(ctx)) continue;
       report("DBL-PUNCT", f, ctx.trim().slice(-35));
+    }
+  }
+  // PRICE: concrete prices forbidden by SEO.md 1.1 (no numbers with currency)
+  // data/pricing.json is the untouched source of truth (never rendered) — skip it
+  if (!/pricing\.json$/.test(f)) {
+    const rePrice = /₽|\bруб(лей|ля|ль|лем|лях|\.)?\b/gi;
+    for (const m of clean.matchAll(rePrice)) {
+      const ctx = clean.slice(Math.max(0, m.index - 30), m.index + 25);
+      report("PRICE", f, (m[0] + " :: " + ctx).trim().replace(/\s+/g, " ").slice(-60));
     }
   }
 }

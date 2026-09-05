@@ -39,17 +39,17 @@ category: semnye-protezy
       <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>Модель</th><th>Тип</th><th>Давление, кПа</th><th>Объём, мл</th><th>Насадок</th><th>Цена, ₽</th></tr>
+          <tr><th>Модель</th><th>Тип</th><th>Давление, кПа</th><th>Объём, мл</th><th>Насадок</th><th>Ценовой сегмент</th></tr>
         </thead>
         <tbody>
-          <tr><td>Waterpik WP-660</td><td>Стационарный</td><td>210–830</td><td>650</td><td>7</td><td>6 000–8 000</td></tr>
-          <tr><td>Waterpik WP-100</td><td>Стационарный</td><td>210–830</td><td>650</td><td>5</td><td>5 000–7 000</td></tr>
-          <tr><td>Philips Sonicare AirFloss Ultra</td><td>Портативный</td><td>— (микрокапли)</td><td>—</td><td>1</td><td>4 500–6 500</td></tr>
-          <tr><td>Panasonic EW-DJ90</td><td>Портативный</td><td>390–590</td><td>165</td><td>1</td><td>3 000–5 000</td></tr>
-          <tr><td>Бионика EasyDent-3</td><td>Стационарный</td><td>150–690</td><td>1000</td><td>5</td><td>3 500–5 000</td></tr>
-          <tr><td>Revyline RL 500</td><td>Стационарный</td><td>140–860</td><td>800</td><td>4</td><td>3 000–4 500</td></tr>
-          <tr><td>CS Medica CS-1</td><td>Портативный</td><td>450–700</td><td>200</td><td>3</td><td>2 500–3 500</td></tr>
-          <tr><td>Jetpik JP-200</td><td>Портативный</td><td>— (капельный)</td><td>100</td><td>2</td><td>2 000–3 000</td></tr>
+          <tr><td>Waterpik WP-660</td><td>Стационарный</td><td>210–830</td><td>650</td><td>7</td><td>Высокий</td></tr>
+          <tr><td>Waterpik WP-100</td><td>Стационарный</td><td>210–830</td><td>650</td><td>5</td><td>Средний</td></tr>
+          <tr><td>Philips Sonicare AirFloss Ultra</td><td>Портативный</td><td>— (микрокапли)</td><td>—</td><td>1</td><td>Средний</td></tr>
+          <tr><td>Panasonic EW-DJ90</td><td>Портативный</td><td>390–590</td><td>165</td><td>1</td><td>Средний</td></tr>
+          <tr><td>Бионика EasyDent-3</td><td>Стационарный</td><td>150–690</td><td>1000</td><td>5</td><td>Средний</td></tr>
+          <tr><td>Revyline RL 500</td><td>Стационарный</td><td>140–860</td><td>800</td><td>4</td><td>Средний</td></tr>
+          <tr><td>CS Medica CS-1</td><td>Портативный</td><td>450–700</td><td>200</td><td>3</td><td>Низкий</td></tr>
+          <tr><td>Jetpik JP-200</td><td>Портативный</td><td>— (капельный)</td><td>100</td><td>2</td><td>Низкий</td></tr>
         </tbody>
       </table>
       </div>
@@ -75,8 +75,8 @@ category: semnye-protezy
           <p>Стационарный с пародонтологической насадкой (Waterpik WP-660, Revyline RL 500). Давление — среднее, с плавной регулировкой, чтобы не травмировать слизистую вокруг импланта.</p>
         </div>
         <div class="faq-item">
-          <h3>Сколько стоит ирригатор в Нижнем Новгороде?</h3>
-          <p>Цены: портативные — 2 000–6 000 ₽, стационарные — 3 000–8 000 ₽. Можно купить в аптеках (Аптека+), магазинах медтехники или онлайн (Ozon, Wildberries, Яндекс.Маркет).</p>
+          <h3>Где купить ирригатор?</h3>
+          <p>В аптеках, магазинах медтехники или онлайн (Ozon, Wildberries, Яндекс.Маркет). Портативные модели доступнее стационарных.</p>
         </div>
       </div>
 

@@ -47,14 +47,14 @@ category: semnye-protezy
       <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>Марка</th><th>Сила фиксации</th><th>Длительность</th><th>Вкус</th><th>Цена (40 мл)</th></tr>
+          <tr><th>Марка</th><th>Сила фиксации</th><th>Длительность</th><th>Вкус</th><th>Доступность</th></tr>
         </thead>
         <tbody>
-          <tr><td>Corega</td><td>Высокая</td><td>8–10 ч</td><td>Есть безвкусный вариант</td><td>~350–450 ₽</td></tr>
-          <tr><td>Protefix</td><td>Высокая</td><td>10–12 ч</td><td>Без вкуса</td><td>~400–500 ₽</td></tr>
-          <tr><td>Lacalut Dent</td><td>Средняя</td><td>6–8 ч</td><td>Травяной</td><td>~300–400 ₽</td></tr>
-          <tr><td>President</td><td>Высокая</td><td>8–10 ч</td><td>Без вкуса</td><td>~350–450 ₽</td></tr>
-          <tr><td>Fittydent</td><td>Сверхвысокая</td><td>10–12 ч</td><td>Мятный</td><td>~500–600 ₽</td></tr>
+          <tr><td>Corega</td><td>Высокая</td><td>8–10 ч</td><td>Есть безвкусный вариант</td><td>Средняя</td></tr>
+          <tr><td>Protefix</td><td>Высокая</td><td>10–12 ч</td><td>Без вкуса</td><td>Средняя</td></tr>
+          <tr><td>Lacalut Dent</td><td>Средняя</td><td>6–8 ч</td><td>Травяной</td><td>Низкая</td></tr>
+          <tr><td>President</td><td>Высокая</td><td>8–10 ч</td><td>Без вкуса</td><td>Средняя</td></tr>
+          <tr><td>Fittydent</td><td>Сверхвысокая</td><td>10–12 ч</td><td>Мятный</td><td>Высокая</td></tr>
         </tbody>
       </table>
       </div>
@@ -100,7 +100,7 @@ category: semnye-protezy
         </div>
         <div class="faq-item">
           <h3>Крем для фиксации — где купить?</h3>
-          <p>Фиксирующие кремы есть в любой аптеке и интернет-магазинах. Цена варьируется от 250 до 600 рублей за тюбик 40 мл, которого хватает на 2–3 недели ежедневного использования.</p>
+          <p>Фиксирующие кремы есть в любой аптеке и интернет-магазинах. Тюбика 40 мл хватает на 2–3 недели ежедневного использования.</p>
         </div>
       </div>
 
