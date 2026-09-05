@@ -539,3 +539,7 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 ## [2026-09-05] publish | 10 NCH statej v live (fab5d8a)
 - Drafts->md cherez publish-10.mjs (fix frontmatter: slug/desc/category). Index +307, CONTENT +10.
 - Proverki: check-desc 307/307 phone OK, typo OK (PRICE-rule), build 444 OK, encoding OK.
+
+## [2026-09-05] astro-tricks | IndexNow+Yandex, lychee CI
+- compress/RSS uzhe byli (playform/compress last, rss.xml.ts). IndexNow: dobavlen endpoint Yandex (Bing byl), test live: Bing 200, Yandex 202.
+- Novyj workflow links.yml: lychee po md/astro (push + ezhenedelno), t.me isklyuchen (anti-bot).

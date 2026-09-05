@@ -50,17 +50,18 @@ jobs:
             'keyLocation': f'https://ortopednn.ru/{key}.txt',
             'urlList': urls,
           }
-          req = urllib.request.Request(
-            'https://api.indexnow.org/indexnow',
-            data=json.dumps(payload).encode('utf-8'),
-            headers={'Content-Type': 'application/json; charset=utf-8'},
-            method='POST',
-          )
-          try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-              print('IndexNow:', resp.status, len(urls), 'URLs')
-          except urllib.error.HTTPError as e:
-            print('IndexNow HTTP', e.code, e.read().decode('utf-8', 'ignore'))
+          for endpoint in ('https://api.indexnow.org/indexnow', 'https://yandex.com/indexnow'):
+            req = urllib.request.Request(
+              endpoint,
+              data=json.dumps(payload).encode('utf-8'),
+              headers={'Content-Type': 'application/json; charset=utf-8'},
+              method='POST',
+            )
+            try:
+              with urllib.request.urlopen(req, timeout=30) as resp:
+                print('IndexNow:', endpoint, resp.status, len(urls), 'URLs')
+            except urllib.error.HTTPError as e:
+              print('IndexNow HTTP', endpoint, e.code, e.read().decode('utf-8', 'ignore'))
           PY
 
       - name: Upload artifact
