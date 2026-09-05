@@ -520,3 +520,9 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-08-27] expand | viniry-na-perednie 6.7k + keramicheskie-vs-kompozitnye 6.6k (ed6a108)
 Программа расширения: 60 статей закрыто. Live, deploy success.
+
+## [2026-09-05] audit | thin-audit + interlink 7 orphan articles
+- thin(<5500): 10 -> 3 (dobavleny po 2 vnutrennie ssylki v 7 statey-sirot).
+- phone v desc: 297/297 OK. typo:check OK, build 434 pages OK.
+- Naydena para-kannibal: bolit-zub-pod-plomboy vs bolit-zub-pod-plomboy-chto-delat (odin intent). Ne trogat do proverki GSC.
+- API excluded-pages v Yandex v4 ne sushestvuet (404) - avtomatizaciyu spiska ostanovit, vygruzka vruchnuyu iz UI.
