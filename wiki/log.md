@@ -543,3 +543,7 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 ## [2026-09-05] astro-tricks | IndexNow+Yandex, lychee CI
 - compress/RSS uzhe byli (playform/compress last, rss.xml.ts). IndexNow: dobavlen endpoint Yandex (Bing byl), test live: Bing 200, Yandex 202.
 - Novyj workflow links.yml: lychee po md/astro (push + ezhenedelno), t.me isklyuchen (anti-bot).
+
+## [2026-09-05] search | pagefind + /search/
+- postbuild: pagefind --site dist. /search/ noindex + vne sitemap + vne indeksa; preview/404 s data-pagefind-ignore.
+- Ssylka Poisk v Navbar. Provereno: preview ne v indekse, /search/ ne v sitemap, noindex est.

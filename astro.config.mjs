@@ -28,6 +28,7 @@ sitemap({
         if (page.includes('/preview/')) return false;
         const u = new URL(page);
         const p = u.pathname;
+        if (p === '/search/' || p === '/search') return false;
         if (/^\/services\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo)\/?$/.test(p)) return false;
         if (/^\/blog\/(implantatsiya-zubov-nizhnij-novgorod-cena|protezirovanie-zubov-nizhnij-novgorod-ceny|nav-schel-mezhdu-koronki)\/?$/.test(p)) return false;
         return true;

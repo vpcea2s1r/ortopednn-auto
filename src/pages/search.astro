@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import doctor from "../../data/doctor.json";
+import socials from "../../data/socials.json";
+---
+
+<BaseLayout
+  title="Поиск по сайту"
+  description="Поиск по статьям и услугам сайта стоматолога-ортопеда: коронки, протезы, импланты, виниры."
+  breadcrumbTitle="Поиск"
+  doctor={doctor}
+  socials={socials}
+  noindex={true}
+>
+  <Navbar />
+  <main id="main" class="container container--w800" data-pagefind-ignore>
+    <h1>Поиск по сайту</h1>
+    <div id="search"></div>
+  </main>
+</BaseLayout>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+(function () {
+  var el = document.getElementById("search");
+  if (!el || el.dataset.done) return;
+  if (typeof window.PagefindUI === "undefined") {
+    el.innerHTML = "<p>Поиск временно недоступен. Позвоните: +7 (920) 253-73-17.</p>";
+    return;
+  }
+  try {
+    new window.PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      translations: {
+        placeholder: "Например: коронка шатается",
+        clear_search: "Очистить",
+        load_more: "Показать ещё",
+        search_label: "Поиск по сайту",
+        filters_label: "Фильтры",
+        zero_results: "Ничего не найдено по запросу [SEARCH_TERM]",
+        many_results: "[COUNT] результатов по запросу [SEARCH_TERM]",
+        one_result: "[COUNT] результат по запросу [SEARCH_TERM]",
+        alt_search: "Нет результатов по [SEARCH_TERM]. Показаны результаты по [DIFFERENT_TERM]",
+        search_something: "Введите запрос для поиска",
+        searching: "Ищем по запросу [SEARCH_TERM]..."
+      }
+    });
+    el.dataset.done = "1";
+  } catch (e) {
+    el.innerHTML = "<p>Поиск временно недоступен. Позвоните: +7 (920) 253-73-17.</p>";
+  }
+})();
+</script>
