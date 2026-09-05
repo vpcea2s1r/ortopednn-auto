@@ -535,3 +535,7 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 ## [2026-09-05] research | PubMed + konkurenty NN
 - PubMed: vyzhivaemost vinirov 95-96% (PMID 39523553, 33807504) -> draft srok-sluzhby-vinirov; skaner vs silikon 2024-2025 (paritet, krome dug 5+) -> draft slepki-v-ortopedii; adgeziya k emali > dentin (PMID 39207840) -> draft vinir-na-plombe.
 - Konkurenty: teleskopy/All-on-4/QuattroTi/VNCHS u nas EST; NET garantii na raboty (0 sovpadeniy) i nalogovogo vycheta (1 FAQ-stroka) — kandidaty.
+
+## [2026-09-05] publish | 10 NCH statej v live (fab5d8a)
+- Drafts->md cherez publish-10.mjs (fix frontmatter: slug/desc/category). Index +307, CONTENT +10.
+- Proverki: check-desc 307/307 phone OK, typo OK (PRICE-rule), build 444 OK, encoding OK.
