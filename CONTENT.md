@@ -279,3 +279,13 @@
 - attachmeny
 - protez-tsvet
 - protez-pyatna
+- srok-sluzhby-vinirov
+- prikusil-scheku
+- mkb-v-stomatologii
+- slepki-v-ortopedii
+- byugelnyj-protez-chto-eto
+- metallokeramika-chto-eto
+- potemnel-svoj-zub
+- vinir-na-plombe
+- obtochka-zubov-pod-koronku
+- net-odnogo-zuba

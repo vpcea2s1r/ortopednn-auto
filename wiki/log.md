@@ -531,3 +531,7 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 - 43 mesta v 22 statyah + landing + priceRange schema. pricing.json ne tronut.
 - V typo-check dobavleno PRICE-pravilo (₽|rub), CI teper lovit ceny. typo OK, build 434 OK.
 - Push 5ad7dc1.
+
+## [2026-09-05] research | PubMed + konkurenty NN
+- PubMed: vyzhivaemost vinirov 95-96% (PMID 39523553, 33807504) -> draft srok-sluzhby-vinirov; skaner vs silikon 2024-2025 (paritet, krome dug 5+) -> draft slepki-v-ortopedii; adgeziya k emali > dentin (PMID 39207840) -> draft vinir-na-plombe.
+- Konkurenty: teleskopy/All-on-4/QuattroTi/VNCHS u nas EST; NET garantii na raboty (0 sovpadeniy) i nalogovogo vycheta (1 FAQ-stroka) — kandidaty.
