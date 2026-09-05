@@ -526,3 +526,8 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 - phone v desc: 297/297 OK. typo:check OK, build 434 pages OK.
 - Naydena para-kannibal: bolit-zub-pod-plomboy vs bolit-zub-pod-plomboy-chto-delat (odin intent). Ne trogat do proverki GSC.
 - API excluded-pages v Yandex v4 ne sushestvuet (404) - avtomatizaciyu spiska ostanovit, vygruzka vruchnuyu iz UI.
+
+## [2026-09-05] seo-fix | udaleny konkretnye ceny (SEO 1.1)
+- 43 mesta v 22 statyah + landing + priceRange schema. pricing.json ne tronut.
+- V typo-check dobavleno PRICE-pravilo (₽|rub), CI teper lovit ceny. typo OK, build 434 OK.
+- Push 5ad7dc1.
