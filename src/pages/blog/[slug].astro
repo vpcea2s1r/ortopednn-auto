@@ -94,7 +94,7 @@ const ldArticle = {
   "datePublished": data.date,
   "dateModified": data.date,
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-  "image": "https://ortopednn.ru/og-image.svg",
+  "image": `https://ortopednn.ru/blog/og/${slug}.png`,
   "publisher": { "@id": "https://ortopednn.ru/#clinic" }
 };
 
@@ -114,6 +114,7 @@ const ldFaq = faqItems.length
 <BaseLayout
   title={`${data.title} | Никитина М.Г.`}
   description={data.desc}
+  ogImage={`/blog/og/${slug}.png`}
   breadcrumbTitle={data.title}
   doctor={doctor}
   socials={socials}
