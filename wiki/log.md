@@ -551,3 +551,6 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 ## [2026-09-05] astro-tricks2 | OG-cards, llms.txt, lastmod
 - OG: satori+sharp endpoint /blog/og/[slug].png (322 PNG), Inter woff cyr v repo. og:image + Article image na kartochku.
 - llms.txt endpoint (87KB, 323 statej). Sitemap: lastmod iz frontmatter, /blog/og + /llms.txt + /search vne indeksa.
+
+## [2026-09-05] topup | nylon FAQ + MKB v stiraemost (93742b8)
+- remont-zubnogo-proteza: rasshiren FAQ otvet pro nejlon (perebazirovka, klammery). stiraemost: H2 K03.0 + ssylka na mkb-statyu.
