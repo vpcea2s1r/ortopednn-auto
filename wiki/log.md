@@ -554,3 +554,7 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 
 ## [2026-09-05] topup | nylon FAQ + MKB v stiraemost (93742b8)
 - remont-zubnogo-proteza: rasshiren FAQ otvet pro nejlon (perebazirovka, klammery). stiraemost: H2 K03.0 + ssylka na mkb-statyu.
+
+## [2026-09-05] hacks | striking-distance + GEO + robots (8b5f558)
+- scripts/striking-distance.py: 86 zaprosov v poz 4-15 (local, gitignored). GEO-audit: 1992 FAQ-otveta, srednee 24 slova.
+- Rasshireny otvety sendvich/acetal do 60-80 slov. robots: GPTBot/Claude/Perplexity uzhe Allow.
