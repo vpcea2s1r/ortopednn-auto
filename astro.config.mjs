@@ -26,6 +26,16 @@ export default defineConfig({
     '/blog/implantatsiya-zubov-nizhnij-novgorod-cena/': '/blog/implant-ili-protez/',
     '/blog/protezirovanie-zubov-nizhnij-novgorod-ceny/': '/blog/ceny-na-protezirovanie-v-nn/',
     '/blog/nav-schel-mezhdu-koronki/': '/blog/schel-mezhdu-koronkoj-i-zubom/',
+    '/blog/snyatie-koronki-cena/': '/blog/posle-ustanovki-koronki/',
+    '/blog/bolno-li-stavit-implanty/': '/blog/oslozhneniya-posle-implantatsii/',
+    '/blog/piezohirurgiya-v-stomatologii/': '/blog/lazernaya-stomatologiya/',
+    '/blog/fiksaciya-koronki-cena/': '/blog/ceny-na-protezirovanie-v-nn/',
+    '/checkup/implantatsiya-cena/': '/blog/ceny-na-protezirovanie-v-nn/',
+    '/blog/keramicheskie-ili-metallicheskie-brekety-chto-vybrat/': '/blog/cirkonij-ili-metallokeramika/',
+    '/checkup/kakoj-protez-vybrat/': '/blog/kakie-semnye-protezy-luchshe/',
+    '/services/laboratornaya-vkladka/': '/services/vkladka/',
+    '/services/privarka-3-zubov/': '/services/',
+    '/blog/elaynery-sovremennyy-sposob-ispravleniya-prikusa/': '/blog/okkluziya-zubov-pravilnoe-smykanie/',
   },
   prefetch: {
     prefetchAll: false,
@@ -47,7 +57,7 @@ export default defineConfig({
         if (p === '/search/' || p === '/search') return false;
         if (p.startsWith('/blog/og/') || p === '/llms.txt') return false;
         if (/^\/services\/(protezirovanie-zubov|koronki|semnye-protezy|byugelnye-protezy|vradecheskaya-vkladka|korrekciya-semnogo)\/?$/.test(p)) return false;
-        if (/^\/blog\/(implantatsiya-zubov-nizhnij-novgorod-cena|protezirovanie-zubov-nizhnij-novgorod-ceny|nav-schel-mezhdu-koronki)\/?$/.test(p)) return false;
+        if (/^\/blog\/(implantatsiya-zubov-nizhnij-novgorod-cena|protezirovanie-zubov-nizhnij-novgorod-ceny|nav-schel-mezhdu-koronki|snyatie-koronki-cena|bolno-li-stavit-implanty|piezohirurgiya-v-stomatologii|fiksaciya-koronki-cena|keramicheskie-ili-metallicheskie-brekety-chto-vybrat|elaynery-sovremennyy-sposob-ispravleniya-prikusa)\/?$/.test(p)) return false;
         return true;
       }
     }),

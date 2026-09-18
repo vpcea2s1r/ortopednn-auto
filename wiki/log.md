@@ -558,3 +558,17 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 ## [2026-09-05] hacks | striking-distance + GEO + robots (8b5f558)
 - scripts/striking-distance.py: 86 zaprosov v poz 4-15 (local, gitignored). GEO-audit: 1992 FAQ-otveta, srednee 24 slova.
 - Rasshireny otvety sendvich/acetal do 60-80 slov. robots: GPTBot/Claude/Perplexity uzhe Allow.
+
+## [2026-09-18] fix | 301 redirects for 10 GSC 404 URLs
+- Added redirects in astro.config.mjs for 10 URLs reported as 404/non-indexed in Google Search Console:
+- /blog/snyatie-koronki-cena/ > /blog/posle-ustanovki-koronki/ (was deleted)
+- /blog/bolno-li-stavit-implanty/ > /blog/oslozhneniya-posle-implantatsii/ (was deleted)
+- /blog/piezohirurgiya-v-stomatologii/ > /blog/lazernaya-stomatologiya/ (never existed, was planned)
+- /blog/fiksaciya-koronki-cena/ > /blog/ceny-na-protezirovanie-v-nn/ (was deleted)
+- /checkup/implantatsiya-cena/ > /blog/ceny-na-protezirovanie-v-nn/ (checkup dir never created)
+- /blog/keramicheskie-ili-metallicheskie-brekety-chto-vybrat/ > /blog/cirkonij-ili-metallokeramika/ (never existed)
+- /checkup/kakoj-protez-vybrat/ > /blog/kakie-semnye-protezy-luchshe/ (checkup dir never created)
+- /services/laboratornaya-vkladka/ > /services/vkladka/ (deleted service page)
+- /services/privarka-3-zubov/ > /services/ (deleted service page)
+- /blog/elaynery-sovremennyy-sposob-ispravleniya-prikusa/ > /blog/okkluziya-zubov-pravilnoe-smykanie/ (never existed)
+- Updated sitemap filter to exclude all 10 redirected URLs
