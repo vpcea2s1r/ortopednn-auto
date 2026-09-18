@@ -289,3 +289,5 @@
 - vinir-na-plombe
 - obtochka-zubov-pod-koronku
 - net-odnogo-zuba
+- stomatolog-pri-beremennosti (запросы: лечение зубов при беременности, стоматолог беременным, можно ли лечить зубы во время беременности)
+- uhod-za-zubami-posle-60 (запросы: уход за зубами после 60, зубы после 60 лет, уход за зубами в пожилом возрасте)
