@@ -81,6 +81,7 @@
 - koronka-metallokeramicheskaya-otzyvy
 - koronka-na-implant
 - koronka-na-zhivoj-zub
+- koronka-na-zub-chto-luchshe
 - koronka-shataetsya-chto-delat
 - koronka-skololas-chto-delat
 - koronka-temnee-sosednego-zuba (восстановлена; приносила трафик 3 клика/251 показ)
@@ -109,6 +110,7 @@
 - neyroseti-dlya-analiza-snimkov
 - nizhnij-protez
 - ogolilas-shejka-zuba-pod-koronkoj
+- otzyvy-o-koronkakh
 - ortodontiya-dlya-vzroslyh
 - oslozhneniya-posle-implantatsii
 - osteoporoz-i-implantatsiya
@@ -171,6 +173,7 @@
 - temneet-zub-pod-koronkoj
 - temp-bond-v-stomatologii
 - tsifrovaya-ulibka-dsd
+- tsirkoniyevaya-koronka-na-implant
 - uhod-za-byugelnym-protezom
 - uhod-za-mostom
 - uhod-za-zubnymi-implantami
