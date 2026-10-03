@@ -27,6 +27,7 @@ openserp
 !/scripts/validate-drafts.mjs
 !/scripts/yandex-webmaster-stats.py
 !/scripts/semantic-cluster.mjs
+!/scripts/export-gaps.mjs
 wordstat
 !data/wordstat/
 .wrangler
@@ -34,6 +35,13 @@ wordstat
 pnpm-lock.yaml
 pnpm-workspace.yaml
 *.orig.*
+--clobber/
+BrowserSkill/
+docs/browserskill-*.md
+data/browserskill-*.json
+data/wordstat-keyword-analysis.json
+wordstat-vitamins.png
+*backup*.tar.gz
 .astro
 cloudflare-token.md
 gh_out.json

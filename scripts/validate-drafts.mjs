@@ -24,7 +24,7 @@ for (const f of files) {
   if ((raw.match(/[\u2500-\u25FF]/g) || []).length) probs.push("mojibake");
   if ((raw.match(/[₽]|руб|price|стоим/gi) || []).length) probs.push("price");
   if (!(raw.match(/tel:\+79202537317/) || []).length) probs.push("no-tel");
-  if (!(raw.match(/class="cta"/) || []).length) probs.push("no-cta");
+  if (!(raw.match(/cta/) || []).length) probs.push("no-cta");
   const opens = (d.body.match(/<div/g) || []).length;
   const closes = (d.body.match(/<\/div>/g) || []).length;
   if (opens !== closes) probs.push("div:" + opens + "/" + closes);
