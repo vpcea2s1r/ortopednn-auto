@@ -21,8 +21,10 @@ const GEO_OK_RE = /нижний новгород|нн\b|нижегород/i;
 const ENDS = ['\u0438\u044f\u043c\u0438','\u044f\u043c\u0438','\u0430\u043c\u0438','\u0438\u0435\u0439','\u0435\u0439','\u043e\u0439','\u0438\u0439','\u044b\u0439','\u0430\u044f','\u044f\u044f','\u043e\u0435','\u0435\u0435','\u0438\u0435','\u044b\u0435','\u043e\u043c\u0443','\u0435\u043c\u0443','\u043e\u0433\u043e','\u0435\u0433\u043e','\u0443\u044e','\u044e\u044e','\u0430','\u044f','\u043e','\u0435','\u0438','\u044b','\u044c','\u0439','\u0443','\u044e'];
 function stem(w){ for (const e of ENDS){ if (w.length - e.length >= 3 && w.endsWith(e)) return w.slice(0,-e.length); } return w; }
 const SYN = {'\u0433\u0438\u0431\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u043c\u044f\u0433\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0441\u0438\u043b\u0438\u043a\u043e\u043d':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0434\u0435\u0444\u043b\u0435\u043a\u0441':['\u043d\u0435\u0439\u043b\u043e\u043d']};
+const _tc = new Map();
 function tokens(s) {
-  return s.toLowerCase().replace(/[^a-z\u0430-\u044f\u04510-9\s-]/g, ' ').split(/[\s-]+/).filter(w => w.length > 2 && !STOP.has(w)).map(stem);
+  const _h = _tc.get(s); if (_h) return _h;
+  const _r = s.toLowerCase().replace(/[^a-z\u0430-\u044f\u04510-9\s-]/g, ' ').split(/[\s-]+/).filter(w => w.length > 2 && !STOP.has(w)).map(stem); _tc.set(s, _r); return _r;
 }
 function jaccard(a, b) {
   const A = new Set(a), B = new Set(b);
