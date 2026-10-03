@@ -79,7 +79,6 @@ export default defineConfig({
     }
   },
   experimental: {
-    rustCompiler: true,
     svgOptimizer: svgoOptimizer()
   },
   fonts: [{

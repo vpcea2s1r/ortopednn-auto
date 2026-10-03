@@ -15,10 +15,9 @@
     "typo:check": "node scripts/typo-check.mjs"
   },
   "dependencies": {
-    "@astrojs/compiler-rs": "^0.2.0",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.0.0",
-    "astro": "^6.0.0",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.5",
     "csv-parse": "^5.5.0",
     "ioredis": "^5.11.1",
     "node-fetch": "^3.3.2",
