@@ -32,6 +32,18 @@ import socials from '../../data/socials.json';
     <TreatmentSteps />
     <Specializations />
     <PriceList />
+    <section class="price-factors">
+      <div class="container">
+        <h2>От чего зависит стоимость протезирования</h2>
+        <ul>
+          <li>Материал коронки/протеза — цирконий дороже металлокерамики, термопласты дороже акрила.</li>
+          <li>Количество зубов и сложность клинического случая.</li>
+          <li>Необходимость подготовки: лечение каналов, удаление, коррекция прикуса.</li>
+          <li>Срок службы закладывает стоимость/год, а не одна цифра.</li>
+        </ul>
+        <p>Точную сумму даём после осмотра и снимка — бесплатно. Позвоните: +7 (920) 253-73-17.</p>
+      </div>
+    </section>
     <FAQ />
     <section class="emergency-tips">
       <div class="container">
@@ -145,6 +157,17 @@ import socials from '../../data/socials.json';
   background: white;
   border-top: 1px solid var(--color-border);
 }
+
+.price-factors {
+  padding: var(--space-3xl) 0;
+  background: white;
+  border-top: 1px solid var(--color-border);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.price-factors h2 { text-align: center; margin-bottom: var(--space-lg); font-size: var(--text-2xl); font-weight: 800; }
+.price-factors ul { margin-bottom: var(--space-lg); }
+.price-factors p { text-align: center; font-weight: 600; }
 
 .emergency-tips {
   padding: var(--space-3xl) 0;
