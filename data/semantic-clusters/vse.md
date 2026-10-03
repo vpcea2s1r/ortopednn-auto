@@ -710,7 +710,7 @@
 | 704 | абатмент: недостающее звено, о котором забывают | 1 | 1 | kak-krepitsya-koronka-na-implante | covered: kak-krepitsya-koronka-na-implante |
 | 705 | глубина посадки: где проходит граница разумного | 1 | 1 | koronka-pod-desnu | covered: koronka-pod-desnu |
 | 706 | нужен ли 3d-принтер для хирургических шаблонов? | 1 | 1 | ii-dlya-planirovaniya-implantatsii | covered: ii-dlya-planirovaniya-implantatsii |
-| 707 | можно ли снять люминар и вернуть исходные зубы? | 1 | 1 | poloskanie-posle-udaleniya | covered: poloskanie-posle-udaleniya |
+| 707 | можно ли снять люминар и вернуть исходные зубы? | 1 | 1 | vredyat-li-viniry-svoim-zubam | covered: vredyat-li-viniry-svoim-zubam |
 | 708 | корень болит, а каналы запломбированы идеально? | 1 | 1 | mozhno-li-sohranit-koren-zuba | covered: mozhno-li-sohranit-koren-zuba |
 | 709 | сравнение с акриловыми и нейлоновыми протезами | 1 | 1 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
 | 710 | физика: почему титан не мешает магнитному полю | 1 | 1 | mrt-s-implantami | covered: mrt-s-implantami |
@@ -1102,7 +1102,7 @@
 | 1096 | стоит ли ехать ради экономии? | 1 | 1 | protezirovanie-zubov-v-kitae | JUNK (не пишем) |
 | 1097 | можно ли есть перед седацией? | 1 | 1 | sedatsiya-i-narkoz | covered: sedatsiya-i-narkoz |
 | 1098 | почему слепок снимают дважды? | 1 | 1 | slepki-v-ortopedii | covered: slepki-v-ortopedii |
-| 1099 | вредят ли виниры своим зубам? | 1 | 1 | — | GAP (кандидат) |
+| 1099 | вредят ли виниры своим зубам? | 1 | 1 | vredyat-li-viniry-svoim-zubam | covered: vredyat-li-viniry-svoim-zubam |
 | 1100 | air flow — финишная полировка | 1 | 1 | zubnoj-kamen | covered: zubnoj-kamen |
 | 1101 | частые проблемы и их решения | 1 | 1 | akrilovyj-mostovidnyj-protez | covered: akrilovyj-mostovidnyj-protez |
 | 1102 | варианты лечения по диагнозу | 1 | 1 | first-visit | covered: first-visit |

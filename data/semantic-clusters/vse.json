@@ -24358,8 +24358,8 @@
       "freq": 1,
       "junk": false,
       "target": {
-        "slug": "poloskanie-posle-udaleniya",
-        "score": 0.32
+        "slug": "vredyat-li-viniry-svoim-zubam",
+        "score": 0.51
       },
       "members": [
         {
@@ -30614,7 +30614,10 @@
       "count": 1,
       "freq": 1,
       "junk": false,
-      "target": null,
+      "target": {
+        "slug": "vredyat-li-viniry-svoim-zubam",
+        "score": 1
+      },
       "members": [
         {
           "q": "вредят ли виниры своим зубам?",
