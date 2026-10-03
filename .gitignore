@@ -25,7 +25,9 @@ openserp
 !/scripts/validate-2.mjs
 !/scripts/validate-drafts.mjs
 !/scripts/yandex-webmaster-stats.py
+!/scripts/semantic-cluster.mjs
 wordstat
+!data/wordstat/
 .wrangler
 .keystatic
 pnpm-lock.yaml
