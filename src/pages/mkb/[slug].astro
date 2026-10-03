@@ -10,6 +10,7 @@ import socials from '../../../data/socials.json';
 export function getStaticPaths() {
   return mkbPages.map(page => ({
     params: { slug: page.slug },
+    cacheKey: JSON.stringify(page),
     props: { page },
   }));
 }

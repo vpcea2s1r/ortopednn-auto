@@ -13,7 +13,7 @@ const fonts = [
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((p) => ({ params: { slug: p.data.slug }, props: { title: p.data.title } }));
+  return posts.map((p) => ({ params: { slug: p.data.slug }, props: { title: p.data.title }, cacheKey: p.digest }));
 }
 
 const W = 1200;

@@ -15,7 +15,7 @@ export async function getStaticPaths() {
     .filter(f => f.endsWith('.json') && f !== 'draft-types.ts')
     .map(f => {
       const data: DraftMeta = JSON.parse(readFileSync(join(draftsDir, f), 'utf-8'));
-      return { params: { slug: data.slug }, props: { draft: data } };
+      return { params: { slug: data.slug }, props: { draft: data }, cacheKey: data.slug + ':' + data.body.length + ':' + data.date };
     });
 }
 

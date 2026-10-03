@@ -10,6 +10,7 @@ import socials from '../../../data/socials.json';
 export function getStaticPaths() {
   return glossaryPages.map(page => ({
     params: { term: page.slug },
+    cacheKey: JSON.stringify(page),
     props: { page },
   }));
 }

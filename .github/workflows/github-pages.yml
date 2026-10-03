@@ -33,6 +33,15 @@ jobs:
       - name: Typo check
         run: npm run typo:check
 
+      - name: Restore incremental build cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.astro
+            dist
+          key: astro-incremental-${{ github.sha }}
+          restore-keys: astro-incremental-
+
       - name: Build
         run: npm run build
 
