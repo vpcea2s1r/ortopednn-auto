@@ -8,8 +8,8 @@
       "freq": 184,
       "junk": false,
       "target": {
-        "slug": "sendvich-protez",
-        "score": 0.71
+        "slug": "dezinfektsiya-proteza",
+        "score": 0.9
       },
       "members": [
         {
@@ -176,8 +176,8 @@
       "freq": 154,
       "junk": false,
       "target": {
-        "slug": "dezinfektsiya-proteza",
-        "score": 1
+        "slug": "chem-chistit-zubnye-protezy",
+        "score": 2
       },
       "members": [
         {
@@ -313,7 +313,7 @@
       "junk": false,
       "target": {
         "slug": "sendvich-protez",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -387,13 +387,13 @@
       ]
     },
     {
-      "head": "протезирование зубов в нижнем новгороде недорого и по омс",
+      "head": "что значит цвет зубов чуть белее белого протезирование",
       "count": 35,
       "freq": 131,
       "junk": false,
       "target": {
-        "slug": "ceny-na-protezirovanie-v-nn",
-        "score": 0.56
+        "slug": "protezirovanie-bez-obtachki",
+        "score": 0.52
       },
       "members": [
         {
@@ -545,7 +545,7 @@
       "junk": true,
       "target": {
         "slug": "patologicheskaya-stiraemost-zubov-lechenie",
-        "score": 1
+        "score": 1.69
       },
       "members": [
         {
@@ -601,7 +601,7 @@
       "junk": false,
       "target": {
         "slug": "korega-dlya-zubnyh-protezov",
-        "score": 1
+        "score": 1.33
       },
       "members": [
         {
@@ -708,8 +708,8 @@
       "freq": 71,
       "junk": false,
       "target": {
-        "slug": "uhod-za-zubnymi-protezami",
-        "score": 0.38
+        "slug": "byugelnyj-protez-klammery",
+        "score": 0.33
       },
       "members": [
         {
@@ -794,10 +794,10 @@
       "head": "протезирование зубов по полису омс бесплатно нижний новгород",
       "count": 15,
       "freq": 59,
-      "junk": false,
+      "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 0.67
+        "score": 0.97
       },
       "members": [
         {
@@ -869,7 +869,7 @@
       "junk": false,
       "target": {
         "slug": "protezirovanie-pri-beremennosti",
-        "score": 0.35
+        "score": 0.48
       },
       "members": [
         {
@@ -900,8 +900,8 @@
       "freq": 56,
       "junk": false,
       "target": {
-        "slug": "viniry-chto-eto",
-        "score": 0.45
+        "slug": "mini-implanty-dlya-protezov",
+        "score": 0.43
       },
       "members": [
         {
@@ -969,7 +969,7 @@
       "junk": true,
       "target": {
         "slug": "first-visit",
-        "score": 0.79
+        "score": 0.93
       },
       "members": [
         {
@@ -984,8 +984,8 @@
       "freq": 55,
       "junk": true,
       "target": {
-        "slug": "protezirovanie-zubov-po-oms",
-        "score": 0.74
+        "slug": "immediat-protezy-chto-eto-pokazaniya",
+        "score": 0.6
       },
       "members": [
         {
@@ -1005,7 +1005,7 @@
       "junk": true,
       "target": {
         "slug": "skolko-delayut-koronku",
-        "score": 1
+        "score": 1.37
       },
       "members": [
         {
@@ -1021,7 +1021,7 @@
       "junk": false,
       "target": {
         "slug": "protezirovanie-perednih-zubov",
-        "score": 1
+        "score": 1.13
       },
       "members": [
         {
@@ -1093,7 +1093,7 @@
       "junk": false,
       "target": {
         "slug": "teleskopicheskie-koronki",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -1121,7 +1121,7 @@
       "junk": false,
       "target": {
         "slug": "kraevoe-prileganie-koronki",
-        "score": 0.54
+        "score": 0.84
       },
       "members": [
         {
@@ -1143,14 +1143,11 @@
       ]
     },
     {
-      "head": "социальная имплантация зубов нижний новгород",
+      "head": "имплантация зубов по квоте",
       "count": 10,
       "freq": 39,
-      "junk": false,
-      "target": {
-        "slug": "protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie",
-        "score": 0.49
-      },
+      "junk": true,
+      "target": null,
       "members": [
         {
           "q": "имплантация зубов по квоте",
@@ -1201,7 +1198,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 1
+        "score": 1.3
       },
       "members": [
         {
@@ -1233,7 +1230,7 @@
       "junk": false,
       "target": {
         "slug": "uhod-za-vinirami",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -1272,8 +1269,8 @@
       "freq": 31,
       "junk": false,
       "target": {
-        "slug": "chto-takoe-prototipy-u-stomatologa",
-        "score": 1
+        "slug": "vidy-prikusnykh-shablonov",
+        "score": 2
       },
       "members": [
         {
@@ -1309,7 +1306,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 0.61
+        "score": 1.09
       },
       "members": [
         {
@@ -1353,7 +1350,7 @@
       "junk": false,
       "target": {
         "slug": "alkogol-i-zdorove-polosti-rta",
-        "score": 1
+        "score": 1.43
       },
       "members": [
         {
@@ -1377,7 +1374,7 @@
       "junk": true,
       "target": {
         "slug": "alkogol-i-zdorove-polosti-rta",
-        "score": 0.86
+        "score": 1.54
       },
       "members": [
         {
@@ -1416,8 +1413,8 @@
       "freq": 27,
       "junk": true,
       "target": {
-        "slug": "protezirovanie-zubov-po-oms",
-        "score": 1
+        "slug": "implantat-vypal-chto-delat",
+        "score": 1.19
       },
       "members": [
         {
@@ -1451,13 +1448,13 @@
       ]
     },
     {
-      "head": "импланты инвалидам",
+      "head": "имплант сэндвич",
       "count": 7,
       "freq": 26,
       "junk": false,
       "target": {
-        "slug": "skolko-delayut-koronku",
-        "score": 0.32
+        "slug": "sendvich-protez",
+        "score": 1.37
       },
       "members": [
         {
@@ -1495,10 +1492,7 @@
       "count": 6,
       "freq": 24,
       "junk": false,
-      "target": {
-        "slug": "kak-privyknut-k-semnym-protezam",
-        "score": 0.36
-      },
+      "target": null,
       "members": [
         {
           "q": "мзп в стоматологии",
@@ -1533,7 +1527,7 @@
       "junk": false,
       "target": {
         "slug": "verhnij-protez",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -1557,7 +1551,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -1650,7 +1644,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 1
+        "score": 1.18
       },
       "members": [
         {
@@ -1686,7 +1680,7 @@
       "junk": false,
       "target": {
         "slug": "uhod-za-zubnymi-protezami",
-        "score": 0.69
+        "score": 1
       },
       "members": [
         {
@@ -1725,8 +1719,8 @@
       "freq": 16,
       "junk": false,
       "target": {
-        "slug": "rak-polosti-rta-skrining-i-predrakovye-sostoyaniya",
-        "score": 0.44
+        "slug": "chto-vredno-dlya-zubov",
+        "score": 0.53
       },
       "members": [
         {
@@ -1750,7 +1744,7 @@
       "junk": true,
       "target": {
         "slug": "viniry-chto-eto",
-        "score": 0.68
+        "score": 0.66
       },
       "members": [
         {
@@ -1801,8 +1795,8 @@
       "freq": 13,
       "junk": false,
       "target": {
-        "slug": "vidy-zubnyh-protezov",
-        "score": 1
+        "slug": "protez-babochka",
+        "score": 2
       },
       "members": [
         {
@@ -1830,7 +1824,7 @@
       "junk": false,
       "target": {
         "slug": "byugelnyj-protez-klammery",
-        "score": 0.67
+        "score": 1
       },
       "members": [
         {
@@ -1854,7 +1848,7 @@
       "junk": false,
       "target": {
         "slug": "srok-sluzhby-vinirov",
-        "score": 1
+        "score": 1.38
       },
       "members": [
         {
@@ -1898,7 +1892,7 @@
       "junk": false,
       "target": {
         "slug": "etapy-protezirovaniya-zubov",
-        "score": 1
+        "score": 1.11
       },
       "members": [
         {
@@ -1928,10 +1922,7 @@
       "count": 4,
       "freq": 10,
       "junk": false,
-      "target": {
-        "slug": "kak-vybrat-stomatologiyu-dlya-protezirovaniya",
-        "score": 0.35
-      },
+      "target": null,
       "members": [
         {
           "q": "если клиент говорит стоматологу ортопеду можно в дальнейшем обращаться к вам то врач отвечает да это хорошо",
@@ -1958,7 +1949,7 @@
       "junk": false,
       "target": {
         "slug": "dezinfektsiya-proteza",
-        "score": 0.91
+        "score": 1
       },
       "members": [
         {
@@ -1985,8 +1976,8 @@
       "freq": 10,
       "junk": false,
       "target": {
-        "slug": "first-visit",
-        "score": 1
+        "slug": "10-voprosov-stomatologu-ortopedu",
+        "score": 1.73
       },
       "members": [
         {
@@ -2009,7 +2000,7 @@
       "freq": 10,
       "junk": false,
       "target": {
-        "slug": "etapy-protezirovaniya-zubov",
+        "slug": "implantat-vypal-chto-delat",
         "score": 0.57
       },
       "members": [
@@ -2029,8 +2020,8 @@
       "freq": 9,
       "junk": true,
       "target": {
-        "slug": "skolko-mozhno-hodit-bez-zubov",
-        "score": 0.64
+        "slug": "implant-ili-protez",
+        "score": 0.92
       },
       "members": [
         {
@@ -2058,7 +2049,7 @@
       "junk": false,
       "target": {
         "slug": "kitajskie-implanty",
-        "score": 0.55
+        "score": 0.75
       },
       "members": [
         {
@@ -2080,10 +2071,7 @@
       "count": 3,
       "freq": 9,
       "junk": false,
-      "target": {
-        "slug": "kraevoe-prileganie-koronki",
-        "score": 0.61
-      },
+      "target": null,
       "members": [
         {
           "q": "коронка не плотно прилегает к зубу",
@@ -2106,7 +2094,7 @@
       "junk": false,
       "target": {
         "slug": "sendvich-protez",
-        "score": 0.82
+        "score": 1.64
       },
       "members": [
         {
@@ -2129,8 +2117,8 @@
       "freq": 8,
       "junk": false,
       "target": {
-        "slug": "implant-ili-protez",
-        "score": 0.74
+        "slug": "net-odnogo-zuba",
+        "score": 1.32
       },
       "members": [
         {
@@ -2153,8 +2141,8 @@
       "freq": 8,
       "junk": false,
       "target": {
-        "slug": "net-odnogo-zuba",
-        "score": 0.66
+        "slug": "srok-sluzhby-vinirov",
+        "score": 0.31
       },
       "members": [
         {
@@ -2178,7 +2166,7 @@
       "junk": false,
       "target": {
         "slug": "shinirovanie-zubov",
-        "score": 0.7
+        "score": 0.79
       },
       "members": [
         {
@@ -2198,7 +2186,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 1
+        "score": 1.19
       },
       "members": [
         {
@@ -2213,8 +2201,8 @@
       "freq": 8,
       "junk": true,
       "target": {
-        "slug": "zdorove-polosti-rta-vliyanie-na-organizm",
-        "score": 0.57
+        "slug": "potemnel-svoj-zub",
+        "score": 0.77
       },
       "members": [
         {
@@ -2241,8 +2229,8 @@
       "freq": 8,
       "junk": false,
       "target": {
-        "slug": "byugelnyj-ili-semnyj-protez",
-        "score": 0.43
+        "slug": "chem-otlichaetsya-implantaciya-ot-protezirovaniya",
+        "score": 0.58
       },
       "members": [
         {
@@ -2257,8 +2245,8 @@
       "freq": 8,
       "junk": false,
       "target": {
-        "slug": "vremennye-koronki-zachem-nuzhny",
-        "score": 0.67
+        "slug": "srok-sluzhby-vinirov",
+        "score": 1
       },
       "members": [
         {
@@ -2274,7 +2262,7 @@
       "junk": false,
       "target": {
         "slug": "zuby-posle-50",
-        "score": 0.48
+        "score": 0.69
       },
       "members": [
         {
@@ -2294,7 +2282,7 @@
       "junk": true,
       "target": {
         "slug": "remont-zubnogo-proteza",
-        "score": 0.57
+        "score": 1
       },
       "members": [
         {
@@ -2314,7 +2302,7 @@
       "junk": false,
       "target": {
         "slug": "chem-chistit-zubnye-protezy",
-        "score": 0.36
+        "score": 0.49
       },
       "members": [
         {
@@ -2333,8 +2321,8 @@
       "freq": 7,
       "junk": false,
       "target": {
-        "slug": "koronki-dlya-zhevatelnyh-zubov",
-        "score": 0.51
+        "slug": "cirkonij-ili-metallokeramika",
+        "score": 0.69
       },
       "members": [
         {
@@ -2354,7 +2342,7 @@
       "junk": false,
       "target": {
         "slug": "kandidoz-polosti-rta-protezy",
-        "score": 0.8
+        "score": 1.31
       },
       "members": [
         {
@@ -2368,10 +2356,7 @@
       "count": 2,
       "freq": 7,
       "junk": false,
-      "target": {
-        "slug": "kak-vybrat-zubnuyu-schetku",
-        "score": 0.39
-      },
+      "target": null,
       "members": [
         {
           "q": "мзп в стоматологии расшифровка",
@@ -2404,10 +2389,7 @@
       "count": 2,
       "freq": 6,
       "junk": false,
-      "target": {
-        "slug": "prikusnoy-shablon-na-zhestkom-bazise",
-        "score": 0.68
-      },
+      "target": null,
       "members": [
         {
           "q": "определения прикуса и центрального соотношение зубов при примерки прикусных шаблонов",
@@ -2426,7 +2408,7 @@
       "junk": false,
       "target": {
         "slug": "keramicheskaya-desna",
-        "score": 0.78
+        "score": 1.34
       },
       "members": [
         {
@@ -2442,7 +2424,7 @@
       "junk": false,
       "target": {
         "slug": "sravnenie-sistem-implantov",
-        "score": 0.82
+        "score": 1.64
       },
       "members": [
         {
@@ -2477,8 +2459,8 @@
       "freq": 6,
       "junk": false,
       "target": {
-        "slug": "mostovidnyj-protez-vidy-plyusy-minusy",
-        "score": 1
+        "slug": "mrt-s-implantami",
+        "score": 1.73
       },
       "members": [
         {
@@ -2498,7 +2480,7 @@
       "junk": false,
       "target": {
         "slug": "skolko-delayut-koronku",
-        "score": 0.59
+        "score": 1
       },
       "members": [
         {
@@ -2514,7 +2496,7 @@
       "junk": false,
       "target": {
         "slug": "sravnenie-sistem-implantov",
-        "score": 0.43
+        "score": 0.71
       },
       "members": [
         {
@@ -2530,7 +2512,7 @@
       "junk": false,
       "target": {
         "slug": "uhod-za-vinirami",
-        "score": 0.6
+        "score": 1.19
       },
       "members": [
         {
@@ -2567,7 +2549,7 @@
       "junk": false,
       "target": {
         "slug": "prikusil-sheku-iznutri",
-        "score": 0.71
+        "score": 1.26
       },
       "members": [
         {
@@ -2582,8 +2564,8 @@
       "freq": 5,
       "junk": false,
       "target": {
-        "slug": "implant-shataetsya",
-        "score": 1
+        "slug": "shataetsya-koronka-na-implante",
+        "score": 1.43
       },
       "members": [
         {
@@ -2603,7 +2585,7 @@
       "junk": true,
       "target": {
         "slug": "skolko-delayut-koronku",
-        "score": 0.56
+        "score": 1.12
       },
       "members": [
         {
@@ -2617,13 +2599,13 @@
       ]
     },
     {
-      "head": "моднл ли в вставить зубы по полису",
+      "head": "можно ли вставить зубы по омс",
       "count": 2,
       "freq": 5,
-      "junk": false,
+      "junk": true,
       "target": {
         "slug": "implantat-vypal-chto-delat",
-        "score": 0.4
+        "score": 0.57
       },
       "members": [
         {
@@ -2643,7 +2625,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 1
+        "score": 1.44
       },
       "members": [
         {
@@ -2663,7 +2645,7 @@
       "junk": false,
       "target": {
         "slug": "sendvich-protez",
-        "score": 0.56
+        "score": 0.69
       },
       "members": [
         {
@@ -2679,7 +2661,7 @@
       "junk": false,
       "target": {
         "slug": "zuby-po-nomeram",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -2695,7 +2677,7 @@
       "junk": false,
       "target": {
         "slug": "mikroprotezirovanie",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -2727,8 +2709,8 @@
       "freq": 4,
       "junk": false,
       "target": {
-        "slug": "koronka-na-zub-chto-luchshe",
-        "score": 0.56
+        "slug": "chem-chistit-zubnye-protezy",
+        "score": 0.87
       },
       "members": [
         {
@@ -2748,7 +2730,7 @@
       "junk": false,
       "target": {
         "slug": "prikusil-sheku-iznutri",
-        "score": 1
+        "score": 1.87
       },
       "members": [
         {
@@ -2767,8 +2749,8 @@
       "freq": 4,
       "junk": false,
       "target": {
-        "slug": "zdorove-polosti-rta-vliyanie-na-organizm",
-        "score": 0.4
+        "slug": "protezirovanie-posle-udaleniya-zuba-mudrosti",
+        "score": 0.49
       },
       "members": [
         {
@@ -2784,7 +2766,7 @@
       "junk": false,
       "target": {
         "slug": "koronka-ili-most",
-        "score": 1
+        "score": 1.25
       },
       "members": [
         {
@@ -2803,7 +2785,7 @@
       "freq": 4,
       "junk": false,
       "target": {
-        "slug": "nizhnij-protez",
+        "slug": "ceny-na-protezirovanie-v-nn",
         "score": 0.5
       },
       "members": [
@@ -2820,7 +2802,7 @@
       "junk": false,
       "target": {
         "slug": "teleskopicheskie-koronki",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -2835,8 +2817,8 @@
       "freq": 4,
       "junk": false,
       "target": {
-        "slug": "vidy-prikusnykh-shablonov",
-        "score": 1
+        "slug": "okklyuziya-zubov-pravilnoe-smykanie",
+        "score": 2
       },
       "members": [
         {
@@ -2865,7 +2847,7 @@
       "junk": false,
       "target": {
         "slug": "kak-chistit-semnye-protezy",
-        "score": 0.73
+        "score": 0.94
       },
       "members": [
         {
@@ -2879,10 +2861,7 @@
       "count": 1,
       "freq": 3,
       "junk": false,
-      "target": {
-        "slug": "slepki-v-ortopedii",
-        "score": 0.58
-      },
+      "target": null,
       "members": [
         {
           "q": "какие эмоции испытывают пациенты при снятии коронок",
@@ -2896,8 +2875,8 @@
       "freq": 3,
       "junk": false,
       "target": {
-        "slug": "kislaya-slyuna-prichiny",
-        "score": 0.48
+        "slug": "care-denture",
+        "score": 0.41
       },
       "members": [
         {
@@ -2912,8 +2891,8 @@
       "freq": 3,
       "junk": false,
       "target": {
-        "slug": "schel-mezhdu-koronkoj-i-zubom",
-        "score": 0.7
+        "slug": "kompozitnye-vkladki",
+        "score": 0.61
       },
       "members": [
         {
@@ -2929,7 +2908,7 @@
       "junk": false,
       "target": {
         "slug": "byugelnyj-protez-klammery",
-        "score": 0.68
+        "score": 1.05
       },
       "members": [
         {
@@ -2945,7 +2924,7 @@
       "junk": true,
       "target": {
         "slug": "vnutrirotovoe-skanirovanie",
-        "score": 0.5
+        "score": 0.75
       },
       "members": [
         {
@@ -2960,7 +2939,7 @@
       "freq": 3,
       "junk": true,
       "target": {
-        "slug": "cherneet-desna-vokrug-koronki",
+        "slug": "mkb-v-stomatologii",
         "score": 0.44
       },
       "members": [
@@ -2977,7 +2956,7 @@
       "junk": false,
       "target": {
         "slug": "acryfree-vs-quattrotii",
-        "score": 0.61
+        "score": 0.83
       },
       "members": [
         {
@@ -3005,8 +2984,8 @@
       "freq": 3,
       "junk": false,
       "target": {
-        "slug": "bolno-li-stavit-koronku",
-        "score": 1
+        "slug": "obtochka-zubov-pod-koronku",
+        "score": 1.71
       },
       "members": [
         {
@@ -3021,7 +3000,7 @@
       "freq": 3,
       "junk": true,
       "target": {
-        "slug": "verhnij-protez",
+        "slug": "protezirovanie-zubov-po-oms",
         "score": 0.39
       },
       "members": [
@@ -3037,8 +3016,8 @@
       "freq": 3,
       "junk": false,
       "target": {
-        "slug": "mozhno-li-spat-s-protezom",
-        "score": 0.46
+        "slug": "alkogol-i-zdorove-polosti-rta",
+        "score": 0.76
       },
       "members": [
         {
@@ -3054,7 +3033,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 0.73
+        "score": 0.95
       },
       "members": [
         {
@@ -3070,7 +3049,7 @@
       "junk": false,
       "target": {
         "slug": "prikusnoy-shablon-na-zhestkom-bazise",
-        "score": 1
+        "score": 2
       },
       "members": [
         {
@@ -3102,7 +3081,7 @@
       "junk": false,
       "target": {
         "slug": "zuby-po-nomeram",
-        "score": 1
+        "score": 1.43
       },
       "members": [
         {
@@ -3118,7 +3097,7 @@
       "junk": false,
       "target": {
         "slug": "adgezivnyj-mostovidnyj-protez",
-        "score": 0.74
+        "score": 1.16
       },
       "members": [
         {
@@ -3132,10 +3111,7 @@
       "count": 1,
       "freq": 3,
       "junk": false,
-      "target": {
-        "slug": "czirkonievyj-mostovidnyj-protez",
-        "score": 0.33
-      },
+      "target": null,
       "members": [
         {
           "q": "закусы на щеках внутри",
@@ -3150,7 +3126,7 @@
       "junk": false,
       "target": {
         "slug": "chto-vredno-dlya-zubov",
-        "score": 0.65
+        "score": 1
       },
       "members": [
         {
@@ -3166,7 +3142,7 @@
       "junk": false,
       "target": {
         "slug": "keramicheskaya-desna",
-        "score": 1
+        "score": 1.36
       },
       "members": [
         {
@@ -3182,7 +3158,7 @@
       "junk": true,
       "target": {
         "slug": "protezirovanie-zubov-po-oms",
-        "score": 1
+        "score": 1.68
       },
       "members": [
         {
@@ -3197,8 +3173,8 @@
       "freq": 2,
       "junk": false,
       "target": {
-        "slug": "uhod-za-zubami-posle-60",
-        "score": 0.34
+        "slug": "stress-i-zuby",
+        "score": 0.35
       },
       "members": [
         {
@@ -3214,7 +3190,7 @@
       "junk": false,
       "target": {
         "slug": "korega-dlya-zubnyh-protezov",
-        "score": 0.5
+        "score": 0.83
       },
       "members": [
         {
@@ -3229,8 +3205,8 @@
       "freq": 2,
       "junk": true,
       "target": {
-        "slug": "viniry-ili-koronki",
-        "score": 0.4
+        "slug": "protezirovanie-zubov-po-oms",
+        "score": 0.54
       },
       "members": [
         {
@@ -3244,10 +3220,7 @@
       "count": 1,
       "freq": 2,
       "junk": false,
-      "target": {
-        "slug": "protez-tsvet",
-        "score": 0.5
-      },
+      "target": null,
       "members": [
         {
           "q": "оттенков по шкале vita (a2, a3, a3.5, а4, b2, c2, оа3",
@@ -3275,7 +3248,7 @@
       "junk": false,
       "target": {
         "slug": "prikusil-scheku",
-        "score": 0.45
+        "score": 0.71
       },
       "members": [
         {
@@ -3288,11 +3261,8 @@
       "head": "мои можно ли сделать протезы зубов по мед полису",
       "count": 1,
       "freq": 2,
-      "junk": false,
-      "target": {
-        "slug": "skolko-mozhno-hodit-bez-zubov",
-        "score": 0.35
-      },
+      "junk": true,
+      "target": null,
       "members": [
         {
           "q": "мои можно ли сделать протезы зубов по мед полису",
@@ -3305,7 +3275,10 @@
       "count": 1,
       "freq": 2,
       "junk": false,
-      "target": null,
+      "target": {
+        "slug": "obtochka-zubov-pod-koronku",
+        "score": 0.36
+      },
       "members": [
         {
           "q": "нить не полазит до конца между коронкой и зубом",
@@ -3319,8 +3292,8 @@
       "freq": 2,
       "junk": true,
       "target": {
-        "slug": "vidy-prikusnykh-shablonov",
-        "score": 0.33
+        "slug": "protezy-bez-neba",
+        "score": 0.47
       },
       "members": [
         {
@@ -3336,7 +3309,7 @@
       "junk": false,
       "target": {
         "slug": "sendvich-protez",
-        "score": 0.69
+        "score": 0.88
       },
       "members": [
         {
@@ -3350,7 +3323,10 @@
       "count": 1,
       "freq": 2,
       "junk": true,
-      "target": null,
+      "target": {
+        "slug": "koronka-na-zub-chto-luchshe",
+        "score": 0.36
+      },
       "members": [
         {
           "q": "какую коронку предлагабт в гос поликлиники",
@@ -3363,10 +3339,7 @@
       "count": 1,
       "freq": 2,
       "junk": false,
-      "target": {
-        "slug": "prikusil-sheku-iznutri",
-        "score": 0.36
-      },
+      "target": null,
       "members": [
         {
           "q": "надкусил щеку изнутри образовалась шишка",
@@ -3380,8 +3353,8 @@
       "freq": 2,
       "junk": false,
       "target": {
-        "slug": "perebazirovka-proteza",
-        "score": 0.7
+        "slug": "shtampovanno-payanyj-mostovidnyj-protez",
+        "score": 1.39
       },
       "members": [
         {
@@ -3408,10 +3381,7 @@
       "count": 1,
       "freq": 2,
       "junk": false,
-      "target": {
-        "slug": "mozhno-li-spat-s-protezom",
-        "score": 0.35
-      },
+      "target": null,
       "members": [
         {
           "q": "деньа фикс хорошиетли очтщение протезов",
@@ -3424,10 +3394,7 @@
       "count": 1,
       "freq": 2,
       "junk": false,
-      "target": {
-        "slug": "shataetsya-koronka-na-implante",
-        "score": 0.65
-      },
+      "target": null,
       "members": [
         {
           "q": "выкрутился винт из импланта что делать",
@@ -3442,7 +3409,7 @@
       "junk": false,
       "target": {
         "slug": "byugelnyj-protez-klammery",
-        "score": 0.72
+        "score": 1.17
       },
       "members": [
         {
@@ -3457,8 +3424,8 @@
       "freq": 2,
       "junk": true,
       "target": {
-        "slug": "geneticheskoe-testirovanie-apoe4-stomatologiya",
-        "score": 0.59
+        "slug": "protezirovanie-zubov-po-oms",
+        "score": 0.77
       },
       "members": [
         {
@@ -3473,8 +3440,8 @@
       "freq": 2,
       "junk": false,
       "target": {
-        "slug": "cherneet-desna-vokrug-koronki",
-        "score": 0.47
+        "slug": "vospalenie-desny-pod-koronkoj",
+        "score": 0.78
       },
       "members": [
         {
@@ -3490,7 +3457,7 @@
       "junk": false,
       "target": {
         "slug": "kraevoe-prileganie-koronki",
-        "score": 1
+        "score": 1.31
       },
       "members": [
         {
@@ -3506,7 +3473,7 @@
       "junk": false,
       "target": {
         "slug": "zuby-po-nomeram",
-        "score": 0.7
+        "score": 1.4
       },
       "members": [
         {
@@ -3520,10 +3487,7 @@
       "count": 1,
       "freq": 2,
       "junk": false,
-      "target": {
-        "slug": "dezinfektsiya-proteza",
-        "score": 0.56
-      },
+      "target": null,
       "members": [
         {
           "q": "чистят ли протезы ультразвуком",
@@ -3550,8 +3514,8 @@
       "freq": 2,
       "junk": true,
       "target": {
-        "slug": "protezirovanie-zubov-po-oms",
-        "score": 0.57
+        "slug": "stress-i-zuby",
+        "score": 0.43
       },
       "members": [
         {
@@ -3579,8 +3543,8 @@
       "freq": 2,
       "junk": true,
       "target": {
-        "slug": "cherez-skolko-est-posle-implantatsii",
-        "score": 0.55
+        "slug": "alkogol-i-zdorove-polosti-rta",
+        "score": 1.11
       },
       "members": [
         {

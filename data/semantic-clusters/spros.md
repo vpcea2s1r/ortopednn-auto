@@ -4,141 +4,141 @@
 
 | # | Главный запрос | Фраз | Показов | Цель | Вердикт |
 |---|---|---|---|---|---|
-| 1 | зубной протез сэндвич что это такое | 39 | 184 | sendvich-protez | covered: sendvich-protez |
-| 2 | зубная паста для протезов | 31 | 154 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
+| 1 | зубной протез сэндвич что это такое | 39 | 184 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
+| 2 | зубная паста для протезов | 31 | 154 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
 | 3 | протез сэндвич что это такое | 17 | 140 | sendvich-protez | covered: sendvich-protez |
-| 4 | протезирование зубов в нижнем новгороде недорого и по омс | 35 | 131 | ceny-na-protezirovanie-v-nn | covered: ceny-na-protezirovanie-v-nn |
+| 4 | что значит цвет зубов чуть белее белого протезирование | 35 | 131 | protezirovanie-bez-obtachki | covered: protezirovanie-bez-obtachki |
 | 5 | патологическая стираемость зубов мкб 10 | 11 | 78 | patologicheskaya-stiraemost-zubov-lechenie | JUNK (не пишем) |
 | 6 | таблетки для очистки зубных протезов какие лучше | 24 | 75 | korega-dlya-zubnyh-protezov | covered: korega-dlya-zubnyh-protezov |
-| 7 | портят ли чистящие таблетки материал съемного протеза | 19 | 71 | uhod-za-zubnymi-protezami | covered: uhod-za-zubnymi-protezami |
-| 8 | протезирование зубов по полису омс бесплатно нижний новгород | 15 | 59 | protezirovanie-zubov-po-oms | covered: protezirovanie-zubov-po-oms |
+| 7 | портят ли чистящие таблетки материал съемного протеза | 19 | 71 | byugelnyj-protez-klammery | covered: byugelnyj-protez-klammery |
+| 8 | протезирование зубов по полису омс бесплатно нижний новгород | 15 | 59 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
 | 9 | портится ли щетка с жесткой щетиной для протезов | 5 | 57 | protezirovanie-pri-beremennosti | covered: protezirovanie-pri-beremennosti |
-| 10 | как долго держатся виниры на зубах | 14 | 56 | viniry-chto-eto | covered: viniry-chto-eto |
+| 10 | как долго держатся виниры на зубах | 14 | 56 | mini-implanty-dlya-protezov | covered: mini-implanty-dlya-protezov |
 | 11 | бесплатна ли консультация ортопеда при начале лечения | 1 | 55 | first-visit | JUNK (не пишем) |
-| 12 | сколько месяцев очередь на протезирование по омс | 2 | 55 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
+| 12 | сколько месяцев очередь на протезирование по омс | 2 | 55 | immediat-protezy-chto-eto-pokazaniya | JUNK (не пишем) |
 | 13 | сколько дней изготавливают постоянные коронки в лаборатории | 1 | 51 | skolko-delayut-koronku | JUNK (не пишем) |
 | 14 | цвет керамики для зубов | 15 | 50 | protezirovanie-perednih-zubov | covered: protezirovanie-perednih-zubov |
 | 15 | телескопические коронки | 4 | 48 | teleskopicheskie-koronki | covered: teleskopicheskie-koronki |
 | 16 | почему идеальное прилегание коронки так важно для десны | 4 | 45 | kraevoe-prileganie-koronki | covered: kraevoe-prileganie-koronki |
-| 17 | социальная имплантация зубов нижний новгород | 10 | 39 | protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie | covered: protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie |
+| 17 | имплантация зубов по квоте | 10 | 39 | — | JUNK (не пишем) |
 | 18 | бесплатное протезирование бесплатно | 5 | 37 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
 | 19 | срок службы виниров | 7 | 36 | uhod-za-vinirami | covered: uhod-za-vinirami |
-| 20 | прикусные шаблоны | 6 | 31 | chto-takoe-prototipy-u-stomatologa | covered: chto-takoe-prototipy-u-stomatologa |
+| 20 | прикусные шаблоны | 6 | 31 | vidy-prikusnykh-shablonov | covered: vidy-prikusnykh-shablonov |
 | 21 | ставят ли коронки по омс | 8 | 29 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
 | 22 | потеря зубов от алкоголизма | 3 | 29 | alkogol-i-zdorove-polosti-rta | covered: alkogol-i-zdorove-polosti-rta |
 | 23 | влияние алкоголя на слизистую под протезом | 7 | 27 | alkogol-i-zdorove-polosti-rta | JUNK (не пишем) |
-| 24 | можно ли поставить имплант бесплатно | 7 | 27 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
-| 25 | импланты инвалидам | 7 | 26 | skolko-delayut-koronku | covered: skolko-delayut-koronku |
-| 26 | мзп в стоматологии | 6 | 24 | kak-privyknut-k-semnym-protezam | covered: kak-privyknut-k-semnym-protezam |
+| 24 | можно ли поставить имплант бесплатно | 7 | 27 | implantat-vypal-chto-delat | JUNK (не пишем) |
+| 25 | имплант сэндвич | 7 | 26 | sendvich-protez | covered: sendvich-protez |
+| 26 | мзп в стоматологии | 6 | 24 | — | GAP (кандидат) |
 | 27 | съёмный протез на верхнюю челюсть какой лучше выбрать | 3 | 22 | verhnij-protez | covered: verhnij-protez |
 | 28 | протезирование по омс | 4 | 21 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
 | 29 | виниры на всю жизнь или нет | 7 | 20 | mozhno-li-spat-s-protezom | covered: mozhno-li-spat-s-protezom |
 | 30 | коронка из хрома | 4 | 20 | — | GAP (кандидат) |
 | 31 | очередь на бесплатное протезирование | 6 | 18 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
 | 32 | какой зубной пастой лучше чистить зубные протезы съемные пластмассовые | 7 | 18 | uhod-za-zubnymi-protezami | covered: uhod-za-zubnymi-protezami |
-| 33 | может ли окраситься белый протез от кофе или чая | 3 | 16 | rak-polosti-rta-skrining-i-predrakovye-sostoyaniya | covered: rak-polosti-rta-skrining-i-predrakovye-sostoyaniya |
+| 33 | может ли окраситься белый протез от кофе или чая | 3 | 16 | chto-vredno-dlya-zubov | covered: chto-vredno-dlya-zubov |
 | 34 | сколько держатся виниры на зубах | 5 | 16 | viniry-chto-eto | JUNK (не пишем) |
 | 35 | почему пьющие люди быстро стареют и теряют зубы | 2 | 13 | osteoporoz-i-implantatsiya | covered: osteoporoz-i-implantatsiya |
-| 36 | бабочка протез | 4 | 13 | vidy-zubnyh-protezov | covered: vidy-zubnyh-protezov |
+| 36 | бабочка протез | 4 | 13 | protez-babochka | covered: protez-babochka |
 | 37 | бюгельный протез с замковой фиксацией | 3 | 12 | byugelnyj-protez-klammery | covered: byugelnyj-protez-klammery |
 | 38 | виниры гарантия | 3 | 12 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
 | 39 | как долго носят виниры | 2 | 12 | koronka-metallokeramicheskaya-otzyvy | covered: koronka-metallokeramicheskaya-otzyvy |
 | 40 | можно ли сделать протез на один зуб | 5 | 11 | etapy-protezirovaniya-zubov | covered: etapy-protezirovaniya-zubov |
-| 41 | если клиент говорит стоматологу ортопеду можно в дальнейшем обращаться к вам то врач отвечает да это хорошо | 4 | 10 | kak-vybrat-stomatologiyu-dlya-protezirovaniya | covered: kak-vybrat-stomatologiyu-dlya-protezirovaniya |
+| 41 | если клиент говорит стоматологу ортопеду можно в дальнейшем обращаться к вам то врач отвечает да это хорошо | 4 | 10 | — | GAP (кандидат) |
 | 42 | можно ли чистить протезы зубов перекисью водорода | 4 | 10 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
-| 43 | какие вопросы задать ортопеду на консультации | 3 | 10 | first-visit | covered: first-visit |
-| 44 | вставные зубы цвет 2 | 2 | 10 | etapy-protezirovaniya-zubov | covered: etapy-protezirovaniya-zubov |
-| 45 | как сделать имплантацию зубов бесплатно | 4 | 9 | skolko-mozhno-hodit-bez-zubov | JUNK (не пишем) |
+| 43 | какие вопросы задать ортопеду на консультации | 3 | 10 | 10-voprosov-stomatologu-ortopedu | covered: 10-voprosov-stomatologu-ortopedu |
+| 44 | вставные зубы цвет 2 | 2 | 10 | implantat-vypal-chto-delat | covered: implantat-vypal-chto-delat |
+| 45 | как сделать имплантацию зубов бесплатно | 4 | 9 | implant-ili-protez | JUNK (не пишем) |
 | 46 | импланты mis израиль отзывы . сравнение с корейскими оsstem. | 3 | 9 | kitajskie-implanty | covered: kitajskie-implanty |
-| 47 | коронка не плотно прилегает к зубу | 3 | 9 | kraevoe-prileganie-koronki | covered: kraevoe-prileganie-koronki |
+| 47 | коронка не плотно прилегает к зубу | 3 | 9 | — | GAP (кандидат) |
 | 48 | сэндвич зубы протезирование | 3 | 9 | sendvich-protez | covered: sendvich-protez |
-| 49 | мост при отсутствии одного зуба | 3 | 8 | implant-ili-protez | covered: implant-ili-protez |
-| 50 | нет среднего зуба в переди,можно ли поставить бабочку на двух коронках | 3 | 8 | net-odnogo-zuba | covered: net-odnogo-zuba |
+| 49 | мост при отсутствии одного зуба | 3 | 8 | net-odnogo-zuba | covered: net-odnogo-zuba |
+| 50 | нет среднего зуба в переди,можно ли поставить бабочку на двух коронках | 3 | 8 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
 | 51 | шина на зубы для шатающихся зубов плюсы и минусы | 2 | 8 | shinirovanie-zubov | covered: shinirovanie-zubov |
 | 52 | разница между платным и бесплатным протезом | 1 | 8 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
-| 53 | может ли алкоголь влиять на боль в зубе | 4 | 8 | zdorove-polosti-rta-vliyanie-na-organizm | JUNK (не пишем) |
-| 54 | в чем разница между осстем и штрауман | 1 | 8 | byugelnyj-ili-semnyj-protez | covered: byugelnyj-ili-semnyj-protez |
-| 55 | потемнение композита со временем | 1 | 8 | vremennye-koronki-zachem-nuzhny | covered: vremennye-koronki-zachem-nuzhny |
+| 53 | может ли алкоголь влиять на боль в зубе | 4 | 8 | potemnel-svoj-zub | JUNK (не пишем) |
+| 54 | в чем разница между осстем и штрауман | 1 | 8 | chem-otlichaetsya-implantaciya-ot-protezirovaniya | covered: chem-otlichaetsya-implantaciya-ot-protezirovaniya |
+| 55 | потемнение композита со временем | 1 | 8 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
 | 56 | болят зубы после белого вина | 2 | 8 | zuby-posle-50 | covered: zuby-posle-50 |
 | 57 | трещина зуба мкб | 2 | 8 | remont-zubnogo-proteza | JUNK (не пишем) |
 | 58 | какие таблетки больше подходят для чистки про езов где присутствует металлические конструкции | 2 | 7 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
-| 59 | при постановке сдвоенных циркониевых коронок видна щель в десне между ними | 2 | 7 | koronki-dlya-zhevatelnyh-zubov | covered: koronki-dlya-zhevatelnyh-zubov |
+| 59 | при постановке сдвоенных циркониевых коронок видна щель в десне между ними | 2 | 7 | cirkonij-ili-metallokeramika | covered: cirkonij-ili-metallokeramika |
 | 60 | чем обработать полость рта от повреждения зубных протезов | 1 | 7 | kandidoz-polosti-rta-protezy | covered: kandidoz-polosti-rta-protezy |
-| 61 | мзп в стоматологии расшифровка | 2 | 7 | kak-vybrat-zubnuyu-schetku | covered: kak-vybrat-zubnuyu-schetku |
+| 61 | мзп в стоматологии расшифровка | 2 | 7 | — | GAP (кандидат) |
 | 62 | бесплатные импланты инвалидам | 1 | 7 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
-| 63 | определения прикуса и центрального соотношение зубов при примерки прикусных шаблонов | 2 | 6 | prikusnoy-shablon-na-zhestkom-bazise | covered: prikusnoy-shablon-na-zhestkom-bazise |
+| 63 | определения прикуса и центрального соотношение зубов при примерки прикусных шаблонов | 2 | 6 | — | GAP (кандидат) |
 | 64 | розовая керамика на протезах для маскировки десны | 1 | 6 | keramicheskaya-desna | covered: keramicheskaya-desna |
 | 65 | имплантаты osstem для протезирования сравнение | 1 | 6 | sravnenie-sistem-implantov | covered: sravnenie-sistem-implantov |
 | 66 | бесплатное зубопротезирование кому положено | 2 | 6 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
-| 67 | можно делать кт и мрт при имплантах зубов | 2 | 6 | mostovidnyj-protez-vidy-plyusy-minusy | covered: mostovidnyj-protez-vidy-plyusy-minusy |
+| 67 | можно делать кт и мрт при имплантах зубов | 2 | 6 | mrt-s-implantami | covered: mrt-s-implantami |
 | 68 | какие импланты делают по льготам? | 1 | 6 | skolko-delayut-koronku | covered: skolko-delayut-koronku |
 | 69 | лучше mis тли shtrauman | 1 | 6 | sravnenie-sistem-implantov | covered: sravnenie-sistem-implantov |
 | 70 | срок годности виниров | 2 | 6 | uhod-za-vinirami | covered: uhod-za-vinirami |
 | 71 | какая щубная паста рекоменлуетмя для щубнвх протезов кратко | 2 | 5 | — | GAP (кандидат) |
 | 72 | прикусил щеку изнутри образовался шарик белый чем лечить | 1 | 5 | prikusil-sheku-iznutri | covered: prikusil-sheku-iznutri |
-| 73 | подвижная коронка на импланте | 2 | 5 | implant-shataetsya | covered: implant-shataetsya |
+| 73 | подвижная коронка на импланте | 2 | 5 | shataetsya-koronka-na-implante | covered: shataetsya-koronka-na-implante |
 | 74 | делают ли коронки по омс | 2 | 5 | skolko-delayut-koronku | JUNK (не пишем) |
-| 75 | моднл ли в вставить зубы по полису | 2 | 5 | implantat-vypal-chto-delat | covered: implantat-vypal-chto-delat |
+| 75 | можно ли вставить зубы по омс | 2 | 5 | implantat-vypal-chto-delat | JUNK (не пишем) |
 | 76 | можно ли по омс поставить коронку | 2 | 5 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
 | 77 | двухслойный базисный протез | 1 | 5 | sendvich-protez | covered: sendvich-protez |
 | 78 | зубы по номерам | 1 | 5 | zuby-po-nomeram | covered: zuby-po-nomeram |
 | 79 | микропротез | 1 | 5 | mikroprotezirovanie | covered: mikroprotezirovanie |
 | 80 | двухстворчатый механический протез мединж n25 из mini j отзывы | 2 | 4 | — | GAP (кандидат) |
-| 81 | таблеткой диоксида кремния можно ли чистить зубы | 2 | 4 | koronka-na-zub-chto-luchshe | covered: koronka-na-zub-chto-luchshe |
+| 81 | таблеткой диоксида кремния можно ли чистить зубы | 2 | 4 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
 | 82 | прикус щеки изнутри что делать | 2 | 4 | prikusil-sheku-iznutri | covered: prikusil-sheku-iznutri |
-| 83 | могут ли крошиться зубы от стресса | 1 | 4 | zdorove-polosti-rta-vliyanie-na-organizm | covered: zdorove-polosti-rta-vliyanie-na-organizm |
+| 83 | могут ли крошиться зубы от стресса | 1 | 4 | protezirovanie-posle-udaleniya-zuba-mudrosti | covered: protezirovanie-posle-udaleniya-zuba-mudrosti |
 | 84 | ставится ли мост на один зуб | 2 | 4 | koronka-ili-most | covered: koronka-ili-most |
-| 85 | ии-сегментация анатомии | 1 | 4 | nizhnij-protez | covered: nizhnij-protez |
+| 85 | ии-сегментация анатомии | 1 | 4 | ceny-na-protezirovanie-v-nn | covered: ceny-na-protezirovanie-v-nn |
 | 86 | телескопическая корона | 1 | 4 | teleskopicheskie-koronki | covered: teleskopicheskie-koronki |
-| 87 | окклюзия это | 1 | 4 | vidy-prikusnykh-shablonov | covered: vidy-prikusnykh-shablonov |
+| 87 | окклюзия это | 1 | 4 | okklyuziya-zubov-pravilnoe-smykanie | covered: okklyuziya-zubov-pravilnoe-smykanie |
 | 88 | шина гаврилова — съёмная шина с базисом и кламмерами. постоянная, сочетает шинирующий и замещающий эффект, но также нарушает речь и сложна для гигиены | 1 | 3 | — | GAP (кандидат) |
 | 89 | для чего нужен раствор для протезированных съемных зубов | 1 | 3 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
-| 90 | какие эмоции испытывают пациенты при снятии коронок | 1 | 3 | slepki-v-ortopedii | covered: slepki-v-ortopedii |
-| 91 | после чистки зубов дома на ночь.идёт кислая слюна | 1 | 3 | kislaya-slyuna-prichiny | covered: kislaya-slyuna-prichiny |
-| 92 | если стоят коронки что может не так показать кт | 1 | 3 | schel-mezhdu-koronkoj-i-zubom | covered: schel-mezhdu-koronkoj-i-zubom |
+| 90 | какие эмоции испытывают пациенты при снятии коронок | 1 | 3 | — | GAP (кандидат) |
+| 91 | после чистки зубов дома на ночь.идёт кислая слюна | 1 | 3 | care-denture | covered: care-denture |
+| 92 | если стоят коронки что может не так показать кт | 1 | 3 | kompozitnye-vkladki | covered: kompozitnye-vkladki |
 | 93 | бюгельное протезирование с замковой фиксацией | 1 | 3 | byugelnyj-protez-klammery | covered: byugelnyj-protez-klammery |
 | 94 | внутриротовой сканер atlas-diagnostics.ru | 1 | 3 | vnutrirotovoe-skanirovanie | JUNK (не пишем) |
-| 95 | могут ли воспалиться десны от алкоголя | 1 | 3 | cherneet-desna-vokrug-koronki | JUNK (не пишем) |
+| 95 | могут ли воспалиться десны от алкоголя | 1 | 3 | mkb-v-stomatologii | JUNK (не пишем) |
 | 96 | что значит телескопы в протезировании | 1 | 3 | acryfree-vs-quattrotii | covered: acryfree-vs-quattrotii |
 | 97 | убивает ли бактерии во рту алкоголь | 1 | 3 | — | JUNK (не пишем) |
-| 98 | больно ли снимать временную коронку | 1 | 3 | bolno-li-stavit-koronku | covered: bolno-li-stavit-koronku |
-| 99 | какие льготы бывают в стоматологии | 1 | 3 | verhnij-protez | JUNK (не пишем) |
-| 100 | почему сухость слизистой при запое | 1 | 3 | mozhno-li-spat-s-protezom | covered: mozhno-li-spat-s-protezom |
+| 98 | больно ли снимать временную коронку | 1 | 3 | obtochka-zubov-pod-koronku | covered: obtochka-zubov-pod-koronku |
+| 99 | какие льготы бывают в стоматологии | 1 | 3 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
+| 100 | почему сухость слизистой при запое | 1 | 3 | alkogol-i-zdorove-polosti-rta | covered: alkogol-i-zdorove-polosti-rta |
 | 101 | бесплатное зубное протезирование | 1 | 3 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
 | 102 | прикус на жестком базисе | 1 | 3 | prikusnoy-shablon-na-zhestkom-bazise | covered: prikusnoy-shablon-na-zhestkom-bazise |
 | 103 | бюджетные импланты китай | 1 | 3 | akrilovyj-mostovidnyj-protez | covered: akrilovyj-mostovidnyj-protez |
 | 104 | нумерация зубов у детей | 1 | 3 | zuby-po-nomeram | covered: zuby-po-nomeram |
 | 105 | адгезивный мост отзывы | 1 | 3 | adgezivnyj-mostovidnyj-protez | covered: adgezivnyj-mostovidnyj-protez |
-| 106 | закусы на щеках внутри | 1 | 3 | czirkonievyj-mostovidnyj-protez | covered: czirkonievyj-mostovidnyj-protez |
+| 106 | закусы на щеках внутри | 1 | 3 | — | GAP (кандидат) |
 | 107 | паста корега вредная | 1 | 3 | chto-vredno-dlya-zubov | covered: chto-vredno-dlya-zubov |
 | 108 | искусственная десна | 1 | 3 | keramicheskaya-desna | covered: keramicheskaya-desna |
 | 109 | омс имплантация | 1 | 3 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
-| 110 | у меня вставные зубы. съёмные и не съёмные. какую пасту выбрать для ухода за ними и дёснами. самую качественную? | 1 | 2 | uhod-za-zubami-posle-60 | covered: uhod-za-zubami-posle-60 |
+| 110 | у меня вставные зубы. съёмные и не съёмные. какую пасту выбрать для ухода за ними и дёснами. самую качественную? | 1 | 2 | stress-i-zuby | covered: stress-i-zuby |
 | 111 | можно ли использовать таблетки корега для съемных пластинок у детей | 1 | 2 | korega-dlya-zubnyh-protezov | covered: korega-dlya-zubnyh-protezov |
-| 112 | при льготном протезирование ставят только худшие протезы | 1 | 2 | viniry-ili-koronki | JUNK (не пишем) |
-| 113 | оттенков по шкале vita (a2, a3, a3.5, а4, b2, c2, оа3 | 1 | 2 | protez-tsvet | covered: protez-tsvet |
+| 112 | при льготном протезирование ставят только худшие протезы | 1 | 2 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
+| 113 | оттенков по шкале vita (a2, a3, a3.5, а4, b2, c2, оа3 | 1 | 2 | — | GAP (кандидат) |
 | 114 | геска аппарат можно ли применять при эн дб опротезе | 1 | 2 | — | GAP (кандидат) |
 | 115 | ребёнок прикусил щёку и теперь это грызёт чем можно | 1 | 2 | prikusil-scheku | covered: prikusil-scheku |
-| 116 | мои можно ли сделать протезы зубов по мед полису | 1 | 2 | skolko-mozhno-hodit-bez-zubov | covered: skolko-mozhno-hodit-bez-zubov |
-| 117 | нить не полазит до конца между коронкой и зубом | 1 | 2 | — | GAP (кандидат) |
-| 118 | цена от тепла тела силиконовыесьемные протезы | 1 | 2 | vidy-prikusnykh-shablonov | JUNK (не пишем) |
+| 116 | мои можно ли сделать протезы зубов по мед полису | 1 | 2 | — | JUNK (не пишем) |
+| 117 | нить не полазит до конца между коронкой и зубом | 1 | 2 | obtochka-zubov-pod-koronku | covered: obtochka-zubov-pod-koronku |
+| 118 | цена от тепла тела силиконовыесьемные протезы | 1 | 2 | protezy-bez-neba | JUNK (не пишем) |
 | 119 | изготовления протезов с двухслойным базисом | 1 | 2 | sendvich-protez | covered: sendvich-protez |
-| 120 | какую коронку предлагабт в гос поликлиники | 1 | 2 | — | JUNK (не пишем) |
-| 121 | надкусил щеку изнутри образовалась шишка | 1 | 2 | prikusil-sheku-iznutri | covered: prikusil-sheku-iznutri |
-| 122 | чем отличается платное протезированиезуб | 1 | 2 | perebazirovka-proteza | covered: perebazirovka-proteza |
+| 120 | какую коронку предлагабт в гос поликлиники | 1 | 2 | koronka-na-zub-chto-luchshe | JUNK (не пишем) |
+| 121 | надкусил щеку изнутри образовалась шишка | 1 | 2 | — | GAP (кандидат) |
+| 122 | чем отличается платное протезированиезуб | 1 | 2 | shtampovanno-payanyj-mostovidnyj-protez | covered: shtampovanno-payanyj-mostovidnyj-protez |
 | 123 | по каким зубам выбирать оттенок коронки. | 1 | 2 | — | GAP (кандидат) |
-| 124 | деньа фикс хорошиетли очтщение протезов | 1 | 2 | mozhno-li-spat-s-protezom | covered: mozhno-li-spat-s-protezom |
-| 125 | выкрутился винт из импланта что делать | 1 | 2 | shataetsya-koronka-na-implante | covered: shataetsya-koronka-na-implante |
+| 124 | деньа фикс хорошиетли очтщение протезов | 1 | 2 | — | GAP (кандидат) |
+| 125 | выкрутился винт из импланта что делать | 1 | 2 | — | GAP (кандидат) |
 | 126 | замковое крепление бюгельных протезов | 1 | 2 | byugelnyj-protez-klammery | covered: byugelnyj-protez-klammery |
-| 127 | как получить квоту на протезирование | 1 | 2 | geneticheskoe-testirovanie-apoe4-stomatologiya | JUNK (не пишем) |
-| 128 | после спиртного воспаляется во рту | 1 | 2 | cherneet-desna-vokrug-koronki | covered: cherneet-desna-vokrug-koronki |
+| 127 | как получить квоту на протезирование | 1 | 2 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
+| 128 | после спиртного воспаляется во рту | 1 | 2 | vospalenie-desny-pod-koronkoj | covered: vospalenie-desny-pod-koronkoj |
 | 129 | цементный зазор на коронках какой | 1 | 2 | kraevoe-prileganie-koronki | covered: kraevoe-prileganie-koronki |
 | 130 | как понять номер зуба как выучить | 1 | 2 | zuby-po-nomeram | covered: zuby-po-nomeram |
-| 131 | чистят ли протезы ультразвуком | 1 | 2 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
+| 131 | чистят ли протезы ультразвуком | 1 | 2 | — | GAP (кандидат) |
 | 132 | люминиры на зубы crocodent | 1 | 2 | — | JUNK (не пишем) |
-| 133 | капа для зубов по омс | 1 | 2 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
+| 133 | капа для зубов по омс | 1 | 2 | stress-i-zuby | JUNK (не пишем) |
 | 134 | оттенки белых зубов | 1 | 2 | — | GAP (кандидат) |
-| 135 | алкоголь и слюна | 1 | 2 | cherez-skolko-est-posle-implantatsii | JUNK (не пишем) |
+| 135 | алкоголь и слюна | 1 | 2 | alkogol-i-zdorove-polosti-rta | JUNK (не пишем) |
 
 ## Детали кластеров
 
@@ -207,7 +207,7 @@
 - протезы сэндвич отзывы — 3
 - протез сэндвич цена — 2
 
-### 4. протезирование зубов в нижнем новгороде недорого и по омс (131)
+### 4. что значит цвет зубов чуть белее белого протезирование (131)
 - протезирование зубов по омс — 11
 - бесплатное протезирование зубов кому положено — 10
 - квота на протезирование зубов кому положена — 7
@@ -366,7 +366,7 @@
 - должен ли быть зазор между десной и коронкой — 3
 - если коронка не зашла под десну — 2
 
-### 17. социальная имплантация зубов нижний новгород (39)
+### 17. имплантация зубов по квоте (39)
 - имплантация зубов по квоте — 9
 - имплантация зубов по омс возможна ли — 7
 - квота на имплантацию зубов кому положена — 6
@@ -435,7 +435,7 @@
 - можно ли поставить импланты зубов по квоте — 2
 - импланты по квоте — 2
 
-### 25. импланты инвалидам (26)
+### 25. имплант сэндвич (26)
 - импланты инвалидам — 5
 - импланты по омс — 5
 - имплант сэндвич — 5
@@ -678,7 +678,7 @@
 - делают ли коронки по омс — 3
 - делают ли коронки государственных стоматологиях — 2
 
-### 75. моднл ли в вставить зубы по полису (5)
+### 75. можно ли вставить зубы по омс (5)
 - можно ли вставить зубы по омс — 3
 - моднл ли в вставить зубы по полису — 2
 

@@ -15,18 +15,20 @@ const STOP = new Set(['это','такое','что','как','какой','ка
 // RU-стопслова: только мусорные, БЕЗ смысловых (без/на/под/цена оставлены — они различают интенты).
 
 // Мусорные интенты по правилам проекта: ОМС/бесплатно, цены, маркетплейсы, гео вне НН, вакансии.
-const JUNK_RE = /омс|бесплатн|цена|цены|стоимость|сколько стоит|купить|продажа|озон|вайлдберриз|wildberries|спб|санкт-петербург|москва|мск|краснодар|екатеринбург|архангельск|пермь|новосибирск|казань|ваканси|работа|квот|мкб|алкоголик|андреевские|xn--|госпрограмм|льготн|перми|хэйхэ|хейхэ|государств|поликлиник|социальн/i;
+const JUNK_RE = /омс|бесплатн|цена|цены|стоимость|сколько стоит|купить|продажа|озон|вайлдберриз|wildberries|спб|санкт-петербург|москва|мск|краснодар|екатеринбург|архангельск|пермь|новосибирск|казань|ваканси|работа|квот|мкб|алкоголик|андреевские|xn--|госпрограмм|льготн|перми|хэйхэ|хейхэ|государств|поликлиник|социальн|недорог|дешев|инвалид|полис/i;
 const GEO_OK_RE = /нижний новгород|нн\b|нижегород/i;
 
 const ENDS = ['\u0438\u044f\u043c\u0438','\u044f\u043c\u0438','\u0430\u043c\u0438','\u0438\u0435\u0439','\u0435\u0439','\u043e\u0439','\u0438\u0439','\u044b\u0439','\u0430\u044f','\u044f\u044f','\u043e\u0435','\u0435\u0435','\u0438\u0435','\u044b\u0435','\u043e\u043c\u0443','\u0435\u043c\u0443','\u043e\u0433\u043e','\u0435\u0433\u043e','\u0443\u044e','\u044e\u044e','\u0430','\u044f','\u043e','\u0435','\u0438','\u044b','\u044c','\u0439','\u0443','\u044e'];
 function stem(w){ for (const e of ENDS){ if (w.length - e.length >= 3 && w.endsWith(e)) return w.slice(0,-e.length); } return w; }
-const SYN = {'\u0433\u0438\u0431\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u043c\u044f\u0433\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0441\u0438\u043b\u0438\u043a\u043e\u043d':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0434\u0435\u0444\u043b\u0435\u043a\u0441':['\u043d\u0435\u0439\u043b\u043e\u043d']};
+const SYN = {'\u0433\u0438\u0431\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u043c\u044f\u0433\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0441\u0438\u043b\u0438\u043a\u043e\u043d':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0434\u0435\u0444\u043b\u0435\u043a\u0441':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0434\u0435\u0440\u0436\u0430\u0442\u0441':['\u0441\u043b\u0443\u0436\u0430\u0442']};
 const _JA = [...new Set(JUNK_RE.source.split(/[^a-z\u0430-\u044f\u0451]+/gi))].map(w => stem(w.toLowerCase())).filter(w => w.length > 1);
 const _GA = [...new Set(GEO_OK_RE.source.split(/[^a-z\u0430-\u044f\u0451]+/gi))].map(w => stem(w.toLowerCase())).filter(w => w.length > 1);
 const SPAM_RE = /xn--|p1ai|crocodent|atlas-diagnostics|\\d{4,}/i;
 function isJunk(ph) { if (SPAM_RE.test(ph)) return true;
   const t = tokens(ph);
   const hit = (arr) => t.some(w => arr.some(s => w === s || (w.length > 3 && s.length > 3 && (w.startsWith(s) || s.startsWith(w)))));
+  const STRONG = ['омс','квот','бесплатн','цен','стоим','социальн','льготн','государств','недорог','дешев','инвалид'].map(w => stem(w));
+  if (t.some(w => STRONG.some(s => w === s || (w.length > 3 && s.length > 3 && w.startsWith(s))))) return true;
   if (!hit(_JA)) return false;
   return !hit(_GA);
 }
@@ -63,21 +65,31 @@ function loadArticles() {
       const hs = []; let h;
       const r1 = /<h[23]>([^<]+)<\/h[23]>/g; while ((h = r1.exec(md))) hs.push(h[1]);
       const r2 = /^#{2,3}\s+(.+)$/gm; while ((h = r2.exec(md))) hs.push(h[1]);
-      a.all = new Set(tokens(a.title + ' ' + hs.join(' ')));
-    } catch (e) { a.all = new Set(tokens(a.title)); }
+      a.t = new Set(tokens(a.title)); a.all = new Set(tokens(a.title + ' ' + hs.join(' ')));
+    } catch (e) { a.t = new Set(tokens(a.title)); a.all = new Set(tokens(a.title)); }
   }
   const df = {}; for (const a of out) for (const w of new Set(tokens(a.title))) df[w] = (df[w] || 0) + 1; return { list: out, df, N: out.length };
 }
 function mapArticle(head, articles) {
   const ht = new Set(tokens(head)); for (const w of [...ht]) if (SYN[w]) SYN[w].forEach(s => ht.add(s));
   if (!ht.size) return null;
+  let must = null, mustW = -1;
+  const NN = articles.length;
+  for (const w of ht) {
+    let f = 0;
+    for (const a of articles) {
+      for (const v of a.t) { let k = 0; while (k < w.length && k < v.length && w[k] === v[k]) k++; if (k >= 5) { f++; break; } }
+    }
+    const x = Math.log(NN / (f || 1));
+    if (x > mustW) { mustW = x; must = w; }
+  }
   let best = null, bestScore = 0;
   for (const a of articles) {
     const at = a.all;
     let inter = 0; const hits = [];
-    for (const w of ht){ if (at.has(w)) { inter++; hits.push(w); continue; } for (const v of at){ let k=0; while (k<w.length && k<v.length && w[k]===v[k]) k++; if (k>=5) { inter++; hits.push(w); break; } } }
-    let hw=0,gw=0; for (const w of ht) hw+=globalThis.__W(w); for (const w of hits) gw+=globalThis.__W(w); const score = hw?gw/hw:0;
-    if (score > bestScore) { bestScore = score; best = a.slug; }
+    const check = (set, mul) => { for (const w of ht){ if (hits.some(h => h.w === w)) continue; if (set.has(w)) { inter++; hits.push({ w, m: mul }); continue; } for (const v of set){ let k=0; while (k<w.length && k<v.length && w[k]===v[k]) k++; if (k>=5) { inter++; hits.push({ w, m: mul }); break; } } } }; check(a.t, 2); check(at, 1);
+    let hw=0,gw=0; for (const w of ht) hw+=globalThis.__W(w); for (const h of hits) gw+=h.m*globalThis.__W(h.w); const score = hw?gw/hw:0;
+    const hasMust = hits.some(h => h.w === must); if (score > bestScore && hasMust) { bestScore = score; best = a.slug; }
   }
   return bestScore >= 0.3 ? { slug: best, score: +bestScore.toFixed(2) } : null;
 }
