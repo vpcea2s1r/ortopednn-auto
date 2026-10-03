@@ -297,3 +297,6 @@
 - stoimost-cirkonevoj-koronki (запросы: стоимость циркониевой коронки, циркониевая коронка цена, сколько стоит циркониевая коронка)
 - ustanovka-cirkonevoj-koronki (запросы: установка циркониевых коронок, как ставят циркониевые коронки, как проходит установка коронки)
 - vredyat-li-viniry-svoim-zubam
+- mzp-v-stomatologii-rasshifrovka
+- koronka-iz-hroma
+- schetka-dlya-semnogo-proteza
