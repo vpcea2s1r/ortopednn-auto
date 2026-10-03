@@ -6,7 +6,7 @@
 |---|---|---|---|---|---|
 | 1 | акриловый протез зубов: плюсы и минусы, срок службы, уход, армированный и на имплантах | 136 | 136 | akrilovyj-protez | covered: akrilovyj-protez |
 | 2 | может ли аллергия появиться через много лет после установки коронки? | 122 | 122 | allergiya-na-metall-stomatologiya | covered: allergiya-na-metall-stomatologiya |
-| 3 | выпал имплант вместе с коронкой: что делать, можно ли поставить обратно | 83 | 83 | vypala-koronka-chto-delat | covered: vypala-koronka-chto-delat |
+| 3 | выпал имплант вместе с коронкой: что делать, можно ли поставить обратно | 83 | 83 | implantat-vypal-chto-delat | covered: implantat-vypal-chto-delat |
 | 4 | съёмные протезы и пневмония: почему пожилым важно ухаживать за протезами | 80 | 80 | protezy-i-pnevmoniya | covered: protezy-i-pnevmoniya |
 | 5 | пахнет всегда только из-под коронки, или причиной может быть зуб без коронки? | 61 | 61 | zapah-iz-pod-koronki | covered: zapah-iz-pod-koronki |
 | 6 | коронка под десну: что это значит, когда нужна глубоко посаженная коронка | 55 | 55 | koronka-pod-desnu | covered: koronka-pod-desnu |
@@ -24,7 +24,7 @@
 | 18 | больно ли менять старые коронки — процесс снятия, больно ли, сложно ли | 28 | 28 | bolno-li-menyat-koronki | covered: bolno-li-menyat-koronki |
 | 19 | замена пломбы или вкладка: где проходит граница | 27 | 27 | skolko-sluzhit-plomba-na-zube | covered: skolko-sluzhit-plomba-na-zube |
 | 20 | болит зуб под пломбой: причины, что делать, когда лечить | 26 | 26 | bolit-zub-pod-plomboy | covered: bolit-zub-pod-plomboy |
-| 21 | нет одного зуба: имплант, мост или бабочка — что выбрать | 26 | 26 | syonmyj-protez-na-odin-zub | covered: syonmyj-protez-na-odin-zub |
+| 21 | нет одного зуба: имплант, мост или бабочка — что выбрать | 26 | 26 | net-odnogo-zuba | covered: net-odnogo-zuba |
 | 22 | этапы имплантации зуба: пошагово от диагностики до коронки | 25 | 25 | etapy-implantacii-zuba | covered: etapy-implantacii-zuba |
 | 23 | частые вопросы о протезировании при беременности | 25 | 25 | protezirovanie-pri-beremennosti | covered: protezirovanie-pri-beremennosti |
 | 24 | верхняя челюсть против нижней: почему «присоска» работает только сверху | 24 | 24 | verhniy-protez-na-prisoskah | covered: verhniy-protez-na-prisoskah |
@@ -39,7 +39,7 @@
 | 33 | меняется ли вкус после протезирования: почему еда кажется безвкусной | 21 | 21 | vkus-posle-protezirovaniya | covered: vkus-posle-protezirovaniya |
 | 34 | цирконий или металлокерамика для передних зубов: взгляд через цвет | 21 | 21 | koronka-temnee-sosednego-zuba | covered: koronka-temnee-sosednego-zuba |
 | 35 | зуб болит при накусывании и реагирует на горячее и холодное — что это значит? | 19 | 19 | bolit-zub-pri-nakusyvanii | covered: bolit-zub-pri-nakusyvanii |
-| 36 | какой материал лучше для переднего зуба — e-max или цирконий? | 19 | 19 | protezirovanie-perednih-zubov | covered: protezirovanie-perednih-zubov |
+| 36 | какой материал лучше для переднего зуба — e-max или цирконий? | 19 | 19 | koronka-na-zub-chto-luchshe | covered: koronka-na-zub-chto-luchshe |
 | 37 | что делать, если протез треснул, а приём только через неделю? | 18 | 18 | remont-zubnogo-proteza | covered: remont-zubnogo-proteza |
 | 38 | можно ли перебазировать протез из quattroti? | 18 | 18 | quattrotii-protezy | covered: quattrotii-protezy |
 | 39 | противопоказания к имплантации зубов — диабет, остеопороз, курение, возраст | 16 | 16 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
@@ -58,7 +58,7 @@
 | 52 | бюгельный протез — несъёмная альтернатива | 13 | 13 | alternativy-syomnym-protezam | covered: alternativy-syomnym-protezam |
 | 53 | лечение пульпита: этапы, больно ли, что будет если не лечить | 13 | 13 | pulpit-lechenie | covered: pulpit-lechenie |
 | 54 | кламмера для бюгельных протезов — виды, материалы, уход | 13 | 13 | klammera-dlya-byugelnykh-protezov | covered: klammera-dlya-byugelnykh-protezov |
-| 55 | можно ли чистить нейлоновый протез обычной пастой? | 13 | 13 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
+| 55 | можно ли чистить нейлоновый протез обычной пастой? | 13 | 13 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
 | 56 | почему болит при нажатии на имплант через месяц? | 13 | 13 | bolit-posle-implantacii | covered: bolit-posle-implantacii |
 | 57 | как определить, что шатается именно имплант | 13 | 13 | implant-shataetsya | covered: implant-shataetsya |
 | 58 | что можно и нельзя делать с формирователем | 13 | 13 | formirovatel-desny | covered: formirovatel-desny |
@@ -68,7 +68,7 @@
 | 62 | можно ли спать с зубными протезами, если они недавно поставлены? | 12 | 12 | mozhno-li-spat-s-protezom | covered: mozhno-li-spat-s-protezom |
 | 63 | что выгоднее в долгосрочной перспективе — имплант или протез? | 12 | 12 | implant-ili-protez | covered: implant-ili-protez |
 | 64 | сухость во рту при диабете: что делать кроме питья воды | 12 | 12 | diabet-i-zuby | covered: diabet-i-zuby |
-| 65 | краевое прилегание коронки: что это и почему это главный критерий качества | 11 | 11 | schel-mezhdu-koronkoj-i-zubom | covered: schel-mezhdu-koronkoj-i-zubom |
+| 65 | краевое прилегание коронки: что это и почему это главный критерий качества | 11 | 11 | kraevoe-prileganie-koronki | covered: kraevoe-prileganie-koronki |
 | 66 | что лучше — имплантация или протезирование при отсутствии одного зуба? | 11 | 11 | implant-ili-protez | covered: implant-ili-protez |
 | 67 | acryfree или quattroti — что лучше? сравнение безнёбных протезов | 11 | 11 | acryfree-vs-quattrotii | covered: acryfree-vs-quattrotii |
 | 68 | можно ли переходить с протеза без имплантов на имплантатный? да | 11 | 11 | cherez-skolko-est-posle-implantatsii | covered: cherez-skolko-est-posle-implantatsii |
@@ -88,7 +88,7 @@
 | 82 | потемнел зуб без боли: почему свой зуб темнеет и что делать | 9 | 9 | potemnel-svoj-zub | covered: potemnel-svoj-zub |
 | 83 | сравнение методов протезирования при разных типах прикуса | 9 | 9 | vidy-prikusov-i-ikh-vliyanie-na-protezirovanie | covered: vidy-prikusov-i-ikh-vliyanie-na-protezirovanie |
 | 84 | чем снять острую боль под коронкой, если нет таблеток? | 9 | 9 | bolit-zub-pod-koronkoj | covered: bolit-zub-pod-koronkoj |
-| 85 | можно ли ставить виниры только на два передних зуба? | 9 | 9 | vinir-na-plombe | covered: vinir-na-plombe |
+| 85 | можно ли ставить виниры только на два передних зуба? | 9 | 9 | viniry-ili-koronki | covered: viniry-ili-koronki |
 | 86 | может ли грибок перейти с протеза на здоровые зубы? | 9 | 9 | kandidoz-polosti-rta-protezy | covered: kandidoz-polosti-rta-protezy |
 | 87 | какая концентрация фтора в пасте нужна взрослому? | 9 | 9 | ftor-v-zubnoy-paste | covered: ftor-v-zubnoy-paste |
 | 88 | можно ли сделать протезирование, если беременна? | 9 | 9 | podgotovka-k-protezirovaniyu | covered: podgotovka-k-protezirovaniyu |
@@ -122,65 +122,65 @@
 | 116 | седация и наркоз в стоматологии — что выбрать при протезировании | 7 | 7 | sedatsiya-i-narkoz | covered: sedatsiya-i-narkoz |
 | 117 | атрофия костной ткани челюсти — причины и методы восстановления | 7 | 7 | atrofiya-kostnoj-tkani-chelyusti | covered: atrofiya-kostnoj-tkani-chelyusti |
 | 118 | почему при базальной имплантации ставят так много имплантов | 7 | 7 | bazalnaya-implantaciya | covered: bazalnaya-implantaciya |
-| 119 | как правильно использовать ирригатор с коронками и мостами? | 7 | 7 | protezirovanie-na-implantah | covered: protezirovanie-na-implantah |
+| 119 | как правильно использовать ирригатор с коронками и мостами? | 7 | 7 | uhod-za-mostom | covered: uhod-za-mostom |
 | 120 | боль при накусывании и боль от температуры: в чём разница | 7 | 7 | bolit-zub-pri-nakusyvanii | covered: bolit-zub-pri-nakusyvanii |
 | 121 | что вредно для зубов и эмали: сахар, кофе, кола, брекеты | 7 | 7 | chto-vredno-dlya-zubov | covered: chto-vredno-dlya-zubov |
 | 122 | цифровое изготовление: почему новые протезы сидят точнее | 7 | 7 | protezy-novogo-pokoleniya | covered: protezy-novogo-pokoleniya |
-| 123 | сравнение с циркониевым мостом | 7 | 7 | koronka-cirkonievaya-otzyvy | covered: koronka-cirkonievaya-otzyvy |
+| 123 | сравнение с циркониевым мостом | 7 | 7 | czirkonievyj-mostovidnyj-protez | covered: czirkonievyj-mostovidnyj-protez |
 | 124 | можно ли обойтись без анестезии на мёртвый зуб? | 7 | 7 | bolno-li-stavit-koronku | covered: bolno-li-stavit-koronku |
 | 125 | можно ли сделать цельнолитой мост на имплантах? | 7 | 7 | celnolitoy-mostovidnyj-protez | covered: celnolitoy-mostovidnyj-protez |
 | 126 | какие материалы «видны» на мрт, а какие нет | 7 | 7 | mrt-s-koronkami | covered: mrt-s-koronkami |
 | 127 | чем чистить виниры и керамические коронки? | 7 | 7 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
 | 128 | гарантирует ли лечение каналов навсегда? | 7 | 7 | pulpit-lechenie | covered: pulpit-lechenie |
-| 129 | что реально дешевле | 7 | 7 | protezirovanie-zubov-v-kitae | covered: protezirovanie-zubov-v-kitae |
+| 129 | что реально работает для нейтрализации | 7 | 7 | kislaya-slyuna-prichiny | JUNK (не пишем) |
 | 130 | сколько длится первая консультация? | 7 | 7 | first-visit | JUNK (не пишем) |
 | 131 | минусы пластиночных протезов | 7 | 7 | plastinochnye-protezy | covered: plastinochnye-protezy |
-| 132 | профилактика чувствительности: 5 вещей, которые можно сделать до отбеливания | 6 | 6 | privkus-metalla-ot-koronki | covered: privkus-metalla-ot-koronki |
+| 132 | профилактика чувствительности: 5 вещей, которые можно сделать до отбеливания | 6 | 6 | — | GAP (кандидат) |
 | 133 | винтовая или цементная фиксация: почему это важно знать | 6 | 6 | shataetsya-koronka-na-implante | covered: shataetsya-koronka-na-implante |
 | 134 | аллергия на металл в стоматологии — что делать | 6 | 6 | allergiya-na-metall-stomatologiya | covered: allergiya-na-metall-stomatologiya |
 | 135 | стоматит во рту: виды, симптомы, чем лечить, как быстро вылечить | 6 | 6 | stomatit | covered: stomatit |
 | 136 | можно ли оставлять протез в дезинфицирующем растворе на ночь? | 6 | 6 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
-| 137 | показания и противопоказания к мостовидному протезированию | 6 | 6 | mostovidnyj-protez-vidy-plyusy-minusy | covered: mostovidnyj-protez-vidy-plyusy-minusy |
+| 137 | показания и противопоказания к мостовидному протезированию | 6 | 6 | pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu | covered: pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu |
 | 138 | что полезно для зубов и дёсен: продукты, ксилит, прополис | 6 | 6 | chto-polezno-dlya-zubov | covered: chto-polezno-dlya-zubov |
 | 139 | можно ли сделать безпрепарированный винир на любой эмали? | 6 | 6 | viniry-bez-priparerovaniya | covered: viniry-bez-priparerovaniya |
 | 140 | неприятный запах изо рта при диабете: две разные причины | 6 | 6 | diabet-i-zuby | covered: diabet-i-zuby |
 | 141 | почему металлокерамика до сих пор самый популярный мост | 6 | 6 | metallokeramicheskij-mostovidnyj-protez | covered: metallokeramicheskij-mostovidnyj-protez |
-| 142 | лазером можно лечить любой кариес или есть ограничения? | 6 | 6 | stomatolog-pri-beremennosti | covered: stomatolog-pri-beremennosti |
+| 142 | лазером можно лечить любой кариес или есть ограничения? | 6 | 6 | — | GAP (кандидат) |
 | 143 | можно ли отбеливать один зуб, если остальные уже белые? | 6 | 6 | rekcessiya-desny-posle-otbelivaniya | covered: rekcessiya-desny-posle-otbelivaniya |
 | 144 | может ли неправильная окклюзия вызывать головную боль? | 6 | 6 | okklyuziya-zubov-pravilnoe-smykanie | covered: okklyuziya-zubov-pravilnoe-smykanie |
 | 145 | опухоль на десне и щеке (флюс): что делать, как снять | 6 | 6 | fluks-opuhol-na-desne | covered: fluks-opuhol-na-desne |
 | 146 | покрывной протез выпадает при разговоре или жевании? | 6 | 6 | pokryvnoy-protez | covered: pokryvnoy-protez |
 | 147 | чем птеригоидные импланты отличаются от обычных? | 6 | 6 | pterigoidnye-implanty | covered: pterigoidnye-implanty |
-| 148 | что происходит с имплантом через 5, 10 и 20 лет | 6 | 6 | zuby-posle-50 | covered: zuby-posle-50 |
+| 148 | что происходит с имплантом через 5, 10 и 20 лет | 6 | 6 | zachem-nuzhen-implantat | covered: zachem-nuzhen-implantat |
 | 149 | язык — главный резервуар бактерий полости рта | 6 | 6 | zachem-chistit-yazyk | covered: zachem-chistit-yazyk |
-| 150 | как правильно ухаживать за протезом на ночь | 6 | 6 | uhod-za-zubnymi-protezami | covered: uhod-za-zubnymi-protezami |
+| 150 | как правильно ухаживать за протезом на ночь | 6 | 6 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
 | 151 | какие безметалловые коронки самые красивые? | 6 | 6 | bezmetallovye-koronki | covered: bezmetallovye-koronki |
 | 152 | можно ли залить в ирригатор ополаскиватель? | 6 | 6 | irrigator-dlya-polosti-rta | covered: irrigator-dlya-polosti-rta |
 | 153 | можно ли починить фиксацию самостоятельно? | 6 | 6 | perebazirovka-proteza | covered: perebazirovka-proteza |
 | 154 | можно ли есть яблоки и морковь с протезом? | 6 | 6 | protezy-i-pitanie-pozhilyh | covered: protezy-i-pitanie-pozhilyh |
 | 155 | можно ли сделать мрт с культевой вкладкой | 6 | 6 | kultevaya-vkladka | covered: kultevaya-vkladka |
 | 156 | ацеталовый или нейлоновый: что выбрать | 6 | 6 | acetalovyj-protez | covered: acetalovyj-protez |
-| 157 | таблица: что можно, что — с оговорками | 6 | 6 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
+| 157 | таблица: что можно, что — с оговорками | 6 | 6 | srok-sluzhby-protezov | covered: srok-sluzhby-protezov |
 | 158 | лечение эрозии и чувствительности | 6 | 6 | eroziya-emali-chuvstvitelnost-zubov | covered: eroziya-emali-chuvstvitelnost-zubov |
-| 159 | можно ли есть после шинирования? | 6 | 6 | protezirovanie-zubov-pri-parodontoze | covered: protezirovanie-zubov-pri-parodontoze |
-| 160 | имплант: когда это лучший выбор | 6 | 6 | koronka-ili-most | covered: koronka-ili-most |
-| 161 | уход за циркониевыми коронками | 6 | 6 | koronka-cirkonievaya-otzyvy | covered: koronka-cirkonievaya-otzyvy |
+| 159 | можно ли есть после шинирования? | 6 | 6 | shinirovanie-zubov | covered: shinirovanie-zubov |
+| 160 | имплант: когда это лучший выбор | 6 | 6 | chto-luchshe-implant-ili-most | covered: chto-luchshe-implant-ili-most |
+| 161 | уход за циркониевыми коронками | 6 | 6 | tsirkoniyevaya-koronka-na-implant | covered: tsirkoniyevaya-koronka-na-implant |
 | 162 | рак полости рта и предраковые состояния: почему осмотр у стоматолога важен | 5 | 5 | rak-polosti-rta-skrining-i-predrakovye-sostoyaniya | covered: rak-polosti-rta-skrining-i-predrakovye-sostoyaniya |
 | 163 | слепки зубов в ортопедии: массы, индивидуальная ложка и цифровой сканер | 5 | 5 | slepki-v-ortopedii | covered: slepki-v-ortopedii |
-| 164 | почему «без имплантов» — легитимный выбор, а не компромисс нищего | 5 | 5 | net-odnogo-zuba | covered: net-odnogo-zuba |
+| 164 | почему «без имплантов» — легитимный выбор, а не компромисс нищего | 5 | 5 | chem-otlichaetsya-implantaciya-ot-protezirovaniya | covered: chem-otlichaetsya-implantaciya-ot-protezirovaniya |
 | 165 | можно ли пить кофе, чай и вино с коронками — останутся ли пятна | 5 | 5 | kofe-i-koronki | covered: kofe-i-koronki |
 | 166 | врач сказал носить первые дни круглосуточно — это противоречит? | 5 | 5 | mozhno-li-spat-s-protezom | covered: mozhno-li-spat-s-protezom |
 | 167 | выпадение зубов: причины, можно ли предотвратить, последствия | 5 | 5 | vypadenie-zubov | covered: vypadenie-zubov |
 | 168 | имплантация под ключ при атрофии: как выглядит путь пациента | 5 | 5 | bazalnaya-implantaciya | covered: bazalnaya-implantaciya |
 | 169 | сравнение систем имплантов: osstem, mis, straumann, nobel | 5 | 5 | sravnenie-sistem-implantov | covered: sravnenie-sistem-implantov |
 | 170 | бисфосфонаты и остеонекроз челюсти — риски, профилактика | 5 | 5 | bisfosfonaty-i-osteonekroz | covered: bisfosfonaty-i-osteonekroz |
-| 171 | уход за зубными имплантами: как сохранить их на 20+ лет | 5 | 5 | zuby-posle-50 | covered: zuby-posle-50 |
+| 171 | уход за зубными имплантами: как сохранить их на 20+ лет | 5 | 5 | attachmeny | covered: attachmeny |
 | 172 | диагностика: как врач отличает эрозию от других проблем | 5 | 5 | eroziya-emali-chuvstvitelnost-zubov | covered: eroziya-emali-chuvstvitelnost-zubov |
 | 173 | шатается коронка — зависит ли решение от типа фиксации? | 5 | 5 | kak-krepitsya-koronka-na-implante | covered: kak-krepitsya-koronka-na-implante |
 | 174 | зуб после обточки выглядит страшно — так и должно быть? | 5 | 5 | obtochka-zubov-pod-koronku | covered: obtochka-zubov-pod-koronku |
 | 175 | пятна на зубном протезе: почему появляются, как убрать | 5 | 5 | protez-pyatna | covered: protez-pyatna |
 | 176 | пятна возвращаются через неделю после чистки — почему? | 5 | 5 | protez-pyatna | covered: protez-pyatna |
-| 177 | когда лазер не поможет: глубокий кариес и реставрации | 5 | 5 | bolit-zub-pod-plomboy-chto-delat | covered: bolit-zub-pod-plomboy-chto-delat |
+| 177 | когда лазер не поможет: глубокий кариес и реставрации | 5 | 5 | — | GAP (кандидат) |
 | 178 | профилактика подвижности: чек-лист владельца импланта | 5 | 5 | shataetsya-koronka-na-implante | covered: shataetsya-koronka-na-implante |
 | 179 | как понять, что меня направили не к тому специалисту? | 5 | 5 | ortoped-ili-terapevt-stomatolog | covered: ortoped-ili-terapevt-stomatolog |
 | 180 | как ходить без зуба, пока идёт восстановление | 5 | 5 | implantat-vypal-chto-delat | covered: implantat-vypal-chto-delat |
@@ -218,7 +218,7 @@
 | 212 | прикусил щеку изнутри: чем лечить и когда виноват протез | 4 | 4 | prikusil-scheku | covered: prikusil-scheku |
 | 213 | мост на внутрикорневых вкладках — обточка только дефекта | 4 | 4 | protezirovanie-bez-obtochki-sosednikh-zubov | covered: protezirovanie-bez-obtochki-sosednikh-zubov |
 | 214 | все ли металлокерамические коронки одинаково аллергенны? | 4 | 4 | allergiya-na-metall-stomatologiya | covered: allergiya-na-metall-stomatologiya |
-| 215 | можно ли протезировать зубы, если есть воспаление десны? | 4 | 4 | podgotovka-k-protezirovaniyu | covered: podgotovka-k-protezirovaniyu |
+| 215 | можно ли протезировать зубы, если есть воспаление десны? | 4 | 4 | protezirovanie-pri-parodontite | covered: protezirovanie-pri-parodontite |
 | 216 | методы изучения связи пародонтита и болезни альцгеймера | 4 | 4 | parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu | covered: parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu |
 | 217 | можно ли есть после операции, пока действует анестезия? | 4 | 4 | anesteziya-pri-implantacii | covered: anesteziya-pri-implantacii |
 | 218 | помогает ли жвачка при чувствительности после кислого? | 4 | 4 | eroziya-emali-chuvstvitelnost-zubov | covered: eroziya-emali-chuvstvitelnost-zubov |
@@ -245,25 +245,25 @@
 | 239 | пройдёт ли само, если перестать нагружать зуб? | 4 | 4 | bolit-zub-pri-nakusyvanii | covered: bolit-zub-pri-nakusyvanii |
 | 240 | можно ли чистить мост ирригатором каждый день? | 4 | 4 | uhod-za-mostom | covered: uhod-za-mostom |
 | 241 | накапливается ли налёт на коронках и протезах? | 4 | 4 | zubnoj-nalet | covered: zubnoj-nalet |
-| 242 | материал коронки: эстетика и биосовместимость | 4 | 4 | keramicheskie-vkladki-vs-koronki | covered: keramicheskie-vkladki-vs-koronki |
+| 242 | материал коронки: эстетика и биосовместимость | 4 | 4 | koronka-na-peredniy-zub-kak-vybrat | covered: koronka-na-peredniy-zub-kak-vybrat |
 | 243 | почему металлокерамика даёт синеву у десны? | 4 | 4 | cirkonij-ili-metallokeramika | covered: cirkonij-ili-metallokeramika |
 | 244 | как проходит лечение пародонтита в клинике | 4 | 4 | parodontit-lechenie | covered: parodontit-lechenie |
-| 245 | какие протезы противопоказаны при диабете? | 4 | 4 | protezirovanie-pri-saharnom-diabete | covered: protezirovanie-pri-saharnom-diabete |
+| 245 | какие протезы противопоказаны при диабете? | 4 | 4 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
 | 246 | техника bass: стандарт чистки по правилам | 4 | 4 | kak-pravilno-chistit-zuby | covered: kak-pravilno-chistit-zuby |
 | 247 | рекомендации для пациентов с ксеростомией | 4 | 4 | kserostomiya-i-protezirovanie | covered: kserostomiya-i-protezirovanie |
 | 248 | сравнение с другими способами шинирования | 4 | 4 | shiniruyushchij-byugel | covered: shiniruyushchij-byugel |
-| 249 | нужно ли предупреждать о коронках при кт? | 4 | 4 | antikoagulyanty-i-stomatologiya | covered: antikoagulyanty-i-stomatologiya |
+| 249 | нужно ли предупреждать о коронках при кт? | 4 | 4 | mrt-s-koronkami | covered: mrt-s-koronkami |
 | 250 | может ли скрип возникать из-за бруксизма? | 4 | 4 | protez-skripit-pri-zhevanii | covered: protez-skripit-pri-zhevanii |
 | 251 | влияет ли камень на приживление импланта? | 4 | 4 | zubnoj-kamen | covered: zubnoj-kamen |
 | 252 | альтернативы при непереносимости металла | 4 | 4 | byugelnyj-protez-klammery | covered: byugelnyj-protez-klammery |
 | 253 | 3d-моделирование и виртуальная установка | 4 | 4 | ii-dlya-planirovaniya-implantatsii | covered: ii-dlya-planirovaniya-implantatsii |
 | 254 | 3. из какого материала будет конструкция | 4 | 4 | 10-voprosov-stomatologu-ortopedu | covered: 10-voprosov-stomatologu-ortopedu |
-| 255 | можно ли предотвратить хрупкость акрила? | 4 | 4 | vremennye-koronki-zachem-nuzhny | covered: vremennye-koronki-zachem-nuzhny |
+| 255 | можно ли предотвратить хрупкость акрила? | 4 | 4 | — | GAP (кандидат) |
 | 256 | какой возраст — какой этап | 4 | 4 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
 | 257 | как пользоваться таблетками для очистки | 4 | 4 | korega-dlya-zubnyh-protezov | covered: korega-dlya-zubnyh-protezov |
 | 258 | можно ли восстановить утраченную эмаль? | 4 | 4 | kak-portitsya-zub | covered: kak-portitsya-zub |
 | 259 | видно ли золотую коронку при разговоре? | 4 | 4 | zolotye-koronki-na-zhevatelnye-zuby | covered: zolotye-koronki-na-zhevatelnye-zuby |
-| 260 | первые 24 часа: что и когда можно есть | 4 | 4 | cherez-skolko-est-posle-implantatsii | covered: cherez-skolko-est-posle-implantatsii |
+| 260 | первые 24 часа: что и когда можно есть | 4 | 4 | first-visit | covered: first-visit |
 | 261 | возможные осложнения и как их избегают | 4 | 4 | kultevaya-vkladka | covered: kultevaya-vkladka |
 | 262 | чем полоскать и мазать: разбор средств | 4 | 4 | prikusil-scheku | covered: prikusil-scheku |
 | 263 | как проходит сеанс отбеливания zoom 4 | 4 | 4 | otbelivanie-zubov-zoom-4 | covered: otbelivanie-zubov-zoom-4 |
@@ -287,12 +287,12 @@
 | 281 | как часто ходить при протезах | 4 | 4 | kak-privyknut-k-semnym-protezam | covered: kak-privyknut-k-semnym-protezam |
 | 282 | можно ли спасти подвижный зуб | 4 | 4 | shataetsya-zub-chto-delat | covered: shataetsya-zub-chto-delat |
 | 283 | стандартные сроки приживления | 4 | 4 | srok-okonchatelnoy-nagruzki | covered: srok-okonchatelnoy-nagruzki |
-| 284 | плюсы силиконовых протезов | 4 | 4 | nejlonovyj-protez | covered: nejlonovyj-protez |
+| 284 | плюсы силиконовых протезов | 4 | 4 | silikonovyj-protez | covered: silikonovyj-protez |
 | 285 | бюджетный сегмент | 4 | 4 | ceny-na-protezirovanie-v-nn | covered: ceny-na-protezirovanie-v-nn |
 | 286 | искусственный интеллект в ортопедической стоматологии: нейросети, cad/cam, diagnocat | 3 | 3 | ai-v-ortopedicheskoy-stomatologii | covered: ai-v-ortopedicheskoy-stomatologii |
-| 287 | самооценка: кровоточит десна — это гингивит до доказательства обратного | 3 | 3 | gingivit-krovotochivost-desen | covered: gingivit-krovotochivost-desen |
+| 287 | самооценка: кровоточит десна — это гингивит до доказательства обратного | 3 | 3 | — | GAP (кандидат) |
 | 288 | помогают ли пасты «для чувствительных зубов» при оголённых шейках? | 3 | 3 | rekcessiya-desny-posle-otbelivaniya | covered: rekcessiya-desny-posle-otbelivaniya |
-| 289 | чем отличается имплантация от протезирования: простое объяснение | 3 | 3 | attachmeny | covered: attachmeny |
+| 289 | чем отличается имплантация от протезирования: простое объяснение | 3 | 3 | chem-otlichaetsya-implantaciya-ot-protezirovaniya | covered: chem-otlichaetsya-implantaciya-ot-protezirovaniya |
 | 290 | когда лучше решать зубные проблемы — до или после беременности? | 3 | 3 | stomatolog-pri-beremennosti | covered: stomatolog-pri-beremennosti |
 | 291 | анестезия при имплантации: как обезболивают, какие бывают виды | 3 | 3 | anesteziya-pri-implantacii | covered: anesteziya-pri-implantacii |
 | 292 | отбеливание зубов без чувствительности: все варианты 2025–2026 | 3 | 3 | eroziya-emali-chuvstvitelnost-zubov | covered: eroziya-emali-chuvstvitelnost-zubov |
@@ -306,11 +306,11 @@
 | 300 | прогноз: когда корень спасается, а когда честнее удалить | 3 | 3 | koren-zuba-pod-koronkoj | covered: koren-zuba-pod-koronkoj |
 | 301 | продукты-помощники: что реально удобно жевать с протезом | 3 | 3 | protezy-i-pitanie-pozhilyh | covered: protezy-i-pitanie-pozhilyh |
 | 302 | что происходит с металлокерамикой при полёте в самолёте? | 3 | 3 | skolko-sluzhit-koronka-iz-metallokeramiki | covered: skolko-sluzhit-koronka-iz-metallokeramiki |
-| 303 | протокол имплантации для диабетиков в клинике никитиной | 3 | 3 | implant-ili-protez | covered: implant-ili-protez |
+| 303 | протокол имплантации для диабетиков в клинике никитиной | 3 | 3 | etapy-izgotovleniya-mostovidnogo-proteza | covered: etapy-izgotovleniya-mostovidnogo-proteza |
 | 304 | как понять, что бруксизм у вас: признаки кроме скрежета | 3 | 3 | kappy-ot-bruksizma | covered: kappy-ot-bruksizma |
-| 305 | сравнение: брекеты vs элайнеры — по реальным параметрам | 3 | 3 | protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie | covered: protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie |
+| 305 | сравнение: брекеты vs элайнеры — по реальным параметрам | 3 | 3 | chto-vredno-dlya-zubov | covered: chto-vredno-dlya-zubov |
 | 306 | что делать, если один врач запретил, а второй разрешил? | 3 | 3 | protivopokazaniya-k-protezirovaniyu | covered: protivopokazaniya-k-protezirovaniyu |
-| 307 | что делать, если страх помешал лечению и зубы запущены? | 3 | 3 | gingivit-krovotochivost-desen | covered: gingivit-krovotochivost-desen |
+| 307 | что делать, если страх помешал лечению и зубы запущены? | 3 | 3 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
 | 308 | что выбрать: отбеливание или виниры вместо отбеливания | 3 | 3 | otbelivanie-do-ili-posle-protezirovaniya | covered: otbelivanie-do-ili-posle-protezirovaniya |
 | 309 | кислый привкус при беременности — опасно ли для зубов? | 3 | 3 | kislaya-slyuna-prichiny | covered: kislaya-slyuna-prichiny |
 | 310 | корень выступает над десной всего на 1 мм — сохранить? | 3 | 3 | mozhno-li-sohranit-koren-zuba | covered: mozhno-li-sohranit-koren-zuba |
@@ -337,12 +337,12 @@
 | 331 | какие материалы подходят пациентам с бруксизмом | 3 | 3 | bruksizm-i-protezirovanie | covered: bruksizm-i-protezirovanie |
 | 332 | экстренные ситуации: что делать прямо за столом | 3 | 3 | protez-vypadaet-pri-ede | covered: protez-vypadaet-pri-ede |
 | 333 | как выглядит зубной камень и как его распознать | 3 | 3 | zubnoj-kamen | covered: zubnoj-kamen |
-| 334 | это нормально, что больно жевать после коронок? | 3 | 3 | bolit-chelyust-posle-protezirovaniya | covered: bolit-chelyust-posle-protezirovaniya |
+| 334 | это нормально, что больно жевать после коронок? | 3 | 3 | obtochka-zubov-pod-koronku | covered: obtochka-zubov-pod-koronku |
 | 335 | какие осложнения могут помешать протезированию? | 3 | 3 | protezirovanie-posle-udaleniya-zuba-mudrosti | covered: protezirovanie-posle-udaleniya-zuba-mudrosti |
 | 336 | какую пасту выбрать после 60: с фтором или без? | 3 | 3 | uhod-za-zubami-posle-60 | covered: uhod-za-zubami-posle-60 |
 | 337 | зуботехническая лаборатория: кто делает протез | 3 | 3 | kak-vybrat-stomatologiyu-dlya-protezirovaniya | covered: kak-vybrat-stomatologiyu-dlya-protezirovaniya |
 | 338 | вкладка под коронку: как связаны эти два этапа | 3 | 3 | kultevaya-vkladka | covered: kultevaya-vkladka |
-| 339 | помогает ли полоскание солёной водой фиксации? | 3 | 3 | slyuna-i-protezirovanie-zubov | covered: slyuna-i-protezirovanie-zubov |
+| 339 | помогает ли полоскание солёной водой фиксации? | 3 | 3 | — | GAP (кандидат) |
 | 340 | можно ли имплантировать без наращивания кости | 3 | 3 | atrofiya-kostnoj-tkani-chelyusti | covered: atrofiya-kostnoj-tkani-chelyusti |
 | 341 | почему цирконий подходит для жевательной зоны | 3 | 3 | cirkonievye-koronki-cena-nn | covered: cirkonievye-koronki-cena-nn |
 | 342 | что такое опухоль в зубе и как она называется | 3 | 3 | fluks-opuhol-na-desne | covered: fluks-opuhol-na-desne |
@@ -355,15 +355,15 @@
 | 349 | биосовместимость и её влияние на стоимость | 3 | 3 | ceny-na-protezirovanie-v-nn | JUNK (не пишем) |
 | 350 | как устроен процесс протезирования в целом | 3 | 3 | etapy-protezirovaniya-zubov | covered: etapy-protezirovaniya-zubov |
 | 351 | преимущества импланта перед альтернативами | 3 | 3 | zachem-nuzhen-implantat | covered: zachem-nuzhen-implantat |
-| 352 | можно ли заменить зубную нить ирригатором? | 3 | 3 | uhod-za-mostom | covered: uhod-za-mostom |
+| 352 | можно ли заменить зубную нить ирригатором? | 3 | 3 | irrigator-dlya-polosti-rta | covered: irrigator-dlya-polosti-rta |
 | 353 | можно ли ускорить привыкание полосканиями? | 3 | 3 | kak-privyknut-k-verhnemu-protezu | covered: kak-privyknut-k-verhnemu-protezu |
 | 354 | помогают ли полоски-герметики для протеза? | 3 | 3 | verhniy-protez-na-prisoskah | covered: verhniy-protez-na-prisoskah |
 | 355 | диагностика источника по времени симптома | 3 | 3 | kislaya-slyuna-prichiny | covered: kislaya-slyuna-prichiny |
-| 356 | восстановление и сроки установки импланта | 3 | 3 | kostnaya-plastika-pered-implantatsiej | covered: kostnaya-plastika-pered-implantatsiej |
-| 357 | где лазер — маркетинг, а не необходимость | 3 | 3 | perebazirovka-proteza | covered: perebazirovka-proteza |
+| 356 | восстановление и сроки установки импланта | 3 | 3 | koronka-na-implant | covered: koronka-na-implant |
+| 357 | где лазер — маркетинг, а не необходимость | 3 | 3 | zubnoj-kamen | covered: zubnoj-kamen |
 | 358 | acryfree — термопластика нового поколения | 3 | 3 | nejlon-acrifree-akril-kakoj-luchshe | covered: nejlon-acrifree-akril-kakoj-luchshe |
 | 359 | как нарушение окклюзии влияет на здоровье | 3 | 3 | okklyuziya-zubov-pravilnoe-smykanie | covered: okklyuziya-zubov-pravilnoe-smykanie |
-| 360 | что будет, если пропустить перебазировку? | 3 | 3 | immediat-protezy-chto-eto-pokazaniya | covered: immediat-protezy-chto-eto-pokazaniya |
+| 360 | что будет, если пропустить перебазировку? | 3 | 3 | vremennye-koronki-zachem-nuzhny | covered: vremennye-koronki-zachem-nuzhny |
 | 361 | можно ли восстановить десну хирургически | 3 | 3 | desna-otoshla-ot-koronki | covered: desna-otoshla-ot-koronki |
 | 362 | можно ли восстановить зуб без сверления? | 3 | 3 | plomba-vypala | covered: plomba-vypala |
 | 363 | что успевает сделать осмотр за 20 минут | 3 | 3 | kak-chasto-poseshchat-stomatologa | covered: kak-chasto-poseshchat-stomatologa |
@@ -377,25 +377,25 @@
 | 371 | откуда берётся потемнение под коронкой | 3 | 3 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
 | 372 | почему dsd — это не просто "картинка" | 3 | 3 | tsifrovaya-ulibka-dsd | covered: tsifrovaya-ulibka-dsd |
 | 373 | эрозия — это то же самое, что кариес? | 3 | 3 | eroziya-emali-chuvstvitelnost-zubov | covered: eroziya-emali-chuvstvitelnost-zubov |
-| 374 | можно ли отбелить потемневшие виниры? | 3 | 3 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
+| 374 | можно ли отбелить потемневшие виниры? | 3 | 3 | potemnel-svoj-zub | covered: potemnel-svoj-zub |
 | 375 | k06–k08: десна, прикус, потеря зубов | 3 | 3 | mkb-v-stomatologii | covered: mkb-v-stomatologii |
 | 376 | винир отклеился целиком — что делать | 3 | 3 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
 | 377 | как понять, что имплант отторгается? | 3 | 3 | implant-ne-prizhilsya | covered: implant-ne-prizhilsya |
 | 378 | видно ли протез-бабочку при улыбке? | 3 | 3 | protez-babochka | covered: protez-babochka |
-| 379 | почему нужно приходить на примерку? | 3 | 3 | skolko-delayut-koronku | covered: skolko-delayut-koronku |
+| 379 | почему нужно приходить на примерку? | 3 | 3 | vremennye-koronki-zachem-nuzhny | covered: vremennye-koronki-zachem-nuzhny |
 | 380 | нужно ли чистить язык при протезах? | 3 | 3 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
 | 381 | цифровые технологии и планирование | 3 | 3 | ai-v-ortopedicheskoy-stomatologii | covered: ai-v-ortopedicheskoy-stomatologii |
 | 382 | можно ли носить mock-up постоянно? | 3 | 3 | chto-takoe-prototipy-u-stomatologa | covered: chto-takoe-prototipy-u-stomatologa |
 | 383 | отбеливание портит эмаль навсегда? | 3 | 3 | rekcessiya-desny-posle-otbelivaniya | covered: rekcessiya-desny-posle-otbelivaniya |
-| 384 | что взять с собой на консультацию | 3 | 3 | first-visit | covered: first-visit |
+| 384 | что взять с собой на консультацию | 3 | 3 | 10-voprosov-stomatologu-ortopedu | covered: 10-voprosov-stomatologu-ortopedu |
 | 385 | аттачмены на зубах и на имплантах | 3 | 3 | attachmeny | covered: attachmeny |
-| 386 | от чего зависят сроки имплантации | 3 | 3 | etapy-implantacii-zuba | covered: etapy-implantacii-zuba |
-| 387 | этапы протезирования на имплантах | 3 | 3 | mostovidnyj-protez-vidy-plyusy-minusy | covered: mostovidnyj-protez-vidy-plyusy-minusy |
+| 386 | от чего зависят сроки имплантации | 3 | 3 | srok-okonchatelnoy-nagruzki | covered: srok-okonchatelnoy-nagruzki |
+| 387 | этапы протезирования на имплантах | 3 | 3 | protezirovanie-na-implantah | covered: protezirovanie-na-implantah |
 | 388 | чего цирконий боится (и чего нет) | 3 | 3 | ukhod-za-koronkami-iz-dioksida-cirkoniya | covered: ukhod-za-koronkami-iz-dioksida-cirkoniya |
 | 389 | как изготавливают акриловый мост | 3 | 3 | akrilovyj-mostovidnyj-protez | covered: akrilovyj-mostovidnyj-protez |
 | 390 | преимущества композитных вкладок | 3 | 3 | kompozitnye-vkladki | covered: kompozitnye-vkladki |
 | 391 | как врач решает: обточка или нет | 3 | 3 | protezirovanie-bez-obtachki | covered: protezirovanie-bez-obtachki |
-| 392 | нужна ли специальная подготовка? | 3 | 3 | vnutrirotovoe-skanirovanie | covered: vnutrirotovoe-skanirovanie |
+| 392 | нужна ли специальная подготовка? | 3 | 3 | podgotovka-k-protezirovaniyu | covered: podgotovka-k-protezirovaniyu |
 | 393 | что делать, чтобы снизить риски | 3 | 3 | alkogol-i-zdorove-polosti-rta | covered: alkogol-i-zdorove-polosti-rta |
 | 394 | когда боль — признак осложнения | 3 | 3 | bolit-posle-implantacii | covered: bolit-posle-implantacii |
 | 395 | отличается ли e-max от виниров? | 3 | 3 | e-max-koronki-plyusy-minusy | covered: e-max-koronki-plyusy-minusy |
@@ -404,13 +404,13 @@
 | 398 | ранние осложнения (тревожные) | 3 | 3 | oslozhneniya-posle-implantatsii | covered: oslozhneniya-posle-implantatsii |
 | 399 | как диагностируют подвижность | 3 | 3 | podvizhnost-zubov | covered: podvizhnost-zubov |
 | 400 | окклюзионные накладки (каппы) | 3 | 3 | vidy-prikusnykh-shablonov | covered: vidy-prikusnykh-shablonov |
-| 401 | восстановление зуба на штифте | 3 | 3 | naraschivanie-zuba | covered: naraschivanie-zuba |
+| 401 | восстановление зуба на штифте | 3 | 3 | vosstanovlenie-zuba-na-shtifte | covered: vosstanovlenie-zuba-na-shtifte |
 | 402 | сегментация клкт (diagnocat) | 3 | 3 | ai-v-ortopedicheskoy-stomatologii | covered: ai-v-ortopedicheskoy-stomatologii |
-| 403 | может ли абатмент сломаться? | 3 | 3 | shataetsya-koronka-na-implante | covered: shataetsya-koronka-na-implante |
+| 403 | может ли абатмент сломаться? | 3 | 3 | sovremennye-abatmenty | covered: sovremennye-abatmenty |
 | 404 | абсолютные противопоказания | 3 | 3 | pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu | covered: pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu |
 | 405 | как выбрать тип аттачменов | 3 | 3 | attachmeny | covered: attachmeny |
 | 406 | виды безметалловых коронок | 3 | 3 | bezmetallovye-koronki | covered: bezmetallovye-koronki |
-| 407 | что такое периодонтит | 3 | 3 | stress-i-zuby | covered: stress-i-zuby |
+| 407 | что такое периодонтит | 3 | 3 | periodontit-lechenie | covered: periodontit-lechenie |
 | 408 | восстановление зуба при полном разрушении коронковой части: современные протоколы и материалы | 2 | 2 | vosstanovlenie-zuba-pri-polnom-razrushenii-koronkovoy-chasti-sovremennye-protoko | covered: vosstanovlenie-zuba-pri-polnom-razrushenii-koronkovoy-chasti-sovremennye-protoko |
 | 409 | имплантация — единственный способ полностью заместить зуб без контакта с соседними | 2 | 2 | protezirovanie-bez-obtochki-sosednikh-zubov | covered: protezirovanie-bez-obtochki-sosednikh-zubov |
 | 410 | как протезирование влияет на височно-нижнечелюстной сустав — боль, хруст, щелчки | 2 | 2 | visochno-nizhnechelyustnoj-sustav-protezirovanie | covered: visochno-nizhnechelyustnoj-sustav-protezirovanie |
@@ -423,14 +423,14 @@
 | 417 | почему смета в клинике отличается от «цены за коронку» на сайте? | 2 | 2 | skolko-stoit-koronka-nn | JUNK (не пишем) |
 | 418 | протезы и питание пожилых: почему беззубость ведёт к недоеданию | 2 | 2 | protezy-i-pitanie-pozhilyh | covered: protezy-i-pitanie-pozhilyh |
 | 419 | диагностическое оборудование: без него протезирование — лотерея | 2 | 2 | kak-vybrat-stomatologiyu-dlya-protezirovaniya | covered: kak-vybrat-stomatologiyu-dlya-protezirovaniya |
-| 420 | методы без чувствительности: от проверенных к экспериментальным | 2 | 2 | ustanovka-cirkonevoj-koronki | covered: ustanovka-cirkonevoj-koronki |
+| 420 | методы без чувствительности: от проверенных к экспериментальным | 2 | 2 | bolno-li-obachivat-zuby | covered: bolno-li-obachivat-zuby |
 | 421 | какие снимки анализирует ии — только клкт или прицельные тоже? | 2 | 2 | neyroseti-dlya-analiza-snimkov | covered: neyroseti-dlya-analiza-snimkov |
 | 422 | кто есть кто в стоматологии: карта специалистов | 2 | 2 | ortoped-ili-terapevt-stomatolog | covered: ortoped-ili-terapevt-stomatolog |
 | 423 | можно ли отрастить зуб «с нуля» если остался только корень? | 2 | 2 | naraschivanie-zuba | covered: naraschivanie-zuba |
 | 424 | красные флаги клиники: когда «противопоказаний не бывает» | 2 | 2 | protivopokazaniya-k-protezirovaniyu | JUNK (не пишем) |
 | 425 | нормально ли, что имплант немного двигается в первые дни? | 2 | 2 | implant-shataetsya | covered: implant-shataetsya |
 | 426 | этапы цифрового дизайна улыбки | 2 | 2 | ciprovoy-dizayn-ulybki | covered: ciprovoy-dizayn-ulybki |
-| 427 | цементная фиксация | 2 | 2 | etapy-izgotovleniya-mostovidnogo-proteza | covered: etapy-izgotovleniya-mostovidnogo-proteza |
+| 427 | цементная фиксация | 2 | 2 | temp-bond-v-stomatologii | covered: temp-bond-v-stomatologii |
 | 428 | каппа: страховка любой конструкции на жевательной группе | 2 | 2 | koronki-dlya-zhevatelnyh-zubov | covered: koronki-dlya-zhevatelnyh-zubov |
 | 429 | антикоагулянты и стоматология: можно ли протезировать | 2 | 2 | antikoagulyanty-i-stomatologiya | covered: antikoagulyanty-i-stomatologiya |
 | 430 | алкоголь и заживление: почему хирург просит подождать | 2 | 2 | alkogol-i-zdorove-polosti-rta | JUNK (не пишем) |
@@ -448,9 +448,9 @@
 | 442 | что такое all-on-4 и почему его рекомендуют пожилым | 2 | 2 | protezirovanie-dlya-pozhilykh | covered: protezirovanie-dlya-pozhilykh |
 | 443 | влияют ли антикоагулянты на приживление имплантата? | 2 | 2 | antikoagulyanty-i-stomatologiya | covered: antikoagulyanty-i-stomatologiya |
 | 444 | какой город выбрать для стоматологического туризма? | 2 | 2 | protezirovanie-zubov-v-kitae | covered: protezirovanie-zubov-v-kitae |
-| 445 | лазерное лечение кариеса: когда не нужна сверловка | 2 | 2 | lechenie-kariesa | covered: lechenie-kariesa |
+| 445 | лазерное лечение кариеса: когда не нужна сверловка | 2 | 2 | zubnoj-kamen | covered: zubnoj-kamen |
 | 446 | можно ли снимать протез с болью и кровоточивостью? | 2 | 2 | antikoagulyanty-i-stomatologiya | covered: antikoagulyanty-i-stomatologiya |
-| 447 | мост | 2 | 2 | protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie | covered: protezirovanie-nizhnikh-zubov-vidy-protezov-i-ikh-sravnenie |
+| 447 | мост | 2 | 2 | koronka-ili-most | covered: koronka-ili-most |
 | 448 | сколько хранится раствор таблетки для дезинфекции? | 2 | 2 | dezinfektsiya-proteza | JUNK (не пишем) |
 | 449 | нужно ли закрывать рецессию, если ничего не болит? | 2 | 2 | recessiya-desny-ogolenie-kornya | covered: recessiya-desny-ogolenie-kornya |
 | 450 | какой штифт лучше — стекловолоконный или анкерный? | 2 | 2 | vosstanovlenie-zuba-na-shtifte | covered: vosstanovlenie-zuba-na-shtifte |
@@ -461,8 +461,8 @@
 | 455 | как ухаживать за десной, если она уже опустилась? | 2 | 2 | ogolilas-shejka-zuba-pod-koronkoj | covered: ogolilas-shejka-zuba-pod-koronkoj |
 | 456 | ставят ли два винира рядом, если пломбы на обоих? | 2 | 2 | vinir-na-plombe | covered: vinir-na-plombe |
 | 457 | как подготовиться к визиту, чтобы было комфортно | 2 | 2 | bolno-li-obachivat-zuby | covered: bolno-li-obachivat-zuby |
-| 458 | почему диабет влияет на приживаемость имплантата | 2 | 2 | zubnoj-kamen | covered: zubnoj-kamen |
-| 459 | непрямая реставрация (вкладки, виниры, накладки) | 2 | 2 | protezirovanie-bez-obtachki | covered: protezirovanie-bez-obtachki |
+| 458 | почему диабет влияет на приживаемость имплантата | 2 | 2 | implant-ne-prizhilsya | covered: implant-ne-prizhilsya |
+| 459 | непрямая реставрация (вкладки, виниры, накладки) | 2 | 2 | kompozitnye-vkladki | covered: kompozitnye-vkladki |
 | 460 | что показывают исследования о краевом прилегании | 2 | 2 | schel-mezhdu-koronkoj-i-zubom | covered: schel-mezhdu-koronkoj-i-zubom |
 | 461 | подорожает ли лечение из-за цифровых технологий? | 2 | 2 | ai-v-ortopedicheskoy-stomatologii | covered: ai-v-ortopedicheskoy-stomatologii |
 | 462 | нужно ли депульпировать зуб под металлокерамику? | 2 | 2 | koronka-metallokeramicheskaya-otzyvy | covered: koronka-metallokeramicheskaya-otzyvy |
@@ -470,23 +470,23 @@
 | 464 | нейросети для анализа стоматологических снимков | 2 | 2 | neyroseti-dlya-analiza-snimkov | covered: neyroseti-dlya-analiza-snimkov |
 | 465 | сравнение: консультация у ортопеда vs терапевта | 2 | 2 | first-visit | covered: first-visit |
 | 466 | мягкая, средняя или жёсткая: расшифровка щетины | 2 | 2 | kak-vybrat-zubnuyu-schetku | covered: kak-vybrat-zubnuyu-schetku |
-| 467 | реальный кейс: взрослый 38 лет, нижний новгород | 2 | 2 | kalcij-dlya-zubov-vzroslym | covered: kalcij-dlya-zubov-vzroslym |
+| 467 | реальный кейс: взрослый 38 лет, нижний новгород | 2 | 2 | implanty-sroki | covered: implanty-sroki |
 | 468 | можно ли склеить сколотый кусочек коронки дома? | 2 | 2 | koronka-skololas-chto-delat | covered: koronka-skololas-chto-delat |
 | 469 | что будет, если прикус зарегистрирован неточно? | 2 | 2 | prikusnoy-shablon-na-zhestkom-bazise | covered: prikusnoy-shablon-na-zhestkom-bazise |
 | 470 | можно ли заменить абатмент без замены импланта? | 2 | 2 | sovremennye-abatmenty | covered: sovremennye-abatmenty |
 | 471 | полировка продлевает жизнь композитным винирам? | 2 | 2 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
 | 472 | можно ли заменить цементную на винтовую позже? | 2 | 2 | kak-krepitsya-koronka-na-implante | covered: kak-krepitsya-koronka-na-implante |
 | 473 | можно ли постоянно пользоваться кремом корега? | 2 | 2 | korega-dlya-zubnyh-protezov | covered: korega-dlya-zubnyh-protezov |
-| 474 | 1. отбеливание с калия-нитратом (профилактика) | 2 | 2 | cherneet-desna-vokrug-koronki | covered: cherneet-desna-vokrug-koronki |
+| 474 | 1. отбеливание с калия-нитратом (профилактика) | 2 | 2 | — | GAP (кандидат) |
 | 475 | отказали в постановке на очередь — что делать? | 2 | 2 | protezirovanie-zubov-po-oms | covered: protezirovanie-zubov-po-oms |
 | 476 | держится ли винир на пломбировочном материале? | 2 | 2 | vinir-na-plombe | covered: vinir-na-plombe |
 | 477 | особенности протезирования в пожилом возрасте | 2 | 2 | zubnye-protezy-posle-60 | covered: zubnye-protezy-posle-60 |
-| 478 | что дешевле: вкладка или удаление с имплантом | 2 | 2 | kultevaya-vkladka | covered: kultevaya-vkladka |
+| 478 | вкладки | 2 | 2 | keramicheskie-vkladki-vs-koronki | covered: keramicheskie-vkladki-vs-koronki |
 | 479 | код изменился между визитами — это нормально? | 2 | 2 | mkb-v-stomatologii | covered: mkb-v-stomatologii |
-| 480 | когда ставят металлокерамический мост | 2 | 2 | akrilovyj-mostovidnyj-protez | covered: akrilovyj-mostovidnyj-protez |
+| 480 | когда ставят металлокерамический мост | 2 | 2 | metallokeramicheskij-mostovidnyj-protez | covered: metallokeramicheskij-mostovidnyj-protez |
 | 481 | как проверить клинику, куда дали направление? | 2 | 2 | protezirovanie-zubov-po-oms | covered: protezirovanie-zubov-po-oms |
 | 482 | коронку сняли для чистки — как быстро вернут? | 2 | 2 | shataetsya-koronka-na-implante | covered: shataetsya-koronka-na-implante |
-| 483 | можно ли использовать зубную пасту с регидом? | 2 | 2 | uhod-za-mostom | covered: uhod-za-mostom |
+| 483 | можно ли использовать зубную пасту с регидом? | 2 | 2 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
 | 484 | первый год с all-on-4: чего ждать по месяцам | 2 | 2 | all-on-4 | covered: all-on-4 |
 | 485 | кальций после 50 лет: менопауза и остеопороз | 2 | 2 | kalcij-dlya-zubov-vzroslym | covered: kalcij-dlya-zubov-vzroslym |
 | 486 | варианты восстановления при концевом дефекте | 2 | 2 | koncevoj-defekt-zubnogo-ryada | covered: koncevoj-defekt-zubnogo-ryada |
@@ -497,7 +497,7 @@
 | 491 | можно ли отполировать потускневший композит? | 2 | 2 | keramicheskie-ili-kompozitnye-viniry | covered: keramicheskie-ili-kompozitnye-viniry |
 | 492 | что происходит при преждевременной нагрузке? | 2 | 2 | srok-okonchatelnoy-nagruzki | covered: srok-okonchatelnoy-nagruzki |
 | 493 | можно ли делать мрт с металлическим штифтом? | 2 | 2 | vosstanovlenie-zuba-na-shtifte | covered: vosstanovlenie-zuba-na-shtifte |
-| 494 | сравнение с классическим мостом и имплантом | 2 | 2 | adgezivnyj-mostovidnyj-protez | covered: adgezivnyj-mostovidnyj-protez |
+| 494 | сравнение с классическим мостом и имплантом | 2 | 2 | vidy-zubnyh-protezov | covered: vidy-zubnyh-protezov |
 | 495 | чего ии пока не делает (и не сделает скоро) | 2 | 2 | ai-v-ortopedicheskoy-stomatologii | covered: ai-v-ortopedicheskoy-stomatologii |
 | 496 | где именно натирает — диагностическая карта | 2 | 2 | pochemu-natiraet-zubnoy-protez | covered: pochemu-natiraet-zubnoy-protez |
 | 497 | что показал систематический обзор 2022 года | 2 | 2 | protezy-i-pnevmoniya | covered: protezy-i-pnevmoniya |
@@ -505,7 +505,7 @@
 | 499 | ультразвуковая ванночка | 2 | 2 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
 | 500 | почему во время беременности страдают зубы | 2 | 2 | protezirovanie-pri-beremennosti | covered: protezirovanie-pri-beremennosti |
 | 501 | что такое флюороз и как отличить от пятен? | 2 | 2 | ftor-v-zubnoy-paste | covered: ftor-v-zubnoy-paste |
-| 502 | какое по используется для ии-планирования? | 2 | 2 | klkt-pered-protezirovaniem | covered: klkt-pered-protezirovaniem |
+| 502 | какое по используется для ии-планирования? | 2 | 2 | ii-dlya-planirovaniya-implantatsii | covered: ii-dlya-planirovaniya-implantatsii |
 | 503 | можно ли сделать микропротез за один день? | 2 | 2 | mikroprotezirovanie | covered: mikroprotezirovanie |
 | 504 | что делать, если мост шатается или слетел? | 2 | 2 | mostovidnyj-protez-vidy-plyusy-minusy | covered: mostovidnyj-protez-vidy-plyusy-minusy |
 | 505 | можно ли самому понять, что прикус завышен | 2 | 2 | prikus-posle-protezirovaniya | covered: prikus-posle-protezirovaniya |
@@ -526,7 +526,7 @@
 | 520 | вернётся ли неподвижность после лечения? | 2 | 2 | podvizhnost-zubov | covered: podvizhnost-zubov |
 | 521 | мини-импланты для acryfree — это дорого? | 2 | 2 | protezy-bez-neba | covered: protezy-bez-neba |
 | 522 | можно ли остановить только сменой щётки? | 2 | 2 | recessiya-desny-ogolenie-kornya | covered: recessiya-desny-ogolenie-kornya |
-| 523 | сколько раз можно ремонтировать бабочку? | 2 | 2 | syonmyj-protez-na-odin-zub | JUNK (не пишем) |
+| 523 | сколько раз можно ремонтировать бабочку? | 2 | 2 | remont-zubnogo-proteza | JUNK (не пишем) |
 | 524 | какие металлы используют в стоматологии | 2 | 2 | allergiya-na-metall-stomatologiya | covered: allergiya-na-metall-stomatologiya |
 | 525 | что делать, если аллергия подтвердилась | 2 | 2 | allergiya-na-metall-stomatologiya | covered: allergiya-na-metall-stomatologiya |
 | 526 | отторжение или осложнение: как отличить | 2 | 2 | implant-ne-prizhilsya | covered: implant-ne-prizhilsya |
@@ -548,7 +548,7 @@
 | 542 | рвотный рефлекс и слепки: как пережить | 2 | 2 | slepki-v-ortopedii | covered: slepki-v-ortopedii |
 | 543 | поможет ли отбеливание убрать привкус? | 2 | 2 | privkus-metalla-ot-koronki | covered: privkus-metalla-ot-koronki |
 | 544 | можно ли есть твёрдую пищу с протезом? | 2 | 2 | kak-privyknut-k-semnym-protezam | covered: kak-privyknut-k-semnym-protezam |
-| 545 | можно ли укрепить шатающийся зуб дома? | 2 | 2 | shataetsya-zub-chto-delat | covered: shataetsya-zub-chto-delat |
+| 545 | можно ли укрепить шатающийся зуб дома? | 2 | 2 | koronka-shataetsya-chto-delat | covered: koronka-shataetsya-chto-delat |
 | 546 | как узнать, есть ли аллергия на титан? | 2 | 2 | titan-ili-cirkonij-implanty | covered: titan-ili-cirkonij-implanty |
 | 547 | психологический эффект восстановления | 2 | 2 | kak-vyglyadit-litso-bez-zubov | covered: kak-vyglyadit-litso-bez-zubov |
 | 548 | правила пациента перед мрт головы/шеи | 2 | 2 | mrt-s-koronkami | covered: mrt-s-koronkami |
@@ -571,34 +571,34 @@
 | 565 | если протез натирает: план действий | 2 | 2 | kak-privyknut-k-verhnemu-protezu | covered: kak-privyknut-k-verhnemu-protezu |
 | 566 | какие обезболивающие работают лучше | 2 | 2 | kak-snyat-zubnuyu-bol | JUNK (не пишем) |
 | 567 | шкала vita — стандарт подбора цвета | 2 | 2 | protez-tsvet | covered: protez-tsvet |
-| 568 | что влияет на стоимость реставрации | 2 | 2 | skolko-stoit-koronka-nn | JUNK (не пишем) |
+| 568 | что влияет на стоимость реставрации | 2 | 2 | stoimost-cirkonevoj-koronki | JUNK (не пишем) |
 | 569 | протезирование и протезный стоматит | 2 | 2 | kak-privyknut-k-semnym-protezam | covered: kak-privyknut-k-semnym-protezam |
 | 570 | экономика протезирования | 2 | 2 | celnolitoy-mostovidnyj-protez | covered: celnolitoy-mostovidnyj-protez |
-| 571 | чем заменить таблетки для протезов? | 2 | 2 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
+| 571 | чем заменить таблетки для протезов? | 2 | 2 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
 | 572 | связь гнатологии с протезированием | 2 | 2 | gnotologiya-diagnostika-lechenie | covered: gnotologiya-diagnostika-lechenie |
 | 573 | местная анестезия — основной метод | 2 | 2 | sedatsiya-i-narkoz | covered: sedatsiya-i-narkoz |
-| 574 | технология изготовления (cad/cam) | 2 | 2 | czirkonievyj-mostovidnyj-protez | covered: czirkonievyj-mostovidnyj-protez |
+| 574 | технология изготовления (cad/cam) | 2 | 2 | ai-v-ortopedicheskoy-stomatologii | covered: ai-v-ortopedicheskoy-stomatologii |
 | 575 | что хвалят в циркониевых коронках | 2 | 2 | koronka-cirkonievaya-otzyvy | covered: koronka-cirkonievaya-otzyvy |
 | 576 | классический мост: когда оправдан | 2 | 2 | net-odnogo-zuba | covered: net-odnogo-zuba |
 | 577 | популярные сервисы ии-диагностики | 2 | 2 | neyroseti-dlya-analiza-snimkov | covered: neyroseti-dlya-analiza-snimkov |
 | 578 | что называют силиконовым протезом | 2 | 2 | silikonovyj-protez | covered: silikonovyj-protez |
 | 579 | исследования и доказательная база | 2 | 2 | tsifrovaya-ulibka-dsd | covered: tsifrovaya-ulibka-dsd |
-| 580 | 2. обезболивание и препарирование | 2 | 2 | etapy-izgotovleniya-mostovidnogo-proteza | covered: etapy-izgotovleniya-mostovidnogo-proteza |
+| 580 | 2. обезболивание и препарирование | 2 | 2 | anesteziya-pri-implantacii | covered: anesteziya-pri-implantacii |
 | 581 | когда можно есть семечки и орехи? | 2 | 2 | kak-privyknut-k-verhnemu-protezu | covered: kak-privyknut-k-verhnemu-protezu |
 | 582 | можно ли повредить язык скребком? | 2 | 2 | zachem-chistit-yazyk | covered: zachem-chistit-yazyk |
 | 583 | плюсы, которые отмечают пациенты | 2 | 2 | koronka-metallokeramicheskaya-otzyvy | covered: koronka-metallokeramicheskaya-otzyvy |
 | 584 | как протезы связаны с пневмонией | 2 | 2 | protezy-i-pnevmoniya | covered: protezy-i-pnevmoniya |
-| 585 | прямая реставрация (композитная) | 2 | 2 | vremennye-koronki-zachem-nuzhny | covered: vremennye-koronki-zachem-nuzhny |
+| 585 | прямая реставрация (композитная) | 2 | 2 | kompozitnye-vkladki | covered: kompozitnye-vkladki |
 | 586 | по триместрам: что и когда можно | 2 | 2 | protezirovanie-pri-beremennosti | covered: protezirovanie-pri-beremennosti |
 | 587 | почему уход за бюгелем особенный | 2 | 2 | uhod-za-byugelnym-protezom | covered: uhod-za-byugelnym-protezom |
 | 588 | что даёт регулярная чистка языка | 2 | 2 | zachem-chistit-yazyk | covered: zachem-chistit-yazyk |
-| 589 | 1. снятие анатомических оттисков | 2 | 2 | prikusnoy-shablon-na-zhestkom-bazise | covered: prikusnoy-shablon-na-zhestkom-bazise |
+| 589 | 1. снятие анатомических оттисков | 2 | 2 | snyatie-ottiska-alginatnoy-massoy | covered: snyatie-ottiska-alginatnoy-massoy |
 | 590 | можно ли чистить цирконий содой? | 2 | 2 | ukhod-za-koronkami-iz-dioksida-cirkoniya | covered: ukhod-za-koronkami-iz-dioksida-cirkoniya |
 | 591 | коронки e-max (дисиликат лития) | 2 | 2 | bezmetallovye-koronki | covered: bezmetallovye-koronki |
 | 592 | средства для несъёмных протезов | 2 | 2 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
-| 593 | как проходит примерка прототипа | 2 | 2 | etapy-izgotovleniya-mostovidnogo-proteza | covered: etapy-izgotovleniya-mostovidnogo-proteza |
+| 593 | как проходит примерка прототипа | 2 | 2 | chto-takoe-prototipy-u-stomatologa | covered: chto-takoe-prototipy-u-stomatologa |
 | 594 | кому рекомендовано тестирование | 2 | 2 | geneticheskoe-testirovanie-apoe4-stomatologiya | covered: geneticheskoe-testirovanie-apoe4-stomatologiya |
-| 595 | что такое шинирование зубов | 2 | 2 | protezirovanie-pri-parodontoze | covered: protezirovanie-pri-parodontoze |
+| 595 | что такое шинирование зубов | 2 | 2 | shinirovanie-zubov | covered: shinirovanie-zubov |
 | 596 | почему выпадают зубы у взрослых | 2 | 2 | vypadenie-zubov | covered: vypadenie-zubov |
 | 597 | бывает ли аллергия на цирконий? | 2 | 2 | czirkonievyj-mostovidnyj-protez | covered: czirkonievyj-mostovidnyj-protez |
 | 598 | жёсткие каппы (твёрдые сплинты) | 2 | 2 | kappy-ot-bruksizma | covered: kappy-ot-bruksizma |
@@ -607,10 +607,10 @@
 | 601 | усилит ли протез атрофию кости? | 2 | 2 | protezirovanie-pri-parodontoze | covered: protezirovanie-pri-parodontoze |
 | 602 | это значит имплант не прижился? | 2 | 2 | implant-ne-prizhilsya | covered: implant-ne-prizhilsya |
 | 603 | что делать, если кламмер ослаб? | 2 | 2 | uhod-za-byugelnym-protezom | covered: uhod-za-byugelnym-protezom |
-| 604 | что лечит лазер в стоматологии | 2 | 2 | parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu | covered: parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu |
+| 604 | что лечит лазер в стоматологии | 2 | 2 | zubnoj-kamen | covered: zubnoj-kamen |
 | 605 | роль ортопеда после ортодонтии | 2 | 2 | otkrytyy-prikus | covered: otkrytyy-prikus |
 | 606 | когда ставится протез на балке | 2 | 2 | protez-na-balke | covered: protez-na-balke |
-| 607 | замена кламмеров и аттачментов | 2 | 2 | byugelnyj-protez-na-zamkah | covered: byugelnyj-protez-na-zamkah |
+| 607 | замена кламмеров и аттачментов | 2 | 2 | attachmeny | covered: attachmeny |
 | 608 | рот — входные ворота организма | 2 | 2 | zdorove-polosti-rta-vliyanie-na-organizm | covered: zdorove-polosti-rta-vliyanie-na-organizm |
 | 609 | шаг 2. почистите мягкой щёткой | 2 | 2 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
 | 610 | помогает ли сода от кандидоза? | 2 | 2 | kandidoz-polosti-rta-protezy | covered: kandidoz-polosti-rta-protezy |
@@ -621,14 +621,14 @@
 | 615 | от чего зависит долговечность | 2 | 2 | implanty-sroki | covered: implanty-sroki |
 | 616 | профилактика проблем с корнем | 2 | 2 | koren-zuba-pod-koronkoj | covered: koren-zuba-pod-koronkoj |
 | 617 | какие артефакты дают импланты | 2 | 2 | mrt-s-implantami | covered: mrt-s-implantami |
-| 618 | пошаговая инструкция | 2 | 2 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
+| 618 | пошаговая инструкция | 2 | 2 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
 | 619 | ставят ли мост при бруксизме? | 2 | 2 | pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu | covered: pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu |
 | 620 | сравнение популярных моделей | 2 | 2 | irrigator-dlya-polosti-rta | covered: irrigator-dlya-polosti-rta |
 | 621 | этап 7. шлифовка и полировка | 2 | 2 | izgotovlenie-akrilovogo-proteza | covered: izgotovlenie-akrilovogo-proteza |
 | 622 | советы для быстрой адаптации | 2 | 2 | kak-privyknut-k-semnym-protezam | covered: kak-privyknut-k-semnym-protezam |
-| 623 | отзывы: что говорят пациенты | 2 | 2 | cirkonij-ili-metallokeramika | covered: cirkonij-ili-metallokeramika |
+| 623 | отзывы: что говорят пациенты | 2 | 2 | otzyvy-o-koronkakh | covered: otzyvy-o-koronkakh |
 | 624 | наследственные дефекты эмали | 2 | 2 | koronka-na-peredniy-zub-kak-vybrat | covered: koronka-na-peredniy-zub-kak-vybrat |
-| 625 | люминары: что это технически | 2 | 2 | uhod-za-byugelnym-protezom | covered: uhod-za-byugelnym-protezom |
+| 625 | люминары: что это технически | 2 | 2 | — | GAP (кандидат) |
 | 626 | бабочка подробно: как носить | 2 | 2 | net-odnogo-zuba | covered: net-odnogo-zuba |
 | 627 | признаки правильной окклюзии | 2 | 2 | okklyuziya-zubov-pravilnoe-smykanie | covered: okklyuziya-zubov-pravilnoe-smykanie |
 | 628 | когда ребёнку нужен ортодонт | 2 | 2 | kak-chasto-poseshchat-stomatologa | covered: kak-chasto-poseshchat-stomatologa |
@@ -641,21 +641,21 @@
 | 635 | что важно при выборе цвета | 2 | 2 | protez-tsvet | covered: protez-tsvet |
 | 636 | передаётся ли страх детям? | 2 | 2 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
 | 637 | витамины: d, c и группа b | 2 | 2 | chto-polezno-dlya-zubov | covered: chto-polezno-dlya-zubov |
-| 638 | это болезненная операция? | 2 | 2 | pterigoidnye-implanty | covered: pterigoidnye-implanty |
+| 638 | это болезненная операция? | 2 | 2 | parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu | covered: parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu |
 | 639 | больно ли снимать слепок? | 2 | 2 | slepki-v-ortopedii | covered: slepki-v-ortopedii |
 | 640 | для чего применяется dsd | 2 | 2 | ciprovoy-dizayn-ulybki | covered: ciprovoy-dizayn-ulybki |
-| 641 | что меняется с возрастом | 2 | 2 | uhod-za-zubami-posle-60 | covered: uhod-za-zubami-posle-60 |
+| 641 | что меняется с возрастом | 2 | 2 | vkus-posle-protezirovaniya | covered: vkus-posle-protezirovaniya |
 | 642 | цена избегания в цифрах | 2 | 2 | dentofobiya-lechenie-bez-straha | JUNK (не пишем) |
-| 643 | когда cerec не подходит | 2 | 2 | koronka-metallokeramicheskaya-otzyvy | covered: koronka-metallokeramicheskaya-otzyvy |
+| 643 | когда cerec не подходит | 2 | 2 | — | GAP (кандидат) |
 | 644 | где найти свой код мкб? | 2 | 2 | mkb-v-stomatologii | JUNK (не пишем) |
-| 645 | хранение и заливка | 2 | 2 | snyatie-ottiska-alginatnoy-massoy | covered: snyatie-ottiska-alginatnoy-massoy |
+| 645 | хранение и заливка | 2 | 2 | uhod-za-byugelnym-protezom | covered: uhod-za-byugelnym-protezom |
 | 646 | сладкое и углеводы | 2 | 2 | kak-portitsya-zub | covered: kak-portitsya-zub |
-| 647 | зачем взрослому ровные зубы, если они «проработали» так десятилетия? | 1 | 1 | zuby-po-nomeram | covered: zuby-po-nomeram |
+| 647 | зачем взрослому ровные зубы, если они «проработали» так десятилетия? | 1 | 1 | — | GAP (кандидат) |
 | 648 | виды прикусных шаблонов в стоматологии: для чего и как используются | 1 | 1 | vidy-prikusnykh-shablonov | covered: vidy-prikusnykh-shablonov |
 | 649 | тремор рук или деменция у пожилого родственника — что выбрать? | 1 | 1 | protivopokazaniya-k-protezirovaniyu | covered: protivopokazaniya-k-protezirovaniyu |
 | 650 | лекарства и вкусовые искажения: что проверить в своей аптечке | 1 | 1 | kislaya-slyuna-prichiny | covered: kislaya-slyuna-prichiny |
 | 651 | почему налёт образуется быстрее у одних и медленнее у других | 1 | 1 | zubnoj-nalet | covered: zubnoj-nalet |
-| 652 | all-on-4 и all-on-6 — полная фиксация на четырёх имплантах | 1 | 1 | alternativy-syomnym-protezam | covered: alternativy-syomnym-protezam |
+| 652 | all-on-4 и all-on-6 — полная фиксация на четырёх имплантах | 1 | 1 | all-on-4 | covered: all-on-4 |
 | 653 | материалы по программе против платных: разница на практике | 1 | 1 | protezirovanie-zubov-po-oms | covered: protezirovanie-zubov-po-oms |
 | 654 | стоматолог при беременности: лечение, безопасность, сроки | 1 | 1 | stomatolog-pri-beremennosti | covered: stomatolog-pri-beremennosti |
 | 655 | монолитный цирконий или облицованный: выбор внутри выбора | 1 | 1 | czirkonievyj-mostovidnyj-protez | covered: czirkonievyj-mostovidnyj-protez |
@@ -675,7 +675,7 @@
 | 669 | влияет ли страна производителя на качество имплантов? | 1 | 1 | sravnenie-sistem-implantov | covered: sravnenie-sistem-implantov |
 | 670 | зачем сканировать, если можно сделать обычный слепок? | 1 | 1 | vnutrirotovoe-skanirovanie | covered: vnutrirotovoe-skanirovanie |
 | 671 | как справиться с тошнотой и обильным слюноотделением | 1 | 1 | kak-privyknut-k-semnym-protezam | covered: kak-privyknut-k-semnym-protezam |
-| 672 | 3. протез на точных вкладках (precision attachments) | 1 | 1 | protezirovanie-bez-obtochki-sosednikh-zubov | covered: protezirovanie-bez-obtochki-sosednikh-zubov |
+| 672 | 3. протез на точных вкладках (precision attachments) | 1 | 1 | — | GAP (кандидат) |
 | 673 | что можно совместить, чтобы сократить число визитов | 1 | 1 | implantaciya-vizitov | covered: implantaciya-vizitov |
 | 674 | что ещё окрашивает сильнее кофе: неожиданный список | 1 | 1 | kofe-i-koronki | covered: kofe-i-koronki |
 | 675 | реальный процесс dsd — что происходит за 2–3 недели | 1 | 1 | tsifrovaya-ulibka-dsd | covered: tsifrovaya-ulibka-dsd |
@@ -701,7 +701,7 @@
 | 695 | что будет, если поставить винир на плохую основу | 1 | 1 | vinir-na-plombe | covered: vinir-na-plombe |
 | 696 | электронные сигареты менее вредны для имплантов? | 1 | 1 | implantatsiya-pri-kurenii | covered: implantatsiya-pri-kurenii |
 | 697 | можно ли перефиксировать коронку с плохим краем? | 1 | 1 | kraevoe-prileganie-koronki | covered: kraevoe-prileganie-koronki |
-| 698 | можно ли совмещать ортодонтию с протезированием? | 1 | 1 | kak-chasto-poseshchat-stomatologa | covered: kak-chasto-poseshchat-stomatologa |
+| 698 | можно ли совмещать ортодонтию с протезированием? | 1 | 1 | protezirovanie-zubov-v-kitae | covered: protezirovanie-zubov-v-kitae |
 | 699 | консервативное лечение (мукозит и ранняя стадия) | 1 | 1 | periimplantit | covered: periimplantit |
 | 700 | как понять, что мягкая подкладка требует замены? | 1 | 1 | sendvich-protez | covered: sendvich-protez |
 | 701 | диагностическое восковое моделирование (wax-up) | 1 | 1 | chto-takoe-prototipy-u-stomatologa | covered: chto-takoe-prototipy-u-stomatologa |
@@ -712,9 +712,9 @@
 | 706 | нужен ли 3d-принтер для хирургических шаблонов? | 1 | 1 | ii-dlya-planirovaniya-implantatsii | covered: ii-dlya-planirovaniya-implantatsii |
 | 707 | можно ли снять люминар и вернуть исходные зубы? | 1 | 1 | vredyat-li-viniry-svoim-zubam | covered: vredyat-li-viniry-svoim-zubam |
 | 708 | корень болит, а каналы запломбированы идеально? | 1 | 1 | mozhno-li-sohranit-koren-zuba | covered: mozhno-li-sohranit-koren-zuba |
-| 709 | сравнение с акриловыми и нейлоновыми протезами | 1 | 1 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
+| 709 | сравнение с акриловыми и нейлоновыми протезами | 1 | 1 | silikonovyj-protez | covered: silikonovyj-protez |
 | 710 | физика: почему титан не мешает магнитному полю | 1 | 1 | mrt-s-implantami | covered: mrt-s-implantami |
-| 711 | особенности ортодонтии у взрослых против детей | 1 | 1 | zuby-po-nomeram | covered: zuby-po-nomeram |
+| 711 | особенности ортодонтии у взрослых против детей | 1 | 1 | — | GAP (кандидат) |
 | 712 | осложнения, которые откладывают протезирование | 1 | 1 | protezirovanie-posle-udaleniya-zuba-mudrosti | covered: protezirovanie-posle-udaleniya-zuba-mudrosti |
 | 713 | хронология износа: что происходит год за годом | 1 | 1 | skolko-sluzhit-plomba-na-zube | covered: skolko-sluzhit-plomba-na-zube |
 | 714 | можно ли нагружать имплант, пока ждёшь приёма? | 1 | 1 | implant-shataetsya | covered: implant-shataetsya |
@@ -747,9 +747,9 @@
 | 741 | можно ли самому определить номер своего зуба? | 1 | 1 | zuby-po-nomeram | covered: zuby-po-nomeram |
 | 742 | виды прикусов и их влияние на протезирование | 1 | 1 | vidy-prikusov-i-ikh-vliyanie-na-protezirovanie | covered: vidy-prikusov-i-ikh-vliyanie-na-protezirovanie |
 | 743 | что ещё полезно: яблоки, соль и сода — разум | 1 | 1 | chto-polezno-dlya-zubov | covered: chto-polezno-dlya-zubov |
-| 744 | график стоматологических визитов при диабете | 1 | 1 | diabet-i-zuby | covered: diabet-i-zuby |
+| 744 | график стоматологических визитов при диабете | 1 | 1 | kak-chasto-poseshchat-stomatologa | covered: kak-chasto-poseshchat-stomatologa |
 | 745 | сравнение керамических и композитных виниров | 1 | 1 | keramicheskie-ili-kompozitnye-viniry | covered: keramicheskie-ili-kompozitnye-viniry |
-| 746 | как кислотная среда разрушает зубы: механика | 1 | 1 | kislaya-slyuna-prichiny | covered: kislaya-slyuna-prichiny |
+| 746 | как кислотная среда разрушает зубы: механика | 1 | 1 | kak-portitsya-zub | covered: kak-portitsya-zub |
 | 747 | практические следствия для пациентов и семей | 1 | 1 | parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu | covered: parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu |
 | 748 | когда начинать протезирование: сроки и этапы | 1 | 1 | protezirovanie-posle-udaleniya-zuba-mudrosti | covered: protezirovanie-posle-udaleniya-zuba-mudrosti |
 | 749 | уход за «присоской»: сохраняем герметичность | 1 | 1 | verhniy-protez-na-prisoskah | covered: verhniy-protez-na-prisoskah |
@@ -764,7 +764,7 @@
 | 758 | срок вышел, но ничего не беспокоит — менять? | 1 | 1 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
 | 759 | цельнометаллические с керамическим покрытием | 1 | 1 | teleskopicheskie-koronki | covered: teleskopicheskie-koronki |
 | 760 | что такое бисфосфонаты и зачем их назначают | 1 | 1 | bisfosfonaty-i-osteonekroz | covered: bisfosfonaty-i-osteonekroz |
-| 761 | что делать перед стоматологическим лечением | 1 | 1 | first-visit | covered: first-visit |
+| 761 | что делать перед стоматологическим лечением | 1 | 1 | 10-voprosov-stomatologu-ortopedu | covered: 10-voprosov-stomatologu-ortopedu |
 | 762 | ксилит — сахарозаменитель, который работает | 1 | 1 | chto-polezno-dlya-zubov | JUNK (не пишем) |
 | 763 | дентофобия у детей: не передавайте эстафету | 1 | 1 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
 | 764 | почему первые сутки нельзя полоскать вообще | 1 | 1 | poloskanie-posle-udaleniya | covered: poloskanie-posle-udaleniya |
@@ -779,7 +779,7 @@
 | 773 | а если стыдно перед партнёром без протезов? | 1 | 1 | mozhno-li-spat-s-protezom | covered: mozhno-li-spat-s-protezom |
 | 774 | оголение шейки — это нормально со временем? | 1 | 1 | ogolilas-shejka-zuba-pod-koronkoj | covered: ogolilas-shejka-zuba-pod-koronkoj |
 | 775 | можно ли поставить пломбу самому из аптеки? | 1 | 1 | plomba-vypala | covered: plomba-vypala |
-| 776 | можно ли вылечить кариес не снимая коронку? | 1 | 1 | podvizhnost-zubov | covered: podvizhnost-zubov |
+| 776 | можно ли вылечить кариес не снимая коронку? | 1 | 1 | lechenie-kariesa | covered: lechenie-kariesa |
 | 777 | сравнение dsd и традиционного планирования | 1 | 1 | ciprovoy-dizayn-ulybki | covered: ciprovoy-dizayn-ulybki |
 | 778 | кому нужны осмотры чаще — раз в 3–4 месяца | 1 | 1 | kak-chasto-poseshchat-stomatologa | covered: kak-chasto-poseshchat-stomatologa |
 | 779 | как контролируют здоровье глубокой посадки | 1 | 1 | koronka-pod-desnu | covered: koronka-pod-desnu |
@@ -787,7 +787,7 @@
 | 781 | бактерии из десневых карманов: путь в мозг | 1 | 1 | parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu | covered: parodontit-i-bolezn-altsgeymera-chto-nuzhno-znat-stomatologu-ortopedu |
 | 782 | география и специализация китайских клиник | 1 | 1 | protezirovanie-zubov-v-kitae | covered: protezirovanie-zubov-v-kitae |
 | 783 | вторичный кариес: тихий убийца под пломбой | 1 | 1 | skolko-sluzhit-plomba-na-zube | covered: skolko-sluzhit-plomba-na-zube |
-| 784 | хронология потери кости при периимплантите | 1 | 1 | kostnaya-plastika-pered-implantatsiej | covered: kostnaya-plastika-pered-implantatsiej |
+| 784 | хронология потери кости при периимплантите | 1 | 1 | — | GAP (кандидат) |
 | 785 | главное условие: размер и состояние пломбы | 1 | 1 | vinir-na-plombe | covered: vinir-na-plombe |
 | 786 | 2. почему именно этот вариант, а не другой | 1 | 1 | 10-voprosov-stomatologu-ortopedu | covered: 10-voprosov-stomatologu-ortopedu |
 | 787 | входит ли консультация в стоимость лечения | 1 | 1 | 10-voprosov-stomatologu-ortopedu | JUNK (не пишем) |
@@ -812,7 +812,7 @@
 | 806 | дороже ли имплантация с ии-планированием? | 1 | 1 | ii-dlya-planirovaniya-implantatsii | covered: ii-dlya-planirovaniya-implantatsii |
 | 807 | что важнее — клиника или конкретный врач? | 1 | 1 | kak-vybrat-stomatologiyu-dlya-protezirovaniya | covered: kak-vybrat-stomatologiyu-dlya-protezirovaniya |
 | 808 | люминиры выглядят неестественно толстыми? | 1 | 1 | — | GAP (кандидат) |
-| 809 | есть ли возрастной предел для ортодонтии? | 1 | 1 | otkrytyy-prikus | covered: otkrytyy-prikus |
+| 809 | есть ли возрастной предел для ортодонтии? | 1 | 1 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
 | 810 | быстрее ли теряются зубы при остеопорозе? | 1 | 1 | osteoporoz-i-implantatsiya | covered: osteoporoz-i-implantatsiya |
 | 811 | нормально ли, что отёк переходит на глаз? | 1 | 1 | otek-posle-implantacii | covered: otek-posle-implantacii |
 | 812 | примут ли дома работу, сделанную в китае? | 1 | 1 | protezirovanie-zubov-v-kitae | JUNK (не пишем) |
@@ -840,7 +840,7 @@
 | 834 | показания к глубокому поддесневому краю | 1 | 1 | koronka-pod-desnu | covered: koronka-pod-desnu |
 | 835 | что делать, пока нет возможности прийти | 1 | 1 | koronka-vremennaya-bolit | covered: koronka-vremennaya-bolit |
 | 836 | как проходит лазерная дезинфекция десен | 1 | 1 | — | GAP (кандидат) |
-| 837 | как проходит установка пломбы: по шагам | 1 | 1 | lechenie-kariesa | covered: lechenie-kariesa |
+| 837 | как проходит установка пломбы: по шагам | 1 | 1 | ustanovka-cirkonevoj-koronki | covered: ustanovka-cirkonevoj-koronki |
 | 838 | как коронки ведут себя в магнитном поле | 1 | 1 | mrt-s-koronkami | covered: mrt-s-koronkami |
 | 839 | ночные прикусывания: связь с бруксизмом | 1 | 1 | prikusil-sheku-iznutri | covered: prikusil-sheku-iznutri |
 | 840 | кому положено бесплатное протезирование | 1 | 1 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
@@ -855,10 +855,10 @@
 | 849 | слетит ли протез при кашле или чихании? | 1 | 1 | byugelnyj-protez-na-zamkah | covered: byugelnyj-protez-na-zamkah |
 | 850 | полезно ли полоскание кокосовым маслом? | 1 | 1 | chto-polezno-dlya-zubov | covered: chto-polezno-dlya-zubov |
 | 851 | что если во время лечения станет плохо? | 1 | 1 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
-| 852 | какой процент имплантов не приживается? | 1 | 1 | antikoagulyanty-i-stomatologiya | covered: antikoagulyanty-i-stomatologiya |
+| 852 | какой процент имплантов не приживается? | 1 | 1 | implant-ne-prizhilsya | covered: implant-ne-prizhilsya |
 | 853 | что если через 5 лет коронка сломается? | 1 | 1 | implantaciya-pod-klyuch | covered: implantaciya-pod-klyuch |
 | 854 | что лучше: керамика или пластика десны? | 1 | 1 | keramicheskaya-desna | covered: keramicheskaya-desna |
-| 855 | темнеет ли металлокерамика со временем? | 1 | 1 | otbelivanie-koronok | covered: otbelivanie-koronok |
+| 855 | темнеет ли металлокерамика со временем? | 1 | 1 | skolko-sluzhit-koronka-iz-metallokeramiki | covered: skolko-sluzhit-koronka-iz-metallokeramiki |
 | 856 | можно ли вылечить пародонтит полностью? | 1 | 1 | periodontit-lechenie | covered: periodontit-lechenie |
 | 857 | 5. регистрация центрального соотношения | 1 | 1 | prikusnoy-shablon-na-zhestkom-bazise | covered: prikusnoy-shablon-na-zhestkom-bazise |
 | 858 | быстро ли приживаются импланты при вич? | 1 | 1 | protezirovanie-pri-vich | covered: protezirovanie-pri-vich |
@@ -887,7 +887,7 @@
 | 881 | больно ли удалять отторгшийся имплант? | 1 | 1 | implantat-vypal-chto-delat | covered: implantat-vypal-chto-delat |
 | 882 | какую щётку использовать при протезах? | 1 | 1 | kak-vybrat-zubnuyu-schetku | covered: kak-vybrat-zubnuyu-schetku |
 | 883 | можно ли нарастить кость, если куришь? | 1 | 1 | kostnaya-plastika-pered-implantatsiej | covered: kostnaya-plastika-pered-implantatsiej |
-| 884 | что дешевле — микропротез или коронка? | 1 | 1 | mikroprotezirovanie | covered: mikroprotezirovanie |
+| 884 | что дешевле — микропротез или коронка? | 1 | 1 | mikroprotezirovanie | JUNK (не пишем) |
 | 885 | сценарий 3. старый штифт с воспалением | 1 | 1 | mozhno-li-sohranit-koren-zuba | covered: mozhno-li-sohranit-koren-zuba |
 | 886 | что делать с корнем под старым мостом? | 1 | 1 | mozhno-li-sohranit-koren-zuba | covered: mozhno-li-sohranit-koren-zuba |
 | 887 | может ли имплант нагреться в томографе | 1 | 1 | mrt-s-implantami | covered: mrt-s-implantami |
@@ -898,7 +898,7 @@
 | 892 | циркониевые импланты дороже титановых? | 1 | 1 | titan-ili-cirkonij-implanty | covered: titan-ili-cirkonij-implanty |
 | 893 | нужно ли «отдыхать» от циркония ночью? | 1 | 1 | ukhod-za-koronkami-iz-dioksida-cirkoniya | covered: ukhod-za-koronkami-iz-dioksida-cirkoniya |
 | 894 | можно ли налёт питьевой водой промыть? | 1 | 1 | zubnoj-nalet | covered: zubnoj-nalet |
-| 895 | защитные каппы — обязательное условие | 1 | 1 | bruksizm-i-protezirovanie | covered: bruksizm-i-protezirovanie |
+| 895 | защитные каппы — обязательное условие | 1 | 1 | kappy-ot-bruksizma | covered: kappy-ot-bruksizma |
 | 896 | особые ситуации: когда выбор очевиден | 1 | 1 | chto-luchshe-implant-ili-most | covered: chto-luchshe-implant-ili-most |
 | 897 | этап 2. отливка моделей в лаборатории | 1 | 1 | izgotovlenie-akrilovogo-proteza | covered: izgotovlenie-akrilovogo-proteza |
 | 898 | какие формы кальция лучше усваиваются | 1 | 1 | kalcij-dlya-zubov-vzroslym | covered: kalcij-dlya-zubov-vzroslym |
@@ -917,17 +917,17 @@
 | 911 | как понять, что пломба скоро выпадет? | 1 | 1 | plomba-vypala | covered: plomba-vypala |
 | 912 | что изнашивается в покрывном протезе? | 1 | 1 | pokryvnoy-protez | covered: pokryvnoy-protez |
 | 913 | какая коронка точно не даст привкуса? | 1 | 1 | privkus-metalla-ot-koronki | covered: privkus-metalla-ot-koronki |
-| 914 | можно ли ходить с треснутым протезом? | 1 | 1 | remont-zubnogo-proteza | covered: remont-zubnogo-proteza |
+| 914 | можно ли ходить с треснутым протезом? | 1 | 1 | skolko-mozhno-hodit-bez-zubov | covered: skolko-mozhno-hodit-bez-zubov |
 | 915 | гарантия распространяется на перелом? | 1 | 1 | kak-vybrat-stomatologiyu-dlya-protezirovaniya | covered: kak-vybrat-stomatologiyu-dlya-protezirovaniya |
 | 916 | видны ли кламмеры quattroti на зубах? | 1 | 1 | quattrotii-protezy | covered: quattrotii-protezy |
 | 917 | ультразвуковая чистка — базовый метод | 1 | 1 | zubnoj-kamen | covered: zubnoj-kamen |
 | 918 | что входит в профилактический осмотр | 1 | 1 | kak-chasto-poseshchat-stomatologa | covered: kak-chasto-poseshchat-stomatologa |
 | 919 | способы наращивания по объёму потерь | 1 | 1 | naraschivanie-zuba | covered: naraschivanie-zuba |
-| 920 | брекеты для взрослых: где они сейчас | 1 | 1 | kak-vybrat-zubnuyu-schetku | covered: kak-vybrat-zubnuyu-schetku |
+| 920 | брекеты для взрослых: где они сейчас | 1 | 1 | chto-vredno-dlya-zubov | covered: chto-vredno-dlya-zubov |
 | 921 | техника «ванночки» вместо полоскания | 1 | 1 | poloskanie-posle-udaleniya | covered: poloskanie-posle-udaleniya |
 | 922 | что делать, если апноэ подтвердилось | 1 | 1 | protezy-i-apnoe-sna | covered: protezy-i-apnoe-sna |
 | 923 | итог: рентген — союзник, а не угроза | 1 | 1 | — | GAP (кандидат) |
-| 924 | силикон, нейлон или акрил: что лучше | 1 | 1 | nejlonovyj-protez | covered: nejlonovyj-protez |
+| 924 | силикон, нейлон или акрил: что лучше | 1 | 1 | silikonovyj-protez | covered: silikonovyj-protez |
 | 925 | силиконовые массы: стандарт точности | 1 | 1 | slepki-v-ortopedii | covered: slepki-v-ortopedii |
 | 926 | какой ирригатор лучше при имплантах? | 1 | 1 | irrigator-dlya-polosti-rta | covered: irrigator-dlya-polosti-rta |
 | 927 | шаг 3. замочите в очищающем растворе | 1 | 1 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
@@ -939,7 +939,7 @@
 | 933 | можно ли лечиться только у ортопеда? | 1 | 1 | ortoped-ili-terapevt-stomatolog | covered: ortoped-ili-terapevt-stomatolog |
 | 934 | опасен ли гальванический ток во рту? | 1 | 1 | privkus-metalla-ot-koronki | covered: privkus-metalla-ot-koronki |
 | 935 | стоит ли совмещать отпуск и лечение? | 1 | 1 | protezirovanie-zubov-v-kitae | JUNK (не пишем) |
-| 936 | отличия от классической имплантации | 1 | 1 | protezirovanie-na-implantah | covered: protezirovanie-na-implantah |
+| 936 | отличия от классической имплантации | 1 | 1 | vidy-zubnyh-protezov | covered: vidy-zubnyh-protezov |
 | 937 | стратегия композита как «репетиции» | 1 | 1 | keramicheskie-ili-kompozitnye-viniry | covered: keramicheskie-ili-kompozitnye-viniry |
 | 938 | стоимость — сравнительная структура | 1 | 1 | keramicheskie-vkladki-vs-koronki | JUNK (не пишем) |
 | 939 | цемент: невидимый герой конструкции | 1 | 1 | kraevoe-prileganie-koronki | covered: kraevoe-prileganie-koronki |
@@ -948,7 +948,7 @@
 | 942 | почему «слишком белые» зубы — плохо | 1 | 1 | protez-tsvet | covered: protez-tsvet |
 | 943 | этапность как альтернатива ожиданию | 1 | 1 | protezirovanie-zubov-po-oms | covered: protezirovanie-zubov-po-oms |
 | 944 | питание для здоровья зубов после 60 | 1 | 1 | uhod-za-zubami-posle-60 | covered: uhod-za-zubami-posle-60 |
-| 945 | симптомы, требующие срочного визита | 1 | 1 | antikoagulyanty-i-stomatologiya | covered: antikoagulyanty-i-stomatologiya |
+| 945 | симптомы, требующие срочного визита | 1 | 1 | — | GAP (кандидат) |
 | 946 | почему «присоска» перестаёт держать | 1 | 1 | verhniy-protez-na-prisoskah | covered: verhniy-protez-na-prisoskah |
 | 947 | физиологический прикус: возможности | 1 | 1 | vidy-prikusov-i-ikh-vliyanie-na-protezirovanie | covered: vidy-prikusov-i-ikh-vliyanie-na-protezirovanie |
 | 948 | с чего начинается выбор между ними? | 1 | 1 | chem-otlichaetsya-implantaciya-ot-protezirovaniya | covered: chem-otlichaetsya-implantaciya-ot-protezirovaniya |
@@ -961,9 +961,9 @@
 | 955 | главное отличие от других протезов | 1 | 1 | acetalovyj-protez | covered: acetalovyj-protez |
 | 956 | как убрать темную полосу у коронки | 1 | 1 | cherneet-desna-vokrug-koronki | covered: cherneet-desna-vokrug-koronki |
 | 957 | симптомы: как понять, что это флюс | 1 | 1 | fluks-opuhol-na-desne | covered: fluks-opuhol-na-desne |
-| 958 | можно ли спасти шатающийся имплант | 1 | 1 | protezirovanie-pri-parodontite | covered: protezirovanie-pri-parodontite |
+| 958 | можно ли спасти шатающийся имплант | 1 | 1 | implant-shataetsya | covered: implant-shataetsya |
 | 959 | гарантия: что спрашивать до оплаты | 1 | 1 | implantaciya-pod-klyuch | covered: implantaciya-pod-klyuch |
-| 960 | влияние курения на остеоинтеграцию | 1 | 1 | implantatsiya-pri-kurenii | covered: implantatsiya-pri-kurenii |
+| 960 | влияние курения на остеоинтеграцию | 1 | 1 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
 | 961 | травма: удар с отложенным эффектом | 1 | 1 | potemnel-svoj-zub | covered: potemnel-svoj-zub |
 | 962 | что вызывает металлический привкус | 1 | 1 | privkus-metalla-ot-koronki | covered: privkus-metalla-ot-koronki |
 | 963 | фиксирующие средства: что работает | 1 | 1 | krem-fiksatsii-protezov | JUNK (не пишем) |
@@ -984,10 +984,10 @@
 | 978 | полный арсенал: щётка + помощники | 1 | 1 | kak-pravilno-chistit-zuby | covered: kak-pravilno-chistit-zuby |
 | 979 | гарантия и сервисное обслуживание | 1 | 1 | kak-vybrat-stomatologiyu-dlya-protezirovaniya | covered: kak-vybrat-stomatologiyu-dlya-protezirovaniya |
 | 980 | реальные отзывы и портфолио работ | 1 | 1 | kak-vybrat-stomatologiyu-dlya-protezirovaniya | JUNK (не пишем) |
-| 981 | как проходит визит cerec по часам | 1 | 1 | etapy-izgotovleniya-mostovidnogo-proteza | covered: etapy-izgotovleniya-mostovidnogo-proteza |
-| 982 | где лазер реально лучше бормашины | 1 | 1 | protezy-i-pitanie-pozhilyh | covered: protezy-i-pitanie-pozhilyh |
+| 981 | как проходит визит cerec по часам | 1 | 1 | — | GAP (кандидат) |
+| 982 | где лазер реально лучше бормашины | 1 | 1 | — | GAP (кандидат) |
 | 983 | насколько велик риск перерождения | 1 | 1 | rak-polosti-rta-skrining-i-predrakovye-sostoyaniya | covered: rak-polosti-rta-skrining-i-predrakovye-sostoyaniya |
-| 984 | цельнолитая металлическая коронка | 1 | 1 | vidy-zubnyh-koronok | covered: vidy-zubnyh-koronok |
+| 984 | цельнолитая металлическая коронка | 1 | 1 | celnolitoy-mostovidnyj-protez | covered: celnolitoy-mostovidnyj-protez |
 | 985 | опасен ли наркоз при имплантации? | 1 | 1 | anesteziya-pri-implantacii | covered: anesteziya-pri-implantacii |
 | 986 | опасен ли фтор при проглатывании? | 1 | 1 | ftor-v-zubnoy-paste | covered: ftor-v-zubnoy-paste |
 | 987 | детская щётка подойдёт взрослому? | 1 | 1 | kak-vybrat-zubnuyu-schetku | covered: kak-vybrat-zubnuyu-schetku |
@@ -999,7 +999,7 @@
 | 993 | когда имплант полностью заживает | 1 | 1 | bolit-posle-implantacii | covered: bolit-posle-implantacii |
 | 994 | уход за полостью рта при диабете | 1 | 1 | diabet-i-zuby | covered: diabet-i-zuby |
 | 995 | как внчс связан с головной болью | 1 | 1 | golovnaya-bol-pri-vnchs | covered: golovnaya-bol-pri-vnchs |
-| 996 | как отличить качественный протез | 1 | 1 | izgotovlenie-akrilovogo-proteza | covered: izgotovlenie-akrilovogo-proteza |
+| 996 | как отличить качественный протез | 1 | 1 | kachestvo-zhizni-s-protezami | covered: kachestvo-zhizni-s-protezami |
 | 997 | обратимость: что возвращает лицо | 1 | 1 | kak-vyglyadit-litso-bez-zubov | covered: kak-vyglyadit-litso-bez-zubov |
 | 998 | что находит нейросеть на снимках | 1 | 1 | neyroseti-dlya-analiza-snimkov | covered: neyroseti-dlya-analiza-snimkov |
 | 999 | стратегии для владельцев коронок | 1 | 1 | otbelivanie-koronok | covered: otbelivanie-koronok |
@@ -1013,22 +1013,22 @@
 | 1007 | имплант отторгся — это навсегда? | 1 | 1 | implant-ne-prizhilsya | covered: implant-ne-prizhilsya |
 | 1008 | диабет — это приговор имплантам? | 1 | 1 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
 | 1009 | чем корега лучше обычного крема? | 1 | 1 | korega-dlya-zubnyh-protezov | covered: korega-dlya-zubnyh-protezov |
-| 1010 | cerec-коронка хуже лабораторной? | 1 | 1 | skolko-delayut-koronku | covered: skolko-delayut-koronku |
+| 1010 | cerec-коронка хуже лабораторной? | 1 | 1 | — | GAP (кандидат) |
 | 1011 | останется ли шрам после прикуса? | 1 | 1 | prikusil-scheku | covered: prikusil-scheku |
 | 1012 | какая щель считается допустимой? | 1 | 1 | schel-mezhdu-koronkoj-i-zubom | covered: schel-mezhdu-koronkoj-i-zubom |
 | 1013 | можно ли увидеть dsd до лечения? | 1 | 1 | tsifrovaya-ulibka-dsd | covered: tsifrovaya-ulibka-dsd |
-| 1014 | нужно ли снимать бюгель на ночь? | 1 | 1 | uhod-za-zubnymi-protezami | covered: uhod-za-zubnymi-protezami |
+| 1014 | нужно ли снимать бюгель на ночь? | 1 | 1 | protezy-i-apnoe-sna | covered: protezy-i-apnoe-sna |
 | 1015 | все ли протезы нагружают сустав? | 1 | 1 | visochno-nizhnechelyustnoj-sustav-protezirovanie | covered: visochno-nizhnechelyustnoj-sustav-protezirovanie |
 | 1016 | может ли воспаление пройти само? | 1 | 1 | vospalenie-desny-pod-koronkoj | covered: vospalenie-desny-pod-koronkoj |
 | 1017 | какие препараты разжижают кровь | 1 | 1 | antikoagulyanty-i-stomatologiya | covered: antikoagulyanty-i-stomatologiya |
 | 1018 | стоит ли экономить на материале | 1 | 1 | celnolitoy-mostovidnyj-protez | JUNK (не пишем) |
 | 1019 | сравнение по ключевым критериям | 1 | 1 | chto-luchshe-implant-ili-most | covered: chto-luchshe-implant-ili-most |
-| 1020 | цена и сравнение с конкурентами | 1 | 1 | cirkonievye-koronki-cena-nn | JUNK (не пишем) |
+| 1020 | цена и сравнение с конкурентами | 1 | 1 | chto-luchshe-implant-ili-most | JUNK (не пишем) |
 | 1021 | что делать при хрусте в челюсти | 1 | 1 | hrustit-chelyust | covered: hrustit-chelyust |
 | 1022 | что происходит с лицом поэтапно | 1 | 1 | kak-vyglyadit-litso-bez-zubov | covered: kak-vyglyadit-litso-bez-zubov |
 | 1023 | зависит ли от зоны обследования | 1 | 1 | mrt-s-koronkami | covered: mrt-s-koronkami |
-| 1024 | что выбрать? решение по случаям | 1 | 1 | pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu | covered: pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu |
-| 1025 | первая помощь: что делать сразу | 1 | 1 | prikusil-scheku | covered: prikusil-scheku |
+| 1024 | что выбрать? решение по случаям | 1 | 1 | net-odnogo-zuba | covered: net-odnogo-zuba |
+| 1025 | первая помощь: что делать сразу | 1 | 1 | first-visit | covered: first-visit |
 | 1026 | чем обрабатывать для заживления | 1 | 1 | prikusil-sheku-iznutri | covered: prikusil-sheku-iznutri |
 | 1027 | риски, о которых говорят меньше | 1 | 1 | protezirovanie-zubov-v-kitae | covered: protezirovanie-zubov-v-kitae |
 | 1028 | что делать, если появилась щель | 1 | 1 | schel-mezhdu-koronkoj-i-zubom | covered: schel-mezhdu-koronkoj-i-zubom |
@@ -1044,7 +1044,7 @@
 | 1038 | почему раскручивается абатмент? | 1 | 1 | implantat-vypal-chto-delat | covered: implantat-vypal-chto-delat |
 | 1039 | дистальная окклюзия (прогнатия) | 1 | 1 | okklyuziya-zubov-pravilnoe-smykanie | covered: okklyuziya-zubov-pravilnoe-smykanie |
 | 1040 | когда можно заниматься спортом? | 1 | 1 | otek-posle-implantacii | covered: otek-posle-implantacii |
-| 1041 | 2. изготовление жёсткого базиса | 1 | 1 | vidy-prikusnykh-shablonov | covered: vidy-prikusnykh-shablonov |
+| 1041 | 2. изготовление жёсткого базиса | 1 | 1 | prikusnoy-shablon-na-zhestkom-bazise | covered: prikusnoy-shablon-na-zhestkom-bazise |
 | 1042 | можно ли заснуть «не до конца»? | 1 | 1 | sedatsiya-i-narkoz | covered: sedatsiya-i-narkoz |
 | 1043 | можно ли продлить жизнь пломбы? | 1 | 1 | skolko-sluzhit-plomba-na-zube | covered: skolko-sluzhit-plomba-na-zube |
 | 1044 | может ли стресс вызвать кариес? | 1 | 1 | stress-i-zuby | covered: stress-i-zuby |
@@ -1057,11 +1057,11 @@
 | 1051 | маршруты пациентов: кто первый | 1 | 1 | ortoped-ili-terapevt-stomatolog | covered: ortoped-ili-terapevt-stomatolog |
 | 1052 | комплексное лечение по стадиям | 1 | 1 | periodontit-lechenie | covered: periodontit-lechenie |
 | 1053 | почему оголённый корень опасен | 1 | 1 | recessiya-desny-ogolenie-kornya | covered: recessiya-desny-ogolenie-kornya |
-| 1054 | типы стоматологического страха | 1 | 1 | protezirovanie-pri-saharnom-diabete | covered: protezirovanie-pri-saharnom-diabete |
+| 1054 | типы стоматологического страха | 1 | 1 | vidy-prikusnykh-shablonov | covered: vidy-prikusnykh-shablonov |
 | 1055 | стыдно ли бояться стоматолога? | 1 | 1 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
 | 1056 | как долго приживается имплант? | 1 | 1 | implant-ne-prizhilsya | covered: implant-ne-prizhilsya |
 | 1057 | остеопороз запрещает импланты? | 1 | 1 | implanty-protivopokazaniya | covered: implanty-protivopokazaniya |
-| 1058 | восстанавливает ли эмаль фтор? | 1 | 1 | kislaya-slyuna-prichiny | covered: kislaya-slyuna-prichiny |
+| 1058 | восстанавливает ли эмаль фтор? | 1 | 1 | patologicheskaya-stiraemost-zubov-lechenie | covered: patologicheskaya-stiraemost-zubov-lechenie |
 | 1059 | обязательно ли обтачивать зуб? | 1 | 1 | most-na-3-zuba | covered: most-na-3-zuba |
 | 1060 | что пить, чтобы увлажнить рот? | 1 | 1 | kserostomiya-i-protezirovanie | covered: kserostomiya-i-protezirovanie |
 | 1061 | какой протез самый эстетичный? | 1 | 1 | nejlonovyj-protez | covered: nejlonovyj-protez |
@@ -1075,7 +1075,7 @@
 | 1069 | цельнометаллические (кхс, нхс) | 1 | 1 | teleskopicheskie-koronki | covered: teleskopicheskie-koronki |
 | 1070 | что значит «безнёбный протез» | 1 | 1 | acryfree-vs-quattrotii | covered: acryfree-vs-quattrotii |
 | 1071 | автоматический дизайн коронок | 1 | 1 | ai-v-ortopedicheskoy-stomatologii | covered: ai-v-ortopedicheskoy-stomatologii |
-| 1072 | когда потемнение — это опасно | 1 | 1 | cherneet-desna-vokrug-koronki | covered: cherneet-desna-vokrug-koronki |
+| 1072 | когда потемнение — это опасно | 1 | 1 | potemnel-svoj-zub | covered: potemnel-svoj-zub |
 | 1073 | кокосовое масло и oil pulling | 1 | 1 | chto-polezno-dlya-zubov | covered: chto-polezno-dlya-zubov |
 | 1074 | когда запах не связан со ртом | 1 | 1 | galitoz | covered: galitoz |
 | 1075 | электрическая или мануальная? | 1 | 1 | kak-vybrat-zubnuyu-schetku | covered: kak-vybrat-zubnuyu-schetku |
@@ -1084,7 +1084,7 @@
 | 1078 | состав: каркас плюс облицовка | 1 | 1 | metallokeramika-chto-eto | covered: metallokeramika-chto-eto |
 | 1079 | k04 — пульпа и верхушка корня | 1 | 1 | mkb-v-stomatologii | covered: mkb-v-stomatologii |
 | 1080 | протокол отбеливания без боли | 1 | 1 | potemnel-svoj-zub | covered: potemnel-svoj-zub |
-| 1081 | сравнение видов перебазировки | 1 | 1 | perebazirovka-proteza | covered: perebazirovka-proteza |
+| 1081 | сравнение видов перебазировки | 1 | 1 | kakie-semnye-protezy-luchshe | covered: kakie-semnye-protezy-luchshe |
 | 1082 | тетрациклин, флюороз, возраст | 1 | 1 | potemnel-svoj-zub | covered: potemnel-svoj-zub |
 | 1083 | когда пятна не снимаются дома | 1 | 1 | protez-pyatna | covered: protez-pyatna |
 | 1084 | домашняя система против пятен | 1 | 1 | protez-pyatna | covered: protez-pyatna |
@@ -1096,7 +1096,7 @@
 | 1090 | экономика на дистанции 20 лет | 1 | 1 | zachem-nuzhen-implantat | covered: zachem-nuzhen-implantat |
 | 1091 | методы удаления зубного камня | 1 | 1 | zubnoj-kamen | covered: zubnoj-kamen |
 | 1092 | ломается ли ацеталовый протез | 1 | 1 | acetalovyj-protez | covered: acetalovyj-protez |
-| 1093 | какие импланты служат дольше? | 1 | 1 | implanty-sroki | covered: implanty-sroki |
+| 1093 | какие импланты служат дольше? | 1 | 1 | srok-sluzhby-vinirov | covered: srok-sluzhby-vinirov |
 | 1094 | ионизационные щётки работают? | 1 | 1 | kak-vybrat-zubnuyu-schetku | JUNK (не пишем) |
 | 1095 | этап 3: обточка с охлаждением | 1 | 1 | koronka-na-zhivoj-zub | covered: koronka-na-zhivoj-zub |
 | 1096 | стоит ли ехать ради экономии? | 1 | 1 | protezirovanie-zubov-v-kitae | JUNK (не пишем) |
@@ -1111,7 +1111,7 @@
 | 1105 | насколько это распространено | 1 | 1 | gingivit-krovotochivost-desen | covered: gingivit-krovotochivost-desen |
 | 1106 | обслуживание при каждом типе | 1 | 1 | kak-krepitsya-koronka-na-implante | covered: kak-krepitsya-koronka-na-implante |
 | 1107 | какая каппа нужна именно вам | 1 | 1 | kappy-ot-bruksizma | covered: kappy-ot-bruksizma |
-| 1108 | что выбрать: простые правила | 1 | 1 | koncevoj-defekt-zubnogo-ryada | covered: koncevoj-defekt-zubnogo-ryada |
+| 1108 | что выбрать: простые правила | 1 | 1 | okklyuziya-zubov-pravilnoe-smykanie | covered: okklyuziya-zubov-pravilnoe-smykanie |
 | 1109 | кому показано лечение во сне | 1 | 1 | lechenie-zubov-vo-sne | covered: lechenie-zubov-vo-sne |
 | 1110 | симптомы завышенного прикуса | 1 | 1 | prikus-posle-protezirovaniya | covered: prikus-posle-protezirovaniya |
 | 1111 | как цвет связан с материалом | 1 | 1 | protez-tsvet | covered: protez-tsvet |
@@ -1136,12 +1136,12 @@
 | 1130 | стоимость лазерных процедур | 1 | 1 | tsifrovaya-ulibka-dsd | JUNK (не пишем) |
 | 1131 | преимущества лечения во сне | 1 | 1 | lechenie-zubov-vo-sne | covered: lechenie-zubov-vo-sne |
 | 1132 | три сценария спасения корня | 1 | 1 | mozhno-li-sohranit-koren-zuba | covered: mozhno-li-sohranit-koren-zuba |
-| 1133 | сколько привыкать к протезу | 1 | 1 | perebazirovka-proteza | JUNK (не пишем) |
+| 1133 | сколько привыкать к протезу | 1 | 1 | natirayet-desnu-protezom | JUNK (не пишем) |
 | 1134 | сравнение четырёх вариантов | 1 | 1 | net-odnogo-zuba | covered: net-odnogo-zuba |
 | 1135 | сравнение: сроки подготовки | 1 | 1 | podgotovka-k-protezirovaniyu | covered: podgotovka-k-protezirovaniyu |
 | 1136 | что будет, если поесть рано | 1 | 1 | posle-ustanovki-koronki | covered: posle-ustanovki-koronki |
 | 1137 | профилактика скрипа протеза | 1 | 1 | protez-skripit-pri-zhevanii | covered: protez-skripit-pri-zhevanii |
-| 1138 | сравнение с синус-лифтингом | 1 | 1 | pterigoidnye-implanty | covered: pterigoidnye-implanty |
+| 1138 | сравнение с синус-лифтингом | 1 | 1 | sinus-lifting | covered: sinus-lifting |
 | 1139 | почему винты раскручиваются | 1 | 1 | shataetsya-koronka-na-implante | covered: shataetsya-koronka-na-implante |
 | 1140 | бруксизм — главная проблема | 1 | 1 | stress-i-zuby | covered: stress-i-zuby |
 | 1141 | почему ирригатор обязателен | 1 | 1 | ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii | covered: ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii |
@@ -1156,24 +1156,24 @@
 | 1150 | домашние каппы без контроля | 1 | 1 | rekcessiya-desny-posle-otbelivaniya | covered: rekcessiya-desny-posle-otbelivaniya |
 | 1151 | как быстро разжижить слюну? | 1 | 1 | slyuna-gustaya | covered: slyuna-gustaya |
 | 1152 | как оценить цену адекватно | 1 | 1 | ceny-na-protezirovanie-v-nn | JUNK (не пишем) |
-| 1153 | какие вопросы задать врачу | 1 | 1 | first-visit | covered: first-visit |
+| 1153 | какие вопросы задать врачу | 1 | 1 | 10-voprosov-stomatologu-ortopedu | covered: 10-voprosov-stomatologu-ortopedu |
 | 1154 | риски отторжения имплантов | 1 | 1 | implantatsiya-pri-kurenii | covered: implantatsiya-pri-kurenii |
 | 1155 | норма кальция для взрослых | 1 | 1 | kalcij-dlya-zubov-vzroslym | covered: kalcij-dlya-zubov-vzroslym |
 | 1156 | надёжность и приживаемость | 1 | 1 | kitajskie-implanty | covered: kitajskie-implanty |
 | 1157 | что показывает снимок клкт | 1 | 1 | klkt-pered-protezirovaniem | covered: klkt-pered-protezirovaniem |
-| 1158 | как устанавливают люминиры | 1 | 1 | cirkonij-ili-metallokeramika | covered: cirkonij-ili-metallokeramika |
+| 1158 | как устанавливают люминиры | 1 | 1 | — | GAP (кандидат) |
 | 1159 | ошибки обточки: что бывает | 1 | 1 | obtochka-zubov-pod-koronku | covered: obtochka-zubov-pod-koronku |
 | 1160 | к кому идти в вашем случае | 1 | 1 | ortoped-ili-terapevt-stomatolog | covered: ortoped-ili-terapevt-stomatolog |
 | 1161 | как врач принимает решение | 1 | 1 | pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu | covered: pokazaniya-i-protivopokazaniya-k-mostovidnomu-protezirovaniyu |
 | 1162 | виды покрывных конструкций | 1 | 1 | pokryvnoy-protez | covered: pokryvnoy-protez |
 | 1163 | советы для лучшей фиксации | 1 | 1 | koronka-na-zub-chto-luchshe | covered: koronka-na-zub-chto-luchshe |
-| 1164 | как подбирают цвет коронки | 1 | 1 | etapy-protezirovaniya-zubov | covered: etapy-protezirovaniya-zubov |
+| 1164 | как подбирают цвет коронки | 1 | 1 | protez-tsvet | covered: protez-tsvet |
 | 1165 | что входит в омс бесплатно | 1 | 1 | protezirovanie-zubov-po-oms | JUNK (не пишем) |
-| 1166 | техники управления страхом | 1 | 1 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
+| 1166 | техники управления страхом | 1 | 1 | stomatolog-pri-beremennosti | covered: stomatolog-pri-beremennosti |
 | 1167 | как стресс влияет на дёсны | 1 | 1 | stress-i-zuby | covered: stress-i-zuby |
 | 1168 | состав и механизм действия | 1 | 1 | temp-bond-v-stomatologii | covered: temp-bond-v-stomatologii |
-| 1169 | таблетированные очистители | 1 | 1 | uhod-za-byugelnym-protezom | covered: uhod-za-byugelnym-protezom |
-| 1170 | сравнение подходов к уходу | 1 | 1 | koronka-cirkonievaya-otzyvy | covered: koronka-cirkonievaya-otzyvy |
+| 1169 | таблетированные очистители | 1 | 1 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
+| 1170 | сравнение подходов к уходу | 1 | 1 | sendvich-protez | covered: sendvich-protez |
 | 1171 | что должен сделать пациент | 1 | 1 | vliyanie-vospaleniya-na-metabolizm-psikhotropnykh-preparatov-vzglyad-stomatologa | covered: vliyanie-vospaleniya-na-metabolizm-psikhotropnykh-preparatov-vzglyad-stomatologa |
 | 1172 | 7. есть ли скрытые затраты | 1 | 1 | 10-voprosov-stomatologu-ortopedu | covered: 10-voprosov-stomatologu-ortopedu |
 | 1173 | нужно ли идти к неврологу? | 1 | 1 | golovnaya-bol-pri-vnchs | covered: golovnaya-bol-pri-vnchs |
@@ -1191,9 +1191,9 @@
 | 1185 | как читать запись в карте | 1 | 1 | mkb-v-stomatologii | covered: mkb-v-stomatologii |
 | 1186 | алгоритм выбора за минуту | 1 | 1 | net-odnogo-zuba | covered: net-odnogo-zuba |
 | 1187 | какие поломки встречаются | 1 | 1 | remont-zubnogo-proteza | covered: remont-zubnogo-proteza |
-| 1188 | чего категорически нельзя | 1 | 1 | implant-ili-protez | covered: implant-ili-protez |
+| 1188 | чего категорически нельзя | 1 | 1 | posle-ustanovki-koronki | covered: posle-ustanovki-koronki |
 | 1189 | после каждого приёма пищи | 1 | 1 | care-denture | covered: care-denture |
-| 1190 | можно ли полоскать содой? | 1 | 1 | vospalenie-desny-pod-koronkoj | covered: vospalenie-desny-pod-koronkoj |
+| 1190 | можно ли полоскать содой? | 1 | 1 | kandidoz-polosti-rta-protezy | covered: kandidoz-polosti-rta-protezy |
 | 1191 | шаг 1. прополощите протез | 1 | 1 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
 | 1192 | роль исходного воспаления | 1 | 1 | rekcessiya-desny-posle-otbelivaniya | covered: rekcessiya-desny-posle-otbelivaniya |
 | 1193 | чего спрашивать не стоит | 1 | 1 | 10-voprosov-stomatologu-ortopedu | JUNK (не пишем) |
@@ -1220,15 +1220,15 @@
 | 1214 | как они работают вместе | 1 | 1 | ortoped-ili-terapevt-stomatolog | JUNK (не пишем) |
 | 1215 | обзор популярных систем | 1 | 1 | sravnenie-sistem-implantov | covered: sravnenie-sistem-implantov |
 | 1216 | уход за зубом на штифте | 1 | 1 | vosstanovlenie-zuba-na-shtifte | covered: vosstanovlenie-zuba-na-shtifte |
-| 1217 | причины появления камня | 1 | 1 | zubnoj-kamen | covered: zubnoj-kamen |
+| 1217 | причины появления камня | 1 | 1 | zubnoj-nalet | covered: zubnoj-nalet |
 | 1218 | страх лечится навсегда? | 1 | 1 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
-| 1219 | сколько лечится кариес? | 1 | 1 | zub-udalyat-ili-vosstanavlivat | JUNK (не пишем) |
-| 1220 | объяснение каждого шага | 1 | 1 | dezinfektsiya-proteza | covered: dezinfektsiya-proteza |
+| 1219 | сколько лечится кариес? | 1 | 1 | lechenie-kariesa | JUNK (не пишем) |
+| 1220 | объяснение каждого шага | 1 | 1 | — | GAP (кандидат) |
 | 1221 | может ли штифт выпасть? | 1 | 1 | vosstanovlenie-zuba-na-shtifte | covered: vosstanovlenie-zuba-na-shtifte |
 | 1222 | сроки по типам случаев | 1 | 1 | implantaciya-pod-klyuch | covered: implantaciya-pod-klyuch |
-| 1223 | как часто менять щётку | 1 | 1 | chem-chistit-zubnye-protezy | covered: chem-chistit-zubnye-protezy |
+| 1223 | как часто менять щётку | 1 | 1 | kak-vybrat-zubnuyu-schetku | covered: kak-vybrat-zubnuyu-schetku |
 | 1224 | противоположные мнения | 1 | 1 | tsifrovaya-ulibka-dsd | covered: tsifrovaya-ulibka-dsd |
-| 1225 | как исправить ситуацию | 1 | 1 | visochno-nizhnechelyustnoj-sustav-protezirovanie | covered: visochno-nizhnechelyustnoj-sustav-protezirovanie |
+| 1225 | как исправить ситуацию | 1 | 1 | zub-udalyat-ili-vosstanavlivat | covered: zub-udalyat-ili-vosstanavlivat |
 | 1226 | типы временных коронок | 1 | 1 | vremennye-koronki-zachem-nuzhny | covered: vremennye-koronki-zachem-nuzhny |
 | 1227 | минусы золотых коронок | 1 | 1 | zolotye-koronki-na-zhevatelnye-zuby | covered: zolotye-koronki-na-zhevatelnye-zuby |
 | 1228 | 1. фото- и видеосъёмка | 1 | 1 | ciprovoy-dizayn-ulybki | covered: ciprovoy-dizayn-ulybki |
@@ -1237,7 +1237,7 @@
 | 1231 | код влияет на лечение? | 1 | 1 | mkb-v-stomatologii | covered: mkb-v-stomatologii |
 | 1232 | где экономия иллюзорна | 1 | 1 | protezirovanie-zubov-v-kitae | covered: protezirovanie-zubov-v-kitae |
 | 1233 | контролируемое дыхание | 1 | 1 | implanty-sroki | covered: implanty-sroki |
-| 1234 | виды мостов на 3 зуба | 1 | 1 | kappy-ot-bruksizma | covered: kappy-ot-bruksizma |
+| 1234 | виды мостов на 3 зуба | 1 | 1 | most-na-3-zuba | covered: most-na-3-zuba |
 | 1235 | растворы для хранения | 1 | 1 | care-denture | covered: care-denture |
 | 1236 | жвачка — это полезно? | 1 | 1 | chto-polezno-dlya-zubov | covered: chto-polezno-dlya-zubov |
 | 1237 | 1. знакомство и опрос | 1 | 1 | first-visit | covered: first-visit |
@@ -1267,7 +1267,7 @@
 | 1261 | stomatologicheskiy | 1 | 1 | — | GAP (кандидат) |
 | 1262 | как лечат галитоз | 1 | 1 | galitoz | covered: galitoz |
 | 1263 | этические аспекты | 1 | 1 | geneticheskoe-testirovanie-apoe4-stomatologiya | covered: geneticheskoe-testirovanie-apoe4-stomatologiya |
-| 1264 | что именно выпало | 1 | 1 | protezirovanie-pri-beremennosti | covered: protezirovanie-pri-beremennosti |
+| 1264 | что именно выпало | 1 | 1 | plomba-vypala | covered: plomba-vypala |
 | 1265 | ключевые различия | 1 | 1 | keramicheskie-vkladki-vs-koronki | covered: keramicheskie-vkladki-vs-koronki |
 | 1266 | металлопластмасса | 1 | 1 | koronka-metallokeramicheskaya-otzyvy | covered: koronka-metallokeramicheskaya-otzyvy |
 | 1267 | типы посадки края | 1 | 1 | kraevoe-prileganie-koronki | covered: kraevoe-prileganie-koronki |
@@ -1291,7 +1291,7 @@
 | 1285 | shiniruyushchij | 1 | 1 | — | GAP (кандидат) |
 | 1286 | metallokeramiki | 1 | 1 | — | GAP (кандидат) |
 | 1287 | priparerovaniya | 1 | 1 | — | GAP (кандидат) |
-| 1288 | что продлевает | 1 | 1 | srok-sluzhby-protezov | covered: srok-sluzhby-protezov |
+| 1288 | что продлевает | 1 | 1 | ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii | covered: ukhod-za-polostyu-rta-posle-protezirovaniya-dokazatelnye-rekomendatsii |
 | 1289 | protezirovanie | 1 | 1 | krem-fiksatsii-protezov | covered: krem-fiksatsii-protezov |
 | 1290 | krovotochivost | 1 | 1 | — | GAP (кандидат) |
 | 1291 | keramicheskaya | 1 | 1 | — | GAP (кандидат) |
@@ -1323,7 +1323,7 @@
 | 1317 | okonchatelnoy | 1 | 1 | — | GAP (кандидат) |
 | 1318 | rekomendatsii | 1 | 1 | — | GAP (кандидат) |
 | 1319 | vnutrirotovoe | 1 | 1 | — | GAP (кандидат) |
-| 1320 | безопасность | 1 | 1 | zdorove-polosti-rta-vliyanie-na-organizm | covered: zdorove-polosti-rta-vliyanie-na-organizm |
+| 1320 | безопасность | 1 | 1 | stomatolog-pri-beremennosti | covered: stomatolog-pri-beremennosti |
 | 1321 | виды штифтов | 1 | 1 | vosstanovlenie-zuba-na-shtifte | covered: vosstanovlenie-zuba-na-shtifte |
 | 1322 | шаг за шагом | 1 | 1 | dentofobiya-lechenie-bez-straha | covered: dentofobiya-lechenie-bez-straha |
 | 1323 | lacalut dent | 1 | 1 | krem-fiksatsii-protezov | covered: krem-fiksatsii-protezov |
@@ -1419,11 +1419,11 @@
 | 1413 | preparatov | 1 | 1 | — | GAP (кандидат) |
 | 1414 | vospalenie | 1 | 1 | — | GAP (кандидат) |
 | 1415 | koronkovoy | 1 | 1 | — | GAP (кандидат) |
-| 1416 | системное | 1 | 1 | kandidoz-polosti-rta-protezy | covered: kandidoz-polosti-rta-protezy |
-| 1417 | прочность | 1 | 1 | bezmetallovye-koronki | covered: bezmetallovye-koronki |
+| 1416 | системное | 1 | 1 | sravnenie-sistem-implantov | covered: sravnenie-sistem-implantov |
+| 1417 | прочность | 1 | 1 | czirkonievyj-mostovidnyj-protez | covered: czirkonievyj-mostovidnyj-protez |
 | 1418 | president | 1 | 1 | krem-fiksatsii-protezov | covered: krem-fiksatsii-protezov |
 | 1419 | fittydent | 1 | 1 | krem-fiksatsii-protezov | covered: krem-fiksatsii-protezov |
-| 1420 | титановые | 1 | 1 | teleskopicheskie-koronki | covered: teleskopicheskie-koronki |
+| 1420 | титановые | 1 | 1 | titan-ili-cirkonij-implanty | covered: titan-ili-cirkonij-implanty |
 | 1421 | akrilovyj | 1 | 1 | — | GAP (кандидат) |
 | 1422 | allergiya | 1 | 1 | — | GAP (кандидат) |
 | 1423 | chelyusti | 1 | 1 | — | GAP (кандидат) |
@@ -1475,7 +1475,7 @@
 | 1469 | vremennyj | 1 | 1 | — | GAP (кандидат) |
 | 1470 | vypadenie | 1 | 1 | — | GAP (кандидат) |
 | 1471 | yaponskij | 1 | 1 | — | GAP (кандидат) |
-| 1472 | прополис | 1 | 1 | kak-chistit-semnye-protezy | covered: kak-chistit-semnye-protezy |
+| 1472 | прополис | 1 | 1 | chto-polezno-dlya-zubov | covered: chto-polezno-dlya-zubov |
 | 1473 | protefix | 1 | 1 | krem-fiksatsii-protezov | covered: krem-fiksatsii-protezov |
 | 1474 | voprosov | 1 | 1 | — | GAP (кандидат) |
 | 1475 | ortopedu | 1 | 1 | — | GAP (кандидат) |
@@ -3690,7 +3690,7 @@
 - сколько длится лечение? — 1
 - сколько всего визитов — 1
 
-### 129. что реально дешевле (7)
+### 129. что реально работает для нейтрализации (7)
 - что реально работает для нейтрализации — 1
 - что такое apoe4 и как он работает — 1
 - что реально работает из домашнего — 1
@@ -5631,7 +5631,7 @@
 - особенности протезирования в пожилом возрасте — 1
 - особенности протезирования в разном возрасте — 1
 
-### 478. что дешевле: вкладка или удаление с имплантом (2)
+### 478. вкладки (2)
 - что дешевле: вкладка или удаление с имплантом — 1
 - вкладки — 1
 
