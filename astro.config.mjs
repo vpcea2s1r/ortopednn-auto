@@ -34,6 +34,7 @@ export default defineConfig({
     '/blog/keramicheskie-ili-metallicheskie-brekety-chto-vybrat/': '/blog/cirkonij-ili-metallokeramika/',
     '/checkup/kakoj-protez-vybrat/': '/blog/kakie-semnye-protezy-luchshe/',
     '/services/laboratornaya-vkladka/': '/services/vkladka/',
+    '/services/perebazirovka-implakril/': '/services/implakril/',
     '/services/privarka-3-zubov/': '/services/',
     '/blog/elaynery-sovremennyy-sposob-ispravleniya-prikusa/': '/blog/okkluziya-zubov-pravilnoe-smykanie/',
   },
