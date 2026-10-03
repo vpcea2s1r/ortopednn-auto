@@ -455,6 +455,7 @@ export const articles: BlogArticle[] = [
   // Batch NCH 2026-09-20: zirconia cost + fixation
   { slug: 'stoimost-cirkonevoj-koronki', title: "Стоимость циркониевой коронки: из чего складывается и почему различается", date: '2026-09-19', desc: 'Стоимость циркониевой коронки: из чего складывается цена, почему различается между клиниками, что спросить на консультации. Консультация ортопеда: +7 (920) 253-73-17.', category: 'koronki' },
   { slug: 'ustanovka-cirkonevoj-koronki', title: "Установка циркониевой коронки: как проходит приём фиксации", date: '2026-09-19', desc: 'Установка циркониевой коронки: как проходит приём фиксации, анестезия, примерка, проверка прикуса, первые дни после. Консультация ортопеда: +7 (920) 253-73-17.', category: 'koronki' },
+  { slug: 'vredyat-li-viniry-svoim-zubam', title: "Вредят ли виниры своим зубам: что страдает, риски и как снизить вред", date: '2026-10-03', desc: 'Вредят ли виниры своим зубам: препарирование эмали, чувствительность, кариес под виниром, сколы и замена через 10-15 лет. Консультация: +7 (920) 253-73-17.', category: 'viniry' },
  ];
 export function getArticlesByCategory(categoryId: string): BlogArticle[] {
   return articles.filter(a => a.category === categoryId);

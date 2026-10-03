@@ -9,7 +9,7 @@ const reMixed = new RegExp(`[A-Za-z][${CYR}][A-Za-z${CYR}]*|[${CYR}][A-Za-z][A-Z
 const reDoubleWord = new RegExp(`\\b([а-яё]{1,3})\\s+\\1\\b`, "gi");
 const reDblPunct = /[а-яёa-z0-9)]([,.!?]){2,}(?![.)])/gi;
 // Legit latin/mixed terms used in dental content
-const latinOK = /(All-on|CAD|CAM|CBCT|E-max|PMMA|MTA|КЛКТ|ВНЧС|AcryFree|Corega|Protefix|Lacalut|RDA|МКБ|et\s+al)/i;
+const latinOK = /(All-on|CAD|CAM|CBCT|E-max|PMMA|MTA|КЛКТ|ВНЧС|AcryFree|Corega|Protefix|Lacalut|RDA|[Oo\u041e\u043E]sstem|Straumann|MIS\b|МКБ|et\s+al)/i;
 
 function walk(dir, out) {
   let entries = [];
