@@ -4,7 +4,7 @@
 
 | # | Главный запрос | Фраз | Показов | Цель | Вердикт |
 |---|---|---|---|---|---|
-| 1 | гибкие зубные протезы | 11 | 525 | nejlon-acrifree-akril-kakoj-luchshe | covered: nejlon-acrifree-akril-kakoj-luchshe |
+| 1 | гибкие зубные протезы | 11 | 525 | nejlonovyj-protez | covered: nejlonovyj-protez |
 
 ## Детали кластеров
 

@@ -4,8 +4,8 @@
 
 | # | Главный запрос | Фраз | Показов | Цель | Вердикт |
 |---|---|---|---|---|---|
-| 1 | мягкие зубные протезы | 21 | 2067 | nejlon-acrifree-akril-kakoj-luchshe | covered: nejlon-acrifree-akril-kakoj-luchshe |
-| 2 | мягкие силиконовые зубные протезы | 8 | 179 | silikonovyj-protez | covered: silikonovyj-protez |
+| 1 | мягкие зубные протезы | 21 | 2067 | nejlonovyj-protez | covered: nejlonovyj-protez |
+| 2 | мягкие силиконовые зубные протезы | 8 | 179 | nejlonovyj-protez | covered: nejlonovyj-protez |
 
 ## Детали кластеров
 

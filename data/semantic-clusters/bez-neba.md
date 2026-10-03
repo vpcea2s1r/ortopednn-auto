@@ -4,8 +4,8 @@
 
 | # | Главный запрос | Фраз | Показов | Цель | Вердикт |
 |---|---|---|---|---|---|
-| 1 | протезы без неба | 132 | 30519 | protezy-bez-neba | covered: protezy-bez-neba |
-| 2 | фото протезов зубов без неба | 3 | 59 | adgezivnyj-mostovidnyj-protez | covered: adgezivnyj-mostovidnyj-protez |
+| 1 | протезы без неба | 132 | 30519 | remont-zubnogo-proteza | covered: remont-zubnogo-proteza |
+| 2 | фото протезов зубов без неба | 3 | 59 | kak-vyglyadit-litso-bez-zubov | covered: kak-vyglyadit-litso-bez-zubov |
 
 ## Детали кластеров
 

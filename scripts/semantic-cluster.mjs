@@ -21,6 +21,15 @@ const GEO_OK_RE = /нижний новгород|нн\b|нижегород/i;
 const ENDS = ['\u0438\u044f\u043c\u0438','\u044f\u043c\u0438','\u0430\u043c\u0438','\u0438\u0435\u0439','\u0435\u0439','\u043e\u0439','\u0438\u0439','\u044b\u0439','\u0430\u044f','\u044f\u044f','\u043e\u0435','\u0435\u0435','\u0438\u0435','\u044b\u0435','\u043e\u043c\u0443','\u0435\u043c\u0443','\u043e\u0433\u043e','\u0435\u0433\u043e','\u0443\u044e','\u044e\u044e','\u0430','\u044f','\u043e','\u0435','\u0438','\u044b','\u044c','\u0439','\u0443','\u044e'];
 function stem(w){ for (const e of ENDS){ if (w.length - e.length >= 3 && w.endsWith(e)) return w.slice(0,-e.length); } return w; }
 const SYN = {'\u0433\u0438\u0431\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u043c\u044f\u0433\u043a':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0441\u0438\u043b\u0438\u043a\u043e\u043d':['\u043d\u0435\u0439\u043b\u043e\u043d'],'\u0434\u0435\u0444\u043b\u0435\u043a\u0441':['\u043d\u0435\u0439\u043b\u043e\u043d']};
+const _JA = [...new Set(JUNK_RE.source.split(/[^a-z\u0430-\u044f\u0451]+/gi))].map(w => stem(w.toLowerCase())).filter(w => w.length > 1);
+const _GA = [...new Set(GEO_OK_RE.source.split(/[^a-z\u0430-\u044f\u0451]+/gi))].map(w => stem(w.toLowerCase())).filter(w => w.length > 1);
+const SPAM_RE = /xn--|p1ai|crocodent|atlas-diagnostics|\\d{4,}/i;
+function isJunk(ph) { if (SPAM_RE.test(ph)) return true;
+  const t = tokens(ph);
+  const hit = (arr) => t.some(w => arr.some(s => w === s || (w.length > 3 && s.length > 3 && (w.startsWith(s) || s.startsWith(w)))));
+  if (!hit(_JA)) return false;
+  return !hit(_GA);
+}
 const _tc = new Map();
 function tokens(s) {
   const _h = _tc.get(s); if (_h) return _h;
@@ -48,6 +57,15 @@ function loadArticles() {
   const re = /\{\s*slug:\s*'([^']+)',\s*title:\s*["']([^"']+)["']/g;
   let m;
   while ((m = re.exec(src))) out.push({ slug: m[1], title: m[2] });
+  for (const a of out) {
+    try {
+      const md = readFileSync(join(ROOT, 'src/content/blog', a.slug + '.md'), 'utf8');
+      const hs = []; let h;
+      const r1 = /<h[23]>([^<]+)<\/h[23]>/g; while ((h = r1.exec(md))) hs.push(h[1]);
+      const r2 = /^#{2,3}\s+(.+)$/gm; while ((h = r2.exec(md))) hs.push(h[1]);
+      a.all = new Set(tokens(a.title + ' ' + hs.join(' ')));
+    } catch (e) { a.all = new Set(tokens(a.title)); }
+  }
   const df = {}; for (const a of out) for (const w of new Set(tokens(a.title))) df[w] = (df[w] || 0) + 1; return { list: out, df, N: out.length };
 }
 function mapArticle(head, articles) {
@@ -55,7 +73,7 @@ function mapArticle(head, articles) {
   if (!ht.size) return null;
   let best = null, bestScore = 0;
   for (const a of articles) {
-    const at = new Set(tokens(a.title));
+    const at = a.all;
     let inter = 0; const hits = [];
     for (const w of ht){ if (at.has(w)) { inter++; hits.push(w); continue; } for (const v of at){ let k=0; while (k<w.length && k<v.length && w[k]===v[k]) k++; if (k>=5) { inter++; hits.push(w); break; } } }
     let hw=0,gw=0; for (const w of ht) hw+=globalThis.__W(w); for (const w of hits) gw+=globalThis.__W(w); const score = hw?gw/hw:0;
@@ -91,8 +109,8 @@ function main() {
   clusters.sort((a, b) => b.reduce((s, r) => s + r.freq, 0) - a.reduce((s, r) => s + r.freq, 0));
   const out = clusters.map(members => {
     const sum = members.reduce((s, r) => s + r.freq, 0);
-    const head = (members.find(m => !JUNK_RE.test(m.phrase)) || members[0]).phrase;
-    const junk = members.every(m => JUNK_RE.test(m.phrase) && !GEO_OK_RE.test(m.phrase));
+    const head = (members.find(m => !isJunk(m.phrase)) || members[0]).phrase;
+    const junk = members.every(m => isJunk(m.phrase));
     return { head, count: members.length, freq: sum, junk, target: mapArticle(head, articles), members: members.map(m => ({ q: m.phrase, f: m.freq })) };
   });
   const dir = join(ROOT, 'data/semantic-clusters');
