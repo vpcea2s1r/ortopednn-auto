@@ -1,23 +1,35 @@
 import fs from "fs";
-// ponytail: hardcoded list, reads all drafts if empty — global scan if many drafts
-const files = ["cherneet-desna-vokrug-koronki", "skolko-mozhno-hodit-bez-zubov", "sendvich-protez"];
-const existing = files.filter(f => { try { fs.accessSync("data/drafts/" + f + ".json"); return true; } catch { return false; } });
-if (existing.length === 0) { console.log("no drafts to validate (expected — drafts published)"); process.exit(0); }
-for (const f of existing) {
-  const p = "data/drafts/" + f + ".json";
+// Validates every draft in data/drafts/ (no hardcoded list).
+const dir = "data/drafts";
+let files = [];
+try { files = fs.readdirSync(dir).filter(f => f.endsWith(".json")); } catch { /* no dir */ }
+if (files.length === 0) { console.log("no drafts to validate (expected - drafts published)"); process.exit(0); }
+const idx = fs.readFileSync("data/blog-articles.ts", "utf8");
+const cats = new Set();
+const rc = new RegExp("category: '([^']+)'", "g");
+let m; while ((m = rc.exec(idx))) cats.add(m[1]);
+let fail = 0;
+for (const f of files) {
+  const p = dir + "/" + f;
   const raw = fs.readFileSync(p, "utf8");
-  const bom = raw.charCodeAt(0) === 0xfeff;
+  const probs = [];
+  if (raw.charCodeAt(0) === 0xfeff) probs.push("BOM");
   let d;
-  try { d = JSON.parse(raw); } catch (e) { console.log(f, "JSON ERROR", e.message); continue; }
+  try { d = JSON.parse(raw); } catch (e) { console.log(f, "JSON ERROR", e.message); fail++; continue; }
   const keys = Object.keys(d).sort().join(",");
-  const req = ["body", "category", "date", "description", "slug", "title"].sort().join(",");
-  const cyr = (raw.match(/[\u0400-\u04FF]/g) || []).length;
-  const mojibake = (raw.match(/[\u2500-\u25FF]/g) || []).length;
-  const prices = (raw.match(/₽|руб|price|стоим/gi) || []).length;
-  const tel = (raw.match(/tel:\+79202537317/) || []).length;
-  const cta = (raw.match(/class="cta"/) || []).length;
-  const h2 = (raw.match(/<h2>/g) || []).length;
-  const h3 = (raw.match(/<h3>/g) || []).length;
-  const noindex = (raw.match(/noindex/i) || []).length;
-  console.log(f.padEnd(32), "keys-ok:" + (keys === req), "cyr:" + cyr, "mojibake:" + mojibake, "bom:" + bom, "price-refs:" + prices, "tel:" + tel, "cta:" + cta, "h2:" + h2, "h3:" + h3, "noindex:" + noindex, "len:" + d.body.length);
+  if (keys !== "body,category,date,description,slug,title") probs.push("keys:" + keys);
+  if (!cats.has(d.category)) probs.push("bad-category:" + d.category);
+  if (d.slug !== f.replace(/\.json$/, "")) probs.push("slug-mismatch");
+  if (!d.body || d.body.length < 5500) probs.push("thin:" + (d.body || "").length);
+  if ((raw.match(/[\u2500-\u25FF]/g) || []).length) probs.push("mojibake");
+  if ((raw.match(/[₽]|руб|price|стоим/gi) || []).length) probs.push("price");
+  if (!(raw.match(/tel:\+79202537317/) || []).length) probs.push("no-tel");
+  if (!(raw.match(/class="cta"/) || []).length) probs.push("no-cta");
+  const opens = (d.body.match(/<div/g) || []).length;
+  const closes = (d.body.match(/<\/div>/g) || []).length;
+  if (opens !== closes) probs.push("div:" + opens + "/" + closes);
+  if (!d.description.includes("+7 (920) 253-73-17")) probs.push("no-phone-desc");
+  if (probs.length) { console.log("FAIL", f, probs.join(" ")); fail++; }
+  else console.log("OK  ", f, "len:" + d.body.length);
 }
+process.exit(fail ? 1 : 0);

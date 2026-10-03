@@ -19,6 +19,7 @@ openserp
 !/scripts/expand-candidates.mjs
 !/scripts/fix-frontmatter.mjs
 !/scripts/publish-drafts.mjs
+!/scripts/publish-draft.mjs
 !/scripts/publish-single.mjs
 !/scripts/rank-thin-demand.mjs
 !/scripts/typo-check.mjs

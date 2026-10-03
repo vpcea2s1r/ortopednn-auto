@@ -17,7 +17,7 @@ function walk(dir, out) {
   for (const f of entries) {
     const p = path.join(dir, f);
     const st = fs.statSync(p);
-    if (st.isDirectory()) { if (!/node_modules|dist/.test(p)) walk(p, out); }
+    if (st.isDirectory()) { if (!/node_modules|dist|semantic-clusters/.test(p)) walk(p, out); }
     else if (/\.(md|astro|ts)$/.test(f) && !f.endsWith("typo-check.mjs")) out.push(p);
   }
 }
