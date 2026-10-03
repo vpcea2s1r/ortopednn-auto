@@ -572,3 +572,7 @@ Deploy success (1b261b8). Все статьи волны A-F теперь 3.5-8.
 - /services/privarka-3-zubov/ > /services/ (deleted service page)
 - /blog/elaynery-sovremennyy-sposob-ispravleniya-prikusa/ > /blog/okkluziya-zubov-pravilnoe-smykanie/ (never existed)
 - Updated sitemap filter to exclude all 10 redirected URLs
+## 2026-10-03 - ingest | Семантическое ядро и правило хранения
+- **Ядро**: vse.csv (5009 запросов) -> 1744 кластера (785 covered, 943 GAP, 29 JUNK); тематические gibkie/myagkie/bez-neba — все covered
+- **Инструкция**: docs/semantic-core.md (как обновлять, вердикты, чеклист перед статьёй, таблица где что храним)
+- **Правила**: AGENTS.md 15 (проверка ядра перед статьёй, Hard) + 16 (одно место — один тип инфы, Hard)
