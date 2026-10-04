@@ -68,6 +68,9 @@ export default defineConfig({
       JS: true,
       Image: false,
       SVG: false,
+      Action: {
+        Passed: async () => true,
+      },
     })
   ],
   image: {
