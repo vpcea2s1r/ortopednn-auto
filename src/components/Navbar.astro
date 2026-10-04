@@ -34,8 +34,8 @@ const navLinks = [
 
 <script>
 (function() {
-  var toggle = document.querySelector('.navbar__toggle');
-  var menu = document.getElementById('navbar-menu');
+  var toggle = document.querySelector('.navbar__toggle') as HTMLElement;
+  var menu = document.getElementById('navbar-menu') as HTMLElement;
   var overlay = document.createElement('div');
   overlay.className = 'navbar__overlay';
   overlay.setAttribute('aria-hidden', 'true');

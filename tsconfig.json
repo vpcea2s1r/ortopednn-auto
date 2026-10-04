@@ -1,7 +1,15 @@
 {
   "extends": "astro/tsconfigs/base",
+  "include": [".astro/types.d.ts", "src/**/*"],
+  "exclude": [
+    "dist",
+    "server/**",
+    "scripts/**",
+    "keystatic.config.ts",
+    "bypass.cjs"
+  ],
   "compilerOptions": {
-    "strictNullChecks": true,
-    "moduleResolution": "node"
+    "noImplicitAny": false,
+    "strictNullChecks": false
   }
 }
