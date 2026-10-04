@@ -3,10 +3,10 @@
 ## Project Context
 - **LIVE-код (Astro):** `C:\opencode\ortopednn-auto\` — Astro SSG, деплоится на GitHub Pages
 - **Многосайтовая архитектура:** `docs/architecture.md` — как маштабировать проект на несколько доменов (ortopednn.ru, stomatolog.ortopednn.ru, и др.)
-- **VPS:** `185.245.34.155` — root, пароль `ma4BNRV4`, Docker (bot + n8n). Реквизиты и SOCKS5-прокси (3proxy, порт 49187, `proxy_user`/`CEWjuOv3EWttIoDp`) — в `docs/vps.md`. ⚠️ Старый VPS `94.183.155.147` переустановлен/перевыделен (host key сменился, root-пароль и SSH-ключи не подходят, Docker-стек отсутствует) — перенос стека на новый сервер в работе
+- **VPS:** `185.245.34.155` — root, пароль `ma4BNRV4`, Docker (redis + n8n). Реквизиты и SOCKS5-прокси (3proxy, порт 49187, `proxy_user`/`CEWjuOv3EWttIoDp`) — в `docs/vps.md`. ⚠️ Старый VPS `94.183.155.147` переустановлен/перевыделен — **стек НЕ перенесён** (bot + admin на старом VPS недоступны). Бот migrated на GitHub Actions (`telegram-bot-poll.yml`), VPS нужен только под n8n + redis + admin
 - **VPS ветка:** `master` (совпадает с дефолтной). `main` — устарела, расходится, НЕ используется
-- **Бот на VPS:** `server/` — Docker compose, polling mode, порт 3000
-- **n8n на VPS:** порт 5678, admin@ortopednn.ru / Ortopednn2026!, workflow импортирован
+- **Бот migrated на GitHub Actions:** `telegram-bot-poll.yml` (polling mode, cron `*/15 * * * *`). Старый Docker-стек бота на VPS недоступен (сервер переустановлен). `server/` — код бота, который разворачивается через Actions, не через docker-compose
+- **n8n на VPS:** порт 5678, admin@ortopednn.ru / Ortopednn2026!, workflow импортирован. Требует настройки при переносе
 - **Telegram fix:** `extra_hosts: api.telegram.org → 149.154.167.220` в docker-compose.yml (блокировка Telegram в РФ)
 - **Docker registry mirror:** `mirror.gcr.io` в `/etc/docker/daemon.json`
 - **Хостинг бота:** `docs/hosting.md` — документация по портированию бота
