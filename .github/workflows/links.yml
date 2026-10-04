@@ -13,14 +13,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
+
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
             --verbose --no-progress
+            --root-dir ./dist
             --exclude 'mailto:'
             --exclude '^https://t\.me'
             --exclude 'http://localhost'
             --exclude 'http://127\.0\.0\.1'
-            './src/**/*.md' './src/**/*.astro'
+            --exclude 'src/pages/\*\*/\[.*\]\*\.astro'
+            --exclude 'https://nsmu\.ru/'
+            './dist/**/*.html'
           fail: true
