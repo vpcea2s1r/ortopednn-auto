@@ -3,7 +3,7 @@
 ## Project Context
 - **LIVE-код (Astro):** `C:\opencode\ortopednn-auto\` — Astro SSG, деплоится на GitHub Pages
 - **Многосайтовая архитектура:** `docs/architecture.md` — как маштабировать проект на несколько доменов (ortopednn.ru, stomatolog.ortopednn.ru, и др.)
-- **VPS:** `185.219.7.36` (с 2026-10-29; старый `185.245.34.155` мёртв) — root, пароль `ma4BNRV4`, Docker (VPN-стек: amnezia-awg2 + amnezia-socks5proxy). Реквизиты и SOCKS5-прокси (3proxy, порт 49187, `proxy_user`/`CEWjuOv3EWttIoDp`) — в `docs/vps.md`. ⚠️ n8n, redis и admin на этом сервере **не развёрнуты** (nginx и node/npm отсутствуют). Бот — на GitHub Actions (`telegram-bot-poll.yml`)
+- **VPS:** `185.219.7.36` (с 2026-10-29; старый `185.245.34.155` мёртв) — root, Docker (VPN-стек: amnezia-awg2 + amnezia-socks5proxy). Пароль root и доступы SOCKS5-прокси (3proxy, порт 49187) — в gitignored `vpn-credentials.md`; в публичном репо их нет. ⚠️ n8n, redis и admin на этом сервере **не развёрнуты** (nginx и node/npm отсутствуют). Бот — на GitHub Actions (`telegram-bot-poll.yml`)
 - **VPS ветка:** `master` (совпадает с дефолтной). `main` — устарела, расходится, НЕ используется
 - **Бот migrated на GitHub Actions:** `telegram-bot-poll.yml` (polling mode, cron `*/15 * * * *`). Старый Docker-стек бота на VPS недоступен (сервер переустановлен). `server/` — код бота, который разворачивается через Actions, не через docker-compose
 - **n8n на VPS:** порт 5678, admin@ortopednn.ru / Ortopednn2026!, workflow импортирован. Требует настройки при переносе

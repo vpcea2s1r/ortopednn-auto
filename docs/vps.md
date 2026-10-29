@@ -1,12 +1,14 @@
 # VPS и SOCKS-прокси (актуально 2026-10-29)
 
+Доступы (пароль root, логин/пароль SOCKS5) — в gitignored `vpn-credentials.md`. В этом файле только публичная часть: адреса, порты, устройство стека.
+
 ## Сервер
 
 | Параметр | Значение |
 |----------|----------|
 | IP | `185.219.7.36` (сменился 2026-10-29, старый `185.245.34.155` не отвечает) |
 | Логин | `root` |
-| Пароль | `ma4BNRV4` |
+| Пароль | в gitignored `vpn-credentials.md` (в репозитории не хранится) |
 | Протокол | SSH (порт 22) |
 | ОС | Ubuntu 22.04.5 LTS, 1 CPU, 956 MB RAM, диск 8.8 GB (занято 82%) |
 | Host key (ssh-ed25519) | `SHA256:r37xUbZtIRimfJevgFy0qR7Na9gXRLy/dHrvUyIbdrY` |
@@ -60,15 +62,15 @@ node scripts/vpn-endpoint-domain.mjs C:\path\to\conf --apply
 |----------|----------|
 | Протокол | SOCKS5 (`socks -p49187` в конфиге) |
 | Адрес | `185.219.7.36:49187` |
-| Логин | `proxy_user` |
-| Пароль | `CEWjuOv3EWttIoDp` |
+| Логин | в gitignored `vpn-credentials.md` |
+| Пароль | в gitignored `vpn-credentials.md` |
 | Auth | `auth strong` (требуется логин/пароль) |
 | Конфиг | `/usr/local/3proxy/conf/3proxy.cfg` в контейнере |
 | Лог | `/usr/local/3proxy/logs/3proxy.log` (JSON, включая CONNECT запросы) |
 
 Пример использования:
 ```
-curl -x socks5h://proxy_user:CEWjuOv3EWttIoDp@185.219.7.36:49187 https://example.com
+curl -x socks5h://<логин>:<пароль>@185.219.7.36:49187 https://example.com
 ```
 
 Проверено 2026-10-29 на новом IP: example.com, api.github.com, ortopednn.ru, yandex.ru — все отвечают.

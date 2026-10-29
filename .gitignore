@@ -4,6 +4,9 @@ dist
 .env
 *.env
 *.log
+# Реквизиты VPS/прокси и OAuth — только локально (репо публичное)
+vpn-credentials.md
+google-oauth.md
 data/drafts/
 9router
 openserp
