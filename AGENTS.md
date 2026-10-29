@@ -3,7 +3,7 @@
 ## Project Context
 - **LIVE-код (Astro):** `C:\opencode\ortopednn-auto\` — Astro SSG, деплоится на GitHub Pages
 - **Многосайтовая архитектура:** `docs/architecture.md` — как маштабировать проект на несколько доменов (ortopednn.ru, stomatolog.ortopednn.ru, и др.)
-- **VPS:** `185.245.34.155` — root, пароль `ma4BNRV4`, Docker (redis + n8n). Реквизиты и SOCKS5-прокси (3proxy, порт 49187, `proxy_user`/`CEWjuOv3EWttIoDp`) — в `docs/vps.md`. ⚠️ Старый VPS `94.183.155.147` переустановлен/перевыделен — **стек НЕ перенесён** (bot + admin на старом VPS недоступны). Бот migrated на GitHub Actions (`telegram-bot-poll.yml`), VPS нужен только под n8n + redis + admin
+- **VPS:** `185.219.7.36` (с 2026-10-29; старый `185.245.34.155` мёртв) — root, пароль `ma4BNRV4`, Docker (VPN-стек: amnezia-awg2 + amnezia-socks5proxy). Реквизиты и SOCKS5-прокси (3proxy, порт 49187, `proxy_user`/`CEWjuOv3EWttIoDp`) — в `docs/vps.md`. ⚠️ n8n, redis и admin на этом сервере **не развёрнуты** (nginx и node/npm отсутствуют). Бот — на GitHub Actions (`telegram-bot-poll.yml`)
 - **VPS ветка:** `master` (совпадает с дефолтной). `main` — устарела, расходится, НЕ используется
 - **Бот migrated на GitHub Actions:** `telegram-bot-poll.yml` (polling mode, cron `*/15 * * * *`). Старый Docker-стек бота на VPS недоступен (сервер переустановлен). `server/` — код бота, который разворачивается через Actions, не через docker-compose
 - **n8n на VPS:** порт 5678, admin@ortopednn.ru / Ortopednn2026!, workflow импортирован. Требует настройки при переносе
@@ -11,7 +11,7 @@
 - **Docker registry mirror:** `mirror.gcr.io` в `/etc/docker/daemon.json`
 - **Хостинг бота:** `docs/hosting.md` — документация по портированию бота
 - **Веб-панель (Content Factory):** `server/admin/` — Express + HTMX + SQLite, порт 3001, admin.ortopednn.ru (JWT auth, Chart.js dashboard)
-- **Cloudflare:** admin.ortopednn.ru → A record 185.245.34.155 (обновлено 2026-08-16), API токен в cloudflare-token.md (gitignored)
+- **Cloudflare:** admin.ortopednn.ru → A record 185.245.34.155 (мёртвый IP с 2026-10-29, запись нужно обновить на 185.219.7.36), API токен в cloudflare-token.md (gitignored)
 - **Репозиторий:** `github.com/vpcea2s1r/ortopednn-auto`
 - **Старый репозиторий (Next.js):** `C:\opencode\ortopednn\` — устаревший код, НЕ используется на live, подлежит удалению
 - **Тестовый поддомен (Astro):** `C:\opencode\stomatolog\` — stomatolog.ortopednn.ru (GitHub Pages)
@@ -285,7 +285,7 @@ Secrets stored in `.env` на VPS (`/opt/ortopednn-auto/.env`).
 
 ## Telegram SEO Monitor Bot (`@ortopednn52_bot`)
 
-Бот работал на старом VPS (94.183.155.147) в Docker-контейнере, polling mode, порт 3000. ⚠️ Старый сервер перевыделен — бот/n8n/admin переносятся на 185.245.34.155.
+Бот работал на старом VPS (94.183.155.147) в Docker-контейнере, polling mode, порт 3000. ⚠️ Старый сервер перевыделен — бот/n8n/admin переносятся на актуальный VPS (2026-10-29: 185.219.7.36).
 
 ### Что умеет сейчас
 - **Инлайн-меню** (`/menu`): Производительность, Статистика, Черновики, Дзен, PubMed-рерайт

@@ -28,6 +28,7 @@ openserp
 !/scripts/yandex-webmaster-stats.py
 !/scripts/semantic-cluster.mjs
 !/scripts/export-gaps.mjs
+!/scripts/vpn-endpoint-domain.mjs
 wordstat
 !data/wordstat/
 .wrangler
