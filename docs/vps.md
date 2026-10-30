@@ -56,6 +56,20 @@ node scripts/vpn-endpoint-domain.mjs C:\path\to\conf --apply
 
 Скрипт заодно проверяет обязательные строки (`[Interface]`, `PrivateKey`, `Address`, `[Peer]`, `PublicKey`, `Endpoint`) и наличие параметров обфускации.
 
+### Ручные правки поверх конфига приложения (2026-10-30)
+
+Приложение Amnezia не пишет `ContentPaddingAddition`, хотя его собственный дефолт — `10-100` (`client/core/utils/constants/protocolConstants.h`). Строка добавлена вручную: она убирает кратность транспортных пакетов 16 байтам, то есть ещё один признак для статистического анализа.
+
+```bash
+docker cp amnezia-awg2:/opt/amnezia/awg/awg0.conf /root/awg0.conf.bak-<дата>
+docker exec amnezia-awg2 sed -i '/^DisableCookies = on$/a ContentPaddingAddition = 10-100' /opt/amnezia/awg/awg0.conf
+docker restart amnezia-awg2
+```
+
+Проверка: `docker exec amnezia-awg2 awg show awg0` → строка `content padding addition: 10-100`. Параметр односторонний, совпадать у сервера и клиента не обязан; в клиентские `.conf` приложение переносит его из серверного конфига при выгрузке.
+
+⚠️ Переустановка протокола в приложении перезапишет `awg0.conf` — строку добавлять заново. Бэкап до правки: `/root/awg0.conf.bak-20261030-034634`. После рестарта клиенты пере-рукопожатие проходят сами, трафик подтверждён 2026-10-30.
+
 ## SOCKS5-прокси (3proxy, внутри amnezia-socks5proxy)
 
 | Параметр | Значение |
